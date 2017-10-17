@@ -47,7 +47,9 @@ const RelatedItemsList = React.createClass({
 	},
 	getColumns () {
 		const { relationship, refList } = this.props;
-		const columns = refList.expandColumns(refList.defaultColumns);
+		const columns = refList.expandColumns(
+			refList.defaultRelationshipColumns ||
+			refList.defaultColumns);
 		return columns.filter(i => i.path !== relationship.refPath);
 	},
 	loadItems () {
