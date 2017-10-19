@@ -124,7 +124,14 @@ const RelatedItemsList = React.createClass({
 			return <div className={`Relationship ${this.props.className || ''}`}>{this.state.err}</div>;
 		}
 
-		const listHref = `${Keystone.adminPath}/${this.props.refList.path}`;
+		const filters = [
+			{
+				path: this.props.relationship.refPath,
+				inverted: false,
+				value: [this.props.relatedItemId]
+			}
+		]
+		const listHref = `${Keystone.adminPath}/${this.props.refList.path}?filters=${JSON.stringify(filters)}`;
 		const loadingElement = (
 			<Center height={100}>
 				<Spinner />
