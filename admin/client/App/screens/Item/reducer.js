@@ -3,6 +3,7 @@
  */
 import assign from 'object-assign';
 import {
+	SET_LAYOUT,
 	SELECT_ITEM,
 	LOAD_DATA,
 	DATA_LOADING_SUCCESS,
@@ -19,6 +20,7 @@ const initialState = {
 	ready: false,
 	error: null,
 	relationshipData: {},
+	layout: 'twoColumn',
 	drag: {
 		clonedItems: false,
 		newSortOrder: null,
@@ -28,6 +30,10 @@ const initialState = {
 
 function item (state = initialState, action) {
 	switch (action.type) {
+		case SET_LAYOUT:
+			return assign({}, state, {
+				layout: action.layout || 'oneColumn',
+			});
 		case SELECT_ITEM:
 			return assign({}, state, {
 				ready: false,

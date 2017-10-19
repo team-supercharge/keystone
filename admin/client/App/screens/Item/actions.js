@@ -1,4 +1,5 @@
 import {
+	SET_LAYOUT,
 	SELECT_ITEM,
 	LOAD_DATA,
 	DATA_LOADING_SUCCESS,
@@ -37,6 +38,10 @@ export function loadItemData () {
 		});
 		const state = getState();
 		const list = state.lists.currentList;
+		dispatch({
+			type: SET_LAYOUT,
+			layout: list.path === 'residents' ? 'twoColumn' : 'oneColumn',
+		});
 
 		// const itemID = state.item.id;
 		// Load a specific item with the utils/List.js helper

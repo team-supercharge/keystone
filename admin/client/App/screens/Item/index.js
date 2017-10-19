@@ -18,6 +18,25 @@ import EditFormHeader from './components/EditFormHeader';
 import RelatedItemsList from './components/RelatedItemsList/RelatedItemsList';
 // import FlashMessages from '../../shared/FlashMessages';
 
+import { css, StyleSheet } from 'aphrodite/no-important';
+
+const layouts = {
+	oneColumn: StyleSheet.create({
+		list: {},
+		item: {},
+	}),
+	twoColumn: StyleSheet.create({
+		list: {
+			display: 'flex',
+			flexDirection: 'row',
+			flexWrap: 'wrap',
+		},
+		item: {
+			flexBasis: '50%',
+		},
+	}),
+};
+
 import {
 	selectItem,
 	loadItemData,
@@ -75,6 +94,7 @@ var ItemView = React.createClass({
 	},
 	// Render this items relationships
 	renderRelationships () {
+		const styles = layouts[this.props.layout || 'oneColumn'];
 		const { relationships } = this.props.currentList;
 		const keys = Object.keys(relationships);
 		if (!keys.length) return;
@@ -82,23 +102,26 @@ var ItemView = React.createClass({
 			<div className="Relationships">
 				<Container>
 					<h2>Relationships</h2>
-					{keys.map(key => {
-						const relationship = relationships[key];
-						const refList = listsByKey[relationship.ref];
-						const { currentList, params, relationshipData, drag } = this.props;
-						return (
-							<RelatedItemsList
-								key={relationship.path}
-								list={currentList}
-								refList={refList}
-								relatedItemId={params.itemId}
-								relationship={relationship}
-								items={relationshipData[relationship.path]}
-								dragNewSortOrder={drag.newSortOrder}
-								dispatch={this.props.dispatch}
-							/>
-						);
-					})}
+					<div className={css(styles.list)}>
+						{keys.map(key => {
+							const relationship = relationships[key];
+							const refList = listsByKey[relationship.ref];
+							const { currentList, params, relationshipData, drag } = this.props;
+							return (
+								<RelatedItemsList
+									className={css(styles.item)}
+									key={relationship.path}
+									list={currentList}
+									refList={refList}
+									relatedItemId={params.itemId}
+									relationship={relationship}
+									items={relationshipData[relationship.path]}
+									dragNewSortOrder={drag.newSortOrder}
+									dispatch={this.props.dispatch}
+								/>
+							);
+						})}
+					</div>
 				</Container>
 			</div>
 		);
@@ -185,6 +208,7 @@ var ItemView = React.createClass({
 });
 
 module.exports = connect((state) => ({
+	layout: state.item.layout,
 	data: state.item.data,
 	loading: state.item.loading,
 	ready: state.item.ready,

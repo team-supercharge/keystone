@@ -10,6 +10,7 @@ import { TABLE_CONTROL_COLUMN_WIDTH } from '../../../../../constants';
 
 const RelatedItemsList = React.createClass({
 	propTypes: {
+		className: React.PropTypes.string,
 		dispatch: React.PropTypes.func.isRequired,
 		dragNewSortOrder: React.PropTypes.number,
 		items: React.PropTypes.array,
@@ -120,7 +121,7 @@ const RelatedItemsList = React.createClass({
 	},
 	render () {
 		if (this.state.err) {
-			return <div className="Relationship">{this.state.err}</div>;
+			return <div className={`Relationship ${this.props.className || ''}`}>{this.state.err}</div>;
 		}
 
 		const listHref = `${Keystone.adminPath}/${this.props.refList.path}`;
@@ -131,7 +132,7 @@ const RelatedItemsList = React.createClass({
 		);
 
 		return (
-			<div className="Relationship">
+			<div className={`Relationship ${this.props.className || ''}`}>
 				<h3 className="Relationship__link"><Link to={listHref}>{this.props.refList.label}</Link></h3>
 				{this.props.items ? this.renderItems() : loadingElement}
 			</div>
