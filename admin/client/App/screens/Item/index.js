@@ -33,6 +33,7 @@ const layouts = {
 		},
 		item: {
 			flexBasis: '50%',
+			padding: '10px'
 		},
 	}),
 };
