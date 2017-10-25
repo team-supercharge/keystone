@@ -53,12 +53,21 @@ const CreateForm = React.createClass({
 	},
 	// Handle input change events
 	handleChange (event) {
+		const field = this.props.list.fields[event.path];
+
 		var values = assign({}, this.state.values);
 		values[event.path] = event.value;
 		this.setState({
 			values: values,
 		});
 	},
+	prefillValues(values) {
+		this.setState({ values: {
+			...this.state.values,
+			...values
+		}});
+	},
+
 	// Set the props of a field
 	getFieldProps (field) {
 		var props = assign({}, field);
@@ -67,6 +76,11 @@ const CreateForm = React.createClass({
 		props.onChange = this.handleChange;
 		props.mode = 'create';
 		props.key = field.path;
+
+		if(field.prefill) {
+			props.prefillValues = this.prefillValues;
+		}
+
 		return props;
 	},
 	// Create a new item when the form is submitted

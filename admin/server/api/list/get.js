@@ -2,11 +2,15 @@ var async = require('async');
 var assign = require('object-assign');
 var listToArray = require('list-to-array');
 
+const { mapValues, merge }= require('lodash');
+
 module.exports = function (req, res) {
 	var where = {};
 	var fields = req.query.fields;
 	var includeCount = req.query.count !== 'false';
 	var includeResults = req.query.results !== 'false';
+	const includeDefaults = req.query.defaults !== 'false';
+
 	if (includeResults && fields) {
 		if (fields === 'false') {
 			fields = false;
@@ -66,10 +70,19 @@ module.exports = function (req, res) {
 			return res.apiError('database error', err);
 		}
 
+		const defaults = mapValues(req.list.fields, ({ _nativeType }) =>
+			typeof _nativeType === 'function' && _nativeType());
+
 		return res.json({
 			results: includeResults
 				? items.map(function (item) {
-					return req.list.getData(item, fields, req.query.expandRelationshipFields);
+					const result = req.list.getData(item, fields, req.query.expandRelationshipFields);
+
+					if(includeDefaults) {
+						result.fields = merge({}, defaults, result.fields);
+					}
+
+					return result;
 				})
 				: undefined,
 			count: includeCount

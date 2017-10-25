@@ -135,8 +135,9 @@ module.exports = Field.create({
 		// NOTE: this seems like the wrong way to add options to the Select
 		this.loadOptionsCallback = callback;
 		const filters = this.buildFilters();
+		const defaults = this.props.prefill ? '&defaults=true' : '';
 		xhr({
-			url: Keystone.adminPath + '/api/' + this.props.refList.path + '?basic&search=' + input + '&' + filters,
+			url: Keystone.adminPath + '/api/' + this.props.refList.path + '?basic&search=' + input + '&' + filters + defaults,
 			responseType: 'json',
 		}, (err, resp, data) => {
 			if (err) {
@@ -152,10 +153,23 @@ module.exports = Field.create({
 	},
 
 	valueChanged (value) {
-		this.props.onChange({
+		const changed = {
 			path: this.props.path,
-			value: value,
-		});
+			value
+		};
+		if(this.props.prefill) {
+			const prefillWith = this._itemsCache[value].fields;
+			this.props.prefillValues({
+				...prefillWith,
+				[this.props.path]: value
+			});
+		} else {
+			this.props.onChange({
+				path: this.props.path,
+				value
+			});
+		}
+
 	},
 
 	openCreate () {
