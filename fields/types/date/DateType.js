@@ -13,7 +13,8 @@ function date (list, path, options) {
 	this._nativeType = Date;
 	this._underscoreMethods = ['format', 'moment', 'parse'];
 	this._fixedSize = 'medium';
-	this._properties = ['formatString', 'yearRange', 'isUTC', 'inputFormat'];
+	this._properties = ['formatString', 'yearRange', 'isUTC', 'inputFormat', 'hideSetNowButton'];
+	this.hideSetNowButton = !!options.hideSetNowButton;
 	this.parseFormatString = options.inputFormat || 'YYYY-MM-DD';
 	this.formatString = (options.format === false) ? false : (options.format || 'Do MMM YYYY');
 
@@ -26,7 +27,6 @@ function date (list, path, options) {
 }
 date.properName = 'Date';
 util.inherits(date, FieldType);
-
 
 date.prototype.validateRequiredInput = TextType.prototype.validateRequiredInput;
 

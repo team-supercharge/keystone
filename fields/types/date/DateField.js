@@ -82,9 +82,11 @@ module.exports = Field.create({
 						value={value}
 					/>
 				</Section>
-				<Section>
-					<Button onClick={this.setToday}>Today</Button>
-				</Section>
+				{ !this.props.hideSetNowButton &&
+					<Section>
+						<Button onClick={this.setToday}>Today</Button>
+					</Section>
+				}
 			</Group>
 		);
 	},
