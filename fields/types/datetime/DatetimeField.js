@@ -29,9 +29,13 @@ module.exports = Field.create({
 	parseFormats: ['YYYY-MM-DD', 'YYYY-MM-DD h:m:s a', 'YYYY-MM-DD h:m a', 'YYYY-MM-DD H:m:s', 'YYYY-MM-DD H:m'],
 
 	getInitialState () {
+		const dateInputFormat = this.props.formatDate || this.dateInputFormat;
+		const timeInputFormat = this.props.formatTime || this.timeInputFormat;
 		return {
-			dateValue: this.props.value && this.moment(this.props.value).format(this.dateInputFormat),
-			timeValue: this.props.value && this.moment(this.props.value).format(this.timeInputFormat),
+			dateInputFormat,
+			timeInputFormat,
+			dateValue: this.props.value && this.moment(this.props.value).format(dateInputFormat),
+			timeValue: this.props.value && this.moment(this.props.value).format(timeInputFormat),
 			tzOffsetValue: this.props.value ? this.moment(this.props.value).format(this.tzOffsetInputFormat) : this.moment().format(this.tzOffsetInputFormat),
 		};
 	},
@@ -54,13 +58,13 @@ module.exports = Field.create({
 
 	// TODO: Move format() so we can share with server-side code
 	format (value, format) {
-		format = format || this.dateInputFormat + ' ' + this.timeInputFormat;
+		format = format || this.state.dateInputFormat + ' ' + this.state.timeInputFormat;
 		return value ? this.moment(value).format(format) : '';
 	},
 
 	handleChange (dateValue, timeValue, tzOffsetValue) {
 		var value = dateValue + ' ' + timeValue;
-		var datetimeFormat = this.dateInputFormat + ' ' + this.timeInputFormat;
+		var datetimeFormat = this.props.formatString || (this.state.dateInputFormat + ' ' + this.state.timeInputFormat);
 
 		// if the change included a timezone offset, include that in the calculation (so NOW works correctly during DST changes)
 		if (typeof tzOffsetValue !== 'undefined') {
@@ -89,8 +93,8 @@ module.exports = Field.create({
 	},
 
 	setNow () {
-		var dateValue = this.moment().format(this.dateInputFormat);
-		var timeValue = this.moment().format(this.timeInputFormat);
+		var dateValue = this.moment().format(this.state.dateInputFormat);
+		var timeValue = this.moment().format(this.state.timeInputFormat);
 		var tzOffsetValue = this.moment().format(this.tzOffsetInputFormat);
 		this.setState({
 			dateValue: dateValue,
@@ -113,7 +117,7 @@ module.exports = Field.create({
 					<Group>
 						<Section grow>
 							<DateInput
-								format={this.dateInputFormat}
+								format={this.state.dateInputFormat}
 								name={this.getInputName(this.props.paths.date)}
 								onChange={this.dateChanged}
 								ref="dateInput"

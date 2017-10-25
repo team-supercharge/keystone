@@ -15,10 +15,15 @@ function datetime (list, path, options) {
 	this._nativeType = Date;
 	this._underscoreMethods = ['format', 'moment', 'parse'];
 	this._fixedSize = 'full';
-	this._properties = ['formatString', 'isUTC'];
+	this._properties = ['formatString', 'isUTC', 'formatDate', 'formatTime'];
 	this.typeDescription = 'date and time';
-	this.parseFormatString = options.parseFormat || parseFormats;
-	this.formatString = (options.format === false) ? false : (options.format || 'YYYY-MM-DD h:mm:ss a');
+
+	this.formatDate = options.formatDate || 'YYYY-MM-DD';
+	this.formatTime = options.formatTime || 'h:mm:ss a';
+
+	this.formatString = (options.format === undefined) ? this.formatDate + ' ' + this.formatTime : options.format;
+	this.parseFormatString = options.parseFormat || parseFormats.concat([this.formatString, this.formatString + ' Z']);
+
 	this.isUTC = options.utc || false;
 	if (this.formatString && typeof this.formatString !== 'string') {
 		throw new Error('FieldType.DateTime: options.format must be a string.');
@@ -77,7 +82,7 @@ datetime.prototype.validateInput = function (data, callback) {
 	// bail early since updateItem sanitizes that just fine
 	var result = true;
 	if (value) {
-		result = this.parse(value, this.parseFormatString, true).isValid();
+		result = this.parse(value, this.parseFormatString, false).isValid();
 	}
 	utils.defer(callback, result);
 };
@@ -90,7 +95,7 @@ datetime.prototype.validateInput = function (data, callback) {
  */
 datetime.prototype.inputIsValid = function (data, required, item) {
 	if (!(this.path in data && !(this.paths.date in data && this.paths.time in data)) && item && item.get(this.path)) return true;
-	var newValue = moment(this.getInputFromData(data), parseFormats);
+	var newValue = moment(this.getInputFromData(data), this.parseFormatString);
 	if (required && (!newValue || !newValue.isValid())) {
 		return false;
 	} else if (this.getInputFromData(data) && newValue && !newValue.isValid()) {
@@ -106,6 +111,7 @@ datetime.prototype.inputIsValid = function (data, required, item) {
 datetime.prototype.updateItem = function (item, data, callback) {
 	// Get the values from the data
 	var value = this.getInputFromData(data);
+
 	if (value !== undefined) {
 		if (value !== null && value !== '') {
 			// If the value is not null, empty string or undefined, parse it
