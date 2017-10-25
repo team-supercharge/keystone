@@ -70,6 +70,7 @@
     "react": "15.4.2",
     "react-addons-css-transition-group": "15.4.2",
     "react-alt-text": "2.0.0",
+    "react-collapsible": "^2.0.3",
     "react-color": "2.11.1",
     "react-day-picker": "2.5.0",
     "react-dnd": "2.1.4",
@@ -90,6 +91,7 @@
     "semver": "5.3.0",
     "serve-favicon": "2.3.2",
     "string-to-stream": "1.1.0",
+    "uuid": "^3.1.0",
     "vkey": "1.0.1",
     "watchify": "3.8.0",
     "xhr": "2.3.3"
