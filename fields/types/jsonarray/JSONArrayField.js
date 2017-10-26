@@ -10,6 +10,28 @@ const ROOT_PARENT_ID = 'ROOT';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 const classes = StyleSheet.create({
+	wholeFieldWrapper: {
+		borderColor: '#dddddd',
+		paddingBottom: '.5em',
+	},
+	wholeFieldLabel: {
+		border: '2px solid #dedede',
+		borderBottom: 'none',
+		display: 'block',
+		borderTopLeftRadius: 3,
+		borderTopRightRadius: 3,
+		backgroundColor: '#f5f5f5',
+		padding: '10px 15px',
+	},
+	wholeFieldOuter: {
+		border: '2px solid #dedede',
+		borderTop: 'none',
+		borderBottomLeftRadius: 3,
+		borderBottomRightRadius: 3,
+	},
+	wholeFieldInner: {
+		padding: '10px',
+	},
 	wrap: {
 		display: 'block',
 		minHeight: 45,
@@ -37,7 +59,15 @@ module.exports = Field.create({
 		this.sanitizeValue(this.props.value);
 		return (<div>
 			{(this.props.value || []).map((node, idx) => (
-				<Collapsible key={idx} trigger={this.renderNodeHeader(node)}>
+				<Collapsible
+					className={css(classes.wholeFieldWrapper)}
+					openedClassName={css(classes.wholeFieldWrapper)}
+					triggerClassName={css(classes.wholeFieldLabel)}
+					triggerOpenedClassName={css(classes.wholeFieldLabel)}
+					contentOuterClassName={css(classes.wholeFieldOuter)}
+					contentInnerClassName={css(classes.wholeFieldInner)}
+					key={idx}
+					trigger={this.renderNodeHeader(node)}>
 					{this.renderNode(idx, node)}
 				</Collapsible>
 			))}
@@ -45,7 +75,7 @@ module.exports = Field.create({
 		</div>);
 	},
 	renderNodeHeader (node) {
-		return (<h2>{node.name || node.question || 'Untitled'}</h2>);
+		return (<strong>{node.name || node.question || 'Untitled'}</strong>);
 	},
 	renderNode (idx, node) {
 		return (<div>
