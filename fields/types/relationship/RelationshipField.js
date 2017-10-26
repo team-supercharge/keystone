@@ -87,7 +87,10 @@ module.exports = Field.create({
 	},
 
 	cacheItem (item) {
-		item.href = Keystone.adminPath + '/' + this.props.refList.path + '/' + item.id;
+		if(this.props.link) {
+			item.href = Keystone.adminPath + '/' + this.props.refList.path + '/' + item.id;
+		}
+
 		this._itemsCache[item.id] = item;
 	},
 

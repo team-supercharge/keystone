@@ -17,7 +17,8 @@ function relationship (list, path, options) {
 	this._defaultSize = 'full';
 	this._nativeType = keystone.mongoose.Schema.Types.ObjectId;
 	this._underscoreMethods = ['format', 'getExpandedData'];
-	this._properties = ['isValid', 'many', 'filters', 'createInline', 'prefill'];
+	this._properties = ['isValid', 'many', 'filters', 'createInline', 'prefill', 'link'];
+	this.link = !!options.link;
 	this.prefill = !!options.prefill;
 	relationship.super_.call(this, list, path, options);
 }

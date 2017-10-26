@@ -15,6 +15,11 @@ var RelationshipColumn = React.createClass({
 		col: React.PropTypes.object,
 		data: React.PropTypes.object,
 	},
+	getInitialState () {
+		return {
+			showLink: this.props.list.fields[this.props.col.path].link
+		}
+	},
 	renderMany (value) {
 		if (!value || !value.length) return;
 		const refList = this.props.col.field.refList;
@@ -25,7 +30,8 @@ var RelationshipColumn = React.createClass({
 				items.push(<span key={'comma' + i}>, </span>);
 			}
 			items.push(
-				<ItemsTableValue interior truncate={false} key={'anchor' + i} to={Keystone.adminPath + '/' + refList.path + '/' + value[i].id}>
+				<ItemsTableValue interior truncate={false} key={'anchor' + i}
+					to={this.state.showLink && (Keystone.adminPath + '/' + refList.path + '/' + value[i].id)}>
 					{value[i].name}
 				</ItemsTableValue>
 			);
@@ -43,7 +49,7 @@ var RelationshipColumn = React.createClass({
 		if (!value) return;
 		const refList = this.props.col.field.refList;
 		return (
-			<ItemsTableValue to={Keystone.adminPath + '/' + refList.path + '/' + value.id} padded interior field={this.props.col.type}>
+			<ItemsTableValue to={this.state.showLink && (Keystone.adminPath + '/' + refList.path + '/' + value.id)} padded interior field={this.props.col.type}>
 				{value.name}
 			</ItemsTableValue>
 		);
