@@ -2,12 +2,31 @@ import React from 'react';
 import Field from '../Field';
 import uuidV4 from 'uuid/v4';
 import Collapsible from 'react-collapsible';
-import { map, set } from 'lodash';
+import { map, set, startCase } from 'lodash';
 import Select from 'react-select';
-import { Glyph, Button, FormInput } from '../../../admin/client/App/elemental';
+import { Glyph, Button, FormInput, FormLabel } from '../../../admin/client/App/elemental';
 const ROOT_PARENT_ID = 'ROOT';
+
+import { StyleSheet, css } from 'aphrodite/no-important';
+
+const classes = StyleSheet.create({
+	wrap: {
+		display: 'block',
+		minHeight: 45,
+	},
+	subfieldLabel: {
+		float: 'left',
+		clear: 'left',
+		maxWidth: '40%',
+	},
+	subfield: {
+		float: 'right',
+		width: '59%',
+	},
+});
+
 module.exports = Field.create({
-	displayName: 'JSONArrayField',
+	displayName: 'subfield',
 	statics: {
 		type: 'JSONArray',
 	},
@@ -30,16 +49,21 @@ module.exports = Field.create({
 	},
 	renderNode (idx, node) {
 		return (<div>
-			{map(this.props.jsonObjectSchema, (fieldOptions, fieldName) => (
-				<div key={`wrap-${idx}-${fieldName}`}>
-					{fieldOptions.type !== 'id' && (
-						<label htmlFor={this.getFormFieldName(idx, fieldName)}>
-							{fieldOptions.label || fieldName}
-						</label>
-					)}
-					{this.renderSubField(idx, fieldName, fieldOptions, node)}
-				</div>
-			))}
+			{map(this.props.jsonObjectSchema, (fieldOptions, fieldName) => {
+				const isVisible = fieldOptions.type !== 'id';
+				return (
+					<div key={`wrap-${idx}-${fieldName}`} className={isVisible && css(classes.wrap)}>
+						{isVisible && (
+							<FormLabel
+								className={css(classes.subfieldLabel)}
+								htmlFor={this.getFormFieldName(idx, fieldName)}>
+								{fieldOptions.label || startCase(fieldName)}
+							</FormLabel>
+						)}
+						{this.renderSubField(idx, fieldName, fieldOptions, node)}
+					</div>
+				);
+			})}
 		</div>);
 	},
 	renderSubField (idx, fieldName, fieldOptions, node = {}) {
@@ -47,11 +71,18 @@ module.exports = Field.create({
 		const key = `json-array-field-input-${idx}-${fieldName}`;
 		switch (fieldOptions.type) {
 			case 'id':
-				return <input type="hidden" name={name} key={key} value={node[fieldName]}/>;
+				return (
+					<input
+						type="hidden"
+						name={name}
+						key={key}
+						value={node[fieldName]}
+					/>);
 			case 'text':
 			case 'number':
 				return (
 					<FormInput
+						className={css(classes.subfield)}
 						type={fieldOptions.type}
 						key={key}
 						autoComplete="off"
@@ -65,6 +96,7 @@ module.exports = Field.create({
 			case 'checkbox':
 				return (
 					<input
+						className={css(classes.subfield)}
 						type="checkbox"
 						key={key}
 						name={name}
@@ -78,6 +110,7 @@ module.exports = Field.create({
 			case 'select':
 				return (
 					<Select
+						className={css(classes.subfield)}
 						key={key}
 						simpleValue
 						name={name}
@@ -109,6 +142,7 @@ module.exports = Field.create({
 				console.log('options', options);
 				return (
 					<Select
+						className={css(classes.subfield)}
 						key={key}
 						simpleValue
 						name={name}
