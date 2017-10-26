@@ -66,7 +66,7 @@ module.exports = Field.create({
 					triggerOpenedClassName={css(classes.wholeFieldLabel)}
 					contentOuterClassName={css(classes.wholeFieldOuter)}
 					contentInnerClassName={css(classes.wholeFieldInner)}
-					key={idx}
+					key={`json-array-node-${node.id}`}
 					trigger={this.renderNodeHeader(node)}>
 					{this.renderNode(idx, node)}
 				</Collapsible>
@@ -118,6 +118,7 @@ module.exports = Field.create({
 						autoComplete="off"
 						name={name}
 						value={node[fieldName]}
+						placeholder={fieldOptions.placeholder || ''}
 						ref="focusTarget"
 						onChange={event => {
 							this.valueChanged(idx, fieldName, `${event.target.value}`)
