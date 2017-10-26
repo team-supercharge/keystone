@@ -2,7 +2,7 @@ import React from 'react';
 import Field from '../Field';
 import uuidV4 from 'uuid/v4';
 import Collapsible from 'react-collapsible';
-import { map, set, startCase } from 'lodash';
+import { map, set, compact, startCase } from 'lodash';
 import Select from 'react-select';
 import { Glyph, Button, FormInput, FormLabel } from '../../../admin/client/App/elemental';
 const ROOT_PARENT_ID = 'ROOT';
@@ -53,10 +53,10 @@ module.exports = Field.create({
 		type: 'JSONArray',
 	},
 	renderValue () {
-		return <div>Rending da value {this.props.value}</div>;
+		return <pre>{JSON.stringify(this.props.value, null, 2)}</pre>;
 	},
 	renderField () {
-		this.sanitizeValue(this.props.value);
+		this.props.value = this.sanitizeValue(this.props.value);
 		return (<div>
 			{(this.props.value || []).map((node, idx) => (
 				<Collapsible
@@ -165,12 +165,11 @@ module.exports = Field.create({
 						label: 'This item (root element)',
 					});
 				}
-				for (let { id, name: label } of this.props.value) {
-					if (!rejectedIds.includes(id)) {
-						options.push({ value: id, label });
+				for (let node of this.props.value) {
+					if (node && !rejectedIds.includes(node.id)) {
+						options.push({ value: node.id, label: node.name });
 					}
 				}
-				console.log('options', options);
 				return (
 					<Select
 						className={css(classes.subfield)}
@@ -188,7 +187,7 @@ module.exports = Field.create({
 	},
 	getDescendantsOf (currentNode) {
 		return this.props.value.reduce((ids, otherNode) => {
-			if (otherNode.parent === currentNode.id) {
+			if (otherNode.parent === currentNode.id && currentNode !== otherNode) {
 				ids.push(otherNode.id);
 				ids = ids.concat(this.getDescendantsOf(otherNode));
 			}
@@ -202,15 +201,16 @@ module.exports = Field.create({
 		const value = this.props.value.slice();
 		if (typeof value[idx] !== 'object') value[idx] = {};
 		set(value[idx], fieldName, newSubValue);
-		this.sanitizeValue(value);
 		this.props.onChange({
 			path: this.props.path,
-			value,
+			value: this.sanitizeValue(value),
 		});
 	},
-	sanitizeValue(value) {
-		value.forEach(node => Object.assign(node, {
-			name: this.getName(node),
+	sanitizeValue (value) {
+		return compact(value.map(node => {
+			return Object.assign(node || { id: uuidV4()}, {
+				name: this.getName(node),
+			});
 		}));
 	},
 	addNewItem () {
@@ -224,7 +224,8 @@ module.exports = Field.create({
 		});
 	},
 	getName (node) {
-		const parent = this.props.value.find(other => other.id === node.parent);
+		node = node || {};
+		const parent = this.props.value.find(other => other && other.id === node.parent);
 		return `${parent && `${this.getName(parent)} - ` || ''}${node.question || 'Untitled'}`;
 	},
 });
