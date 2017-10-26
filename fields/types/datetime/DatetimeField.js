@@ -34,6 +34,7 @@ module.exports = Field.create({
 		return {
 			dateInputFormat,
 			timeInputFormat,
+			timePlaceholder: this.props.formatTime || 'HH:MM:SS am/pm',
 			dateValue: this.props.value && this.moment(this.props.value).format(dateInputFormat),
 			timeValue: this.props.value && this.moment(this.props.value).format(timeInputFormat),
 			tzOffsetValue: this.props.value ? this.moment(this.props.value).format(this.tzOffsetInputFormat) : this.moment().format(this.tzOffsetInputFormat),
@@ -129,7 +130,7 @@ module.exports = Field.create({
 								autoComplete="off"
 								name={this.getInputName(this.props.paths.time)}
 								onChange={this.timeChanged}
-								placeholder="HH:MM:SS am/pm"
+								placeholder={this.state.timePlaceholder}
 								value={this.state.timeValue}
 							/>
 						</Section>
