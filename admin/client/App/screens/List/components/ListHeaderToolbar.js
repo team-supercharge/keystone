@@ -94,13 +94,13 @@ function ListHeaderToolbar ({
 							availableFilters={filtersAvailable}
 						/>
 					</Section>
-					<Section aphroditeStyles={classes.columns}>
+					{/*<Section aphroditeStyles={classes.columns}>
 						<ListColumnsForm
 							availableColumns={columnsAvailable}
 							activeColumns={columnsActive}
 							dispatch={dispatch}
 						/>
-					</Section>
+					</Section>*/}
 					<Section aphroditeStyles={classes.download}>
 						<ListDownloadForm
 							activeColumns={columnsActive}
