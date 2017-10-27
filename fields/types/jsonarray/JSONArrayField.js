@@ -56,9 +56,9 @@ module.exports = Field.create({
 		return <pre>{JSON.stringify(this.props.value, null, 2)}</pre>;
 	},
 	renderField () {
-		this.props.value = this.sanitizeValue(this.props.value);
+		const value = this.props.value && this.sanitizeValue(this.props.value);
 		return (<div>
-			{(this.props.value || []).map((node, idx) => (
+			{(value || []).map((node, idx) => (
 				<Collapsible
 					className={css(classes.wholeFieldWrapper)}
 					openedClassName={css(classes.wholeFieldWrapper)}
@@ -208,7 +208,7 @@ module.exports = Field.create({
 	},
 	sanitizeValue (value) {
 		return compact(value.map(node => {
-			return Object.assign(node || { id: uuidV4()}, {
+			return Object.assign({}, node || { id: uuidV4()}, {
 				name: this.getName(node),
 			});
 		}));
