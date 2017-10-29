@@ -10,6 +10,7 @@ let lastId = 0;
 module.exports = React.createClass({
 	displayName: 'DateInput',
 	propTypes: {
+		className: React.PropTypes.string,
 		format: React.PropTypes.string,
 		name: React.PropTypes.string,
 		onChange: React.PropTypes.func.isRequired,
@@ -112,7 +113,7 @@ module.exports = React.createClass({
 		};
 
 		return (
-			<div>
+			<div className={this.props.className || ''}>
 				<FormInput
 					autoComplete="off"
 					id={this.state.id}
