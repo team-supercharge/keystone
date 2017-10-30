@@ -1,11 +1,11 @@
 module.exports = {
 	Field: require('../GoogleChartField'),
 	Filter: require('../GoogleChartFilter'),
-	readme: require('fs').readFileSync('./fields/types/googlechart/Readme.md', 'utf8'),
+	readme: require('fs').readFileSync('./fields/types/googleChart/Readme.md', 'utf8'),
 	section: 'Google Chart',
 	spec: {
 		label: 'Google Chart',
-		path: 'googlechart',
+		path: 'googleChart',
 		value: true,
 	},
 };
