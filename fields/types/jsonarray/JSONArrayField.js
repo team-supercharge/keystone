@@ -4,7 +4,7 @@ import uuidV4 from 'uuid/v4';
 import Collapsible from 'react-collapsible';
 import { map, set, compact, startCase } from 'lodash';
 import Select from 'react-select';
-import { Glyph, Button, FormInput, FormLabel } from '../../../admin/client/App/elemental';
+import { Glyph, Button, FormInput, FormLabel, Modal } from '../../../admin/client/App/elemental';
 const ROOT_PARENT_ID = 'ROOT';
 
 import { StyleSheet, css } from 'aphrodite/no-important';
@@ -55,9 +55,14 @@ module.exports = Field.create({
 	renderValue () {
 		return <pre>{JSON.stringify(this.props.value, null, 2)}</pre>;
 	},
+	getInitialState: () => ({
+		nodeToRemove: null,
+		isConfirmRemoval: false
+	}),
 	renderField () {
 		const value = this.props.value && this.sanitizeValue(this.props.value);
 		return (<div>
+			{this.renderConfirmModal()}
 			{(value || []).map((node, idx) => (
 				<Collapsible
 					className={css(classes.wholeFieldWrapper)}
@@ -69,9 +74,18 @@ module.exports = Field.create({
 					key={`json-array-node-${node.id}`}
 					trigger={this.renderNodeHeader(node)}>
 					{this.renderNode(idx, node)}
+					<Button color="danger" onClick={() => this.onClickDelete(node)}>
+						<Glyph name="trashcan" />
+						&nbsp;
+						Remove with children
+					</Button>
 				</Collapsible>
 			))}
-			<Button onClick={this.addNewItem}><Glyph name="plus" />&nbsp;Add new node</Button>
+			<Button color="primary" onClick={this.addNewItem}>
+				<Glyph name="plus" />
+				&nbsp;
+				Add new node
+			</Button>
 		</div>);
 	},
 	renderNodeHeader (node) {
@@ -184,6 +198,60 @@ module.exports = Field.create({
 			default:
 				throw new Error(`Cannot render sub field ${fieldName} (type: ${fieldOptions.type})`)
 		}
+	},
+	renderConfirmModal () {
+		const nodeName = this.state.nodeToRemove && this.getName(this.state.nodeToRemove);
+		return (
+			<Modal.Dialog isOpen={this.state.isConfirmRemoval} onClose={this.handleCloseModal}>
+				<Modal.Header text={'Delete node and all its descendants?'} />
+				<Modal.Body>
+					This operation will remove "{nodeName}" and all its descendants.
+					This will only be persisted after you click "Save".
+					The following node(s) will be removed:
+					{nodeName && <ul>
+						<li>{nodeName}</li>
+						{this.getDescendantsOf(this.state.nodeToRemove).map(descendantId => (
+							<li>{this.getName(this.props.value.find(({id}) => id === descendantId))}</li>
+						))}
+					</ul>}
+					Are you sure?
+				</Modal.Body>
+				<Modal.Footer>
+					<Button color="warning" onClick={this.handleCloseModal}>
+						<Glyph name="x" />
+						&nbsp;
+						Cancel
+					</Button>
+					&nbsp;
+					<Button color="danger" onClick={() => this.deleteItemWithDescendants(this.state.nodeToRemove)}>
+						<Glyph name="trashcan"/>
+						&nbsp;
+						Delete with descendants
+					</Button>
+				</Modal.Footer>
+
+			</Modal.Dialog>
+		);
+	},
+	onClickDelete (node) {
+		this.setState({
+			nodeToRemove: node,
+			isConfirmRemoval: true,
+		});
+	},
+	handleCloseModal () {
+		this.setState({
+			nodeToRemove: null,
+			isConfirmRemoval: false
+		});
+	},
+	deleteItemWithDescendants (node) {
+		const deleteIds = [node.id].concat(this.getDescendantsOf(node));
+		this.props.onChange({
+			path: this.props.path,
+			value: this.sanitizeValue(this.props.value.filter((node) => !deleteIds.includes(node.id || node._id))),
+		});
+		this.handleCloseModal();
 	},
 	getDescendantsOf (currentNode) {
 		return this.props.value.reduce((ids, otherNode) => {
