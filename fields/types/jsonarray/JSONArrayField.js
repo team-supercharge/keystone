@@ -226,6 +226,7 @@ module.exports = Field.create({
 	getName (node) {
 		node = node || {};
 		const parent = this.props.value.find(other => other && other.id === node.parent);
-		return `${parent && `${this.getName(parent)} - ` || ''}${node.question || 'Untitled'}`;
+		const nodeName = node.question && `${node.question} (${node.answer || startCase(node.type)})`;
+		return `${parent && `${this.getName(parent)} - ` || ''}${nodeName || 'Untitled'}`;
 	},
 });
