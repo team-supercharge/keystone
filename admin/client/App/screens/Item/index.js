@@ -102,7 +102,6 @@ var ItemView = React.createClass({
 		return (
 			<div className="Relationships">
 				<Container>
-					<h2>Relationships</h2>
 					<div className={css(styles.list)}>
 						{keys.map(key => {
 							const relationship = relationships[key];
