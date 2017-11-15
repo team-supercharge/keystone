@@ -17,9 +17,10 @@ function relationship (list, path, options) {
 	this._defaultSize = 'full';
 	this._nativeType = keystone.mongoose.Schema.Types.ObjectId;
 	this._underscoreMethods = ['format', 'getExpandedData'];
-	this._properties = ['isValid', 'many', 'filters', 'createInline', 'prefill', 'link'];
+	this._properties = ['isValid', 'many', 'filters', 'createInline', 'prefill', 'link', 'clearRelated'];
 	this.link = !!options.link;
 	this.prefill = !!options.prefill;
+	this.clearRelated = options.clearRelated;
 	relationship.super_.call(this, list, path, options);
 }
 relationship.properName = 'Relationship';
@@ -37,6 +38,7 @@ relationship.prototype.getProperties = function () {
 			path: refList.path,
 			key: refList.key
 		},
+    clearRelated: this.clearRelated,
 	};
 };
 

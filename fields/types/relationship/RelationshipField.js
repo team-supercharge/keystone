@@ -167,20 +167,22 @@ module.exports = Field.create({
 	},
 
 	valueChanged (value) {
-		const changed = {
-			path: this.props.path,
-			value
-		};
-		if(this.props.prefill) {
+		if (this.state.value && this.state.value.id === value) return;
+
+		if (this.props.clearRelated) {
+			this.props.values[this.props.clearRelated] = null;
+		}
+
+		if (this.props.prefill) {
 			const prefillWith = this._itemsCache[value].fields;
 			this.props.prefillValues({
 				...prefillWith,
-				[this.props.path]: value
+				[this.props.path]: value,
 			});
 		} else {
 			this.props.onChange({
 				path: this.props.path,
-				value
+				value,
 			});
 		}
 
