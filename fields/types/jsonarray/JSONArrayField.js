@@ -368,7 +368,7 @@ module.exports = Field.create({
 		const newItem = {
 			...node,
 			id,
-			order: this.props.value.length + 1,
+			order: node.order || this.props.value.length + 1,
 		};
 		this.props.onChange({
 			path: this.props.path,
