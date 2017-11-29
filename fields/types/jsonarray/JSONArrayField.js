@@ -306,7 +306,7 @@ module.exports = Field.create({
 				...source,
 				id,
 				sourceId: source.id,
-				question: `Copy of ${source.question}`,
+				question: source.question || '',
 			};
 		}).map(clone => {
 			clone.parent = cloneMap[clone.parent] || clone.parent;
