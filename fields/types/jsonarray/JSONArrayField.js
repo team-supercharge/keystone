@@ -372,7 +372,7 @@ module.exports = Field.create({
 		};
 		this.props.onChange({
 			path: this.props.path,
-			value: afterIndex ? [
+			value: afterIndex >= 0 ? [
 				...this.props.value.slice(0, afterIndex),
 				newItem,
 				...this.props.value.slice(afterIndex + 1),
