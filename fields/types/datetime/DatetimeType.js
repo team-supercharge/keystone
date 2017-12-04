@@ -19,7 +19,7 @@ function datetime (list, path, options) {
 	this.typeDescription = 'date and time';
 
 	this.formatDate = options.formatDate || 'YYYY-MM-DD';
-	this.formatTime = options.formatTime || 'h:mm:ss a';
+	this.formatTime = options.formatTime || 'HH:mm';
 
 	this.formatString = (options.format === undefined) ? this.formatDate + ' ' + this.formatTime : options.format;
 	this.parseFormatString = options.parseFormat || parseFormats.concat([this.formatString, this.formatString + ' Z']);

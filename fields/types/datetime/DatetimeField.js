@@ -22,7 +22,7 @@ module.exports = Field.create({
 
 	// default input formats
 	dateInputFormat: 'YYYY-MM-DD',
-	timeInputFormat: 'h:mm:ss a',
+	timeInputFormat: 'HH:mm',
 	tzOffsetInputFormat: 'Z',
 
 	// parse formats (duplicated from lib/fieldTypes/datetime.js)
@@ -34,7 +34,7 @@ module.exports = Field.create({
 		return {
 			dateInputFormat,
 			timeInputFormat,
-			timePlaceholder: this.props.formatTime || 'HH:MM:SS am/pm',
+			timePlaceholder: this.props.formatTime || 'HH:mm',
 			dateValue: this.props.value && this.moment(this.props.value).format(dateInputFormat),
 			timeValue: this.props.value && this.moment(this.props.value).format(timeInputFormat),
 			tzOffsetValue: this.props.value ? this.moment(this.props.value).format(this.tzOffsetInputFormat) : this.moment().format(this.tzOffsetInputFormat),
@@ -43,7 +43,7 @@ module.exports = Field.create({
 
 	getDefaultProps () {
 		return {
-			formatString: 'Do MMM YYYY, h:mm:ss a',
+			formatString: 'DD/MM/YYYY HH:mm',
 		};
 	},
 
