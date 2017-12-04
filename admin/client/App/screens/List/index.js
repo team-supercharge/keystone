@@ -72,7 +72,7 @@ const ListView = React.createClass({
 		this.parseQueryParams();
 		this.props.dispatch(loadInitialItems());
 		const isNoCreate = this.props.lists.data[this.props.params.listId].nocreate;
-		const shouldOpenCreate = this.props.location.search === '?create';
+		const shouldOpenCreate = this.props.location.search.includes('?create');
 		this.setState({
 			showCreateForm: (shouldOpenCreate && !isNoCreate) || Keystone.createFormErrors,
 		});
