@@ -70,10 +70,30 @@ file.prototype.reset = function (item) {
  * Deletes the stored file and resets the field value
  */
 // TODO: Should we accept a callback here? Seems like a good idea.
-file.prototype.remove = function (item) {
-	this.storage.removeFile(item.get(this.path));
-	this.reset();
+
+// Quickfix for the image deletion:
+// Since callback accepting is still not implemented in the keystonejs, I made it available to add a callback to the remove method.
+// The callback is called, when the storage adapter removed the file without error.
+// This new version skips the this.reset. If it is necessary to reset the document's picture field in the db
+// it must be done in the remove's callback.
+file.prototype.remove = function (item, callback) {
+	console.log('REMOVING PICTURE IS CALLED')
+		// This is the original code
+		// this.storage.removeFile(item.get(this.path));
+
+		// This adds a callback, which is necessary for the storage adapter
+		this.storage.removeFile(item.get(this.path), (err) => {
+			if (err) {
+				console.log(err);
+				callback(err)
+			}
+			callback()
+		});
+
+	// This is the original code
+	// this.reset(item);
 };
+
 
 /**
  * Formats the field value
