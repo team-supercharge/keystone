@@ -197,7 +197,6 @@ module.exports = Field.create({
 				<Button onClick={this.triggerFileBrowser}>
 					{this.hasFile() ? 'Change' : 'Upload'} File
 				</Button>
-				{this.hasFile() && this.renderClearButton()}
 			</div>
 		);
 
