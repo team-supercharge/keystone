@@ -7,11 +7,15 @@ import React from 'react';
 import { Container } from './elemental';
 import { Link } from 'react-router';
 import { css, StyleSheet } from 'aphrodite/no-important';
+import Intercom from 'react-intercom';
+import _ from 'lodash';
 
 import MobileNavigation from './components/Navigation/Mobile';
 import PrimaryNavigation from './components/Navigation/Primary';
 import SecondaryNavigation from './components/Navigation/Secondary';
 import Footer from './components/Footer';
+
+const INTERCOM_APP_ID="v1fbkzcf";
 
 const classes = StyleSheet.create({
 	wrapper: {
@@ -26,6 +30,12 @@ const classes = StyleSheet.create({
 
 const App = (props) => {
 	const listsByPath = require('../utils/lists').listsByPath;
+
+	const intercomUser = {
+		user_id: _.get(Keystone, 'user.id'),
+		name: _.get(Keystone, 'user.name')
+	};
+
 	let children = props.children;
 	// If we're on either a list or an item view
 	let currentList, currentSection;
@@ -40,6 +50,7 @@ const App = (props) => {
 					<Link to={`${Keystone.adminPath}`}>
 						Go back home
 					</Link>
+					<Intercom appID={INTERCOM_APP_ID} { ...intercomUser } />
 				</Container>
 			);
 		} else {
@@ -49,6 +60,7 @@ const App = (props) => {
 	}
 	// Default current section key to dashboard
 	const currentSectionKey = (currentSection && currentSection.key) || 'dashboard';
+
 	return (
 		<div className={css(classes.wrapper)}>
 			<header>
@@ -85,6 +97,7 @@ const App = (props) => {
 				user={Keystone.user}
 				version={Keystone.version}
 			/>
+			<Intercom appID={INTERCOM_APP_ID} { ...intercomUser } />
 		</div>
 	);
 };
