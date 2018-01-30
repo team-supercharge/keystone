@@ -55,7 +55,7 @@ const classes = StyleSheet.create({
 		borderStyle: 'solid',
 		borderWidth: theme.input.border.width,
 		color: theme.color.gray80,
-		display: 'inline-block',
+		display: 'table-cell',
 		height: theme.input.height,
 		lineHeight: theme.input.lineHeight,
 		padding: `0 ${theme.input.paddingHorizontal}`,
