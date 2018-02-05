@@ -2,6 +2,7 @@ import React from 'react';
 import Field from '../Field';
 import { Chart } from 'react-google-charts';
 import xhr from 'xhr';
+const axios = require('axios');
 const moment = require('moment');
 import DateInput from '../../components/DateInput';
 import Select from 'react-select';
@@ -41,15 +42,15 @@ module.exports = Field.create({
 		to: moment().format(FORMAT),
 		selection: null,
 	}),
-	componentDidMount () {
-		if (!this.state.collections) this.fetchChartList();
-		if (!this.state.chartProps) this.fetchChartData();
+	async componentDidMount () {
+		await this.fetchChartList();
+		await this.fetchChartData(this.state.selection, this.state.from, this.state.to);
 	},
 	renderValue () {
 		return <div />;
 	},
 	renderField () {
-		return this.state.chartProps && (
+		return (
 			<div>
 				<Group className={css(classes.fullWidth)}>
 					<Section>
@@ -79,7 +80,7 @@ module.exports = Field.create({
 						simpleValue
 						required
 						options={this.state.collections}
-						value={this.state.selection || this.state.collections[0].value}
+						value={this.state.selection}
 						onChange={this.selectChart}
 					/>}
 				</Group>
@@ -97,24 +98,33 @@ module.exports = Field.create({
 		this.setState({ selection });
 		this.fetchChartData(selection, this.state.from, this.state.to);
 	},
-	fetchChartData (selection, from, to) {
+	async fetchChartData (selection, from, to) {
 		if (!selection) return;
 		const id = window.location.pathname.split('/').pop();
 		const url = this.props.dataSource.endpoint.replace(/:id/g, id) +
 			`?selection=${encodeURIComponent(selection)
 			}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
-		xhr({ url, responseType: 'json' }, (err, res, data) => {
-			console.log('GoogleChartField', err, data);
-			this.setState({ chartProps: data.chartProps });
-		});
+
+		try {
+			let { data } = await axios.get(url);
+			const { chartProps } = data;
+			// console.log('CHARTPROPS: ', chartProps);
+			this.setState({ chartProps: chartProps });
+		} catch (err) {
+			console.error(err);
+		}
 	},
-	fetchChartList () {
+	async fetchChartList () {
 		const id = window.location.pathname.split('/').pop();
 		const url = this.props.dataSource.selectEndpoint.replace(/:id/g, id);
-		xhr({ url, responseType: 'json' }, (err, res, collections) => {
-			console.log('GoogleChartField fetchChartList', err, collections);
-			this.setState({ collections });
+
+		try {
+			let { data: collections } = await axios.get(url);
+			// console.log('COLLECTIONS: ', collections);
+			this.setState({ collections, selection: collections[0].value });
 			if (collections[0]) this.fetchChartData(collections[0].value, this.state.from, this.state.to);
-		});
+		} catch (err) {
+			console.error(err);
+		}
 	},
 });
