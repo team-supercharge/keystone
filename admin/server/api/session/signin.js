@@ -20,7 +20,7 @@ function signin (req, res) {
 					if (isMatch) {
 						// In case the user and password is otherwise valid, checks if the user and its home is active.
 						const home = await Home.findById(user.home);
-						if (!home || !home.active || !user.active) return res.apiError(401, 'not active');
+						if (user.role === 'carehome-admin' && (!home || !home.active || !user.active)) return res.apiError(401, 'not active');
 						session.signinWithUser(user, req, res, function () {
 							keystone.callHook(user, 'post:signin', function (err) {
 								if (err) return res.status(500).json({ error: 'post:signin error', detail: err });
