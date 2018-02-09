@@ -7,6 +7,7 @@ import React from 'react';
 // import { findDOMNode } from 'react-dom'; // TODO re-implement focus when ready
 import numeral from 'numeral';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import {
 	BlankState,
@@ -375,12 +376,23 @@ const ListView = React.createClass({
 				isOpen: true,
 				label: 'Delete',
 				body: (
-					<div>
-						Are you sure you want to delete <strong>{item.name}</strong>?
-						<br />
-						<br />
-						This cannot be undone.
-					</div>
+					_.get(this.props, 'currentList.id') === 'residents'
+						? (
+							<div>
+								Are you sure you want to delete <strong>{item.name}</strong>? If you go ahead, it can’t be undone. Once the record is gone, it’s gone for good!
+								<br />
+								<br />
+								Make sure you only click delete if you want to remove everything about this resident, including their profile, care logs, documents and To-Do’s.
+							</div>
+						)
+						: (
+							<div>
+								Are you sure you want to delete <strong>{item.name}?</strong>
+								<br />
+								<br />
+								This cannot be undone.
+							</div>
+						)
 				),
 				onConfirmation: () => {
 					this.props.dispatch(deleteItem(item.id));

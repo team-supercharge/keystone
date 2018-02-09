@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import assign from 'object-assign';
+import _ from 'lodash';
 import {
 	Form,
 	FormField,
@@ -399,10 +400,24 @@ var EditForm = React.createClass({
 					onCancel={this.toggleDeleteDialog}
 					onConfirmation={this.handleDelete}
 				>
-					Are you sure you want to delete <strong>{this.props.data.name}?</strong>
-					<br />
-					<br />
-					This cannot be undone.
+					{_.get(this.props, 'list.id') === 'residents'
+						? (
+							<div>
+								Are you sure you want to delete <strong>{this.props.data.name}</strong>? If you go ahead, it can’t be undone. Once the record is gone, it’s gone for good!
+								<br />
+								<br />
+								Make sure you only click delete if you want to remove everything about this resident, including their profile, care logs, documents and To-Do’s.
+							</div>
+						)
+						: (
+							<div>
+								Are you sure you want to delete <strong>{this.props.data.name}?</strong>
+								<br />
+								<br />
+								This cannot be undone.
+							</div>
+						)
+					}
 				</ConfirmationDialog>
 			</form>
 		);
