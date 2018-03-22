@@ -2,7 +2,7 @@ var async = require('async');
 var assign = require('object-assign');
 var listToArray = require('list-to-array');
 
-const { mapValues, merge }= require('lodash');
+const { mapValues, merge } = require('lodash');
 
 module.exports = function (req, res) {
 	var where = {};
@@ -73,12 +73,42 @@ module.exports = function (req, res) {
 		const defaults = mapValues(req.list.fields, ({ _nativeType }) =>
 			typeof _nativeType === 'function' && _nativeType());
 
+		// ================================
+		// PLEASE NOTE: Due to the expected behaviour that only the true revisions should be shown on the listing page
+		// a special conditional must have been applied.
+		// Since the createdAt timestamp is not saved on the document, the objectid must be checked
+		// I assume that the user is not able to create and modify the log within 1 second.
+		// ================================
+		if (req.list.key === 'LogRevision') {
+			const trueRevisions = items.filter(item => {
+				let createdAt = item._id.getTimestamp();
+				return Math.abs(item.timeLogged - createdAt) > 1000;
+			});
+
+			return res.json({
+				results: includeResults
+					? trueRevisions.map(function (item) {
+						const result = req.list.getData(item, fields, req.query.expandRelationshipFields);
+
+						if (includeDefaults) {
+							result.fields = merge({}, defaults, result.fields);
+						}
+
+						return result;
+					})
+					: undefined,
+				count: includeCount
+					? trueRevisions.length
+					: undefined,
+			});
+		}
+
 		return res.json({
 			results: includeResults
 				? items.map(function (item) {
 					const result = req.list.getData(item, fields, req.query.expandRelationshipFields);
 
-					if(includeDefaults) {
+					if (includeDefaults) {
 						result.fields = merge({}, defaults, result.fields);
 					}
 
