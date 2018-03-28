@@ -63,6 +63,12 @@ var PrimaryNavigation = React.createClass({
 	renderFrontLink () {
 		return (
 			<ul className="app-nav app-nav--primary app-nav--right">
+				<PrimaryNavItem
+					href="https://support.logmycare.co.uk/"
+					title="Get Help"
+				>
+					<span>Get Help</span>
+				</PrimaryNavItem>
 				{this.renderBackButton()}
 				{this.renderSignout()}
 			</ul>
