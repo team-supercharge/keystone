@@ -7,7 +7,7 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router';
 
-const PrimaryNavItem = ({ children, className, href, label, title, to, active }) => {
+const PrimaryNavItem = ({ children, className, href, label, title, to, active, target }) => {
 	const itemClassName = classnames('primary-navbar__item', className);
 
 	const Button = to ? (
@@ -17,6 +17,7 @@ const PrimaryNavItem = ({ children, className, href, label, title, to, active })
 			tabIndex="-1"
 			title={title}
 			to={to}
+			target={target}
 			// Block clicks on active link
 			onClick={(evt) => { if (active) evt.preventDefault(); }}
 		>
@@ -29,6 +30,7 @@ const PrimaryNavItem = ({ children, className, href, label, title, to, active })
 			key={title}
 			tabIndex="-1"
 			title={title}
+			target={target}
 		>
 			{children}
 		</a>
@@ -50,6 +52,7 @@ PrimaryNavItem.propTypes = {
 	className: PropTypes.string,
 	href: PropTypes.string,
 	label: PropTypes.string,
+	target: PropTypes.string,
 	title: PropTypes.string,
 	to: PropTypes.string,
 };

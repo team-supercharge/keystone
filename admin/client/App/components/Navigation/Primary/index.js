@@ -66,6 +66,7 @@ var PrimaryNavigation = React.createClass({
 				<PrimaryNavItem
 					href="https://support.logmycare.co.uk/"
 					title="Get Help"
+					target="_blank"
 				>
 					<span>Get Help</span>
 				</PrimaryNavItem>
