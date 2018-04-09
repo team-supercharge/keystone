@@ -2,6 +2,9 @@ import moment from 'moment';
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import { FormInput } from '../../admin/client/App/elemental';
+import DayPicker from 'react-day-picker';
+import Popout from '../../admin/client/App/shared/Popout';
+
 
 let lastId = 0;
 
@@ -78,18 +81,39 @@ module.exports = React.createClass({
 			inputValue: value,
 		});
 	},
+	showPicker () {
+		this.setState({ pickerIsOpen: true }, this.showCurrentMonth);
+	},
 	showCurrentMonth () {
 		if (!this.refs.picker) return;
 		this.refs.picker.showMonth(this.state.month);
 	},
 	handleFocus (e) {
 		if (this.state.pickerIsOpen) return;
+		this.showPicker();
 	},
 	handleCancel () {
 		this.setState({ pickerIsOpen: false });
 	},
+	handleBlur (e) {
+		let rt = e.relatedTarget || e.nativeEvent.explicitOriginalTarget;
+		const popout = this.refs.popout.getPortalDOMNode();
+		while (rt) {
+			if (rt === popout) return;
+			rt = rt.parentNode;
+		}
+		this.setState({
+			pickerIsOpen: false,
+		});
+	},
 
 	render () {
+		const selectedDay = this.props.value;
+		// react-day-picker adds a class to the selected day based on this
+		const modifiers = {
+			selected: (day) => moment(day).format(this.props.format) === selectedDay,
+		};
+
 		return (
 			<div className={this.props.className || ''}>
 				<FormInput
@@ -98,11 +122,27 @@ module.exports = React.createClass({
 					name={this.props.name}
 					onChange={this.handleInputChange}
 					onFocus={this.handleFocus}
+					onBlur={this.handleBlur}
 					onKeyPress={this.handleKeyPress}
 					placeholder={this.props.format}
 					ref="input"
 					value={this.state.inputValue}
 				/>
+				<Popout
+					isOpen={this.state.pickerIsOpen}
+					onCancel={this.handleCancel}
+					ref="popout"
+					relativeToID={this.state.id}
+					width={260}
+					>
+					<DayPicker
+						modifiers={modifiers}
+						onDayClick={this.handleDaySelect}
+						ref="picker"
+						tabIndex={-1}
+					/>
+				</Popout>
+
 			</div>
 		);
 	},
