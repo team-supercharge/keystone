@@ -70,7 +70,6 @@ var PrimaryNavigation = React.createClass({
 				>
 					<span>Get Help</span>
 				</PrimaryNavItem>
-				{this.renderBackButton()}
 				{this.renderSignout()}
 			</ul>
 		);
@@ -80,6 +79,7 @@ var PrimaryNavigation = React.createClass({
 
 		const { brand, currentSectionKey } = this.props;
 		const className = currentSectionKey === 'dashboard' ? 'primary-navbar__brand primary-navbar__item--active' : 'primary-navbar__brand';
+		const lmc_logo = `${Keystone.adminPath}/images/lmc-logo-white.svg`;
 
 		return (
 			<PrimaryNavItem
@@ -88,10 +88,36 @@ var PrimaryNavigation = React.createClass({
 				title={'Dashboard - ' + brand}
 				to={Keystone.adminPath}
 			>
-				<span className="octicon octicon-home" />
+				<img src={lmc_logo} height={30} alt="Log my Care" />
 			</PrimaryNavItem>
 		);
 	},
+
+	renderLMCReports () {
+
+		const section = {
+			key: 'lmc-reports',
+			label: 'Reports',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/reports/daily`;
+		const isActive = currentSectionKey && currentSectionKey === section.key;
+		const className = isActive ? 'primary-navbar__item--active' : null;
+
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
+
 	// Render the navigation
 	renderNavigation () {
 		if (!this.props.sections || !this.props.sections.length) return null;
@@ -124,6 +150,7 @@ var PrimaryNavigation = React.createClass({
 					<ul className="app-nav app-nav--primary app-nav--left">
 						{this.renderBrand()}
 						{this.renderNavigation()}
+						{this.renderLMCReports()}
 					</ul>
 					{this.renderFrontLink()}
 				</Container>
