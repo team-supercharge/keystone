@@ -10,54 +10,19 @@ import theme from '../../../theme';
 
 var Footer = React.createClass({
 	displayName: 'Footer',
-	propTypes: {
-		appversion: React.PropTypes.string,
-		backUrl: React.PropTypes.string,
-		brand: React.PropTypes.string,
-		user: React.PropTypes.object,
-		User: React.PropTypes.object, // eslint-disable-line react/sort-prop-types
-		version: React.PropTypes.string,
-	},
-	// Render the user
-	renderUser () {
-		const { User, user } = this.props;
-		if (!user) return null;
-
-		return (
-			<span>
-				<span> Signed in as </span>
-				<a href={`${Keystone.adminPath}/${User.path}/${user.id}`} tabIndex="-1" className={css(classes.link)}>
-					{user.name}
-				</a>
-				<span>.</span>
-			</span>
-		);
-	},
+	propTypes: {},
 	render () {
-		const { backUrl, brand, appversion, version } = this.props;
-
 		return (
-			<footer className={css(classes.footer)} data-keystone-footer>
-				<Container>
-					<a
-						href={backUrl}
-						tabIndex="-1"
-						className={css(classes.link)}
-					>
-						{brand + (appversion ? (' ' + appversion) : '')}
-					</a>
-					<span> powered by </span>
-					<a
-						href="http://keystonejs.com"
-						target="_blank"
-						className={css(classes.link)}
-						tabIndex="-1"
-					>
-						KeystoneJS
-					</a>
-					<span> version {version}.</span>
-					{this.renderUser()}
-				</Container>
+			<footer className={css(classes.footer)}>
+				<p>
+					2018 © LMC Software Ltd.
+					All rights reserved.
+					Registered address: Health Foundry, 1 Royal Street, London, SE1 7LL
+				</p>
+				<a className={css(classes.link)} href="/cookie-policy">Cookie Policy</a>|
+				<a className={css(classes.link)} href="/data-policy">Data Policy</a>|
+				<a className={css(classes.link)} href="/privacy-policy">Privacy Policy</a>|
+				<a className={css(classes.link)} href="/gdpr">GDPR</a>
 			</footer>
 		);
 	},
@@ -65,21 +30,22 @@ var Footer = React.createClass({
 
 /* eslint quote-props: ["error", "as-needed"] */
 const linkHoverAndFocus = {
-	color: theme.color.gray60,
+	color: theme.color.gray20,
 	outline: 'none',
 };
+
 const classes = StyleSheet.create({
 	footer: {
-		boxShadow: '0 -1px 0 rgba(0, 0, 0, 0.1)',
+		backgroundColor: '#333',
 		color: theme.color.gray40,
 		fontSize: theme.font.size.small,
-		paddingBottom: 30,
-		paddingTop: 40,
+		paddingBottom: 25,
+		paddingTop: 20,
 		textAlign: 'center',
 	},
 	link: {
-		color: theme.color.gray60,
-
+		padding: 5,
+		color: theme.color.gray40,
 		':hover': linkHoverAndFocus,
 		':focus': linkHoverAndFocus,
 	},
