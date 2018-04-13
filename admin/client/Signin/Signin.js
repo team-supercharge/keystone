@@ -104,7 +104,7 @@ var SigninView = React.createClass({
 			'auth-box--has-errors': this.state.isAnimating,
 		});
 		return (
-			<div className="auth-wrapper">
+			<div style={styles.authWrapper}>
 				<Alert
 					isInvalid={this.state.isInvalid}
 					signedOut={this.state.signedOut}
@@ -135,14 +135,18 @@ var SigninView = React.createClass({
 						)}
 					</div>
 				</div>
-				<div className="auth-footer">
-					<span>Powered by </span>
-					<a href="http://keystonejs.com" target="_blank" title="The Node.js CMS and web application platform (new window)">KeystoneJS</a>
-				</div>
 			</div>
 		);
 	},
 });
+
+const styles = {
+	authWrapper: {
+		width: 350,
+		margin: '0 auto',
+		paddingTop: 80,
+	}
+}
 
 
 module.exports = SigninView;
