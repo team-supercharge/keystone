@@ -21,7 +21,7 @@ import { setActiveFilters, loadItems } from './screens/List/actions';
 
 
 // Loading custom LMC view
-import LmcReportView from './lmc/screens/Report';
+import LmcReportView from './lmc/screens/Report/index.jsx';
 import Daily from './lmc/screens/Report/Daily/index.jsx';
 import ItemDashboard from './lmc/screens/Report/ItemDashboard/ItemDashboard';
 import Home from './lmc/screens/Home/index.jsx';
