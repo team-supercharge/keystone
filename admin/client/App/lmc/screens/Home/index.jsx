@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { fetchResidents, fetchDailyLogs, fetchDailyTasks, fetchCarers, fetchHome } from '../../common/dataService';
 
@@ -21,9 +22,10 @@ class Home extends React.Component {
             showCreateModal: false,
             currentList: null,
             currentListType: null,
+            isModalOpen: true,
         };
 
-        this.toggleCreateModal = this.toggleCreateModal.bind(this);
+        this.onCloseCreateModal = this.onCloseCreateModal.bind(this);
         this.onOpenCreateModal = this.onOpenCreateModal.bind(this);
         this.onCreateItemComplete = this.onCreateItemComplete.bind(this);
         this.fetchData = this.fetchData.bind(this);
@@ -37,14 +39,21 @@ class Home extends React.Component {
         this.fetchData();
     }
 
+    onCloseCreateModal() {
+        this.setState({ isModalOpen: false });
+        setTimeout(() => {
+            this.setState({ showCreateModal: false });
+            this.setState({ isModalOpen: true });
+        });
+    };
+
     onOpenCreateModal(listName) {
         this.setState({
             currentListType: listName,
             currentList: new List(Keystone.lists[listName]),
+            showCreateModal: true,
         });
-        this.toggleCreateModal(true);
     }
-
 
     fetchResidents() {
         fetchResidents().then(({ results }) => {
@@ -101,8 +110,10 @@ class Home extends React.Component {
         });
     }
 
+
     onCreateItemComplete (item) {
-        this.toggleCreateModal(false);
+        this.onCloseCreateModal();
+
         switch (this.state.currentListType) {
             case 'Task':
                 this.fetchTasks();
@@ -117,30 +128,24 @@ class Home extends React.Component {
                 this.fetchData();
                 break;
         }
-
-        // refresh the data
-		// Redirect to newly created item path
-		//const list = this.props.currentList;
-		//this.context.router.push(`${Keystone.adminPath}/${list.path}/${item.id}`);
     }
 
-    toggleCreateModal(visible) {
-        this.setState({
-            showCreateModal: visible,
-        });
+    toggleCreateModal(showCreateModal) {
+        this.setState({ showCreateModal });
     }
     
     renderCreateForm() {
-        const { currentList, showCreateModal } = this.state;
+        const { currentList, showCreateModal, isModalOpen } = this.state;
         return (
-            <CreateForm
-                isOpen={showCreateModal}
-                list={currentList}
-                onCancel={() => this.toggleCreateModal(false)}
-                formTitle='Create Resident'
-                onCreate={this.onCreateItemComplete}
-            />
-        )
+            (currentList && showCreateModal) ? 
+                <CreateForm
+                    isOpen={isModalOpen}
+                    list={currentList}
+                    onCancel={() => this.onCloseCreateModal()}
+                    formTitle='Create Resident'
+                    onCreate={this.onCreateItemComplete}
+                /> : null
+            ) 
     }
 
     render () {
@@ -155,32 +160,32 @@ class Home extends React.Component {
             LmcLogs,
             LmcResidents,
             LmcTasks,
-            showCreateModal,
-            currentList,
         } = this.state;
 
         return (
             <div style={styles.container} className="row">
                 <div className="eight columns">
-                    <div className="row">
-                        <div className="twelve columns">
-                            <LmcHomeTitle home={LmcHome} />
+                    <div className='dashboard-container'>
+                        <div className="row">
+                            <div className="twelve columns">
+                                <LmcHomeTitle home={LmcHome} residents={LmcResidents} />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="six columns">
-                            <LmcResidentsCard residents={LmcResidents} home={LmcHome} onCreate={this.onOpenCreateModal}/>
+                        <div className="row">
+                            <div className="six columns">
+                                <LmcResidentsCard residents={LmcResidents} home={LmcHome} onCreate={this.onOpenCreateModal}/>
+                            </div>
+                            <div className="six columns">
+                                <LmcIncidentsCard logs={LmcLogs} residents={LmcResidents} />
+                            </div>
                         </div>
-                        <div className="six columns">
-                            <LmcIncidentsCard logs={LmcLogs} residents={LmcResidents} />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="six columns">
-                            <LmcCarersCard logs={LmcLogs} carers={LmcCarers} onCreate={this.onOpenCreateModal}/>
-                        </div>
-                        <div className="six columns">
-                            <LmcTasksCard logs={LmcLogs} tasks={LmcTasks} onCreate={this.onOpenCreateModal}/>
+                        <div className="row">
+                            <div className="six columns">
+                                <LmcCarersCard logs={LmcLogs} carers={LmcCarers} onCreate={this.onOpenCreateModal}/>
+                            </div>
+                            <div className="six columns">
+                                <LmcTasksCard logs={LmcLogs} tasks={LmcTasks} onCreate={this.onOpenCreateModal}/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -192,10 +197,7 @@ class Home extends React.Component {
                         <LmcAdvertCard />
                     </div>
                 </div>
-                {
-                    currentList ?
-                        this.renderCreateForm() : null
-                }
+                { this.renderCreateForm() }
             </div>
         );
     }
@@ -210,7 +212,13 @@ const styles = {
         maxWidth: 1170,
     }
 }
-export default Home;
+
+
+Home.contextTypes = {
+    router: React.PropTypes.object.isRequired,
+};
+
+export default connect(() => ({}))(Home);
 
 
 /*

@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+/*
+const category = this.props.logConfig.find(c => c.id === entity.category);
+const item = category.children.find(i => i.id === entity.item);
+const categoryIcon = category && category.itemId && Images.images[category.itemId];
+const itemIcon = item && item.icon;
+
+*/
 
 class LmcResidentSummary extends React.Component {
 	render() {
@@ -12,16 +19,16 @@ class LmcResidentSummary extends React.Component {
 					{ data.name }
 					<span style={styles.subTitle}>
 						<span style={styles.subTitlePadding}>
-						{ moment(new Date()).diff(moment(data.fields.dateOfBirth), 'years') } years
+						{ moment(new Date()).diff(moment(data.dateOfBirth), 'years') } years
 						</span>
 						<span style={styles.subTitlePadding}>
-							Building { data.fields["location.building"] | "N/A" } 
+							Building { data.location.building | "N/A" } 
 						</span>
 						<span style={styles.subTitlePadding}>
-							Floor { data.fields["location.floor"] | "N/A" } 
+							Floor { data.location.floor | "N/A" } 
 						</span>
 						<span style={styles.subTitlePadding}>
-							Room { data.fields["location.room"] | "N/A" } 
+							Room { data.location.room | "N/A" } 
 						</span>
 					</span>
 				</h2>

@@ -32,7 +32,7 @@ export const fetchResidentInfo = (residentId) => {
 
 export const fetchResidentsList = () => {
     // admin/api/residents
-    const url = `${Keystone.adminPath}/api/residents`;
+    const url = `${Keystone.adminPath}/api/reports/residents`;
     return getJSON({ url });
 }
 

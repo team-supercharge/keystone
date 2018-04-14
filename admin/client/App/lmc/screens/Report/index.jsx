@@ -7,7 +7,7 @@ class LmcReportView extends React.Component {
         return (
             <div>
                 <SecondaryNav />
-                <div className="row">
+                <div style={ styles.container }>
                     {this.props.children}
                 </div>
             </div>
@@ -15,6 +15,14 @@ class LmcReportView extends React.Component {
     }
 };
 
+const styles = {
+    container: {
+        padding: '0.7em 0 60px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        maxWidth: 1170,
+    }
+}
 
 export default LmcReportView;
 

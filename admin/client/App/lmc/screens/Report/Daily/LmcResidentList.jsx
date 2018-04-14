@@ -48,7 +48,7 @@ class LmcResidentList extends PureComponent {
 		return (
 			<input placeholder="Filter..." 
 				type="text"
-				autocomplete="off"
+				autoComplete="off"
 				value={this.state.value} 
 				onChange={this.handleChange}
 				className="LmcFormInput"

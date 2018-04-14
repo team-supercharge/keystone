@@ -6,6 +6,7 @@ import { fetchResidentsList, fetchResidentLogs } from '../services/dataService';
 import LmcResidentChart from './LmcResidentChart.jsx';
 import LmcResidentList from './LmcResidentList.jsx';
 import LoadingScreen from '../components/LoadingScreen';
+import { BlankState } from '../../../../elemental';
 
 
 class ErrorMessage extends React.Component {
@@ -36,12 +37,15 @@ class Daily extends React.Component {
                     fetchingResidents: false,
                     LmcresidentList: results,
                 });
-                this.onSelect(results[0]); // only dev
+                if (results && results.length) {
+                    this.onSelect(results[0]); // only dev
+                }
             })
             .catch(err => {
+                console.log(err);
                 this.setState({
                     fetchingResidents: false,
-                    fetchingResidentsError: "The resport is not available at this time. Please contact support if this problem persists"
+                    fetchingResidentsError: "Oops. The report is not available"
                 });
             })
     }
@@ -118,29 +122,37 @@ class Daily extends React.Component {
             selectionData,
         } = this.state;
 
+        const isLoading = false;
         return (
-            <div className="row">
-                <div className="four columns">
-                    {
-                        fetchingResidents ?
-                            <LoadingScreen /> :
-                            fetchingResidentsError ? 
-                                <ErrorMessage message={fetchingResidentsError} /> :
-                                <LmcResidentList data={LmcresidentList} onSelect={this.onSelect} current={selection} />
-                    }
-                </div>
-                <div  className="eight columns">
-                    {
-                        fetchingSelection ? 
-                            <LoadingScreen /> :
-                            fetchingSelectionError ? 
-                                <ErrorMessage message={fetchingSelectionError} /> :
-                                <LmcResidentChart data={selectionData} resident={selection} />
-                    }
-                </div>
+            <div>
+                { fetchingResidents ?
+                    <LoadingScreen /> :
+                    fetchingResidentsError ? 
+                        <BlankState heading={fetchingResidentsError} style={{ marginTop: 40 }} /> : 
+                        LmcresidentList && LmcresidentList.length ? 
+                            <div className="row">
+                                <div className="four columns">
+                                    <LmcResidentList data={LmcresidentList} onSelect={this.onSelect} current={selection} />
+                                </div>
+                                <div className="eight columns">
+                                    { fetchingSelection ? 
+                                            <LoadingScreen /> :
+                                            fetchingSelectionError ? 
+                                                <ErrorMessage message={fetchingSelectionError} /> :
+                                                <LmcResidentChart data={selectionData} resident={selection} />
+                                    }
+                                </div>
+                            </div> :
+                            <BlankState heading={'You haven\'t added any residents yet'} style={{ marginTop: 40 }} />
+                }
+
+                            
+                
             </div>
         );
     }
 };
+
+
 
 export default Daily;

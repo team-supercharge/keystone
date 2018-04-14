@@ -5,7 +5,9 @@ import _ from 'lodash';
 import LmcLogFilter from './LmcLogFilter.jsx';
 import LmcTimelineRow from './LmcTimelineRow.jsx';
 import LmcResidentSummary from './LmcResidentSummary.jsx';
-
+import {
+	BlankState,
+} from '../../../../elemental';
 
 const LogDay = (perDay) => {
 	const total = _.get(perDay, 'logs.length') || 0;
@@ -22,13 +24,7 @@ const LogDay = (perDay) => {
 			{
 				_.chain(perDay.logs)
 					.sortBy(d => moment(d.timeLogged).toDate())
-					.map(((log, index) => {
-						return (
-							<li>
-								<LmcTimelineRow log={log} index={index} total={total} />
-							</li>
-						)
-					}))
+					.map(((log, index) => <LmcTimelineRow log={ log } index={ index } total={ total } />))
 					.value()
 			}
 		</ul>
@@ -71,14 +67,11 @@ class DailyChart extends React.Component {
 		
 		return (
 			<div style={styles.logsContainer}>
-				{
-					isEmpty ?
-						<p>
-							Nothing to show
-						</p> :
-						<div style={styles.chart}>
-							<LmcResidentSummary data={resident} />
-							<LmcLogFilter data={data} onChange={this.onFilterChange} />
+				<LmcResidentSummary data={resident} />
+				{ isEmpty ?
+						<BlankState heading={`No logs found...`} style={{ marginTop: 40 }} /> :
+						<div style={ styles.chart }>
+							<LmcLogFilter data={ data } onChange={ this.onFilterChange } />
 							{ logsByDay.map(LogDay) }
 						</div>
 				}
@@ -126,7 +119,7 @@ LmcResidentChart.propTypes = {
 
 const styles = {
 	chart: {
-		paddingLeft: 20,
+		paddingLeft: 0,
 	},
 	logHeader: {
 		paddingBottom: 50,
@@ -166,11 +159,11 @@ const styles = {
 		listStyleType: 'none',
 	},
     container: {
+		minHeight: '60vh',
         margin: '30px 60px 30px 0'
 	},
 	logsContainer: {
-		height: '80vh',
-		overflow: 'scroll',
+		
 	},
 	smallText: {
 		color: '#7b7b7b',

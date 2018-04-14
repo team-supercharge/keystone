@@ -19,6 +19,7 @@ const CreateForm = React.createClass({
 		list: React.PropTypes.object,
 		onCancel: React.PropTypes.func,
 		onCreate: React.PropTypes.func,
+		submitLabel: React.PropTypes.string,
 	},
 	getDefaultProps () {
 		return {
@@ -176,7 +177,7 @@ const CreateForm = React.createClass({
 				</Modal.Body>
 				<Modal.Footer>
 					<Button color="success" type="submit" data-button-type="submit">
-						Create
+						{ this.props.submitLabel || 'Create' }
 					</Button>
 					<Button
 						variant="link"

@@ -7,11 +7,14 @@ class LmcResidentListItem extends Component {
 		const { data, onSelect, isActive } = this.props;
 		const ref = `${Keystone.adminPath}/reports/residents/${data.id}`;
 		const activeStyle = isActive ? styles.active : null;
+		const profile_pic = data.picture || 'https://s3.eu-west-2.amazonaws.com/lmc-marketing-public/resident_placeholder.png';
+
 		return (
 			<li className="lmc-resident-list-item"
+				key={ data.id }
 				style={{ ...styles.resident, ...activeStyle }}
 				onClick={ () => onSelect(data) } >
-				<img style={styles.residentImg} src="https://raw.githubusercontent.com/Infernus101/ProfileUI/0690f5e61a9f7af02c30342d4d6414a630de47fc/icon.png"/>
+				<img style={ styles.residentImg } src={ profile_pic }/>
 				{ data.name }
 			</li>
 		)
@@ -25,8 +28,8 @@ LmcResidentListItem.propTypes = {
 const styles = {
 	resident: {},
 	residentImg: {
-		width: 30,
-		margin: 10
+		width: 42,
+		margin: 7
 	},
 	active: {
 		fontWeight: 600,

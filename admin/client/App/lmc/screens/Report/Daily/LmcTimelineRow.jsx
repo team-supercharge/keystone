@@ -1,35 +1,50 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import _ from 'lodash';
+import { Link } from 'react-router';
+
 
 class LmcTimelineRow extends Component {
     render() {
         const fallback = "https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png";
-        const image = fallback // item || category || fallback
         const { index, total, log } = this.props;
+        const image = log.itemIcon && log.itemIcon.url ?
+            log.itemIcon.url : 
+            fallback;
+        
         const isFirstOrLast = (index !== (total - 1));
         const timelineStyle = isFirstOrLast ? 
             { ...styles.logRow, ...styles.logRowBorder } :
             styles.logRow;
+        const dotStyle = {
+            ... styles.dot,
+            backgroundColor: log.categoryColor,
+        }
+
 
         return (
-            <div style={styles.container}>
-                <div style={timelineStyle}>
-                    <div style={styles.dot}>
-                        <img style={styles.iconStyle} src={image}/>
-                    </div>
+            <li key={ log.id }>
+                <Link to={`${ Keystone.adminPath }/logs/${ log.id }`} className='lmc-timeline-link'>
+                    <div style={styles.container}>
+                        <div style={timelineStyle}>
+                            <div style={dotStyle} className='lmc-timeline-dot'>
+                                <img style={ styles.iconStyle } src={ image }/>
+                            </div>
 
-                    <div style={styles.logContent}>
-                        <div style={styles.smallText}>
-                            {moment(log.timeLogged).format('HH:mm')} - {log.carerName || 'Carer name'}
+                            <div style={styles.logContent}>
+                                <div style={styles.smallText} className='lmc-timeline-date'>
+                                    {moment(log.timeLogged).format('HH:mm')} - {log.carerName || 'Carer name'}
+                                </div>
+                                <h3 style={styles.titleText}>
+                                    {log.title}
+                                </h3>
+                                <div className='lmc-timeline-desc' style={styles.descriptionText}>{log.description}</div>	
+                            </div>
                         </div>
-                        <h3 style={styles.titleText}>
-                            {log.title}
-                        </h3>
-                        <div style={styles.descriptionText}>{log.description}</div>	
                     </div>
-                </div>
-            </div>
+                </Link>
+            </li>
         )
     }
 }
@@ -79,18 +94,19 @@ const styles = {
     },
 	dot: {
         position: 'absolute',
-        left: -22,
-        top: -20,
-        width: 40,
-        height: 40,
-        borderRadius: 20,
+        left: -24,
+        top: -21,
+        width: 44,
+        height: 44,
+        border: '3px solid rgba(0,0,0,0)',
+        borderRadius: 24,
         backgroundColor: '#e4e4e4',
         alignItems: 'center',
     },
     iconStyle: {
         position: 'absolute',
-        left: 10,
-        top: 10,
+        left: 9,
+        top: 9,
         width: 20,
         height: 20
     }

@@ -31,7 +31,7 @@ export function fetchResidentInfo (residentId) {
 };
 
 export function fetchResidents () {
-    const url = `${Keystone.adminPath}/api/residents`;
+    const url = `${Keystone.adminPath}/api/reports/residents`;
     return getJSON({ url });
 }
 
@@ -56,11 +56,16 @@ export function fetchDailyTasks () {
 }
 
 export function fetchCarers () {
-    const url = `${Keystone.adminPath}/api/users`;
+    const url = `${Keystone.adminPath}/api/reports/users`;
     return getJSON({ url });
 }
 
 export function fetchHome () {
     const url = `${Keystone.adminPath}/api/homes`;
+    return getJSON({ url });
+}
+
+export function fetchCurrentUser () {
+    const url = `${Keystone.adminPath}/api/users/${Keystone.user.id}`;
     return getJSON({ url });
 }
