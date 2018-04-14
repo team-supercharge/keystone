@@ -6,6 +6,8 @@
 import React from 'react';
 import { Container } from '../../../elemental';
 import PrimaryNavItem from './NavItem';
+import _ from 'lodash';
+import { fetchCurrentUser } from '../../../lmc/common/dataService';
 
 var PrimaryNavigation = React.createClass({
 	displayName: 'PrimaryNavigation',
@@ -22,6 +24,15 @@ var PrimaryNavigation = React.createClass({
 	componentDidMount () {
 		this.handleResize();
 		window.addEventListener('resize', this.handleResize);
+		fetchCurrentUser()
+			.then(user => {
+				this.setState({
+					userRole: _.get(user, 'fields.role'),
+				})
+			})
+			.catch(e => {
+				console.log(e);
+			});
 	},
 	componentWillUnmount () {
 		window.removeEventListener('resize', this.handleResize);
@@ -143,14 +154,14 @@ var PrimaryNavigation = React.createClass({
 	},
 	render () {
 		if (!this.state.navIsVisible) return null;
-
+		const { userRole } = this.state;
 		return (
 			<nav className="primary-navbar">
 				<Container clearFloatingChildren>
 					<ul className="app-nav app-nav--primary app-nav--left">
 						{this.renderBrand()}
 						{this.renderNavigation()}
-						{this.renderLMCReports()}
+						{ userRole === 'carehome-admin' ? this.renderLMCReports() : null }
 					</ul>
 					{this.renderFrontLink()}
 				</Container>
