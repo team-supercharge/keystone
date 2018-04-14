@@ -19,10 +19,10 @@ var Footer = React.createClass({
 					All rights reserved.
 					Registered address: Health Foundry, 1 Royal Street, London, SE1 7LL
 				</p>
-				<a className={css(classes.link)} href="/cookie-policy">Cookie Policy</a>|
-				<a className={css(classes.link)} href="/data-policy">Data Policy</a>|
-				<a className={css(classes.link)} href="/privacy-policy">Privacy Policy</a>|
-				<a className={css(classes.link)} href="/gdpr">GDPR</a>
+				<a className={css(classes.link)} target='_blank' href="https://logmycare.co.uk/cookie-policy">Cookie Policy</a>|
+				<a className={css(classes.link)} target='_blank' href="https://logmycare.co.uk/data-policy">Data Policy</a>|
+				<a className={css(classes.link)} target='_blank' href="https://logmycare.co.uk/privacy-policy">Privacy Policy</a>|
+				<a className={css(classes.link)} target='_blank' href="https://logmycare.co.uk/gdpr">GDPR</a>
 			</footer>
 		);
 	},
