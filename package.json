@@ -75,7 +75,7 @@
     "react-alt-text": "2.0.0",
     "react-collapsible": "^2.0.3",
     "react-color": "2.11.1",
-    "react-dates": "^16.3.6",
+    "react-dates": "16.3.6",
     "react-day-picker": "2.5.0",
     "react-dnd": "2.1.4",
     "react-dnd-html5-backend": "2.1.2",
