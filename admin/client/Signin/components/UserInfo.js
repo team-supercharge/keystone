@@ -11,12 +11,12 @@ const UserInfo = ({
 }) => {
 	const adminButton = userCanAccessKeystone ? (
 		<Button href={adminPath} color="primary">
-			Open Keystone
+			Open the Care Office
 		</Button>
 	) : null;
 
 	return (
-		<div className="auth-box__col">
+		<div>
 			<p>Hi {userName},</p>
 			<p>You're already signed in.</p>
 			{adminButton}

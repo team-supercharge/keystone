@@ -6,6 +6,8 @@
 import React from 'react';
 import { Container } from '../../../elemental';
 import PrimaryNavItem from './NavItem';
+import _ from 'lodash';
+import { fetchCurrentUser } from '../../../lmc/common/dataService';
 
 var PrimaryNavigation = React.createClass({
 	displayName: 'PrimaryNavigation',
@@ -22,6 +24,15 @@ var PrimaryNavigation = React.createClass({
 	componentDidMount () {
 		this.handleResize();
 		window.addEventListener('resize', this.handleResize);
+		fetchCurrentUser()
+			.then(user => {
+				this.setState({
+					userRole: _.get(user, 'fields.role'),
+				})
+			})
+			.catch(e => {
+				console.log(e);
+			});
 	},
 	componentWillUnmount () {
 		window.removeEventListener('resize', this.handleResize);
@@ -70,7 +81,6 @@ var PrimaryNavigation = React.createClass({
 				>
 					<span>Get Help</span>
 				</PrimaryNavItem>
-				{this.renderBackButton()}
 				{this.renderSignout()}
 			</ul>
 		);
@@ -80,6 +90,7 @@ var PrimaryNavigation = React.createClass({
 
 		const { brand, currentSectionKey } = this.props;
 		const className = currentSectionKey === 'dashboard' ? 'primary-navbar__brand primary-navbar__item--active' : 'primary-navbar__brand';
+		const lmc_logo = `${Keystone.adminPath}/images/lmc-logo-white.svg`;
 
 		return (
 			<PrimaryNavItem
@@ -88,10 +99,36 @@ var PrimaryNavigation = React.createClass({
 				title={'Dashboard - ' + brand}
 				to={Keystone.adminPath}
 			>
-				<span className="octicon octicon-home" />
+				<img src={lmc_logo} height={30} alt="Log my Care" />
 			</PrimaryNavItem>
 		);
 	},
+
+	renderLMCReports () {
+
+		const section = {
+			key: 'lmc-reports',
+			label: 'Reports',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/reports/daily`;
+		const isActive = currentSectionKey && currentSectionKey === section.key;
+		const className = isActive ? 'primary-navbar__item--active' : null;
+
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
+
 	// Render the navigation
 	renderNavigation () {
 		if (!this.props.sections || !this.props.sections.length) return null;
@@ -117,13 +154,14 @@ var PrimaryNavigation = React.createClass({
 	},
 	render () {
 		if (!this.state.navIsVisible) return null;
-
+		const { userRole } = this.state;
 		return (
 			<nav className="primary-navbar">
 				<Container clearFloatingChildren>
 					<ul className="app-nav app-nav--primary app-nav--left">
 						{this.renderBrand()}
 						{this.renderNavigation()}
+						{ userRole === 'carehome-admin' ? this.renderLMCReports() : null }
 					</ul>
 					{this.renderFrontLink()}
 				</Container>

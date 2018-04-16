@@ -46,8 +46,8 @@ theme.color = {
 	text:                '#1A1A1A',
 
 	// contextual
-	success:             '#34c240',
-	create:              '#34c240', // alias for success
+	success:             '#e65d79',
+	create:              '#e65d79', // alias for success
 	primary:             '#E85B78',
 	info:                '#E85B78', // alias for primary
 	warning:             '#FA3',
@@ -82,7 +82,7 @@ theme.color = {
 
 theme.borderRadius = {
 	small: '0.125rem',
-	default: '0.3rem',
+	default: '0.4rem',
 	large: '0.5rem',
 };
 
@@ -105,7 +105,7 @@ theme.spacing = {
 
 theme.button = {
 	borderRadius: theme.borderRadius.default,
-	borderWidth: 1,
+	borderWidth: 0,
 	font: {
 		weight: 500,
 	},

@@ -89,14 +89,7 @@ const App = (props) => {
 			<main className={css(classes.body)}>
 				{children}
 			</main>
-			<Footer
-				appversion={Keystone.appversion}
-				backUrl={Keystone.backUrl}
-				brand={Keystone.brand}
-				User={Keystone.User}
-				user={Keystone.user}
-				version={Keystone.version}
-			/>
+			<Footer />
 			<Intercom appID={INTERCOM_APP_ID} { ...intercomUser } />
 		</div>
 	);

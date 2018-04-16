@@ -13,7 +13,7 @@ const LoginForm = ({
 	password,
 }) => {
 	return (
-		<div className="auth-box__col">
+		<div>
 			<Form onSubmit={handleSubmit} noValidate>
 				<FormField label="Email" htmlFor="email">
 					<FormInput
@@ -32,7 +32,7 @@ const LoginForm = ({
 						value={password}
 					/>
 				</FormField>
-				<Button disabled={isAnimating} color="primary" type="submit">
+				<Button disabled={isAnimating} color="primary" type="submit" className="lmc-button" style={{ float: 'right', padding: '0 20px', marginTop: 10 }}>
 					Sign In
 				</Button>
 			</Form>

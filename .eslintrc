@@ -3,7 +3,8 @@
      "keystone-react"
   ],
   "rules": {
-    "react/jsx-no-bind": 0
+    "react/jsx-no-bind": 0,
+    "indent-size": [ true, 4 ]
   },
   "globals": {
     "_": true,

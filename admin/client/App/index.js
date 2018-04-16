@@ -12,13 +12,19 @@ import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import App from './App';
-import Home from './screens/Home';
 import Item from './screens/Item';
 import List from './screens/List';
 
 import store from './store';
 
-import { setActiveFilters, loadItems } from './screens/List/actions'
+import { setActiveFilters, loadItems } from './screens/List/actions';
+
+
+// Loading custom LMC view
+import LmcReportView from './lmc/screens/Report/index.jsx';
+import Daily from './lmc/screens/Report/Daily/index.jsx';
+import ItemDashboard from './lmc/screens/Report/ItemDashboard/ItemDashboard';
+import Home from './lmc/screens/Home/index.jsx';
 
 // Sync the browser history to the Redux store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -36,7 +42,7 @@ function onListChange (prevState, { location }) {
 		} catch (e) {
 			console.warn('Invalid filter provided', e);
 		}
-	})
+	});
 }
 
 ReactDOM.render(
@@ -44,6 +50,10 @@ ReactDOM.render(
 		<Router history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={Home} />
+				<Route path="reports" component={LmcReportView}>
+					<Route path="daily" component={Daily} />
+					<Route path="item-dashboard" component={ItemDashboard} />
+				</Route>
 				<Route path=":listId" component={List} onChange={onListChange} />
 				<Route path=":listId/:itemId" component={Item} />
 			</Route>

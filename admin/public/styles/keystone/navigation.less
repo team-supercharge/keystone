@@ -102,7 +102,7 @@
 // hide the active item's divider and, using box-shadow, mask the one
 // to its right
 .primary-navbar__item--active {
-	box-shadow: 2px 0 0 @primary-navbar-bg;
+	box-shadow: none;
 	z-index: 2;
 
 	&::before {
@@ -110,7 +110,6 @@
 	}
 
 	.primary-navbar__link {
-		background-color: @primary-navbar-active-bg;
 		color: @primary-navbar-active-color;
 	}
 }

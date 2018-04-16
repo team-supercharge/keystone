@@ -7,7 +7,7 @@ import React from 'react';
 
 const Brand = function (props) {
 	// Default to the KeystoneJS logo
-	let logo = { src: `${Keystone.adminPath}/images/LMC_logo.svg`, width: 200 };
+	let logo = { src: `${Keystone.adminPath}/images/lmc_logo_large.png`, width: 200 };
 	if (props.logo) {
 		// If the logo is set to a string, it's a direct link
 		logo = typeof props.logo === 'string' ? { src: props.logo } : props.logo;
@@ -19,16 +19,14 @@ const Brand = function (props) {
 		}
 	}
 	return (
-		<div className="auth-box__col">
-			<div className="auth-box__brand">
-				<a href="/" className="auth-box__brand__logo">
-					<img
-						src={logo.src}
-						width={logo.width ? logo.width : null}
-						height={logo.height ? logo.height : null}
-						alt={props.brand}
-					/>
-				</a>
+		<div>
+			<div style={{ minHeight: 145, lineHeight: '115px', margin: '0 auto', textAlign: 'center' }}>
+				<img
+					src={logo.src}
+					width={logo.width ? logo.width : null}
+					height={logo.height ? logo.height : null}
+					alt={props.brand}
+				/>
 			</div>
 		</div>
 	);
