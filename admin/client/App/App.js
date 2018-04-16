@@ -2,7 +2,7 @@
  * The App component is the component that is rendered around all views, and
  * contains common things like navigation, footer, etc.
  */
-
+import 'react-dates/initialize';
 import React from 'react';
 import { Container } from './elemental';
 import { Link } from 'react-router';
@@ -15,7 +15,8 @@ import PrimaryNavigation from './components/Navigation/Primary';
 import SecondaryNavigation from './components/Navigation/Secondary';
 import Footer from './components/Footer';
 
-const INTERCOM_APP_ID="v1fbkzcf";
+
+const INTERCOM_APP_ID = 'v1fbkzcf';
 
 const classes = StyleSheet.create({
 	wrapper: {

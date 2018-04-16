@@ -10,7 +10,6 @@ import _ from 'lodash';
 import FormSelect from '../../../../elemental/FormSelect';
 import FormLabel from '../../../../elemental/FormLabel';
 import Form from '../../../../elemental/Form';
-import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import moment from 'moment';
 
