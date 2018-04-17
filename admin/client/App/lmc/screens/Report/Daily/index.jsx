@@ -131,10 +131,10 @@ class Daily extends React.Component {
                         <BlankState heading={fetchingResidentsError} style={{ marginTop: 40 }} /> : 
                         LmcresidentList && LmcresidentList.length ? 
                             <div className="row">
-                                <div className="four columns">
+                                <div className="four columns" style={{ maxWidth: 300 }}>
                                     <LmcResidentList data={LmcresidentList} onSelect={this.onSelect} current={selection} />
                                 </div>
-                                <div className="eight columns">
+                                <div className="eight columns lmc-box-shadow__left_inset" style={{ marginLeft: 0, paddingLeft: '4%', minHeight: '90vh' }}>
                                     { fetchingSelection ? 
                                             <LoadingScreen /> :
                                             fetchingSelectionError ? 
@@ -145,14 +145,9 @@ class Daily extends React.Component {
                             </div> :
                             <BlankState heading={'You haven\'t added any residents yet'} style={{ marginTop: 40 }} />
                 }
-
-                            
-                
             </div>
         );
     }
 };
-
-
 
 export default Daily;

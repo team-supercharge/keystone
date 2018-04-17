@@ -51,19 +51,21 @@ class LmcResidentList extends PureComponent {
 				autoComplete="off"
 				value={this.state.value} 
 				onChange={this.handleChange}
+				style={styles.filter}
 				className="LmcFormInput"
 				name="lmcResidentName" />
 		)
 	}
 
 	render() {
+		let { data } = this.props;
 		return (
 			<div className="">
 				<div style={styles.container}>
 					<h2>
 						Residents
 					</h2>
-					{ this.renderFilterInput() }
+					{ data && data.length > 5 ? this.renderFilterInput() : null }
 					{ this.renderResidents() }
 				</div>
 			</div>
@@ -77,8 +79,16 @@ LmcResidentList.propTypes = {
 
 
 const styles = {
+	filter: {
+		height: '3em',
+		boxShadow: 'none',
+		borderRadius: 0,
+		borderColor: '#dadadad9',
+		fontWeight: 200,
+		fontSize: 18,
+	},
     container: {
-		margin: '27px 20px 0 25px',
+		margin: '27px 10px 0 25px',
 	},
 	list: {
 		listStyle: 'none',

@@ -12,24 +12,32 @@ const itemIcon = item && item.icon;
 
 class LmcResidentSummary extends React.Component {
 	render() {
-        const { data } = this.props;
+		const { data } = this.props;
+		console.log(data);
 		return (
 			<div>
 				<h2 style={styles.paddedRight}>
 					{ data.name }
 					<span style={styles.subTitle}>
 						<span style={styles.subTitlePadding}>
-						{ moment(new Date()).diff(moment(data.dateOfBirth), 'years') } years
+						{ moment(new Date()).diff(moment(data.dateOfBirth), 'years') } years old
 						</span>
-						<span style={styles.subTitlePadding}>
-							Building { data.location.building | "N/A" } 
-						</span>
-						<span style={styles.subTitlePadding}>
-							Floor { data.location.floor | "N/A" } 
-						</span>
-						<span style={styles.subTitlePadding}>
-							Room { data.location.room | "N/A" } 
-						</span>
+						{ data.location.building
+							? <span style={styles.subTitlePadding}>
+								Building { data.location.building }
+							</span>
+							: null }
+						{ data.location.floor
+							? <span style={styles.subTitlePadding}>
+								Floor { data.location.floor }
+							</span>
+							: null }
+						{ data.location.room
+							? <span style={styles.subTitlePadding}>
+								Room { data.location.room }
+							</span>
+							: null }
+						
 					</span>
 				</h2>
 				{/* <p style={styles.summary}>
