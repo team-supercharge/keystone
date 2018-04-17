@@ -7,17 +7,19 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 import moment from 'moment';
 
-const Incident = (data, index) => {
+const PROFILE_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
+const ROW_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png';
 
-    const picture = _.isString(_.get(data, 'fields.picture')) ?
-        row.fields.picture
-        : 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
-    console.log(data);
+const Incident = (data, index) => {
+    const picture = data.picture || PROFILE_PLACEHOLDER;
+
     return (
         <Link key={index}
-            to={`${Keystone.adminPath}/logs/${data.id}`}
+            to={`${ Keystone.adminPath }/logs/${ data.id }`}
             style={{ width: '100%', float: 'left', margin: '0 1px 5px' }}>
-            <img style={{ float: 'left'}} height='45' src={picture} alt=""/>
+            <div style={{ float: 'left' }} >
+                <img height="45" src={picture} alt="" style={{ borderRadius: 50 }}/>
+            </div>
             <p style={{ padding: '0 0 0 55px', color: 'black' }}>
                 <span style={{ opacity: 0.8, fontSize: 16 }}>{ data.residentName }</span> <br />
                 <span style={{ opacity: 0.6, fontSize: 12 }}>
@@ -30,8 +32,8 @@ const Incident = (data, index) => {
 
 const RowPlaceholder = (i) => {
     return (
-        <div key={i} style={{ width: '100%', paddingBottom: 8, }} >
-            <img height='45' src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png" alt=""/>
+        <div key={i} style={{ width: '100%', paddingBottom: 8 }} >
+            <img height="45" src={ROW_PLACEHOLDER} alt=""/>
         </div>
     )
 }
@@ -41,19 +43,23 @@ class LmcIncidentsCard extends Component {
     renderNoIncidents() {
         return (
             <div>
-                { [1,2,3].map(RowPlaceholder) }
+                { [1, 2, 3].map(RowPlaceholder) }
             </div>
         );
     }
 
-    renderIncidents(incidents) {
+    renderIncidents(incidents, residents) {
         // only show newest 3
-        window._  = _;
         const toDisplay = _(incidents)
             .sort((left, right) => {
-                return moment.utc(right.timeLogged).diff(moment.utc(left.timeLogged))
+                return moment.utc(right.timeLogged).diff(moment.utc(left.timeLogged));
             })
             .take(3)
+            .map(incident => {
+                let resident = _.find(residents, 'id', incident.residentId);
+                if (resident && resident.picture) incident.picture = resident.picture;
+                return incident;
+            })
             .value();
 
         return (
@@ -79,10 +85,10 @@ class LmcIncidentsCard extends Component {
     }
 
     render() {
-        const { logs } = this.props;
+        const { logs, residents } = this.props;
         let incidents;
         if (logs && logs.length) {
-            incidents = logs.filter(log => log.category.match('Incident'));
+            incidents = logs.filter(log => log.category && log.category.match('Incident'));
         }
 
         return (
@@ -93,7 +99,7 @@ class LmcIncidentsCard extends Component {
                 <div className="lmc-card">
                     <div className="lmc-card-body">
                         { incidents && incidents.length ? 
-                            this.renderIncidents(incidents) :
+                            this.renderIncidents(incidents, residents) :
                             this.renderNoIncidents()
                         }
                     </div>
@@ -111,7 +117,8 @@ const styles = {
 }
 
 LmcIncidentsCard.propTypes = {
-
+    logs: PropTypes.array,
+    residents: PropTypes.array,
 };
 
 const TITLE = 'Incidents';

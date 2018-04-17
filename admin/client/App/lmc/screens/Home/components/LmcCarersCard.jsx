@@ -13,9 +13,9 @@ const RowPlaceholder = (row, index) => {
     const picture = row.picture || PLACEHOLDER_IMAGE;
     return (
         <Link key={index}
-            to={`${Keystone.adminPath}/users/${row.id}`}
+            to={`${ Keystone.adminPath }/users/${ row.id }`}
             style={{ width: 50, float: 'left', margin: '0 1px 5px' }}>
-            <img height='45' src={picture} alt=""/>
+            <img height="45" src={picture} alt="" style={{ borderRadius: 50 }} />
         </Link>
     )
 }

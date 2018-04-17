@@ -65,7 +65,7 @@ class LmcTasksCard extends Component {
         const logCountToday = logs && logs.length ? logs.length : 'No';
 
         const onClick = () => {
-            this.props.onCreate('Task');
+            this.props.onCreate('RecurringTask');
         }
 
         return (

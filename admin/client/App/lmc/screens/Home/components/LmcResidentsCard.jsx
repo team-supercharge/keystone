@@ -16,7 +16,7 @@ const RowPlaceholder = (row, index) => {
         <Link key={index}
             to={`${Keystone.adminPath}/residents/${row.id}`}
             style={{ width: 50, float: 'left', margin: '0 1px 5px' }}>
-            <img height='45' src={picture} alt=""/>
+            <img height='45' src={picture} alt="" style={{ borderRadius: 50 }}/>
         </Link>
     )
 }

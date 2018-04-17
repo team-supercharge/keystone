@@ -5,11 +5,15 @@ class LmcHomeTitle extends React.Component {
     render () {
         const { home, residents } = this.props;
         const isNewHome = home && (!residents || !residents.length);
+        const user_name = Keystone.user.name && Keystone.user.name.split(' ').length > 1 ? 
+            Keystone.user.name.split(' ')[0] :
+            Keystone.user.name;
+
         return (
             <div style={styles.container}>
                 <h2 style={styles.title}>
                     Hey 
-                    <span style={styles.bold}> { Keystone.user.name }</span>
+                    <span style={styles.bold}> { user_name }</span>
                     , welcome to the Care Office
                     {
                         home && home.name ?
