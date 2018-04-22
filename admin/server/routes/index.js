@@ -38,6 +38,8 @@ module.exports = function IndexRoute (req, res) {
 		user: {
 			id: req.user.id,
 			name: UserList.getDocumentName(req.user) || '(no name)',
+			role: req.user.role,
+			home: req.user.home,
 		},
 		userList: UserList.key,
 		version: keystone.version,
