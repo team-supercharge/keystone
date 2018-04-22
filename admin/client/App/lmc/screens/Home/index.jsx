@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchResidents, fetchDailyLogs, fetchDailyTasks, fetchCarers, fetchHome } from '../../common/dataService';
+import { fetchResidents, fetchDailyLogs, fetchDailyTasks, fetchCarers, fetchHome, fetchCategories, fetchSettings } from '../../common/dataService';
 
 import LmcHomeTitle from './components/LmcHomeTitle.jsx';
 import LmcCarersCard from './components/LmcCarersCard.jsx';
@@ -14,6 +14,7 @@ import LmcAdvertCard from './components/LmcAdvertCard.jsx';
 import CreateForm from '../../../shared/CreateForm';
 import List from '../../../../utils/List';
 
+
 class Home extends React.Component {
 
     constructor() {
@@ -23,6 +24,7 @@ class Home extends React.Component {
             currentList: null,
             currentListType: null,
             isModalOpen: true,
+            LmcSettings: {}
         };
 
         this.onCloseCreateModal = this.onCloseCreateModal.bind(this);
@@ -33,6 +35,7 @@ class Home extends React.Component {
         this.fetchTasks = this.fetchTasks.bind(this);
         this.fetchCarers = this.fetchCarers.bind(this);
         this.renderCreateForm = this.renderCreateForm.bind(this);
+        this.fetchCategories = this.fetchCategories.bind(this);
     }
 
     componentDidMount() {
@@ -89,6 +92,15 @@ class Home extends React.Component {
         });
     }
 
+    fetchCategories() {
+        fetchCategories().then(({ results }) => {
+            this.setState({
+                fetchingCategories: false,
+                LmcCategories: results,
+            });
+        });
+    }
+
     fetchData() {
         this.setState({
             isFetchingResidents: true,
@@ -96,11 +108,24 @@ class Home extends React.Component {
             isFetchingTasks: true,
             isFetchingHome: true,
             isFetchingCarers: true,
+            isFetchingSettings: true,
         });
 
         this.fetchCarers();
         this.fetchResidents();
         this.fetchTasks();
+        this.fetchCategories();
+
+        fetchSettings().then(({ results }) => {
+            let settings = {};
+            results.forEach(row => {
+                settings[row.fields.key] = row.fields.value;
+            });
+            this.setState({
+                isFetchingSettings: false,
+                LmcSettings: settings,
+            });
+        });
 
         fetchHome().then(({ results }) => {
             this.setState({
@@ -115,7 +140,7 @@ class Home extends React.Component {
         this.onCloseCreateModal();
 
         switch (this.state.currentListType) {
-            case 'Task':
+            case 'RecurringTask':
                 this.fetchTasks();
                 break;
             case 'Resident':
@@ -155,17 +180,20 @@ class Home extends React.Component {
             isFetchingTasks,
             isFetchingHome,
             isFetchingCarers,
+            isFetchingSettings,
             LmcCarers,
             LmcHome,
             LmcLogs,
             LmcResidents,
             LmcTasks,
+            LmcCategories,
+            LmcSettings,
         } = this.state;
 
         return (
             <div style={styles.container} className="row">
                 <div className="eight columns">
-                    <div className='dashboard-container'>
+                    <div className="dashboard-container">
                         <div className="row">
                             <div className="twelve columns">
                                 <LmcHomeTitle home={LmcHome} residents={LmcResidents} />
@@ -176,7 +204,7 @@ class Home extends React.Component {
                                 <LmcResidentsCard residents={LmcResidents} home={LmcHome} onCreate={this.onOpenCreateModal}/>
                             </div>
                             <div className="six columns">
-                                <LmcIncidentsCard logs={LmcLogs} residents={LmcResidents} />
+                                <LmcIncidentsCard logs={LmcLogs} residents={LmcResidents} categories={LmcCategories} />
                             </div>
                         </div>
                         <div className="row">
@@ -189,13 +217,17 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div  className="four columns">
-                    <div className="row">
-                        <LmcTopTipsCard />
-                    </div>
-                    <div className="row">
-                        <LmcAdvertCard />
-                    </div>
+                <div className="four columns">
+                    { !isFetchingSettings
+                        ? <div>
+                            <div className="row">
+                                <LmcTopTipsCard video={LmcSettings.Home_YouTubeURL} />
+                            </div>
+                            <div className="row">
+                                <LmcAdvertCard url={LmcSettings.Home_Advert_Link} image={LmcSettings.Home_Advert_Img} />
+                            </div>
+                        </div>
+                        : null }
                 </div>
                 { this.renderCreateForm() }
             </div>

@@ -69,3 +69,13 @@ export function fetchCurrentUser () {
     const url = `${Keystone.adminPath}/api/users/${Keystone.user.id}`;
     return getJSON({ url });
 }
+
+export function fetchCategories () {
+    const url = `${Keystone.adminPath}/api/log-categories`;
+    return getJSON({ url });
+}
+
+export function fetchSettings () {
+    const url = `${Keystone.adminPath}/api/careoffice-settings`;
+    return getJSON({ url });
+}

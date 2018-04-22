@@ -75,28 +75,32 @@ class LmcTasksCard extends Component {
                 </h2>
                 <div className="lmc-card">
                     <div className="lmc-card-body">
-                        { this.renderTasks(tasks) }
+                        <div style={{ paddingTop: 6 }}>
+                            { this.renderTasks(tasks) }
+                        </div>
                     </div>
                     <div className="lmc-card-footer">
-                        <div style={{ maxWidth: 145 }}>
-                            <GlyphButton
-                                block
-                                color="success"
-                                glyph="plus"
-                                onClick={onClick}
-                                position="left"
-                                title={`Create To-Do`}
-                            >
-                                <ResponsiveText
-                                    visibleSM="Create"
-                                    visibleMD="Create"
-                                    visibleLG={`Create To-Do`}
-                                />
-                            </GlyphButton>
+                        <div className="lmc-flex-container">
+                            <div style={{ maxWidth: 145 }}>
+                                <GlyphButton
+                                    block
+                                    color="success"
+                                    glyph="plus"
+                                    onClick={onClick}
+                                    position="left"
+                                    title={`Create To-Do`}
+                                >
+                                    <ResponsiveText
+                                        visibleSM="Create"
+                                        visibleMD="Create"
+                                        visibleLG={`Create To-Do`}
+                                    />
+                                </GlyphButton>
+                            </div>
+                            <p style={{ marginBottom: 0 }}>
+                                { logCountToday } { logCountToday === 1 ? 'log' : 'logs' } recorded today
+                            </p>
                         </div>
-                        <p style={{ marginBottom: 0 }}>
-                            { logCountToday } { logCountToday === 1 ? 'log' : 'logs' } recorded today
-                        </p>
                     </div>
                 </div>
             </div>

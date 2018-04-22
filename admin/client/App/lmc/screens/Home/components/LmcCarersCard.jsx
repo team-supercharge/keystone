@@ -8,14 +8,26 @@ import {
 import { Link } from 'react-router';
 import _ from 'lodash';
 
+const formatName = (name) => {
+    let n = name.split(' ');
+    return (n.length > 1)
+        ? `${ n[0] } ${ n[1][0] }`
+        : name;
+};
 
-const RowPlaceholder = (row, index) => {
+
+const ProfileRow = (row, index) => {
     const picture = row.picture || PLACEHOLDER_IMAGE;
+    let name = row.name.split(' ');
+    name = `${ name[0] } ${ name[1][0] }`;
     return (
         <Link key={index}
             to={`${ Keystone.adminPath }/users/${ row.id }`}
-            style={{ width: 50, float: 'left', margin: '0 1px 5px' }}>
+            className="lmc-profile-link">
             <img height="45" src={picture} alt="" style={{ borderRadius: 50 }} />
+            <p style={{ fontSize: 12, color: 'black', opacity: 0.5 }}>
+                { formatName(name) }
+            </p>
         </Link>
     )
 }
@@ -23,7 +35,19 @@ const RowPlaceholder = (row, index) => {
 
 class LmcCarersCard extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            max_carers_displayed: MAX_CARERS_DISPLAYED,
+        };
+        this.showMore = this.showMore.bind(this);
+        this.renderActiveCarers = this.renderActiveCarers.bind(this);
+    }
+
     renderActiveCarers(activeCarers) {
+        const { max_carers_displayed } = this.state;
+        const hiddenCarers = activeCarers.length > max_carers_displayed;
+        const n_showing = hiddenCarers ? max_carers_displayed - 1 : max_carers_displayed;
         return (
             <div>
                 <p>
@@ -34,7 +58,12 @@ class LmcCarersCard extends Component {
                         ACTIVE_TODAY_SINGULAR : 
                         ACTIVE_TODAY_PLURAL }
                 </p>
-                { _.take(activeCarers, MAX_CARERS_DISPLAYED).map(RowPlaceholder) }
+                <div className="lmc-flex-grid">
+                    { _.take(activeCarers, n_showing).map(ProfileRow) }
+                    { hiddenCarers
+                        ? <a className="lmc-more-link" onClick={this.showMore}>More...</a>
+                        : null }
+                </div>
             </div>
         )
     }
@@ -54,15 +83,24 @@ class LmcCarersCard extends Component {
         )
     }
 
+    showMore() {
+        this.setState({
+            max_carers_displayed: this.state.max_carers_displayed + 5,
+        })
+    }
+
     render() {
         const { carers, logs } = this.props;
         const onClick = () => {
             this.props.onCreate('User');
         }
 
-        const homeHasCarers = _.filter(carers, d => d.role === "carer");
+        const homeHasCarers = _.filter(carers, d => d.role === 'carer');
         const activeIds = _(logs).map('carerId').uniq().value();
-        const activeToday = _.filter(carers, d => !_.indexOf(activeIds, d.id));
+        const activeToday = _.chain(carers)
+            .filter(d => !_.indexOf(activeIds, d.id))
+            .sortBy('name')
+            .value();
 
         return (
             <div>
@@ -71,7 +109,7 @@ class LmcCarersCard extends Component {
                 </h2>
                 <div className="lmc-card">
                     <div className="lmc-card-body">
-                        { !homeHasCarers || !homeHasCarers.length ? 
+                        { !homeHasCarers || !homeHasCarers.length ?
                                 this.renderNoCarers() :
                                 !activeToday || !activeToday.length ? 
                                     this.renderNoActiveCarers() :
@@ -79,29 +117,31 @@ class LmcCarersCard extends Component {
                         }
                     </div>
                     <div className="lmc-card-footer">
-                        <div style={{maxWidth: 190}}>
-                            <GlyphButton
-                                block
-                                color="success"
-                                glyph="plus"
-                                onClick={onClick}
-                                position="left"
-                                title={`Invite Team Member`} >
-                                <ResponsiveText
-                                    visibleSM="Create"
-                                    visibleMD="Create"
-                                    visibleLG={`Invite Team Member`}
-                                />
-                            </GlyphButton>
-                        </div>
-                        <div style={{ maxWidth: 95 }}>
-                            <Link to={`${Keystone.adminPath}/users`}>
-                                <Button color="default">
-                                    <span style={{ opacity: 0.6 }}>
-                                        View All
-                                    </span>
-                                </Button>
-                            </Link>
+                        <div className="lmc-flex-container">
+                            <div style={{ maxWidth: 190 }}>
+                                <GlyphButton
+                                    block
+                                    color="success"
+                                    glyph="plus"
+                                    onClick={onClick}
+                                    position="left"
+                                    title={`Invite Team Member`} >
+                                    <ResponsiveText
+                                        visibleSM="Create"
+                                        visibleMD="Create"
+                                        visibleLG={`Invite Team Member`}
+                                    />
+                                </GlyphButton>
+                            </div>
+                            <div style={{ maxWidth: 95 }}>
+                                <Link to={`${Keystone.adminPath}/users`}>
+                                    <Button color="default">
+                                        <span style={{ opacity: 0.6 }}>
+                                            View All
+                                        </span>
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +160,7 @@ LmcCarersCard.propTypes = {
 
 };
 
-const MAX_CARERS_DISPLAYED = 20;
+let MAX_CARERS_DISPLAYED = 10;
 const TITLE = 'Team';
 const ACTIVE_TODAY_PLURAL = 'of your care team have been active today';
 const ACTIVE_TODAY_SINGULAR = 'of your care team has been active today';

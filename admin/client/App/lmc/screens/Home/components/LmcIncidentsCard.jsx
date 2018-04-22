@@ -7,8 +7,6 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 import moment from 'moment';
 
-const PROFILE_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
-const ROW_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png';
 
 const Incident = (data, index) => {
     const picture = data.picture || PROFILE_PLACEHOLDER;
@@ -67,28 +65,41 @@ class LmcIncidentsCard extends Component {
         )
     }
 
-    renderFooter(incidents) {
+    renderFooter(incidents, categoryId) {
+        let url = `${Keystone.adminPath}/logs`;
+
+        if (categoryId) {
+            url += encodeURI(`?filters=[{"path":"category","inverted":false,"value":["${categoryId}"]}]`);
+        }
+
         return (
             <div className="lmc-card-footer">
-                <p style={{ marginBottom: 0 }}>
-                    { incidents ? incidents.length : 'No' } { incidents && incidents.length === 1 ? 'incident' : 'incidents' } today
-                </p>
-                <Link to={`${Keystone.adminPath}/logs`}>
-                    <Button color="default">
-                        <span style={{ opacity: 0.6 }}>
-                            { BUTTON_TEXT }
-                        </span>
-                    </Button>
-                </Link>
+                <div className="lmc-flex-container">
+                    <p>
+                        { incidents ? incidents.length : 'No' } { incidents && incidents.length === 1 ? 'incident' : 'incidents' } today
+                    </p>
+                    <Link to={url}>
+                        <Button color="default">
+                            <span style={{ opacity: 0.6 }}>
+                                { BUTTON_TEXT }
+                            </span>
+                        </Button>
+                    </Link>
+                </div>
             </div>
         )
     }
 
     render() {
-        const { logs, residents } = this.props;
+        const { logs, residents, categories } = this.props;
         let incidents;
+        let categoryId = _.chain(categories)
+            .find(cat => cat.name && cat.name.match('Incident'))
+            .get('id')
+            .value();
+
         if (logs && logs.length) {
-            incidents = logs.filter(log => log.category && log.category.match('Incident'));
+            incidents = _.filter(logs, { categoryId });
         }
 
         return (
@@ -103,7 +114,7 @@ class LmcIncidentsCard extends Component {
                             this.renderNoIncidents()
                         }
                     </div>
-                    { this.renderFooter(incidents) }
+                    { this.renderFooter(incidents, categoryId) }
                 </div>
             </div>
         );
@@ -121,7 +132,10 @@ LmcIncidentsCard.propTypes = {
     residents: PropTypes.array,
 };
 
+
+const PROFILE_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
+const ROW_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png';
 const TITLE = 'Incidents';
-const BUTTON_TEXT = 'View All Logs';
+const BUTTON_TEXT = 'View All';
 
 export default LmcIncidentsCard;
