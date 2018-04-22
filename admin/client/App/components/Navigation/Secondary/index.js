@@ -35,6 +35,7 @@ var SecondaryNavigation = React.createClass({
 	},
 	// Render the navigation
 	renderNavigation (lists) {
+		if (!lists || !lists.length) return;
 		const navigation = Object.keys(lists).map((key) => {
 			const list = lists[key];
 			// Get the link and the classname

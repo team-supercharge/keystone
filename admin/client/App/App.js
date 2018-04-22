@@ -34,12 +34,13 @@ const App = (props) => {
 
 	const intercomUser = {
 		user_id: _.get(Keystone, 'user.id'),
-		name: _.get(Keystone, 'user.name')
+		name: _.get(Keystone, 'user.name'),
 	};
 
 	let children = props.children;
 	// If we're on either a list or an item view
 	let currentList, currentSection;
+
 	if (props.params.listId) {
 		currentList = listsByPath[props.params.listId];
 		// If we're on a list path that doesn't exist (e.g. /keystone/gibberishasfw34afsd) this will
@@ -58,6 +59,8 @@ const App = (props) => {
 			// Get the current section we're in for the navigation
 			currentSection = Keystone.nav.by.list[currentList.key];
 		}
+	} else if (props.location.pathname && props.location.pathname.match('reports')) {
+		currentSection = { key: 'reports' };
 	}
 	// Default current section key to dashboard
 	const currentSectionKey = (currentSection && currentSection.key) || 'dashboard';

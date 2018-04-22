@@ -28,7 +28,7 @@ var PrimaryNavigation = React.createClass({
 			.then(user => {
 				this.setState({
 					userRole: _.get(user, 'fields.role'),
-				})
+				});
 			})
 			.catch(e => {
 				console.log(e);
@@ -76,10 +76,10 @@ var PrimaryNavigation = React.createClass({
 			<ul className="app-nav app-nav--primary app-nav--right">
 				<PrimaryNavItem
 					href="https://support.logmycare.co.uk/"
-					title="Get Help"
+					title="Help Centre"
 					target="_blank"
 				>
-					<span>Get Help</span>
+					<span>Help Centre</span>
 				</PrimaryNavItem>
 				{this.renderSignout()}
 			</ul>
@@ -113,9 +113,9 @@ var PrimaryNavigation = React.createClass({
 
 		const { currentSectionKey } = this.props;
 		const href = `${Keystone.adminPath}/reports/daily`;
-		const isActive = currentSectionKey && currentSectionKey === section.key;
+		const isActive = currentSectionKey && currentSectionKey === 'reports';
 		const className = isActive ? 'primary-navbar__item--active' : null;
-
+		// console.log(href);
 		return (
 			<PrimaryNavItem
 				active={isActive}
@@ -138,7 +138,7 @@ var PrimaryNavigation = React.createClass({
 			const href = section.lists[0].external ? section.lists[0].path : `${Keystone.adminPath}/${section.lists[0].path}`;
 			const isActive = this.props.currentSectionKey && this.props.currentSectionKey === section.key;
 			const className = isActive ? 'primary-navbar__item--active' : null;
-
+			// console.log(href);
 			return (
 				<PrimaryNavItem
 					active={isActive}
@@ -155,6 +155,7 @@ var PrimaryNavigation = React.createClass({
 	render () {
 		if (!this.state.navIsVisible) return null;
 		const { userRole } = this.state;
+		// console.log(this.props.currentSectionKey);
 		return (
 			<nav className="primary-navbar">
 				<Container clearFloatingChildren>

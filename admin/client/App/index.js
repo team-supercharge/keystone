@@ -14,6 +14,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import App from './App';
 import Item from './screens/Item';
 import List from './screens/List';
+import DefaultHome from './screens/Home';
 
 import store from './store';
 
@@ -24,7 +25,7 @@ import { setActiveFilters, loadItems } from './screens/List/actions';
 import LmcReportView from './lmc/screens/Report/index.jsx';
 import Daily from './lmc/screens/Report/Daily/index.jsx';
 import ItemDashboard from './lmc/screens/Report/ItemDashboard/ItemDashboard';
-import Home from './lmc/screens/Home/index.jsx';
+import LmcHome from './lmc/screens/Home/index.jsx';
 
 // Sync the browser history to the Redux store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -45,12 +46,16 @@ function onListChange (prevState, { location }) {
 	});
 }
 
+let HomePage = Keystone.user.role === 'carehome-admin'
+	? LmcHome
+	: DefaultHome;
+
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history}>
 			<Route path={Keystone.adminPath} component={App}>
-				<IndexRoute component={Home} />
-				<Route path="reports" component={LmcReportView}>
+				<IndexRoute component={HomePage} />
+				<Route path="reports" component={LmcReportView} onChange={onListChange}>
 					<Route path="daily" component={Daily} />
 					<Route path="item-dashboard" component={ItemDashboard} />
 				</Route>
