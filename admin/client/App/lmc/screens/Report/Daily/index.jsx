@@ -37,8 +37,9 @@ class Daily extends React.Component {
                     fetchingResidents: false,
                     LmcresidentList: results,
                 });
+
                 if (results && results.length) {
-                    this.onSelect(results[0]); // only dev
+                    this.onSelect(_.sortBy(results, 'name')[0]);
                 }
             })
             .catch(err => {
@@ -122,6 +123,7 @@ class Daily extends React.Component {
             selectionData,
         } = this.state;
 
+        const params = new URLSearchParams(this.props.location.search);
         const isLoading = false;
         return (
             <div>
@@ -130,11 +132,11 @@ class Daily extends React.Component {
                     fetchingResidentsError ? 
                         <BlankState heading={fetchingResidentsError} style={{ marginTop: 40 }} /> : 
                         LmcresidentList && LmcresidentList.length ? 
-                            <div className="row">
-                                <div className="four columns" style={{ maxWidth: 300 }}>
+                            <div className="row" style={{ display: 'flex' }}>
+                                <div className="four columns lmc-box-shadow__right" style={{ maxWidth: 300 }}>
                                     <LmcResidentList data={LmcresidentList} onSelect={this.onSelect} current={selection} />
                                 </div>
-                                <div className="eight columns lmc-box-shadow__left_inset" style={{ marginLeft: 0, paddingLeft: '4%', minHeight: '90vh' }}>
+                                <div className="eight columns" style={{ marginLeft: 0, paddingLeft: '4%', minHeight: '90vh' }}>
                                     { fetchingSelection ? 
                                             <LoadingScreen /> :
                                             fetchingSelectionError ? 

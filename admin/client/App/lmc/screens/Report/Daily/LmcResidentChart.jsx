@@ -5,9 +5,7 @@ import _ from 'lodash';
 import LmcLogFilter from './LmcLogFilter.jsx';
 import LmcTimelineRow from './LmcTimelineRow.jsx';
 import LmcResidentSummary from './LmcResidentSummary.jsx';
-import {
-	BlankState,
-} from '../../../../elemental';
+import { BlankState } from '../../../../elemental';
 
 const LogDay = (perDay) => {
 	const total = _.get(perDay, 'logs.length') || 0;
@@ -64,7 +62,7 @@ class DailyChart extends React.Component {
 				.sortBy(({ date }) => -moment(date).valueOf())
 				.value();
 		}
-		
+
 		return (
 			<div style={styles.logsContainer}>
 				<LmcResidentSummary data={resident} />
@@ -120,6 +118,8 @@ LmcResidentChart.propTypes = {
 const styles = {
 	chart: {
 		paddingLeft: 0,
+		// height: '90vh',
+		// overflow: 'scroll',
 	},
 	logHeader: {
 		paddingBottom: 50,

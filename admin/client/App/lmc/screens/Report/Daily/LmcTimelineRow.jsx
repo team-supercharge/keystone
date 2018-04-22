@@ -6,17 +6,21 @@ import { Link } from 'react-router';
 
 
 class LmcTimelineRow extends Component {
-    render() {
+    render() {        
         const fallback = "https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png";
         const { index, total, log } = this.props;
-        const image = log.itemIcon && log.itemIcon.url ?
-            log.itemIcon.url : 
-            fallback;
+        const image = _.get(log, 'itemIcon.url') || _.get(log, 'categoryIcon.url') || fallback
+
+        let revision;
+        let isRevised = log.revisions && log.revisions.length > 0;
+        if (isRevised) {
+            revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
+        }
         
         const isFirstOrLast = (index !== (total - 1));
-        const timelineStyle = isFirstOrLast ? 
-            { ...styles.logRow, ...styles.logRowBorder } :
-            styles.logRow;
+        const timelineStyle = isFirstOrLast
+            ? { ...styles.logRow, ...styles.logRowBorder }
+            : styles.logRow;
         const dotStyle = {
             ... styles.dot,
             backgroundColor: log.categoryColor,
@@ -34,12 +38,17 @@ class LmcTimelineRow extends Component {
 
                             <div style={styles.logContent}>
                                 <div style={styles.smallText} className='lmc-timeline-date'>
-                                    {moment(log.timeLogged).format('HH:mm')} - {log.carerName || 'Carer name'}
+                                    { moment(log.timeLogged).format('HH:mm') } - {log.carerName || 'Carer name'}
+                                    
                                 </div>
                                 <h3 style={styles.titleText}>
                                     {log.title}
                                 </h3>
-                                <div className='lmc-timeline-desc' style={styles.descriptionText}>{log.description}</div>	
+                                <div className="lmc-timeline-desc" style={styles.descriptionText}>{log.description}</div>
+                                { isRevised
+                                    ? <span style={styles.revisionText}>
+                                        (Edited by { revision.revokedBy } on { moment(revision.revokedAt).format('DD/MM/YYYY') })
+                                    </span> : null }
                             </div>
                         </div>
                     </div>
@@ -76,6 +85,13 @@ const styles = {
 	},
 	descriptionText: {
 		fontSize: 12,
+		// marginLeft: 60,
+		color: '#444444',
+    },
+    revisionText: {
+        // paddingLeft: 15,
+        fontSize: 11,
+        opacity: 0.5,
 		// marginLeft: 60,
 		color: '#444444',
 	},

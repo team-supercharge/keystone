@@ -1,19 +1,49 @@
+.lmc-card {
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    background-color: white;
+    display: block;
+ }
+ 
+ .lmc-card-body {
+    padding: 15px;
+    min-height: 195px;
+    display: block;
+ }
+ 
+ .lmc-card-footer {
+    margin: 12px 15px 15px 15px;
+    display: block;
+ }
+ 
+.lmc-profile-link {
+    width: 57px;
+    margin: 0 1px 5px;
+    text-align: center;
+}
+
+.lmc-more-link {
+    margin: 0 11px;
+    position: relative;
+    top: 15px;
+    font-size: 12px;
+}
+
+ .lmc-card-footer .lmc-flex-container {
+    display: flex;
+    justify-content: space-between;
+ }
+
 .lmc-card-title {
     opacity: 0.7;
     font-size: 28px;
     margin-top: 30px;
 }
 
-.lmc-card {
-    border: 1px solid #dfdfdf;
-    border-radius: 5px;
-    background-color: white;
-}
-
-.lmc-card-body {
-    padding: 20px 15px 0px;
-    min-height: 190px;
-    overflow: scroll;
+.lmc-flex-grid {
+    display: flex;
+    // justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .lmc-card-body p {
@@ -23,14 +53,9 @@
     opacity: 0.9;
 }
 
-.lmc-card-footer {
-    margin: 5px 15px 15px 15px;
-    display: flex;
-    justify-content: space-between;
-}
 
 .lmc-card-footer p {
-    margin: auto 0 !important;
+    margin: 8px 0 0 !important;
     font-size: 14px;
     opacity: 0.7;
 }

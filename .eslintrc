@@ -4,7 +4,7 @@
   ],
   "rules": {
     "react/jsx-no-bind": 0,
-    "indent-size": [ true, 4 ]
+    "indent-size": 0
   },
   "globals": {
     "_": true,

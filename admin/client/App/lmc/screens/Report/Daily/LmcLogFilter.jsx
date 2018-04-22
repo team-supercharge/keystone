@@ -10,14 +10,17 @@ import _ from 'lodash';
 import FormSelect from '../../../../elemental/FormSelect';
 import FormLabel from '../../../../elemental/FormLabel';
 import Form from '../../../../elemental/Form';
-import { SingleDatePicker } from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
+
 
 class LmcLogFilter extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            startDate: null,
+            endDate: null,
             categoryValue: 0,
             itemValue: 0,
             startDate: null,
@@ -28,7 +31,7 @@ class LmcLogFilter extends React.Component {
 
         this.filterByItem = this.filterByItem.bind(this);
         this.filterByCategory = this.filterByCategory.bind(this);
-        this.onDateChange = this.onDateChange.bind(this);
+        this.onDatesChange = this.onDatesChange.bind(this);
         this.getFilteredData = this.getFilteredData.bind(this);
     }
 
@@ -64,27 +67,32 @@ class LmcLogFilter extends React.Component {
         });
     }
 
-    getFilteredData(date) {
-        const { data } = this.props;
-
-        if (date) {
-            const filterDate = this.formatToDate(date);
-            return data.filter(log => {
-                console.log(log.timeLogged, this.formatToDate(moment(log.timeLogged)) === filterDate)
-                return this.formatToDate(moment(log.timeLogged)) === filterDate
+    getFilteredData({ startDate, endDate }) {
+        let { data } = this.props;
+        if (startDate) {
+            startDate = startDate.startOf('day');
+            data = data.filter(log => {
+                return startDate.diff(moment(log.timeLogged).startOf('day'), 'days') <= 0;
             });
-        } else {
-            return data;
         }
+
+        if (endDate) {
+            endDate = endDate.startOf('day');
+            data = data.filter(log => {
+                return endDate.diff(moment(log.timeLogged).startOf('day'), 'days') >= 0;
+            });
+        }
+
+        return data;
     }
 
     formatToDate(day) {
         return day.format('DD-MM-YYYY');
     }
 
-    onDateChange(date) {
-        this.setState({ date });
-        this.props.onChange(this.getFilteredData(date));
+    onDatesChange({ startDate, endDate }) {
+        this.setState({ startDate, endDate });
+        this.props.onChange(this.getFilteredData({ startDate, endDate }));
     }
 
 	render() {
@@ -112,28 +120,23 @@ class LmcLogFilter extends React.Component {
 		return (
 			<div className="row" style={styles.filterContainer}>
 				<div className="six columns">
-                    <SingleDatePicker
-                        date={date}
+                    <DateRangePicker
                         numberOfMonths={2}
-                        initialVisibleMonth={() => moment().subtract(1, 'months')}
-                        showClearDate={true}
-                        hideKeyboardShortcutsPanel={true}
-                        onDateChange={this.onDateChange}
                         isOutsideRange={isDayBlocked}
-                        focused={focused}
-                        onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired,
+                        hideKeyboardShortcutsPanel={true}
+                        showClearDates={true}
+                        autoFocusEndDate={false}
+                        initialVisibleMonth={() => moment().subtract(1, 'months')}
+                        startDate={this.state.startDate}
+                        startDateId="start_date_id"
+                        endDate={this.state.endDate}
+                        endDateId="end_date_id"
+                        onDatesChange={({ startDate, endDate }) => this.onDatesChange({ startDate, endDate })} // PropTypes.func.isRequired,
+                        focusedInput={focused}
+                        onFocusChange={focused => this.setState({ focused })}
+                        minimumNights={0}
                     />
 				</div>
-				{/* {
-                    <div className="six columns">
-                        <Form layout="inline">
-                            <FormLabel> 
-                                Item
-                            </FormLabel>
-                            <FormSelect options={items} onChange={e => this.filterByItem(e, items)} />
-                        </Form>
-                    </div>
-                } */}
 			</div>
 		)
 	}

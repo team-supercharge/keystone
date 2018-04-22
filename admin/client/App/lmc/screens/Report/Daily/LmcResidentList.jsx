@@ -43,7 +43,7 @@ class LmcResidentList extends PureComponent {
 				No matches
 			</p>
 	}
-	
+
 	renderFilterInput() {
 		return (
 			<input placeholder="Filter..." 
@@ -88,6 +88,7 @@ const styles = {
 		fontSize: 18,
 	},
     container: {
+		minHeight: '90vh',
 		margin: '27px 10px 0 25px',
 	},
 	list: {

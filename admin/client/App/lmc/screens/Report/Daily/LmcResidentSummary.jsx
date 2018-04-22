@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { Link } from 'react-router';
 
 /*
 const category = this.props.logConfig.find(c => c.id === entity.category);
@@ -11,16 +12,16 @@ const itemIcon = item && item.icon;
 */
 
 class LmcResidentSummary extends React.Component {
-	render() {
+	render () {
 		const { data } = this.props;
-		console.log(data);
+
 		return (
 			<div>
 				<h2 style={styles.paddedRight}>
 					{ data.name }
-					<span style={styles.subTitle}>
+					<span style={{ ...styles.subTitle, paddingLeft: 20 }}>
 						<span style={styles.subTitlePadding}>
-						{ moment(new Date()).diff(moment(data.dateOfBirth), 'years') } years old
+							{ moment(new Date()).diff(moment(data.dateOfBirth), 'years') } years old
 						</span>
 						{ data.location.building
 							? <span style={styles.subTitlePadding}>
@@ -37,7 +38,11 @@ class LmcResidentSummary extends React.Component {
 								Room { data.location.room }
 							</span>
 							: null }
-						
+						<span style={styles.subTitlePadding}>
+							<Link to={`${Keystone.adminPath}/residents/${data.id}`}>
+								Edit Details
+							</Link>
+						</span>
 					</span>
 				</h2>
 				{/* <p style={styles.summary}>
@@ -57,15 +62,14 @@ const styles = {
 		paddingBottom: 20,
 	},
 	subTitlePadding: {
-		paddingLeft: "25px",
+		paddingRight: "25px",
 	},
 	paddedRight: {
 		paddingRight: "3px !important",
 	},
 	subTitle: {
-		paddingLeft: 10,
 		color: "#848484",
-		fontSize: 16,
+		fontSize: 13,
 	},
 	summary: {
 		color: "#444444",
@@ -88,10 +92,6 @@ const styles = {
 	},
     container: {
         margin: '30px 60px 30px 0'
-	},
-	logsContainer: {
-		height: '80vh',
-		overflow: 'scroll',
 	},
 	smallText: {
 		color: '#7b7b7b',
