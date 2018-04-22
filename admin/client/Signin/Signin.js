@@ -51,6 +51,7 @@ var SigninView = React.createClass({
 			},
 			headers: assign({}, Keystone.csrf.header),
 		}, (err, resp, body) => {
+			console.log(resp)
 			if (err || body && body.error) {
 				let errorText;
 				switch (body.error) {
@@ -65,6 +66,9 @@ var SigninView = React.createClass({
 						break;
 				}
 				return this.displayError(errorText);
+			} else if (resp.statusCode === 429) {
+				// rate limit exceeded
+				return this.displayError("Oh oh, that's too many failed attempts and we've had to freeze your access in case it's someone else trying to get in. Please try again in an hour");
 			} else {
 				// Redirect to where we came from or to the default admin path
 				if (Keystone.redirect) {
