@@ -128,21 +128,21 @@ module.exports = React.createClass({
 					ref="input"
 					value={this.state.inputValue}
 				/>
-				<Popout
-					isOpen={this.state.pickerIsOpen}
-					onCancel={this.handleCancel}
-					ref="popout"
-					relativeToID={this.state.id}
-					width={260}
-					>
-					<DayPicker
-						modifiers={modifiers}
-						onDayClick={this.handleDaySelect}
-						ref="picker"
-						tabIndex={-1}
-					/>
-				</Popout>
-
+				{ this.props.name !== 'dateOfBirth'
+					? <Popout
+						isOpen={this.state.pickerIsOpen}
+						onCancel={this.handleCancel}
+						ref="popout"
+						relativeToID={this.state.id}
+						width={260}
+						>
+						<DayPicker
+							modifiers={modifiers}
+							onDayClick={this.handleDaySelect}
+							ref="picker"
+							tabIndex={-1}
+						/>
+					</Popout> : null }
 			</div>
 		);
 	},
