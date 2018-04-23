@@ -16,7 +16,7 @@ const Incident = (data, index) => {
             to={`${ Keystone.adminPath }/logs/${ data.id }`}
             style={{ width: '100%', float: 'left', margin: '0 1px 5px' }}>
             <div style={{ float: 'left' }} >
-                <img height="45" src={picture} alt="" style={{ borderRadius: 50 }}/>
+            <div className="lmc-profile-picture" style={{ background: `url(${picture})` }}></div>
             </div>
             <p style={{ padding: '0 0 0 55px', color: 'black' }}>
                 <span style={{ opacity: 0.8, fontSize: 16 }}>{ data.residentName }</span> <br />
@@ -91,9 +91,10 @@ class LmcIncidentsCard extends Component {
     }
 
     render() {
-        const { logs, residents, categories } = this.props;
+        const { logs, residents, categories, home } = this.props;
         let incidents;
         let categoryId = _.chain(categories)
+            .filter(cat => cat.fields.group === home.group) // need to filter by home.group
             .find(cat => cat.name && cat.name.match('Incident'))
             .get('id')
             .value();

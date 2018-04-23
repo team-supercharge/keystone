@@ -204,7 +204,10 @@ class Home extends React.Component {
                                 <LmcResidentsCard residents={LmcResidents} home={LmcHome} onCreate={this.onOpenCreateModal}/>
                             </div>
                             <div className="six columns">
-                                <LmcIncidentsCard logs={LmcLogs} residents={LmcResidents} categories={LmcCategories} />
+                                { LmcHome && LmcCategories
+                                    ? <LmcIncidentsCard logs={LmcLogs} residents={LmcResidents} categories={LmcCategories} home={LmcHome} />
+                                    : null }
+                                
                             </div>
                         </div>
                         <div className="row">
