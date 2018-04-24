@@ -13,9 +13,8 @@ import LmcAdvertCard from './components/LmcAdvertCard.jsx';
 import CreateForm from '../../../shared/CreateForm';
 import List from '../../../../utils/List';
 
-import LmcErrorCard from './components/LmcErrorCard.jsx';
-import LmcLoadingCard from './components/LmcLoadingCard.jsx';
-
+import { BlankState } from '../../../elemental';
+import LmcSpinner from '../../common/LmcSpinner.jsx';
 
 class Home extends React.Component {
 
@@ -159,10 +158,10 @@ class Home extends React.Component {
         return (
             <div style={styles.container} className="row">
                 { isLoading
-                    ? <LmcLoadingCard />
-                    : !isSuccess
-                        ? <LmcErrorCard />
-                        : this.renderDashboard()
+                    ? <LmcSpinner />
+                    : isSuccess
+                        ? this.renderDashboard()
+                        : <BlankState heading={ERROR_MESSAGE} style={{ marginTop: 30 }} />
                 }
             </div>
         );
@@ -178,6 +177,8 @@ const styles = {
         maxWidth: 1170,
     }
 }
+
+const ERROR_MESSAGE = 'Oops... looks like something went wrong. Please get in touch if this problem persists!';
 
 
 // Configuring the data sources
