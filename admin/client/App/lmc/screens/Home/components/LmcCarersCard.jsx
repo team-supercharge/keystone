@@ -24,7 +24,7 @@ const ProfileRow = (row, index) => {
         <Link key={index}
             to={`${ Keystone.adminPath }/users/${ row.id }`}
             className="lmc-profile-link">
-            <img height="45" src={picture} alt="" style={{ borderRadius: 50 }} />
+            <div className="lmc-profile-picture" style={{ background: `url(${picture})` }}></div>
             <p style={{ fontSize: 12, color: 'black', opacity: 0.5 }}>
                 { formatName(name) }
             </p>

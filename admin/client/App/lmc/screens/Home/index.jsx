@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { fetchResidents, fetchDailyLogs, fetchDailyTasks, fetchCarers, fetchHome, fetchCategories, fetchSettings } from '../../common/dataService';
+import { connect } from 'react-refetch';
+import _ from 'lodash';
 
 import LmcHomeTitle from './components/LmcHomeTitle.jsx';
 import LmcCarersCard from './components/LmcCarersCard.jsx';
@@ -14,32 +13,25 @@ import LmcAdvertCard from './components/LmcAdvertCard.jsx';
 import CreateForm from '../../../shared/CreateForm';
 import List from '../../../../utils/List';
 
+import LmcErrorCard from './components/LmcErrorCard.jsx';
+import LmcLoadingCard from './components/LmcLoadingCard.jsx';
+
 
 class Home extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             showCreateModal: false,
             currentList: null,
             currentListType: null,
             isModalOpen: true,
-            LmcSettings: {}
         };
 
         this.onCloseCreateModal = this.onCloseCreateModal.bind(this);
         this.onOpenCreateModal = this.onOpenCreateModal.bind(this);
         this.onCreateItemComplete = this.onCreateItemComplete.bind(this);
-        this.fetchData = this.fetchData.bind(this);
-        this.fetchResidents = this.fetchResidents.bind(this);
-        this.fetchTasks = this.fetchTasks.bind(this);
-        this.fetchCarers = this.fetchCarers.bind(this);
-        this.renderCreateForm = this.renderCreateForm.bind(this);
-        this.fetchCategories = this.fetchCategories.bind(this);
-    }
-
-    componentDidMount() {
-        this.fetchData();
+        this.renderDashboard= this.renderDashboard.bind(this);
     }
 
     onCloseCreateModal() {
@@ -58,99 +50,19 @@ class Home extends React.Component {
         });
     }
 
-    fetchResidents() {
-        fetchResidents().then(({ results }) => {
-            this.setState({
-                isFetchingResidents: false,
-                LmcResidents: results,
-            });
-        });
-    }
-
-    fetchTasks() {
-        fetchDailyLogs().then(({ results }) => {
-            this.setState({
-                isFetchingLogs: false,
-                LmcLogs: results,
-            });
-        });
-
-        fetchDailyTasks().then((data) => {
-            this.setState({
-                isFetchingTasks: false,
-                LmcTasks: data,
-            });
-        });
-    }
-
-    fetchCarers() {
-        fetchCarers().then(({ results }) => {
-            this.setState({
-                fetchingResidents: false,
-                LmcCarers: results,
-            });
-        });
-    }
-
-    fetchCategories() {
-        fetchCategories().then(({ results }) => {
-            this.setState({
-                fetchingCategories: false,
-                LmcCategories: results,
-            });
-        });
-    }
-
-    fetchData() {
-        this.setState({
-            isFetchingResidents: true,
-            isFetchingLogs: true,
-            isFetchingTasks: true,
-            isFetchingHome: true,
-            isFetchingCarers: true,
-            isFetchingSettings: true,
-        });
-
-        this.fetchCarers();
-        this.fetchResidents();
-        this.fetchTasks();
-        this.fetchCategories();
-
-        fetchSettings().then(({ results }) => {
-            let settings = {};
-            results.forEach(row => {
-                settings[row.fields.key] = row.fields.value;
-            });
-            this.setState({
-                isFetchingSettings: false,
-                LmcSettings: settings,
-            });
-        });
-
-        fetchHome().then(({ results }) => {
-            this.setState({
-                isFetchingHome: false,
-                LmcHome: results[0],
-            });
-        });
-    }
-
-
     onCreateItemComplete (item) {
         this.onCloseCreateModal();
-
         switch (this.state.currentListType) {
             case 'RecurringTask':
-                this.fetchTasks();
+                this.props.refreshTasks();
                 break;
             case 'Resident':
-                this.fetchResidents();
+                this.props.refreshResidents();
                 break;
             case 'User':
-                this.fetchCarers();
+                this.props.refreshUsers();
                 break;
             default:
-                this.fetchData();
                 break;
         }
     }
@@ -158,81 +70,100 @@ class Home extends React.Component {
     toggleCreateModal(showCreateModal) {
         this.setState({ showCreateModal });
     }
-    
+
     renderCreateForm() {
         const { currentList, showCreateModal, isModalOpen } = this.state;
         return (
-            (currentList && showCreateModal) ? 
-                <CreateForm
+            (currentList && showCreateModal)
+                ? <CreateForm
                     isOpen={isModalOpen}
                     list={currentList}
                     onCancel={() => this.onCloseCreateModal()}
-                    formTitle='Create Resident'
+                    formTitle="Create Resident"
                     onCreate={this.onCreateItemComplete}
                 /> : null
             ) 
     }
 
-    render () {
-        const {
-            isFetchingResidents,
-            isFetchingLogs,
-            isFetchingTasks,
-            isFetchingHome,
-            isFetchingCarers,
-            isFetchingSettings,
-            LmcCarers,
-            LmcHome,
-            LmcLogs,
-            LmcResidents,
-            LmcTasks,
-            LmcCategories,
-            LmcSettings,
-        } = this.state;
 
+    getSettingsValue(settings, key) {
+        let url = _.find(settings, { fields: { key } });
+        return _.get(url, 'fields.value');
+    }
+
+    renderDashboard() {
+        const { categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch } = this.props;
         return (
-            <div style={styles.container} className="row">
+            <div>
                 <div className="eight columns">
                     <div className="dashboard-container">
                         <div className="row">
                             <div className="twelve columns">
-                                <LmcHomeTitle home={LmcHome} residents={LmcResidents} />
+                                <LmcHomeTitle
+                                    residents={residentsFetch.value.results}
+                                    home={homeFetch.value.results} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="six columns">
-                                <LmcResidentsCard residents={LmcResidents} home={LmcHome} onCreate={this.onOpenCreateModal}/>
+                                <LmcResidentsCard
+                                    residents={residentsFetch.value.results}
+                                    onCreate={this.onOpenCreateModal} />
                             </div>
                             <div className="six columns">
-                                { LmcHome && LmcCategories
-                                    ? <LmcIncidentsCard logs={LmcLogs} residents={LmcResidents} categories={LmcCategories} home={LmcHome} />
-                                    : null }
-                                
+                                <LmcIncidentsCard
+                                    logs={logsFetch.value.results}
+                                    categories={categoriesFetch.value.results}
+                                    residents={residentsFetch.value.results}
+                                    home={homeFetch.value.results}
+                                    onCreate={this.onOpenCreateModal} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="six columns">
-                                <LmcCarersCard logs={LmcLogs} carers={LmcCarers} onCreate={this.onOpenCreateModal}/>
+                                <LmcCarersCard
+                                    logs={logsFetch.value.results}
+                                    carers={usersFetch.value.results}
+                                    onCreate={this.onOpenCreateModal} />
                             </div>
                             <div className="six columns">
-                                <LmcTasksCard logs={LmcLogs} tasks={LmcTasks} onCreate={this.onOpenCreateModal}/>
+                                <LmcTasksCard
+                                    logs={logsFetch.value.results}
+                                    tasks={tasksFetch.value.results}
+                                    onCreate={this.onOpenCreateModal} />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="four columns">
-                    { !isFetchingSettings
-                        ? <div>
-                            <div className="row">
-                                <LmcTopTipsCard video={LmcSettings.Home_YouTubeURL} />
-                            </div>
-                            <div className="row">
-                                <LmcAdvertCard url={LmcSettings.Home_Advert_Link} image={LmcSettings.Home_Advert_Img} />
-                            </div>
-                        </div>
-                        : null }
+                    <div className="row">
+                        <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.results, 'Home_YouTubeURL')} />
+                    </div>
+                    <div className="row">
+                        <LmcAdvertCard
+                            url={this.getSettingsValue(settingsFetch.value.results, 'Home_Advert_Link')}
+                            image={this.getSettingsValue(settingsFetch.value.results, 'Home_Advert_Img')}/>
+                    </div>
                 </div>
                 { this.renderCreateForm() }
+            </div>
+        )
+    }
+
+    render () {
+        const { categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch } = this.props;
+        const fetchingCalls = [categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch];
+        const isLoading = _.some(fetchingCalls, { pending: true });
+        const isSuccess = _.every(fetchingCalls, { fulfilled: true });
+
+        return (
+            <div style={styles.container} className="row">
+                { isLoading
+                    ? <LmcLoadingCard />
+                    : !isSuccess
+                        ? <LmcErrorCard />
+                        : this.renderDashboard()
+                }
             </div>
         );
     }
@@ -249,18 +180,41 @@ const styles = {
 }
 
 
-Home.contextTypes = {
-    router: React.PropTypes.object.isRequired,
-};
+// Configuring the data sources
+// Note: I went for multiple independet requests because it's more flexible
+// Each consumer can just digest whatever data source it needs and apply the logic
+// Ie. the cards are all independent
+const usersUrl = `${Keystone.adminPath}/api/reports/users`;
+const tasksUrl = `${Keystone.adminPath}/api/daily/tasks`;
+const residentsUrl = `${Keystone.adminPath}/api/reports/residents`;
 
-export default connect(() => ({}))(Home);
-
-
-/*
-
-Interesting:
-this.context.router.push(`${Keystone.adminPath}/${list.path}/${item.id}`);
-
-
-
-*/
+export default connect((props) => ({
+    logsFetch: `${Keystone.adminPath}/api/daily/logs`,
+    tasksFetch: tasksUrl,
+    refreshTasks: () => ({
+        tasksFetch: {
+            url: tasksUrl,
+            force: true,
+            refreshing: true,
+        }
+    }),
+    usersFetch: usersUrl,
+    refreshUsers: () => ({
+        usersFetch: {
+            url: usersUrl,
+            force: true,
+            refreshing: true,
+        }
+    }),
+    residentsFetch: residentsUrl,
+    refreshResidents: () => ({
+        userFetch: {
+            url: usersUrl,
+            force: true,
+            refreshing: true,
+        }
+    }),
+    categoriesFetch: `${Keystone.adminPath}/api/log-categories`,
+    homeFetch: `${Keystone.adminPath}/api/homes`,
+    settingsFetch: `${Keystone.adminPath}/api/careoffice-settings`,
+}))(Home);

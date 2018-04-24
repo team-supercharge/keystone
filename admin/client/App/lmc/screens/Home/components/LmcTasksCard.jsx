@@ -41,19 +41,19 @@ class LmcTasksCard extends Component {
                 label: 'Overdue Today',
                 color: '#e65d79e8',
                 link: 'filters=%5B%7B"path"%3A"status"%2C"inverted"%3Afalse%2C"value"%3A%5B"pending"%5D%7D%5D',
-                count: _.get(tasks, 'results.overdue') || 0,
+                count: tasks.overdue || 0,
             },
             {
                 label: 'Pending Today',
                 color: '#ffba66',
                 link: 'filters=%5B%7B"path"%3A"status"%2C"inverted"%3Afalse%2C"value"%3A%5B"pending"%5D%7D%5D',
-                count: _.get(tasks, 'results.pending') || 0,
+                count: tasks.pending || 0,
             },
             {
                 label: 'Completed Today',
                 color: '#9bd687e8',
                 link: 'filters=%5B%7B"path"%3A"status"%2C"inverted"%3Afalse%2C"value"%3A%5B"completed"%2C"skipped"%5D%7D%5D',
-                count: _.get(tasks, 'results.completed') || 0,
+                count: tasks.completed || 0,
             }
         ];
 
@@ -67,7 +67,7 @@ class LmcTasksCard extends Component {
         const onClick = () => {
             this.props.onCreate('RecurringTask');
         }
-
+        console.log(tasks);
         return (
             <div>
                 <h2 className="lmc-card-title">

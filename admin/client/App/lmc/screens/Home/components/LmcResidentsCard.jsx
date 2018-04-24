@@ -25,7 +25,7 @@ const ResidentRow = (row, index) => {
         <Link key={index}
             to={`${Keystone.adminPath}/residents/${row.id}`}
             className="lmc-profile-link">
-            <img height='45' src={picture} alt="" style={{ borderRadius: 50 }}/>
+            <div className="lmc-profile-picture" style={{ background: `url(${picture})` }}></div>
             <p style={{ fontSize: 11, color: 'black', opacity: 0.5, marginBottom: 1 }}>
                 { formatName(name) }
             </p>
@@ -51,14 +51,15 @@ class LmcResidentsCard extends Component {
         })
     }
 
-    renderResidents(activeResidents, home) {
+    renderResidents(activeResidents) {
         const { max_residents_displayed } = this.state;
         const hiddenResidents = activeResidents.length > max_residents_displayed;
+        const home = activeResidents[0].home;
         return (
             <div>
                 <p>
-                    { home && home.name
-                        ? <span>{ home.name } has </span>
+                    { home
+                        ? <span>{ home } has </span>
                         : 'There are ' }
                     <strong>{ activeResidents.length } active residents</strong>
                 </p>
@@ -69,39 +70,28 @@ class LmcResidentsCard extends Component {
                         ? <a className="lmc-more-link" onClick={this.showMore}>More...</a>
                         : null }
                 </div>
-                
-                
             </div>
         )
     }
 
     renderNoResidents() {
         return (
-            <div>
-                <p>
-                    { NO_RESIDENTS_INFO }
-                </p>
-            </div>
+            <p>
+                { NO_RESIDENTS_INFO }
+            </p>
         )
     }
 
-    renderNoActiveResidents(home) {
+    renderNoActiveResidents() {
         return (
-            <div>
-                <p>
-                    { home && home.name ?
-                        <span>{ home.name } has </span>:
-                        "There are "
-                    }
-                    no active residents.
-                </p>
-            </div>
+            <p>
+                There are no active residents.
+            </p>
         )
     }
 
     render() {
-        const { residents, home } = this.props;
-
+        const { residents } = this.props;
         let activeResidents;
         if (residents && residents.length) {
             activeResidents = _.chain(residents)
@@ -123,8 +113,8 @@ class LmcResidentsCard extends Component {
                     <div className="lmc-card-body">
                         { 
                             activeResidents && activeResidents.length ? 
-                                this.renderResidents(activeResidents, home) :
-                                this.renderNoResidents(home)
+                                this.renderResidents(activeResidents) :
+                                this.renderNoResidents()
                         }
                     </div>
                     <div className="lmc-card-footer">

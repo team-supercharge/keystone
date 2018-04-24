@@ -92,9 +92,10 @@ class LmcIncidentsCard extends Component {
 
     render() {
         const { logs, residents, categories, home } = this.props;
+        const homeGroup = _.get(home, '0.group');
         let incidents;
         let categoryId = _.chain(categories)
-            .filter(cat => cat.fields.group === home.group) // need to filter by home.group
+            .filter(cat => cat.fields.group === homeGroup) // need to filter by home.group
             .find(cat => cat.name && cat.name.match('Incident'))
             .get('id')
             .value();
