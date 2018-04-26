@@ -7,22 +7,23 @@ import LmcTimelineRow from './LmcTimelineRow.jsx';
 import LmcResidentSummary from './LmcResidentSummary.jsx';
 import { BlankState } from '../../../../elemental';
 
-const LogDay = (perDay) => {
+
+const LogDay = (perDay, index) => {
 	const total = _.get(perDay, 'logs.length') || 0;
 	return (
-		<ul style={styles.logsList}>
+		<ul style={styles.logsList} key={index}>
 			<li style={styles.logHeader}>
 				<h2>
 					<strong>
-						{ moment(perDay.date).format('ddd DD MMM') } 
+						{moment(perDay.date).format('ddd DD MMM')}
 					</strong>
 				</h2>
 				<div className="lmc-theme-gradient" style={styles.divider}></div>
 			</li>
 			{
 				_.chain(perDay.logs)
-					.sortBy(d => moment(d.timeLogged).toDate())
-					.map(((log, index) => <LmcTimelineRow log={ log } index={ index } total={ total } />))
+					.sortBy(d => -moment(d.timeLogged).toDate())
+					.map(((log, index) => <LmcTimelineRow log={log} index={index} total={total} />))
 					.value()
 			}
 		</ul>
@@ -30,7 +31,7 @@ const LogDay = (perDay) => {
 }
 
 
-class DailyChart extends React.Component {
+class LmcResidentChart extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -38,18 +39,23 @@ class DailyChart extends React.Component {
 		this.onFilterChange = this.onFilterChange.bind(this);
 	}
 
-	componentDidMount() {
-		this.setState({ logs: this.props.data });
-	}
-
 	onFilterChange(logs) {
 		this.setState({ logs });
 	}
 
-	render () {
+	render() {
+		const { resident, data } = this.props;
 		let logsByDay;
-		const { data, resident } = this.props;
-		const { logs } = this.state;
+		let logs = _.chain(data)
+			.get('results.logs')
+			.sortBy(d => {
+				return moment(d.timeLogged).toDate();
+			}, 'desc')
+			.reverse()
+			.value();
+
+		console.log("logs.length", logs.length);
+
 		const isEmpty = !logs || !logs.length;
 
 		if (!isEmpty) {
@@ -57,53 +63,24 @@ class DailyChart extends React.Component {
 			logsByDay = _(logs)
 				.groupBy(({ timeLogged }) => moment(timeLogged).format('YYYY-MM-DD')) 
 				.map((group, date) => {
-					return { date, logs: group }
+					return { date, logs: group };
 				})
 				.sortBy(({ date }) => -moment(date).valueOf())
 				.value();
 		}
 
 		return (
-			<div style={styles.logsContainer}>
-				<LmcResidentSummary data={resident} />
-				{ isEmpty ?
-						<BlankState heading={`No logs found...`} style={{ marginTop: 40 }} /> :
-						<div style={ styles.chart }>
-							<LmcLogFilter data={ data } onChange={ this.onFilterChange } />
-							{ logsByDay.map(LogDay) }
-						</div>
-				}
-			</div>
-		)
-	}
-}
-
-
-class LmcResidentChart extends React.Component {
-
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		const { resident, data } = this.props;
-
-		let logs = _.chain(data)
-			.get('results.logs')
-			.sortBy(d => {
-				return moment(d.timeLogged).toDate()	
-			}, 'desc')
-			.reverse()
-			.value();
-
-		return (
 			<div style={styles.container}>
-				{ resident ?
-					<DailyChart data={logs} resident={resident} /> :
-					<p>
-						Please select a resident
-					</p>
-				}
+				<div style={styles.logsContainer}>
+				<LmcResidentSummary data={resident} />
+					{ isEmpty
+						? <BlankState heading={`No logs found...`} style={{ marginTop: 40 }} />
+						: <div style={styles.chart}>
+							<LmcLogFilter data={data} onChange={this.onFilterChange} />
+							{logsByDay.map(LogDay)}
+						</div>
+					}
+				</div>
 			</div>
 		);
 	}

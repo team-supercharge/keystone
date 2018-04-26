@@ -15,9 +15,9 @@ class LmcResidentListItem extends Component {
 				style={{ ...styles.resident, ...activeStyle }}
 				onClick={ () => onSelect(data) } >
 				<span style={styles.imageContainer}>
-					<img style={ styles.residentImg } src={ profile_pic }/>
+					<div className="lmc-profile-picture" style={{ background: `url(${profile_pic})` }}></div>
 				</span>
-				<span>
+				<span style={styles.residentName}>
 					{ data.name }
 				</span>
 			</li>
@@ -30,7 +30,13 @@ LmcResidentListItem.propTypes = {
 };
 
 const styles = {
-	resident: {},
+	resident: {
+		display: 'flex',
+		padding: '3px 0 3px 3px',
+	},
+	residentName: {
+		margin: 'auto 0 auto 8px',
+	},
 	residentImg: {
 		width: 42,
 		borderRadius: 40,

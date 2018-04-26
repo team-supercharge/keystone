@@ -29,25 +29,28 @@ class LmcTimelineRow extends Component {
 
         return (
             <li key={ log.id }>
-                <Link to={`${ Keystone.adminPath }/logs/${ log.id }`} className='lmc-timeline-link'>
+                <Link to={`${ Keystone.adminPath }/logs/${ log.id }`} className="lmc-timeline-link">
                     <div style={styles.container}>
                         <div style={timelineStyle}>
-                            <div style={dotStyle} className='lmc-timeline-dot'>
-                                <img style={ styles.iconStyle } src={ image }/>
+                            <div style={dotStyle} className="lmc-timeline-dot">
+                                <div className="lmc-dot-icon" style={{ background: `url(${image})`, ...styles.iconStyle }} />
                             </div>
 
                             <div style={styles.logContent}>
-                                <div style={styles.smallText} className='lmc-timeline-date'>
+                                <div style={styles.smallText} className="lmc-timeline-date">
                                     { moment(log.timeLogged).format('HH:mm') } - {log.carerName || 'Carer name'}
-                                    
+                                    { !log.witnessedBy 
+                                        ? <span>
+                                            <span style={{ opacity: 0.7 }}>, witnessed by</span> Sam Hussain {log.witnessedBy}
+                                        </span> : null }
                                 </div>
                                 <h3 style={styles.titleText}>
                                     {log.title}
                                 </h3>
                                 <div className="lmc-timeline-desc" style={styles.descriptionText}>{log.description}</div>
-                                { isRevised
+                                { isRevised && revision && revision.revokedBy && revision.revokedAt
                                     ? <span style={styles.revisionText}>
-                                        (Edited by { revision.revokedBy } on { moment(revision.revokedAt).format('DD/MM/YYYY') })
+                                        Edited by { revision.revokedBy } on { moment(revision.revokedAt).format('DD/MM/YYYY') }
                                     </span> : null }
                             </div>
                         </div>
@@ -120,11 +123,8 @@ const styles = {
         alignItems: 'center',
     },
     iconStyle: {
-        position: 'absolute',
-        left: 9,
-        top: 9,
-        width: 20,
-        height: 20
+        backgroundSize: '14px !important',
+        backgroundPosition: 'center center !important',
     }
 };
 

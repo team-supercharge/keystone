@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import _ from 'lodash';
+import { connect } from 'react-refetch';
 
-import { fetchResidentsList, fetchResidentLogs } from '../services/dataService';
 import LmcResidentChart from './LmcResidentChart.jsx';
 import LmcResidentList from './LmcResidentList.jsx';
 import LoadingScreen from '../components/LoadingScreen';
@@ -26,31 +26,6 @@ class Daily extends React.Component {
         this.state = {}
         this.onSelect = this.onSelect.bind(this);
     }
-
-    componentDidMount() {
-
-        this.setState({ fetchingResidents: true });
-
-        fetchResidentsList()
-            .then(({ results }) => {
-                this.setState({
-                    fetchingResidents: false,
-                    LmcresidentList: results,
-                });
-
-                if (results && results.length) {
-                    this.onSelect(_.sortBy(results, 'name')[0]);
-                }
-            })
-            .catch(err => {
-                console.log(err);
-                this.setState({
-                    fetchingResidents: false,
-                    fetchingResidentsError: "Oops. The report is not available"
-                });
-            })
-    }
-    
 
     onSelect(selection) {
         
@@ -89,67 +64,53 @@ class Daily extends React.Component {
          * 
          */
 
-        this.setState({
-            selection,
-            selectionData: null,
-            fetchingSelection: true,
-            fetchingSelectionError: null,
-        });
-
-        fetchResidentLogs(selection.id)
-            .then(selectionData => {
-                this.setState({ 
-                    fetchingSelection: false,
-                    selectionData,
-                });
-            })
-            .catch(({ message }) => {
-                this.setState({ 
-                    fetchingSelection: false,
-                    fetchingSelectionError: message,
-                });
-            });
+        this.props.fetchResidentLogs(selection);
+        this.setState({ selection });
     }
 
     render () {
-
-        const { 
-            fetchingResidents,
-            fetchingResidentsError,
-            LmcresidentList,
-            fetchingSelection,
-            fetchingSelectionError,
-            selection,
-            selectionData,
-        } = this.state;
-
-        const params = new URLSearchParams(this.props.location.search);
-        const isLoading = false;
+        const { selection } = this.state;
+        const { residentsFetch, residentLogsFetch } = this.props;
+        if (!selection && residentsFetch.fulfilled && _.get(residentsFetch, 'value.results.length')) {
+            this.onSelect(_.sortBy(residentsFetch.value.results, 'name')[0]);
+        }
         return (
             <div>
-                { fetchingResidents ?
-                    <LoadingScreen /> :
-                    fetchingResidentsError ? 
-                        <BlankState heading={fetchingResidentsError} style={{ marginTop: 40 }} /> : 
-                        LmcresidentList && LmcresidentList.length ? 
-                            <div className="row" style={{ display: 'flex' }}>
+                { residentsFetch.pending
+                    ? <LoadingScreen />
+                    : !residentsFetch.fulfilled
+                        ? <BlankState heading={'Opps.. Something went wrong'} style={{ marginTop: 40 }} />
+                        : _.get(residentsFetch, 'value.results.length') > 0
+                            ? <div className="row" style={{ display: 'flex' }}>
                                 <div className="four columns lmc-box-shadow__right" style={{ maxWidth: 300 }}>
-                                    <LmcResidentList data={LmcresidentList} onSelect={this.onSelect} current={selection} />
+                                    <LmcResidentList data={residentsFetch.value.results} onSelect={this.onSelect} current={selection} />
                                 </div>
                                 <div className="eight columns" style={{ marginLeft: 0, paddingLeft: '4%', minHeight: '90vh' }}>
-                                    { fetchingSelection ? 
-                                            <LoadingScreen /> :
-                                            fetchingSelectionError ? 
-                                                <ErrorMessage message={fetchingSelectionError} /> :
-                                                <LmcResidentChart data={selectionData} resident={selection} />
+                                    { !residentLogsFetch || residentLogsFetch.pending
+                                        ? <LoadingScreen />
+                                        : !residentLogsFetch.fulfilled
+                                            ? <BlankState heading={'Opps.. Something went wrong. Unable to load logs'} style={{ marginTop: 40 }} />
+                                            : <LmcResidentChart data={residentLogsFetch.value} resident={selection} />
                                     }
                                 </div>
-                            </div> :
-                            <BlankState heading={'You haven\'t added any residents yet'} style={{ marginTop: 40 }} />
+                            </div>
+                            : <BlankState heading={'You haven\'t added any residents yet'} style={{ margin: 40 }} />
                 }
             </div>
         );
     }
 };
 
-export default Daily;
+
+
+export default connect((props) => ({
+    residentsFetch: `${Keystone.adminPath}/api/reports/residents`,
+    fetchResidentLogs: resident => ({
+        residentLogsFetch: {
+            url: `${Keystone.adminPath}/api/reports/logs/${resident.id}`,
+            force: true,
+            refreshing: true,
+        }
+    })
+}))(Daily);
+

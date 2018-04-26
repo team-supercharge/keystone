@@ -36,6 +36,7 @@ const CreateForm = React.createClass({
 			var FieldComponent = Fields[field.type];
 			values[field.path] = FieldComponent.getDefaultValue(field);
 		});
+
 		return {
 			values: values,
 			alerts: {},
@@ -62,7 +63,9 @@ const CreateForm = React.createClass({
 			values: values,
 		});
 	},
+
 	prefillValues(values) {
+		console.log(values);
 		this.setState({ values: {
 			...this.state.values,
 			...values
@@ -78,7 +81,7 @@ const CreateForm = React.createClass({
 		props.mode = 'create';
 		props.key = field.path;
 
-		if(field.prefill) {
+		if (field.prefill) {
 			props.prefillValues = this.prefillValues;
 		}
 
