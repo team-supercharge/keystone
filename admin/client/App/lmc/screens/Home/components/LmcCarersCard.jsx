@@ -38,16 +38,16 @@ class LmcCarersCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            max_carers_displayed: MAX_CARERS_DISPLAYED,
+            carers_displayed: INIT_CARERS_DISPLAYED,
         };
         this.showMore = this.showMore.bind(this);
         this.renderActiveCarers = this.renderActiveCarers.bind(this);
     }
 
     renderActiveCarers(activeCarers) {
-        const { max_carers_displayed } = this.state;
-        const hiddenCarers = activeCarers.length > max_carers_displayed;
-        const n_showing = hiddenCarers ? max_carers_displayed - 1 : max_carers_displayed;
+        const { carers_displayed } = this.state;
+        const hiddenCarers = activeCarers.length > carers_displayed;
+        const n_showing = hiddenCarers ? carers_displayed - 1 : carers_displayed;
         return (
             <div>
                 <p>
@@ -85,7 +85,7 @@ class LmcCarersCard extends Component {
 
     showMore() {
         this.setState({
-            max_carers_displayed: this.state.max_carers_displayed + 5,
+            carers_displayed: this.state.carers_displayed + 5,
         })
     }
 
@@ -95,10 +95,10 @@ class LmcCarersCard extends Component {
             this.props.onCreate('User');
         }
 
-        const homeHasCarers = _.filter(carers, d => d.role === 'carer');
-        const activeIds = _(logs).map('carerId').uniq().value();
+        const homeHasCarers = carers.length > 1;
+        const activeIds = _.chain(logs).map('carerId').uniq().value();
         const activeToday = _.chain(carers)
-            .filter(d => !_.indexOf(activeIds, d.id))
+            .filter(d => _.includes(activeIds, d.id))
             .sortBy('name')
             .value();
 
@@ -160,7 +160,7 @@ LmcCarersCard.propTypes = {
 
 };
 
-let MAX_CARERS_DISPLAYED = 10;
+const INIT_CARERS_DISPLAYED = 10;
 const TITLE = 'Team';
 const ACTIVE_TODAY_PLURAL = 'of your care team have been active today';
 const ACTIVE_TODAY_SINGULAR = 'of your care team has been active today';
