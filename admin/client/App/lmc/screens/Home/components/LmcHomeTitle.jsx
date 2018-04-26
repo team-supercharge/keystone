@@ -1,5 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
+import LmcTour from './LmcTour.jsx';
+
 
 class LmcHomeTitle extends React.Component {
     render () {
@@ -19,12 +21,11 @@ class LmcHomeTitle extends React.Component {
                             ? <span> for <span style={styles.bold}>{ homeName }</span></span>
                             : null }!
                 </h2>
-                { isNewHome ? 
-                    <p>
-                        This is where you can set up your Residents, manage their To-Do’s and invite your team to download the Carer App.
-                        Once set up from here, the information will be shown in the app and your carers can start logging care. 
-                        
-                        To get started for the first time, you need to start adding your care team...
+                { isNewHome
+                    ? <p>
+                        This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+                        <br/>
+                        <LmcTour />
                     </p>
                     : null
                 }

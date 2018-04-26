@@ -103,38 +103,40 @@ class Home extends React.Component {
                                     home={homeFetch.value.results} />
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="six columns">
-                                <LmcResidentsCard
-                                    residents={residentsFetch.value.results}
-                                    onCreate={this.onOpenCreateModal} />
+                        <div id="intro-js-step-dashboard">
+                            <div className="row">
+                                <div className="six columns" id="intro-js-step-residents">
+                                    <LmcResidentsCard
+                                        residents={residentsFetch.value.results}
+                                        onCreate={this.onOpenCreateModal} />
+                                </div>
+                                <div className="six columns" id="intro-js-step-incidents">
+                                    <LmcIncidentsCard
+                                        logs={logsFetch.value.results}
+                                        categories={categoriesFetch.value.results}
+                                        residents={residentsFetch.value.results}
+                                        home={homeFetch.value.results}
+                                        onCreate={this.onOpenCreateModal} />
+                                </div>
                             </div>
-                            <div className="six columns">
-                                <LmcIncidentsCard
-                                    logs={logsFetch.value.results}
-                                    categories={categoriesFetch.value.results}
-                                    residents={residentsFetch.value.results}
-                                    home={homeFetch.value.results}
-                                    onCreate={this.onOpenCreateModal} />
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="six columns">
-                                <LmcCarersCard
-                                    logs={logsFetch.value.results}
-                                    carers={usersFetch.value.results}
-                                    onCreate={this.onOpenCreateModal} />
-                            </div>
-                            <div className="six columns">
-                                <LmcTasksCard
-                                    logs={logsFetch.value.results}
-                                    tasks={tasksFetch.value.results}
-                                    onCreate={this.onOpenCreateModal} />
+                            <div className="row">
+                                <div className="six columns" id="intro-js-step-carers">
+                                    <LmcCarersCard
+                                        logs={logsFetch.value.results}
+                                        carers={usersFetch.value.results}
+                                        onCreate={this.onOpenCreateModal} />
+                                </div>
+                                <div className="six columns" id="intro-js-step-tasks">
+                                    <LmcTasksCard
+                                        logs={logsFetch.value.results}
+                                        tasks={tasksFetch.value.results}
+                                        onCreate={this.onOpenCreateModal} />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="four columns">
+                <div className="four columns" id="intro-js-step-advert">
                     <div className="row">
                         <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.results, 'Home_YouTubeURL')} />
                     </div>
@@ -179,7 +181,6 @@ const styles = {
 }
 
 const ERROR_MESSAGE = 'Oops... looks like something went wrong. Please get in touch if this problem persists!';
-
 
 // Configuring the data sources
 // Note: I went for multiple independet requests because it's more flexible

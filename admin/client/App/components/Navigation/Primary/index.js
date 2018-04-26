@@ -73,7 +73,7 @@ var PrimaryNavigation = React.createClass({
 	// Render the link to the webpage
 	renderFrontLink () {
 		return (
-			<ul className="app-nav app-nav--primary app-nav--right">
+			<ul className="app-nav app-nav--primary app-nav--right" id="intro-js-step-navbar">
 				<PrimaryNavItem
 					href="https://support.logmycare.co.uk/"
 					title="Help Centre"

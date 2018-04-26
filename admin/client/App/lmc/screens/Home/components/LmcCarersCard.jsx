@@ -118,7 +118,7 @@ class LmcCarersCard extends Component {
                     </div>
                     <div className="lmc-card-footer">
                         <div className="lmc-flex-container">
-                            <div style={{ maxWidth: 190 }}>
+                            <div style={{ maxWidth: 190 }} id="intro-js-step-add-carers">
                                 <GlyphButton
                                     block
                                     color="success"

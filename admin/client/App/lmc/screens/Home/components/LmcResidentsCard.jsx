@@ -119,19 +119,19 @@ class LmcResidentsCard extends Component {
                     </div>
                     <div className="lmc-card-footer">
                         <div className="lmc-flex-container">
-                            <div style={{maxWidth: 160}}>
+                            <div style={{maxWidth: 160}} id="intro-js-step-add-residents">
                                 <GlyphButton
                                     block
                                     color="success"
                                     glyph="plus"
                                     onClick={onClick}
                                     position="left"
-                                    title={`Create Profile`}
+                                    title={ADD_RESIDENTS_BUTTON_TEXT}
                                 >
                                     <ResponsiveText
-                                        visibleSM="Create"
-                                        visibleMD="Create"
-                                        visibleLG={`Create Profile`}
+                                        visibleSM={ADD_RESIDENTS_BUTTON_TEXT}
+                                        visibleMD={ADD_RESIDENTS_BUTTON_TEXT}
+                                        visibleLG={ADD_RESIDENTS_BUTTON_TEXT}
                                     />
                                 </GlyphButton>
                             </div>
@@ -165,6 +165,7 @@ LmcResidentsCard.propTypes = {
 const MAX_RESIDENTS_DISPLAYED_INIT = 10;
 const TITLE = 'Residents';
 const VIEW_BUTTON_TEXT = 'View All';
+const ADD_RESIDENTS_BUTTON_TEXT = 'Add a Resident';
 const NO_ACTIVE_RESIDENTS = ``;
 const NO_RESIDENTS_INFO = `You have not added any residents yet. 
     You’ll need to add them here before anything appears in the Carer App`;

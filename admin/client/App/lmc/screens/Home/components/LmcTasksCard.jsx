@@ -75,7 +75,7 @@ class LmcTasksCard extends Component {
                 </h2>
                 <div className="lmc-card">
                     <div className="lmc-card-body">
-                        <div style={{ paddingTop: 6 }}>
+                        <div style={{ paddingTop: 6 }} id="intro-js-step-tasks-info">
                             { this.renderTasks(tasks) }
                         </div>
                     </div>
