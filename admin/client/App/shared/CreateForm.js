@@ -65,7 +65,6 @@ const CreateForm = React.createClass({
 	},
 
 	prefillValues(values) {
-		console.log(values);
 		this.setState({ values: {
 			...this.state.values,
 			...values
@@ -171,7 +170,7 @@ const CreateForm = React.createClass({
 		return (
 			<Form layout="horizontal" onSubmit={this.submitForm}>
 				<Modal.Header
-					text={'Create a new ' + list.singular}
+					text={'Add a new ' + list.singular}
 					showCloseButton
 				/>
 				<Modal.Body>
@@ -180,7 +179,7 @@ const CreateForm = React.createClass({
 				</Modal.Body>
 				<Modal.Footer>
 					<Button color="success" type="submit" data-button-type="submit">
-						{ this.props.submitLabel || 'Create' }
+						{ this.props.submitLabel || 'Add' }
 					</Button>
 					<Button
 						variant="link"
