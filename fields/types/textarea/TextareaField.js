@@ -20,16 +20,19 @@ module.exports = Field.create({
 		);
 	},
 	renderField () {
-		const { height, path, style, value } = this.props;
-
+		const { height, path, style, value, note } = this.props;
 		const styles = {
 			height: height,
+			lineHeight: '22px',
+			paddingTop: 7,
 			...style,
 		};
+		let _note = note ? note.replace('<p>', '').replace('</p>', '') : null;
 		return (
 			<FormInput
 				autoComplete="off"
 				multiline
+				placeholder={_note}
 				name={this.getInputName(path)}
 				onChange={this.valueChanged}
 				ref="focusTarget"

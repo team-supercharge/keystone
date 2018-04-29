@@ -18,6 +18,7 @@ module.exports = Field.create({
 		type: 'Email',
 	},
 	renderField () {
+		let _note = this.props.note ? this.props.note.replace('<p>', '').replace('</p>', '') : null;
 		return (
 			<FormInput
 				name={this.getInputName(this.props.path)}
@@ -25,13 +26,19 @@ module.exports = Field.create({
 				value={this.props.value}
 				onChange={this.valueChanged}
 				autoComplete="off"
+				placeholder={_note}
 				type="email"
 			/>
 		);
 	},
 	renderValue () {
+		let _note = this.props.note ? this.props.note.replace('<p>', '').replace('</p>', '') : null;
 		return this.props.value ? (
-			<FormInput noedit component="a" href={'mailto:' + this.props.value}>
+			<FormInput
+				noedit
+				component="a"
+				placeholder={_note}
+				href={'mailto:' + this.props.value}>
 				{this.props.value}
 			</FormInput>
 		) : (

@@ -60,16 +60,20 @@ var Base = module.exports.Base = {
 	},
 	renderNote () {
 		if (!this.props.note) return null;
+		if (this.props.type === 'textarea' || this.props.type === 'text' || this.props.type === 'email') {
+			return '';
+		}
 
-		return <FormNote html={this.props.note} />;
+		return <div className="lmc-form-note"><FormNote html={this.props.note} /></div>;
 	},
 	renderField () {
-		const { autoFocus, value, inputProps } = this.props;
+		const { autoFocus, value, inputProps, placeholder } = this.props;
 		return (
 			<FormInput {...{
 				...inputProps,
 				autoFocus,
 				autoComplete: 'off',
+				placeholder,
 				name: this.getInputName(this.props.path),
 				onChange: this.valueChanged,
 				ref: 'focusTarget',
@@ -78,7 +82,7 @@ var Base = module.exports.Base = {
 		);
 	},
 	renderValue () {
-		return <FormInput noedit>{this.props.value}</FormInput>;
+		return <FormInput noedit placeholder={this.props.placeholder}>{this.props.value}</FormInput>;
 	},
 	renderUI () {
 		var wrapperClassName = classnames(
