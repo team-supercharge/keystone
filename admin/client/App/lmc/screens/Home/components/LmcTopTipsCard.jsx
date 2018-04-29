@@ -7,20 +7,20 @@ class LmcTopTipsCard extends Component {
     }
     render() {
         const { video } = this.props;
-        const defaultVideo = 'https://www.youtube.com/embed/6Z5FE0pjn5k';
+        const defaultVideo = 'https://www.youtube.com/embed/sYB5GpaU6RE';
         return (
             <div>
                 <h2 style={{ marginTop: 0 }} className="lmc-card-title">
                     Top Tips
                 </h2>
-                <div className='videoWrapper'>
+                <div className="videoWrapper">
                     <iframe 
-                        style={{border: 'none'}} 
-                        width="320" 
-                        height="180" 
+                        style={{ border: 'none' }}
+                        width="320"
+                        height="180"
                         ref="iframe"
                         src={video || defaultVideo}
-                        frameBorder="0" 
+                        frameBorder="0"
                         allowFullScreen="true">
                     </iframe>
                 </div>

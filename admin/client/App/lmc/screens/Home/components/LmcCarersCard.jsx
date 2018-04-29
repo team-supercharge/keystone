@@ -95,7 +95,7 @@ class LmcCarersCard extends Component {
             this.props.onCreate('User');
         }
 
-        const homeHasCarers = carers.length > 1;
+        const carerCount = _.filter(carers, { active: true }).length;
         const activeIds = _.chain(logs).map('carerId').uniq().value();
         const activeToday = _.chain(carers)
             .filter(d => _.includes(activeIds, d.id))
@@ -109,7 +109,7 @@ class LmcCarersCard extends Component {
                 </h2>
                 <div className="lmc-card">
                     <div className="lmc-card-body">
-                        { !homeHasCarers || !homeHasCarers.length ?
+                        { !carers || carerCount < 2 ?
                                 this.renderNoCarers() :
                                 !activeToday || !activeToday.length ? 
                                     this.renderNoActiveCarers() :

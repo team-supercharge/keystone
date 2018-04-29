@@ -74,13 +74,15 @@ class Home extends React.Component {
         const { currentList, showCreateModal, isModalOpen } = this.state;
         return (
             (currentList && showCreateModal)
-                ? <CreateForm
-                    isOpen={isModalOpen}
-                    list={currentList}
-                    onCancel={() => this.onCloseCreateModal()}
-                    formTitle="Create Resident"
-                    onCreate={this.onCreateItemComplete}
-                /> : null
+                ? <div className="lmc-create-form">
+                    <CreateForm
+                        isOpen={isModalOpen}
+                        list={currentList}
+                        onCancel={() => this.onCloseCreateModal()}
+                        formTitle="Create Resident"
+                        onCreate={this.onCreateItemComplete}
+                    />
+                </div> : null
             ) 
     }
 
@@ -210,8 +212,8 @@ export default connect((props) => ({
     }),
     residentsFetch: residentsUrl,
     refreshResidents: () => ({
-        userFetch: {
-            url: usersUrl,
+        residentsFetch: {
+            url: residentsUrl,
             force: true,
             refreshing: true,
         }

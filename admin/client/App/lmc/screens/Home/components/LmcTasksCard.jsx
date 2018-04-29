@@ -7,6 +7,7 @@ import {
 	GlyphButton,
 	ResponsiveText,
 } from '../../../../elemental';
+import moment from 'moment';
 
 
 const TaskCounter = (row, index) => {
@@ -17,6 +18,7 @@ const TaskCounter = (row, index) => {
     };
 
     const to = `${ Keystone.adminPath }/tasks?${ row.link }`;
+
     return (
         <div key={ index } style={ styles.task_container }>
             <Link
@@ -36,23 +38,47 @@ class LmcTasksCard extends Component {
 
     renderTasks(tasks) {
 
+        const isTodayFilter = {
+            path: 'date',
+            mode: 'on',
+            value: moment().startOf('day').toISOString(),
+            before: moment().endOf('day').toISOString(),
+            after: moment().startOf('day').toISOString(),
+        };
+
+        const filterCompleted = JSON.stringify([
+            {
+                path: 'status',
+                value: ['completed', 'skipped'],
+            },
+            isTodayFilter,
+        ]);
+
+        const filterPending = JSON.stringify([
+            {
+                path: 'status',
+                value: ['pending'],
+            },
+            isTodayFilter,
+        ]);
+
         const rows = [
             {
                 label: 'Overdue Today',
                 color: '#e65d79e8',
-                link: 'filters=%5B%7B"path"%3A"status"%2C"inverted"%3Afalse%2C"value"%3A%5B"pending"%5D%7D%5D',
+                link: `filters=${filterPending}`,
                 count: tasks.overdue || 0,
             },
             {
                 label: 'Pending Today',
                 color: '#ffba66',
-                link: 'filters=%5B%7B"path"%3A"status"%2C"inverted"%3Afalse%2C"value"%3A%5B"pending"%5D%7D%5D',
+                link: `filters=${filterPending}`,
                 count: tasks.pending || 0,
             },
             {
                 label: 'Completed Today',
                 color: '#9bd687e8',
-                link: 'filters=%5B%7B"path"%3A"status"%2C"inverted"%3Afalse%2C"value"%3A%5B"completed"%2C"skipped"%5D%7D%5D',
+                link: `filters=${filterCompleted}`,
                 count: tasks.completed || 0,
             }
         ];
@@ -67,7 +93,7 @@ class LmcTasksCard extends Component {
         const onClick = () => {
             this.props.onCreate('RecurringTask');
         }
-        console.log(tasks);
+
         return (
             <div>
                 <h2 className="lmc-card-title">
@@ -88,12 +114,12 @@ class LmcTasksCard extends Component {
                                     glyph="plus"
                                     onClick={onClick}
                                     position="left"
-                                    title={`Create To-Do`}
+                                    title={`Add To-Do`}
                                 >
                                     <ResponsiveText
-                                        visibleSM="Create"
-                                        visibleMD="Create"
-                                        visibleLG={`Create To-Do`}
+                                        visibleSM="Add"
+                                        visibleMD="Add"
+                                        visibleLG={`Add To-Do`}
                                     />
                                 </GlyphButton>
                             </div>
