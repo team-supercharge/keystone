@@ -39,6 +39,7 @@ module.exports = function IndexRoute (req, res) {
 			id: req.user.id,
 			name: UserList.getDocumentName(req.user) || '(no name)',
 			role: req.user.role,
+			firstLogin: req.user.firstLogin,
 			home: req.user.home,
 		},
 		userList: UserList.key,

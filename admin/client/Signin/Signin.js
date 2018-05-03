@@ -51,7 +51,6 @@ var SigninView = React.createClass({
 			},
 			headers: assign({}, Keystone.csrf.header),
 		}, (err, resp, body) => {
-			console.log(resp)
 			if (err || body && body.error) {
 				let errorText;
 				switch (body.error) {

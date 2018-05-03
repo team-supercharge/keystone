@@ -8,6 +8,7 @@ import {
 class LmcTour extends Component {
 
     startTour() {
+        this.props.onStart();
         introJs()
             .setOption('exitOnOverlayClick', true)
             .setOption('scrollToElement', true)
@@ -76,7 +77,6 @@ class LmcTour extends Component {
     }
 
     componentWillUnmount() {
-        console.log("unmount!")
         introJs().exit();
     }
 
@@ -87,7 +87,7 @@ class LmcTour extends Component {
                     block
                     color="success"
                     glyph="play"
-                    onClick={() => this.startTour()}
+                    onClick={this.startTour.bind(this)}
                     position="left"
                     title={`Start Tour`}
                 >
