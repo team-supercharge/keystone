@@ -37,7 +37,6 @@ var Base = module.exports.Base = {
 	getInputName (path) {
 		// This correctly creates the path for field inputs, and supports the
 		// inputNamePrefix prop that is required for nested fields to work
-		console.log(this.props);
 		return this.props.inputNamePrefix
 			? `${this.props.inputNamePrefix}[${path}]`
 			: path;
@@ -133,7 +132,7 @@ var Mixins = module.exports.Mixins = {
 module.exports.create = function (spec) {
 
 	spec = validateSpec(spec);
-	console.log(spec);
+
 	var field = {
 		spec: spec,
 		displayName: spec.displayName,

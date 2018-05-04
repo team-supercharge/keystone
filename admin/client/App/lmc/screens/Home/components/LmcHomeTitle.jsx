@@ -3,7 +3,7 @@ import _ from 'lodash';
 import LmcTour from './LmcTour.jsx';
 import moment from 'moment';
 import xhr from 'xhr';
-window.moment = moment;
+
 
 class LmcHomeTitle extends React.Component {
     componentDidMount() {
@@ -21,9 +21,8 @@ class LmcHomeTitle extends React.Component {
         const { home, residents } = this.props;
 
         const isNewHome = !Keystone.user.firstLogin
-            || moment().diff(Keystone.user.firstLogin, 'days') > DAYS_UNTIL_TOUR_HIDDEN
+            || moment().diff(Keystone.user.firstLogin, 'days') < DAYS_UNTIL_TOUR_HIDDEN
             || (!residents || !residents.length);
-
         const user_name = Keystone.user.name && Keystone.user.name.split(' ').length > 1
             ? Keystone.user.name.split(' ')[0]
             : Keystone.user.name;
