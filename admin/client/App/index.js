@@ -45,7 +45,7 @@ function onListChange (prevState, { location }) {
 		}
 	});
 }
-
+console.log(Keystone.user.role)
 let HomePage = Keystone.user.role === 'carehome-admin'
 	? LmcHome
 	: DefaultHome;

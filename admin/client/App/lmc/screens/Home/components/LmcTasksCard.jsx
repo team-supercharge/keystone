@@ -33,7 +33,7 @@ const TaskCounter = (row, index) => {
     )
 }
 
-
+window.moment = moment;
 class LmcTasksCard extends Component {
 
     renderTasks(tasks) {
@@ -41,7 +41,7 @@ class LmcTasksCard extends Component {
         const isTodayFilter = {
             path: 'date',
             mode: 'on',
-            value: moment().startOf('day').toISOString(),
+            value: moment().startOf('day').add(12, "hours").toISOString(),
             before: moment().endOf('day').toISOString(),
             after: moment().startOf('day').toISOString(),
         };

@@ -7,19 +7,37 @@ import {
 
 class LmcTour extends Component {
 
-    startTour() {
-        this.props.onStart();
-        introJs()
+    constructor(props) {
+        super(props);
+        this.startTour = this.startTour.bind(this);
+    }
+
+    startTour(showWelcomeMessage) {
+
+        const tour = introJs()
             .setOption('exitOnOverlayClick', true)
             .setOption('scrollToElement', true)
             .setOption('hideNext', true)
+            .setOption('hidePrev', true)
+            // .setOption('showBullets', false)
             .setOption('disableInteraction', true)
             .onskip(function () {
                 console.log('onbeforeexit')
-            })
-            .addStep({
+            });
+
+        if (showWelcomeMessage) {
+            tour.addStep({
+                element: document.querySelectorAll('#intro-js-xxx')[0],
+                intro: TOUR_START,
+                position: 'top',
+                tooltipClass: 'intro-js-text__padded',
+            });
+        }
+            
+        tour.addStep({
                 element: document.querySelectorAll('#intro-js-step-dashboard')[0],
                 intro: TOUR_HELLO,
+                hidePrev: true,
                 position: 'top',
             })
             .addStep({
@@ -65,12 +83,15 @@ class LmcTour extends Component {
             .addStep({
                 element: document.querySelectorAll('#intro-js-step-navbar')[0],
                 intro: TOUR_NAVBAR,
+                overlayOpacity: 0,
                 position: 'bottom',
             })
             .addStep({
                 element: document.querySelectorAll('#intro-js-done')[0],
                 intro: TOUR_DONE,
                 hideNext: true,
+                hidePrev: true,
+                tooltipClass: 'intro-js-prev__hidden',
                 position: 'top',
             })
             .start();
@@ -80,6 +101,12 @@ class LmcTour extends Component {
         introJs().exit();
     }
 
+    componentDidMount() {
+        if (this.props.forceOpen) {
+            this.startTour(true);
+        }
+    }
+
     render() {
         return (
             <div style={{ paddingTop: 20, width: 200 }}>
@@ -87,7 +114,7 @@ class LmcTour extends Component {
                     block
                     color="success"
                     glyph="play"
-                    onClick={this.startTour.bind(this)}
+                    onClick={() => this.startTour(false)}
                     position="left"
                     title={`Start Tour`}
                 >
@@ -102,8 +129,9 @@ class LmcTour extends Component {
     }
 }
 
+const TOUR_START = 'Welcome! Would you like to start the guided tour?';
 const TOUR_HELLO = 'On the home page you\'ll see a snapshot of what has been happening over the last day and can perform some quick actions.';
-const TOUR_RESIDENTS = 'Up here you\'ll see your active residents, these are those that are currently in your home';
+const TOUR_RESIDENTS = 'Up here you\'ll see your active residents. These are those that are currently in your home';
 const TOUR_ADD_RESIDENTS = 'The first step is to add your residents and assign them to your care team. This information then gets sent to the Carer App and allows carers to record care on the go.'
 const TOUR_CARERS = 'Down here you can see who from your care team has been online and logged care today.';
 const TOUR_CARERS_INVITE = 'You can also invite other members of your team to join you in Log my Care.';
