@@ -50,7 +50,8 @@ class LmcResidentChart extends React.Component {
 	render() {
 		const { resident, data } = this.props;
 		let logsByDay;
-		let logs = _.chain(this.state.logs)
+		let logs = _.chain(data)
+			.get('results.logs')
 			.sortBy(d => {
 				return moment(d.timeLogged).toDate();
 			}, 'desc')
