@@ -70,16 +70,14 @@ class LmcLogFilter extends React.Component {
     getFilteredData({ startDate, endDate }) {
         let { data } = this.props;
         if (startDate) {
-            startDate = startDate.startOf('day');
             data = data.filter(log => {
-                return startDate.diff(moment(log.timeLogged).startOf('day'), 'days') <= 0;
+                return startDate.startOf('day').diff(moment(log.timeLogged).startOf('day'), 'days') <= 0;
             });
         }
 
         if (endDate) {
-            endDate = endDate.startOf('day');
             data = data.filter(log => {
-                return endDate.diff(moment(log.timeLogged).startOf('day'), 'days') >= 0;
+                return endDate.startOf('day').diff(moment(log.timeLogged).startOf('day'), 'days') >= 0;
             });
         }
 
@@ -111,10 +109,9 @@ class LmcLogFilter extends React.Component {
 
         const today = moment();
         const datesWithLogs = _.chain(data).map(day => this.formatToDate(moment(day.timeLogged))).uniq().value();
+        console.log(data);
         const isDayBlocked = day => {
-            if (day > today) return true;
-            if (_.includes(datesWithLogs, this.formatToDate(day))) return false;
-            return true;
+            return !_.includes(datesWithLogs, this.formatToDate(day));
         };
 
 		return (

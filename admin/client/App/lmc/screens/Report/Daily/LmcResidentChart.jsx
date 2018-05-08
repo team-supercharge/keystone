@@ -35,7 +35,7 @@ class LmcResidentChart extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { data: [] };
+		this.state = { logs: [] };
 		this.onFilterChange = this.onFilterChange.bind(this);
 	}
 
@@ -43,18 +43,19 @@ class LmcResidentChart extends React.Component {
 		this.setState({ logs });
 	}
 
+	componentDidMount() {
+		this.setState({ logs: _.get(this.props, 'data.results.logs') });
+	}
+
 	render() {
 		const { resident, data } = this.props;
 		let logsByDay;
-		let logs = _.chain(data)
-			.get('results.logs')
+		let logs = _.chain(this.state.logs)
 			.sortBy(d => {
 				return moment(d.timeLogged).toDate();
 			}, 'desc')
 			.reverse()
 			.value();
-
-		console.log("logs.length", logs.length);
 
 		const isEmpty = !logs || !logs.length;
 
@@ -76,7 +77,7 @@ class LmcResidentChart extends React.Component {
 					{ isEmpty
 						? <BlankState heading={`No logs found...`} style={{ marginTop: 40 }} />
 						: <div style={styles.chart}>
-							<LmcLogFilter data={data} onChange={this.onFilterChange} />
+							<LmcLogFilter data={_.get(data, 'results.logs')} onChange={this.onFilterChange} />
 							{logsByDay.map(LogDay)}
 						</div>
 					}
