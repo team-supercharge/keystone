@@ -8,6 +8,7 @@ import xhr from 'xhr';
 class LmcHomeTitle extends React.Component {
     componentDidMount() {
         if (!Keystone.user.firstLogin) {
+            Keystone.user.firstLogin = moment(); // avoid it being triggered every time you log in.
             xhr({
                 url: `${Keystone.adminPath}/api/reports/user/firstlogin`,
                 method: 'POST',
