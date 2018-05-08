@@ -109,7 +109,7 @@ class LmcLogFilter extends React.Component {
 
         const today = moment();
         const datesWithLogs = _.chain(data).map(day => this.formatToDate(moment(day.timeLogged))).uniq().value();
-        console.log(data);
+
         const isDayBlocked = day => {
             return !_.includes(datesWithLogs, this.formatToDate(day));
         };
