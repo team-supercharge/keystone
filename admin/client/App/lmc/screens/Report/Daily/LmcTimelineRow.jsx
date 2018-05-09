@@ -41,7 +41,7 @@ class LmcTimelineRow extends Component {
                                     { moment(log.timeLogged).format('HH:mm') } - {log.carerName || 'Carer name'}
                                     { !log.witnessedBy 
                                         ? <span>
-                                            <span style={{ opacity: 0.7 }}>, witnessed by</span> Sam Hussain {log.witnessedBy}
+                                            <span style={{ opacity: 0.7 }}>, witnessed by </span>{log.witnessedBy}
                                         </span> : null }
                                 </div>
                                 <h3 style={styles.titleText}>
