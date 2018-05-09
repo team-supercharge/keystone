@@ -12,7 +12,7 @@ class LmcTimelineRow extends Component {
         const image = _.get(log, 'itemIcon.url') || _.get(log, 'categoryIcon.url') || fallback
 
         let revision;
-        let isRevised = log.revisions && log.revisions.length > 0;
+        let isRevised = log.revisions && (log.revisions.length > 0);
         if (isRevised) {
             revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
         }
@@ -26,7 +26,6 @@ class LmcTimelineRow extends Component {
             backgroundColor: log.categoryColor,
         }
 
-
         return (
             <li key={ log.id }>
                 <Link to={`${ Keystone.adminPath }/logs/${ log.id }`} className="lmc-timeline-link">
@@ -39,11 +38,11 @@ class LmcTimelineRow extends Component {
                             <div style={styles.logContent}>
                                 <div style={styles.smallText} className="lmc-timeline-date">
                                     { moment(log.timeLogged).format('HH:mm') } - {log.carerName || 'Carer name'}
-                                    { !log.witnessedBy 
+                                    { log.witnessedBy
                                         ? <span>
                                             <span style={{ opacity: 0.7 }}>, witnessed by </span>{log.witnessedBy}
                                         </span> : null }
-                                </div>
+                                </div> 
                                 <h3 style={styles.titleText}>
                                     {log.title}
                                 </h3>

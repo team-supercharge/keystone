@@ -71,9 +71,11 @@ class Daily extends React.Component {
     render () {
         const { selection } = this.state;
         const { residentsFetch, residentLogsFetch } = this.props;
+
         if (!selection && residentsFetch.fulfilled && _.get(residentsFetch, 'value.results.length')) {
             this.onSelect(_.sortBy(residentsFetch.value.results, 'name')[0]);
         }
+
         return (
             <div>
                 { residentsFetch.pending
@@ -109,7 +111,7 @@ export default connect((props) => ({
         residentLogsFetch: {
             url: `${Keystone.adminPath}/api/reports/logs/${resident.id}`,
             force: true,
-            refreshing: true,
+            refreshing: false,
         }
     })
 }))(Daily);
