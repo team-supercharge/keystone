@@ -128,6 +128,7 @@ class LmcLogFilter extends React.Component {
                         startDateId="start_date_id"
                         endDate={this.state.endDate}
                         endDateId="end_date_id"
+                        displayFormat="MMM D"
                         onDatesChange={({ startDate, endDate }) => this.onDatesChange({ startDate, endDate })} // PropTypes.func.isRequired,
                         focusedInput={focused}
                         onFocusChange={focused => this.setState({ focused })}
