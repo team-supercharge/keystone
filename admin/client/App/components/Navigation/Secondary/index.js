@@ -73,7 +73,7 @@ var SecondaryNavigation = React.createClass({
 		);
 	},
 	render () {
-		if (!this.state.navIsVisible) return null;
+		if (this.state.navIsVisible === false) return null;
 
 		return (
 			<nav className="secondary-navbar">
