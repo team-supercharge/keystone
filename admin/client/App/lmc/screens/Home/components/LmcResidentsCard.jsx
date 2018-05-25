@@ -7,31 +7,7 @@ import {
 	ResponsiveText,
 } from '../../../../elemental';
 import { Link } from 'react-router';
-
-const formatName = (name) => {
-    let n = name.split(' ');
-    n = (n.length > 1)
-        ? `${ n[0] } ${ n[1][0] }`
-        : name;
-    if (n.length > 9) n = n.substr(0, 7) + '..';
-    return n;
-};
-
-const ResidentRow = (row, index) => {
-    const picture = row.picture || 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
-    let name = row.name.split(' ');
-    name = `${ name[0] } ${ name[1][0] }`;
-    return (
-        <Link key={index}
-            to={`${Keystone.adminPath}/residents/${row.id}`}
-            className="lmc-profile-link">
-            <div className="lmc-profile-picture" style={{ background: `url(${picture})` }}></div>
-            <p style={{ fontSize: 11, color: 'black', opacity: 0.5, marginBottom: 1 }}>
-                { formatName(name) }
-            </p>
-        </Link>
-    )
-}
+import LmcProfileLink  from './LmcProfileLink.jsx';
 
 
 class LmcResidentsCard extends Component {
@@ -65,7 +41,13 @@ class LmcResidentsCard extends Component {
                 </p>
                 <div className="lmc-flex-grid">
                     { _.take(activeResidents, hiddenResidents ? max_residents_displayed - 1 : max_residents_displayed)
-                        .map(ResidentRow) }
+                        .map((row, index) =>
+                            <LmcProfileLink
+                                to={`${ Keystone.adminPath }/residents/${ row.id }`}
+                                key={row.id}
+                                name={row.name}
+                                picture={row.picture}
+                            />) }
                     { hiddenResidents
                         ? <a className="lmc-more-link" onClick={this.showMore}>More...</a>
                         : null }
@@ -111,11 +93,9 @@ class LmcResidentsCard extends Component {
                 </h2>
                 <div className="lmc-card">
                     <div className="lmc-card-body">
-                        { 
-                            activeResidents && activeResidents.length
+                        { activeResidents && activeResidents.length
                                 ? this.renderResidents(activeResidents)
-                                : this.renderNoResidents()
-                        }
+                                : this.renderNoResidents() }
                     </div>
                     <div className="lmc-card-footer">
                         <div className="lmc-flex-container">

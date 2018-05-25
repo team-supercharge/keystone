@@ -7,30 +7,7 @@ import {
 } from '../../../../elemental';
 import { Link } from 'react-router';
 import _ from 'lodash';
-
-const formatName = (name) => {
-    let n = name.split(' ');
-    return (n.length > 1)
-        ? `${ n[0] } ${ n[1][0] }`
-        : name;
-};
-
-
-const ProfileRow = (row, index) => {
-    const picture = row.picture || PLACEHOLDER_IMAGE;
-    let name = row.name.split(' ');
-    name = `${ name[0] } ${ name[1][0] }`;
-    return (
-        <Link key={index}
-            to={`${ Keystone.adminPath }/users/${ row.id }`}
-            className="lmc-profile-link">
-            <div className="lmc-profile-picture" style={{ background: `url(${picture})` }}></div>
-            <p style={{ fontSize: 12, color: 'black', opacity: 0.5 }}>
-                { formatName(name) }
-            </p>
-        </Link>
-    )
-}
+import LmcProfileLink  from './LmcProfileLink.jsx';
 
 
 class LmcCarersCard extends Component {
@@ -52,14 +29,20 @@ class LmcCarersCard extends Component {
             <div>
                 <p>
                     <strong>
-                        { activeCarers.length } { activeCarers.length === 1 ? " member " : " members " }
+                        { activeCarers.length } { activeCarers.length === 1 ? ' member ' : ' members ' }
                     </strong>
-                    { activeCarers.length === 1 ?
-                        ACTIVE_TODAY_SINGULAR : 
-                        ACTIVE_TODAY_PLURAL }
+                    { activeCarers.length === 1
+                        ? ACTIVE_TODAY_SINGULAR
+                        : ACTIVE_TODAY_PLURAL }
                 </p>
                 <div className="lmc-flex-grid">
-                    { _.take(activeCarers, n_showing).map(ProfileRow) }
+                    { _.take(activeCarers, n_showing).map((row, index) =>
+                        <LmcProfileLink
+                            to={`${ Keystone.adminPath }/users/${ row.id }`}
+                            key={row.id}
+                            name={row.name}
+                            picture={row.picture}
+                        />) }
                     { hiddenCarers
                         ? <a className="lmc-more-link" onClick={this.showMore}>More...</a>
                         : null }
@@ -166,7 +149,6 @@ const ACTIVE_TODAY_PLURAL = 'of your care team have been active today';
 const ACTIVE_TODAY_SINGULAR = 'of your care team has been active today';
 const NO_CARERS = "Looks like you haven't added any carers yet!";
 const NO_ACTIVE_CARERS = `It doesn’t look like any ${ACTIVE_TODAY_PLURAL}`;
-const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
 
 
 export default LmcCarersCard;
