@@ -24,7 +24,7 @@ var HomeView = React.createClass({
 	// When everything is rendered, start loading the item counts of the lists
 	// from the API
 	componentDidMount () {
-		this.props.dispatch(loadCounts());
+		this.props.loadCounts();
 	},
 	getSpinner () {
 		if (this.props.counts && Object.keys(this.props.counts).length === 0
@@ -93,8 +93,14 @@ export {
 	HomeView,
 };
 
-export default connect((state) => ({
+const mapStateToProps = (state) => ({
 	counts: state.home.counts,
 	loading: state.home.loading,
 	error: state.home.error,
-}))(HomeView);
+});
+
+const mapDispatchToProps = dispatch => ({
+	loadCounts: () => dispatch(loadCounts()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

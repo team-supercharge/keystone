@@ -5,11 +5,17 @@ import _ from 'lodash';
 import LmcLogFilter from './LmcLogFilter.jsx';
 import LmcTimelineRow from './LmcTimelineRow.jsx';
 import LmcResidentSummary from './LmcResidentSummary.jsx';
+import LmcPdfExport from './LmcPdfExport.jsx';
 import { BlankState } from '../../../../elemental';
 
 
 const LogDay = (perDay, index) => {
 	const total = _.get(perDay, 'logs.length') || 0;
+	const Logs = _.chain(perDay.logs)
+		.sortBy(d => -moment(d.timeLogged).toDate())
+		.map(((log, index) => <LmcTimelineRow key={log.id} log={log} index={index} total={total} />))
+		.value();
+
 	return (
 		<ul style={styles.logsList} key={index}>
 			<li style={styles.logHeader}>
@@ -20,12 +26,7 @@ const LogDay = (perDay, index) => {
 				</h2>
 				<div className="lmc-theme-gradient" style={styles.divider}></div>
 			</li>
-			{
-				_.chain(perDay.logs)
-					.sortBy(d => -moment(d.timeLogged).toDate())
-					.map(((log, index) => <LmcTimelineRow log={log} index={index} total={total} />))
-					.value()
-			}
+			{ Logs }
 		</ul>
 	)
 }
@@ -73,7 +74,14 @@ class LmcResidentChart extends React.Component {
 					{ isEmpty
 						? <BlankState heading={`No logs found...`} style={{ marginTop: 40 }} />
 						: <div style={styles.chart}>
-							<LmcLogFilter data={_.get(data, 'results.logs')} onChange={this.onFilterChange} />
+							<div className="row" style={{ paddingBottom: 20 }}>
+								<div className="six columns">
+									<LmcLogFilter data={_.get(data, 'results.logs')} onChange={this.onFilterChange} />
+								</div>
+								<div className="six columns">
+									<LmcPdfExport logs={logsByDay} resident={resident} />
+								</div>
+							</div>
 							{logsByDay.map(LogDay)}
 						</div>
 					}

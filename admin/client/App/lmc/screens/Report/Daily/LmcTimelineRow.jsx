@@ -9,13 +9,14 @@ class LmcTimelineRow extends Component {
     render() {        
         const fallback = "https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png";
         const { index, total, log } = this.props;
-        const image = _.get(log, 'itemIcon.url') || _.get(log, 'categoryIcon.url') || fallback
+        const image = _.get(log, 'itemIcon.url') || _.get(log, 'categoryIcon.url') || fallback;
 
         let revision;
         let isRevised = log.revisions && (log.revisions.length > 0);
         if (isRevised) {
             revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
         }
+        // TODO: is this right? should we not use the revision data?
         
         const isFirstOrLast = (index !== (total - 1));
         const timelineStyle = isFirstOrLast

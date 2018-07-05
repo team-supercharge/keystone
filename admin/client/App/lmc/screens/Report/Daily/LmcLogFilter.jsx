@@ -12,6 +12,7 @@ import FormLabel from '../../../../elemental/FormLabel';
 import Form from '../../../../elemental/Form';
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
+import LmcPdfExport from './LmcPdfExport.jsx';
 
 
 class LmcLogFilter extends React.Component {
@@ -94,7 +95,7 @@ class LmcLogFilter extends React.Component {
     }
 
 	render() {
-        let { data } = this.props;
+        let { data, resident } = this.props;
         const { categoryValue, itemValue } = this.state;
         const items = this.groupLogs(data, 'item');
         const categories = this.groupLogs(data, 'category');
@@ -115,33 +116,30 @@ class LmcLogFilter extends React.Component {
         };
 
 		return (
-			<div className="row" style={styles.filterContainer}>
-				<div className="six columns">
-                    <DateRangePicker
-                        numberOfMonths={2}
-                        isOutsideRange={isDayBlocked}
-                        hideKeyboardShortcutsPanel={true}
-                        showClearDates={true}
-                        autoFocusEndDate={false}
-                        initialVisibleMonth={() => moment().subtract(1, 'months')}
-                        startDate={this.state.startDate}
-                        startDateId="start_date_id"
-                        endDate={this.state.endDate}
-                        endDateId="end_date_id"
-                        displayFormat="MMM D"
-                        onDatesChange={({ startDate, endDate }) => this.onDatesChange({ startDate, endDate })} // PropTypes.func.isRequired,
-                        focusedInput={focused}
-                        onFocusChange={focused => this.setState({ focused })}
-                        minimumNights={0}
-                    />
-				</div>
-			</div>
+			<DateRangePicker
+                numberOfMonths={2}
+                isOutsideRange={isDayBlocked}
+                hideKeyboardShortcutsPanel={true}
+                showClearDates={true}
+                autoFocusEndDate={false}
+                initialVisibleMonth={() => moment().subtract(1, 'months')}
+                startDate={this.state.startDate}
+                startDateId="start_date_id"
+                endDate={this.state.endDate}
+                endDateId="end_date_id"
+                displayFormat="MMM D"
+                onDatesChange={({ startDate, endDate }) => this.onDatesChange({ startDate, endDate })} // PropTypes.func.isRequired,
+                focusedInput={focused}
+                onFocusChange={focused => this.setState({ focused })}
+                minimumNights={0}
+            />
 		)
 	}
 }
 
 LmcLogFilter.propTypes = {
     data: PropTypes.array.isRequired,
+    resident: PropTypes.object.isRequired,
     onChange: PropTypes.func,
 };
 
