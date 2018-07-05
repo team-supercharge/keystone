@@ -328,7 +328,7 @@ Loads items in the list. This endpoint is very flexible and has several features
 
 * Find all items (default), or query items by a search string and/or field filters
 * Sort by any field in the list (defaults based on list options)
-* Pagination is supported through the skip and limit options (limit defaults to 100)
+* Pagination is supported through the skip and limit options (limit defaults to 5000) (WARNING: CA-16)
 * Return the count of all items found and/or an array of items (both are included by default)
 * When returning results, you can get data for all fields in the list, a subset of fields, or just the basic `{ id, name }` for each item
 * Relationship fields can optional be expanded into `{ id, name }` objects.

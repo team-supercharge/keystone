@@ -55,7 +55,7 @@ module.exports = function (req, res) {
 				return next(null, count, []);
 			}
 			query.find();
-			query.limit(Number(req.query.limit) || 100);
+			query.limit(Number(req.query.limit) || 10000); // CA-16: limit of 100 is causing problems for dropdowns
 			query.skip(Number(req.query.skip) || 0);
 			if (sort.string) {
 				query.sort(sort.string);
