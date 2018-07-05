@@ -12,7 +12,7 @@ const Incident = (data, index) => {
     // const picture = data.picture || PROFILE_PLACEHOLDER;
     const picture = _.get(data, 'itemIcon.url') || _.get(data, 'categoryIcon.url');
     const dotStyle = {
-        ... styles.dot,
+        ...styles.dot,
         backgroundColor: data.categoryColor,
     };
     return (
@@ -27,7 +27,7 @@ const Incident = (data, index) => {
             <p style={{ padding: '0 0 0 55px', color: 'black' }}>
                 <span style={{ opacity: 0.8, fontSize: 16 }}>{ data.title }</span> <br />
                 <span style={{ opacity: 0.6, fontSize: 12 }}>
-                { moment(data.timeLogged).format('HH:mm') } - { data.residentName }
+                    { moment(data.timeLogged).format('HH:mm') } - { data.residentName }
                 </span>
             </p>
         </Link>
@@ -53,17 +53,11 @@ class LmcIncidentsCard extends Component {
     }
 
     renderIncidents(incidents, residents) {
-        // only show newest 3
-        const toDisplay = _(incidents)
-            .sort((left, right) => {
-                return moment.utc(right.timeLogged).diff(moment.utc(left.timeLogged));
-            })
-            .take(3)
-            .value();
-
-        return (
-            incidents.map(Incident)
-        )
+        return _(incidents)
+            .sort((left, right) => moment.utc(right.timeLogged).diff(moment.utc(left.timeLogged)))
+            .take(3) // only show newest 3
+            .value()
+            .map(Incident);
     }
 
     renderFooter(incidents, categoryId) {
