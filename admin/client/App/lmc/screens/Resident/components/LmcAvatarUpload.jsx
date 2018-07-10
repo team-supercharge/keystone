@@ -166,7 +166,8 @@ class LmcAvatarUpload extends React.Component {
         return (
             <Modal.Dialog
 				isOpen={this.state.isModalOpen}
-				onClose={this.toggleModal}
+                onClose={this.toggleModal}
+                backdropClosesModal
 			>
 				<Modal.Header
 					text={ OPEN_MODAL_TEXT }

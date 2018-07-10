@@ -388,7 +388,11 @@ var EditForm = React.createClass({
 		return <LmcAvatarUpload onSave={onSave} />;
 	},
 	render () {
-		const isResidentPage = this.props.list && this.props.list.key === 'Resident';
+		const isResidentPage = this.props.list && (
+			this.props.list.key === 'Resident'
+			|| this.props.list.key === 'User'
+		);
+		console.log(Fields);
 		return (
 			<form ref="editForm" className="EditForm-container">
 				{(this.state.alerts) ? <AlertMessages alerts={this.state.alerts} /> : null}
