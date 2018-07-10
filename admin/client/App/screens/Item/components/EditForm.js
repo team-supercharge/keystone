@@ -234,7 +234,6 @@ var EditForm = React.createClass({
 		var headings = 0;
 
 		return this.props.list.uiElements.map((el, index) => {
-			// console.log(el);
 			// Don't render the name field if it is the header since it'll be rendered in BIG above
 			// the list. (see renderNameField method, this is the reverse check of the one it does)
 			if (
@@ -392,7 +391,7 @@ var EditForm = React.createClass({
 			this.props.list.key === 'Resident'
 			|| this.props.list.key === 'User'
 		);
-		console.log(Fields);
+
 		return (
 			<form ref="editForm" className="EditForm-container">
 				{(this.state.alerts) ? <AlertMessages alerts={this.state.alerts} /> : null}
