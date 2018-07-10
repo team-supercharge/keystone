@@ -13,16 +13,14 @@ const LogDay = (perDay, index) => {
 	const total = _.get(perDay, 'logs.length') || 0;
 	const Logs = _.chain(perDay.logs)
 		.sortBy(d => -moment(d.timeLogged).toDate())
-		.map(((log, index) => <LmcTimelineRow key={log.id} log={log} index={index} total={total} />))
+		.map((log, index) => <LmcTimelineRow key={log.id} log={log} index={index} total={total} />)
 		.value();
 
 	return (
 		<ul style={styles.logsList} key={index}>
 			<li style={styles.logHeader}>
-				<h2>
-					<strong>
-						{moment(perDay.date).format('ddd DD MMM')}
-					</strong>
+				<h2 style={styles.logDate}>
+					{moment(perDay.date).format('ddd DD MMM')}
 				</h2>
 				<div className="lmc-theme-gradient" style={styles.divider}></div>
 			</li>
@@ -34,23 +32,21 @@ const LogDay = (perDay, index) => {
 
 class LmcResidentChart extends React.Component {
 
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.state = {};
 		this.onFilterChange = this.onFilterChange.bind(this);
 	}
 
-	onFilterChange(logs) {
+	onFilterChange (logs) {
 		this.setState({ logs });
 	}
 
-	render() {
+	render () {
 		const { resident, data } = this.props;
 		let logsByDay;
 		let logs = _.chain(this.state.logs || _.get(data, 'results.logs'))
-			.sortBy(d => {
-				return moment(d.timeLogged).toDate();
-			}, 'desc')
+			.sortBy(d => moment(d.timeLogged).toDate(), 'desc')
 			.reverse()
 			.value();
 
@@ -59,7 +55,7 @@ class LmcResidentChart extends React.Component {
 		if (!isEmpty) {
 			// group by date
 			logsByDay = _(logs)
-				.groupBy(({ timeLogged }) => moment(timeLogged).format('YYYY-MM-DD')) 
+				.groupBy(({ timeLogged }) => moment(timeLogged).format('YYYY-MM-DD'))
 				.map((group, date) => {
 					return { date, logs: group };
 				})
@@ -70,17 +66,19 @@ class LmcResidentChart extends React.Component {
 		return (
 			<div style={styles.container}>
 				<div style={styles.logsContainer}>
-					<LmcResidentSummary data={resident} />
+					<div className="row">
+						<div className="nine columns">
+							<LmcResidentSummary data={resident} />
+						</div>
+						<div className="three columns">
+							{!isEmpty && <LmcPdfExport logs={logsByDay} resident={resident} />}
+						</div>
+					</div>
 					{ isEmpty
 						? <BlankState heading={`No logs found...`} style={{ marginTop: 40 }} />
 						: <div style={styles.chart}>
 							<div className="row" style={{ paddingBottom: 20 }}>
-								<div className="six columns">
-									<LmcLogFilter data={_.get(data, 'results.logs')} onChange={this.onFilterChange} />
-								</div>
-								<div className="six columns">
-									<LmcPdfExport logs={logsByDay} resident={resident} />
-								</div>
+								<LmcLogFilter data={_.get(data, 'results.logs')} onChange={this.onFilterChange} />
 							</div>
 							{logsByDay.map(LogDay)}
 						</div>
@@ -103,6 +101,10 @@ const styles = {
 		// height: '90vh',
 		// overflow: 'scroll',
 	},
+	logDate: {
+		marginBottom: '.30em',
+		fontWeight: 'bold',
+	},
 	logHeader: {
 		paddingBottom: 50,
 	},
@@ -110,18 +112,18 @@ const styles = {
 		paddingBottom: 20,
 	},
 	subTitlePadding: {
-		paddingLeft: "25px",
+		paddingLeft: 25,
 	},
 	paddedRight: {
-		paddingRight: "3px !important",
+		paddingRight: '3px !important',
 	},
 	subTitle: {
 		paddingLeft: 10,
-		color: "#848484",
+		color: '#848484',
 		fontSize: 16,
 	},
 	summary: {
-		color: "#444444",
+		color: '#444444',
 		paddingBottom: 20,
 	},
 	logRow: {
@@ -133,7 +135,7 @@ const styles = {
 	logItemImg: {
 		width: 40,
 		margin: '8px 20px 0 0',
-		float: 'left'
+		float: 'left',
 	},
 	logsList: {
 		paddingLeft: 0,
@@ -142,10 +144,7 @@ const styles = {
 	},
     container: {
 		minHeight: '60vh',
-        margin: '30px 60px 30px 0'
-	},
-	logsContainer: {
-		
+		margin: '30px 60px 30px 0',
 	},
 	smallText: {
 		color: '#7b7b7b',

@@ -19,6 +19,8 @@ import { Button, LoadingButton } from '../../../elemental';
 import AlertMessages from '../../../shared/AlertMessages';
 import ConfirmationDialog from './../../../shared/ConfirmationDialog';
 
+import LmcAvatarUpload from '../../../lmc/screens/Resident/components/LmcAvatarUpload.jsx';
+
 import FormHeading from './FormHeading';
 import AltText from './AltText';
 import FooterBar from './FooterBar';
@@ -127,13 +129,17 @@ var EditForm = React.createClass({
 		const { data, list } = this.props;
 		const editForm = this.refs.editForm;
 		const formData = new FormData(editForm);
+		if (this.state.profilePic) {
+			// formData.set('File-picture-1001', this.state.profilePic);
+			formData.append('picture', this.state.profilePic);
+		}
 
 		// Show loading indicator
 		this.setState({
 			loading: true,
 		});
 
-		list.updateItem(data.id, formData, (err, data) => {
+		list.updateItem(data.id, formData, (err, newData) => {
 			smoothScrollTop();
 			if (err) {
 				this.setState({
@@ -152,7 +158,7 @@ var EditForm = React.createClass({
 						},
 					},
 					lastValues: this.state.values,
-					values: data.fields,
+					values: newData.fields,
 					loading: false,
 				});
 			}
@@ -228,6 +234,7 @@ var EditForm = React.createClass({
 		var headings = 0;
 
 		return this.props.list.uiElements.map((el, index) => {
+			// console.log(el);
 			// Don't render the name field if it is the header since it'll be rendered in BIG above
 			// the list. (see renderNameField method, this is the reverse check of the one it does)
 			if (
@@ -370,7 +377,18 @@ var EditForm = React.createClass({
 			</div>
 		) : null;
 	},
+	renderResidentPage () {
+		const onSave = (blob) => {
+			this.setState({ profilePic: blob });
+			setTimeout(() => {
+				this.updateItem();
+			}, 1000);
+		};
+
+		return <LmcAvatarUpload onSave={onSave} />;
+	},
 	render () {
+		const isResidentPage = this.props.list && this.props.list.key === 'Resident';
 		return (
 			<form ref="editForm" className="EditForm-container">
 				{(this.state.alerts) ? <AlertMessages alerts={this.state.alerts} /> : null}
@@ -378,7 +396,8 @@ var EditForm = React.createClass({
 					<Grid.Col large="three-quarters">
 						<Form layout="horizontal" component="div">
 							{this.renderNameField()}
-							{this.renderKeyOrId()}
+							{/* {this.renderKeyOrId()} */}
+							{isResidentPage && this.renderResidentPage()}
 							{this.renderFormElements()}
 							{this.renderTrackingMeta()}
 						</Form>
