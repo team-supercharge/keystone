@@ -12,7 +12,7 @@ class SecondaryNav extends React.Component {
     };
 
     setCurrent(current) {
-        this.setState({ current })
+        this.setState({ current });
     };
 
     isActive(value) {
@@ -26,7 +26,12 @@ class SecondaryNav extends React.Component {
                     <ul className="app-nav app-nav--secondary app-nav--left">
                         <li className={ this.isActive('daily') }>
                             <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/daily`}>
-                                Daily Report
+                                Resident Charts
+                            </Link>
+                        </li>
+                        <li className={ this.isActive('overview') }>
+                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/overview`}>
+                                Overview
                             </Link>
                         </li>
                         {/* <li className={ this.isActive('item-dashboard') }>

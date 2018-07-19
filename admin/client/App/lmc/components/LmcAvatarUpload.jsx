@@ -5,7 +5,7 @@ import {
     GlyphButton,
     Modal,
     Button,
-} from '../../../../elemental';
+} from '../../elemental';
 
 
 class LmcAvatarUpload extends React.Component {

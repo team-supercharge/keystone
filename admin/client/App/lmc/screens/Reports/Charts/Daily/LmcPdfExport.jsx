@@ -4,7 +4,7 @@ import moment from 'moment';
 import _ from 'lodash';
 import {
     GlyphButton,
-} from '../../../../elemental';
+} from '../../../../../elemental';
 
 // https://github.com/bpampuch/pdfmake/issues/910
 import pdfMake from 'pdfmake/build/pdfmake';

@@ -112,7 +112,7 @@ var PrimaryNavigation = React.createClass({
 		};
 
 		const { currentSectionKey } = this.props;
-		const href = `${Keystone.adminPath}/reports/daily`;
+		const href = `${Keystone.adminPath}/reports/charts`;
 		const isActive = currentSectionKey && currentSectionKey === 'reports';
 		const className = isActive ? 'primary-navbar__item--active' : null;
 		// console.log(href);

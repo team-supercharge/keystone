@@ -22,9 +22,9 @@ import { setActiveFilters, loadItems } from './screens/List/actions';
 
 
 // Loading custom LMC view
-import LmcReportView from './lmc/screens/Report/index.jsx';
-import Daily from './lmc/screens/Report/Daily/index.jsx';
-import ItemDashboard from './lmc/screens/Report/ItemDashboard/ItemDashboard';
+import LmcReportView from './lmc/screens/Reports/index.jsx';
+import LmcCharts from './lmc/screens/Reports/Charts/index.jsx';
+import LmcChart from './lmc/screens/Reports/Charts/LmcChart.jsx';
 import LmcHome from './lmc/screens/Home/index.jsx';
 
 // Sync the browser history to the Redux store
@@ -45,7 +45,7 @@ function onListChange (prevState, { location }) {
 		}
 	});
 }
-console.log(Keystone.user.role)
+
 let HomePage = Keystone.user.role === 'carehome-admin'
 	? LmcHome
 	: DefaultHome;
@@ -56,8 +56,10 @@ ReactDOM.render(
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
 				<Route path="reports" component={LmcReportView} onChange={onListChange}>
-					<Route path="daily" component={Daily} />
-					<Route path="item-dashboard" component={ItemDashboard} />
+					<Route path="charts" component={LmcCharts}>
+						<Route path=":chart_type/:resident_id" component={LmcChart} />
+					</Route>
+					{/* <Route path="item-dashboard" component={ItemDashboard} /> */}
 				</Route>
 				<Route path=":listId" component={List} onChange={onListChange} />
 				<Route path=":listId/:itemId" component={Item} />

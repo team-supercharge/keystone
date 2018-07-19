@@ -9,12 +9,12 @@ import LmcResidentsCard from './components/LmcResidentsCard.jsx';
 import LmcTasksCard from './components/LmcTasksCard.jsx';
 import LmcTopTipsCard from './components/LmcTopTipsCard.jsx';
 import LmcAdvertCard from './components/LmcAdvertCard.jsx';
+import LmcSpinner from '../../components/LmcSpinner.jsx';
 
 import CreateForm from '../../../shared/CreateForm';
 import List from '../../../../utils/List';
 
 import { BlankState } from '../../../elemental';
-import LmcSpinner from '../../common/LmcSpinner.jsx';
 
 class Home extends React.Component {
 
@@ -189,11 +189,12 @@ const ERROR_MESSAGE = 'Oops... looks like something went wrong. Please get in to
 // Each consumer can just digest whatever data source it needs and apply the logic
 // Ie. the cards are all independent
 const usersUrl = `${Keystone.adminPath}/api/reports/users`;
-const tasksUrl = `${Keystone.adminPath}/api/daily/tasks`;
+const tasksUrl = `${Keystone.adminPath}/api/reports/daily_tasks`;
+const logsUrl = `${Keystone.adminPath}/api/reports/daily_logs`;
 const residentsUrl = `${Keystone.adminPath}/api/reports/residents`;
 
 export default connect((props) => ({
-    logsFetch: `${Keystone.adminPath}/api/daily/logs`,
+    logsFetch: logsUrl,
     tasksFetch: tasksUrl,
     refreshTasks: () => ({
         tasksFetch: {

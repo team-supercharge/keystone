@@ -6,7 +6,7 @@ import LmcLogFilter from './LmcLogFilter.jsx';
 import LmcTimelineRow from './LmcTimelineRow.jsx';
 import LmcResidentSummary from './LmcResidentSummary.jsx';
 import LmcPdfExport from './LmcPdfExport.jsx';
-import { BlankState } from '../../../../elemental';
+import { BlankState } from '../../../../../elemental';
 
 
 const LogDay = (perDay, index) => {
@@ -30,7 +30,7 @@ const LogDay = (perDay, index) => {
 }
 
 
-class LmcResidentChart extends React.Component {
+class LmcDaily extends React.Component {
 
 	constructor (props) {
 		super(props);
@@ -43,8 +43,8 @@ class LmcResidentChart extends React.Component {
 	}
 
 	render () {
-		const { resident, data } = this.props;
-		let logsByDay;
+        const { resident, dataFetch: { value: data }, params } = this.props;
+        let logsByDay;
 		let logs = _.chain(this.state.logs || _.get(data, 'results.logs'))
 			.sortBy(d => moment(d.timeLogged).toDate(), 'desc')
 			.reverse()
@@ -90,7 +90,7 @@ class LmcResidentChart extends React.Component {
 }
 
 
-LmcResidentChart.propTypes = {
+LmcDaily.propTypes = {
 
 };
 
@@ -168,4 +168,4 @@ const styles = {
 }
 
 
-export default LmcResidentChart;
+export default LmcDaily;
