@@ -6,9 +6,9 @@ import { Link } from 'react-router';
 
 
 class LmcTimelineRow extends Component {
-    render() {        
-        const fallback = "https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png";
-        const { index, total, log } = this.props;
+    render() {
+        const fallback = 'https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png';
+        const { index, total, log, dateFormat } = this.props;
         const image = _.get(log, 'itemIcon.url') || _.get(log, 'categoryIcon.url') || fallback;
 
         let revision;
@@ -38,7 +38,7 @@ class LmcTimelineRow extends Component {
 
                             <div style={styles.logContent}>
                                 <div style={styles.smallText} className="lmc-timeline-date">
-                                    { moment(log.timeLogged).format('HH:mm') } - {log.carerName || 'Carer name'}
+                                    { moment(log.timeLogged).format(dateFormat || 'HH:mm') } - {log.carerName || 'Carer name'}
                                     { log.witnessedBy
                                         ? <span>
                                             <span style={{ opacity: 0.7 }}>, witnessed by </span>{log.witnessedBy}
@@ -62,7 +62,7 @@ class LmcTimelineRow extends Component {
 }
 
 LmcTimelineRow.propTypes = {
-    index: PropTypes.number.isRequired, 
+    index: PropTypes.number.isRequired,
     total: PropTypes.number.isRequired,
     log: PropTypes.object.isRequired,
 };
@@ -78,13 +78,14 @@ const styles = {
     },
     smallText: {
 		color: '#7b7b7b',
-		fontSize: 11,
+        fontSize: 11,
+        opacity: 0.9,
 	},
 	titleText: {
 		fontWeight: 400,
-		fontSize: 20,
-		marginBottom: 3,
-		lineHeight: '18px',
+		fontSize: 16,
+		marginBottom: 2,
+		lineHeight: '16px',
 	},
 	descriptionText: {
 		fontSize: 12,
@@ -101,7 +102,7 @@ const styles = {
     logRow: {
         position: 'relative',
         paddingLeft: 40,
-        paddingBottom: 20,
+        paddingBottom: 15,
         margin: '0',
         borderLeft: '4px solid rgba(0,0,0,0)', /* this is super hacky... */
     },

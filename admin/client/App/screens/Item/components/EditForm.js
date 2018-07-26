@@ -19,7 +19,7 @@ import { Button, LoadingButton } from '../../../elemental';
 import AlertMessages from '../../../shared/AlertMessages';
 import ConfirmationDialog from './../../../shared/ConfirmationDialog';
 
-import LmcAvatarUpload from '../../../lmc/screens/Resident/components/LmcAvatarUpload.jsx';
+import LmcAvatarUpload from '../../../lmc/components/LmcAvatarUpload.jsx';
 
 import FormHeading from './FormHeading';
 import AltText from './AltText';

@@ -132,7 +132,7 @@ class LmcTour extends Component {
 const TOUR_START = 'Welcome! Would you like to start the guided tour?';
 const TOUR_HELLO = 'On the home page you\'ll see a snapshot of what has been happening over the last day and can perform some quick actions.';
 const TOUR_RESIDENTS = 'Up here you\'ll see your active residents. These are those that are currently in your home';
-const TOUR_ADD_RESIDENTS = 'The first step is to add your residents and assign them to your care team. This information then gets sent to the Carer App and allows carers to record care on the go.'
+const TOUR_ADD_RESIDENTS = 'The first step is to add your residents. This information then gets sent to the Carer App and allows carers to record care on the go.';
 const TOUR_CARERS = 'Down here you can see who from your care team has been online and logged care today.';
 const TOUR_CARERS_INVITE = 'You can also invite other members of your team to join you in Log my Care.';
 const TOUR_INCIDENTS = 'Next is your incidents list. This gets populated when your carers record an incident log on the Carer App and lets you know what you need to deal with.';

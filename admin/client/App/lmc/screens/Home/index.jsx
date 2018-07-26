@@ -9,12 +9,12 @@ import LmcResidentsCard from './components/LmcResidentsCard.jsx';
 import LmcTasksCard from './components/LmcTasksCard.jsx';
 import LmcTopTipsCard from './components/LmcTopTipsCard.jsx';
 import LmcAdvertCard from './components/LmcAdvertCard.jsx';
+import LmcSpinner from '../../components/LmcSpinner.jsx';
 
 import CreateForm from '../../../shared/CreateForm';
 import List from '../../../../utils/List';
 
 import { BlankState } from '../../../elemental';
-import LmcSpinner from '../../common/LmcSpinner.jsx';
 
 class Home extends React.Component {
 
@@ -96,7 +96,7 @@ class Home extends React.Component {
         const { categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch } = this.props;
         return (
             <div>
-                <div className="eight columns">
+                <div className="nine columns">
                     <div className="dashboard-container">
                         <div className="row">
                             <div className="twelve columns">
@@ -138,7 +138,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="four columns" id="intro-js-step-advert">
+                <div className="three columns" id="intro-js-step-advert">
                     <div className="row">
                         <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.results, 'Home_YouTubeURL')} />
                     </div>
@@ -189,11 +189,12 @@ const ERROR_MESSAGE = 'Oops... looks like something went wrong. Please get in to
 // Each consumer can just digest whatever data source it needs and apply the logic
 // Ie. the cards are all independent
 const usersUrl = `${Keystone.adminPath}/api/reports/users`;
-const tasksUrl = `${Keystone.adminPath}/api/daily/tasks`;
+const tasksUrl = `${Keystone.adminPath}/api/reports/daily_tasks`;
+const logsUrl = `${Keystone.adminPath}/api/reports/daily_logs`;
 const residentsUrl = `${Keystone.adminPath}/api/reports/residents`;
 
 export default connect((props) => ({
-    logsFetch: `${Keystone.adminPath}/api/daily/logs`,
+    logsFetch: logsUrl,
     tasksFetch: tasksUrl,
     refreshTasks: () => ({
         tasksFetch: {

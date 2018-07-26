@@ -7,9 +7,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import FormSelect from '../../../../elemental/FormSelect';
-import FormLabel from '../../../../elemental/FormLabel';
-import Form from '../../../../elemental/Form';
+import FormSelect from '../../elemental/FormSelect';
+import FormLabel from '../../elemental/FormLabel';
+import Form from '../../elemental/Form';
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import LmcPdfExport from './LmcPdfExport.jsx';
