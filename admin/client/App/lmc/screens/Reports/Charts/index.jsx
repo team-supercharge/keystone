@@ -2,9 +2,8 @@ import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-refetch';
 import LmcResidentList from '../../../components/LmcResidentList.jsx';
-import LoadingScreen from '../../../components/LmcLoadingScreen.jsx';
-import { BlankState, GlyphButton } from '../../../../elemental';
-import { Link } from 'react-router';
+import LmcLoadingScreen from '../../../components/LmcLoadingScreen.jsx';
+import { BlankState } from '../../../../elemental';
 
 class LmcCharts extends React.Component {
 
@@ -14,41 +13,24 @@ class LmcCharts extends React.Component {
         )
     }
 
-    renderToolbar({ resident_id }) {
-        return (
-            <div className="Toolbar">
-                <GlyphButton
-					component={Link}
-					glyph="chevron-left"
-					position="left"
-					style={{}}
-					to={`${Keystone.adminPath}/reports/charts/dashboard/${resident_id}`}
-					variant="link">
-					Dashboard
-				</GlyphButton>
-            </div>
-        )
-    }
-
     render () {
         const { residentsFetch, params, children } = this.props;
         const chart_type = params.chart_type || 'dashboard';
         return (
             residentsFetch.pending
-                ? <LoadingScreen />
+                ? <LmcLoadingScreen />
                 : !residentsFetch.fulfilled
                     ? <BlankState heading={'Opps.. Something went wrong'} style={styles.blankSlate} />
                     : _.get(residentsFetch, 'value.results.length') > 0
                         ? <div className="row" style={styles.container}>
-                            <div className="four columns lmc-box-shadow__right" style={styles.sidebar}>
+                            <div className="three columns lmc-box-shadow__right" style={styles.sidebar}>
                                 <LmcResidentList
                                     data={residentsFetch.value.results}
                                     resident_id={params.resident_id}
                                     link={resident_id => `${Keystone.adminPath}/reports/charts/${chart_type}/${resident_id}`}
                                 />
                             </div>
-                            <div className="eight columns" style={styles.childrenContainer}>
-                                {params.chart_type !== 'dashboard' && this.renderToolbar(params)}
+                            <div className="nine columns" style={styles.childrenContainer}>
                                 {this.renderChildren(residentsFetch, params, children)}
                             </div>
                         </div>
@@ -67,7 +49,7 @@ const styles = {
     },
     childrenContainer: {
         marginLeft: 0,
-        paddingLeft: '4%',
+        paddingLeft: '3%',
         minHeight: '90vh',
     },
     sidebar: {

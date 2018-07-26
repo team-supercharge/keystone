@@ -4,12 +4,12 @@ import moment from 'moment';
 import _ from 'lodash';
 import {
     GlyphButton,
-} from '../../../../../elemental';
+} from '../../elemental';
 
 // https://github.com/bpampuch/pdfmake/issues/910
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-
+import saveSvgAsPng from 'save-svg-as-png';
 
 // ... row.logs.map(log => {
 //     let revision;
@@ -43,9 +43,31 @@ class LmcPdfExport extends React.Component {
         this.exportPdf = this.exportPdf.bind(this);
     }
 
-    getDocDefinition(logs, resident) {
+    getDocDefinition({ logs, resident, dateFormat, title, groupBy }, image) {
+        // load LmC logo as well?
+        // pageByDate?
+        // pageByResident?
+
+        // let sortedLogs = _.sortBy(logs, d => moment(d.timeLogged), ['desc']);
+        // console.log(sortedLogs);
+        let pages;
+        let _logs = _.sortBy(logs, d => -moment(d.timeLogged));
+        if (groupBy === 'date') {
+
+            pages = _.chain(_logs)
+                .groupBy(({ timeLogged }) => moment(timeLogged).format('YYYY-MM-DD'))
+                .map((group, date) => ({ heading: date, logs: group }))
+                .sortBy(({ date }) => -moment(date).valueOf())
+                .value();
+
+        // } else if (groupBy === 'day') {
+        // } else if (groupBy === 'carer') {
+        } else {
+            pages = [{ logs: _.sortBy(_logs, d => -moment(d.timeLogged)) }];
+        }
+        console.log(groupBy);
         return {
-            content: logs.map((row, index) => {
+            content: pages.map((row, index) => {
                 /*
                 row: {
                     date: '2018-05-23',
@@ -62,18 +84,28 @@ class LmcPdfExport extends React.Component {
                     ]
                 }
                 */
-                // console.log('LmcLogo', require('./LmcLogo.js'))
+
+                const chartImage = image ? {
+                    width: 500,
+                    margin: [0, 10, 0, 40],
+                    alignment: 'center',
+                    image,
+                } : null;
+
+                const heading = row.heading
+                    ? {
+                        margin: [0, 0, 0, 0],
+                        text: row.heading,
+                        style: ['h2'],
+                    } : null;
+
                 return [
                     {
                         columns: [
                             [
+                                heading,
                                 {
-                                    margin: [0, 0, 0, 0],
-                                    text: moment(row.date).format('DD/MM/YYYY'),
-                                    style: ['h2'],
-                                },
-                                {
-                                    text: `${resident.name} - Daily Report`,
+                                    text: `${resident.name} - ${title}`,
                                     style: ['h1'],
                                     margin: [0, 0, 0, 30],
                                 },
@@ -84,10 +116,11 @@ class LmcPdfExport extends React.Component {
                                 margin: [0, 4, 0, 0],
                                 image: require('./LmcLogo.js').default, // TODO: fetch from S3 and convert to base64. If you find this you're welcome to punch me (Adam)!
                             },
-                        ]
+                        ],
                     },
+                    chartImage,
                     {
-                        style: 'tableExample',
+                        style: 'table',
                         table: {
                             layout: {
                                 defaultBorder: false,
@@ -127,7 +160,7 @@ class LmcPdfExport extends React.Component {
 
                                     return [
                                         {
-                                            text: moment(log.timeLogged).format('HH:mm'),
+                                            text: moment(log.timeLogged).format(dateFormat || 'HH:mm DD/MM/YY'),
                                             style: 'tableText',
                                         },
                                         {
@@ -154,7 +187,7 @@ class LmcPdfExport extends React.Component {
                         }
                     },
                     // insert page break at the and of each day (except last day)
-                    ((index + 1) !== logs.length) ? { pageBreak: 'after', text: '' } : null,   
+                    ((index + 1) !== pages.length) ? { pageBreak: 'after', text: '' } : null,
                 ]
             }),
             footer: (currentPage, pageCount) => { 
@@ -165,6 +198,9 @@ class LmcPdfExport extends React.Component {
                 };
             },
             styles: {
+                table: {
+
+                },
                 tableHeader: {
                     bold: true,
                     fontSize: 13,
@@ -204,21 +240,37 @@ class LmcPdfExport extends React.Component {
         }
     }
 
-    exportPdf(logs, resident) {
+    exportPdf() {
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
-        const docDefinition = this.getDocDefinition(logs, resident);
-        pdfMake.createPdf(docDefinition).open();
+
+        const SVGtoPNG = function (svg) {
+            return new Promise((resolve, reject) => {
+                saveSvgAsPng.svgAsPngUri(svg, { scale: 3 }, function (uri) {
+                    resolve(uri);
+                });
+            });
+        };
+
+        let chartElements = document.getElementsByClassName('highcharts-root');
+        if (chartElements.length) {
+            SVGtoPNG(chartElements[0]).then(image => {
+                const docDefinition = this.getDocDefinition(this.props, image);
+                pdfMake.createPdf(docDefinition).open();
+            });
+        } else {
+            const docDefinition = this.getDocDefinition(this.props);
+            pdfMake.createPdf(docDefinition).open();
+        }
         // pdfMake.createPdf(docDefinition).download('optionalName.pdf');
     };
 
 	render() {
-		const { logs, resident } = this.props;
 		return (
 			<div style={styles.container}>
                 <GlyphButton
                     color="default"
                     glyph="cloud-download"
-                    onClick={() => this.exportPdf(logs, resident)}
+                    onClick={() => this.exportPdf()}
                     position="left"
                     title={BUTTON_TEXT}
                 >

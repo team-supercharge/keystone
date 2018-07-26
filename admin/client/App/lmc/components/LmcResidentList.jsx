@@ -101,16 +101,16 @@ const styles = {
 	},
     resident: {
         margin: 10,
-        fontSize: 20
+        fontSize: 20,
     },
     residentImg: {
         width: 60,
-        height: 60
+        height: 60,
     },
     noMatch: {
         margin: 10,
         fontSize: 16,
-        color: 'rgba(0,0,0,0.6)'
+        color: 'rgba(0,0,0,0.6)',
     }
 }
 

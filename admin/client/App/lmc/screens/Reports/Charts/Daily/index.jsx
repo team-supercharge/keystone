@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import _ from 'lodash';
-import LmcLogFilter from './LmcLogFilter.jsx';
-import LmcTimelineRow from './LmcTimelineRow.jsx';
+import {
+	LmcLogFilter,
+	LmcPdfExport,
+	LmcTimelineRow,
+} from '../../../../components';
 import LmcResidentSummary from './LmcResidentSummary.jsx';
-import LmcPdfExport from './LmcPdfExport.jsx';
 import { BlankState } from '../../../../../elemental';
 
 
 const LogDay = (perDay, index) => {
 	const total = _.get(perDay, 'logs.length') || 0;
-	const Logs = _.chain(perDay.logs)
-		.sortBy(d => -moment(d.timeLogged).toDate())
-		.map((log, index) => <LmcTimelineRow key={log.id} log={log} index={index} total={total} />)
-		.value();
+	const Logs = _.sortBy(perDay.logs, d => -moment(d.timeLogged).toDate())
+		.map((log, index) => <LmcTimelineRow key={log.id} log={log} index={index} total={total} />);
 
 	return (
 		<ul style={styles.logsList} key={index}>
@@ -31,21 +31,9 @@ const LogDay = (perDay, index) => {
 
 
 class LmcDaily extends React.Component {
-
-	constructor (props) {
-		super(props);
-		this.state = {};
-		this.onFilterChange = this.onFilterChange.bind(this);
-	}
-
-	onFilterChange (logs) {
-		this.setState({ logs });
-	}
-
 	render () {
-        const { resident, dataFetch: { value: data }, params } = this.props;
         let logsByDay;
-		let logs = _.chain(this.state.logs || _.get(data, 'results.logs'))
+		let logs = _.chain(this.props.logs)
 			.sortBy(d => moment(d.timeLogged).toDate(), 'desc')
 			.reverse()
 			.value();
@@ -56,9 +44,7 @@ class LmcDaily extends React.Component {
 			// group by date
 			logsByDay = _(logs)
 				.groupBy(({ timeLogged }) => moment(timeLogged).format('YYYY-MM-DD'))
-				.map((group, date) => {
-					return { date, logs: group };
-				})
+				.map((group, date) => ({ date, logs: group }))
 				.sortBy(({ date }) => -moment(date).valueOf())
 				.value();
 		}
@@ -66,20 +52,9 @@ class LmcDaily extends React.Component {
 		return (
 			<div style={styles.container}>
 				<div style={styles.logsContainer}>
-					<div className="row">
-						<div className="nine columns">
-							<LmcResidentSummary data={resident} />
-						</div>
-						<div className="three columns">
-							{!isEmpty && <LmcPdfExport logs={logsByDay} resident={resident} />}
-						</div>
-					</div>
 					{ isEmpty
 						? <BlankState heading={`No logs found...`} style={{ marginTop: 40 }} />
 						: <div style={styles.chart}>
-							<div className="row" style={{ paddingBottom: 20 }}>
-								<LmcLogFilter data={_.get(data, 'results.logs')} onChange={this.onFilterChange} />
-							</div>
 							{logsByDay.map(LogDay)}
 						</div>
 					}

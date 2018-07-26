@@ -96,7 +96,7 @@ class Home extends React.Component {
         const { categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch } = this.props;
         return (
             <div>
-                <div className="eight columns">
+                <div className="nine columns">
                     <div className="dashboard-container">
                         <div className="row">
                             <div className="twelve columns">
@@ -138,7 +138,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="four columns" id="intro-js-step-advert">
+                <div className="three columns" id="intro-js-step-advert">
                     <div className="row">
                         <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.results, 'Home_YouTubeURL')} />
                     </div>
