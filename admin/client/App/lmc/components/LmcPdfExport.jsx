@@ -65,7 +65,7 @@ class LmcPdfExport extends React.Component {
         } else {
             pages = [{ logs: _.sortBy(_logs, d => -moment(d.timeLogged)) }];
         }
-        console.log(groupBy);
+
         return {
             content: pages.map((row, index) => {
                 /*
@@ -242,7 +242,7 @@ class LmcPdfExport extends React.Component {
 
     exportPdf() {
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
+        const { resident, title } = this.props;
         const SVGtoPNG = function (svg) {
             return new Promise((resolve, reject) => {
                 saveSvgAsPng.svgAsPngUri(svg, { scale: 3 }, function (uri) {
@@ -251,17 +251,18 @@ class LmcPdfExport extends React.Component {
             });
         };
 
+        const triggerDownload = (image) => {
+            const docDefinition = this.getDocDefinition(this.props, image);
+            // pdfMake.createPdf(docDefinition).open();
+            pdfMake.createPdf(docDefinition).download(`${resident.name} ${title}.pdf`);
+        };
+
         let chartElements = document.getElementsByClassName('highcharts-root');
         if (chartElements.length) {
-            SVGtoPNG(chartElements[0]).then(image => {
-                const docDefinition = this.getDocDefinition(this.props, image);
-                pdfMake.createPdf(docDefinition).open();
-            });
+            SVGtoPNG(chartElements[0]).then(triggerDownload);
         } else {
-            const docDefinition = this.getDocDefinition(this.props);
-            pdfMake.createPdf(docDefinition).open();
+            triggerDownload();
         }
-        // pdfMake.createPdf(docDefinition).download('optionalName.pdf');
     };
 
 	render() {
