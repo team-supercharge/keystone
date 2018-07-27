@@ -64,14 +64,14 @@ class LmcChart extends Component {
                 type="meal"
                 yMax={6}
                 yAxisLabel="Portions Consumed"
-                title="Food Portions vs. Time"
+                title="Food Chart"
                 {...chartProps} />);
         case 'fluids':
             const LmcFluid = withToolbar(LmcFluidsChart, { pdfExport: { title: 'Fluids Charts' } });
             return (<LmcFluid
                 type="fluids"
                 yAxisLabel="Fluids In / Out (ml)"
-                title="Fluids in and out vs. Time"
+                title="Fluids Chart"
                 {...chartProps} />);
         case 'must':
             const LmcMustChart = withToolbar(LmcLineChart, { pdfExport: { title: 'MUST Score' } });
@@ -79,25 +79,24 @@ class LmcChart extends Component {
                 type="must"
                 yMax={5}
                 yAxisLabel="MUST Score"
-                title="MUST Score vs. Time"
+                title="MUST Score Chart"
                 subTitle="Malnutrition Universal Screening Tool"
                 {...chartProps} />);
         case 'stool':
             const LmcStool = withToolbar(LmcStoolChart, { pdfExport: { title: 'MUST Score' } });
             return (<LmcStool
                 type="stool"
-                yMax={5}
-                yAxisLabel="MUST Score"
-                title="MUST Score vs. Time"
-                subTitle="Malnutrition Universal Screening Tool"
+                yAxisLabel="Stool Score"
+                title="Stool Chart"
+                subTitle=""
                 {...chartProps} />);
         case 'turns':
             const LmcTurns = withToolbar(LmcTurnsChart, { pdfExport: { title: 'Turns' } });
             return (<LmcTurns
                 type="turns"
-                yMax={5}
-                yAxisLabel="MUST Score"
-                title="MUST Score vs. Time"
+                filterPadding={1}
+                yAxisLabel="Turns"
+                title="Turns Chart"
                 subTitle="Malnutrition Universal Screening Tool"
                 {...chartProps} />);
         case 'temperature':
@@ -106,7 +105,7 @@ class LmcChart extends Component {
                 type="temperature"
                 yMin={30}
                 yAxisLabel="Temperature (C)"
-                title="Temperature vs. Time"
+                title="Temperature Chart"
                 {...chartProps} />);
         case 'mood':
             const LmcMoodChart = withToolbar(LmcLineChart, { pdfExport: { title: 'Mood' } });
@@ -114,7 +113,7 @@ class LmcChart extends Component {
                 type="mood"
                 yMax={5}
                 yAxisLabel="Mood"
-                title="Mood vs. Time"
+                title="Mood Chart"
                 subTitle="1 = Very Bad, 2 = Bad, 3 = Neutral, 4 = Good, 5 = Very Good"
                 {...chartProps} />);
         case 'weight':
@@ -122,7 +121,7 @@ class LmcChart extends Component {
             return (<LmcWeightChart
                 type="weight"
                 yAxisLabel="Weight (kg)"
-                title="Weigh vs. Time"
+                title="Weigh Chart"
                 {...chartProps} />);
         case 'blood_pressure':
             const LmcPressureChart = withToolbar(LmcLineChart, { pdfExport: { title: 'Blood Pressure Chart' } });
@@ -135,28 +134,28 @@ class LmcChart extends Component {
                 legendEnabled
                 series={series}
                 yAxisLabel="Blood Pressure (mm Hg)"
-                title="Blood Pressure vs. Time"
+                title="Blood Pressure Chart"
                 {...chartProps} />);
         case 'waterlow':
             const LmcWaterlowChart = withToolbar(LmcLineChart, { pdfExport: { title: 'Waterlow Score' } });
             return (<LmcWaterlowChart
                 type="waterlow"
                 yAxisLabel="Waterlow Score"
-                title="Waterlow Score vs. Time"
+                title="Waterlow Score Chart"
                 {...chartProps} />);
         case 'blood_oxygen':
             const LmcOxygenChart = withToolbar(LmcLineChart, { pdfExport: { title: 'Blood Oxygen Chart' } });
             return (<LmcOxygenChart
                 type="blood_oxygen"
-                yAxisLabel="Blood Oxygen Level (mmHg)"
-                title="Blood Oxygen (mmHg) vs. Time"
+                yAxisLabel="Blood Oxygen Saturation (mmHg)"
+                title="Blood Oxygen Chart"
                 {...chartProps} />);
         case 'heart_rate':
             const LmcHeartRateChart = withToolbar(LmcLineChart, { pdfExport: { title: 'Heart Rate Chart' } });
             return (<LmcHeartRateChart
                 type='heart_rate'
                 yAxisLabel="Heat Rate (bpm)"
-                title="Heart Rate (bpm) vs. Time"
+                title="Heart Rate Chart"
                 {...chartProps} />);
         default:
             const LmcBlankSlate = withToolbar(BlankState);

@@ -14,14 +14,13 @@ class LmcLineChart extends Component {
         // Use categoryColor
         const { title, subTitle, yMax, yMin, xAxisLabel, yAxisLabel, type, series, logs, legendEnabled } = this.props;
 
-
         const map_data = (data, key) => {
             return _(data)
                 .map(log => [
                     Date.parse(moment(log.timeLogged).toString()),
-                    _.get(log, `measurements.${key}.value`),
+                    parseFloat(_.get(log, `measurements.${key}.value`)),
                 ])
-                .filter(d => d[1] !== '')
+                .filter(d => _.isNumber(d[1])) // triggers error for non numeric values
                 .value();
         };
 
@@ -70,7 +69,7 @@ class LmcLineChart extends Component {
                 type: 'datetime',
                 // tickInterval: 3600 * 1000 * 24 * 7,
                 // maxTickInterval: moment.duration(1, 'day').asMilliseconds(),
-                minRange: 3600000 * 24 * 5,
+                // minRange: 3600000 * 24 * 1,
                 labels: {
                     format: '{value:%e %b}',
                 },

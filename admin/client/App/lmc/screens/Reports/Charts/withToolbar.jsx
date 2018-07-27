@@ -36,12 +36,12 @@ export default function withToolbar(WrappedComponent, config) {
         }
 
         render() {
-            const { params, dataFetch } = this.props;
+            const { params, dataFetch, filterPadding } = this.props;
             const { logs } = this.state;
             const isEmpty = !logs || !logs.length;
             const filterStyle = (_.get(config, 'dateFilter.left') === true)
                 ? { paddingBottom: 25 }
-                : { textAlign: 'center', paddingBottom: 25 };
+                : { textAlign: 'center', paddingBottom: filterPadding || 25 };
 
             return (
                 <div>

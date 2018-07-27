@@ -13,6 +13,7 @@ class LmcStoolChart extends Component {
             // title, subTitle, yMax, yMin, xAxisLabel, yAxisLabel, type, 
             logs,
         } = this.props;
+
         // const chartData = _.map(logs, log => [Date.parse(moment(log.timeLogged).toString()), log.measurements[type].value]);
         return (
             logs && logs.length
