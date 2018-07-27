@@ -183,7 +183,7 @@ class LmcChart extends Component {
 
 const styles = {
     blankSlate: {
-        marginTop: 40,
+        // marginTop: 40,
     }
 }
 

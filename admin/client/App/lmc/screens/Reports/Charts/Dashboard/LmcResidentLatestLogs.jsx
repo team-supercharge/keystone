@@ -9,9 +9,11 @@ import {
 import _ from 'lodash';
 import { connect } from 'react-refetch';
 import moment from 'moment';
-import LmcTimelineRow from '../../../../components/LmcTimelineRow.jsx';
+import {
+	LmcTimelineRow,
+	LmcLoadingScreen,
+} from '../../../../components';
 
-window.moment = moment;
 
 const LogDay = (perDay, index) => {
 	const total = _.get(perDay, 'logs.length') || 0;
@@ -33,13 +35,8 @@ const LogDay = (perDay, index) => {
 
 
 class LmcResidentLatestLogs extends Component {
-    renderEmpty() {
-        return (
-            <BlankState heading={`No logs found`} />
-        )
-    }
-
     renderLogs(logs, resident_id) {
+
         const LogsByDay = _.chain(logs)
             .groupBy(({ timeLogged }) => moment(timeLogged).format('YYYY-MM-DD'))
             .map((group, date) => ({ date, logs: group }))
@@ -48,8 +45,8 @@ class LmcResidentLatestLogs extends Component {
             .map(LogDay);
 
         return (
-            <div style={{ paddingTop: 16, paddingRight: 30, borderRight: '1px solid #e0e0e0' }}>
-                <Link to={`${Keystone.adminPath}/reports/charts/daily/${resident_id}`} style={{ float: 'right', paddingTop: 12 }}>
+            <div style={styles.logContainer}>
+                <Link to={`${Keystone.adminPath}/reports/charts/daily/${resident_id}`} style={styles.viewAllButton}>
                     <Button color="default">
                         <span style={{ opacity: 0.6 }}>
                             View All Logs
@@ -61,23 +58,16 @@ class LmcResidentLatestLogs extends Component {
         )
     }
 
-    renderLoading() {
-        return (
-            <BlankState heading={`Loading...`} />
-        )
-    }
-
     render() {
         const { logsFetch, resident_id } = this.props;
-        console.log(logsFetch);
         const isReady = logsFetch.fulfilled && _.get(logsFetch, 'value.results.length');
         return (
-            <div>
+            <div style={styles.container}>
                 { logsFetch.pending
-                    ? this.renderLoading()
+                    ? <LmcLoadingScreen />
                     : isReady
                         ? this.renderLogs(logsFetch.value.results, resident_id)
-                        : this.renderEmpty()
+                        : <BlankState heading={`No logs found`} />
                 }
             </div>
         );
@@ -85,6 +75,18 @@ class LmcResidentLatestLogs extends Component {
 }
 
 const styles = {
+	container: {
+		minHeight: '60vh',
+		margin: '30px 0',
+	},
+	logContainer: {
+		paddingRight: 30,
+		borderRight: '1px solid #e0e0e0',
+	},
+	viewAllButton: {
+		float: 'right',
+		paddingTop: 0,
+	},
     logDate: {
 		marginBottom: '.30em',
 	},
@@ -125,10 +127,7 @@ const styles = {
 		paddingBottom: 0,
 		listStyleType: 'none',
 	},
-    container: {
-		minHeight: '60vh',
-		margin: '30px 60px 30px 0',
-	},
+    
 	smallText: {
 		color: '#7b7b7b',
 		fontSize: 11,

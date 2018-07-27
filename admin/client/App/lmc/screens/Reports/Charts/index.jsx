@@ -49,6 +49,7 @@ const styles = {
     },
     childrenContainer: {
         marginLeft: 0,
+        paddingTop: 0,
         paddingLeft: '3%',
         minHeight: '90vh',
     },

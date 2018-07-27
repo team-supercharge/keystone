@@ -34,11 +34,11 @@ const KeyFigureLink = (resident_id, data, { label, key }) => {
 const KeyFigureEmptyLink = (resident_id, { label, key }) => {
     return (
         <div>
-            <Link to={`${Keystone.adminPath}/reports/charts/${key}/${resident_id}`}>
-                <h4>
-                    {label}
-                </h4>
-            </Link>
+            {/* <Link to={`${Keystone.adminPath}/reports/charts/${key}/${resident_id}`}> */}
+            <h4>
+                {label}
+            </h4>
+            {/* </Link> */}
         </div>
     )
 }

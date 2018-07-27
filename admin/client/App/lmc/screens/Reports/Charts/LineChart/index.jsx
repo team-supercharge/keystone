@@ -16,10 +16,13 @@ class LmcLineChart extends Component {
 
 
         const map_data = (data, key) => {
-            return data.map(log => [
+            return _(data)
+                .map(log => [
                     Date.parse(moment(log.timeLogged).toString()),
                     _.get(log, `measurements.${key}.value`),
-            ]);
+                ])
+                .filter(d => d[1] !== '')
+                .value();
         };
 
         const colors = [
