@@ -33,6 +33,7 @@ class LmcFoodChart extends Component {
                         .filter(_.isNumber) // triggers error for non numeric values
                         .sum()
                         .value();
+
                     return [Date.parse(moment(date).toString()), total]; // { x: date, y: total };
                 })
                 .value();
@@ -120,7 +121,7 @@ class LmcFoodChart extends Component {
             },
             series: chartSeries,
         };
-        console.log(chartSeries);
+
         return (
             logs && logs.length
                 ? <div>
