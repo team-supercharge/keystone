@@ -88,7 +88,7 @@
     "react-google-charts": "^1.5.5",
     "react-highcharts": "16.0.2",
     "react-images": "0.5.2",
-    "react-intercom": "adamhurst/react-intercom#1.0.14",
+    "react-intercom": "adamhurst/react-intercom",
     "react-markdown": "2.4.4",
     "react-redux": "5.0.2",
     "react-refetch": "^1.0.4",

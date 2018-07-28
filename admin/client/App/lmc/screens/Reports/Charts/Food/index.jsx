@@ -39,34 +39,37 @@ class LmcFoodChart extends Component {
                 .value();
         };
 
-        const breakfast_logs = _.filter(logs, log => log.title.match(/breakfast/i) || log.description.match(/breakfast/i));
-        const lunch_logs = _.filter(logs, log => log.title.match(/lunch/i) || log.description.match(/lunch/i));
-        const dinner_logs = _.filter(logs, log => log.title.match(/dinner/i) || log.description.match(/dinner/i));
-
+        let allLogs = [];
         let chartSeries = [];
-        if (breakfast_logs && breakfast_logs.length) {
-            chartSeries.push({
-                name: 'Breakfast',
-                color: breakfast_logs[0].categoryColor || colors[0],
-                data: getSeriesData(breakfast_logs, 'meal'),
-            });
-        };
+        let groups = [
+            { name: 'Breakfast' },
+            { name: 'Lunch', color: colors[0] },
+            { name: 'Dinner', color: colors[1] },
+        ];
 
-        if (lunch_logs && lunch_logs.length) {
-            chartSeries.push({
-                name: 'Lunch',
-                color: colors[0],
-                data: getSeriesData(lunch_logs, 'meal'),
-            });
-        };
+        groups.forEach(({ name, color }) => {
+            let pattern = new RegExp(name, 'i');
+            const logGroup = _.chain(logs)
+                .filter(log => log.title.match(pattern))
+                .cloneDeep()
+                .map(log => {
+                    // so that the item colors in the log list match the chart
+                    if (color) log.categoryColor = color;
+                    return log;
+                })
+                .value();
 
-        if (dinner_logs && dinner_logs.length) {
-            chartSeries.push({
-                name: 'Dinner',
-                color: colors[1],
-                data: getSeriesData(dinner_logs, 'meal'),
-            });
-        };
+            allLogs = [...allLogs, ...logGroup];
+
+            if (logGroup && logGroup.length) {
+                chartSeries.push({
+                    name,
+                    color: color || logGroup[0].categoryColor,
+                    data: getSeriesData(logGroup, 'meal'),
+                });
+            };
+        });
+
 
         const config = {
             chart: {
@@ -126,7 +129,7 @@ class LmcFoodChart extends Component {
             logs && logs.length
                 ? <div>
                     <ReactHighcharts config={config} />
-                    <LmcChartLogList logs={logs} />
+                    <LmcChartLogList logs={allLogs} />
                 </div>
                 : <BlankState heading={`No logs to display`} style={{ marginTop: 40 }} />
         );
