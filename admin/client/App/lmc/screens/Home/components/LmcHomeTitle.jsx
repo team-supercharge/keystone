@@ -6,39 +6,86 @@ import xhr from 'xhr';
 
 
 class LmcHomeTitle extends React.Component {
+    constructor(props) {
+        super(props);
+        this.renderHello = this.renderHello.bind(this);
+    }
     componentDidMount() {
         if (!Keystone.user.firstLogin) {
             Keystone.user.firstLogin = moment(); // avoid it being triggered every time you log in.
             xhr({
                 url: `${Keystone.adminPath}/api/reports/user/firstlogin`,
                 method: 'POST',
-                headers: Object.assign({}, Keystone.csrf.header)
+                headers: Object.assign({}, Keystone.csrf.header),
             }, (err, resp) => {
                 console.log(err, resp);
             });
         }
     }
+
+    renderBirthdays(residents) {
+        if (residents.length === 1) {
+            const age = moment().diff(residents[0].dateOfBirth, 'years');
+            return (
+                <span>
+                    don't forget to say happy birthday to <strong>{residents[0].name}</strong>! He's turning {age}!
+                </span>
+            )
+        } else {
+            const names = residents.reduce((prev, next, index) => {
+                if (index === (residents.length - 1)) {
+                    return `${prev} and ${next.name}`;
+                } else if (prev !== '') {
+                    return `${prev}, ${next.name}`;
+                } else {
+                    return next.name;
+                }
+            }, '');
+
+            return (
+                <span>
+                    don't forget to say happy birthday to {names}!
+                </span>
+            )
+        }
+    }
+
+    renderHello() {
+        const homeName = _.get(this.props.home, '0.name');
+        return (
+           <span>
+                welcome to the Care Office
+                { homeName
+                        ? <span> for <span style={styles.bold}>{ homeName }</span></span>
+                        : null }!
+           </span>
+        )
+    }
     render () {
-        const { home, residents } = this.props;
+        const { residents } = this.props;
+
+        const birthdayBoysNGirls = _.sortBy(residents.filter(res => {
+            return res.dateOfBirth && (moment(res.dateOfBirth).format('MM/DD') === moment().format('MM/DD'));
+        }), 'name');
 
         const isNewHome = !Keystone.user.firstLogin
             || moment().diff(Keystone.user.firstLogin, 'days') < DAYS_UNTIL_TOUR_HIDDEN
             || (!residents || !residents.length);
+
         const user_name = Keystone.user.name && Keystone.user.name.split(' ').length > 1
             ? Keystone.user.name.split(' ')[0]
             : Keystone.user.name;
 
-        const homeName = _.get(home, '0.name');
-
         return (
             <div style={styles.container}>
                 <h2 style={styles.title}>
-                    Hey 
-                    <span style={styles.bold}> { user_name }</span>
-                    , welcome to the Care Office
-                    { homeName
-                            ? <span> for <span style={styles.bold}>{ homeName }</span></span>
-                            : null }!
+                    <span style={styles.bold}>
+                        Hey { user_name }
+                    </span>, {
+                        birthdayBoysNGirls.length
+                            ? this.renderBirthdays(birthdayBoysNGirls)
+                            : this.renderHello()
+                    }
                 </h2>
                 { isNewHome
                     ? <p>

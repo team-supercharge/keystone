@@ -5,6 +5,7 @@ import _ from 'lodash';
 import LmcHomeTitle from './components/LmcHomeTitle.jsx';
 import LmcCarersCard from './components/LmcCarersCard.jsx';
 import LmcIncidentsCard from './components/LmcIncidentsCard.jsx';
+import LmcBirthdaysCard from './components/LmcBirthdaysCard.jsx';
 import LmcResidentsCard from './components/LmcResidentsCard.jsx';
 import LmcTasksCard from './components/LmcTasksCard.jsx';
 import LmcTopTipsCard from './components/LmcTopTipsCard.jsx';
@@ -133,6 +134,11 @@ class Home extends React.Component {
                                         logs={logsFetch.value.results}
                                         tasks={tasksFetch.value.results}
                                         onCreate={this.onOpenCreateModal} />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="six columns" id="intro-js-step-residents">
+                                    <LmcBirthdaysCard residents={residentsFetch.value.results} />
                                 </div>
                             </div>
                         </div>

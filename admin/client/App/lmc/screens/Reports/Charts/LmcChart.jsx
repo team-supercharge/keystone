@@ -5,7 +5,6 @@ import { connect } from 'react-refetch';
 import _ from 'lodash';
 import { BlankState, GlyphButton } from '../../../../elemental';
 import LmcChartsDashboard from './Dashboard/index.jsx';
-import LmcDaily from './Daily/index.jsx';
 import LmcBarChart from './BarChart/index.jsx';
 import LmcFoodChart from './Food/index.jsx';
 import LmcFluidsChart from './Fluids/index.jsx';
@@ -13,7 +12,10 @@ import LmcTurnsChart from './Turns/index.jsx';
 import LmcStoolChart from './Stool/index.jsx';
 import LmcColumnChart from './ColumnChart/index.jsx';
 import LmcLineChart from './LineChart/index.jsx';
-import LmcLoadingScreen from '../../../components/LmcLoadingScreen.jsx';
+import {
+    LmcLoadingScreen,
+    LmcLogTimeline,
+} from '../../../components';
 import withToolbar from './withToolbar.jsx';
 
 
@@ -46,7 +48,7 @@ class LmcChart extends Component {
         case 'dashboard':
             return <LmcChartsDashboard {...chartProps} />;
         case 'daily':
-            const LmcDailyChart = withToolbar(LmcDaily, {
+            const LmcDailyChart = withToolbar(LmcLogTimeline, {
                 dateFilter: {
                     left: true,
                 },
@@ -166,7 +168,7 @@ class LmcChart extends Component {
     render() {
         const { dataFetch, params } = this.props;
         return (
-            <div>
+            <div style={{ width: '100%', paddingRight: 25 }}>
                 { dataFetch.pending
                     ? <LmcLoadingScreen />
                     : dataFetch.fulfilled

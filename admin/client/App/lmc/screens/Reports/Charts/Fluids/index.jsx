@@ -37,7 +37,6 @@ class LmcFluidsChart extends Component {
                 .value();
         };
 
-        
         const fluds_in_logs = _.filter(logs, log => _.get(log, 'measurements.fluids_in.value'));
         const fluds_out_logs = _.filter(logs, log => _.get(log, 'measurements.fluids_out.value'));
 
@@ -114,7 +113,7 @@ class LmcFluidsChart extends Component {
         return (
             logs && logs.length
                 ? <div>
-                    <ReactHighcharts config={config} />
+                    {chartSeries.length ? <ReactHighcharts config={config} /> : null}
                     <LmcChartLogList logs={logs} />
                 </div>
                 : <BlankState heading={`No logs to display`} style={{ marginTop: 40 }} />

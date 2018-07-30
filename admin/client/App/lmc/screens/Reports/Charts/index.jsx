@@ -22,16 +22,25 @@ class LmcCharts extends React.Component {
                 : !residentsFetch.fulfilled
                     ? <BlankState heading={'Opps.. Something went wrong'} style={styles.blankSlate} />
                     : _.get(residentsFetch, 'value.results.length') > 0
-                        ? <div className="row" style={styles.container}>
-                            <div className="three columns lmc-box-shadow__right" style={styles.sidebar}>
-                                <LmcResidentList
-                                    data={residentsFetch.value.results}
-                                    resident_id={params.resident_id}
-                                    link={resident_id => `${Keystone.adminPath}/reports/charts/${chart_type}/${resident_id}`}
-                                />
+                        ? <div className="row" style={styles.mainContainer}>
+                            <div className="three columns lmc-box-shadow__right">
+                                <div style={styles.container}>
+                                    <div style={styles.childrenContainer}>
+                                        <LmcResidentList
+                                                data={residentsFetch.value.results}
+                                                resident_id={params.resident_id}
+                                                link={resident_id => `${Keystone.adminPath}/reports/charts/${chart_type}/${resident_id}`}
+                                            />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="nine columns" style={styles.childrenContainer}>
-                                {this.renderChildren(residentsFetch, params, children)}
+                            <div className="nine columns" style={{ marginLeft: 10, width: '78% !important' }}>
+                                <div style={styles.container}>
+                                    <div style={{ borderRight: '1px solid #e1e1e1', ...styles.childrenContainer }}>
+                                        {this.renderChildren(residentsFetch, params, children)}
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         : <BlankState heading={'You haven\'t added any residents yet'} style={styles.blankSlate} />
@@ -44,14 +53,22 @@ LmcCharts.propTypes = {
 };
 
 const styles = {
+    mainContainer: {
+        height: '100%',
+    },
     container: {
         display: 'flex',
+        flexDirection: 'column',
+        height: '85vh',
     },
     childrenContainer: {
         marginLeft: 0,
         paddingTop: 0,
-        paddingLeft: '3%',
-        minHeight: '90vh',
+        paddingLeft: 15,
+        width: '100%',
+        display: 'flex',
+        overflowY: 'auto',
+        minHeight: 0,
     },
     sidebar: {
         maxWidth: 300,

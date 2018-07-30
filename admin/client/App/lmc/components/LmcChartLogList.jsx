@@ -16,7 +16,7 @@ class LmcChartLogList extends Component {
                 <ul style={styles.logsList}>
                     {logs.map((log, i) => (
                         <LmcTimelineRow
-                            dateFormat="ddd DD MMM HH:MM"
+                            dateFormat="ddd DD MMM HH:mm"
                             date={d => ''}
                             key={log.id}
                             log={log}

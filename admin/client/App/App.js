@@ -48,11 +48,11 @@ const App = (props) => {
 		if (!currentList) {
 			children = (
 				<Container>
-					<p>List not found!</p>
+					<p>Page not found!</p>
 					<Link to={`${Keystone.adminPath}`}>
 						Go back home
 					</Link>
-					<Intercom appID={INTERCOM_APP_ID} { ...intercomUser } />
+					{/* <Intercom appID={INTERCOM_APP_ID} { ...intercomUser } /> */}
 				</Container>
 			);
 		} else {
@@ -94,7 +94,7 @@ const App = (props) => {
 				{children}
 			</main>
 			<Footer />
-			<Intercom appID={INTERCOM_APP_ID} { ...intercomUser } />
+			<Intercom appID={INTERCOM_APP_ID} {...intercomUser} />
 		</div>
 	);
 };

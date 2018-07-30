@@ -7,7 +7,7 @@ import {
 	ResponsiveText,
 } from '../../../../elemental';
 import { Link } from 'react-router';
-import LmcProfileLink  from './LmcProfileLink.jsx';
+import LmcProfileLink  from '../../../components/LmcProfileLink.jsx';
 
 
 class LmcResidentsCard extends Component {

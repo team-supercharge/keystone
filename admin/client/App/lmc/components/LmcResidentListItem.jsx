@@ -6,35 +6,62 @@ const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-publ
 
 class LmcResidentListItem extends Component {
 	render() {
-		const { data, isActive } = this.props;
+		const { data, isActive, compact } = this.props;
 		const activeStyle = isActive ? styles.active : null;
 		const profile_pic = data.picture || PLACEHOLDER_IMAGE;
+		const textStyle = compact ? styles.linkTextCompact : styles.linkText;
 		return (
 			<li className="lmc-resident-list-item"
 				key={data.id}
 				style={{ ...styles.resident, ...activeStyle }}>
 				<Link to={this.props.link(data.id)} style={styles.link}>
 					<div style={styles.residentName}>
-						<span className="lmc-profile-picture__small" style={{ float: 'left', background: `url(${profile_pic})` }} />
-						<span style={styles.linkText}>
-							{ data.name }
+						<span className={compact ? 'lmc-profile-picture__small' : 'lmc-profile-picture'} style={{ float: 'left', background: `url(${profile_pic})` }} />
+						<span style={textStyle}>
+							{ data.subheading
+								? <span>
+									<span style={styles.subheading}>
+										{ data.subheading } <br/>
+									</span>
+									<span style={styles.mainText}>
+										{ data.name }
+									</span>
+								</span>
+								: data.name }
 						</span>
 					</div>
 				</Link>
 			</li>
-		)
+		);
 	}
 }
 
 LmcResidentListItem.propTypes = {
-
+	data: PropTypes.object.isRequired,
 };
 
 const styles = {
+	subheading: {
+		opacity: 0.7,
+		fontSize: 10,
+		top: -2,
+		position: 'relative',
+	},
+	mainText: {
+		paddingLeft: 10,
+		top: -6,
+		position: 'relative',
+	},
 	link: {
 		width: '100%',
 	},
 	linkText: {
+		// top: 14,
+		position: 'relative',
+		color: '#666',
+		paddingLeft: 10,
+	},
+	linkTextCompact: {
 		top: 8,
 		position: 'relative',
 		color: '#666',
@@ -47,11 +74,6 @@ const styles = {
 	residentName: {
 		// margin: 'auto 0 auto 8px',
 	},
-	residentImg: {
-		width: 30,
-		borderRadius: 40,
-		margin: 4,
-	},
 	imageContainer: {
 		// width: 50,
 		height: '100%',
@@ -60,7 +82,7 @@ const styles = {
 		fontWeight: 600,
 		background: '#f1f1f1',
 		fontSize: 14,
-	}
-}
+	},
+};
 
 export default LmcResidentListItem;
