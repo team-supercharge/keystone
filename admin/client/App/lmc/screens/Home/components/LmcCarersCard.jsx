@@ -7,7 +7,7 @@ import {
 } from '../../../../elemental';
 import { Link } from 'react-router';
 import _ from 'lodash';
-import LmcProfileLink  from './LmcProfileLink.jsx';
+import LmcProfileLink from '../../../components/LmcProfileLink.jsx';
 
 
 class LmcCarersCard extends Component {

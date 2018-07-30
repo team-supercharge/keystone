@@ -40,6 +40,7 @@ class LmcResidentList extends PureComponent {
 				{ data.map(row => (
 					<LmcResidentListItem
 						key={row.id}
+						compact
 						data={row}
 						link={this.props.link}
 						isActive={resident_id && (row.id === resident_id)} />))
@@ -66,11 +67,9 @@ class LmcResidentList extends PureComponent {
 	render() {
 		let { data } = this.props;
 		return (
-			<div className="">
-				<div style={styles.container}>
-					{ data && data.length > 5 ? this.renderFilterInput() : null }
-					{ this.renderResidents() }
-				</div>
+			<div style={styles.container}>
+				{ data && data.length > 5 ? this.renderFilterInput() : null }
+				{ this.renderResidents() }
 			</div>
 		);
 	}
@@ -91,7 +90,7 @@ const styles = {
 		fontSize: 18,
 	},
     container: {
-		minHeight: '90vh',
+		width: '100%',
 		margin: '27px 10px 0 25px',
 	},
 	list: {
