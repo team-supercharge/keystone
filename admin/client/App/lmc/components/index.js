@@ -7,7 +7,7 @@ import LmcResidentList from './LmcResidentList.jsx';
 import LmcResidentListItem from './LmcResidentListItem.jsx';
 import LmcResidentLogs from './LmcResidentLogs.jsx';
 import LmcSpinner from './LmcSpinner.jsx';
-import LmcTimeline from './LmcTimeline.jsx';
+import LmcLogTimeline from './LmcLogTimeline.jsx';
 import LmcTimelineRow from './LmcTimelineRow.jsx';
 
 module.exports = {
@@ -20,6 +20,6 @@ module.exports = {
     LmcResidentListItem,
     LmcResidentLogs,
     LmcSpinner,
-    LmcTimeline,
+    LmcLogTimeline,
     LmcTimelineRow,
 };

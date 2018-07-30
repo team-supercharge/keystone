@@ -4,12 +4,11 @@ import _ from 'lodash';
 import moment from 'moment';
 import LmcResidentLatestLogs from './LmcResidentLatestLogs.jsx';
 
-const KeyFigureLink = (resident_id, data, { label, key }) => {
-    const d = _.get(data, `results.${key}`);
-    const image = _.get(d, 'log.itemIcon.url') || _.get(d, 'log.categoryIcon.url') || fallback;
+const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
+    const image = _.get(data, 'log.itemIcon.url') || _.get(data, 'log.categoryIcon.url') || fallback;
     const dotStyle = {
         ... styles.dot,
-        backgroundColor:  _.get(d, 'log.categoryColor') || '#f9f9f9',
+        backgroundColor:  _.get(data, 'log.categoryColor') || '#f9f9f9',
     }
 
     return (
@@ -20,54 +19,43 @@ const KeyFigureLink = (resident_id, data, { label, key }) => {
                         <div className="lmc-dot-icon" style={{ background: `url(${image})`, ...styles.iconStyle }} />
                     </div>
                     <h4 style={styles.measurement}>
-                        {d.label || label}: {d.value}
+                        {data.label || label}: { render
+                            ? render(data)
+                            : data.value }{unit}
                     </h4>
                     <p style={styles.timestamp}>
-                        Last Recorded: { moment(d.log.timeLogged).format('HH:mm DD/MM/YY') }
+                        Last Recorded: { moment(data.log.timeLogged).format('HH:mm DD/MM/YY') }
                     </p>
                 </div>
             </Link>
         </div>
     )
-}
+};
 
-const KeyFigureEmptyLink = (resident_id, { label, key }) => {
-    return (
-        <div>
-            {/* <Link to={`${Keystone.adminPath}/reports/charts/${key}/${resident_id}`}> */}
-            <h4>
-                {label}
-            </h4>
-            {/* </Link> */}
-        </div>
-    )
-}
-
-const fallback = 'https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png';
 
 class LmcChartsDashboard extends React.Component {
 
-    renderMeasurements(measurements_with_data, params, data) {
+    renderMeasurements(measurements_with_data, resident_id) {
         return (
             <div>
                 <h2 className="lmc-card-title">
                     Charts
                 </h2>
                 <div style={styles.sectionContainer}>
-                    { measurements_with_data.map(measurement => KeyFigureLink(params.resident_id, data, measurement)) }
+                    { measurements_with_data.map(measurement => KeyFigureLink(measurement, resident_id)) }
                 </div>
             </div>
         )
     }
 
-    renderNoMeasurements(measurements_no_data, params) {
+    renderNoMeasurements(measurements_no_data) {
         return (
             <div>
                 <h2 className="lmc-card-title">
                     No Data
                 </h2>
                 <div style={styles.sectionContainer}>
-                    { measurements_no_data.map(measurement => KeyFigureEmptyLink(params.resident_id, measurement)) }
+                    { measurements_no_data.map(({ label }) => (<h4 key={label}>{label}</h4>)) }
                 </div>
             </div>
         )
@@ -75,103 +63,58 @@ class LmcChartsDashboard extends React.Component {
 
     render () {
         const { params, dataFetch: { value: data } } = this.props;
-        // const measurements = [
-        //     { label: 'Blood Oxygen (mmHg)', key: 'blood_oxygen' },
-        //     { label: 'MUST', key: 'must' },
-        //     { label: 'Food', key: 'food' },
-        //     // { label: 'Height', key: 'height' },
-        //     { label: 'Heart Rate (bpm)', key: 'heart_rate' },
-        //     { label: 'Mood', key: 'mood' },
-        //     { label: 'Stool', key: 'stool' },
-        //     { label: 'Temperature', key: 'temperature' },
-        //     { label: 'Turns', key: 'turns' },
-        //     { label: 'Waterlow', key: 'waterlow' },
-        //     { label: 'Weight', key: 'weight' },
-        // ];
-
-        /*
-        Ideal Data Model:
-
-        {
-            // aggregate
-            fluids: {
-                value: 123,
-                log: {} (for the icon / timestamp)
-            },
-            blood_pressure: {
-                value: 123,
-                log: {} (for the icon / timestamp)
-            }
-
-            // plain
-            mood: {
-                value: 1,
-                log: {}
-            }
-        }
-
-
-        Key points to
-
-        Plain:
-        Blood Oxygen
-        Heart Rate
-        MUST
-        Stool
-        Temperature
-        Waterlow
-        Weight
-
-        Custom
-        Blood Pressure
-        Mood (needs legend)
-        Food - last 24h
-        Fluids - last 24h
-        Food
-            - Last 24h
-            - No meal type?
-        Turns? turns in last 24h?
-        */
-
         const measurements = _.sortBy([
-            { label: 'Fluids', label_data: 'Fluids last 24h (ml)', key: 'fluids' },
-            { label: 'Food Consumption', key: 'meal' },
-            { label: 'Blood Pressure (mm Hg)', key: 'blood_pressure' },
-            { label: 'Blood Oxygen (% SpO2)', key: 'blood_oxygen' },
-            { label: 'Heart Rate (bpm)', key: 'heart_rate' },
-            { label: 'Mood', key: 'mood' },
+            { label: 'Fluids', key: 'fluids', unit: 'ml last 24h' },
+            { label: 'Food', key: 'meal', unit: ' portions last 24h' },
+            { label: 'Blood Pressure', key: 'blood_pressure', unit: 'mmHg' },
+            { label: 'Blood Oxygen', key: 'blood_oxygen', unit: '% SpO2' },
+            { label: 'Heart Rate', key: 'heart_rate', unit: 'bpm' },
             { label: 'MUST', key: 'must' },
-            { label: 'Stool', key: 'stool' },
-            { label: 'Temperature', key: 'temperature' },
-            { label: 'Turns', key: 'turns' },
+            { label: 'Stool', key: 'stool', render: d => (`Type ${d.value}`) },
+            { label: 'Temperature', key: 'temperature', unit: 'C' },
+            { label: 'Turns', key: 'turns', unit: ' in last 24h' },
             { label: 'Waterlow', key: 'waterlow' },
-            { label: 'Weight', key: 'weight' },
+            { label: 'Weight', key: 'weight', unit: 'kg' },
+            {
+                label: 'Mood',
+                key: 'mood',
+                render: d => {
+                    const moods = {
+                        1: 'Very Bad',
+                        2: 'Bad',
+                        3: 'Neutral',
+                        4: 'Good',
+                        5: 'Very Good',
+                    };
+                    return moods[d.value] || d.value;
+                },
+            },
         ], 'label');
 
-        const hasData = ({ key }) => _.get(data, `results.${key}`);
-        const measurements_with_data = measurements.filter(hasData);
-        const measurements_no_data = measurements.filter(d => !hasData(d));
+        measurements.forEach(d => {
+            d.data = _.get(data, `results.${d.key}`);
+        });
+
+        const measurements_with_data = _.filter(measurements, 'data');
+        const measurements_no_data = _.filter(measurements, d => !d.data);
 
         return (
             <div className="row">
                 <div className="eight columns">
                     <div style={styles.sectionContainer}>
                         <LmcResidentLatestLogs resident_id={params.resident_id} />
-                        {/* <Link to={`${Keystone.adminPath}/reports/charts/daily/${params.resident_id}`} style={styles.link}>
-                            Daily
-                        </Link> */}
                     </div>
-                    
                 </div>
                 <div className="four columns">
-                    { measurements_with_data.length ? this.renderMeasurements(measurements_with_data, params, data) : null }
-                    { measurements_no_data.length ? this.renderNoMeasurements(measurements_no_data, params) : null }
+                    { measurements_with_data.length ? this.renderMeasurements(measurements_with_data, params.resident_id) : null }
+                    { measurements_no_data.length ? this.renderNoMeasurements(measurements_no_data) : null }
                 </div>
             </div>
         );
     }
 }
 
+const fallback = 'https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png';
 const styles = {
     timelineContainer: {
         position: 'relative',
