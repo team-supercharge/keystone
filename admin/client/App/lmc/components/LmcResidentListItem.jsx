@@ -43,13 +43,16 @@ LmcResidentListItem.propTypes = {
 const styles = {
 	subheading: {
 		opacity: 0.7,
-		fontSize: 10,
-		top: -2,
+		fontSize: 11,
+		top: 2,
 		position: 'relative',
+		// color: '#e65d78',
+		fontWeight: 500,
+		letterSpacing: 0.4,
 	},
 	mainText: {
 		paddingLeft: 10,
-		top: -6,
+		top: -2,
 		position: 'relative',
 	},
 	link: {

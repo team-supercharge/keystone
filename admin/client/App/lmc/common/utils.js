@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export const StoolColormap = {
     1: '#4575b4',
     2: '#91bfdb',
@@ -10,20 +8,24 @@ export const StoolColormap = {
     7: '#d73027',
 };
 
-export function isStoolBloody (desc) {
-    return desc.match(/was bloody/i);
+export function isStool ({ item }) {
+    return item && item.match(/stool/i);
 };
 
-export function isStoolOffensive (desc) {
-    return desc.match(/offensive smelling/i);
+export function isStoolBloody ({ description }) {
+    return description.match(/was bloody/i);
 };
 
-export function isStoolMucus (desc) {
-    return desc.match(/contained mucus/i);
+export function isStoolOffensive ({ description }) {
+    return description.match(/offensive smelling/i);
 };
 
-export function getStoolColor (desc) {
+export function isStoolMucus ({ description }) {
+    return description.match(/contained mucus/i);
+};
+
+export function getStoolColor ({ description }) {
     const p = new RegExp('stool\\swas\\s[a-zA-Z]+', 'i');
-    let stoolColor = desc.match(p);
+    let stoolColor = description.match(p);
     return stoolColor ? stoolColor[0].split(' ').slice(-1) : null;
 };

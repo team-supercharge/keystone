@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-refetch';
+import { connect, PromiseState } from 'react-refetch';
 import _ from 'lodash';
 
 import LmcHomeTitle from './components/LmcHomeTitle.jsx';
@@ -161,22 +161,26 @@ class Home extends React.Component {
 
     render () {
         const { categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch } = this.props;
-        const fetchingCalls = [categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch];
-        const isLoading = _.some(fetchingCalls, { pending: true });
-        const isSuccess = _.every(fetchingCalls, { fulfilled: true });
 
-        return (
-            <div style={styles.container} className="row">
-                { isLoading
-                    ? <LmcSpinner />
-                    : isSuccess
-                        ? this.renderDashboard()
-                        : <BlankState heading={ERROR_MESSAGE} style={{ marginTop: 30 }} />
-                }
-            </div>
-        );
+        // compose multiple PromiseStates together to wait on them as a whole
+        const allFetches = PromiseState.all([categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch]);
+
+        if (allFetches.pending) {
+            return withContainer(<LmcSpinner />);
+        } else if (allFetches.fulfilled) {
+            return withContainer(this.renderDashboard());
+        } else {
+            // if (allFetches.rejected) ?
+            return withContainer(<BlankState heading={ERROR_MESSAGE} style={{ marginTop: 30 }} />);
+        } 
     }
 };
+
+const withContainer = (co) => (
+    <div style={styles.container} className="row">
+        { co }
+    </div>
+)
 
 
 const styles = {

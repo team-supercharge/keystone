@@ -8,6 +8,7 @@ import {
     StoolColormap,
     isStoolBloody,
     isStoolMucus,
+    isStool,
     isStoolOffensive,
     getStoolColor,
 } from '../../../../common/utils';
@@ -16,14 +17,14 @@ import {
 const StoolMark = (color) => {
     return (
         <td style={{ backgroundColor: color, color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-            <img style={{ width: 13, left: -1, position: 'relative' }} src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/icons/icon-tick.png" alt="tick" />
+            <img style={{ width: 12, left: -3, position: 'relative' }} src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/icons/icon-tick.png" alt="tick" />
         </td>
     )
 }
 
 class LmcStoolTable extends Component {
     render() {
-        const { logs, resident } = this.props;
+        const { logs } = this.props;
         const types = [1, 2, 3, 4, 5, 6, 7];
         const logsSorted = _.sortBy(logs, ({ timeLogged }) => -moment(timeLogged));
         return (
@@ -32,12 +33,12 @@ class LmcStoolTable extends Component {
                     <thead className="lmc-table-center-text">
                         <tr className="lmc-table-header">
                             <th>Date</th>
-                            <th colSpan="7" style={{ width: 200, textAlign: 'center' }}>Bristol Type</th>
-                            <th>Blood</th>
-                            <th>Mucus</th>
-                            <th>Offensive</th>
-                            <th>Color</th>
-                            {/* <th style={{ width: 300 }}>Description</th> */}
+                            <th colSpan="7" style={{ width: 180, textAlign: 'center' }}>Bristol Type</th>
+                            <th style={{ width: 50 }}>Blood</th>
+                            <th style={{ width: 52 }}>Mucus</th>
+                            <th style={{ width: 67 }}>Offensive</th>
+                            <th style={{ width: 50 }}>Color</th>
+                            <th>Note</th>
                             <th>Carer</th>
                         </tr>
                         <tr className="lmc-table-subheader">
@@ -47,8 +48,7 @@ class LmcStoolTable extends Component {
                             <th></th>
                             <th></th>
                             <th></th>
-                            {/* <th>y/n</th> */}
-                            {/* <th></th> */}
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -57,14 +57,14 @@ class LmcStoolTable extends Component {
                             // if anyone sees this, feel free to shout at Sam or Adam.
                             // (form data => string => regex => form data) === shame
                             const type = _.get(log, 'measurements.stool.value');
-                            const isBloody = isStoolBloody(log.description);
-                            const isMucus = isStoolMucus(log.description);
-                            const isOffensive = isStoolOffensive(log.description);
-                            const stoolColor = getStoolColor(log.description);
+                            const isBloody = isStoolBloody(log);
+                            const isMucus = isStoolMucus(log);
+                            const isOffensive = isStoolOffensive(log);
+                            const stoolColor = getStoolColor(log);
 
                             return (
                                 <tr>
-                                    <td style={{ paddingRight: 3 }}>
+                                    <td style={{ textAlign: 'center' }}>
                                         <Link className="lmc-dark-link" to={`${Keystone.adminPath}/logs/${log.id}`}>
                                             {moment(log.timeLogged).format('HH:mm DD/MM/YY')}
                                         </Link>
@@ -78,8 +78,8 @@ class LmcStoolTable extends Component {
                                     <td style={{ textAlign: 'center', textTransform: 'capitalize' }}>
                                         { stoolColor }
                                     </td>
-                                    {/* <td>{log.description}</td> */}
-                                    <td>{log.carerName}</td>
+                                    <td>{isStool(log) ? '' : `${log.title}. ${log.description}`}</td>
+                                    <td style={{ textAlign: 'center' }}>{log.carerName}</td>
                                 </tr>
                             );
                         })

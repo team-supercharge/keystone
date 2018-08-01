@@ -13,6 +13,7 @@ import saveSvgAsPng from 'save-svg-as-png';
 
 import {
     StoolColormap,
+    isStool,
     isStoolBloody,
     isStoolMucus,
     isStoolOffensive,
@@ -54,49 +55,54 @@ const StoolTable = (row, dateFormat) => {
                 defaultBorder: false,
             },
             headerRows: 1,
-            widths: ['auto', 10, 10, 10, 10, 10, 10, 10, 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            widths: ['auto', 6, 6, 6, 6, 6, 6, 6, 'auto', 'auto', 'auto', 'auto', 90, 'auto', 'auto'],
             body: [
                 [
                     {
                         text: 'Time',
-                        style: 'tableHeader',
+                        style: 'tableHeaderSmall',
                         alignment: 'center',
                     },
                     {
                         text: 'Bristol Type',
-                        style: 'tableHeader',
+                        style: 'tableHeaderSmall',
                         alignment: 'center',
                         colSpan: 7,
                     },
                     {}, {}, {}, {}, {}, {},
                     {
                         text: 'Blood',
-                        style: 'tableHeader',
+                        style: 'tableText',
                         alignment: 'center',
                     },
                     {
                         text: 'Mucus',
-                        style: 'tableHeader',
+                        style: 'tableText',
                         alignment: 'center',
                     },
                     {
                         text: 'Offensive',
-                        style: 'tableHeader',
+                        style: 'tableText',
                         alignment: 'center',
                     },
                     {
                         text: 'Color',
-                        style: 'tableHeader',
+                        style: 'tableText',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 'Note',
+                        style: 'tableHeaderSmall',
                         alignment: 'center',
                     },
                     {
                         text: 'Carer',
-                        style: 'tableHeader',
+                        style: 'tableHeaderSmall',
                         alignment: 'center',
                     },
                     {
                         text: 'Revision',
-                        style: 'tableHeader',
+                        style: 'tableHeaderSmall',
                         alignment: 'center',
                     }
                 ],
@@ -104,33 +110,40 @@ const StoolTable = (row, dateFormat) => {
                     {},
                     {
                         text: 1,
+                        style: 'tableTextSmall',
                         alignment: 'center',
                     },
                     {
                         text: 2,
+                        style: 'tableTextSmall',
                         alignment: 'center',
                     },
                     {
                         text: 3,
+                        style: 'tableTextSmall',
                         alignment: 'center',
                     },
                     {
                         text: 4,
+                        style: 'tableTextSmall',
                         alignment: 'center',
                     },
                     {
                         text: 5,
+                        style: 'tableTextSmall',
                         alignment: 'center',
                     },
                     {
                         text: 6,
+                        style: 'tableTextSmall',
                         alignment: 'center',
                     },
                     {
                         text: 7,
+                        style: 'tableTextSmall',
                         alignment: 'center',
                     },
-                    {}, {}, {}, {}, {}, {},
+                    {}, {}, {}, {}, {}, {}, {},
                 ],
                 ...row.logs.map(log => {
                     let revision;
@@ -140,10 +153,10 @@ const StoolTable = (row, dateFormat) => {
                     }
 
                     const type = _.get(log, 'measurements.stool.value');
-                    const isBloody = isStoolBloody(log.description);
-                    const isMucus = isStoolMucus(log.description);
-                    const isOffensive = isStoolOffensive(log.description);
-                    const stoolColor = getStoolColor(log.description);
+                    const isBloody = isStoolBloody(log);
+                    const isMucus = isStoolMucus(log);
+                    const isOffensive = isStoolOffensive(log);
+                    const stoolColor = getStoolColor(log);
                     const highlight = '#c5c5c5';
                     const types = [1, 2, 3, 4, 5, 6, 7];
                     return [
@@ -172,14 +185,18 @@ const StoolTable = (row, dateFormat) => {
                             fillColor: stoolColor && stoolColor === 'black' ? highlight : null,
                         },
                         {
-                            text: log.carerName + (log.witnessedBy && ` - witnessed by ${log.witnessedBy}`),
+                            text: isStool(log) ? '' : `${log.title}. ${log.description}`,
                             style: 'tableText',
+                        },
+                        {
+                            text: log.carerName + (log.witnessedBy && ` - witnessed by ${log.witnessedBy}`),
+                            style: 'tableTextSmall',
                         },
                         {
                             text: (isRevised)
                                 ? `Edited by ${revision.revokedBy} on ${moment(revision.revokedAt).format('DD/MM/YYYY')}`
                                 : '',
-                            style: 'tableText',
+                            style: 'tableTextSmall',
                         },
                     ]
                 })
@@ -196,7 +213,7 @@ const LogListTable = (row, dateFormat) => {
                 defaultBorder: false,
             },
             headerRows: 1,
-            widths: ['auto', 'auto', '*', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            widths: ['auto', 'auto', '*', 'auto', 'auto'],
             body: [
                 [
                     {
@@ -361,11 +378,21 @@ class LmcPdfExport extends React.Component {
                     fontSize: 13,
                     color: 'black',
                 },
+                tableHeaderSmall: {
+                    // bold: true,
+                    fontSize: 12,
+                    color: 'black',
+                },
                 tableText: {
                     fontSize: 10,
                     color: 'black',
                 },
+                tableTextSmall: {
+                    fontSize: 7,
+                    color: 'black',
+                },
                 whiteTableText: {
+                    fontSize: 7,
                     alignment: 'center',
                     color: 'white',
                 },

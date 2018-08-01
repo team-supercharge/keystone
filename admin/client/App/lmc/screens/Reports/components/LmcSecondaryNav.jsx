@@ -5,7 +5,7 @@ class LmcSecondaryNav extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: 'daily',
+            current: 'charts',
         };
         this.isActive = this.isActive.bind(this);
         this.setCurrent = this.setCurrent.bind(this);
@@ -24,14 +24,14 @@ class LmcSecondaryNav extends React.Component {
             <nav className="secondary-navbar" style={styles.nav}>
                 <div style={styles.wrapper}>
                     <ul className="app-nav app-nav--secondary app-nav--left">
-                        <li className={ this.isActive('daily') }>
-                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/daily`}>
+                        <li className={ this.isActive('charts') }>
+                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/charts`}>
                                 Resident Charts
                             </Link>
                         </li>
-                        <li className={ this.isActive('overview') }>
-                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/overview`}>
-                                Overview
+                        <li className={ this.isActive('fluids') }>
+                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/overview/fluids`}>
+                                Fluids Overview
                             </Link>
                         </li>
                         {/* <li className={ this.isActive('item-dashboard') }>

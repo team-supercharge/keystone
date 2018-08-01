@@ -23,7 +23,7 @@ class LmcResidentsCard extends Component {
 
     showMore() {
         this.setState({
-            max_residents_displayed: this.state.max_residents_displayed + 5, // + 1 row
+            max_residents_displayed: this.state.max_residents_displayed + 20, // + 1 row
         })
     }
 

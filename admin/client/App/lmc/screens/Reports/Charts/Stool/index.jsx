@@ -22,32 +22,21 @@ class LmcStoolChart extends Component {
             logs,
         } = this.props;
 
-        // TODO: merge Food and Fluids components
-        // too much duplication
-        const colors = ['#ab97c6', '#b4d78b'];
-        const getSeriesData = (data, type) => {
-            return _.chain(data)
-                .groupBy(log => moment(log.timeLogged).startOf('day').add(1, 'h').format())
-                .map((value, date) => {
-                    return [Date.parse(moment(date).toString()), value.length]; // { x: date, y: total };
-                })
-                .value();
-        };
-
         // http://colorbrewer2.org/#type=diverging&scheme=RdYlBu&n=7
 
         const chartSeries = _.chain(logs)
+            .filter(log => _.get(log, 'measurements.stool.value') > -1)
             .groupBy('measurements.stool.value')
             .map((logs, group) => {
                 return {
-                    name: `Type ${group}`,
-                    color: StoolColormap[group],
+                    name: parseInt(group) === 0 ? 'Other' : `Type ${group}`,
+                    color: parseInt(group) === 0 ? '#c5c5c5' : StoolColormap[group],
                     data: _.chain(logs)
                             .groupBy(log => moment(log.timeLogged).startOf('day').add(1, 'h').format())
                             .map((value, date) => {
                                 return [Date.parse(moment(date).toString()), value.length]; // { x: date, y: total };
                             })
-                            .value()
+                            .value(),
                 };
             })
             .value();

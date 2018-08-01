@@ -40,7 +40,6 @@ class LmcCharts extends React.Component {
                                         {this.renderChildren(residentsFetch, params, children)}
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
                         : <BlankState heading={'You haven\'t added any residents yet'} style={styles.blankSlate} />

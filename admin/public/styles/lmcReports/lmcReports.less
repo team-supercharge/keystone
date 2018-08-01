@@ -7,6 +7,14 @@
 @import "./lmcTour.less";
 @import "./dropZone.less";
 
+@lmc_grey: #5f5f5f;
+@lmc_grey_light: lighten(@lmc_grey, 14%);
+@lmc_grey_lighter: lighten(@lmc_grey, 20%);
+
+@lmc_green: #9bd687;
+@lmc_green_light: lighten(@lmc_green, 8%);
+@lmc_green_lighter: lighten(@lmc_green, 15%);
+
 
 .lmc-dark-link {
 	color: #333 !important;
@@ -212,8 +220,8 @@
 		height: 100%;
 		text-align: center;
 		background: 0 0;
-		border: 2px solid #00a699;
-		color: #00a699;
+		border: 2px solid @lmc_grey;
+		color: @lmc_grey;
 		padding: 4px 12px;
 		margin-right: 8px;
 		font: inherit;
@@ -229,7 +237,7 @@
 	}
 	.PresetDateRangePicker_button__selected {
 		color: #fff;
-		background: #00a699
+		background: @lmc_grey
 	}
 	.SingleDatePickerInput {
 		display: inline-block;
@@ -384,7 +392,7 @@
 	}
 	.DayPickerKeyboardShortcuts_show__bottomRight {
 		border-top: 26px solid transparent;
-		border-right: 33px solid #00a699;
+		border-right: 33px solid @lmc_grey;
 		bottom: 0;
 		right: 0
 	}
@@ -393,7 +401,7 @@
 	}
 	.DayPickerKeyboardShortcuts_show__topRight {
 		border-bottom: 26px solid transparent;
-		border-right: 33px solid #00a699;
+		border-right: 33px solid @lmc_grey;
 		top: 0;
 		right: 0
 	}
@@ -402,7 +410,7 @@
 	}
 	.DayPickerKeyboardShortcuts_show__topLeft {
 		border-bottom: 26px solid transparent;
-		border-left: 33px solid #00a699;
+		border-left: 33px solid @lmc_grey;
 		top: 0;
 		left: 0
 	}
@@ -520,36 +528,36 @@
 		color: #565a5c
 	}
 	.CalendarDay__selected_span {
-		background: #66e2da;
-		border: 1px solid #33dacd;
+		background: @lmc_grey_light;
+		border: 1px solid @lmc_grey_light;
 		color: #fff
 	}
 	.CalendarDay__selected_span:active,
 	.CalendarDay__selected_span:hover {
-		background: #33dacd;
-		border: 1px solid #33dacd;
+		background: @lmc_grey_lighter;
+		border: 1px solid @lmc_grey_lighter;
 		color: #fff
 	}
 	.CalendarDay__last_in_range {
-		border-right: #00a699
+		border-right: @lmc_grey;
 	}
 	.CalendarDay__selected,
 	.CalendarDay__selected:active,
 	.CalendarDay__selected:hover {
-		background: #00a699;
-		border: 1px solid #00a699;
+		background: @lmc_grey;
+		border: 1px solid @lmc_grey;
 		color: #fff
 	}
 	.CalendarDay__hovered_span,
 	.CalendarDay__hovered_span:hover {
-		background: #b2f1ec;
-		border: 1px solid #80e8e0;
-		color: #007a87
+		background: @lmc_grey_lighter;
+		border: 1px solid @lmc_grey_lighter;
+		color: #fff;
 	}
 	.CalendarDay__hovered_span:active {
-		background: #80e8e0;
-		border: 1px solid #80e8e0;
-		color: #007a87
+		background: @lmc_grey_lighter;
+		border: 1px solid @lmc_grey_lighter;
+		color: #fff;
 	}
 	.CalendarDay__blocked_calendar,
 	.CalendarDay__blocked_calendar:active,

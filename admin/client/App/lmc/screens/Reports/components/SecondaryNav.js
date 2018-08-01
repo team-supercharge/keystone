@@ -1,37 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router';
+import _ from 'lodash';
 
 class SecondaryNav extends React.Component {
     constructor(props) {
-        super(props)
-        this.state = {
-            current: 'daily'
-        }
+        super(props);
         this.isActive = this.isActive.bind(this);
-        this.setCurrent = this.setCurrent.bind(this);
-    };
-
-    setCurrent(current) {
-        this.setState({ current });
     };
 
     isActive(value) {
-        return this.state.current === value ? 'active' : '';
+        const pathname = this.props.location.pathname;
+        if (pathname) {
+            return pathname.match(value) ? 'active' : '';
+        }
     }
 
     render () {
+        const { params } = this.props;
+        let chartURL = `${Keystone.adminPath}/reports/charts`;
+        if (params && params.resident_id && params.chart_type) {
+            chartURL += `/${params.chart_type}/${params.resident_id}`;
+        };
+        console.log(chartURL);
+
         return (
             <nav className="secondary-navbar" style={styles.nav}>
                 <div style={styles.wrapper}>
                     <ul className="app-nav app-nav--secondary app-nav--left">
-                        <li className={ this.isActive('daily') }>
-                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/daily`}>
+                        <li className={ this.isActive('charts') }>
+                            <Link to={chartURL}>
                                 Resident Charts
                             </Link>
                         </li>
-                        <li className={ this.isActive('overview') }>
-                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/overview`}>
-                                Overview
+                        <li className={ this.isActive('overview/fluids') }>
+                            <Link to={`${Keystone.adminPath}/reports/overview/fluids`}>
+                                Fluids Overview
                             </Link>
                         </li>
                         {/* <li className={ this.isActive('item-dashboard') }>

@@ -20,53 +20,51 @@ class LmcLogFilter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: null,
-            endDate: null,
-            categoryValue: 0,
-            itemValue: 0,
-            startDate: null,
-            endDate: null,
+            // categoryValue: 0,
+            // itemValue: 0,
+            startDate: props.from || null,
+            endDate: props.to || null,
             date: null,
             focused: false,
         }
 
-        this.filterByItem = this.filterByItem.bind(this);
-        this.filterByCategory = this.filterByCategory.bind(this);
+        // this.filterByItem = this.filterByItem.bind(this);
+        // this.filterByCategory = this.filterByCategory.bind(this);
         this.onDatesChange = this.onDatesChange.bind(this);
         this.getFilteredData = this.getFilteredData.bind(this);
     }
 
-    groupLogs(logs, key) {
-        return [
-            {
-                label: "Any",
-                value: "",
-            },
-            ... _(logs)
-                .groupBy(key)
-                .map((group, key) => {
-                    return {
-                        label: key, // `${} (${group.length} logs)`,
-                        value: key,
-                    }
-                })
-                .sortBy('label')
-                .filter(d => d && d.label)
-                .value(),
-        ]
-    }
+    // groupLogs(logs, key) {
+    //     return [
+    //         {
+    //             label: "Any",
+    //             value: "",
+    //         },
+    //         ... _(logs)
+    //             .groupBy(key)
+    //             .map((group, key) => {
+    //                 return {
+    //                     label: key, // `${} (${group.length} logs)`,
+    //                     value: key,
+    //                 }
+    //             })
+    //             .sortBy('label')
+    //             .filter(d => d && d.label)
+    //             .value(),
+    //     ]
+    // }
 
-    filterByItem(value) {
-        this.setState({
-            itemValue: target.value,
-        });
-    }
+    // filterByItem(value) {
+    //     this.setState({
+    //         itemValue: target.value,
+    //     });
+    // }
 
-    filterByCategory({ target }, categories) {
-        this.setState({
-            categoryValue: target.value, // _.findIndex(categories, {value: target.value}) || 0,
-        });
-    }
+    // filterByCategory({ target }, categories) {
+    //     this.setState({
+    //         categoryValue: target.value, // _.findIndex(categories, {value: target.value}) || 0,
+    //     });
+    // }
 
     getFilteredData({ startDate, endDate }) {
         let { data } = this.props;
@@ -89,30 +87,42 @@ class LmcLogFilter extends React.Component {
         return day.format('DD-MM-YYYY');
     }
 
+
     onDatesChange({ startDate, endDate }) {
         this.setState({ startDate, endDate });
-        this.props.onChange(this.getFilteredData({ startDate, endDate }));
+
+        if (this.props.onChange) {
+            this.props.onChange(this.getFilteredData({ startDate, endDate }));
+        };
+        if (this.props.onNewDates) {
+            this.props.onNewDates({ startDate, endDate });
+        };
     }
 
 	render() {
-        let { data, resident } = this.props;
-        const { categoryValue, itemValue } = this.state;
-        const items = this.groupLogs(data, 'item');
-        const categories = this.groupLogs(data, 'category');
-
-        const {
-            startDate,
-            endDate,
-            date,
-            focused,
-        } = this.state;
-
+        const { data, blockDatesWithNoData, blockFuture, maximumNights } = this.props;
+        // const { categoryValue, itemValue } = this.state;
+        // const items = this.groupLogs(data, 'item');
+        // const categories = this.groupLogs(data, 'category');
 
         const today = moment();
-        const datesWithLogs = _.chain(data).map(day => this.formatToDate(moment(day.timeLogged))).uniq().value();
+        const datesWithLogs = _.chain(data)
+            .map(day => this.formatToDate(moment(day.timeLogged)))
+            .uniq()
+            .value();
 
         const isDayBlocked = day => {
-            return !_.includes(datesWithLogs, this.formatToDate(day));
+            if (blockFuture && day.isAfter(today)) {
+                return true;
+            };
+
+            if (maximumNights
+                && this.state.startDate
+                && day.isAfter(moment(this.state.startDate).add(maximumNights - 1, 'days'))) {
+                return true;
+            }
+
+            return blockDatesWithNoData && !_.includes(datesWithLogs, this.formatToDate(day));
         };
 
 		return (
@@ -129,7 +139,7 @@ class LmcLogFilter extends React.Component {
                 endDateId="end_date_id"
                 displayFormat="MMM D"
                 onDatesChange={({ startDate, endDate }) => this.onDatesChange({ startDate, endDate })} // PropTypes.func.isRequired,
-                focusedInput={focused}
+                focusedInput={this.state.focused}
                 onFocusChange={focused => this.setState({ focused })}
                 minimumNights={0}
             />
