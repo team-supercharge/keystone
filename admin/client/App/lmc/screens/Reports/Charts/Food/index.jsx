@@ -91,6 +91,8 @@ class LmcFoodChart extends Component {
             },
             xAxis: {
                 type: 'datetime',
+                minTickInterval: 3600 * 1000 * 24,
+                ceiling: Date.parse(moment().toString()),
                 labels: {
                     format: '{value:%e %b}',
                 },
