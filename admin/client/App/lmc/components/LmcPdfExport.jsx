@@ -11,6 +11,15 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import saveSvgAsPng from 'save-svg-as-png';
 
+import {
+    StoolColormap,
+    isStool,
+    isStoolBloody,
+    isStoolMucus,
+    isStoolOffensive,
+    getStoolColor,
+} from '../common/utils';
+
 // ... row.logs.map(log => {
 //     let revision;
 //     let isRevised = log.revisions && (log.revisions.length > 0);
@@ -36,6 +45,236 @@ import saveSvgAsPng from 'save-svg-as-png';
 //         }
 //     ]
 // }),
+
+const StoolTable = (row, dateFormat) => {
+
+    return {
+        style: 'table',
+        table: {
+            layout: {
+                defaultBorder: false,
+            },
+            headerRows: 1,
+            widths: ['auto', 6, 6, 6, 6, 6, 6, 6, 'auto', 'auto', 'auto', 'auto', 90, 'auto', 'auto'],
+            body: [
+                [
+                    {
+                        text: 'Time',
+                        style: 'tableHeaderSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 'Bristol Type',
+                        style: 'tableHeaderSmall',
+                        alignment: 'center',
+                        colSpan: 7,
+                    },
+                    {}, {}, {}, {}, {}, {},
+                    {
+                        text: 'Blood',
+                        style: 'tableText',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 'Mucus',
+                        style: 'tableText',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 'Offensive',
+                        style: 'tableText',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 'Color',
+                        style: 'tableText',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 'Note',
+                        style: 'tableHeaderSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 'Carer',
+                        style: 'tableHeaderSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 'Revision',
+                        style: 'tableHeaderSmall',
+                        alignment: 'center',
+                    }
+                ],
+                [
+                    {},
+                    {
+                        text: 1,
+                        style: 'tableTextSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 2,
+                        style: 'tableTextSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 3,
+                        style: 'tableTextSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 4,
+                        style: 'tableTextSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 5,
+                        style: 'tableTextSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 6,
+                        style: 'tableTextSmall',
+                        alignment: 'center',
+                    },
+                    {
+                        text: 7,
+                        style: 'tableTextSmall',
+                        alignment: 'center',
+                    },
+                    {}, {}, {}, {}, {}, {}, {},
+                ],
+                ...row.logs.map(log => {
+                    let revision;
+                    let isRevised = log.revisions && (log.revisions.length > 0);
+                    if (isRevised) {
+                        revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
+                    }
+
+                    const type = _.get(log, 'measurements.stool.value');
+                    const isBloody = isStoolBloody(log);
+                    const isMucus = isStoolMucus(log);
+                    const isOffensive = isStoolOffensive(log);
+                    const stoolColor = getStoolColor(log);
+                    const highlight = '#c5c5c5';
+                    const types = [1, 2, 3, 4, 5, 6, 7];
+                    return [
+                        {
+                            text: moment(log.timeLogged).format(dateFormat || 'HH:mm DD/MM/YY'),
+                            style: 'tableText',
+                        },
+                        ...types.map(t => type === t ? { text: 'X', style: 'whiteTableText', fillColor: StoolColormap[t] } : ''),
+                        {
+                            text: isBloody ? 'X' : '',
+                            fillColor: isBloody ? highlight : null,
+                            style: 'whiteTableText',
+                        },
+                        {
+                            text: isMucus ? 'X' : '',
+                            fillColor: isMucus ? highlight : null,
+                            style: 'whiteTableText',
+                        },
+                        {
+                            text: isOffensive ? 'X' : '',
+                            fillColor: isOffensive ? highlight : null,
+                            style: 'whiteTableText',
+                        },
+                        {
+                            text: stoolColor || '',
+                            fillColor: stoolColor && stoolColor === 'black' ? highlight : null,
+                        },
+                        {
+                            text: isStool(log) ? '' : `${log.title}. ${log.description}`,
+                            style: 'tableText',
+                        },
+                        {
+                            text: log.carerName + (log.witnessedBy && ` - witnessed by ${log.witnessedBy}`),
+                            style: 'tableTextSmall',
+                        },
+                        {
+                            text: (isRevised)
+                                ? `Edited by ${revision.revokedBy} on ${moment(revision.revokedAt).format('DD/MM/YYYY')}`
+                                : '',
+                            style: 'tableTextSmall',
+                        },
+                    ]
+                })
+            ]
+        }
+    };
+}
+
+const LogListTable = (row, dateFormat) => {
+    return {
+        style: 'table',
+        table: {
+            layout: {
+                defaultBorder: false,
+            },
+            headerRows: 1,
+            widths: ['auto', 'auto', '*', 'auto', 'auto'],
+            body: [
+                [
+                    {
+                        text: 'Time',
+                        style: 'tableHeader',
+                        borderColor: 'red',
+                    },
+                    {
+                        text: 'Title',
+                        style: 'tableHeader',
+                    },
+                    {
+                        text: 'Description',
+                        style: 'tableHeader',
+                    },
+                    {
+                        text: 'Carer',
+                        style: 'tableHeader',
+                    },
+                    {
+                        text: 'Revision Log',
+                        style: 'tableHeader',
+                    }
+                ],
+                ...row.logs.map(log => {
+                    let revision;
+                    let isRevised = log.revisions && (log.revisions.length > 0);
+                    if (isRevised) {
+                        revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
+                    }
+
+                    return [
+                        {
+                            text: moment(log.timeLogged).format(dateFormat || 'HH:mm DD/MM/YY'),
+                            style: 'tableText',
+                        },
+                        {
+                            text: log.title,
+                            style: 'tableText',
+                        },
+                        {
+                            text: log.description,
+                            style: 'tableText',
+                        },
+                        {
+                            text: log.carerName + (log.witnessedBy && ` - witnessed by ${log.witnessedBy}`),
+                            style: 'tableText',
+                        },
+                        {
+                            text: (isRevised)
+                                ? `Edited by ${revision.revokedBy} on ${moment(revision.revokedAt).format('DD/MM/YYYY')}`
+                                : null,
+                            style: 'tableText',
+                        },
+                    ]
+                }),
+            ]
+        }
+    };
+}
+
 class LmcPdfExport extends React.Component {
 
     constructor(props) {
@@ -43,7 +282,7 @@ class LmcPdfExport extends React.Component {
         this.exportPdf = this.exportPdf.bind(this);
     }
 
-    getDocDefinition({ logs, resident, dateFormat, title, groupBy }, image) {
+    getDocDefinition({ logs, resident, dateFormat, title, groupBy }, image, getBody) {
         // load LmC logo as well?
         // pageByDate?
         // pageByResident?
@@ -53,7 +292,6 @@ class LmcPdfExport extends React.Component {
         let pages;
         let _logs = _.sortBy(logs, d => -moment(d.timeLogged));
         if (groupBy === 'date') {
-
             pages = _.chain(_logs)
                 .groupBy(({ timeLogged }) => moment(timeLogged).format('YYYY-MM-DD'))
                 .map((group, date) => ({ heading: date, logs: group }))
@@ -119,73 +357,7 @@ class LmcPdfExport extends React.Component {
                         ],
                     },
                     chartImage,
-                    {
-                        style: 'table',
-                        table: {
-                            layout: {
-                                defaultBorder: false,
-                            },
-                            headerRows: 1,
-                            widths: ['auto', 'auto', '*', 'auto', 'auto'],
-                            body: [
-                                [
-                                    {
-                                        text: 'Time',
-                                        style: 'tableHeader',
-                                        borderColor: 'red',
-                                    },
-                                    {
-                                        text: 'Title',
-                                        style: 'tableHeader',
-                                    },
-                                    {
-                                        text: 'Description',
-                                        style: 'tableHeader',
-                                    },
-                                    {
-                                        text: 'Carer',
-                                        style: 'tableHeader',
-                                    },
-                                    {
-                                        text: 'Revision Log',
-                                        style: 'tableHeader',
-                                    }
-                                ],
-                                ...row.logs.map(log => {
-                                    let revision;
-                                    let isRevised = log.revisions && (log.revisions.length > 0);
-                                    if (isRevised) {
-                                        revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
-                                    }
-
-                                    return [
-                                        {
-                                            text: moment(log.timeLogged).format(dateFormat || 'HH:mm DD/MM/YY'),
-                                            style: 'tableText',
-                                        },
-                                        {
-                                            text: log.title,
-                                            style: 'tableText',
-                                        },
-                                        {
-                                            text: log.description,
-                                            style: 'tableText',
-                                        },
-                                        {
-                                            text: log.carerName + (log.witnessedBy && ` - witnessed by ${log.witnessedBy}`),
-                                            style: 'tableText',
-                                        },
-                                        {
-                                            text: (isRevised)
-                                                ? `Edited by ${revision.revokedBy} on ${moment(revision.revokedAt).format('DD/MM/YYYY')}`
-                                                : null,
-                                            style: 'tableText',
-                                        },
-                                    ]
-                                }),
-                            ]
-                        }
-                    },
+                    getBody(row, dateFormat),
                     // insert page break at the and of each day (except last day)
                     ((index + 1) !== pages.length) ? { pageBreak: 'after', text: '' } : null,
                 ]
@@ -206,9 +378,23 @@ class LmcPdfExport extends React.Component {
                     fontSize: 13,
                     color: 'black',
                 },
+                tableHeaderSmall: {
+                    // bold: true,
+                    fontSize: 12,
+                    color: 'black',
+                },
                 tableText: {
                     fontSize: 10,
                     color: 'black',
+                },
+                tableTextSmall: {
+                    fontSize: 7,
+                    color: 'black',
+                },
+                whiteTableText: {
+                    fontSize: 7,
+                    alignment: 'center',
+                    color: 'white',
                 },
                 center: {
                     alignment: 'center',
@@ -242,7 +428,7 @@ class LmcPdfExport extends React.Component {
 
     exportPdf() {
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
-        const { resident, title } = this.props;
+        const { resident, title, type } = this.props;
         const SVGtoPNG = function (svg) {
             return new Promise((resolve, reject) => {
                 saveSvgAsPng.svgAsPngUri(svg, { scale: 3 }, function (uri) {
@@ -252,7 +438,9 @@ class LmcPdfExport extends React.Component {
         };
 
         const triggerDownload = (image) => {
-            const docDefinition = this.getDocDefinition(this.props, image);
+            const docDefinition = (type === 'stool')
+                ? this.getDocDefinition(this.props, image, StoolTable)
+                : this.getDocDefinition(this.props, image, LogListTable);
             // pdfMake.createPdf(docDefinition).open();
             pdfMake.createPdf(docDefinition).download(`${resident.name} ${title}.pdf`);
         };

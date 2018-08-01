@@ -24,7 +24,7 @@ const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
                             : data.value }{unit}
                     </h4>
                     <p style={styles.timestamp}>
-                        Last Recorded: { moment(data.log.timeLogged).format('HH:mm DD/MM/YY') }
+                        Last Recorded: { moment(_.get(data, 'log.timeLogged')).format('HH:mm DD/MM/YY') }
                     </p>
                 </div>
             </Link>
@@ -70,11 +70,14 @@ class LmcChartsDashboard extends React.Component {
             { label: 'Blood Oxygen', key: 'blood_oxygen', unit: '% SpO2' },
             { label: 'Heart Rate', key: 'heart_rate', unit: 'bpm' },
             { label: 'MUST', key: 'must' },
-            { label: 'Stool', key: 'stool', render: d => (`Type ${d.value}`) },
             { label: 'Temperature', key: 'temperature', unit: 'C' },
             { label: 'Turns', key: 'turns', unit: ' in last 24h' },
             { label: 'Waterlow', key: 'waterlow' },
             { label: 'Weight', key: 'weight', unit: 'kg' },
+            {
+                label: 'Stool',
+                key: 'stool', render: d => d.value === -1 ? 'Normal' : `Type ${d.value}`,
+            },
             {
                 label: 'Mood',
                 key: 'mood',

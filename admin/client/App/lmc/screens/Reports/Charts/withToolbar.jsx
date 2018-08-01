@@ -53,7 +53,7 @@ export default function withToolbar(WrappedComponent, config) {
                             : null}
                     </div> : null }
                     {!isEmpty && <div style={filterStyle}>
-                        <LmcLogFilter data={dataFetch.value.results} onChange={this.onFilterChange} />
+                        <LmcLogFilter blockDatesWithNoData data={dataFetch.value.results} onChange={this.onFilterChange} />
                     </div>}
                     <WrappedComponent logs={logs} {...this.props} />
                 </div>

@@ -85,12 +85,12 @@ class LmcChart extends Component {
                 subTitle="Malnutrition Universal Screening Tool"
                 {...chartProps} />);
         case 'stool':
-            const LmcStool = withToolbar(LmcStoolChart, { pdfExport: { title: 'MUST Score' } });
+            const LmcStool = withToolbar(LmcStoolChart, { pdfExport: { type: 'stool', title: 'Bristol Stool Chart' } });
             return (<LmcStool
                 type="stool"
-                yAxisLabel="Stool Score"
+                yAxisLabel="Number of bowel movements"
                 title="Stool Chart"
-                subTitle=""
+                subTitle="Bristol Stool Scale"
                 {...chartProps} />);
         case 'turns':
             const LmcTurns = withToolbar(LmcTurnsChart, { pdfExport: { title: 'Turns' } });

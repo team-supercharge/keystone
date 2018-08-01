@@ -20,9 +20,10 @@ class LmcReportView extends React.Component {
     }
 
     render () {
+        console.log(this.props);
         return (
             <div>
-                <SecondaryNav />
+                <SecondaryNav {...this.props} />
                 <div style={ styles.container }>
                     {this.props.children}
                 </div>
