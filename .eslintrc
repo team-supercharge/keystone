@@ -4,7 +4,10 @@
   ],
   "rules": {
     "react/jsx-no-bind": 0,
-    "indent-size": 0
+    "react/jsx-indent": [2, 4],
+    "react/jsx-indent-props": [2, 4],
+    "indent-size": 1,
+    "indent": [2, 4]
   },
   "globals": {
     "_": true,
