@@ -23,7 +23,7 @@ import { setActiveFilters, loadItems } from './screens/List/actions';
 
 // Loading custom LMC view
 import LmcReportView from './lmc/screens/Reports/index.jsx';
-import LmcFluidsOverview from './lmc/screens/Reports/Charts/FluidsOverview/index.jsx';
+import LmcFluidsOverview from './lmc/screens/Reports/Charts/components/LmcFluidsOverview.jsx';
 import LmcCharts from './lmc/screens/Reports/Charts/index.jsx';
 import LmcChart from './lmc/screens/Reports/Charts/LmcChart.jsx';
 import LmcHome from './lmc/screens/Home/index.jsx';

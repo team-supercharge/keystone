@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-refetch';
-import _ from 'lodash';
 import { BlankState, GlyphButton } from '../../../../elemental';
-import LmcChartsDashboard from './Dashboard/index.jsx';
-import LmcBarChart from './BarChart/index.jsx';
-import LmcFoodChart from './Food/index.jsx';
-import LmcFluidsChart from './Fluids/index.jsx';
-import LmcTurnsChart from './Turns/index.jsx';
-import LmcStoolChart from './Stool/index.jsx';
-import LmcColumnChart from './ColumnChart/index.jsx';
-import LmcLineChart from './LineChart/index.jsx';
+// import _ from 'lodash';
+// import LmcBarChart from './BarChart/index.jsx';
+// import LmcColumnChart from './ColumnChart/index.jsx';
+
+import {
+    LmcFoodChart,
+    LmcFluidsChart,
+    LmcTurnsChart,
+    LmcStoolChart,
+    LmcLineChart,
+    LmcChartsDashboard,
+} from './components/index.js';
+
 import {
     LmcLoadingScreen,
     LmcLogTimeline,
@@ -20,14 +24,14 @@ import withToolbar from './withToolbar.jsx';
 
 
 const BackButton = ({ params }) => {
-    return <GlyphButton
+    return (<GlyphButton
         component={Link}
         glyph="chevron-left"
         position="left"
         to={`${Keystone.adminPath}/reports/charts/dashboard/${params.resident_id}`}
         variant="link">
         Dashboard
-    </GlyphButton>
+    </GlyphButton>);
 }
 
 
@@ -131,7 +135,6 @@ class LmcChart extends Component {
                 { type: 'blood_pressure_upper', label: 'Upper (Systolic)' },
                 { type: 'blood_pressure_lower', label: 'Lower (Diastolic)' },
             ];
-
             return (<LmcPressureChart
                 legendEnabled
                 series={series}
@@ -167,16 +170,14 @@ class LmcChart extends Component {
 
     render() {
         const { dataFetch, params } = this.props;
+
+        if (dataFetch.pending) return <LmcLoadingScreen />;
+        if (dataFetch.fulfilled) return this.renderChart(this.props);
+
         return (
-            <div style={{ width: '100%', paddingRight: 25 }}>
-                { dataFetch.pending
-                    ? <LmcLoadingScreen />
-                    : dataFetch.fulfilled
-                        ? this.renderChart(this.props)
-                        : <div>
-                            <div className="Toolbar"><BackButton params={params} /></div>
-                            <BlankState heading={'Oops! Unable to load the chart'} style={styles.blankSlate} />
-                        </div>}
+            <div>
+                <div className="Toolbar"><BackButton params={params} /></div>
+                <BlankState heading={'Oops! Unable to load the chart'} style={styles.blankSlate} />
             </div>
         );
     }

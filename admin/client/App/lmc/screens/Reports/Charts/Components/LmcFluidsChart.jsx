@@ -76,6 +76,9 @@ class LmcFluidsChart extends Component {
                 text: subTitle,
             },
             xAxis: {
+                minPadding: 0.1,
+                maxPadding: 0.1,
+                minTickInterval: 3600 * 1000 * 24,
                 type: 'datetime',
                 labels: {
                     format: '{value:%e %b}',

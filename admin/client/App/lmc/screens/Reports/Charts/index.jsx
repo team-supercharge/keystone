@@ -7,7 +7,11 @@ import { BlankState } from '../../../../elemental';
 
 class LmcCharts extends React.Component {
 
-    renderChildren(residentsFetch, params, children) {
+    renderChart(residentsFetch, params, children) {
+        if (!params.chart_type || !params.resident_id) {
+            return <BlankState heading={'Oops! Something went wrong'} style={styles.blankSlate} />;
+        }
+
         return React.Children.map(children, child =>
             React.cloneElement(child, { resident: _.find(residentsFetch.value.results, { id: params.resident_id }) })
         )
@@ -16,33 +20,42 @@ class LmcCharts extends React.Component {
     render () {
         const { residentsFetch, params, children } = this.props;
         const chart_type = params.chart_type || 'dashboard';
+
+        if (residentsFetch.pending) {
+            return <LmcLoadingScreen />;
+        }
+
+        if (!residentsFetch.fulfilled) {
+            return <BlankState heading={'Oops.. Something went wrong'} style={styles.blankSlate} />;
+        }
+
+        if (!_.get(residentsFetch, 'value.results.length') > 0) {
+            return <BlankState heading={'You haven\'t added any residents yet'} style={styles.blankSlate} />;
+        }
+
         return (
-            residentsFetch.pending
-                ? <LmcLoadingScreen />
-                : !residentsFetch.fulfilled
-                    ? <BlankState heading={'Opps.. Something went wrong'} style={styles.blankSlate} />
-                    : _.get(residentsFetch, 'value.results.length') > 0
-                        ? <div className="row" style={styles.mainContainer}>
-                            <div className="three columns lmc-box-shadow__right">
-                                <div style={styles.container}>
-                                    <div style={styles.childrenContainer}>
-                                        <LmcResidentList
-                                                data={residentsFetch.value.results}
-                                                resident_id={params.resident_id}
-                                                link={resident_id => `${Keystone.adminPath}/reports/charts/${chart_type}/${resident_id}`}
-                                            />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="nine columns" style={{ marginLeft: 10, width: '78% !important' }}>
-                                <div style={styles.container}>
-                                    <div style={{ borderRight: '1px solid #e1e1e1', ...styles.childrenContainer }}>
-                                        {this.renderChildren(residentsFetch, params, children)}
-                                    </div>
-                                </div>
+            <div className="row" style={styles.mainContainer}>
+                <div className="three columns lmc-box-shadow__right">
+                    <div style={styles.container}>
+                        <div style={styles.childrenContainer}>
+                            <LmcResidentList
+                                data={residentsFetch.value.results}
+                                resident_id={params.resident_id}
+                                link={resident_id => `${Keystone.adminPath}/reports/charts/${chart_type}/${resident_id}`}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="nine columns" style={{ marginLeft: 10, width: '78% !important' }}>
+                    <div style={styles.container}>
+                        <div style={{ borderRight: '1px solid #e1e1e1', ...styles.childrenContainer }}>
+                            <div style={{ width: '100%', paddingRight: 25 }}>
+                                {this.renderChart(residentsFetch, params, children)}
                             </div>
                         </div>
-                        : <BlankState heading={'You haven\'t added any residents yet'} style={styles.blankSlate} />
+                    </div>
+                </div>
+            </div>
         );
     }
 }

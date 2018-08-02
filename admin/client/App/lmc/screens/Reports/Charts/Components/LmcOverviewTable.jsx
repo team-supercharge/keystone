@@ -11,7 +11,7 @@ const startOfDay = (d) => {
     return moment(d).startOf('day');
 }
 
-class LmcFluidsTable extends Component {
+class LmcOverviewTable extends Component {
 
     constructor(props) {
         super(props);
@@ -144,12 +144,12 @@ class LmcFluidsTable extends Component {
     }
 }
 
-LmcFluidsTable.propTypes = {
+LmcOverviewTable.propTypes = {
     to: PropTypes.string.isRequired,
     from: PropTypes.string.isRequired,
 };
 
-const DATE_FORMAT = 'ddd Do';
+const DATE_FORMAT = 'Do';
 const MONTH_FORMAT = 'MMM';
 
 const styles = {
@@ -182,4 +182,4 @@ export default connect(({ to, from }) => {
         url += `?from=${from.toISOString()}`;
     };
     return { dataFetch: url };
-})(LmcFluidsTable);
+})(LmcOverviewTable);
