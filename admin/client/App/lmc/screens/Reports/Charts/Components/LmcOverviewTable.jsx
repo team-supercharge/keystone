@@ -9,16 +9,16 @@ import { Link } from 'react-router';
 
 const startOfDay = (d) => {
     return moment(d).startOf('day');
-}
+};
 
 class LmcOverviewTable extends Component {
 
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.renderTable = this.renderTable.bind(this);
     }
 
-    formatLogs(logs) {
+    formatLogs (logs) {
 
         /*
         returns:

@@ -21,7 +21,6 @@ class SecondaryNav extends React.Component {
         if (params && params.resident_id && params.chart_type) {
             chartURL += `/${params.chart_type}/${params.resident_id}`;
         };
-        console.log(chartURL);
 
         return (
             <nav className="secondary-navbar" style={styles.nav}>

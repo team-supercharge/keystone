@@ -6,21 +6,24 @@ import moment from 'moment';
 import { BlankState } from '../../../../../elemental';
 import LmcStoolTable from './LmcStoolTable.jsx';
 import { StoolColormap } from '../../../../common/utils';
+import withToolbar from '../withToolbar.jsx';
+
 
 class LmcStoolChart extends Component {
-
-    render() {
+    render () {
         // Use categoryColor
         const {
-            title,
-            subTitle,
             yMax,
             yMin,
             xAxisLabel,
-            yAxisLabel,
             resident,
             logs,
         } = this.props;
+
+
+        const yAxisLabel = 'Number of bowel movements';
+        const title = 'Stool Chart';
+        const subTitle = 'Bristol Stool Scale';
 
         // http://colorbrewer2.org/#type=diverging&scheme=RdYlBu&n=7
 
@@ -62,7 +65,7 @@ class LmcStoolChart extends Component {
             tooltip: {
                 formatter: function () {
                     return `<b>${this.y}</b> bowel movement${this.y > 1 ? 's' : ''} of <b>${this.series.name}</b>`;
-                }
+                },
             },
             xAxis: {
                 ceiling: Date.parse(moment().toString()),
@@ -79,7 +82,7 @@ class LmcStoolChart extends Component {
                         fontWeight: 'bold',
                     },
                     text: xAxisLabel || 'Date',
-                }
+                },
             },
             yAxis: {
                 max: yMax,
@@ -91,7 +94,7 @@ class LmcStoolChart extends Component {
                         fontSize: '15px',
                         fontWeight: 'bold',
                     },
-                }
+                },
             },
             plotOptions: {
                 column: {
@@ -120,4 +123,8 @@ LmcStoolChart.propTypes = {
     title: PropTypes.string.isRequired,
 };
 
-export default LmcStoolChart;
+export default withToolbar(LmcStoolChart, {
+    pdfExport: {
+        title: 'Stool Chart',
+    },
+});

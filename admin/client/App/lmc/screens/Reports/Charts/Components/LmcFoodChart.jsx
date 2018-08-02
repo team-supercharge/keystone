@@ -5,21 +5,23 @@ import _ from 'lodash';
 import moment from 'moment';
 import { BlankState } from '../../../../../elemental';
 import { LmcChartLogList } from '../../../../components';
+import withToolbar from '../withToolbar.jsx';
 
 
 class LmcFoodChart extends Component {
 
-    render() {
+    render () {
         // Use categoryColor
         const {
-            title,
-            subTitle,
-            yMax,
-            yMin,
-            xAxisLabel,
-            yAxisLabel,
+            subTitle, // remove
+            xAxisLabel, // remove
+            yMin, // remove
             logs,
         } = this.props;
+
+        const yMax = 6;
+        const yAxisLabel = 'Portions Consumed';
+        const title = 'Food Chart';
 
         // TODO: merge Food and Fluids components
         // too much duplication
@@ -142,4 +144,9 @@ LmcFoodChart.propTypes = {
     title: PropTypes.string.isRequired,
 };
 
-export default LmcFoodChart;
+
+export default withToolbar(LmcFoodChart, {
+    pdfExport: {
+        title: 'Food Consumed',
+    },
+});

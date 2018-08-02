@@ -5,12 +5,10 @@ import { Link } from 'react-router';
 
 import {
     GlyphButton,
-    Button,
-    BlankState
 } from '../../../../elemental';
 import LmcLogFilter from '../../../components/LmcLogFilter.jsx';
 import LmcPdfExport from '../../../components/LmcPdfExport.jsx';
-import withMockData from './withMockData.jsx';
+
 
 const BackButton = ({ params }) => {
     return (<GlyphButton
@@ -24,13 +22,13 @@ const BackButton = ({ params }) => {
 };
 
 // Simple HOC that wraps each chart in toolbar, filter and export features
-export default function withToolbar(WrappedComponent, config) {
+export default function withToolbar (WrappedComponent, config) {
     return class extends Component {
-        constructor(props) {
+        constructor (props) {
             super(props);
             this.state = {
                 showMock: false,
-                logs: _.chain(props.dataFetch).get('value.results').sortBy('timeLogged').value(),
+                logs: _.sortBy(props.data, 'timeLogged'),
             };
             this.onFilterChange = this.onFilterChange.bind(this);
             this.renderToolbar = this.renderToolbar.bind(this);
@@ -42,23 +40,23 @@ export default function withToolbar(WrappedComponent, config) {
             }); // ensure that they're sorted by date!
         }
 
-        renderToolbar() {
-            const { params, dataFetch } = this.props;
+        renderToolbar () {
+            const { params, data } = this.props;
             const { logs } = this.state;
             const isEmpty = !logs || !logs.length;
             return (
                 <div className="Toolbar">
                     <BackButton params={params} />
-                    {dataFetch.fulfilled && !isEmpty
+                    {data && !isEmpty
                         ? <LmcPdfExport logs={logs} resident={this.props.resident} {...config.pdfExport} />
                         : null}
                 </div>
             );
         }
 
-        render() {
-            const { params, dataFetch, filterPadding } = this.props;
-            const { logs, showMock } = this.state;
+        render () {
+            const { params, data, filterPadding } = this.props;
+            const { logs } = this.state;
 
             const filterStyle = (_.get(config, 'dateFilter.left') === true)
                 ? { paddingBottom: 25 }
@@ -67,32 +65,15 @@ export default function withToolbar(WrappedComponent, config) {
             const isEmpty = !logs || !logs.length;
             const isDashboard = params.chart_type !== 'dashboard';
 
-            let Child;
-            if (dataFetch.fulfilled && !_.get(dataFetch, 'value.results.length')) {
-                // button -> Report
-                if (showMock) {
-                    const Chart = withMockData(WrappedComponent, config);
-                    return <Chart {...this.props} />;
-                } else {
-                    return (
-                        <BlankState heading={'You haven\'t added any logs yet'} style={{ marginTop: 40 }} >
-                            <Button onClick={() => this.setState({ showMock: true })}>
-                                Show sample chart
-                            </Button>
-                        </BlankState>
-                    )
-                }
-            }
-
             return (
                 <div>
                     { isDashboard ? this.renderToolbar() : null }
                     { !isEmpty && <div style={filterStyle}>
-                        <LmcLogFilter blockDatesWithNoData data={dataFetch.value.results} onChange={this.onFilterChange} />
+                        <LmcLogFilter blockDatesWithNoData data={data} onChange={this.onFilterChange} />
                     </div> }
-                    <WrappedComponent logs={logs} {...this.props} />
+                    <WrappedComponent logs={logs} {...this.props} {...config.childProps} />
                 </div>
             );
         }
     };
-}
+};

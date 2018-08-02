@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import PropTypes from 'prop-types';
-import { connect } from 'react-refetch';
 import { BlankState, GlyphButton } from '../../../../elemental';
-// import _ from 'lodash';
-// import LmcBarChart from './BarChart/index.jsx';
-// import LmcColumnChart from './ColumnChart/index.jsx';
+import withDataLoader from './withDataLoader.jsx';
+
 
 import {
     LmcFoodChart,
@@ -17,10 +14,11 @@ import {
 } from './components/index.js';
 
 import {
-    LmcLoadingScreen,
     LmcLogTimeline,
 } from '../../../components';
+
 import withToolbar from './withToolbar.jsx';
+// import withDataLoader from './withDataLoader.jsx';
 
 
 const BackButton = ({ params }) => {
@@ -32,11 +30,11 @@ const BackButton = ({ params }) => {
         variant="link">
         Dashboard
     </GlyphButton>);
-}
+};
 
 
 class LmcChart extends Component {
-    renderChart(props) {
+    renderChart (props) {
         /**
          * ToDo - Refactor: pull out all config into plain JSON?
          * There's too much repetition
@@ -45,33 +43,11 @@ class LmcChart extends Component {
         const chartProps = {
             resident: props.resident,
             params: props.params,
-            dataFetch: props.dataFetch,
-        }
+            data: props.data,
+        };
 
         switch (props.params.chart_type) {
-        case 'dashboard':
-            return <LmcChartsDashboard {...chartProps} />;
-        case 'daily':
-            const LmcDailyChart = withToolbar(LmcLogTimeline, {
-                dateFilter: {
-                    left: true,
-                },
-                pdfExport: {
-                    title: 'Daily Report',
-                    headerDate: false,
-                    groupBy: 'date',
-                    dateFormat: 'HH:mm',
-                }
-            });
-            return <LmcDailyChart {...chartProps} />;
-        case 'meal':
-            const LmcFood = withToolbar(LmcFoodChart, { pdfExport: { title: 'Food Consumed' } });
-            return (<LmcFood
-                type="meal"
-                yMax={6}
-                yAxisLabel="Portions Consumed"
-                title="Food Chart"
-                {...chartProps} />);
+
         case 'fluids':
             const LmcFluid = withToolbar(LmcFluidsChart, { pdfExport: { title: 'Fluids Charts' } });
             return (<LmcFluid
@@ -157,27 +133,22 @@ class LmcChart extends Component {
                 {...chartProps} />);
         case 'heart_rate':
             const LmcHeartRateChart = withToolbar(LmcLineChart, { pdfExport: { title: 'Heart Rate Chart' } });
-            return (<LmcHeartRateChart
-                type='heart_rate'
-                yAxisLabel="Heat Rate (bpm)"
-                title="Heart Rate Chart"
-                {...chartProps} />);
+            return <LmcHeartRateChart type="heart_rate" yAxisLabel="Heat Rate (bpm)" title="Heart Rate Chart" {...chartProps} />;
         default:
             const LmcBlankSlate = withToolbar(BlankState);
             return <LmcBlankSlate heading={'That\s not a report!'} style={styles.blankSlate} />;
         }
     }
 
-    render() {
-        const { dataFetch, params } = this.props;
+    render () {
+        const { data, params } = this.props;
 
-        if (dataFetch.pending) return <LmcLoadingScreen />;
-        if (dataFetch.fulfilled) return this.renderChart(this.props);
+        if (data) return this.renderChart(this.props);
 
         return (
             <div>
                 <div className="Toolbar"><BackButton params={params} /></div>
-                <BlankState heading={'Oops! Unable to load the chart'} style={styles.blankSlate} />
+                <BlankState heading={'Oops! Couldn\'t load the chart'} style={styles.blankSlate} />
             </div>
         );
     }
@@ -186,13 +157,17 @@ class LmcChart extends Component {
 const styles = {
     blankSlate: {
         // marginTop: 40,
-    }
-}
+    },
+};
 
 LmcChart.propTypes = {
 
 };
 
-export default connect(({ params }) => ({
-    dataFetch: `${Keystone.adminPath}/api/reports/charts/${params.chart_type}/${params.resident_id}`,
-}))(LmcChart);
+
+export default withDataLoader(LmcChart, {
+    url: ({ params }) => `${Keystone.adminPath}/api/reports/charts/${params.chart_type}/${params.resident_id}`,
+    errorMessage: 'No logs to show',
+    enableMockData: true,
+});
+

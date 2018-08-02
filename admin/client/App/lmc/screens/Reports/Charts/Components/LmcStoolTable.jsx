@@ -19,11 +19,11 @@ const StoolMark = (color) => {
         <td style={{ backgroundColor: color, color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
             <img style={{ width: 12, left: -3, position: 'relative' }} src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/icons/icon-tick.png" alt="tick" />
         </td>
-    )
-}
+    );
+};
 
 class LmcStoolTable extends Component {
-    render() {
+    render () {
         const { logs } = this.props;
         const types = [1, 2, 3, 4, 5, 6, 7];
         const logsSorted = _.sortBy(logs, ({ timeLogged }) => -moment(timeLogged));

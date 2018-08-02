@@ -57,9 +57,8 @@ ReactDOM.render(
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
 				<Route path="reports" component={LmcReportView} onChange={onListChange}>
-					<Route path="charts" component={LmcCharts}>
-						<Route path=":chart_type/:resident_id" component={LmcChart} />
-					</Route>
+					<Route path="charts" component={LmcCharts} />
+					<Route path="charts/:chart_type/:resident_id" component={LmcCharts} />
 					<Route path="overview/fluids" component={LmcFluidsOverview} />
 				</Route>
 				<Route path=":listId" component={List} onChange={onListChange} />
