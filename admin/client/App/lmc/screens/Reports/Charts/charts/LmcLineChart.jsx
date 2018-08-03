@@ -1,17 +1,28 @@
-const ReactHighcharts = require('react-highcharts');
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
 import { BlankState } from '../../../../../elemental';
 import { LmcChartLogList } from '../../../../components';
+import LmcHighcharts from './LmcHighcharts.jsx';
 
 
 class LmcLineChart extends Component {
 
-    render() {
+    render () {
         // Use categoryColor
-        const { title, subTitle, yMax, yMin, xAxisLabel, yAxisLabel, type, series, logs, legendEnabled } = this.props;
+        const {
+            title,
+            subTitle,
+            yMax,
+            yMin,
+            xAxisLabel,
+            yAxisLabel,
+            series,
+            legendEnabled,
+            logs,
+            type,
+        } = this.props;
 
         const map_data = (data, key) => {
             return _(data)
@@ -29,6 +40,7 @@ class LmcLineChart extends Component {
         ];
 
         let chart_series;
+
         if (series && series.length) {
             chart_series = series.map(({ type, label }, index) => ({
                 name: label,
@@ -36,7 +48,7 @@ class LmcLineChart extends Component {
                 data: map_data(logs, type),
                 marker: {
                     lineColor: colors[index],
-                }
+                },
             }));
         } else {
             chart_series = [{
@@ -47,79 +59,21 @@ class LmcLineChart extends Component {
         };
 
         const config = {
-            chart: {
-                type: 'line',
-                backgroundColor: 'none',
-            },
-            credits: {
-                enabled: false,
-            },
-            title: {
-                style: {
-                    color: '#444',
-                    fontWeight: 'bold',
-                },
-                text: title,
-            },
-            subtitle: {
-                text: subTitle,
-            },
-            xAxis: {
-                type: 'datetime',
-                ceiling: Date.parse(moment().toString()),
-                minPadding: 0.1,
-                maxPadding: 0.5,
-                minTickInterval: 3600 * 1000 * 24,
-                // tickInterval: 3600 * 1000 * 24 * 7,
-                // maxTickInterval: moment.duration(1, 'day').asMilliseconds(),
-                // minRange: 3600000 * 24 * 1,
-                labels: {
-                    format: '{value:%e %b}',
-                },
-                title: {
-                    style: {
-                        fontSize: '15px',
-                        fontWeight: 'bold',
-                    },
-                    text: xAxisLabel || 'Date',
-                }
-            },
-            yAxis: {
-                max: yMax,
-                min: yMin || 0,
-                title: {
-                    text: yAxisLabel,
-                    style: {
-                        fontSize: '15px',
-                        fontWeight: 'bold',
-                    },
-                }
-            },
-            plotOptions: {
-                line: {
-                    lineWidth: 4,
-                    animation: {
-                        duration: 1300,
-                    },
-                    marker: {
-                        radius: 4,
-                        enabled: true,
-                        lineWidth: 3,
-                        fillColor: '#f9f9f9',
-                        lineColor: '#ab97c6',
-                    }
-                }
-            },
-            legend: {
-                enabled: legendEnabled || false,
-            },
+            title,
+            subTitle,
+            yMax,
+            yMin,
+            xAxisLabel,
+            yAxisLabel,
+            legendEnabled,
+            chartType: 'line',
             series: chart_series,
         };
 
         return (
             logs && logs.length
                 ? <div>
-                    <ReactHighcharts config={config} />
+                    <LmcHighcharts config={config} />
                     <LmcChartLogList logs={logs} />
                 </div>
                 : <BlankState heading={`No logs to display`} style={{ marginTop: 40 }} />
