@@ -7,6 +7,7 @@ import { BlankState } from '../../../../../elemental';
 import { LmcChartLogList } from '../../../../components';
 import withToolbar from '../withToolbar.jsx';
 
+// require('highcharts/modules/pattern-fill')(ReactHighcharts.Highcharts);
 
 class LmcFoodChart extends Component {
 
@@ -44,9 +45,20 @@ class LmcFoodChart extends Component {
         let allLogs = [];
         let chartSeries = [];
         let groups = [
-            { name: 'Breakfast' },
-            { name: 'Lunch', color: colors[0] },
-            { name: 'Dinner', color: colors[1] },
+            {
+                name: 'Breakfast',
+                // color: 'url(#highcharts-default-pattern-0)',
+            },
+            {
+                name: 'Lunch',
+                color: colors[0],
+                // color: 'url(#highcharts-default-pattern-2)',
+            },
+            {
+                name: 'Dinner',
+                color: colors[1],
+                // color: 'url(#highcharts-default-pattern-4)',
+            },
         ];
 
         groups.forEach(({ name, color }) => {
@@ -54,11 +66,11 @@ class LmcFoodChart extends Component {
             const logGroup = _.chain(logs)
                 .filter(log => log.title.match(pattern))
                 .cloneDeep()
-                .map(log => {
-                    // so that the item colors in the log list match the chart
-                    if (color) log.categoryColor = color;
-                    return log;
-                })
+                // .map(log => {
+                //     // so that the item colors in the log list match the chart
+                //     if (color) log.categoryColor = color;
+                //     return log;
+                // })
                 .value();
 
             allLogs = [...allLogs, ...logGroup];
@@ -125,6 +137,7 @@ class LmcFoodChart extends Component {
             },
             legend: {
                 enabled: true,
+                symbolRadius: 20,
             },
             series: chartSeries,
         };
