@@ -5,7 +5,7 @@ import LmcStoolChart from './LmcStoolChart.jsx';
 import LmcLineChart from './LmcLineChart.jsx';
 import LmcChartsDashboard from './LmcChartsDashboard.jsx';
 import LmcDailyChart from './LmcDailyChart.jsx';
-import LmcMustChart from './LmcMustChart.jsx';
+import LmcMustScoreChart from './LmcMustScoreChart.jsx';
 import LmcBloodOxygenChart from './LmcBloodOxygenChart.jsx';
 import LmcBloodPressureChart from './LmcBloodPressureChart.jsx';
 import LmcHeartRateChart from './LmcHeartRateChart.jsx';
@@ -30,5 +30,5 @@ module.exports = {
     LmcLineChart,
     LmcChartsDashboard,
     LmcDailyChart,
-    LmcMustChart,
+    LmcMustScoreChart,
 };
