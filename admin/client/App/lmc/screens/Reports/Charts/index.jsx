@@ -55,7 +55,7 @@ class LmcCharts extends React.Component {
             const ChartWithLoader = withDataLoader(Chart, {
                 url: ({ params }) => `${Keystone.adminPath}/api/reports/charts/${params.chart_type}/${params.resident_id}`,
                 errorMessage: 'No logs to show',
-                enableMockData: true,
+                enableMockData: params.chart_type !== 'dashboard',
             });
             return <ChartWithLoader {...chartProps} />;
         } else {

@@ -7,17 +7,17 @@ import LmcLogFilter from '../../../../components/LmcLogFilter.jsx';
 
 class LmcFluidsOverview extends Component {
 
-    getDefaultState () {
-        return {
-            to: moment(),
-            from: moment().subtract(27, 'days').startOf('day'),
-        }
-    }
-
     constructor (props) {
         super(props);
         this.state = this.getDefaultState();
         this.setDates = this.setDates.bind(this);
+    }
+
+    getDefaultState () {
+        return {
+            to: moment(),
+            from: moment().subtract(27, 'days').startOf('day'),
+        };
     }
 
     setDates ({ startDate, endDate }) {

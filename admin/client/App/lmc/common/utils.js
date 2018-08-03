@@ -1,3 +1,4 @@
+// http://colorbrewer2.org/#type=diverging&scheme=RdYlBu&n=7
 export const StoolColormap = {
     1: '#4575b4',
     2: '#91bfdb',

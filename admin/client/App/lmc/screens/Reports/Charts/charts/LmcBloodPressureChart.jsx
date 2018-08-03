@@ -12,11 +12,11 @@ export default withToolbar(LmcLineChart, {
         series: [
             {
                 type: 'blood_pressure_upper',
-                label: 'Upper (Systolic)'
+                label: 'Upper (Systolic)',
             },
             {
                 type: 'blood_pressure_lower',
-                label: 'Lower (Diastolic)'
+                label: 'Lower (Diastolic)',
             },
         ],
         type: 'must',
