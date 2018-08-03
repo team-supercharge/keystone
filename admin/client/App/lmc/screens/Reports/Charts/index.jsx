@@ -3,6 +3,8 @@ import _ from 'lodash';
 import LmcResidentList from '../../../components/LmcResidentList.jsx';
 import { BlankState } from '../../../../elemental';
 import withDataLoader from './withDataLoader.jsx';
+import withToolbar from './withToolbar.jsx';
+
 
 import {
     LmcBloodOxygenChart,
@@ -57,7 +59,8 @@ class LmcCharts extends React.Component {
             });
             return <ChartWithLoader {...chartProps} />;
         } else {
-            return <BlankState heading={'Oops! Something went wrong.'} style={styles.blankSlate} />;
+            const LmcBlankSlate = withToolbar(BlankState);
+            return <LmcBlankSlate heading={'That\s not a chart!'} style={styles.blankSlate} />;
         }
     }
 

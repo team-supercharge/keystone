@@ -7,6 +7,7 @@ export default withToolbar(LmcLineChart, {
     },
     childProps: {
         type: 'temperature',
+        yMin: 33,
         yAxisLabel: 'Temperature (C)',
         title: 'Temperature Chart',
     },

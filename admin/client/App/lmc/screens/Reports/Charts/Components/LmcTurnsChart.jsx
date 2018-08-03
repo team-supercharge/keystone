@@ -29,11 +29,23 @@ class LmcTurnsChart extends Component {
         const Logs = _.cloneDeep(logs)
             .map(log => {
 
-                if (log.description && log.description.match('to right')) {
+                if (log.description
+                    && (log.description.match('to right')
+                    || log.description.match('to his right')
+                    || log.description.match('to her right'))
+                ) {
                     log.itemIcon = icons.right;
-                } else if (log.description && log.description.match('to left')) {
+                } else if (log.description
+                    && (log.description.match('to left')
+                    || log.description.match('to his left')
+                    || log.description.match('to her left'))
+                ) {
                     log.itemIcon = icons.left;
-                } else if (log.description && (log.description.match('her back') || log.description.match('his back'))) {
+                } else if (log.description
+                    && (log.description.match('to back')
+                    || log.description.match('to his back')
+                    || log.description.match('to her back'))
+                ) {
                     log.itemIcon = icons.down;
                 }
 

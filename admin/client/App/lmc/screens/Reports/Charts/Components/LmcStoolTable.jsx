@@ -78,7 +78,7 @@ class LmcStoolTable extends Component {
                                     <td style={{ textAlign: 'center', textTransform: 'capitalize' }}>
                                         { stoolColor }
                                     </td>
-                                    <td>{isStool(log) ? '' : `${log.title}. ${log.description}`}</td>
+                                    <td>{isStool(log) ? '' : `${log.description}`}</td>
                                     <td style={{ textAlign: 'center' }}>{log.carerName}</td>
                                 </tr>
                             );
