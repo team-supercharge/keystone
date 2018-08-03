@@ -48,21 +48,27 @@ class LmcChartsDashboard extends React.Component {
         )
     }
 
-    renderNoMeasurements(measurements_no_data) {
+    renderNoMeasurements(measurements_no_data, resident_id) {
         return (
             <div>
                 <h2 className="lmc-card-title">
                     No Data
                 </h2>
                 <div style={styles.sectionContainer}>
-                    { measurements_no_data.map(({ label }) => (<h4 key={label}>{label}</h4>)) }
+                    { measurements_no_data.map(({ label, key }) => (
+                        <Link key={key} to={`${Keystone.adminPath}/reports/charts/${key}/${resident_id}`}>
+                            <h4 key={label}>
+                                {label}
+                            </h4>
+                        </Link>
+                    )) }
                 </div>
             </div>
         )
     }
 
     render () {
-        const { params, dataFetch: { value: data } } = this.props;
+        const { params, data } = this.props;
         const measurements = _.sortBy([
             { label: 'Fluids', key: 'fluids', unit: 'ml last 24h' },
             { label: 'Food', key: 'meal', unit: ' portions last 24h' },
@@ -95,7 +101,7 @@ class LmcChartsDashboard extends React.Component {
         ], 'label');
 
         measurements.forEach(d => {
-            d.data = _.get(data, `results.${d.key}`);
+            d.data = data[d.key];
         });
 
         const measurements_with_data = _.filter(measurements, 'data');
@@ -110,7 +116,7 @@ class LmcChartsDashboard extends React.Component {
                 </div>
                 <div className="four columns">
                     { measurements_with_data.length ? this.renderMeasurements(measurements_with_data, params.resident_id) : null }
-                    { measurements_no_data.length ? this.renderNoMeasurements(measurements_no_data) : null }
+                    { measurements_no_data.length ? this.renderNoMeasurements(measurements_no_data, params.resident_id) : null }
                 </div>
             </div>
         );

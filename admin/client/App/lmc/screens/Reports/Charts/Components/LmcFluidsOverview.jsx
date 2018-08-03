@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import LmcFluidsTable from './LmcFluidsTable.jsx';
+import LmcOverviewTable from './LmcOverviewTable.jsx';
 import LmcLogFilter from '../../../../components/LmcLogFilter.jsx';
 
 
@@ -43,7 +43,7 @@ class LmcFluidsOverview extends Component {
                 <div style={styles.dateRange}>
                     <LmcLogFilter to={to} from={from} maximumNights={28} blockFuture onNewDates={this.setDates}/>
                 </div>
-                <LmcFluidsTable to={to} from={from} />
+                <LmcOverviewTable to={to} from={from} />
             </div>
         );
     }

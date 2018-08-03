@@ -259,7 +259,7 @@ const LogListTable = (row, dateFormat) => {
                             style: 'tableText',
                         },
                         {
-                            text: log.carerName + (log.witnessedBy && ` - witnessed by ${log.witnessedBy}`),
+                            text: log.carerName + (log.witnessedBy ? ` - witnessed by ${log.witnessedBy}` : ''),
                             style: 'tableText',
                         },
                         {

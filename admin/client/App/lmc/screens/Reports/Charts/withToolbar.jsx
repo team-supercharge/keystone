@@ -3,9 +3,12 @@ import _ from 'lodash';
 import moment from 'moment';
 import { Link } from 'react-router';
 
-import { GlyphButton } from '../../../../elemental';
+import {
+    GlyphButton,
+} from '../../../../elemental';
 import LmcLogFilter from '../../../components/LmcLogFilter.jsx';
 import LmcPdfExport from '../../../components/LmcPdfExport.jsx';
+
 
 const BackButton = ({ params }) => {
     return (<GlyphButton
@@ -19,14 +22,16 @@ const BackButton = ({ params }) => {
 };
 
 // Simple HOC that wraps each chart in toolbar, filter and export features
-export default function withToolbar(WrappedComponent, config) {
+export default function withToolbar (WrappedComponent, config) {
     return class extends Component {
-        constructor(props) {
+        constructor (props) {
             super(props);
             this.state = {
-                logs: _.chain(props.dataFetch).get('value.results').sortBy('timeLogged').value(),
+                showMock: false,
+                logs: _.sortBy(props.data, 'timeLogged'),
             };
             this.onFilterChange = this.onFilterChange.bind(this);
+            this.renderToolbar = this.renderToolbar.bind(this);
         }
 
         onFilterChange (logs) {
@@ -35,29 +40,40 @@ export default function withToolbar(WrappedComponent, config) {
             }); // ensure that they're sorted by date!
         }
 
-        render() {
-            const { params, dataFetch, filterPadding } = this.props;
+        renderToolbar () {
+            const { params, data } = this.props;
             const { logs } = this.state;
             const isEmpty = !logs || !logs.length;
+            return (
+                <div className="Toolbar">
+                    <BackButton params={params} />
+                    {data && !isEmpty
+                        ? <LmcPdfExport logs={logs} resident={this.props.resident} {...config.pdfExport} />
+                        : null}
+                </div>
+            );
+        }
+
+        render () {
+            const { params, data, filterPadding } = this.props;
+            const { logs } = this.state;
+
             const filterStyle = (_.get(config, 'dateFilter.left') === true)
                 ? { paddingBottom: 25 }
                 : { textAlign: 'center', paddingBottom: filterPadding || 25 };
 
+            const isEmpty = !logs || !logs.length;
+            const isDashboard = params.chart_type !== 'dashboard';
+
             return (
                 <div>
-                    { params.chart_type !== 'dashboard'
-                        ? <div className="Toolbar">
-                        <BackButton params={params} />
-                        {dataFetch.fulfilled && !isEmpty
-                            ? <LmcPdfExport logs={logs} resident={this.props.resident} {...config.pdfExport} />
-                            : null}
-                    </div> : null }
-                    {!isEmpty && <div style={filterStyle}>
-                        <LmcLogFilter blockDatesWithNoData data={dataFetch.value.results} onChange={this.onFilterChange} />
-                    </div>}
-                    <WrappedComponent logs={logs} {...this.props} />
+                    { isDashboard ? this.renderToolbar() : null }
+                    { !isEmpty && <div style={filterStyle}>
+                        <LmcLogFilter blockDatesWithNoData data={data} onChange={this.onFilterChange} />
+                    </div> }
+                    <WrappedComponent logs={logs} {...this.props} {...config.childProps} />
                 </div>
             );
         }
     };
-}
+};

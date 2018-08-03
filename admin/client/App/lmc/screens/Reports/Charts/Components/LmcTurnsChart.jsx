@@ -1,10 +1,9 @@
-const ReactHighcharts = require('react-highcharts');
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import moment from 'moment';
 import { BlankState } from '../../../../../elemental';
 import { LmcChartLogList } from '../../../../components';
+import withToolbar from '../withToolbar.jsx';
 
 
 const icons = {
@@ -16,12 +15,12 @@ const icons = {
     },
     right: {
         url: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/icons/right-arrow.png',
-    }
+    },
 };
 
 
 class LmcTurnsChart extends Component {
-    render() {
+    render () {
         const {
             // title, subTitle, yMax, yMin, xAxisLabel, yAxisLabel, type,
             logs,
@@ -30,11 +29,23 @@ class LmcTurnsChart extends Component {
         const Logs = _.cloneDeep(logs)
             .map(log => {
 
-                if (log.description && log.description.match('to right')) {
+                if (log.description
+                    && (log.description.match('to right')
+                    || log.description.match('to his right')
+                    || log.description.match('to her right'))
+                ) {
                     log.itemIcon = icons.right;
-                } else if (log.description && log.description.match('to left')) {
+                } else if (log.description
+                    && (log.description.match('to left')
+                    || log.description.match('to his left')
+                    || log.description.match('to her left'))
+                ) {
                     log.itemIcon = icons.left;
-                } else if (log.description && (log.description.match('her back') || log.description.match('his back'))) {
+                } else if (log.description
+                    && (log.description.match('to back')
+                    || log.description.match('to his back')
+                    || log.description.match('to her back'))
+                ) {
                     log.itemIcon = icons.down;
                 }
 
@@ -58,4 +69,9 @@ LmcTurnsChart.propTypes = {
     title: PropTypes.string.isRequired,
 };
 
-export default LmcTurnsChart;
+
+export default withToolbar(LmcTurnsChart, {
+    pdfExport: {
+        title: 'Turns Chart',
+    },
+});

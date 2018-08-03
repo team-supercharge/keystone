@@ -5,19 +5,20 @@ import _ from 'lodash';
 import moment from 'moment';
 import { BlankState } from '../../../../../elemental';
 import { LmcChartLogList } from '../../../../components';
+import withToolbar from '../withToolbar.jsx';
 
 
 class LmcFluidsChart extends Component {
 
-    render() {
+    render () {
         const {
-            title,
+            title = 'Fluids Chart',
             subTitle,
             yMax,
             yMin,
             xAxisLabel,
-            yAxisLabel,
-            logs,
+            yAxisLabel = 'Fluids In / Out (ml)',
+            data,
         } = this.props;
         // const chartData = _.map(logs, log => [Date.parse(moment(log.timeLogged).toString()), log.measurements[type].value]);
 
@@ -37,8 +38,8 @@ class LmcFluidsChart extends Component {
                 .value();
         };
 
-        const fluds_in_logs = _.filter(logs, log => _.get(log, 'measurements.fluids_in.value'));
-        const fluds_out_logs = _.filter(logs, log => _.get(log, 'measurements.fluids_out.value'));
+        const fluds_in_logs = _.filter(data, log => _.get(log, 'measurements.fluids_in.value'));
+        const fluds_out_logs = _.filter(data, log => _.get(log, 'measurements.fluids_out.value'));
 
         let chartSeries = [];
         if (fluds_in_logs && fluds_in_logs.length) {
@@ -76,6 +77,9 @@ class LmcFluidsChart extends Component {
                 text: subTitle,
             },
             xAxis: {
+                minPadding: 0.1,
+                maxPadding: 0.1,
+                minTickInterval: 3600 * 1000 * 24,
                 type: 'datetime',
                 labels: {
                     format: '{value:%e %b}',
@@ -86,7 +90,7 @@ class LmcFluidsChart extends Component {
                         fontWeight: 'bold',
                     },
                     text: xAxisLabel || 'Date',
-                }
+                },
             },
             yAxis: {
                 max: yMax,
@@ -97,7 +101,7 @@ class LmcFluidsChart extends Component {
                         fontSize: '15px',
                         fontWeight: 'bold',
                     },
-                }
+                },
             },
             plotOptions: {
                 column: {
@@ -111,10 +115,10 @@ class LmcFluidsChart extends Component {
         };
 
         return (
-            logs && logs.length
+            data && data.length
                 ? <div>
                     {chartSeries.length ? <ReactHighcharts config={config} /> : null}
-                    <LmcChartLogList logs={logs} />
+                    <LmcChartLogList logs={data} />
                 </div>
                 : <BlankState heading={`No logs to display`} style={{ marginTop: 40 }} />
         );
@@ -125,4 +129,8 @@ LmcFluidsChart.propTypes = {
     title: PropTypes.string.isRequired,
 };
 
-export default LmcFluidsChart;
+export default withToolbar(LmcFluidsChart, {
+    pdfExport: {
+        title: 'Waterlow Score',
+    },
+});

@@ -1,10 +1,9 @@
 const ReactHighcharts = require('react-highcharts');
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
-import { BlankState, GlyphButton } from '../../../../../elemental';
+import { BlankState } from '../../../../../elemental';
 import { LmcChartLogList } from '../../../../components';
 
 
@@ -67,6 +66,10 @@ class LmcLineChart extends Component {
             },
             xAxis: {
                 type: 'datetime',
+                ceiling: Date.parse(moment().toString()),
+                minPadding: 0.1,
+                maxPadding: 0.5,
+                minTickInterval: 3600 * 1000 * 24,
                 // tickInterval: 3600 * 1000 * 24 * 7,
                 // maxTickInterval: moment.duration(1, 'day').asMilliseconds(),
                 // minRange: 3600000 * 24 * 1,

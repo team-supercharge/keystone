@@ -93,9 +93,9 @@ module.exports = function createDynamicRouter (keystone) {
 	// #6: List Routes
 	router.all('/:list/:page([0-9]{1,5})?', IndexRoute);
 	router.all('/:list/:item', IndexRoute);
-	router.all('/reports/charts/:chart_id/:resident_id', IndexRoute);
+	router.all('/reports/charts/:chart_type/:resident_id', IndexRoute);
 	router.all('/reports/charts/:resident_id/', IndexRoute);
-	router.all('/reports/overview/:chart_id', IndexRoute);
+	router.all('/reports/overview/:chart_type', IndexRoute);
 
 	// TODO: catch 404s and errors with Admin-UI specific handlers
 
