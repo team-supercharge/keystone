@@ -21,7 +21,7 @@ import {
     LmcChartsDashboard,
     LmcDailyChart,
     LmcMustChart,
-} from './components/index.js';
+} from './charts/index.js';
 
 
 class LmcCharts extends React.Component {

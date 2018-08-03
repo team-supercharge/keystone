@@ -7,20 +7,20 @@ import LmcLogFilter from '../../../../components/LmcLogFilter.jsx';
 
 class LmcFluidsOverview extends Component {
 
-    getDefaultState() {
+    getDefaultState () {
         return {
             to: moment(),
             from: moment().subtract(27, 'days').startOf('day'),
         }
     }
 
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = this.getDefaultState();
         this.setDates = this.setDates.bind(this);
     }
 
-    setDates({ startDate, endDate }) {
+    setDates ({ startDate, endDate }) {
         if (startDate && endDate) {
             this.setState({
                 to: moment(endDate).endOf('day'),
@@ -31,7 +31,7 @@ class LmcFluidsOverview extends Component {
         }
     }
 
-    render() {
+    render () {
         const { to, from } = this.state;
         return (
             <div style={styles.container}>
@@ -60,7 +60,7 @@ const styles = {
     dateRange: {
         paddingBottom: 30,
         textAlign: 'center',
-    }
+    },
 };
 
 LmcFluidsOverview.propTypes = {
