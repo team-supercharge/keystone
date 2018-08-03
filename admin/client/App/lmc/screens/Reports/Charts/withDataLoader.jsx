@@ -24,7 +24,7 @@ export default function withDataLoader (WrappedComponent, { enableMockData, erro
                     && !(results.length > 0)
                 ) {
                     if (mockDataFetch && mockDataFetch.fulfilled) {
-                        return <WrappedComponent data={mockDataFetch.value.results} {...this.props} />;
+                        return <WrappedComponent mock data={mockDataFetch.value.results} {...this.props} />;
                     } else {
                         return (
                             <BlankState heading={'You haven\'t added any logs yet'} style={{ marginTop: 40 }} >

@@ -68,7 +68,7 @@ class LmcChartsDashboard extends React.Component {
     }
 
     render () {
-        const { params, data } = this.props;
+        const { params, data, mock } = this.props;
         const measurements = _.sortBy([
             { label: 'Fluids', key: 'fluids', unit: 'ml last 24h' },
             { label: 'Food', key: 'meal', unit: ' portions last 24h' },
@@ -101,7 +101,7 @@ class LmcChartsDashboard extends React.Component {
         ], 'label');
 
         measurements.forEach(d => {
-            d.data = data[d.key];
+            d.data = _.find(data, { key: d.key });
         });
 
         const measurements_with_data = _.filter(measurements, 'data');
@@ -111,7 +111,7 @@ class LmcChartsDashboard extends React.Component {
             <div className="row">
                 <div className="eight columns">
                     <div style={styles.sectionContainer}>
-                        <LmcResidentLatestLogs resident_id={params.resident_id} />
+                        <LmcResidentLatestLogs mock={mock} resident_id={params.resident_id} />
                     </div>
                 </div>
                 <div className="four columns">

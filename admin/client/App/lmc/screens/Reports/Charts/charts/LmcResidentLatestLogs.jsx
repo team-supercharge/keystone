@@ -42,7 +42,7 @@ LmcResidentLatestLogs.propTypes = {
     resident_id: PropTypes.string.isRequired,
 };
 
-export default connect(({ resident_id }) => ({
-    logsFetch: `${Keystone.adminPath}/api/reports/residents/${resident_id}/logs?limit=10`,
+export default connect(({ resident_id, mock }) => ({
+    logsFetch: `${Keystone.adminPath}/api/reports/residents/${resident_id}/logs?limit=10${ mock ? '&mock=1' : ''}`,
 }))(LmcResidentLatestLogs);
 
