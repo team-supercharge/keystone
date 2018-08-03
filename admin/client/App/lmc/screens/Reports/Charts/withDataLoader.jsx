@@ -6,12 +6,23 @@ import {
     BlankState,
 } from '../../../../elemental';
 import _ from 'lodash';
+import withToolbar from './withToolbar.jsx';
 
+
+const ShowSample = withToolbar(({ onButtonClick }) => {
+    return (
+        <BlankState heading={'You haven\'t added any logs yet'} style={{ marginTop: 40 }} >
+            <Button onClick={() => onButtonClick()}>
+                Show sample chart
+            </Button>
+        </BlankState>
+    );
+}, {});
 
 export default function withDataLoader (WrappedComponent, { enableMockData, errorMessage, url }) {
     class LmcDataLoader extends Component {
         render () {
-            const { dataFetch, triggerMockFetch, mockDataFetch } = this.props;
+            const { dataFetch, triggerMockFetch, mockDataFetch, params } = this.props;
 
             if (dataFetch.pending || (mockDataFetch && mockDataFetch.pending)) {
                 return <LmcLoadingScreen />;
@@ -26,13 +37,7 @@ export default function withDataLoader (WrappedComponent, { enableMockData, erro
                     if (mockDataFetch && mockDataFetch.fulfilled) {
                         return <WrappedComponent mock data={mockDataFetch.value.results} {...this.props} />;
                     } else {
-                        return (
-                            <BlankState heading={'You haven\'t added any logs yet'} style={{ marginTop: 40 }} >
-                                <Button onClick={() => triggerMockFetch()}>
-                                    Show sample chart
-                                </Button>
-                            </BlankState>
-                        );
+                        return <ShowSample params={params} onButtonClick={() => triggerMockFetch()} />;
                     }
                 } else {
                     return <WrappedComponent data={dataFetch.value.results} {...this.props} />;

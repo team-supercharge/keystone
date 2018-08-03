@@ -63,7 +63,7 @@ export default function withToolbar (WrappedComponent, config) {
                 : { textAlign: 'center', paddingBottom: filterPadding || 25 };
 
             const isEmpty = !logs || !logs.length;
-            const isDashboard = params.chart_type !== 'dashboard';
+            const isDashboard = params && params.chart_type !== 'dashboard';
 
             return (
                 <div>
