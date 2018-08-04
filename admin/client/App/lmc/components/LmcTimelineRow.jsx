@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import _ from 'lodash';
-import { Link } from 'react-router';
+import LmcLink from './LmcLink.jsx';
 
 
 class LmcTimelineRow extends Component {
-    render() {
+    render () {
+        const { mock, index, total, log, dateFormat } = this.props;
         const fallback = 'https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png';
-        const { index, total, log, dateFormat } = this.props;
         const image = _.get(log, 'itemIcon.url') || _.get(log, 'categoryIcon.url') || fallback;
 
         let revision;
@@ -25,11 +25,11 @@ class LmcTimelineRow extends Component {
         const dotStyle = {
             ... styles.dot,
             backgroundColor: log.categoryColor,
-        }
+        };
 
         return (
-            <li key={ log.id }>
-                <Link to={`${ Keystone.adminPath }/logs/${ log.id }`} className="lmc-timeline-link">
+            <li key={log.id}>
+                <LmcLink disabled={mock} to={`${ Keystone.adminPath }/logs/${ log.id }`} className="lmc-timeline-link">
                     <div style={styles.container}>
                         <div style={timelineStyle}>
                             <div style={dotStyle} className="lmc-timeline-dot">
@@ -43,7 +43,7 @@ class LmcTimelineRow extends Component {
                                         ? <span>
                                             <span style={{ opacity: 0.7 }}>, witnessed by </span>{log.witnessedBy}
                                         </span> : null }
-                                </div> 
+                                </div>
                                 <h3 style={styles.titleText}>
                                     {log.title}
                                 </h3>
@@ -55,16 +55,16 @@ class LmcTimelineRow extends Component {
                             </div>
                         </div>
                     </div>
-                </Link>
+                </LmcLink>
             </li>
-        )
+        );
     }
 }
 
 LmcTimelineRow.propTypes = {
     index: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
     log: PropTypes.object.isRequired,
+    total: PropTypes.number.isRequired,
 };
 
 
@@ -77,28 +77,28 @@ const styles = {
         top: -25,
     },
     smallText: {
-		color: '#7b7b7b',
+        color: '#7b7b7b',
         fontSize: 11,
         opacity: 0.9,
-	},
-	titleText: {
-		fontWeight: 400,
-		fontSize: 16,
-		marginBottom: 2,
-		lineHeight: '16px',
-	},
-	descriptionText: {
-		fontSize: 12,
+    },
+    titleText: {
+        fontWeight: 400,
+        fontSize: 16,
+        marginBottom: 2,
+        lineHeight: '16px',
+    },
+    descriptionText: {
+        fontSize: 12,
 		// marginLeft: 60,
-		color: '#444444',
+        color: '#444444',
     },
     revisionText: {
         // paddingLeft: 15,
         fontSize: 11,
         opacity: 0.5,
 		// marginLeft: 60,
-		color: '#444444',
-	},
+        color: '#444444',
+    },
     logRow: {
         position: 'relative',
         paddingLeft: 40,
@@ -112,7 +112,7 @@ const styles = {
     logRowPadded: {
         paddingTop: 30,
     },
-	dot: {
+    dot: {
         position: 'absolute',
         left: -24,
         top: -21,
@@ -126,7 +126,7 @@ const styles = {
     iconStyle: {
         backgroundSize: '14px !important',
         backgroundPosition: 'center center !important',
-    }
+    },
 };
 
 export default LmcTimelineRow;

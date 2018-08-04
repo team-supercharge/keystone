@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
 
 class LmcResidentListItem extends Component {
-	render() {
+	render () {
 		const { data, isActive, compact } = this.props;
 		const activeStyle = isActive ? styles.active : null;
 		const profile_pic = data.picture || PLACEHOLDER_IMAGE;
@@ -61,13 +61,13 @@ const styles = {
 	linkText: {
 		// top: 14,
 		position: 'relative',
-		color: '#666',
+		color: '#222',
 		paddingLeft: 10,
 	},
 	linkTextCompact: {
 		top: 8,
 		position: 'relative',
-		color: '#666',
+		color: '#222',
 		paddingLeft: 10,
 	},
 	resident: {

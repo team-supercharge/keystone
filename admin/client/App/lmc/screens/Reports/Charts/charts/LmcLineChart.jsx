@@ -12,6 +12,7 @@ class LmcLineChart extends Component {
     render () {
         // Use categoryColor
         const {
+            mock,
             title,
             subTitle,
             yMax,
@@ -70,11 +71,12 @@ class LmcLineChart extends Component {
             series: chart_series,
         };
 
+
         return (
             logs && logs.length
                 ? <div>
                     <LmcHighcharts config={config} />
-                    <LmcChartLogList logs={logs} />
+                    <LmcChartLogList mock={mock} logs={logs} />
                 </div>
                 : <BlankState heading={`No logs to display`} style={{ marginTop: 40 }} />
         );

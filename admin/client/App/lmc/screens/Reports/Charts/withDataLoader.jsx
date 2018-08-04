@@ -11,7 +11,7 @@ import withToolbar from './withToolbar.jsx';
 
 const ShowSample = withToolbar(({ onButtonClick }) => {
     return (
-        <BlankState heading={'You haven\'t added any logs yet'} style={{ marginTop: 40 }} >
+        <BlankState heading={'You haven\'t added any logs yet'} style={{ marginTop: 0 }} >
             <Button onClick={() => onButtonClick()}>
                 Show sample chart
             </Button>
@@ -55,8 +55,10 @@ export default function withDataLoader (WrappedComponent, { enableMockData, erro
     return connect((props) => ({
         dataFetch: url(props),
         triggerMockFetch: () => {
+            const base = url(props);
+            const symb = base.match(/\?/) ? '&' : '?';
             return {
-                mockDataFetch: `${url(props)}?mock=1`,
+                mockDataFetch: `${base}${symb}mock=1`,
             };
         },
     }))(LmcDataLoader);
@@ -64,6 +66,6 @@ export default function withDataLoader (WrappedComponent, { enableMockData, erro
 
 const styles = {
     blankSlate: {
-        paddingTop: 40,
+        padding: 0,
     },
 };

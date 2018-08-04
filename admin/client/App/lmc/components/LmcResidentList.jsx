@@ -7,27 +7,27 @@ import _ from 'lodash';
 
 class LmcResidentList extends PureComponent {
 
-	constructor(props) {
-        super(props);
+	constructor (props) {
+		super(props);
         this.state = { filterValue: '' };
         this.handleChange = this.handleChange.bind(this);
         this.renderResidents = this.renderResidents.bind(this);
 		this.renderFilterInput = this.renderFilterInput.bind(this);
 	}
 
-	componentDidMount() {
+	componentDidMount () {
 		const { data, resident_id } = this.props;
         if (!resident_id && data && data.length) {
             let res_id = _.sortBy(data, 'name')[0].id;
-            browserHistory.replace(`/admin/reports/charts/dashboard/${res_id}`);
+            browserHistory.replace(`${Keystone.adminPath}/reports/charts/dashboard/${res_id}`);
         }
 	}
 
-	handleChange(event) {
+	handleChange (event) {
         this.setState({ filterValue: event.target.value });
 	}
 
-    renderResidents() {
+    renderResidents () {
 		const { filterValue } = this.state;
 		const { resident_id } = this.props;
 		const pattern = new RegExp(filterValue, 'i');
@@ -51,7 +51,7 @@ class LmcResidentList extends PureComponent {
 			</p>;
 	}
 
-	renderFilterInput() {
+	renderFilterInput () {
 		return (
 			<input placeholder="Filter..."
 				type="text"
@@ -64,7 +64,7 @@ class LmcResidentList extends PureComponent {
 		)
 	}
 
-	render() {
+	render () {
 		let { data } = this.props;
 		return (
 			<div style={styles.container}>
@@ -91,7 +91,7 @@ const styles = {
 	},
     container: {
 		width: '100%',
-		margin: '27px 10px 0 25px',
+		margin: '18px 15px 0 0',
 	},
 	list: {
 		listStyle: 'none',
@@ -110,7 +110,7 @@ const styles = {
         margin: 10,
         fontSize: 16,
         color: 'rgba(0,0,0,0.6)',
-    }
+    },
 }
 
 
