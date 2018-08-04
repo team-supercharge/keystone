@@ -76,7 +76,7 @@ class LmcIncidentsCard extends Component {
                     value: moment().startOf('day').toISOString(),
                     before: moment().startOf('day').toISOString(),
                     after: moment().startOf('day').toISOString(),
-                }
+                },
             ];
             url += encodeURI(`?filters=${JSON.stringify(filters)}`);
         }

@@ -7,12 +7,12 @@ import {
 	ResponsiveText,
 } from '../../../../elemental';
 import { Link } from 'react-router';
-import LmcProfileLink  from '../../../components/LmcProfileLink.jsx';
+import LmcProfileLink from '../../../components/LmcProfileLink.jsx';
 
 
 class LmcResidentsCard extends Component {
 
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = {
             max_residents_displayed: MAX_RESIDENTS_DISPLAYED_INIT,
@@ -21,13 +21,13 @@ class LmcResidentsCard extends Component {
         this.renderResidents = this.renderResidents.bind(this);
     }
 
-    showMore() {
+    showMore () {
         this.setState({
             max_residents_displayed: this.state.max_residents_displayed + 20, // + 1 row
-        })
+        });
     }
 
-    renderResidents(activeResidents) {
+    renderResidents (activeResidents) {
         const { max_residents_displayed } = this.state;
         const hiddenResidents = activeResidents.length > max_residents_displayed;
         const home = activeResidents[0].home;
@@ -53,26 +53,26 @@ class LmcResidentsCard extends Component {
                         : null }
                 </div>
             </div>
-        )
+        );
     }
 
-    renderNoResidents() {
+    renderNoResidents () {
         return (
             <p>
                 { NO_RESIDENTS_INFO }
             </p>
-        )
+        );
     }
 
-    renderNoActiveResidents() {
+    renderNoActiveResidents () {
         return (
             <p>
                 There are no active residents.
             </p>
-        )
+        );
     }
 
-    render() {
+    render () {
         const { residents } = this.props;
         let activeResidents;
         if (residents && residents.length) {
@@ -84,7 +84,7 @@ class LmcResidentsCard extends Component {
 
         const onClick = () => {
             this.props.onCreate('Resident');
-        }
+        };
 
         return (
             <div>
@@ -132,11 +132,11 @@ class LmcResidentsCard extends Component {
     }
 }
 
-const styles = {
-    title: {
-        opacity: 0.8,
-    }
-}
+// const styles = {
+//     title: {
+//         opacity: 0.8,
+//     }
+// }
 
 LmcResidentsCard.propTypes = {
 
@@ -146,7 +146,7 @@ const MAX_RESIDENTS_DISPLAYED_INIT = 10;
 const TITLE = 'Residents';
 const VIEW_BUTTON_TEXT = 'View All';
 const ADD_RESIDENTS_BUTTON_TEXT = 'Add a Resident';
-const NO_ACTIVE_RESIDENTS = ``;
+// const NO_ACTIVE_RESIDENTS = ``;
 const NO_RESIDENTS_INFO = `You have not added any residents yet. 
     You’ll need to add them here before anything appears in the Carer App`;
 

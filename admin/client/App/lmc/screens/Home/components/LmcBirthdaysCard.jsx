@@ -7,12 +7,12 @@ import LmcResidentListItem from '../../../components/LmcResidentListItem.jsx';
 
 
 class LmcBirthdaysCard extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.getBirthdays = this.getBirthdays.bind(this);
     }
 
-    renderBirthdays(birthdays) {
+    renderBirthdays (birthdays) {
         let data = birthdays.map(({ id, name, picture, nextBirthday, age }) => {
             let reminderText;
             if (nextBirthday === 0) {
@@ -30,7 +30,7 @@ class LmcBirthdaysCard extends Component {
                 subheading: `${name}`,
                 id,
                 picture,
-            }
+            };
         });
 
         return (
@@ -44,15 +44,15 @@ class LmcBirthdaysCard extends Component {
                             <LmcResidentListItem
                                 key={resident.id}
                                 data={resident}
-                                link={d => `${Keystone.adminPath}/reports/charts/dashboard/${d}`} />
+                                link={d => `${Keystone.adminPath}/residents/${d}`} />
                         )) }
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 
-    getBirthdays(residents) {
+    getBirthdays (residents) {
         return _.chain(residents)
             .cloneDeep()
             .forEach(res => {
@@ -66,7 +66,7 @@ class LmcBirthdaysCard extends Component {
             .value();
     }
 
-    daysUntil(date) {
+    daysUntil (date) {
         const birthday = moment(date);
         const today = moment().format('YYYY-MM-DD');
         const age = moment(today).diff(birthday, 'years');
@@ -75,19 +75,19 @@ class LmcBirthdaysCard extends Component {
         if (nextBirthday.isSame(today)) {
             return {
                 nextBirthday: nextBirthday.diff(today, 'days'),
-                age
-            }
+                age,
+            };
         } else {
             /* add one more year in case the birthday has already passed
             to calculate date till next one. */
             return {
                 nextBirthday: moment(birthday).add(age + 1, 'years').diff(today, 'days'),
                 age: age + 1,
-            }
+            };
         }
     }
 
-    render() {
+    render () {
         const { residents } = this.props;
         const birthdays = this.getBirthdays(residents);
         console.log(residents, birthdays);
@@ -101,33 +101,10 @@ class LmcBirthdaysCard extends Component {
     }
 }
 
-const styles = {
-    title: {
-        opacity: 0.8,
-    },
-    dot: {
-        left: -20,
-        top: -18,
-        width: 42,
-        height: 42,
-        border: '3px solid rgba(0,0,0,0)',
-        borderRadius: 24,
-        backgroundColor: '#e4e4e4',
-        alignItems: 'center',
-    },
-    iconStyle: {
-        backgroundSize: '14px !important',
-        backgroundPosition: 'center center !important',
-    }
-}
-
 LmcBirthdaysCard.propTypes = {
     residents: PropTypes.array.isRequired,
 };
 
-
-const PROFILE_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
-const ROW_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png';
 const TITLE = 'Upcoming Birthdays';
 
 export default LmcBirthdaysCard;
