@@ -15,6 +15,7 @@ const BackButton = ({ params }) => {
         component={Link}
         glyph="chevron-left"
         position="left"
+        style={{ float: 'left' }}
         to={`${Keystone.adminPath}/reports/charts/dashboard/${params.resident_id}`}
         variant="link">
         Dashboard
@@ -35,21 +36,27 @@ export default function withToolbar (WrappedComponent, config) {
         }
 
         onFilterChange (logs) {
+            console.log("set state", logs);
             this.setState({
                 logs: _.sortBy(logs, d => moment(d.timeLogged)),
             }); // ensure that they're sorted by date!
         }
 
         renderToolbar () {
-            const { params, data } = this.props;
+            const { params, data, resident } = this.props;
             const { logs } = this.state;
-            const isEmpty = !logs || !logs.length;
+            const hasData = data && logs && logs.length;
             return (
-                <div className="Toolbar">
+                <div className="Toolbar" style={{ textAlign: 'center' }}>
                     <BackButton params={params} />
-                    {data && !isEmpty
+                    { resident && resident.name
+                        ? <span style={{ fontSize: 24, fontWeight: 300 }}>
+                            { resident.name } - { config.pdfExport.title }
+                        </span>
+                        : null }
+                    { hasData
                         ? <LmcPdfExport logs={logs} resident={this.props.resident} {...config.pdfExport} />
-                        : null}
+                        : <span style={{ paddingLeft: 130 }} /> }
                 </div>
             );
         }
@@ -60,7 +67,7 @@ export default function withToolbar (WrappedComponent, config) {
 
             const filterStyle = (_.get(config, 'dateFilter.left') === true)
                 ? { paddingBottom: 25 }
-                : { textAlign: 'center', paddingBottom: filterPadding || 25 };
+                : { textAlign: 'center', paddingBottom: filterPadding || 25, paddingRight: 13 };
 
             const isEmpty = !logs || !logs.length;
             const isDashboard = params && params.chart_type !== 'dashboard';
@@ -71,7 +78,9 @@ export default function withToolbar (WrappedComponent, config) {
                     { !isEmpty && <div style={filterStyle}>
                         <LmcLogFilter blockDatesWithNoData data={data} onChange={this.onFilterChange} />
                     </div> }
-                    <WrappedComponent logs={logs} {...this.props} {...config.childProps} />
+                    <div style={{ marginRight: 15 }}>
+                        <WrappedComponent logs={logs} {...this.props} {...config.childProps} />
+                    </div>
                 </div>
             );
         }
