@@ -13,6 +13,7 @@ import LmcMoodChart from './LmcMoodChart.jsx';
 import LmcTemperatureChart from './LmcTemperatureChart.jsx';
 import LmcWaterlowChart from './LmcWaterlowChart.jsx';
 import LmcWeightChart from './LmcWeightChart.jsx';
+import LmcDailyTotalChart from './LmcDailyTotalChart.jsx';
 
 
 module.exports = {
@@ -31,4 +32,5 @@ module.exports = {
     LmcChartsDashboard,
     LmcDailyChart,
     LmcMustScoreChart,
+    LmcDailyTotalChart,
 };

@@ -4,12 +4,13 @@ import _ from 'lodash';
 import moment from 'moment';
 import LmcResidentLatestLogs from './LmcResidentLatestLogs.jsx';
 
+
 const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
     const image = _.get(data, 'log.itemIcon.url') || _.get(data, 'log.categoryIcon.url') || fallback;
     const dotStyle = {
         ... styles.dot,
-        backgroundColor:  _.get(data, 'log.categoryColor') || '#f9f9f9',
-    }
+        backgroundColor: _.get(data, 'log.categoryColor') || '#f9f9f9',
+    };
 
     return (
         <div key={key}>
@@ -29,13 +30,13 @@ const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
                 </div>
             </Link>
         </div>
-    )
+    );
 };
 
 
 class LmcChartsDashboard extends React.Component {
 
-    renderMeasurements(measurements_with_data, resident_id) {
+    renderMeasurements (measurements_with_data, resident_id) {
         return (
             <div>
                 <h2 className="lmc-card-title">
@@ -45,10 +46,10 @@ class LmcChartsDashboard extends React.Component {
                     { measurements_with_data.map(measurement => KeyFigureLink(measurement, resident_id)) }
                 </div>
             </div>
-        )
+        );
     }
 
-    renderNoMeasurements(measurements_no_data, resident_id) {
+    renderNoMeasurements (measurements_no_data, resident_id) {
         return (
             <div>
                 <h2 className="lmc-card-title">
@@ -64,14 +65,14 @@ class LmcChartsDashboard extends React.Component {
                     )) }
                 </div>
             </div>
-        )
+        );
     }
 
     render () {
         const { params, data, mock } = this.props;
         const measurements = _.sortBy([
             { label: 'Fluids', key: 'fluids', unit: 'ml last 24h' },
-            { label: 'Food', key: 'meal', unit: ' portions last 24h' },
+            { label: 'Meals', key: 'meal', unit: ' portions last 24h' },
             { label: 'Blood Pressure', key: 'blood_pressure', unit: 'mmHg' },
             { label: 'Blood Oxygen', key: 'blood_oxygen', unit: '% SpO2' },
             { label: 'Heart Rate', key: 'heart_rate', unit: 'bpm' },
@@ -161,7 +162,7 @@ const styles = {
     iconStyle: {
         backgroundSize: '12px !important',
         backgroundPosition: 'center center !important',
-    }
-}
+    },
+};
 
 export default LmcChartsDashboard;

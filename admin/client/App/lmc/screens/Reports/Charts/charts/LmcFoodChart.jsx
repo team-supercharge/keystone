@@ -64,7 +64,7 @@ class LmcFoodChart extends Component {
         });
 
         const config = {
-            title: 'Food Chart',
+            title: 'Meals Chart',
             yAxisLabel: 'Portions Consumed',
             yMax: 6,
             legendEnabled: true,
@@ -90,6 +90,6 @@ LmcFoodChart.propTypes = {
 
 export default withToolbar(LmcFoodChart, {
     pdfExport: {
-        title: 'Food Consumed',
+        title: 'Meals Chart',
     },
 });

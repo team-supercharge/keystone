@@ -8,8 +8,8 @@ class LmcHighchart extends Component {
     render () {
 
         const {
-            title,
-            subTitle,
+            // title,
+            // subTitle,
             yMax,
             yMin,
             xAxisLabel,
@@ -29,15 +29,15 @@ class LmcHighchart extends Component {
                 enabled: false,
             },
             title: {
-                style: {
-                    color: '#444',
-                    fontWeight: 'bold',
-                },
-                text: title,
+                // style: {
+                //     color: '#444',
+                //     fontWeight: 'bold',
+                // },
+                text: '',
             },
-            subtitle: {
-                text: subTitle,
-            },
+            // subtitle: {
+            //     text: subTitle,
+            // },
             xAxis: {
                 type: 'datetime',
                 ceiling: Date.parse(moment().toString()),

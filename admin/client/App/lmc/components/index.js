@@ -9,6 +9,7 @@ import LmcResidentLogs from './LmcResidentLogs.jsx';
 import LmcSpinner from './LmcSpinner.jsx';
 import LmcLogTimeline from './LmcLogTimeline.jsx';
 import LmcTimelineRow from './LmcTimelineRow.jsx';
+import LmcLink from './LmcLink.jsx';
 
 module.exports = {
     LmcAvatarUpload,
@@ -22,4 +23,5 @@ module.exports = {
     LmcSpinner,
     LmcLogTimeline,
     LmcTimelineRow,
+    LmcLink,
 };

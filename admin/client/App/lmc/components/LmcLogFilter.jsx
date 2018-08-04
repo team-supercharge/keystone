@@ -3,21 +3,16 @@ React Dates doc:
 http://airbnb.io/react-dates/?selectedKind=SingleDatePicker%20%28SDP%29&selectedStory=default&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel
 */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-
-import FormSelect from '../../elemental/FormSelect';
-import FormLabel from '../../elemental/FormLabel';
-import Form from '../../elemental/Form';
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
-import LmcPdfExport from './LmcPdfExport.jsx';
 
 
 class LmcLogFilter extends React.Component {
 
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = {
             // categoryValue: 0,
@@ -26,7 +21,7 @@ class LmcLogFilter extends React.Component {
             endDate: props.to || null,
             date: null,
             focused: false,
-        }
+        };
 
         // this.filterByItem = this.filterByItem.bind(this);
         // this.filterByCategory = this.filterByCategory.bind(this);
@@ -66,7 +61,7 @@ class LmcLogFilter extends React.Component {
     //     });
     // }
 
-    getFilteredData({ startDate, endDate }) {
+    getFilteredData ({ startDate, endDate }) {
         let { data } = this.props;
         if (startDate) {
             data = data.filter(log => {
@@ -83,12 +78,12 @@ class LmcLogFilter extends React.Component {
         return data;
     }
 
-    formatToDate(day) {
+    formatToDate (day) {
         return day.format('DD-MM-YYYY');
     }
 
 
-    onDatesChange({ startDate, endDate }) {
+    onDatesChange ({ startDate, endDate }) {
         this.setState({ startDate, endDate });
 
         if (this.props.onChange) {
@@ -99,7 +94,7 @@ class LmcLogFilter extends React.Component {
         };
     }
 
-	render() {
+    render () {
         const { data, blockDatesWithNoData, blockFuture, maximumNights } = this.props;
         // const { categoryValue, itemValue } = this.state;
         // const items = this.groupLogs(data, 'item');
@@ -122,15 +117,22 @@ class LmcLogFilter extends React.Component {
                 return true;
             }
 
+            if (maximumNights
+                && !this.state.startDate
+                && this.state.endDate
+                && day.isBefore(moment(this.state.endDate).subtract(maximumNights, 'days'))) {
+                return true;
+            }
+
             return blockDatesWithNoData && !_.includes(datesWithLogs, this.formatToDate(day));
         };
 
-		return (
-			<DateRangePicker
+        return (
+            <DateRangePicker
                 numberOfMonths={2}
                 isOutsideRange={isDayBlocked}
-                hideKeyboardShortcutsPanel={true}
-                showClearDates={true}
+                hideKeyboardShortcutsPanel
+                showClearDates
                 autoFocusEndDate={false}
                 initialVisibleMonth={() => moment().subtract(1, 'months')}
                 startDate={this.state.startDate}
@@ -143,14 +145,14 @@ class LmcLogFilter extends React.Component {
                 onFocusChange={focused => this.setState({ focused })}
                 minimumNights={0}
             />
-		)
-	}
+        );
+    }
 }
 
 LmcLogFilter.propTypes = {
     data: PropTypes.array.isRequired,
-    resident: PropTypes.object.isRequired,
     onChange: PropTypes.func,
+    resident: PropTypes.object.isRequired,
 };
 
 const styles = {

@@ -19,7 +19,7 @@ import { BlankState } from '../../../elemental';
 
 class Home extends React.Component {
 
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = {
             showCreateModal: false,
@@ -31,10 +31,10 @@ class Home extends React.Component {
         this.onCloseCreateModal = this.onCloseCreateModal.bind(this);
         this.onOpenCreateModal = this.onOpenCreateModal.bind(this);
         this.onCreateItemComplete = this.onCreateItemComplete.bind(this);
-        this.renderDashboard= this.renderDashboard.bind(this);
+        this.renderDashboard = this.renderDashboard.bind(this);
     }
 
-    onCloseCreateModal() {
+    onCloseCreateModal () {
         this.setState({ isModalOpen: false });
         setTimeout(() => {
             this.setState({ showCreateModal: false });
@@ -42,7 +42,7 @@ class Home extends React.Component {
         });
     };
 
-    onOpenCreateModal(listName) {
+    onOpenCreateModal (listName) {
         this.setState({
             currentListType: listName,
             currentList: new List(Keystone.lists[listName]),
@@ -53,25 +53,25 @@ class Home extends React.Component {
     onCreateItemComplete (item) {
         this.onCloseCreateModal();
         switch (this.state.currentListType) {
-            case 'RecurringTask':
-                this.props.refreshTasks();
-                break;
-            case 'Resident':
-                this.props.refreshResidents();
-                break;
-            case 'User':
-                this.props.refreshUsers();
-                break;
-            default:
-                break;
+        case 'RecurringTask':
+            this.props.refreshTasks();
+            break;
+        case 'Resident':
+            this.props.refreshResidents();
+            break;
+        case 'User':
+            this.props.refreshUsers();
+            break;
+        default:
+            break;
         }
     }
 
-    toggleCreateModal(showCreateModal) {
+    toggleCreateModal (showCreateModal) {
         this.setState({ showCreateModal });
     }
 
-    renderCreateForm() {
+    renderCreateForm () {
         const { currentList, showCreateModal, isModalOpen } = this.state;
         return (
             (currentList && showCreateModal)
@@ -84,16 +84,16 @@ class Home extends React.Component {
                         onCreate={this.onCreateItemComplete}
                     />
                 </div> : null
-            ) 
+        );
     }
 
 
-    getSettingsValue(settings, key) {
+    getSettingsValue (settings, key) {
         let url = _.find(settings, { fields: { key } });
         return _.get(url, 'fields.value');
     }
 
-    renderDashboard() {
+    renderDashboard () {
         const { categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch } = this.props;
         return (
             <div>
@@ -156,7 +156,7 @@ class Home extends React.Component {
                 </div>
                 { this.renderCreateForm() }
             </div>
-        )
+        );
     }
 
     render () {
@@ -172,7 +172,7 @@ class Home extends React.Component {
         } else {
             // if (allFetches.rejected) ?
             return withContainer(<BlankState heading={ERROR_MESSAGE} style={{ marginTop: 30 }} />);
-        } 
+        }
     }
 };
 
@@ -180,8 +180,7 @@ const withContainer = (co) => (
     <div style={styles.container} className="row">
         { co }
     </div>
-)
-
+);
 
 const styles = {
     container: {
@@ -189,8 +188,8 @@ const styles = {
         marginLeft: 'auto',
         marginRight: 'auto',
         maxWidth: 1170,
-    }
-}
+    },
+};
 
 const ERROR_MESSAGE = 'Oops... looks like something went wrong. Please get in touch if this problem persists!';
 
@@ -211,7 +210,7 @@ export default connect((props) => ({
             url: tasksUrl,
             force: true,
             refreshing: true,
-        }
+        },
     }),
     usersFetch: usersUrl,
     refreshUsers: () => ({
@@ -219,7 +218,7 @@ export default connect((props) => ({
             url: usersUrl,
             force: true,
             refreshing: true,
-        }
+        },
     }),
     residentsFetch: residentsUrl,
     refreshResidents: () => ({
@@ -227,7 +226,7 @@ export default connect((props) => ({
             url: residentsUrl,
             force: true,
             refreshing: true,
-        }
+        },
     }),
     categoriesFetch: `${Keystone.adminPath}/api/log-categories`,
     homeFetch: `${Keystone.adminPath}/api/homes`,

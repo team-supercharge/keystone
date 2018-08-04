@@ -4,8 +4,6 @@ import LmcResidentList from '../../../components/LmcResidentList.jsx';
 import { BlankState } from '../../../../elemental';
 import withDataLoader from './withDataLoader.jsx';
 import withToolbar from './withToolbar.jsx';
-
-
 import {
     LmcBloodOxygenChart,
     LmcBloodPressureChart,
@@ -21,7 +19,7 @@ import {
     LmcTurnsChart,
     LmcWaterlowChart,
     LmcWeightChart,
-} from './charts/index.js';
+} from './charts';
 
 
 class LmcCharts extends React.Component {
@@ -68,6 +66,12 @@ class LmcCharts extends React.Component {
         // data === residents[]
         const { data, params } = this.props;
         const chart_type = params.chart_type || 'dashboard';
+
+        if (!data || !data.length) {
+            return (
+                <BlankState heading={'You haven\'t added any residents yet'} style={styles.blankSlate} />
+            );
+        }
 
         return (
             <div className="row" style={styles.mainContainer}>
@@ -122,8 +126,8 @@ const styles = {
         maxWidth: 300,
     },
     blankSlate: {
-        marginTop: 40,
-    }
+        margin: 40,
+    },
 };
 
 export default withDataLoader(LmcCharts, {

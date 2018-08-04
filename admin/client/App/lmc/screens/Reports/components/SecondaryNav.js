@@ -36,6 +36,11 @@ class SecondaryNav extends React.Component {
                                 Fluids Overview
                             </Link>
                         </li>
+                        <li className={ this.isActive('overview/meals') }>
+                            <Link to={`${Keystone.adminPath}/reports/overview/meals`}>
+                                Meals Overview
+                            </Link>
+                        </li>
                         {/* <li className={ this.isActive('item-dashboard') }>
                             <Link onClick={ () => this.setCurrent('item-dashboard') } to={`${Keystone.adminPath}/reports/item-dashboard`}>
                                 Item Dashboard

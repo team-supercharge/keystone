@@ -24,6 +24,7 @@ import { setActiveFilters, loadItems } from './screens/List/actions';
 // Loading custom LMC view
 import LmcReportView from './lmc/screens/Reports/index.jsx';
 import LmcFluidsOverview from './lmc/screens/Reports/Charts/charts/LmcFluidsOverview.jsx';
+import LmcMealsOverview from './lmc/screens/Reports/Charts/charts/LmcMealsOverview.jsx';
 import LmcCharts from './lmc/screens/Reports/Charts/index.jsx';
 import LmcHome from './lmc/screens/Home/index.jsx';
 
@@ -59,6 +60,7 @@ ReactDOM.render(
 					<Route path="charts" component={LmcCharts} />
 					<Route path="charts/:chart_type/:resident_id" component={LmcCharts} />
 					<Route path="overview/fluids" component={LmcFluidsOverview} />
+					<Route path="overview/meals" component={LmcMealsOverview} />
 				</Route>
 				<Route path=":listId" component={List} onChange={onListChange} />
 				<Route path=":listId/:itemId" component={Item} />

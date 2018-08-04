@@ -7,8 +7,9 @@ export default withToolbar(LmcLineChart, {
         title: 'Blood Oxygen Chart',
     },
     childProps: {
+        yMin: 50,
         type: 'blood_oxygen',
-        yAxisLabel: 'Blood Oxygen Saturation (mmHg)',
+        yAxisLabel: 'Blood Oxygen Saturation (% SpO2)',
         title: 'Blood Oxygen Chart',
     },
 });

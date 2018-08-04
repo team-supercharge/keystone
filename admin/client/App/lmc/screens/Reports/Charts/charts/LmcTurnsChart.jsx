@@ -21,12 +21,9 @@ const icons = {
 
 class LmcTurnsChart extends Component {
     render () {
-        const {
-            // title, subTitle, yMax, yMin, xAxisLabel, yAxisLabel, type,
-            logs,
-        } = this.props;
+        const { logs } = this.props;
 
-        const Logs = _.cloneDeep(logs)
+        const Logs = _.cloneDeep(logs) // because we're mutating them!
             .map(log => {
 
                 if (log.description
@@ -50,14 +47,11 @@ class LmcTurnsChart extends Component {
                 }
 
                 return log;
-            }); // because we're mutating them!
+            });
 
-
-        // const chartData = _.map(logs, log => [Date.parse(moment(log.timeLogged).toString()), log.measurements[type].value]);
         return (
             Logs && Logs.length
                 ? <div>
-                    {/* <ReactHighcharts config={config} /> */}
                     <LmcChartLogList logs={Logs} />
                 </div>
                 : <BlankState heading={`No logs to display`} style={{ marginTop: 40 }} />

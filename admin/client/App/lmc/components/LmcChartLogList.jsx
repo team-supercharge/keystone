@@ -6,7 +6,7 @@ import LmcTimelineRow from './LmcTimelineRow.jsx';
 
 
 class LmcChartLogList extends Component {
-    render() {
+    render () {
         const logs = _.sortBy(this.props.logs, d => -moment(d.timeLogged).toDate());
         return (
             <div style={styles.container}>
@@ -16,6 +16,7 @@ class LmcChartLogList extends Component {
                 <ul style={styles.logsList}>
                     {logs.map((log, i) => (
                         <LmcTimelineRow
+                            mock={this.props.mock}
                             dateFormat="ddd DD MMM HH:mm"
                             date={d => ''}
                             key={log.id}
