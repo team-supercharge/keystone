@@ -61,14 +61,17 @@ class LmcLogFilter extends React.Component {
     //     });
     // }
 
-    getFilteredData ({ startDate, endDate }) {
+    getFilteredData (logs, { startDate, endDate }) {
         let { data } = this.props;
+
+        // Block after
         if (startDate) {
             data = data.filter(log => {
                 return startDate.startOf('day').diff(moment(log.timeLogged).startOf('day'), 'days') <= 0;
             });
         }
 
+        // Block before
         if (endDate) {
             data = data.filter(log => {
                 return endDate.startOf('day').diff(moment(log.timeLogged).startOf('day'), 'days') >= 0;
@@ -82,15 +85,19 @@ class LmcLogFilter extends React.Component {
         return day.format('DD-MM-YYYY');
     }
 
-
     onDatesChange ({ startDate, endDate }) {
-        this.setState({ startDate, endDate });
+        const { maximumNights, logs } = this.props;
+        let end = endDate && (endDate.diff(startDate, 'days') > maximumNights)
+            ? moment(startDate).add(maximumNights - 1, 'days')
+            : endDate;
+
+        this.setState({ startDate, endDate: end });
 
         if (this.props.onChange) {
-            this.props.onChange(this.getFilteredData({ startDate, endDate }));
+            this.props.onChange(this.getFilteredData(logs, { startDate, endDate: end }));
         };
         if (this.props.onNewDates) {
-            this.props.onNewDates({ startDate, endDate });
+            this.props.onNewDates({ startDate, endDate: end });
         };
     }
 

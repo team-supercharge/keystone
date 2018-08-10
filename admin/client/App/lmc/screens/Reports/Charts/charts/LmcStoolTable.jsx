@@ -37,7 +37,7 @@ class LmcStoolTable extends Component {
                             <th style={{ width: 50 }}>Blood</th>
                             <th style={{ width: 52 }}>Mucus</th>
                             <th style={{ width: 67 }}>Offensive</th>
-                            <th style={{ width: 50 }}>Color</th>
+                            <th style={{ width: 50 }}>Colour</th>
                             <th>Note</th>
                             <th>Carer</th>
                         </tr>
