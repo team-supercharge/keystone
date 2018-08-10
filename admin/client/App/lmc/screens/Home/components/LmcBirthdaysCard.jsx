@@ -103,6 +103,6 @@ LmcBirthdaysCard.propTypes = {
     residents: PropTypes.array.isRequired,
 };
 
-const TITLE = 'Upcoming Birthdays';
+const TITLE = 'Birthdays';
 
 export default LmcBirthdaysCard;

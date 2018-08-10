@@ -23,14 +23,14 @@ class LmcHomeTitle extends React.Component {
         }
     }
 
-    renderBirthdays(residents) {
+    renderBirthdays (residents) {
         if (residents.length === 1) {
             const age = moment().diff(residents[0].dateOfBirth, 'years');
             return (
                 <span>
-                    don't forget to say happy birthday to <strong>{residents[0].name}</strong>! He's turning {age}!
+                    don't forget to say happy birthday to <strong>{residents[0].name}</strong>, who's turning {age}!
                 </span>
-            )
+            );
         } else {
             const names = residents.reduce((prev, next, index) => {
                 if (index === (residents.length - 1)) {
@@ -46,21 +46,22 @@ class LmcHomeTitle extends React.Component {
                 <span>
                     don't forget to say happy birthday to {names}!
                 </span>
-            )
+            );
         }
     }
 
-    renderHello() {
+    renderHello () {
         const homeName = _.get(this.props.home, '0.name');
         return (
-           <span>
+            <span>
                 welcome to the Care Office
                 { homeName
                         ? <span> for <span style={styles.bold}>{ homeName }</span></span>
                         : null }!
            </span>
-        )
+        );
     }
+
     render () {
         const { residents } = this.props;
 
@@ -110,8 +111,8 @@ const styles = {
     },
     bold: {
         fontWeight: 'bold',
-    }
-}
+    },
+};
 
 const DAYS_UNTIL_TOUR_HIDDEN = 7;
 
