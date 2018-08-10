@@ -19,7 +19,13 @@ import DefaultHome from './screens/Home';
 import store from './store';
 
 import { setActiveFilters, loadItems } from './screens/List/actions';
+import ReactGA from 'react-ga';
 
+const GA_ID = Keystone.ga && Keystone.ga.property && Keystone.production;
+if (GA_ID) ReactGA.initialize(Keystone.ga.property);
+function fireGATracking () {
+	if (GA_ID) ReactGA.pageview(window.location.pathname);
+}
 
 // Loading custom LMC view
 import LmcReportView from './lmc/screens/Reports/index.jsx';
@@ -53,7 +59,7 @@ let HomePage = Keystone.user.role === 'carehome-admin'
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router history={history}>
+		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
 				<Route path="reports" component={LmcReportView} onChange={onListChange}>

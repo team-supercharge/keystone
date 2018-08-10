@@ -15,7 +15,6 @@ import PrimaryNavigation from './components/Navigation/Primary';
 import SecondaryNavigation from './components/Navigation/Secondary';
 import Footer from './components/Footer';
 
-
 const INTERCOM_APP_ID = 'v1fbkzcf';
 
 const classes = StyleSheet.create({

@@ -31,6 +31,7 @@ module.exports = function IndexRoute (req, res) {
 		brand: keystone.get('brand'),
 		csrf: { header: {} },
 		devMode: !!process.env.KEYSTONE_DEV,
+		production: (process.env.NODE_ENV === 'production'),
 		lists: lists,
 		nav: keystone.nav,
 		orphanedLists: orphanedLists,
@@ -41,6 +42,10 @@ module.exports = function IndexRoute (req, res) {
 			role: req.user.role,
 			firstLogin: req.user.firstLogin,
 			home: req.user.home,
+		},
+		ga: {
+			property: keystone.get('ga property'),
+			domain: keystone.get('ga domain'),
 		},
 		userList: UserList.key,
 		version: keystone.version,
@@ -69,10 +74,10 @@ module.exports = function IndexRoute (req, res) {
 		codemirrorPath: codemirrorPath,
 		env: keystone.get('env'),
 		fieldTypes: keystone.fieldTypes,
-		ga: {
-			property: keystone.get('ga property'),
-			domain: keystone.get('ga domain'),
-		},
+		// ga: {
+		// 	property: keystone.get('ga property'),
+		// 	domain: keystone.get('ga domain'),
+		// },
 		keystone: keystoneData,
 		title: keystone.get('name') || 'Keystone',
 	};
