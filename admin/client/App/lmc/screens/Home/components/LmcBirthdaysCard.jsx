@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 import _ from 'lodash';
 import moment from 'moment';
 import LmcResidentListItem from '../../../components/LmcResidentListItem.jsx';
@@ -90,7 +89,6 @@ class LmcBirthdaysCard extends Component {
     render () {
         const { residents } = this.props;
         const birthdays = this.getBirthdays(residents);
-        console.log(residents, birthdays);
         return (
             <div>
                 { birthdays && birthdays.length

@@ -97,8 +97,8 @@ class Home extends React.Component {
         const { categoriesFetch, homeFetch, residentsFetch, logsFetch, tasksFetch, usersFetch, settingsFetch } = this.props;
         return (
             <div>
-                <div className="nine columns">
-                    <div className="dashboard-container">
+                <div className="eight columns">
+                    {/* <div className="dashboard-container"> */}
                         <div className="row">
                             <div className="twelve columns">
                                 <LmcHomeTitle
@@ -143,8 +143,8 @@ class Home extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="three columns" id="intro-js-step-advert">
+                {/* </div> */}
+                <div className="four columns" id="intro-js-step-advert">
                     <div className="row">
                         <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.results, 'Home_YouTubeURL')} />
                     </div>
@@ -192,7 +192,6 @@ const styles = {
 };
 
 const ERROR_MESSAGE = 'Oops... looks like something went wrong. Please get in touch if this problem persists!';
-
 // Configuring the data sources
 // Note: I went for multiple independet requests because it's more flexible
 // Each consumer can just digest whatever data source it needs and apply the logic

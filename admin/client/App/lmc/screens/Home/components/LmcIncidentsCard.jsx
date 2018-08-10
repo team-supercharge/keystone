@@ -31,20 +31,20 @@ const Incident = (data, index) => {
                 </span>
             </p>
         </Link>
-    )
-}
+    );
+};
 
 const RowPlaceholder = (i) => {
     return (
         <div key={i} style={{ width: '100%', paddingBottom: 8 }} >
             <img height="45" src={ROW_PLACEHOLDER} alt=""/>
         </div>
-    )
-}
+    );
+};
 
 class LmcIncidentsCard extends Component {
 
-    renderNoIncidents() {
+    renderNoIncidents () {
         return (
             <div>
                 { [1, 2, 3].map(RowPlaceholder) }
@@ -52,7 +52,7 @@ class LmcIncidentsCard extends Component {
         );
     }
 
-    renderIncidents(incidents, residents) {
+    renderIncidents (incidents, residents) {
         return _(incidents)
             .sort((left, right) => moment.utc(right.timeLogged).diff(moment.utc(left.timeLogged)))
             .take(3) // only show newest 3
@@ -60,7 +60,7 @@ class LmcIncidentsCard extends Component {
             .map(Incident);
     }
 
-    renderFooter(incidents, categoryId) {
+    renderFooter (incidents, categoryId) {
         let url = `${Keystone.adminPath}/logs`;
 
         if (categoryId) {
@@ -70,13 +70,13 @@ class LmcIncidentsCard extends Component {
                     inverted: false,
                     value: [categoryId],
                 },
-                {
-                    path: 'timeLogged',
-                    mode: 'on',
-                    value: moment().startOf('day').toISOString(),
-                    before: moment().startOf('day').toISOString(),
-                    after: moment().startOf('day').toISOString(),
-                },
+                // {
+                //     path: 'timeLogged',
+                //     mode: 'on',
+                //     value: moment().startOf('day').toISOString(),
+                //     before: moment().startOf('day').toISOString(),
+                //     after: moment().startOf('day').toISOString(),
+                // },
             ];
             url += encodeURI(`?filters=${JSON.stringify(filters)}`);
         }
@@ -85,7 +85,7 @@ class LmcIncidentsCard extends Component {
             <div className="lmc-card-footer">
                 <div className="lmc-flex-container">
                     <p>
-                        { incidents ? incidents.length : 'No' } { incidents && incidents.length === 1 ? 'incident' : 'incidents' } today
+                        { incidents ? incidents.length : 'No' } { incidents && incidents.length === 1 ? 'incident' : 'incidents' }
                     </p>
                     <Link to={url}>
                         <Button color="default">
@@ -96,16 +96,16 @@ class LmcIncidentsCard extends Component {
                     </Link>
                 </div>
             </div>
-        )
+        );
     }
 
-    render() {
+    render () {
         const { logs, residents, categories, home } = this.props;
         const homeGroup = _.get(home, '0.group');
         let incidents;
         let categoryId = _.chain(categories)
             .filter(cat => cat.fields.group === homeGroup) // need to filter by home.group
-            .find(cat => cat.name && cat.name.match('Incident'))
+            .find(cat => cat.name && cat.name.match(/incident/i))
             .get('id')
             .value();
 
@@ -120,9 +120,9 @@ class LmcIncidentsCard extends Component {
                 </h2>
                 <div className="lmc-card">
                     <div className="lmc-card-body">
-                        { incidents && incidents.length ? 
-                            this.renderIncidents(incidents, residents) :
-                            this.renderNoIncidents()
+                        { incidents && incidents.length
+                            ? this.renderIncidents(incidents, residents)
+                            : this.renderNoIncidents()
                         }
                     </div>
                     { this.renderFooter(incidents, categoryId) }
@@ -149,8 +149,8 @@ const styles = {
     iconStyle: {
         backgroundSize: '14px !important',
         backgroundPosition: 'center center !important',
-    }
-}
+    },
+};
 
 LmcIncidentsCard.propTypes = {
     logs: PropTypes.array,
@@ -158,7 +158,7 @@ LmcIncidentsCard.propTypes = {
 };
 
 
-const PROFILE_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
+// const PROFILE_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
 const ROW_PLACEHOLDER = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png';
 const TITLE = 'Incidents';
 const BUTTON_TEXT = 'View All';

@@ -20,10 +20,10 @@ class LmcTour extends Component {
             .setOption('hideNext', true)
             .setOption('hidePrev', true)
             // .setOption('showBullets', false)
-            .setOption('disableInteraction', true)
-            .onskip(function () {
-                console.log('onbeforeexit')
-            });
+            .setOption('disableInteraction', true);
+            // .onskip(function () {
+            //     // console.log('onbeforeexit');
+            // });
 
         if (showWelcomeMessage) {
             tour.addStep({
@@ -33,7 +33,7 @@ class LmcTour extends Component {
                 tooltipClass: 'intro-js-text__padded',
             });
         }
-            
+
         tour.addStep({
                 element: document.querySelectorAll('#intro-js-step-dashboard')[0],
                 intro: TOUR_HELLO,
@@ -97,17 +97,17 @@ class LmcTour extends Component {
             .start();
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
         introJs().exit();
     }
 
-    componentDidMount() {
+    componentDidMount () {
         if (this.props.forceOpen) {
             this.startTour(true);
         }
     }
 
-    render() {
+    render () {
         return (
             <div style={{ paddingTop: 20, width: 200 }}>
                 <GlyphButton
