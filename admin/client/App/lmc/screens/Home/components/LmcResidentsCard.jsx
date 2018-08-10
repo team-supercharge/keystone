@@ -27,18 +27,26 @@ class LmcResidentsCard extends Component {
         });
     }
 
+    renderResidentCount (count, home) {
+        return (
+            <p>
+                { home
+                    ? <span>{ home } has </span>
+                    : 'There are ' }
+                <strong>{ count } active residents</strong>
+            </p>
+        );
+    }
+
     renderResidents (activeResidents) {
         const { max_residents_displayed } = this.state;
         const hiddenResidents = activeResidents.length > max_residents_displayed;
         const home = activeResidents[0].home;
         return (
             <div>
-                <p>
-                    { home
-                        ? <span>{ home } has </span>
-                        : 'There are ' }
-                    <strong>{ activeResidents.length } active residents</strong>
-                </p>
+                { home && activeResidents.length > 10
+                    ? this.renderResidentCount(activeResidents.length, home)
+                    : null }
                 <div className="lmc-flex-grid">
                     { _.take(activeResidents, hiddenResidents ? max_residents_displayed - 1 : max_residents_displayed)
                         .map((row, index) =>
@@ -139,7 +147,8 @@ class LmcResidentsCard extends Component {
 // }
 
 LmcResidentsCard.propTypes = {
-
+    onCreate: PropTypes.func.isRequired,
+    residents: PropTypes.array.isRequired,
 };
 
 const MAX_RESIDENTS_DISPLAYED_INIT = 10;
