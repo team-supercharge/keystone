@@ -50,7 +50,7 @@ class LmcStoolChart extends Component {
             chartType: 'column',
             tooltip: {
                 formatter: function () {
-                    return `<b>${this.y}</b> bowel movement${this.y > 1 ? 's' : ''} of <b>${this.series.name}</b>`;
+                    return `<strong style="font-size: 10px; opacity: 0.7;">${moment(this.x).format('dddd Do MMMM YYYY')}</strong><br /><b>${this.y}</b> bowel movement${this.y > 1 ? 's' : ''} of <b>${this.series.name}</b>`;
                 },
             },
             series,

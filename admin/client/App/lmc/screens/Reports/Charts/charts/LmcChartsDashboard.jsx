@@ -72,7 +72,7 @@ class LmcChartsDashboard extends React.Component {
         const { params, data, mock } = this.props;
         const measurements = _.sortBy([
             { label: 'Fluids', key: 'fluids', unit: 'ml last 24h' },
-            { label: 'Meals', key: 'meal', unit: ' portions last 24h' },
+            { label: 'Food', key: 'meal', unit: ' portions last 24h' },
             { label: 'Blood Pressure', key: 'blood_pressure', unit: 'mmHg' },
             { label: 'Blood Oxygen', key: 'blood_oxygen', unit: '% SpO2' },
             { label: 'Heart Rate', key: 'heart_rate', unit: 'bpm' },

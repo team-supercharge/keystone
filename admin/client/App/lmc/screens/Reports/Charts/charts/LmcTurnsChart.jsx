@@ -16,6 +16,15 @@ const icons = {
     right: {
         url: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/icons/right-arrow.png',
     },
+    standing: {
+        url: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/icons/standing_icon.png',
+    },
+    chair: {
+        url: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/icons/chair_icon.png',
+    },
+    bed: {
+        url: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/icons/bed_icon.png',
+    },
 };
 
 
@@ -44,6 +53,24 @@ class LmcTurnsChart extends Component {
                     || log.description.match('to her back'))
                 ) {
                     log.itemIcon = icons.down;
+                } else if (log.description
+                    && (log.description.match('to chair')
+                    || log.description.match('to his chair')
+                    || log.description.match('to her chair'))
+                ) {
+                    log.itemIcon = icons.chair;
+                } else if (log.description
+                    && (log.description.match('to feet')
+                    || log.description.match('to his feet')
+                    || log.description.match('to her feet'))
+                ) {
+                    log.itemIcon = icons.standing;
+                } else if (log.description
+                    && (log.description.match('to bed')
+                    || log.description.match('to his bed')
+                    || log.description.match('to her bed'))
+                ) {
+                    log.itemIcon = icons.bed;
                 }
 
                 return log;

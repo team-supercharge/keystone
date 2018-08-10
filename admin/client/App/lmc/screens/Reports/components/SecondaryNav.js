@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
-import _ from 'lodash';
 
 class SecondaryNav extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.isActive = this.isActive.bind(this);
     };
 
-    isActive(value) {
+    isActive (value) {
         const pathname = this.props.location.pathname;
         if (pathname) {
             return pathname.match(value) ? 'active' : '';
@@ -26,19 +25,19 @@ class SecondaryNav extends React.Component {
             <nav className="secondary-navbar" style={styles.nav}>
                 <div style={styles.wrapper}>
                     <ul className="app-nav app-nav--secondary app-nav--left">
-                        <li className={ this.isActive('charts') }>
+                        <li className={this.isActive('charts')}>
                             <Link to={chartURL}>
                                 Resident Charts
                             </Link>
                         </li>
-                        <li className={ this.isActive('overview/fluids') }>
+                        <li className={this.isActive('overview/fluids')}>
                             <Link to={`${Keystone.adminPath}/reports/overview/fluids`}>
                                 Fluids Overview
                             </Link>
                         </li>
-                        <li className={ this.isActive('overview/meals') }>
+                        <li className={this.isActive('overview/meals')}>
                             <Link to={`${Keystone.adminPath}/reports/overview/meals`}>
-                                Meals Overview
+                                Food Overview
                             </Link>
                         </li>
                         {/* <li className={ this.isActive('item-dashboard') }>

@@ -9,17 +9,20 @@ class LmcHighchart extends Component {
 
         const {
             // title,
-            // subTitle,
+            subTitle,
             yMax,
             yMin,
             xAxisLabel,
             yAxisLabel,
+            yCeiling,
+            yAllowDecimals = true,
             chartType,
             series,
             tooltip,
             legendEnabled,
         } = this.props.config;
 
+        const oneDay = 3600 * 1000 * 24;
         const config = {
             chart: {
                 type: chartType || 'line',
@@ -35,15 +38,15 @@ class LmcHighchart extends Component {
                 // },
                 text: '',
             },
-            // subtitle: {
-            //     text: subTitle,
-            // },
+            subtitle: {
+                text: subTitle,
+            },
             xAxis: {
                 type: 'datetime',
                 ceiling: Date.parse(moment().toString()),
-                minPadding: 0.1,
-                maxPadding: 0.1,
-                minTickInterval: 3600 * 1000 * 24,
+                minPadding: 0.07,
+                maxPadding: 0.07,
+                // minTickInterval: 5 * oneDay,
                 labels: {
                     format: '{value:%e %b}',
                 },
@@ -58,6 +61,8 @@ class LmcHighchart extends Component {
             yAxis: {
                 max: yMax,
                 min: yMin || 0,
+                allowDecimals: yAllowDecimals,
+                ceiling: yCeiling,
                 title: {
                     text: yAxisLabel,
                     style: {
@@ -68,8 +73,11 @@ class LmcHighchart extends Component {
             },
             plotOptions: {
                 column: {
-                    maxPointWidth: 40,
+                    maxPointWidth: 50,
                     stacking: 'normal',
+                    pointRange: oneDay,
+                    pointPadding: 0.05,
+                    // groupPadding: 0.2,
                 },
                 line: {
                     lineWidth: 4,

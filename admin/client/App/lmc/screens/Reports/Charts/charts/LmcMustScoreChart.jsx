@@ -6,7 +6,7 @@ export default withToolbar(LmcLineChart, {
         title: 'MUST Score',
     },
     childProps: {
-        yMax: 5,
+        yMax: 6,
         type: 'must',
         yAxisLabel: 'MUST Score',
         title: 'MUST Score Chart',

@@ -6,7 +6,7 @@ import { BlankState } from '../../../../../elemental';
 import { LmcChartLogList } from '../../../../components';
 import withToolbar from '../withToolbar.jsx';
 import LmcHighcharts from './LmcHighcharts.jsx';
-
+// const ReactHighcharts = require('react-highcharts');
 // require('highcharts/modules/pattern-fill')(ReactHighcharts.Highcharts);
 
 class LmcFoodChart extends Component {
@@ -28,11 +28,16 @@ class LmcFoodChart extends Component {
 
     render () {
         const { logs } = this.props;
-        const colors = ['#ab97c6', '#b4d78b'];
-
+        const colors = ['#D1D3D4', '#ffdbea', '#E55AA1'];
+// c64d84
         let allLogs = [];
         let series = [];
         let groups = [
+            {
+                name: 'Snack',
+                color: colors[2],
+                // color: 'url(#highcharts-default-pattern-0)',
+            },
             {
                 name: 'Breakfast',
                 // color: 'url(#highcharts-default-pattern-0)',
@@ -40,13 +45,14 @@ class LmcFoodChart extends Component {
             {
                 name: 'Lunch',
                 color: colors[0],
-                // color: 'url(#highcharts-default-pattern-2)',
+                // color: 'url(#highcharts-default-pattern-1)',
             },
             {
                 name: 'Dinner',
                 color: colors[1],
-                // color: 'url(#highcharts-default-pattern-4)',
+                // color: 'url(#highcharts-default-pattern-2)',
             },
+            
         ];
 
         groups.forEach(({ name, color }) => {
@@ -64,7 +70,7 @@ class LmcFoodChart extends Component {
         });
 
         const config = {
-            title: 'Meals Chart',
+            title: 'Food Chart',
             yAxisLabel: 'Portions Consumed',
             yMax: 6,
             legendEnabled: true,
@@ -90,6 +96,6 @@ LmcFoodChart.propTypes = {
 
 export default withToolbar(LmcFoodChart, {
     pdfExport: {
-        title: 'Meals Chart',
+        title: 'Food Chart',
     },
 });

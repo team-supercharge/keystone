@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 
 class LmcLink extends Component {
     render () {
-        console.log('LmcLink', this);
         const { disabled } = this.props;
         if (disabled) {
             return <div>{ this.props.children }</div>;

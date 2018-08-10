@@ -6,6 +6,7 @@ export default withToolbar(LmcLineChart, {
         title: 'Waterlow Score',
     },
     childProps: {
+        yAllowDecimals: false,
         title: 'Waterlow Score Chart',
         type: 'waterlow',
         yAxisLabel: 'Waterlow Score',
