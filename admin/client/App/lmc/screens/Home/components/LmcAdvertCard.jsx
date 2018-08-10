@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class LmcAdvertCard extends Component {
-    render() {
+    render () {
         const { url, image } = this.props;
-        const defaultImage = 'https://s3.eu-west-2.amazonaws.com/lmc-marketing-public/home_page_advert__square.png';
+        const defaultImage = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/careoffice-home-screen-advert.png';
         const defaultUrl = 'https://calendly.com/logmycare';
         return (
             <div>
