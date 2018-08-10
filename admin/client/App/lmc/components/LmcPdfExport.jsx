@@ -4,6 +4,7 @@ import moment from 'moment';
 import _ from 'lodash';
 import {
     GlyphButton,
+    Spinner,
 } from '../../elemental';
 
 // https://github.com/bpampuch/pdfmake/issues/910
@@ -203,7 +204,7 @@ const StoolTable = (row, dateFormat) => {
             ]
         }
     };
-}
+};
 
 const LogListTable = (row, dateFormat) => {
     return {
@@ -236,7 +237,7 @@ const LogListTable = (row, dateFormat) => {
                     {
                         text: 'Revision Log',
                         style: 'tableHeader',
-                    }
+                    },
                 ],
                 ...row.logs.map(log => {
                     let revision;
@@ -268,21 +269,22 @@ const LogListTable = (row, dateFormat) => {
                                 : null,
                             style: 'tableText',
                         },
-                    ]
+                    ];
                 }),
-            ]
-        }
+            ],
+        },
     };
-}
+};
 
 class LmcPdfExport extends React.Component {
 
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.exportPdf = this.exportPdf.bind(this);
+        this.state = { isLoading: false };
     }
 
-    getDocDefinition({ logs, resident, dateFormat, title, groupBy }, image, getBody) {
+    getDocDefinition ({ logs, resident, dateFormat, title, groupBy }, image, getBody) {
         // load LmC logo as well?
         // pageByDate?
         // pageByResident?
@@ -360,9 +362,9 @@ class LmcPdfExport extends React.Component {
                     getBody(row, dateFormat),
                     // insert page break at the and of each day (except last day)
                     ((index + 1) !== pages.length) ? { pageBreak: 'after', text: '' } : null,
-                ]
+                ];
             }),
-            footer: (currentPage, pageCount) => { 
+            footer: (currentPage, pageCount) => {
                 return {
                     text: currentPage.toString() + ' of ' + pageCount,
                     style: ['small', 'center'],
@@ -413,20 +415,21 @@ class LmcPdfExport extends React.Component {
                     bold: true,
                 },
                 quote: {
-                    italics: true
+                    italics: true,
                 },
                 normal: {
-                    fontSize: 11
+                    fontSize: 11,
                 },
                 small: {
                     color: '#6d6d6d',
-                    fontSize: 8
-                }
-            }
-        }
+                    fontSize: 8,
+                },
+            },
+        };
     }
 
-    exportPdf() {
+    exportPdf () {
+        this.setState({ isLoading: true });
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
         const { resident, title, type } = this.props;
         const SVGtoPNG = function (svg) {
@@ -443,6 +446,7 @@ class LmcPdfExport extends React.Component {
                 : this.getDocDefinition(this.props, image, LogListTable);
             // pdfMake.createPdf(docDefinition).open();
             pdfMake.createPdf(docDefinition).download(`${resident.name} ${title}.pdf`);
+            this.setState({ isLoading: false });
         };
 
         let chartElements = document.getElementsByClassName('highcharts-root');
@@ -451,19 +455,20 @@ class LmcPdfExport extends React.Component {
         } else {
             triggerDownload();
         }
-    };
+    }
 
-	render() {
-		return (
+	render () {
+        const { isLoading } = this.state;
+        return (
 			<div style={styles.container}>
                 <GlyphButton
                     color="default"
-                    glyph="cloud-download"
+                    glyph={isLoading ? null : 'cloud-download'}
                     onClick={() => this.exportPdf()}
                     position="left"
                     title={BUTTON_TEXT}
                 >
-                    { BUTTON_TEXT }
+                    { isLoading ? <Spinner /> : BUTTON_TEXT }
                 </GlyphButton>
             </div>
 		);
@@ -480,7 +485,7 @@ LmcPdfExport.propTypes = {
 const styles = {
     container: {
         float: 'right',
-    }
+    },
 };
 
 
