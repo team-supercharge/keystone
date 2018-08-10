@@ -8,11 +8,12 @@ import {
 import { Link } from 'react-router';
 import _ from 'lodash';
 import LmcProfileLink from '../../../components/LmcProfileLink.jsx';
+import moment from 'moment';
 
 
 class LmcCarersCard extends Component {
 
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = {
             carers_displayed: INIT_CARERS_DISPLAYED,
@@ -21,7 +22,7 @@ class LmcCarersCard extends Component {
         this.renderActiveCarers = this.renderActiveCarers.bind(this);
     }
 
-    renderActiveCarers(activeCarers) {
+    renderActiveCarers (activeCarers) {
         const { carers_displayed } = this.state;
         const hiddenCarers = activeCarers.length > carers_displayed;
         const n_showing = hiddenCarers ? carers_displayed - 1 : carers_displayed;
@@ -48,42 +49,37 @@ class LmcCarersCard extends Component {
                         : null }
                 </div>
             </div>
-        )
-    }
-    renderNoCarers() {
-        return (
-            <p>
-                { NO_CARERS }
-            </p>
-        )
+        );
     }
 
-    renderNoActiveCarers() {
-        return (
-            <p>
-                { NO_ACTIVE_CARERS }
-            </p>
-        )
-    }
-
-    showMore() {
+    showMore () {
         this.setState({
             carers_displayed: this.state.carers_displayed + 5,
-        })
+        });
     }
 
-    render() {
-        const { carers, logs } = this.props;
-        const onClick = () => {
-            this.props.onCreate('User');
-        }
+    getActiveCarers (logs, carers) {
+        const cutoffTime = moment().subtract(12, 'h');
+        const activeIds = _.chain(logs)
+            .filter(log => moment(log.timeLogged).isAfter(cutoffTime))
+            .map('carerId')
+            .uniq()
+            .value();
 
-        const carerCount = _.filter(carers, { active: true }).length;
-        const activeIds = _.chain(logs).map('carerId').uniq().value();
-        const activeToday = _.chain(carers)
+        return _.chain(carers)
             .filter(d => _.includes(activeIds, d.id))
             .sortBy('name')
             .value();
+    }
+
+    render () {
+        const { carers, logs } = this.props;
+        const onClick = () => {
+            this.props.onCreate('User');
+        };
+
+        const carerCount = _.filter(carers, { active: true }).length;
+        const activeToday = this.getActiveCarers(logs, carers);
 
         return (
             <div>
@@ -92,16 +88,16 @@ class LmcCarersCard extends Component {
                 </h2>
                 <div className="lmc-card">
                     <div className="lmc-card-body">
-                        { !carers || carerCount < 2 ?
-                                this.renderNoCarers() :
-                                !activeToday || !activeToday.length ? 
-                                    this.renderNoActiveCarers() :
-                                    this.renderActiveCarers(activeToday)
+                        { !carers || carerCount < 2
+                                ? <p>{ NO_CARERS }</p>
+                                : !activeToday || !activeToday.length
+                                    ? <p>{ NO_ACTIVE_CARERS }</p>
+                                    : this.renderActiveCarers(activeToday)
                         }
                     </div>
                     <div className="lmc-card-footer">
                         <div className="lmc-flex-container">
-                            <div style={{ maxWidth: 190 }} id="intro-js-step-add-carers">
+                            <div style={styles.inviteButton} id="intro-js-step-add-carers">
                                 <GlyphButton
                                     block
                                     color="success"
@@ -116,10 +112,10 @@ class LmcCarersCard extends Component {
                                     />
                                 </GlyphButton>
                             </div>
-                            <div style={{ maxWidth: 95 }}>
+                            <div style={styles.buttonContainer}>
                                 <Link to={`${Keystone.adminPath}/users`}>
                                     <Button color="default">
-                                        <span style={{ opacity: 0.6 }}>
+                                        <span style={styles.viewAllButton}>
                                             View All
                                         </span>
                                     </Button>
@@ -136,17 +132,28 @@ class LmcCarersCard extends Component {
 const styles = {
     title: {
         opacity: 0.8,
-    }
-}
+    },
+    buttonContainer: {
+        maxWidth: 95,
+    },
+    inviteButton: {
+        maxWidth: 190,
+    },
+    viewAllButton: {
+        opacity: 0.6,
+    },
+};
 
 LmcCarersCard.propTypes = {
-
+    carers: PropTypes.array,
+    logs: PropTypes.array,
+    onCreate: PropTypes.func.isRequired,
 };
 
 const INIT_CARERS_DISPLAYED = 10;
 const TITLE = 'Team';
-const ACTIVE_TODAY_PLURAL = 'of your care team have been active today';
-const ACTIVE_TODAY_SINGULAR = 'of your care team has been active today';
+const ACTIVE_TODAY_PLURAL = 'of your care team have been active recently';
+const ACTIVE_TODAY_SINGULAR = 'of your care team has been active recently';
 const NO_CARERS = "Looks like you haven't added any carers yet!";
 const NO_ACTIVE_CARERS = `It doesn’t look like any ${ACTIVE_TODAY_PLURAL}`;
 
