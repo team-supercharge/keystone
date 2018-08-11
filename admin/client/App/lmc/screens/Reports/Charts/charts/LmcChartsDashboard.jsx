@@ -12,6 +12,10 @@ const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
         backgroundColor: _.get(data, 'log.categoryColor') || '#f9f9f9',
     };
 
+    let val = data.value && _.isNumber(data.value)
+        ? parseFloat(data.value.toFixed(2))
+        : data.value;
+
     return (
         <div key={key}>
             <Link to={`${Keystone.adminPath}/reports/charts/${key}/${resident_id}`}>
@@ -21,8 +25,8 @@ const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
                     </div>
                     <h4 style={styles.measurement}>
                         {data.label || label}: { render
-                            ? render(data)
-                            : data.value }{unit}
+                            ? render(val)
+                            : val }{unit}
                     </h4>
                     <p style={styles.timestamp}>
                         Last Recorded: { moment(_.get(data, 'log.timeLogged')).format('HH:mm DD/MM/YY') }

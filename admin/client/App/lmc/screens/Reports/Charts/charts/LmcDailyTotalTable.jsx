@@ -119,9 +119,10 @@ class LmcDailyTotalTable extends Component {
                 </td>
                 {days.map(d => {
                     const _date = startOfDay(from).add(d, 'd').format();
-                    const value = _.get(data, `${_date}.value`);
+                    let value = _.get(data, `${_date}.value`);
+                    if (_.isNumber(value)) value = parseFloat(value.toFixed(1));
                     return (
-                        <td onClick={(e) => !mock && this.handleClick(link, row.residentId)} key={d} className="lmc-table-td__selectable">
+                        <td style={{ fontSize: 12 }} onClick={(e) => !mock && this.handleClick(link, row.residentId)} key={d} className="lmc-table-td__selectable">
                             { value || <span style={{ opacity: 0.2 }}>0</span> }
                         </td>
                     );
