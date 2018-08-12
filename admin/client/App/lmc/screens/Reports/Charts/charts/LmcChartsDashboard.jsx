@@ -87,12 +87,16 @@ class LmcChartsDashboard extends React.Component {
             { label: 'Weight', key: 'weight', unit: 'kg' },
             {
                 label: 'Stool',
-                key: 'stool', render: d => d.value === -1 ? 'Normal' : `Type ${d.value}`,
+                key: 'stool', render: d => {
+                    return (!d || d === -1)
+                        ? 'Normal'
+                        : `Type ${d}`;
+                },
             },
             {
                 label: 'Mood',
                 key: 'mood',
-                render: d => {
+                render: mood => {
                     const moods = {
                         1: 'Very Bad',
                         2: 'Bad',
@@ -100,7 +104,7 @@ class LmcChartsDashboard extends React.Component {
                         4: 'Good',
                         5: 'Very Good',
                     };
-                    return moods[d.value] || d.value;
+                    return moods[mood] || mood;
                 },
             },
         ], 'label');
