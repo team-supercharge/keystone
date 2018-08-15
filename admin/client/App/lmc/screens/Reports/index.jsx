@@ -1,5 +1,5 @@
 import React from 'react';
-import SecondaryNav from './components/SecondaryNav';
+import LmcSecondaryNav from './components/LmcSecondaryNav.jsx';
 import { connect } from 'react-redux';
 
 
@@ -9,7 +9,7 @@ class LmcReportView extends React.Component {
 		// When we directly navigate to a list without coming from another client
 		// side routed page before, we need to initialize the list and parse
 		// possibly specified query parameters
-		this.props.dispatch(function selectList () {
+        this.props.dispatch(function selectList () {
             return (dispatch, getState) => {
                 dispatch({
                     type: 'SELECT_LIST',
@@ -22,8 +22,8 @@ class LmcReportView extends React.Component {
     render () {
         return (
             <div>
-                <SecondaryNav {...this.props} />
-                <div style={ styles.container }>
+                <LmcSecondaryNav {...this.props} />
+                <div style={styles.container}>
                     {this.props.children}
                 </div>
             </div>
@@ -37,13 +37,13 @@ const styles = {
         marginLeft: 'auto',
         marginRight: 'auto',
         maxWidth: 1270,
-    }
-}
+    },
+};
 
 export default connect((state) => {
-	return {
-		currentList: 'reports',
-	};
+    return {
+        currentList: 'reports',
+    };
 })(LmcReportView);
 
 

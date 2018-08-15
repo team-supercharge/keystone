@@ -2,36 +2,42 @@ import React from 'react';
 import { Link } from 'react-router';
 
 class LmcSecondaryNav extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
-        this.state = {
-            current: 'charts',
-        };
         this.isActive = this.isActive.bind(this);
-        this.setCurrent = this.setCurrent.bind(this);
     };
 
-    setCurrent(current) {
-        this.setState({ current });
-    };
-
-    isActive(value) {
-        return this.state.current === value ? 'active' : '';
+    isActive (value) {
+        const pathname = this.props.location.pathname;
+        if (pathname) {
+            return pathname.match(value) ? 'active' : '';
+        }
     }
 
     render () {
+        const { params } = this.props;
+        let chartURL = `${Keystone.adminPath}/reports/charts`;
+        if (params && params.resident_id && params.chart_type) {
+            chartURL += `/${params.chart_type}/${params.resident_id}`;
+        };
+
         return (
             <nav className="secondary-navbar" style={styles.nav}>
                 <div style={styles.wrapper}>
                     <ul className="app-nav app-nav--secondary app-nav--left">
-                        <li className={ this.isActive('charts') }>
-                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/charts`}>
+                        <li className={this.isActive('charts')}>
+                            <Link to={chartURL}>
                                 Resident Charts
                             </Link>
                         </li>
-                        <li className={ this.isActive('fluids') }>
-                            <Link onClick={ () => this.setCurrent('daily') } to={`${Keystone.adminPath}/reports/overview/fluids`}>
+                        <li className={this.isActive('overview/fluids')}>
+                            <Link to={`${Keystone.adminPath}/reports/overview/fluids`}>
                                 Fluids Overview
+                            </Link>
+                        </li>
+                        <li className={this.isActive('overview/meals')}>
+                            <Link to={`${Keystone.adminPath}/reports/overview/meals`}>
+                                Food Overview
                             </Link>
                         </li>
                         {/* <li className={ this.isActive('item-dashboard') }>
@@ -48,15 +54,15 @@ class LmcSecondaryNav extends React.Component {
 
 const styles = {
     nav: {
-        height: 41
+        height: 41,
     },
     wrapper: {
         marginLeft: 'auto',
         marginRight: 'auto',
         paddingLeft: 20,
         paddingRight: 20,
-        maxWidth: 1170
-    }
-}
+        maxWidth: 1170,
+    },
+};
 
 export default LmcSecondaryNav;
