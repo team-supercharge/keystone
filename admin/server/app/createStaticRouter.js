@@ -11,6 +11,7 @@ var express = require('express');
 var less = require('less-middleware');
 var path = require('path');
 var str = require('string-to-stream');
+var pkg = require('../../../package.json');
 
 function buildFieldTypesStream (fieldTypes) {
 	var src = '';
@@ -37,6 +38,7 @@ module.exports = function createStaticRouter (keystone) {
 	var writeToDisk = keystone.get('cache admin bundles');
 	var router = express.Router();
 
+	/* This is where I can optimise things! */
 	/* Prepare browserify bundles */
 	var bundles = {
 		fields: browserify({
@@ -60,7 +62,7 @@ module.exports = function createStaticRouter (keystone) {
 
 	// prebuild static resources on the next tick in keystone dev mode; this
 	// improves first-request performance but delays server start
-	if (process.env.KEYSTONE_DEV === 'true' || process.env.KEYSTONE_PREBUILD_ADMIN === 'true') {
+	if (process.env.KEYSTONE_DEV === true || process.env.KEYSTONE_DEV === 'true' || process.env.KEYSTONE_PREBUILD_ADMIN === true || process.env.KEYSTONE_PREBUILD_ADMIN === 'true') {
 		bundles.fields.build();
 		bundles.signin.build();
 		bundles.admin.build();
@@ -85,9 +87,9 @@ module.exports = function createStaticRouter (keystone) {
 	/* Configure router */
 	router.use('/styles', less(path.resolve(__dirname + '/../../public/styles'), lessOptions));
 	router.use('/styles/fonts', express.static(path.resolve(__dirname + '/../../public/js/lib/tinymce/skins/keystone/fonts')));
-	router.get('/js/fields.js', bundles.fields.serve);
-	router.get('/js/signin.js', bundles.signin.serve);
-	router.get('/js/admin.js', bundles.admin.serve);
+	router.get(`/js/fields-v${pkg.version}.js`, bundles.fields.serve);
+	router.get(`/js/signin.js`, bundles.signin.serve);
+	router.get(`/js/admin-v${pkg.version}.js`, bundles.admin.serve);
 	router.use(express.static(path.resolve(__dirname + '/../../public')));
 
 	return router;

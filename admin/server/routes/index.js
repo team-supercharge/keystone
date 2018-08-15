@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var ejs = require('ejs');
 var path = require('path');
-
+var pkg = require('../../../package.json');
 var templatePath = path.resolve(__dirname, '../templates/index.html');
 
 module.exports = function IndexRoute (req, res) {
@@ -79,6 +79,7 @@ module.exports = function IndexRoute (req, res) {
 		// 	domain: keystone.get('ga domain'),
 		// },
 		keystone: keystoneData,
+		version: pkg.version,
 		title: keystone.get('name') || 'Keystone',
 	};
 
