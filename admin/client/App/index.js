@@ -5,7 +5,7 @@
 
 // Needed for ES6 generators (redux-saga) to work
 import 'babel-polyfill';
-import 'whatwg-fetch'; // polyfill for window.fetch
+import 'whatwg-fetch'; // CO-63: polyfill for window.fetch
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
