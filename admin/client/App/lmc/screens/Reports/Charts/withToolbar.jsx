@@ -27,10 +27,20 @@ export default function withToolbar (WrappedComponent, config) {
     return class extends Component {
         constructor (props) {
             super(props);
-            this.state = {
-                showMock: false,
-                logs: _.sortBy(props.data, 'timeLogged'),
-            };
+            const { to, from } = this.getDefaultDates(config.timeWindow || 1);
+            const logs = this.getLogs(props.data, from);
+            let state = { showMock: false };
+            // if the filter doesn't return a large enough dataset (len 3), show the whole window
+            if ((logs.length < props.data.length) && (logs.length > 1)) {
+                state.to = to;
+                state.from = from;
+                state.logs = logs;
+            } else {
+                state.logs = props.data;
+            }
+
+            this.state = state;
+            this.setDates = this.setDates.bind(this);
             this.onFilterChange = this.onFilterChange.bind(this);
             this.renderToolbar = this.renderToolbar.bind(this);
         }
@@ -39,6 +49,22 @@ export default function withToolbar (WrappedComponent, config) {
             this.setState({
                 logs: _.sortBy(logs, d => moment(d.timeLogged)),
             }); // ensure that they're sorted by date!
+        }
+
+        getLogs (logs, from) {
+            // to avoid rendering data that's outside the default date range
+            // maybe put into a utils method?
+            return _.chain(logs)
+                .sortBy('timeLogged')
+                .filter((log) => from.startOf('day').diff(moment(log.timeLogged).startOf('day')) <= 0)
+                .value();
+        }
+
+        getDefaultDates (timeWindow) {
+            return {
+                to: moment(),
+                from: moment().subtract(timeWindow, 'days').startOf('day'),
+            };
         }
 
         renderToolbar () {
@@ -60,9 +86,16 @@ export default function withToolbar (WrappedComponent, config) {
             );
         }
 
+        setDates ({ startDate, endDate }) {
+            this.setState({
+                to: endDate ? moment(endDate).endOf('day') : null,
+                from: startDate ? moment(startDate).startOf('day') : null,
+            });
+        }
+
         render () {
             const { params, data, filterPadding } = this.props;
-            const { logs } = this.state;
+            const { logs, to, from } = this.state;
 
             const filterStyle = (_.get(config, 'dateFilter.left') === true)
                 ? { paddingBottom: 25 }
@@ -75,10 +108,10 @@ export default function withToolbar (WrappedComponent, config) {
                 <div>
                     { isDashboard ? this.renderToolbar() : null }
                     { !isEmpty && <div style={filterStyle}>
-                        <LmcLogFilter blockDatesWithNoData data={data} onChange={this.onFilterChange} />
+                        <LmcLogFilter to={to} from={from} blockDatesWithNoData data={data} onChange={this.onFilterChange} onNewDates={this.setDates} />
                     </div> }
                     <div style={{ marginRight: 15 }}>
-                        <WrappedComponent logs={logs} {...this.props} {...config.childProps} />
+                        <WrappedComponent to={to} from={from} logs={logs} {...this.props} {...config.childProps} />
                     </div>
                 </div>
             );

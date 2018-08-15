@@ -98,4 +98,5 @@ export default withToolbar(LmcFoodChart, {
     pdfExport: {
         title: 'Food Chart',
     },
+    timeWindow: 7 * 4,
 });

@@ -6,6 +6,7 @@ export default withToolbar(LmcLineChart, {
     pdfExport: {
         title: 'Blood Pressure Chart',
     },
+    timeWindow: 7 * 12,
     childProps: {
         title: 'Blood Pressure Chart',
         legendEnabled: true,

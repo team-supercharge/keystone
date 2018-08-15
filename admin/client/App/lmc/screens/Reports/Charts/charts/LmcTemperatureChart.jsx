@@ -5,9 +5,10 @@ export default withToolbar(LmcLineChart, {
     pdfExport: {
         title: 'Temperature Chart',
     },
+    timeWindow: 1,
     childProps: {
         type: 'temperature',
-        yMin: 33,
+        yMin: 7 * 4,
         yAxisLabel: 'Temperature (C)',
         title: 'Temperature Chart',
     },

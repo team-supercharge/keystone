@@ -75,4 +75,5 @@ export default withToolbar(LmcStoolChart, {
     pdfExport: {
         title: 'Stool Chart',
     },
+    timeWindow: 7 * 4,
 });

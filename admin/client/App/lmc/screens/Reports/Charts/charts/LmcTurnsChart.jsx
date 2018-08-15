@@ -95,4 +95,5 @@ export default withToolbar(LmcTurnsChart, {
     pdfExport: {
         title: 'Turns Chart',
     },
+    timeWindow: 7,
 });

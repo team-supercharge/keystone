@@ -79,4 +79,5 @@ export default withToolbar(LmcFluidsChart, {
     pdfExport: {
         title: 'Fluids Chart',
     },
+    timeWindow: 7 * 4,
 });

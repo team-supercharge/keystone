@@ -13,17 +13,8 @@ class LmcLineChart extends Component {
         // Use categoryColor
         const {
             mock,
-            title,
-            subTitle,
-            yMax,
-            yMin,
-            xAxisLabel,
             yAxisLabel,
-            yAllowDecimals,
-            tooltip,
-            yCeiling,
             series,
-            legendEnabled,
             logs,
             type,
         } = this.props;
@@ -44,7 +35,6 @@ class LmcLineChart extends Component {
         ];
 
         let chart_series;
-
         if (series && series.length) {
             chart_series = series.map(({ type, label }, index) => ({
                 name: label,
@@ -63,20 +53,10 @@ class LmcLineChart extends Component {
         };
 
         const config = {
-            title,
-            subTitle,
-            yMax,
-            yMin,
-            xAxisLabel,
-            yAxisLabel,
-            yCeiling,
-            tooltip,
-            yAllowDecimals,
-            legendEnabled,
+            ...this.props,
             chartType: 'line',
             series: chart_series,
         };
-
 
         return (
             logs && logs.length
