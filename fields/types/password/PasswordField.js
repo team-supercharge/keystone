@@ -57,7 +57,7 @@ module.exports = Field.create({
 						autoComplete="off"
 						name={this.getInputName(this.props.path)}
 						onChange={this.valueChanged.bind(this, 'password')}
-						placeholder="New password"
+						placeholder={`New ${this.props.label || 'password'}`}
 						ref="focusTarget"
 						type="password"
 						value={this.state.password}
@@ -68,7 +68,8 @@ module.exports = Field.create({
 						autoComplete="off"
 						name={this.getInputName(this.props.paths.confirm)}
 						onChange={this.valueChanged.bind(this, 'confirm')}
-						placeholder="Confirm new password" value={this.state.confirm}
+						placeholder={`Confirm ${this.props.label || 'password'}`}
+						value={this.state.confirm}
 						type="password"
 					/>
 				</Section>
@@ -83,8 +84,8 @@ module.exports = Field.create({
 
 	renderChangeButton () {
 		var label = this.state.passwordIsSet
-			? 'Change Password'
-			: 'Set Password';
+			? `Change ${this.props.label || 'Password'}`
+			: `Set ${this.props.label || 'Password'}`;
 
 		return (
 			<Button ref="focusTarget" onClick={this.showChangeUI}>{label}</Button>

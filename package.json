@@ -1,7 +1,7 @@
 {
   "name": "keystone",
-  "version": "4.0.0-beta.6",
-  "description": "Web Application Framework and Admin GUI / Content Management System built on Express.js and Mongoose",
+  "version": "4.0.1",
+  "description": "LmC Admin Dashboard - Web Application & Content Management System built on Express.js and Mongoose",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -108,6 +108,7 @@
     "uuid": "^3.1.0",
     "vkey": "1.0.1",
     "watchify": "^3.11.0",
+    "whatwg-fetch": "^2.0.4",
     "xhr": "2.3.3"
   },
   "devDependencies": {
