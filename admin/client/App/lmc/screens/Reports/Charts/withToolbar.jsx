@@ -36,7 +36,6 @@ export default function withToolbar (WrappedComponent, config) {
         }
 
         onFilterChange (logs) {
-            console.log("set state", logs);
             this.setState({
                 logs: _.sortBy(logs, d => moment(d.timeLogged)),
             }); // ensure that they're sorted by date!

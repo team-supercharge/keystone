@@ -83,7 +83,6 @@ module.exports = Field.create({
 	},
 
 	renderChangeButton () {
-		console.log(this);
 		var label = this.state.passwordIsSet
 			? `Change ${this.props.label || 'Password'}`
 			: `Set ${this.props.label || 'Password'}`;

@@ -9,6 +9,7 @@ import React from 'react';
 import { Center, Container, Spinner } from '../../elemental';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import _ from 'lodash';
 
 import { listsByKey } from '../../../utils/lists';
 import CreateForm from '../../shared/CreateForm';
@@ -105,6 +106,10 @@ var ItemView = React.createClass({
 					<div className={css(styles.list)}>
 						{keys.map(key => {
 							const relationship = relationships[key];
+							const { role } = Keystone.user;
+							if (relationship.dependsOn && !_.includes(relationship.dependsOn.role, role)) {
+								return null;
+							};
 							const refList = listsByKey[relationship.ref];
 							const { currentList, params, relationshipData, drag } = this.props;
 							return (
