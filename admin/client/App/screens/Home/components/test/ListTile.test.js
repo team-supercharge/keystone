@@ -29,22 +29,6 @@ describe('<ListTile />', () => {
 		demand(component.contains(label)).true();
 	});
 
-	it('should render a spinner if no counts are available', () => {
-		const spinner = 'Some Spinner Component';
-		const component = shallow(<ListTile spinner={spinner} />);
-		demand(component.contains(spinner)).true();
-	});
-
-	it('should render the count when they are available', () => {
-		const count = 100;
-		const component = shallow(
-			<ListTile
-				count={count}
-			/>
-		);
-		demand(component.contains(count)).true();
-	});
-
 	it('should render a create button', () => {
 		const component = shallow(<ListTile />);
 		demand(component.find(Link).at(1).prop('to')).include('?create');
