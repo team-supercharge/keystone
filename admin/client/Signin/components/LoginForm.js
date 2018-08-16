@@ -20,6 +20,7 @@ const LoginForm = ({
 						autoFocus
 						type="email"
 						name="email"
+						id="login-email"
 						onChange={handleInputChange}
 						value={email}
 					/>
@@ -28,11 +29,12 @@ const LoginForm = ({
 					<FormInput
 						type="password"
 						name="password"
+						id="login-password"
 						onChange={handleInputChange}
 						value={password}
 					/>
 				</FormField>
-				<Button disabled={isAnimating} color="primary" type="submit" className="lmc-button" style={{ float: 'right', padding: '0 20px', marginTop: 10 }}>
+				<Button disabled={isAnimating} id="login-submit" color="primary" type="submit" className="lmc-button" style={{ float: 'right', padding: '0 20px', marginTop: 10 }}>
 					Sign In
 				</Button>
 			</Form>
