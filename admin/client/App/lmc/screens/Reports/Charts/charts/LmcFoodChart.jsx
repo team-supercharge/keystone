@@ -28,8 +28,7 @@ class LmcFoodChart extends Component {
 
     render () {
         const { logs } = this.props;
-        const colors = ['#D1D3D4', '#ffdbea', '#E55AA1'];
-// c64d84
+        const colors = ['#D1D3D4', '#ffdbea', '#E55AA1', '#f29cc3'];
         let allLogs = [];
         let series = [];
         let groups = [
@@ -40,7 +39,7 @@ class LmcFoodChart extends Component {
             },
             {
                 name: 'Breakfast',
-                // color: 'url(#highcharts-default-pattern-0)',
+                color: colors[3],
             },
             {
                 name: 'Lunch',
@@ -59,14 +58,14 @@ class LmcFoodChart extends Component {
             let pattern = new RegExp(name, 'i');
             const logGroup = _.filter(logs, log => log.title.match(pattern));
             allLogs = [...allLogs, ...logGroup];
-
+            let seriesData = {
+                name,
+                color: color,
+            }
             if (logGroup && logGroup.length) {
-                series.push({
-                    name,
-                    color: color || logGroup[0].categoryColor,
-                    data: this.getSeriesData(logGroup, 'meal'),
-                });
+                seriesData.data = this.getSeriesData(logGroup, 'meal');
             };
+            series.push(seriesData);
         });
 
         const config = {
