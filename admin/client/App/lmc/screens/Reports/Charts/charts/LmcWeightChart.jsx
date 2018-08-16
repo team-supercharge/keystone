@@ -5,6 +5,7 @@ export default withToolbar(LmcLineChart, {
     pdfExport: {
         title: 'Weight Chart',
     },
+    timeWindow: 7 * 12,
     childProps: {
         title: 'Weight Chart',
         type: 'weight',

@@ -51,6 +51,7 @@
     "highcharts": "^6.1.1",
     "i": "0.3.5",
     "intro.js": "^2.9.1",
+    "jest": "23.5.0",
     "kerberos": "0.0.22",
     "keystone-storage-namefunctions": "1.1.1",
     "keystone-utils": "0.4.0",

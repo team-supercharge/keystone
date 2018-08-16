@@ -58,7 +58,7 @@ const App = (props) => {
 			// Get the current section we're in for the navigation
 			currentSection = Keystone.nav.by.list[currentList.key];
 		}
-	} else if (props.location.pathname && props.location.pathname.match('reports')) {
+	} else if (props.location && props.location.pathname && props.location.pathname.match('reports')) {
 		currentSection = { key: 'reports' };
 	}
 	// Default current section key to dashboard

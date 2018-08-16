@@ -8,6 +8,7 @@ export default withToolbar(LmcLogTimeline, {
     dateFilter: {
         left: true,
     },
+    timeWindow: 7 * 4,
     pdfExport: {
         title: 'Daily Report',
         headerDate: false,

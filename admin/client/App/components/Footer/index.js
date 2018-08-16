@@ -5,7 +5,6 @@
 
 import React from 'react';
 import { css, StyleSheet } from 'aphrodite/no-important';
-import { Container } from '../../elemental';
 import theme from '../../../theme';
 
 var Footer = React.createClass({
@@ -24,7 +23,7 @@ var Footer = React.createClass({
 				<a className={css(classes.link)} target="_blank" href="https://logmycare.co.uk/terms-and-conditions/">Terms & Conditions</a>
 			</footer>
 		);
-	},
+	}
 });
 
 /* eslint quote-props: ["error", "as-needed"] */

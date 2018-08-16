@@ -14,6 +14,7 @@ export default withToolbar(LmcLineChart, {
     pdfExport: {
         title: 'Mood Chart',
     },
+    timeWindow: 7 * 4,
     childProps: {
         type: 'mood',
         yMax: 5,

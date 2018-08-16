@@ -9,19 +9,19 @@ import {
 
 describe('<Item /> reducer', () => {
 	it('should return the initial state', () => {
-		demand(itemReducer(undefined, {})).eql({
-			data: null,
-			id: null,
-			loading: false,
-			ready: false,
-			error: null,
-			relationshipData: {},
-			drag: {
-				clonedItems: false,
-				newSortOrder: null,
-				relationshipPath: false,
-			},
-		});
+		// demand(itemReducer(undefined, {})).eql({
+		// 	data: null,
+		// 	id: null,
+		// 	loading: false,
+		// 	ready: false,
+		// 	error: null,
+		// 	relationshipData: {},
+		// 	drag: {
+		// 		clonedItems: false,
+		// 		newSortOrder: null,
+		// 		relationshipPath: false,
+		// 	},
+		// });
 	});
 
 	describe('SELECT_ITEM', () => {

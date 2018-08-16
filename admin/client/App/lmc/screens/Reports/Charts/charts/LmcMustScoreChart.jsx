@@ -5,6 +5,7 @@ export default withToolbar(LmcLineChart, {
     pdfExport: {
         title: 'MUST Score',
     },
+    timeWindow: 7 * 12,
     childProps: {
         yMax: 6,
         type: 'must',
