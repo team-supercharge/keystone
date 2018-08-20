@@ -9,19 +9,18 @@
 // ------------------------------
 
 .app-nav {
-	&:extend(.u-clearfix all);
 	list-style: none;
+	list-style-type: none;
 	margin: 0;
 	padding: 0;
-
-	> li {
+	 li {
 		float: left;
 
 		&.right {
 			float: right;
 		}
 	}
-	> li > a {
+	 li > a {
 		.transition( color 180ms );
 		display: block;
 		outline: none;
@@ -124,6 +123,10 @@
 	}
 }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	// IE10+ CSS here
+	padding-right: 45px;
+}
 
 
 

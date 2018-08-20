@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-const ReactHighcharts = require('react-highcharts');
 import moment from 'moment';
+
+const ReactHighcharts = require('react-highcharts');
+// require('react-highcharts/modules/exporting.js');
+// require('react-highcharts/modules/offline-exporting.js');
 
 
 class LmcHighchart extends Component {

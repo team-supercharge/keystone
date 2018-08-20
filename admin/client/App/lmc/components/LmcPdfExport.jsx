@@ -10,6 +10,7 @@ import {
 // https://github.com/bpampuch/pdfmake/issues/910
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+let canvg = require('canvg');
 import saveSvgAsPng from 'save-svg-as-png';
 
 import {
@@ -451,7 +452,14 @@ class LmcPdfExport extends React.Component {
 
         let chartElements = document.getElementsByClassName('highcharts-root');
         if (chartElements.length) {
-            SVGtoPNG(chartElements[0]).then(triggerDownload);
+            SVGtoPNG(chartElements[0])
+                .then(triggerDownload)
+                .catch((e) => {
+                    // eg. IE.
+                    // requires manual conversion..
+                    console.log(e);
+                    triggerDownload();
+                });
         } else {
             triggerDownload();
         }
