@@ -133,9 +133,7 @@ name.prototype.validateInput = function (data, callback) {
 		|| typeof value === 'string'
 		|| (typeof value === 'object' && (
 			typeof value.first === 'string'
-			|| value.first === null
-			|| typeof value.last === 'string'
-			|| value.last === null)
+			&& typeof value.last === 'string')
 		);
 	utils.defer(callback, result);
 };
