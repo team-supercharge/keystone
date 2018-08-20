@@ -27,27 +27,42 @@ class LmcStoolChart extends Component {
 
     formatSeries (logs) {
         return _.chain(logs)
-            .filter(log => _.get(log, 'measurements.stool.value') > -1)
-            .groupBy('measurements.stool.value')
-            .map((logs, group) => {
+            .map(log => {
+                const value = _.get(log, 'measurements.stool.value');
                 return {
-                    name: parseInt(group) === 0 ? 'Other' : `Type ${group}`,
-                    color: parseInt(group) === 0 ? '#c5c5c5' : StoolColormap[group],
-                    data: this.formatLogs(logs),
-                };
+                    value: value > 0 ? value : 'Other',
+                    timeLogged: log.timeLogged,
+                }
             })
+            .groupBy('value')
+            .map((rows, group) => ({
+                group,
+                data: this.formatLogs(rows),
+            }))
+            .keyBy('group')
             .value();
     }
 
     render () {
         const { resident, logs } = this.props;
-        const series = this.formatSeries(logs);
+        const groups = this.formatSeries(logs);
+        let series = [];
+        [ 1, 2, 3, 4, 5, 6, 7, 'Other' ]
+            .forEach(group => {
+                series.push({
+                    name: group > 0 ? `Type ${group}` : 'Other',
+                    color: StoolColormap[group] || '#c5c5c5',
+                    data: groups[group] ? groups[group].data : null,
+                });
+            });
+        
         const config = {
             title: 'Stool Chart',
             subTitle: 'Bristol Stool Scale',
             yAxisLabel: 'Number of bowel movements',
             legendEnabled: true,
             chartType: 'column',
+            yAllowDecimals: false,
             tooltip: {
                 formatter: function () {
                     return `<strong style="font-size: 10px; opacity: 0.7;">${moment(this.x).format('dddd Do MMMM YYYY')}</strong><br /><b>${this.y}</b> bowel movement${this.y > 1 ? 's' : ''} of <b>${this.series.name}</b>`;

@@ -25,7 +25,7 @@ const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
                     </div>
                     <h4 style={styles.measurement}>
                         {data.label || label}: { render
-                            ? render(val)
+                            ? render(data)
                             : val }{unit}
                     </h4>
                     <p style={styles.timestamp}>
@@ -88,15 +88,16 @@ class LmcChartsDashboard extends React.Component {
             {
                 label: 'Stool',
                 key: 'stool', render: d => {
-                    return (!d || d === -1)
-                        ? 'Normal'
-                        : `Type ${d}`;
+                    console.log(d);
+                    return (!_.isNumber(d.value))
+                        ? d.value || 'Normal'
+                        : `Type ${d.value}`;
                 },
             },
             {
                 label: 'Mood',
                 key: 'mood',
-                render: mood => {
+                render: (d) => {
                     const moods = {
                         1: 'Very Bad',
                         2: 'Bad',
@@ -104,14 +105,14 @@ class LmcChartsDashboard extends React.Component {
                         4: 'Good',
                         5: 'Very Good',
                     };
-                    return moods[mood] || mood;
+                    return moods[d.value] || d.value;
                 },
             },
         ], 'label');
 
         measurements.forEach(d => {
             d.data = _.find(data, { key: d.key });
-        });
+        }); 
 
         const measurements_with_data = _.filter(measurements, 'data');
         const measurements_no_data = _.filter(measurements, d => !d.data);
