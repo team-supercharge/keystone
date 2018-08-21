@@ -33,7 +33,6 @@ const TaskCounter = (row, index) => {
     )
 }
 
-window.moment = moment;
 class LmcTasksCard extends Component {
 
     renderTasks(tasks) {
@@ -65,7 +64,7 @@ class LmcTasksCard extends Component {
         const rows = [
             {
                 label: 'Overdue Today',
-                color: '#e65d79e8',
+                color: '#e65d79',
                 link: `filters=${filterPending}`,
                 count: tasks.overdue || 0,
             },
@@ -77,7 +76,7 @@ class LmcTasksCard extends Component {
             },
             {
                 label: 'Completed Today',
-                color: '#9bd687e8',
+                color: '#b4d78b',
                 link: `filters=${filterCompleted}`,
                 count: tasks.completed || 0,
             }
@@ -146,6 +145,7 @@ const styles = {
         borderRadius: 30,
         fontWeight: 300,
         letterSpacing: 2,
+        opacity: 0.9,
         textTransform: 'uppercase',
         color: 'white',
     }
