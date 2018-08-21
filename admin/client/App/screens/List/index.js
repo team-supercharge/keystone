@@ -435,9 +435,9 @@ const ListView = React.createClass({
 	},
 	showBlankState () {
 		return !this.props.loading
-				&& !this.props.items.results.length
-				&& !this.props.active.search
-				&& !this.props.active.filters.length;
+				&& !_.get(this.props, 'items.results.length')
+				&& !_.get(this.props, 'items.active.search')
+				&& !_.get(this.props, 'items.active.filters.length')
 	},
 	renderBlankState () {
 		const { currentList } = this.props;
