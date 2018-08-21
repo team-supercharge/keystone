@@ -435,7 +435,7 @@ class LmcPdfExport extends React.Component {
         const { resident, title, type } = this.props;
         const SVGtoPNG = function (svg) {
             return new Promise((resolve, reject) => {
-                saveSvgAsPng.svgAsPngUri(svg, { scale: 3 }, function (uri) {
+                saveSvgAsPng.svgAsPngUri(svg, { scale: 3, canvg }, function (uri) {
                     resolve(uri);
                 });
             });
