@@ -16,7 +16,9 @@ const BrowserWarning = () => (
 			Looks like you're an outdated browser that will prevent you from accessing all the features of Log my Care.
 			<br />
 			<br />
-			Please use Google Chrome instead.
+			Please use <a href="https://www.google.com/chrome/">
+				Google Chrome
+			</a> instead.
 		</div>
 	</div>
 );

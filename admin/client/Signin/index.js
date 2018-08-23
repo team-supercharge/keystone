@@ -17,7 +17,7 @@ const from = typeof params.from === 'string' && params.from.charAt(0) === '/'
 	? params.from : undefined;
 
 const browser = detect();
-if (browser.name === 'ie') {
+if (browser.name !== 'ie') {
 	ReactDOM.render(
 		<BrowserWarning />,
 		document.getElementById('signin-view')
