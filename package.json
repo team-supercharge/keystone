@@ -37,6 +37,7 @@
     "connect-flash": "0.1.1",
     "cookie-parser": "1.4.3",
     "debug": "^3.1.0",
+    "detect-browser": "^3.0.0",
     "display-name": "0.1.0",
     "ejs": "2.5.5",
     "elemental": "0.6.1",

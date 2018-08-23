@@ -9,18 +9,28 @@ import qs from 'qs';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Signin from './Signin';
+import BrowserWarning from './BrowserWarning.js';
+import { detect } from 'detect-browser';
 
 const params = qs.parse(window.location.search.replace(/^\?/, ''));
 const from = typeof params.from === 'string' && params.from.charAt(0) === '/'
 	? params.from : undefined;
 
-ReactDOM.render(
-	<Signin
-		brand={Keystone.brand}
-		from={from}
-		logo={Keystone.logo}
-		user={Keystone.user}
-		userCanAccessKeystone={Keystone.userCanAccessKeystone}
-	/>,
-	document.getElementById('signin-view')
-);
+const browser = detect();
+if (browser.name === 'ie') {
+	ReactDOM.render(
+		<BrowserWarning />,
+		document.getElementById('signin-view')
+	);
+} else {
+	ReactDOM.render(
+		<Signin
+			brand={Keystone.brand}
+			from={from}
+			logo={Keystone.logo}
+			user={Keystone.user}
+			userCanAccessKeystone={Keystone.userCanAccessKeystone}
+		/>,
+		document.getElementById('signin-view')
+	);
+};
