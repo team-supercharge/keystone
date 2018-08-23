@@ -379,9 +379,7 @@ var EditForm = React.createClass({
 	renderResidentPage () {
 		const onSave = (blob) => {
 			this.setState({ profilePic: blob });
-			setTimeout(() => {
-				this.updateItem();
-			}, 1000);
+			this.updateItem();
 		};
 
 		return <LmcAvatarUpload onSave={onSave} />;
