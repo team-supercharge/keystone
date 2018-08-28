@@ -29,6 +29,7 @@ function fireGATracking () {
 }
 
 // Loading custom LMC view
+import LmcTodosView from './lmc/screens/Todos/index.jsx';
 import LmcReportView from './lmc/screens/Reports/index.jsx';
 import LmcFluidsOverview from './lmc/screens/Reports/Charts/charts/LmcFluidsOverview.jsx';
 import LmcMealsOverview from './lmc/screens/Reports/Charts/charts/LmcMealsOverview.jsx';
@@ -43,6 +44,7 @@ import { listsByKey } from '../utils/lists';
 Keystone.User = listsByKey[Keystone.userList];
 
 function onListChange (prevState, { location }) {
+	console.log(location);
 	Object.keys(location.query).forEach((key) => {
 		try {
 			const filters = JSON.parse(location.query[key]);
@@ -63,6 +65,7 @@ ReactDOM.render(
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
+				<Route path="todos" component={LmcTodosView} onChange={onListChange} />
 				<Route path="reports" component={LmcReportView} onChange={onListChange}>
 					<Route path="charts" component={LmcCharts} />
 					<Route path="charts/:chart_type/:resident_id" component={LmcCharts} />
