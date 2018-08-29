@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LmcTaskListRow from './LmcTaskListRow.jsx';
-
+import _ from 'lodash';
+import moment from 'moment';
 
 class LmcTaskList extends Component {
     renderHeader() {
         return (
             <tr>
-                <th style={styles.date}>
-                    
-                </th>
                 <th style={styles.todoLabel}>
-                    Todo
+                    To-Do
                 </th>
-                <th colSpan="2">
+                <th style={styles.countLabel}>
                     Pending / Complete
                 </th>
+                <th style={styles.tagLabel}></th>
             </tr>
         );
     }
 
     render() {
         const { data } = this.props;
+        const tasksSorted = _.sortBy(data, d => moment(d.date).toDate());
         return (
             <table style={styles.table}>
                 { this.renderHeader() }
-                { data.map(row =>
-                    <LmcTaskListRow data={row} />
+                { tasksSorted.map(row =>
+                    <LmcTaskListRow key={row.id} data={row} />
                 )}
             </table>
         );
@@ -43,10 +43,17 @@ const styles = {
         margin: '0 auto',
         border: 'none'
     },
+    countLabel: {
+        fontSize: 17,
+        minWidth: 170,
+    },
+    tagLabel: {
+        minWidth: 100,
+    },
     todoLabel: {
         textAlign: 'left',
         fontSize: 18,
-        paddingLeft: 10,
+        paddingLeft: 58,
         minWidth: '70%',
         width: '70%',
     }

@@ -3,6 +3,7 @@ import { connect, PromiseState } from 'react-refetch';
 import {
     LmcSingleDateSelector,
     LmcTaskList,
+    LmcTaskCreateModal,
 } from './components';
 import LmcLoadingScreen from '../../components/LmcLoadingScreen.jsx';
 import {
@@ -18,14 +19,12 @@ class LmcTodosView extends React.Component {
         super(props);
         this.state = {
             date: moment(),
+            showCreateModal: true,
         };
+        this.toggleCreateModal = this.toggleCreateModal.bind(this);
         this.renderHeader = this.renderHeader.bind(this);
         this.renderTasks = this.renderTasks.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
-    }
-
-    openCreateModal() {
-        console.log("openCreateModal");
     }
 
     renderHeader() {
@@ -33,16 +32,18 @@ class LmcTodosView extends React.Component {
         return (
             <div>
                 <div>
-                    <span style={styles.title}>
+                    <h2 style={styles.title}>
                         Scheduled ToDo's
-                    </span>
-                    <GlyphButton
-                        style={styles.button}
-                        onClick={this.openCreateModal}
-                        glyph="plus"
-                        position="right">
-                        Add ToDo
-                    </GlyphButton>
+                        <GlyphButton
+                            style={styles.button}
+                            onClick={this.toggleCreateModal}
+                            glyph="plus"
+                            color="success"
+                            position="right">
+                            Add ToDo
+                        </GlyphButton>
+                    </h2>
+                    
                 </div>
                 
                 <div style={styles.dateSelectorContainer}>
@@ -58,14 +59,20 @@ class LmcTodosView extends React.Component {
             return <LmcLoadingScreen />
         }
         if (tasksFetch.rejected) {
-            console.log(tasksFetch.reason)
-            return <BlankState heading={tasksFetch.reason || 'Oops. Unable to load tasks...'} />
+            console.log(tasksFetch)
+            return <BlankState heading={tasksFetch.reason || 'Oops. Unable to load To-Do\'s...'} />
         }
         if (tasksFetch.value && (!tasksFetch.value.results || !tasksFetch.value.results.length)) {
-            return <BlankState heading={'No tasks on this date'} />
+            return <BlankState heading={'No To-Do\'s on this date'} />
         }
 
         return <LmcTaskList data={tasksFetch.value.results} />
+    }
+
+    toggleCreateModal() {
+        this.setState({
+            showCreateModal: !this.state.showCreateModal,
+        })
     }
 
     onDateChange({ date }) {
@@ -79,9 +86,10 @@ class LmcTodosView extends React.Component {
     }
 
     render() {
-        const { tasksFetch } = this.props;
-        if (!tasksFetch) {
-            return <LmcLoadingScreen />
+        const { showCreateModal } = this.state;
+
+        if (showCreateModal) {    
+            return <LmcTaskCreateModal onClose={this.toggleCreateModal} />
         }
 
         return (
@@ -102,10 +110,11 @@ const styles = {
         maxWidth: 1180,
     },
     title: {
-        fontSize: 20,
-        opacity: 0.8,
+        // fontSize: 20,
+        // opacity: 0.8,
     },
     button: {
+        fontSize: 16,
         float: 'right',
     },
     dateSelectorContainer: {
@@ -120,7 +129,7 @@ const styles = {
 export default connect((props) => ({
     fetchDailyTasks: (date) => {
         let url = `${Keystone.adminPath}/api/reports/tasks`;
-        if (date) url += `?on=${date.format()}`;
+        if (date) url += `?on=${date.toISOString()}`;
         return {
             tasksFetch: url
         }

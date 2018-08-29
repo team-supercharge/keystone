@@ -5,6 +5,19 @@ import moment from 'moment';
 import _ from 'lodash';
 import { css, StyleSheet } from 'aphrodite/no-important';
 
+
+const OverdueLabel = () => (
+    <span className={css(classes.taskCounterLabel, classes.taskCounter, classes.overdue)}>
+        Overdue
+    </span>
+)
+
+const DoneLabel = () => (
+    <span className={css(classes.taskCounterLabel, classes.taskCounter, classes.completed)}>
+        Done
+    </span>
+)
+
 class LmcTaskListRow extends Component {
     constructor(props) {
         super(props);
@@ -32,6 +45,21 @@ class LmcTaskListRow extends Component {
         }
     }
 
+    renderTaskList(sortedTasks) {
+        return (
+            <ul>
+                { sortedTasks.map((t, index) => (
+                    <LmcTaskListResident
+                        key={t.id}
+                        task={t}
+                        row={index}
+                        total={sortedTasks.length}
+                    />
+                )) }
+            </ul>
+        )
+    }
+
     render() {
         const { data: { date, id, tasks } } = this.props;
         if (!tasks || !tasks.length) {
@@ -39,40 +67,44 @@ class LmcTaskListRow extends Component {
         }
         const { title } = tasks[0];
         const { showDetails } = this.state;
-        let sortedTasks = _.sortBy(tasks, t => -moment(t.date));
+        let sortedTasks = _.sortBy(tasks, 'resident.name.first');
         const {
             completed,
             pending,
             isOverdue,
             isDone,
         } = this.getCounts(tasks, date);
+        let titleWithoutGroup = (title.split('/')[1] || title).replace(/^\s/, '');;
         return (
             <tr>
-                <td className={css(classes.dateRow)}>
-                    { moment(date).format('HH:MM') }
-                </td>
                 <td className={css(classes.detailsRow)}>
                     <p className={css(classes.taskTitleContainer)}
                         onClick={() => this.toggleDetails()}>
+                        <span className={css(classes.date)}>
+                            { moment(date).format('HH:MM') }
+                        </span>
                         <span className={css(classes.taskTitle)}>
-                            { title.split('/')[1] }
+                            { titleWithoutGroup }
                         </span>
                     </p>
                     { showDetails
-                        ? sortedTasks.map((t, index) => (
-                            <LmcTaskListResident
-                                key={t.id}
-                                task={t}
-                                row={index}
-                                total={sortedTasks.length}
-                            />
-                        ))
+                        ? this.renderTaskList(sortedTasks)
                         : null }
                 </td>
                 <td className={css(classes.counts)}>
-                    { completed } / { pending }
-                    { isOverdue ? 'Overdue' : null }
-                    { isDone ? 'Done' : null }
+                    <span className={css(classes.taskCounter, pending === 0 ? classes.empty : (isOverdue ? classes.overdue : classes.pending))}>
+                        { pending }
+                    </span>
+                    <span className={css(classes.taskCounter, completed === 0 ? classes.empty : classes.completed)}>
+                        { completed }
+                    </span>
+                </td>
+                <td className={css(classes.countsLabel)}>
+                    { isOverdue ? <OverdueLabel /> : null }
+                    { isDone ? <DoneLabel /> : null }
+                    {/* <div className={css(classes.speechBubble)}>
+                        speechBubble
+                    </div> */}
                 </td>
             </tr>
         );
@@ -81,18 +113,26 @@ class LmcTaskListRow extends Component {
 
 const classes = StyleSheet.create({
     detailsRow: {
-        padding: 10,
+        padding: 5,
         fontSize: 16,
     },
-    dateRow: {
-        padding: '13px 10px 10px',
-        opacity: 0.6,
-        fontSize: 14,
-        textAlign: 'right',
+    countsLabel: {
         verticalAlign: 'top',
+        paddingTop: 12,
+        textAlign: 'left',
+    },
+    date: {
+        paddingRight: 15,
+        // opacity: 0.6,
+        fontSize: 14,
+        color: '#828282',
+        background: '#fafafa',
+        // textAlign: 'right',
+        // verticalAlign: 'top',
     },
     counts: {
         verticalAlign: 'top',
+        paddingTop: 12,
         textAlign: 'center',
     },
     taskTitleContainer: {
@@ -109,6 +149,63 @@ const classes = StyleSheet.create({
         color: '#e5627e',
         background: '#fafafa',
         paddingRight: 21,
+    },
+    taskCounterLabel: {
+        position: 'relative',
+        left: -30,
+    },
+    taskCounter: {
+        padding: '5px 9px',
+        margin: 8,
+        fontSize: 12,
+        lineHeight: '19px',
+        borderRadius: 30,
+        opacity: 0.9,
+        textTransform: 'uppercase',
+        color: 'white',
+    },
+    completed: {
+        background: '#b3d78b',
+    },
+    overdue: {
+        background: '#e85b77',
+    },
+    pending: {
+        background: '#f9c175',
+    },
+    empty: {
+        background: '#f2f2f3',
+    },
+    speechBubble: {
+        position: 'relative',
+        background: '#dc7485',
+        borderRadius: '.4em',
+        '::after': {
+            content: '',
+            position: 'absolute',
+            left: 0,
+            top: '50%',
+            width: 0,
+            height: 0,
+            border: '25px solid transparent',
+            borderRightColor: '#dc7485',
+            borderLeft: 0,
+            marginTop: -25,
+            marginLeft: -25,
+        }
+    },
+    'speechBubble:after': {
+        content: '',
+        position: 'absolute',
+        left: 0,
+        top: '50%',
+        width: 0,
+        height: 0,
+        border: '25px solid transparent',
+        borderRightColor: '#dc7485',
+        borderLeft: 0,
+        marginTop: -25,
+        marginLeft: -25,
     }
 });
 

@@ -5,19 +5,28 @@ import _ from 'lodash';
 
 const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
 
+const Tick = () => {
+    return (
+        <span>Tick</span>
+    )
+}
+
 class LmcTaskListResident extends Component {
     render() {
         const { task } = this.props;
         const img_src = _.get(task, 'resident.picture.url') || PLACEHOLDER_IMAGE;
         return (
-            <div className={css(classes.resident)}>
+            <li className={css(classes.resident)}>
                 <img src={img_src} alt="resident-profile-pic" className={css(classes.profilePic)}/>
                 <span className={css(classes.residentName)}>
                     { task.resident.name.first } { task.resident.name.last }
-                    / - { task.status }
+                    {/* / - { task.status } */}
+                    { task.status === 'completed'
+                        ? <Tick />
+                        : null }
                 </span>
                 
-            </div>
+            </li>
         );
     }
 }
