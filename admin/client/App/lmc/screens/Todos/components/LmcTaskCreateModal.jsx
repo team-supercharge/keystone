@@ -12,6 +12,7 @@ import LmcTimeSelector from './LmcTimeSelector.jsx';
 import LmcItemSelector from './LmcItemSelector.jsx';
 import LmcCategorySelector from './LmcCategorySelector.jsx';
 import LmcLoadingScreen from '../../../components/LmcLoadingScreen.jsx';
+import { LmcDot } from '../../../components';
 
 
 class LmcTaskCreateModal extends Component {
@@ -20,7 +21,7 @@ class LmcTaskCreateModal extends Component {
         super(props);
         
         this.state = {
-            currentStep: 2,
+            currentStep: 0,//
             category: null,
             item: null,
             recurrance: null,
@@ -78,9 +79,10 @@ class LmcTaskCreateModal extends Component {
             homeFetch,
             itemFetch,
             residentsFetch,
+            carersFetch,
         } = this.props;
 
-        const allFetches = PromiseState.all([homeFetch, categoryFetch, itemFetch, residentsFetch]);
+        const allFetches = PromiseState.all([homeFetch, categoryFetch, itemFetch, residentsFetch, carersFetch]);
         if (allFetches.pending) return <LmcLoadingScreen />;
         if (!allFetches.fulfilled) return <BlankState heading={'Oops.. Something went wrong'} />;
 
@@ -110,6 +112,8 @@ class LmcTaskCreateModal extends Component {
             />;
         case 3:
             return <LmcResidentSelector
+                residents={residentsFetch.value.results}
+                carers={carersFetch.value.results}
                 onComplete={({ residents, requireSignature }) => {
                     this.setState({ residents, requireSignature });
                     this.submit(); // Complete
@@ -135,11 +139,28 @@ class LmcTaskCreateModal extends Component {
     renderHeader() {
         const { onClose } = this.props;
         const { currentStep } = this.state;
-        const dots = [0, 1, 2, 3].map(d => <div className={css(classes.dot, d === currentStep ? classes.activeDot : null)} />);
+
+        const handleClick = (d) => {
+            if (d < currentStep) {
+                this.setState({ currentStep: d });
+            }
+        };
+
+        const dots = [0, 1, 2, 3].map(d =>
+            <div onClick={() => handleClick(d)}
+                style={{ cursor: d < currentStep && 'pointer' }}
+                className={css(classes.dot, d === currentStep ? classes.activeDot : null)} />
+        );
         return (
             <div className={css(classes.headerContainer)}>
-                <div onClick={onClose}>
-                    X Add To-Do
+                <div className={css(classes.cancelButton)} onClick={onClose}>
+                    <LmcDot label={'X'}
+                        selectable
+                        color={'#e85b77'}
+                        active={true}
+                        size={24}
+                        fontSize={12} />
+                    Add ToDo
                 </div>
                 <div className={css(classes.dotConatiner)}>
                     {dots}
@@ -200,6 +221,7 @@ const classes = StyleSheet.create({
         left: 0,
         top: 0,
         height: '100vh',
+        overflow: 'scroll',
         background: 'white',
     },
     selectionContainer: {
@@ -209,6 +231,16 @@ const classes = StyleSheet.create({
     headerContainer: {
         paddingBottom: 50,
         paddingTop: 40,
+    },
+    cancelButton: {
+        marginLeft: 50,
+        position: 'relative',
+        top: 20,
+        width: 200,
+        ':hover': {
+            opacity: 0.7,
+            cursor: 'pointer',
+        }
     },
     selectionLink: {
         color: '#c1c1c1',
@@ -252,5 +284,6 @@ export default connect((props) => ({
     homeFetch: `${Keystone.adminPath}/api/homes`,
     categoryFetch: `${Keystone.adminPath}/api/log-categories`,
     residentsFetch: `${Keystone.adminPath}/api/reports/residents`,
+    carersFetch: `${Keystone.adminPath}/api/reports/users`,
     itemFetch: `${Keystone.adminPath}/api/log-category-items`,
 }))(LmcTaskCreateModal);
