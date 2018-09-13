@@ -13,13 +13,13 @@ import {
 import moment from 'moment';
 
 
-class LmcTodosView extends React.Component {
+class LmcTodosScreen extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             date: moment(),
-            showCreateModal: true,
+            showCreateModal: false,
         };
         this.toggleCreateModal = this.toggleCreateModal.bind(this);
         this.renderHeader = this.renderHeader.bind(this);
@@ -54,8 +54,8 @@ class LmcTodosView extends React.Component {
     }
 
     renderTasks() {
-        const { tasksFetch } = this.props;
-        if (tasksFetch.pending) {
+        const { tasksFetch, residentsFetch } = this.props;
+        if (!tasksFetch || tasksFetch.pending || residentsFetch.pending) {
             return <LmcLoadingScreen />
         }
         if (tasksFetch.rejected) {
@@ -66,7 +66,7 @@ class LmcTodosView extends React.Component {
             return <BlankState heading={'No To-Do\'s on this date'} />
         }
 
-        return <LmcTaskList data={tasksFetch.value.results} />
+        return <LmcTaskList data={tasksFetch.value.results} residents={residentsFetch.value.results} />
     }
 
     toggleCreateModal() {
@@ -106,6 +106,7 @@ const styles = {
         padding: '20px 30px',
         marginLeft: 'auto',
         marginRight: 'auto',
+        marginBottom: 100,
         // maxWidth: 1070,
         maxWidth: 1180,
     },
@@ -127,6 +128,7 @@ const styles = {
 
 
 export default connect((props) => ({
+    residentsFetch: `${Keystone.adminPath}/api/reports/residents`,
     fetchDailyTasks: (date) => {
         let url = `${Keystone.adminPath}/api/reports/tasks`;
         if (date) url += `?on=${date.toISOString()}`;
@@ -134,4 +136,4 @@ export default connect((props) => ({
             tasksFetch: url
         }
     },
-}))(LmcTodosView);
+}))(LmcTodosScreen);

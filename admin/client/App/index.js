@@ -44,7 +44,6 @@ import { listsByKey } from '../utils/lists';
 Keystone.User = listsByKey[Keystone.userList];
 
 function onListChange (prevState, { location }) {
-	console.log(location);
 	Object.keys(location.query).forEach((key) => {
 		try {
 			const filters = JSON.parse(location.query[key]);

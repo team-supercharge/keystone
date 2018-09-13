@@ -4,8 +4,8 @@ import { css, StyleSheet } from 'aphrodite/no-important';
 import Select from 'react-select'; // https://react-select.com/props
 import Flatpickr from 'react-flatpickr'; // https://github.com/coderhaoxin/react-flatpickr#usage
 import moment from 'moment';
-import { GlyphButton } from '../../../../elemental';
-import { LmcDot } from '../../../components';
+import { GlyphButton } from '../../../../../elemental';
+import { LmcDot } from '../../../../components';
 import _ from 'lodash';
 
 
@@ -40,7 +40,7 @@ class LmcTimeSelector extends Component {
         this.onDailyClick = this.onDailyClick.bind(this);
         this.handleRecChange = this.handleRecChange.bind(this);
         this.state = {
-            isRecurring: true,
+            isRecurring: false,
             recType: 'daily',
             recOptions: this.getOptions('daily'),
         };

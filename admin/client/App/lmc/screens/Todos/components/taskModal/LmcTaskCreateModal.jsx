@@ -6,15 +6,19 @@ import _ from 'lodash';
 
 import {
     BlankState,
-} from '../../../../elemental';
+} from '../../../../../elemental';
+
 import LmcResidentSelector from './LmcResidentSelector.jsx';
 import LmcTimeSelector from './LmcTimeSelector.jsx';
 import LmcItemSelector from './LmcItemSelector.jsx';
 import LmcCategorySelector from './LmcCategorySelector.jsx';
-import LmcLoadingScreen from '../../../components/LmcLoadingScreen.jsx';
-import { LmcDot } from '../../../components';
 
+import LmcLoadingScreen from '../../../../components/LmcLoadingScreen.jsx';
+import { LmcDot } from '../../../../components';
 
+/**
+ * After POST, Keystone will sent GET requests with ?basic param to every resident... why?
+ */
 class LmcTaskCreateModal extends Component {
 
     constructor(props) {

@@ -22,7 +22,7 @@ class LmcTaskListRow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showDetails: false
+            showDetails: true,
         }
         this.toggleDetails = this.toggleDetails.bind(this);
     }
@@ -45,23 +45,25 @@ class LmcTaskListRow extends Component {
         }
     }
 
-    renderTaskList(sortedTasks) {
+    renderTaskList(sortedTasks, residents) {
+        // console.log(sortedTasks, residents, _.find(residents, {id: sortedTasks[0].resident.id}));
         return (
-            <ul>
+            <div className={css(classes.taskList)}>
                 { sortedTasks.map((t, index) => (
                     <LmcTaskListResident
+                        resident={_.find(residents, {id: t.resident._id})}
                         key={t.id}
                         task={t}
-                        row={index}
+                        index={index}
                         total={sortedTasks.length}
                     />
                 )) }
-            </ul>
+            </div>
         )
     }
 
     render() {
-        const { data: { date, id, tasks } } = this.props;
+        const { data: { date, id, tasks }, residents } = this.props;
         if (!tasks || !tasks.length) {
             return null;
         }
@@ -88,7 +90,7 @@ class LmcTaskListRow extends Component {
                         </span>
                     </p>
                     { showDetails
-                        ? this.renderTaskList(sortedTasks)
+                        ? this.renderTaskList(sortedTasks, residents)
                         : null }
                 </td>
                 <td className={css(classes.counts)}>
@@ -120,6 +122,10 @@ const classes = StyleSheet.create({
         verticalAlign: 'top',
         paddingTop: 12,
         textAlign: 'left',
+    },
+    taskList: {
+        // listStyle: 'none',
+        // listStyleImage: `url('https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/list-style.png')`,
     },
     date: {
         paddingRight: 15,

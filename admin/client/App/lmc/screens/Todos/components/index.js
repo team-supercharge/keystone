@@ -3,10 +3,10 @@ import LmcTaskList from './LmcTaskList.jsx';
 import LmcTaskListRow from './LmcTaskListRow.jsx';
 import LmcTaskListResident from './LmcTaskListResident.jsx';
 // import LmcNewTaskModal from './LmcNewTaskModal.jsx';
-import LmcTaskCreateModal from './LmcTaskCreateModal.jsx';
-import LmcTaskEditModal from './LmcTaskEditModal.jsx';
-import LmcCategorySelector from './LmcCategorySelector.jsx';
-import LmcItemSelector from './LmcItemSelector.jsx';
+import LmcTaskCreateModal from './taskModal/LmcTaskCreateModal.jsx';
+import LmcTaskEditModal from './taskModal/LmcTaskEditModal.jsx';
+import LmcCategorySelector from './taskModal/LmcCategorySelector.jsx';
+import LmcItemSelector from './taskModal/LmcItemSelector.jsx';
 
 module.exports = {
     LmcSingleDateSelector,

@@ -20,13 +20,13 @@ class LmcTaskList extends Component {
     }
 
     render() {
-        const { data } = this.props;
+        const { data, residents } = this.props;
         const tasksSorted = _.sortBy(data, d => moment(d.date).toDate());
         return (
             <table style={styles.table}>
                 { this.renderHeader() }
                 { tasksSorted.map(row =>
-                    <LmcTaskListRow key={row.id} data={row} />
+                    <LmcTaskListRow key={row.id} data={row} residents={residents} />
                 )}
             </table>
         );

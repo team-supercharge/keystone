@@ -27,7 +27,7 @@ const OptionComponent = ({ option, onSelect }) => {
     )
 }
 
-const ToggleButton = ({ title, offLabel, onLabel, value, onChange, offColor='#cacaca', onColor='#b3d78b' }) => {
+const ToggleButton = ({ title, hideOffLabel=false, offLabel, onLabel, value, onChange, offColor='#cacaca', onColor='#b3d78b' }) => {
     // https://www.npmjs.com/package/react-switch
     const noop = () => {};
     return (
@@ -39,7 +39,7 @@ const ToggleButton = ({ title, offLabel, onLabel, value, onChange, offColor='#ca
                 : null}
             <br />
             <span style={{ cursor: 'pointer' }} onClick={onChange || noop}>
-                <span style={{ paddingRight: 8, position: 'relative', top: -10, opacity: 0.6 }}>
+                <span style={{ paddingRight: 8, position: 'relative', top: -10, opacity: value && hideOffLabel ? 0 : 0.6 }}>
                     {offLabel}
                 </span>
                 <Switch
@@ -58,7 +58,7 @@ const ToggleButton = ({ title, offLabel, onLabel, value, onChange, offColor='#ca
                     width={52}
                     id="log-switch"
                 />
-                <span style={{ paddingLeft: 8, position: 'relative', top: -10, opacity: 0.6 }}>
+                <span style={{ paddingLeft: 8, position: 'relative', top: -10, opacity: value || !hideOffLabel ? 0.6 : 0 }}>
                     {onLabel}
                 </span>
             </span>
@@ -207,6 +207,7 @@ class LmcResidentSelector extends Component {
                         onChange={this.toggleWitness}
                         offLabel='No'
                         onLabel='Yes'
+                        hideOffLabel
                         value={requireWitness}
                     />
                 </div>
@@ -216,6 +217,7 @@ class LmcResidentSelector extends Component {
                         onChange={this.toggleQuickLog}
                         offLabel='No'
                         onLabel='Yes'
+                        hideOffLabel
                         value={requireQuickLog}
                     />
                 </div>

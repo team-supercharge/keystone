@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LmcIconButton from './LmcIconButton.jsx';
+import LmcIconButton from '../LmcIconButton.jsx';
 import _ from 'lodash';
 
 class LmcItemSelector extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         const { data, category, onSelect } = this.props;
         return (
