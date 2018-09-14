@@ -4,17 +4,16 @@ import { css, StyleSheet } from 'aphrodite/no-important';
 import { connect, PromiseState } from 'react-refetch';
 import _ from 'lodash';
 
-import {
-    BlankState,
-} from '../../../../../elemental';
-
 import LmcResidentSelector from './LmcResidentSelector.jsx';
 import LmcTimeSelector from './LmcTimeSelector.jsx';
 import LmcItemSelector from './LmcItemSelector.jsx';
+import LmcTitleSelector from './LmcTitleSelector.jsx';
 import LmcCategorySelector from './LmcCategorySelector.jsx';
 
-import LmcLoadingScreen from '../../../../components/LmcLoadingScreen.jsx';
-import { LmcDot } from '../../../../components';
+import { BlankState } from '../../../elemental';
+import { colors } from '../../common/constants';
+import LmcLoadingScreen from '../../components/LmcLoadingScreen.jsx';
+import { LmcDot } from '../../components';
 
 /**
  * After POST, Keystone will sent GET requests with ?basic param to every resident... why?
@@ -108,13 +107,20 @@ class LmcTaskCreateModal extends Component {
                     this.nextStep();
                 }} />
         case 2:
-            return <LmcTimeSelector
+            return <LmcTitleSelector
                 onSelect={recurrence => {
                     this.setState({ recurrence });
                     this.nextStep();
                 }}
             />;
         case 3:
+            return <LmcTimeSelector
+                onSelect={recurrence => {
+                    this.setState({ recurrence });
+                    this.nextStep();
+                }}
+            />;
+        case 4:
             return <LmcResidentSelector
                 residents={residentsFetch.value.results}
                 carers={carersFetch.value.results}
@@ -150,7 +156,7 @@ class LmcTaskCreateModal extends Component {
             }
         };
 
-        const dots = [0, 1, 2, 3].map(d =>
+        const dots = [0, 1, 2, 3, 4].map(d =>
             <div onClick={() => handleClick(d)}
                 style={{ cursor: d < currentStep && 'pointer' }}
                 className={css(classes.dot, d === currentStep ? classes.activeDot : null)} />
@@ -160,7 +166,7 @@ class LmcTaskCreateModal extends Component {
                 <div className={css(classes.cancelButton)} onClick={onClose}>
                     <LmcDot label={'X'}
                         selectable
-                        color={'#e85b77'}
+                        color={colors.red}
                         active={true}
                         size={24}
                         fontSize={12} />
@@ -275,11 +281,10 @@ const classes = StyleSheet.create({
         display: 'inline-block',
     },
     activeDot: {
-        backgroundColor: '#e85b77',
+        backgroundColor: colors.red,
     },
     icon: {
         width: 12,
-        // height: 14,
         marginTop: 6,
     }
 });

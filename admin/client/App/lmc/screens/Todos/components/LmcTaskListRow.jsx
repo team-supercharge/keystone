@@ -4,6 +4,7 @@ import LmcTaskListResident from './LmcTaskListResident.jsx';
 import moment from 'moment';
 import _ from 'lodash';
 import { css, StyleSheet } from 'aphrodite/no-important';
+import { colors } from '../../../common/constants';
 
 
 const OverdueLabel = () => (
@@ -129,16 +130,13 @@ const classes = StyleSheet.create({
     },
     date: {
         paddingRight: 15,
-        // opacity: 0.6,
         fontSize: 14,
         color: '#828282',
         background: '#fafafa',
-        // textAlign: 'right',
-        // verticalAlign: 'top',
     },
     counts: {
         verticalAlign: 'top',
-        paddingTop: 12,
+        paddingTop: 7,
         textAlign: 'center',
     },
     taskTitleContainer: {
@@ -152,7 +150,7 @@ const classes = StyleSheet.create({
         }
     },
     taskTitle: {
-        color: '#e5627e',
+        color: colors.red,
         background: '#fafafa',
         paddingRight: 21,
     },
@@ -171,16 +169,16 @@ const classes = StyleSheet.create({
         color: 'white',
     },
     completed: {
-        background: '#b3d78b',
+        background: colors.green,
     },
     overdue: {
-        background: '#e85b77',
+        background: colors.red,
     },
     pending: {
-        background: '#f9c175',
+        background: colors.orange,
     },
     empty: {
-        background: '#f2f2f3',
+        background: colors.bw10,
     },
     speechBubble: {
         position: 'relative',

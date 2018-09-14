@@ -4,9 +4,9 @@ import { css, StyleSheet } from 'aphrodite/no-important';
 import Select from 'react-select'; // https://react-select.com/props
 import Flatpickr from 'react-flatpickr'; // https://github.com/coderhaoxin/react-flatpickr#usage
 import moment from 'moment';
-import { GlyphButton } from '../../../../../elemental';
-import { LmcDot } from '../../../../components';
 import _ from 'lodash';
+import { GlyphButton } from '../../../elemental';
+import { LmcDot } from '../../components';
 
 
 const TimeSelectorRow = ({ time, onChange }) => (

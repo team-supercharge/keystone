@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect, PromiseState } from 'react-refetch';
 import {
-    LmcSingleDateSelector,
     LmcTaskList,
-    LmcTaskCreateModal,
 } from './components';
-import LmcLoadingScreen from '../../components/LmcLoadingScreen.jsx';
+import {
+    LmcSingleDateSelector,
+    LmcLoadingScreen,
+} from '../../components';
+
+import LmcTaskCreateModal from '../../modals/createTask/index.jsx';
 import {
     GlyphButton,
     BlankState,

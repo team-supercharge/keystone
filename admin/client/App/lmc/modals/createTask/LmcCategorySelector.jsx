@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LmcIconButton from '../LmcIconButton.jsx';
+import LmcIconButton from '../../components/LmcIconButton.jsx';
 import _ from 'lodash';
 
 class LmcCategorySelector extends Component {

@@ -2,22 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { css, StyleSheet } from 'aphrodite/no-important';
 import _ from 'lodash';
+import { colors, images } from '../../../common/constants';
 
-const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
-const TICK_IMAGE = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/green-tick.png';
-const Tick = () => {
-    return (
-        <img src={TICK_IMAGE} className={css(classes.tickImg)} />
-    )
-}
 
 class LmcTaskListResident extends Component {
     render() {
         const { task, resident, index, total } = this.props;
-        const img_src = resident.picture || PLACEHOLDER_IMAGE;
+        const img_src = resident.picture || images.profile_placeholder;
         const list_image = ((index + 1) === total)
-            ? 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/list-style-last.png'
-            : 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/list-style.png';
+            ? images.list_bullet_last
+            : images.list_bullet;
 
         return (
             <div className={css(classes.resident)}>
@@ -30,7 +24,7 @@ class LmcTaskListResident extends Component {
                     
                 </span>
                 { task.status === 'completed'
-                    ? <Tick />
+                    ? <img src={images.green_tick} className={css(classes.tickImg)} />
                     : null }
             </div>
         );
