@@ -5,8 +5,10 @@ import Select from 'react-select'; // https://react-select.com/props
 import Flatpickr from 'react-flatpickr'; // https://github.com/coderhaoxin/react-flatpickr#usage
 import moment from 'moment';
 import _ from 'lodash';
-import { GlyphButton } from '../../../elemental';
 import { LmcDot } from '../../components';
+import { colors } from '../../common/constants';
+import { connect } from 'react-redux';
+import { setFormField } from '../actions';
 
 
 const TimeSelectorRow = ({ time, onChange }) => (
@@ -14,6 +16,7 @@ const TimeSelectorRow = ({ time, onChange }) => (
         { time }
     </div>
 )
+
 
 const TimeGridSelector = (options) => {
 
@@ -213,22 +216,14 @@ class LmcTimeSelector extends Component {
         )
     }
 
-    renderNextButton() {
-        const { onSelect } = this.props;
-        return (
-            <GlyphButton
-                className={css(classes.nextButton)}
-                onClick={() => onSelect()}
-                glyph="chevron-left"
-                color="success"
-                position="center">
-                {NEXT_LABEL}
-            </GlyphButton>
-        )
-    }
-
     toggleRecurring() {
+        const { recurrence } = this.props.formData;
+        // options: 'once, daily, weekly, bi-weekly, monthly, annually',
         this.setState({ isRecurring: !this.state.isRecurring });
+
+        this.props.setFormField({ key: 'recurrence', value: item });
+        this.props.setFormField({ key: 'recurrenceOptions', value: item });
+        // feed 
     }
 
     render() {
@@ -346,4 +341,13 @@ const classes = StyleSheet.create({
     }
 });
 
-export default LmcTimeSelector;
+
+const mapStateToProps = (state) => ({
+    formData: state.modal.formData,
+})
+
+const mapDispatchToProps = dispatch => ({
+	setFormField: (val) => dispatch(setFormField(val)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LmcTimeSelector);

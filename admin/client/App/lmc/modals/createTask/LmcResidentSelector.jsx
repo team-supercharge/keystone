@@ -5,6 +5,9 @@ import Select from 'react-select'; // https://react-select.com/props
 import _ from 'lodash';
 import Switch from "react-switch";
 import { css, StyleSheet } from 'aphrodite/no-important';
+import { connect } from 'react-redux';
+import { setFormField } from '../actions';
+
 
 const SelectionComponent = (option) => {
     const rows = option.values.map(row => (
@@ -243,4 +246,12 @@ const classes = StyleSheet.create({
     }
 });
 
-export default LmcResidentSelector;
+const mapStateToProps = (state) => ({
+    formData: state.modal.formData,
+})
+
+const mapDispatchToProps = dispatch => ({
+	setFormField: (val) => dispatch(setFormField(val)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LmcResidentSelector);

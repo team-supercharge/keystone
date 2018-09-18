@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { css, StyleSheet } from 'aphrodite/no-important';
-import { connect, PromiseState } from 'react-refetch';
+import { connect as refetch, PromiseState } from 'react-refetch';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import LmcResidentSelector from './LmcResidentSelector.jsx';
@@ -12,8 +13,15 @@ import LmcCategorySelector from './LmcCategorySelector.jsx';
 
 import { BlankState } from '../../../elemental';
 import { colors } from '../../common/constants';
-import LmcLoadingScreen from '../../components/LmcLoadingScreen.jsx';
-import { LmcDot } from '../../components';
+import {
+    LmcLoadingScreen,
+    LmcStepList,
+    LmcStep,
+} from '../../components';
+import {
+    setFormField,
+    clearAllFormFields,
+} from '../actions';
 
 /**
  * After POST, Keystone will sent GET requests with ?basic param to every resident... why?
@@ -22,37 +30,14 @@ class LmcTaskCreateModal extends Component {
 
     constructor(props) {
         super(props);
-        
-        this.state = {
-            currentStep: 0,//
-            category: null,
-            item: null,
-            recurrance: null,
-            type: 'resident',
-            residents: null,
-            witness: null,
-            quickLog: null,
-            quickLogItem: null,
-        }
-        this.renderForm = this.renderForm.bind(this);
-        this.renderHeader = this.renderHeader.bind(this);
+        this.onClose = this.onClose.bind(this);
         this.renderSelection = this.renderSelection.bind(this);
-        this.nextStep = this.nextStep.bind(this);
-    }
-
-    nextStep() {
-        this.setState({ currentStep: this.state.currentStep + 1 });
-    }
-
-    prevStep() {
-        this.setState({ currentStep: this.state.currentStep - 1 });
     }
 
     filterData(home, categories, allItems, category) {
         const { group } = home.results[0];
-        const categoryId = category && category.id;
         const items = _.chain(allItems.results)
-            .filter({ fields: { category: categoryId }})
+            .filter({ fields: { category }})
             .cloneDeep()
             .map(item => {
                 item.fields.categoryData = _.find(categories.results, { id: item.fields.category });
@@ -70,71 +55,7 @@ class LmcTaskCreateModal extends Component {
         return (name.split('/')[1] || name).replace(/^\s/, '');
     }
 
-    renderForm() {
-        const {
-            currentStep,
-            category,
-            item,
-        } = this.state;
-
-        const {
-            categoryFetch,
-            homeFetch,
-            itemFetch,
-            residentsFetch,
-            carersFetch,
-        } = this.props;
-
-        const allFetches = PromiseState.all([homeFetch, categoryFetch, itemFetch, residentsFetch, carersFetch]);
-        if (allFetches.pending) return <LmcLoadingScreen />;
-        if (!allFetches.fulfilled) return <BlankState heading={'Oops.. Something went wrong'} />;
-
-        const { items, categories } = this.filterData(homeFetch.value, categoryFetch.value, itemFetch.value, category);
-
-        switch (currentStep) {
-        case 0:
-            return <LmcCategorySelector
-                data={categories}
-                onSelect={category => {
-                    this.setState({ category });
-                    this.nextStep();
-                }} />;
-        case 1:
-            return <LmcItemSelector
-                data={items}
-                onSelect={_item => {
-                    this.setState({ item: _item });
-                    this.nextStep();
-                }} />
-        case 2:
-            return <LmcTitleSelector
-                onSelect={recurrence => {
-                    this.setState({ recurrence });
-                    this.nextStep();
-                }}
-            />;
-        case 3:
-            return <LmcTimeSelector
-                onSelect={recurrence => {
-                    this.setState({ recurrence });
-                    this.nextStep();
-                }}
-            />;
-        case 4:
-            return <LmcResidentSelector
-                residents={residentsFetch.value.results}
-                carers={carersFetch.value.results}
-                onComplete={({ residents, requireSignature }) => {
-                    this.setState({ residents, requireSignature });
-                    this.submit(); // Complete
-                }}
-            />;
-        default:
-            return null;
-        };
-    }
-
-    submit() {
+    onSubmit() {
 
     }
 
@@ -146,60 +67,49 @@ class LmcTaskCreateModal extends Component {
         )
     }
 
-    renderHeader() {
-        const { onClose } = this.props;
-        const { currentStep } = this.state;
+    handleItemBackClick() {
+        this.props.setFormField({ key: 'item', value: null });
+        this.props.prevStep();
+    }
 
-        const handleClick = (d) => {
-            if (d < currentStep) {
-                this.setState({ currentStep: d });
-            }
-        };
+    handleCategoryBackClick() {
+        this.props.setFormField({ key: 'item', value: null });
+        this.props.setFormField({ key: 'category', value: null });
+        this.props.prevStep();
+    }
 
-        const dots = [0, 1, 2, 3, 4].map(d =>
-            <div onClick={() => handleClick(d)}
-                style={{ cursor: d < currentStep && 'pointer' }}
-                className={css(classes.dot, d === currentStep ? classes.activeDot : null)} />
-        );
-        return (
-            <div className={css(classes.headerContainer)}>
-                <div className={css(classes.cancelButton)} onClick={onClose}>
-                    <LmcDot label={'X'}
-                        selectable
-                        color={colors.red}
-                        active={true}
-                        size={24}
-                        fontSize={12} />
-                    Add ToDo
-                </div>
-                <div className={css(classes.dotConatiner)}>
-                    {dots}
-                </div>
-            </div>
-        )
+    onClose() {
+        this.props.clearAllFormFields();
+        this.props.onClose();
     }
 
     renderSelection() {
-        const { onClose } = this.props;
-        const { category, item } = this.state;
-
-        if (item) {
-            return (
-                <div className={css(classes.selectionContainer)}>
-                    <a className={css(classes.selectionLink)} onClick={() => this.setState({ currentStep: 1, item: null })}>
-                        {this.renderCategoryIcon(item.fields.icon.url, category.fields.color)}
-                        {this.formatName(category.name)} / {this.formatName(item.name)}
-                    </a>
-                </div>
-            )
-        }
-
+        const { categoryFetch, itemFetch, formData: { category, item, title, recurrance } } = this.props;
         if (category) {
+            const categoryData = _.find(categoryFetch.value.results, { id: category });
+            if (item) {
+                const itemData = _.find(itemFetch.value.results, { id: item });
+                if (title) {
+                    if (recurrance) {
+
+                    }
+                }
+
+                return (
+                    <div className={css(classes.selectionContainer)}>
+                        <a className={css(classes.selectionLink)} onClick={this.handleItemBackClick.bind(this)}>
+                            {this.renderCategoryIcon(itemData.fields.icon.url, categoryData.fields.color)}
+                            {this.formatName(categoryData.name)} / {this.formatName(itemData.name)}
+                        </a>
+                    </div>
+                )
+            }
+
             return (
                 <div className={css(classes.selectionContainer)}>
-                    <a className={css(classes.selectionLink)} onClick={() => this.setState({ currentStep: 0, item: null, category: null })}>
-                        {this.renderCategoryIcon(category.fields.icon.url, category.fields.color)}
-                        {this.formatName(category.name)}
+                    <a className={css(classes.selectionLink)} onClick={this.handleCategoryBackClick.bind(this)}>
+                        {this.renderCategoryIcon(categoryData.fields.icon.url, categoryData.fields.color)}
+                        {this.formatName(categoryData.name)}
                     </a>
                 </div>
             )
@@ -209,12 +119,35 @@ class LmcTaskCreateModal extends Component {
     }
 
     render() {
+        const {
+            formData: { category, item },
+            categoryFetch,
+            homeFetch,
+            itemFetch,
+            currentStep,
+            residentsFetch,
+            carersFetch,
+        } = this.props;
+
+        const allFetches = PromiseState.all([homeFetch, categoryFetch, itemFetch, residentsFetch, carersFetch]);
+        if (allFetches.pending) return <LmcLoadingScreen />;
+        if (!allFetches.fulfilled) return <BlankState heading={'Oops.. Something went wrong'} />;
+        const { items, categories } = this.filterData(homeFetch.value, categoryFetch.value, itemFetch.value, category && category);
+        const residents = residentsFetch.value.results;
+        const carers = carersFetch.value.results;
+
         return (
-            <div className={css(classes.container)}>
-                { this.renderHeader() }
-                { this.renderSelection() }
-                { this.renderForm() }
-            </div>
+            <LmcStepList
+                closeLabel="Add To-Do"
+                onClose={this.onClose}
+                header={this.renderSelection()}
+            >
+                <LmcStep test component={LmcCategorySelector} data={{ categories }} />
+                <LmcStep component={LmcItemSelector} data={{ items }} />
+                <LmcStep component={LmcTitleSelector} showNextButton />
+                <LmcStep component={LmcTimeSelector} showNextButton />
+                <LmcStep component={LmcResidentSelector} data={{residents, carers}} onSubmit={this.onSubmit} />
+            </LmcStepList>
         );
     }
 }
@@ -224,33 +157,9 @@ LmcTaskCreateModal.propTypes = {
 };
 
 const classes = StyleSheet.create({
-    container: {
-        width: '100vw',
-        zIndex: 100,
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        height: '100vh',
-        overflow: 'scroll',
-        background: 'white',
-    },
     selectionContainer: {
         textAlign: 'center',
         height: 50,
-    },
-    headerContainer: {
-        paddingBottom: 50,
-        paddingTop: 40,
-    },
-    cancelButton: {
-        marginLeft: 50,
-        position: 'relative',
-        top: 20,
-        width: 200,
-        ':hover': {
-            opacity: 0.7,
-            cursor: 'pointer',
-        }
     },
     selectionLink: {
         color: '#c1c1c1',
@@ -269,30 +178,75 @@ const classes = StyleSheet.create({
         borderRadius: 10,
         margin: '0 auto 5px',
     },
-    dotConatiner: {
-        textAlign: 'center',
-    },
-    dot: {
-        height: 11,
-        width: 11,
-        margin: '0 8px',
-        backgroundColor: '#d1d3d4',
-        borderRadius: '50%',
-        display: 'inline-block',
-    },
-    activeDot: {
-        backgroundColor: colors.red,
-    },
     icon: {
         width: 12,
         marginTop: 6,
     }
 });
 
-export default connect((props) => ({
+
+// For fetching data
+const mapFetchToProps = () => ({
     homeFetch: `${Keystone.adminPath}/api/homes`,
     categoryFetch: `${Keystone.adminPath}/api/log-categories`,
     residentsFetch: `${Keystone.adminPath}/api/reports/residents`,
     carersFetch: `${Keystone.adminPath}/api/reports/users`,
     itemFetch: `${Keystone.adminPath}/api/log-category-items`,
-}))(LmcTaskCreateModal);
+});
+
+const LmcModalWithDataSource = refetch(mapFetchToProps)(LmcTaskCreateModal);
+
+const mapStateToProps = (state) => ({
+    formData: state.modal.formData,
+    currentStep: state.modal.currentStep,
+});
+
+const mapDispatchToProps = dispatch => ({
+	setFormField: (val) => dispatch(setFormField(val)),
+	clearAllFormFields: () => dispatch(clearAllFormFields()),
+	setStep: (index) => dispatch(setStep(index)),
+	nextStep: () => dispatch(nextStep()),
+	prevStep: () => dispatch(prevStep()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LmcModalWithDataSource);
+
+
+/*
+switch (currentStep) {
+case 0:
+    return ( { onSelect={category => {
+        this.props.setFormField({ key: 'category', value: category });
+        this.props.nextStep();
+    }} } )
+    case 1:
+    return <LmcItemSelector
+        data={items}
+        onSelect={(item, title) => {
+            if (item) {
+                this.props.setFormField({ key: 'item', value: item });
+                this.props.setFormField({ key: 'title', value: title });
+            }
+            this.props.nextStep();
+        }} />
+case 2:
+    return <LmcTitleSelector onSelect={this.props.nextStep} />;
+case 3:
+    return <LmcTimeSelector
+        onSelect={(recurrence) => {
+            // this.setState({ recurrence });
+            this.props.nextStep();
+        }}
+    />;
+case 4:
+    return <LmcResidentSelector
+        residents={residentsFetch.value.results}
+        carers={carersFetch.value.results}
+        onComplete={({ residents, requireSignature }) => {
+            this.setState({ residents, requireSignature });
+            this.submit(); // Complete
+        }}
+    />;
+default:
+    return null;
+};*/

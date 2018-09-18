@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LmcIconButton from '../../components/LmcIconButton.jsx';
 import _ from 'lodash';
+import { connect } from 'react-redux';
+import { setFormField } from '../actions';
+
 
 class LmcCategorySelector extends Component {
+
+    onSelect(id) {
+        this.props.setFormField({ key: 'category', value: id });
+        if (this.props.goToNextStep) this.props.goToNextStep();
+    }
+
     render() {
-        const { data, onSelect } = this.props;
-        const categories = _.filter(data, d => d.name && !d.name.match(/incident/i));
+        const { data } = this.props;
+        const categories = _.filter(data.categories, d => d.name && !d.name.match(/incident/i));
         return (
             <div style={{ margin: '20px 20px' }}>
                 <h2 style={{ textAlign: 'center' }}>
@@ -19,7 +28,7 @@ class LmcCategorySelector extends Component {
                             icon={_.get(row, 'fields.icon.url')}
                             color={row.fields.color}
                             label={row.name}
-                            onSelect={() => onSelect(row)}
+                            onSelect={() => this.onSelect(row.id)}
                         />
                     )) }
                 </div>
@@ -32,4 +41,14 @@ LmcCategorySelector.propTypes = {
     data: PropTypes.array.isRequired,
 };
 
-export default LmcCategorySelector;
+
+
+const mapStateToProps = (state) => ({
+    formData: state.modal.formData,
+})
+
+const mapDispatchToProps = dispatch => ({
+	setFormField: (val) => dispatch(setFormField(val)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LmcCategorySelector);
