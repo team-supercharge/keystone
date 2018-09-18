@@ -8,12 +8,14 @@ import listsReducer from './screens/List/reducers/main';
 import activeReducer from './screens/List/reducers/active';
 import itemReducer from './screens/Item/reducer';
 import homeReducer from './screens/Home/reducer';
+import modalReducer from './lmc/modals/reducer';
 
 import rootSaga from './sagas';
 
 
 // Combine the reducers to one state
 const reducers = combineReducers({
+	modal: modalReducer,
 	lists: listsReducer,
 	active: activeReducer,
 	item: itemReducer,
