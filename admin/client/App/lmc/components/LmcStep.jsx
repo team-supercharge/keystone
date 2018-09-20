@@ -3,7 +3,7 @@
 import React from "react";
 import { css, StyleSheet } from 'aphrodite/no-important';
 import { GlyphButton } from '../../elemental';
-
+import LmcButton from './LmcButton.jsx';
 
 class LmcStep extends React.Component {
 
@@ -17,15 +17,18 @@ class LmcStep extends React.Component {
       goToPreviousStep,
       goToNextStep,
       data,
-      showNextButton
+      showNextButton,
+      onSubmit,
     //   children,
     } = this.props;
-    console.log()
 
     if (isActive === false) return null;
+
     return (
       <div>
-        {React.createElement(component, { data, goToPreviousStep, goToNextStep })}
+        <div className={css(classes.formContainer)}>
+            {React.createElement(component, { data, goToPreviousStep, goToNextStep })}
+        </div>
         <div>
             {/* <Previous
             isActive={displayPrevious}
@@ -35,7 +38,10 @@ class LmcStep extends React.Component {
                 isActive={showNextButton && displayNext}
                 goToNextStep={() => goToNextStep()}
             />
-            <Submit isActive={displaySubmit} />
+            <Submit
+                isActive={displaySubmit}
+                onSubmit={onSubmit}
+            />
         </div>
       </div>
     );
@@ -43,55 +49,67 @@ class LmcStep extends React.Component {
 }
 
 class Next extends React.Component {
-
   render() {
     const { isActive, showNextButton } = this.props;
     if (!isActive) return null;
 
     return (
         <div className={css(classes.nextButton)}>
-            <GlyphButton
-                onClick={() => this.props.goToNextStep()}
+            <LmcButton
+                onClick={this.props.goToNextStep}
+                color="green"
+                position="center"
                 glyph="chevron-left"
-                color="success"
-                position="center">
+            >
                 Next Step
-            </GlyphButton>
+            </LmcButton>
         </div>
     );
   }
 }
 
 class Previous extends React.Component {
+    render() {
+        const { isActive } = this.props;
+        if (!isActive) return null;
 
-  render() {
-    const { isActive } = this.props;
-    if (!isActive) return null;
-
-    return (
-      <button onClick={() => this.props.goToPreviousStep()}>
-        Previous Step
-      </button>
-    );
-  }
+        return (
+            <LmcButton
+                onClick={this.props.goToPrevStep}
+                color="green"
+                position="center"
+                glyph="chevron-left"
+            >
+                Previous Step
+            </LmcButton>
+        );
+    }
 }
 
 class Submit extends React.Component {
+    render() {
+        const { isActive, onSubmit } = this.props;
+        if (!isActive) return null;
 
-  render() {
-    const { isActive } = this.props;
-    // const isValid = valid
-    if (!isActive) return null;
-
-    return (
-      <button type="submit">
-        Save
-      </button>
-    );
-  }
+        return (
+            <div className={css(classes.nextButton)}>
+                <LmcButton
+                    onClick={onSubmit}
+                    color="green"
+                    position="center"
+                    glyph="chevron-left"
+                >
+                    Add this ToDo
+                </LmcButton>
+            </div>
+        );
+    }
 }
 
 const classes = StyleSheet.create({
+    formContainer: {
+        paddingBottom: 30,
+    },
     nextButton: {
         textAlign: 'center',
     }

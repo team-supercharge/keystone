@@ -2,6 +2,7 @@
 import LmcTaskList from './LmcTaskList.jsx';
 import LmcTaskListRow from './LmcTaskListRow.jsx';
 import LmcTaskListResident from './LmcTaskListResident.jsx';
+import LmcTodosDashboard from './LmcTodosDashboard.jsx';
 // import LmcNewTaskModal from './LmcNewTaskModal.jsx';
 // import LmcTaskCreateModal from './taskModal/LmcTaskCreateModal.jsx';
 // import LmcTaskEditModal from './taskModal/LmcTaskEditModal.jsx';
@@ -13,6 +14,7 @@ module.exports = {
     LmcTaskList,
     LmcTaskListRow,
     LmcTaskListResident,
+    LmcTodosDashboard,
     // LmcNewTaskModal,
     // LmcTaskCreateModal,
     // LmcTaskEditModal,

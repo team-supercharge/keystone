@@ -8,7 +8,7 @@ import listsReducer from './screens/List/reducers/main';
 import activeReducer from './screens/List/reducers/active';
 import itemReducer from './screens/Item/reducer';
 import homeReducer from './screens/Home/reducer';
-import modalReducer from './lmc/modals/reducer';
+import modalReducer from './lmc/screens/Todos/reducer';
 
 import rootSaga from './sagas';
 

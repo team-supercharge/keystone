@@ -5,32 +5,16 @@ import Select from 'react-select'; // https://react-select.com/props
 import Flatpickr from 'react-flatpickr'; // https://github.com/coderhaoxin/react-flatpickr#usage
 import moment from 'moment';
 import _ from 'lodash';
-import { LmcDot } from '../../components';
-import { colors } from '../../common/constants';
+import { LmcDot } from '../../../../components';
+import { colors } from '../../../../common/constants';
 import { connect } from 'react-redux';
-import { setFormField } from '../actions';
+import {
+    setFormField,
+    setRecurrenceType,
+    toggleRecurrenceOption,
+} from '../../actions';
 
-
-const TimeSelectorRow = ({ time, onChange }) => (
-    <div onClick={onChange} className={css(classes.timeSelectorRow)}>
-        { time }
-    </div>
-)
-
-
-const TimeGridSelector = (options) => {
-
-    const hangeChange = (index) => {
-        console.log(index);
-    }
-
-    return (
-        <div>
-            {options.map(time => <TimeSelectorRow time={time} onChange={() => {}} />)}
-        </div>
-    );
-}
-
+window.moment = moment;
 class LmcTimeSelector extends Component {
 
     constructor(props) {
@@ -38,107 +22,95 @@ class LmcTimeSelector extends Component {
         this.renderTimePicker = this.renderTimePicker.bind(this);
         this.renderRecurringSelector = this.renderRecurringSelector.bind(this);
         this.toggleRecurring = this.toggleRecurring.bind(this);
-        this.renderNextButton = this.renderNextButton.bind(this);
         this.renderReccuranceToggle = this.renderReccuranceToggle.bind(this);
-        this.onDailyClick = this.onDailyClick.bind(this);
-        this.handleRecChange = this.handleRecChange.bind(this);
-        this.state = {
-            isRecurring: false,
-            recType: 'daily',
-            recOptions: this.getOptions('daily'),
+        this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleTimeChange = this.handleTimeChange.bind(this);
+    }
+
+    componentDidMount() {
+        const {
+            recurrence,
+            date,
+            startDate,
+        } = this.props.formData;
+
+        if (!recurrence) {
+            this.props.setFormField({
+                key: 'recurrence',
+                value: 'once',
+            });
         };
+
+        if (!startDate) {
+            // 2018-08-20T18:14:02.000Z
+            this.props.setFormField({
+                key: 'startDate',
+                value: moment(),
+            });
+        }
+    }
+
+    handleTimeChange(newDate) {
+        const { startDate } = this.props.formData;
+        const d = moment(newDate[0]);
+        this.props.setFormField({
+            key: 'startDate',
+            value: startDate.set({
+                hour: d.get('hour'),
+                minute: d.get('minute'),
+            }),
+        });
+    }
+
+    handleDateChange(newDate) {
+        const { startDate } = this.props.formData;
+        const d = moment(newDate[0]);
+        this.props.setFormField({
+            key: 'startDate',
+            value: d.set({
+                hour: startDate.get('hour'),
+                minute: startDate.get('minute'),
+            }),
+        });
     }
 
     renderTimePicker() {
+        const { startDate } = this.props.formData;
+        if (!startDate) return null;
+
+        const currentDate = startDate.toDate();
+        
         const date_options = {
             dateFormat: "d M",
-            defaultDate: new Date()
+            defaultDate: currentDate,
         };
+
         const time_options = {
             enableTime: true,
             noCalendar: true,
             dateFormat: "H:i",
-            defaultDate: new Date(),
+            defaultDate: currentDate,
             time_24hr: true
         };
+
         return (
             <div className={css(classes.timeInputContainer)}>
                 <Flatpickr className={css(classes.input, classes.dateInput)}
                         options={date_options}
-                        onChange={date => { console.log(date) } } />
+                        onChange={this.handleDateChange} />
                 <span style={{ margin: 20, fontSize: 16 }}>
                     at:
                 </span>
                 <Flatpickr className={css(classes.input, classes.timeInput)}
                     options={time_options}
-                    onChange={date => { this.setState({date}) }} />
+                    onChange={this.handleTimeChange} />
             </div>
         )
     }
 
-    getOptions(type) {
-        if (type === 'every_15') {
-            let i = 24 * 4;
-            let times = []
-            while(i--) times.unshift({
-                time: moment().startOf('d').add(i * 15, 'm'), // .format('HH:mm'),
-                active: true,
-            })
-            return times;
-        } else if (type === 'hourly') {
-            let i = 24;
-            let times = []
-            while(i--) times.unshift({
-                time: moment().startOf('d').add(i, 'h'), // .format('HH:mm'),
-                active: true,
-            });
-            return times;
-        } else if (type === 'daily') {
-            return [
-                { label: 'MO', active: true },
-                { label: 'TU', active: true },
-                { label: 'WE', active: true },
-                { label: 'TH', active: true },
-                { label: 'FR', active: true },
-                { label: 'SA', active: true },
-                { label: 'SU', active: true },
-            ];
-        };
-    }
-
-    handleRecChange(recType) {
-        this.setState({
-            recType,
-            recOptions: this.getOptions(recType)
-        });
-    }
-
-    renderDayPicker() {
-
-    }
-
-    timeSelectorRow(date) {
-        const time_options = {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-            defaultDate: date || new Date(),
-            time_24hr: true
-        };
-
-        return (
-            <Flatpickr className={css(classes.input, classes.timeInput)}
-                options={time_options}
-                onChange={date => { this.setState({date}) }} />
-        )
-    }
-
     renderRecurringSelector() {
-        const {
-            isRecurring,
-            recType,
-            recOptions,
-        } = this.state;
+
+        const { recurrence, recurrenceOptions } = this.props.formData;
 
         const recTypes = [
             { value: 'every_15', label: 'Every 15m' },
@@ -149,37 +121,37 @@ class LmcTimeSelector extends Component {
             { value: 'monthly', label: 'Monthly' },
         ];
 
-        if (isRecurring) return (
+        return (
             <div className={css(classes.reccuranceSelector)}>
                 <div style={{ paddingTop: 30, zIndex: 1000 }}>
                     <Select
                         className={css(classes.selectRecType)}
                         isClearable={false}
                         simpleValue
-                        value={recType}
+                        value={recurrence}
                         options={recTypes}
-                        onChange={(type) => this.handleRecChange(type)}
+                        onChange={this.props.setRecurrenceType}
                     />
                 </div>
                 <div className={css(classes.timeOptions)}>
-                    {recType === 'daily'
+                    {recurrence === 'daily'
                         ? <div>
                             <p>{ HELP_DAILY }</p>
-                            {recOptions.map(({ label, active }, i) => (
-                                <LmcDot label={label}
+                            {recurrenceOptions.map(({ key, active }, i) => (
+                                <LmcDot label={key}
                                     selectable
                                     active={active}
                                     size={30}
-                                    onSelect={() => this.onDailyClick(i)}
+                                    onSelect={() => this.props.toggleRecurrenceOption(i)}
                                     fontSize={14}/>
                             ))}
                         </div>
                         : null}
-                    {recType === 'hourly' || recType === 'every_15'
+                    {recurrence === 'hourly' || recurrence === 'every_15'
                         ? <div>
                             <p>{ HELP_HOURLY }</p>
-                            { recOptions.map((row, i) => (
-                                <div key={row.time} onClick={() => this.onDailyClick(i)} className={css(classes.timeSelectorRow, !row.active && classes.timeSelectorRow__active)}>
+                            { recurrenceOptions.map((row, i) => (
+                                <div key={row.key} onClick={() => this.props.toggleRecurrenceOption(i)} className={css(classes.timeSelectorRow, !row.active && classes.timeSelectorRow__active)}>
                                     <span style={{ position: 'relative', top: -2, left: -10 }}>
                                         <LmcDot
                                             label={row.active ? <span>&#10003;</span> : 'X'}
@@ -187,7 +159,7 @@ class LmcTimeSelector extends Component {
                                             size={14}
                                             margin={'0 6px 0 0'}
                                             fontSize={8}/>
-                                    </span> { row.time.format('HH:mm') }
+                                    </span> { row.key }
                                 </div>
                             ))}
                         </div> 
@@ -198,13 +170,12 @@ class LmcTimeSelector extends Component {
     }
 
     onDailyClick(index) {
-        let recOptions = _.cloneDeep(this.state.recOptions);
-        recOptions[index].active = !recOptions[index].active;
-        this.setState({ recOptions });
+        this.props.toggleRecurrenceOption(index);
     }
 
     renderReccuranceToggle() {
-        const { isRecurring } = this.state;
+        const { recurrence } = this.props.formData;
+        const isRecurring = recurrence !== 'once';
         return (
             <div className={css(classes.toggleButton)} onClick={() => this.toggleRecurring()}>
                 <LmcDot
@@ -217,24 +188,23 @@ class LmcTimeSelector extends Component {
     }
 
     toggleRecurring() {
-        const { recurrence } = this.props.formData;
         // options: 'once, daily, weekly, bi-weekly, monthly, annually',
-        this.setState({ isRecurring: !this.state.isRecurring });
-
-        this.props.setFormField({ key: 'recurrence', value: item });
-        this.props.setFormField({ key: 'recurrenceOptions', value: item });
-        // feed 
+        const { recurrence } = this.props.formData;
+        let value = (recurrence === 'once') ? 'daily' : 'once';
+        // this.props.setFormField({ key: 'recurrence', value });
+        this.props.setRecurrenceType(value);
+        // this.props.setFormField({ key: 'recurrenceOptions', value: recurrenceOptions });
     }
 
     render() {
+        const { recurrence } = this.props.formData;
         return (
             <div className={css(classes.container)}>
                 <h2>{TITLE}</h2>
                 <div className={css(classes.formBody)} >
                     {this.renderTimePicker()}
                     {this.renderReccuranceToggle()}
-                    {this.renderRecurringSelector()}
-                    {this.renderNextButton()}
+                    {recurrence !== 'once' ? this.renderRecurringSelector() : null}
                 </div>
             </div>
         );
@@ -348,6 +318,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
 	setFormField: (val) => dispatch(setFormField(val)),
+	toggleRecurrenceOption: (index) => dispatch(toggleRecurrenceOption(index)),
+	setRecurrenceType: (type) => dispatch(setRecurrenceType(type)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LmcTimeSelector);

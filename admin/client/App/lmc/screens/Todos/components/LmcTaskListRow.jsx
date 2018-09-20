@@ -23,7 +23,7 @@ class LmcTaskListRow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showDetails: true,
+            showDetails: false,
         }
         this.toggleDetails = this.toggleDetails.bind(this);
     }
@@ -51,13 +51,15 @@ class LmcTaskListRow extends Component {
         return (
             <div className={css(classes.taskList)}>
                 { sortedTasks.map((t, index) => (
-                    <LmcTaskListResident
-                        resident={_.find(residents, {id: t.resident._id})}
-                        key={t.id}
-                        task={t}
-                        index={index}
-                        total={sortedTasks.length}
-                    />
+                    t.taskType === 'resident'
+                        ? <LmcTaskListResident
+                            resident={_.find(residents, {id: t.resident._id})}
+                            key={t.id}
+                            task={t}
+                            index={index}
+                            total={sortedTasks.length}
+                        /> : null
+                    
                 )) }
             </div>
         )
@@ -86,9 +88,10 @@ class LmcTaskListRow extends Component {
                         <span className={css(classes.date)}>
                             { moment(date).format('HH:MM') }
                         </span>
-                        <span className={css(classes.taskTitle)}>
+                        <span className={`${css(classes.taskTitle)} lmctest`}>
                             { titleWithoutGroup }
                         </span>
+                        <hr className={css(classes.hr)} style={{ left: titleWithoutGroup.length * 7 + 90 }} />
                     </p>
                     { showDetails
                         ? this.renderTaskList(sortedTasks, residents)
@@ -116,8 +119,19 @@ class LmcTaskListRow extends Component {
 
 const classes = StyleSheet.create({
     detailsRow: {
-        padding: 5,
+        padding: '7px 0 2px 5px;',
         fontSize: 16,
+        // ':hover': {
+        //     background: 'red',
+        // }
+        overflow: 'hidden',
+    },
+    hr: {
+        position: 'relative',
+        /* float: left; */
+        margin: 0,
+        top: -10,
+        // left: 35,
     },
     countsLabel: {
         verticalAlign: 'top',
@@ -129,29 +143,30 @@ const classes = StyleSheet.create({
         // listStyleImage: `url('https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/list-style.png')`,
     },
     date: {
-        paddingRight: 15,
+        paddingRight: 25,
         fontSize: 14,
-        color: '#828282',
-        background: '#fafafa',
+        color: colors.bw40,
+        // background: '#fafafa',
     },
     counts: {
         verticalAlign: 'top',
-        paddingTop: 7,
+        paddingTop: 12,
         textAlign: 'center',
     },
     taskTitleContainer: {
-        borderBottom: '1px solid #d6d6d6',
         width: '100%',
-        marginTop: 11,
-        lineHeight: '1px',
+        padding: '4px 8px',
+        marginBottom: 3,
+        marginTop: 0,
         cursor: 'pointer',
+        transition: 'background .2s ease',
         ':hover': {
-            textDecoration: 'underline',
-        }
+            background: '#f3f3f3',
+        },
     },
     taskTitle: {
         color: colors.red,
-        background: '#fafafa',
+        // background: '#fafafa',
         paddingRight: 21,
     },
     taskCounterLabel: {

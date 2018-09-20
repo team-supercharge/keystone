@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Switch from "react-switch";
 import { css, StyleSheet } from 'aphrodite/no-important';
 import { connect } from 'react-redux';
-import { setFormField } from '../actions';
+import { setFormField } from '../../actions';
 
 
 const SelectionComponent = (option) => {
@@ -95,11 +95,6 @@ const LmcSelector = ({ value, onAssignAll, options, onChange, placeholder='Selec
 class LmcResidentSelector extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            carersSelection: [],
-            residentsSelection: [],
-            taskType: true, // true = resident, false = home
-        }
         this.handleResidentsChange = this.handleResidentsChange.bind(this);
         this.handleCarersChange = this.handleCarersChange.bind(this);
         this.toggleWitness = this.toggleWitness.bind(this);
@@ -110,56 +105,65 @@ class LmcResidentSelector extends Component {
     }
 
     handleResidentsChange(residentsSelection) {
-        this.setState({ residentsSelection });
+        // this.setState({ residentsSelection });
+        this.props.setFormField({
+            key: 'resident',
+            value: residentsSelection,
+        });
     }
 
     handleCarersChange(carersSelection) {
-        this.setState({ carersSelection });
+        this.props.setFormField({
+            key: 'assignee',
+            value: carersSelection,
+        });
     }
+
     assignAllCarers() {
-        this.setState({
-            carersSelection: _.sortBy(this.props.carers, 'name'),
-        })
+        this.props.setFormField({
+            key: 'assignee',
+            value: _.sortBy(this.props.data.carers, 'name').map(d => d.id).join(','),
+        });
     }
+
     assignAllResidents() {
-        this.setState({
-            residentsSelection: _.sortBy(this.props.residents, 'name'),
-        })
+        this.props.setFormField({
+            key: 'resident',
+            value: _.sortBy(this.props.data.residents, 'name').map(d => d.id).join(','),
+        });
     }
 
     toggleWitness() {
-        this.setState({
-            requireWitness: !this.state.requireWitness,
-        })
+        const { doubleSignature } = this.props.formData;
+        this.props.setFormField({
+            key: 'doubleSignature',
+            value: !doubleSignature,
+        });
     }
 
     toggleQuickLog() {
-        this.setState({
-            requireQuickLog: !this.state.requireQuickLog,
-        })
+        const { logScreenPrompt } = this.props.formData;
+        this.props.setFormField({
+            key: 'logScreenPrompt',
+            value: !logScreenPrompt,
+        });
     }
 
     toggleTaskType() {
-        this.setState({
-            carersSelection: [],
-            residentsSelection: [],
-            taskType: !this.state.taskType,
-        })
+        const { taskType } = this.props.formData;
+        this.props.setFormField({ key: 'assignee', value: '' });
+        this.props.setFormField({ key: 'resident', value: '' });
+        this.props.setFormField({
+            key: 'taskType',
+            value: taskType === 'home' ? 'resident' : 'home',
+        });
     }
 
     render() {
-        const { residents, carers } = this.props;
-        const {
-            residentsSelection,
-            carersSelection,
-            requireWitness,
-            taskType,
-            requireQuickLog,
-        } = this.state;
-        // console.log(residents, carers)
-        // console.log('_.sortBy(carers, \'name\')', _.sortBy(carers, 'name'))
-        const _carers = _.sortBy(carers, 'name');
-        const _residents = _.sortBy(residents, 'name');
+        const { formData: { resident, assignee, doubleSignature, taskType, logScreenPrompt }, data } = this.props;
+        const isHomeType = taskType === 'home';
+        // logScreenPrompt
+        // doubleSignature
         return (
             <div style={{ margin: '20px 20px', textAlign: 'center' }}>
                 <h2 style={{ textAlign: 'center' }}>
@@ -167,24 +171,24 @@ class LmcResidentSelector extends Component {
                 </h2>
                 <ToggleButton
                     onChange={this.toggleTaskType}
-                    offLabel='Carers'
-                    onLabel='Residents'
+                    offLabel='Residents'
+                    onLabel='Carers'
                     onColor='#cacaca'
-                    value={taskType}
+                    value={isHomeType}
                 />
                 <div className={css(classes.selectContainer)}>
-                    { taskType
-                        ? <LmcSelector placeholder='Select Residents...'
-                            options={_residents}
-                            onAssignAll={this.assignAllResidents}
-                            value={residentsSelection}
-                            onChange={(val) => this.handleResidentsChange(val)}
-                        />
-                        : <LmcSelector placeholder='Select Carers...'
-                            options={_carers}
+                    { isHomeType
+                        ? <LmcSelector placeholder='Select Carers...'
+                            options={_.sortBy(data.carers, 'name')}
                             onAssignAll={this.assignAllCarers}
-                            value={carersSelection}
+                            value={assignee}
                             onChange={(val) => this.handleCarersChange(val)}
+                        />
+                        : <LmcSelector placeholder='Select Residents...'
+                            options={_.sortBy(data.residents, 'name')}
+                            onAssignAll={this.assignAllResidents}
+                            value={resident}
+                            onChange={(val) => this.handleResidentsChange(val)}
                         />
                     }
                 </div>
@@ -211,7 +215,7 @@ class LmcResidentSelector extends Component {
                         offLabel='No'
                         onLabel='Yes'
                         hideOffLabel
-                        value={requireWitness}
+                        value={doubleSignature}
                     />
                 </div>
                 <div>
@@ -221,7 +225,7 @@ class LmcResidentSelector extends Component {
                         offLabel='No'
                         onLabel='Yes'
                         hideOffLabel
-                        value={requireQuickLog}
+                        value={logScreenPrompt}
                     />
                 </div>
             </div>

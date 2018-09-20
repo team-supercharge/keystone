@@ -1,26 +1,18 @@
 import React from 'react';
 import { connect as refetch, PromiseState } from 'react-refetch';
-import { connect } from 'react-redux';
-import {
-    LmcTaskList,
-} from './components';
+import LmcTaskList from './LmcTaskList.jsx';
 import {
     LmcSingleDateSelector,
     LmcLoadingScreen,
-} from '../../components';
-
-import LmcTaskCreateModal from './modals/createTask/index.jsx';
+} from '../../../components';
 import {
     GlyphButton,
     BlankState,
-} from '../../../elemental';
+} from '../../../../elemental';
 import moment from 'moment';
 
-import {
-    toggleCreateTodoModal,
-} from './actions';
 
-class LmcTodosScreen extends React.Component {
+class LmcTodosDashboard extends React.Component {
 
     constructor(props) {
         super(props);
@@ -51,6 +43,7 @@ class LmcTodosScreen extends React.Component {
                         </GlyphButton>
                     </h2>
                 </div>
+                
                 <div style={styles.dateSelectorContainer}>
                     <LmcSingleDateSelector date={date} onChange={this.onDateChange} />
                 </div>
@@ -85,15 +78,6 @@ class LmcTodosScreen extends React.Component {
     }
 
     render() {
-        const {
-            showCreateTodoModal,
-            toggleCreateModal,
-        } = this.props;
-
-        if (showCreateTodoModal) {    
-            return <LmcTaskCreateModal />
-        }
-
         return (
             <div style={styles.container}>
                 { this.renderHeader() }
@@ -109,6 +93,7 @@ const styles = {
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom: 100,
+        // maxWidth: 1070,
         maxWidth: 980,
         minHeight: 600,
     },
@@ -127,7 +112,8 @@ const styles = {
     }
 };
 
-const comp = refetch((props) => ({
+
+export default refetch((props) => ({
     residentsFetch: `${Keystone.adminPath}/api/reports/residents`,
     fetchDailyTasks: (date) => {
         let url = `${Keystone.adminPath}/api/reports/tasks`;
@@ -136,14 +122,10 @@ const comp = refetch((props) => ({
             tasksFetch: url
         }
     },
-}))(LmcTodosScreen);
+}))(LmcTodosDashboard);
 
-const mapStateToProps = (state) => ({
-    showCreateTodoModal: state.modal.showCreateTodoModal,
-});
 
 const mapDispatchToProps = dispatch => ({
     toggleCreateModal: () => dispatch(toggleCreateTodoModal())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(comp);

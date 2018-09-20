@@ -38,6 +38,7 @@ const classes = StyleSheet.create({
     iconButton: {
         width: 60,
         height: 60,
+        transition: 'all 0.3s ease-in-out',
         border: '3px solid rgba(255,255,255,0)',
         borderRadius: 10,
         margin: '0 auto',

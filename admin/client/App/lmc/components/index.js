@@ -15,6 +15,7 @@ import LmcSingleDateSelector from './LmcSingleDateSelector.jsx';
 import LmcIconButton from './LmcIconButton.jsx';
 import LmcStep from './LmcStep.jsx';
 import LmcStepList from './LmcStepList.jsx';
+import LmcButton from './LmcButton.jsx';
 
 module.exports = {
     LmcAvatarUpload,
@@ -34,4 +35,5 @@ module.exports = {
     LmcIconButton,
     LmcStepList,
     LmcStep,
+    LmcButton,
 };

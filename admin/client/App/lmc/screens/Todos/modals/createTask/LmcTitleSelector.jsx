@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { css, StyleSheet } from 'aphrodite/no-important';
 import { connect } from 'react-redux';
-import { GlyphButton } from '../../../elemental';
-import { setFormField } from '../actions';
-import { colors } from '../../common/constants';
+import { GlyphButton } from '../../../../../elemental';
+import { colors } from '../../../../common/constants';
+import { setFormField } from '../../actions';
 
 class LmcTitleSelector extends Component {
 
@@ -12,6 +12,7 @@ class LmcTitleSelector extends Component {
         super(props);
         this.handleDescChange = this.handleDescChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.onKeyPress = this.onKeyPress.bind(this);
         this.state = {
             validate: false,
         }
@@ -29,6 +30,19 @@ class LmcTitleSelector extends Component {
 
     }
 
+    componentDidMount() {
+        const { title, description } = this.props.formData;
+        if (!title) this.refs.title.select();
+        else if (!description) this.refs.desc.select();
+    }
+
+    onKeyPress(e) {
+        // on enter
+        if (e.keyCode === 13 && this.props.goToNextStep) {
+            this.props.goToNextStep();
+        }
+    }
+
     render() {
         const { title, description } = this.props.formData;
         const TITLE_LABEL = 'Title';
@@ -42,8 +56,10 @@ class LmcTitleSelector extends Component {
                     </label>
                     <input type="text"
                         value={title}
+                        ref='title'
                         id="form-title"
                         className="LmcFormInput"
+                        onKeyDown={this.onKeyPress}
                         onChange={this.handleTitleChange}
                     />
                 </div>
@@ -52,11 +68,13 @@ class LmcTitleSelector extends Component {
                         {DESC_LABEL}
                     </label>
                     <textarea
+                        ref='desc'
                         // rows="4"
                         style={{ height: 100, minWidth: 400, maxWidth: 400 }}
                         id="form-description"
                         value={description}
                         className="LmcFormInput"
+                        onKeyDown={this.onKeyPress}
                         onChange={this.handleDescChange}
                     />
                 </div>

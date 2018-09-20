@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LmcIconButton from '../../components/LmcIconButton.jsx';
+import LmcIconButton from '../../../../components/LmcIconButton.jsx';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { setFormField } from '../actions';
+import { setFormField } from '../../actions';
 
 
 class LmcCategorySelector extends Component {
 
     onSelect(id) {
         this.props.setFormField({ key: 'category', value: id });
+        this.props.setFormField({ key: 'item', value: null });
         if (this.props.goToNextStep) this.props.goToNextStep();
     }
 
@@ -38,10 +39,8 @@ class LmcCategorySelector extends Component {
 }
 
 LmcCategorySelector.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object.isRequired,
 };
-
-
 
 const mapStateToProps = (state) => ({
     formData: state.modal.formData,

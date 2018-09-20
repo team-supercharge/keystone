@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LmcIconButton from '../../components/LmcIconButton.jsx';
+import LmcIconButton from '../../../../components/LmcIconButton.jsx';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { setFormField } from '../actions';
+import { setFormField } from '../../actions';
 
 
 class LmcItemSelector extends Component {
@@ -12,8 +12,9 @@ class LmcItemSelector extends Component {
     }
 
     onSelect(itemId, title) {
-        this.props.setFormField({ key: 'item', value: itemId });
+        if (itemId) this.props.setFormField({ key: 'item', value: itemId });
         this.props.setFormField({ key: 'title', value: title });
+        this.props.setFormField({ key: 'description', value: null });
         if (this.props.goToNextStep) this.props.goToNextStep();
     }
 
@@ -36,7 +37,7 @@ class LmcItemSelector extends Component {
                     )) }
                 </div>
                 <div style={{ textAlign: 'center', paddingTop: 30 }}>
-                    <h3 onClick={() => this.props.goToNextStep()}>
+                    <h3 onClick={() => this.onSelect()}>
                         + Add Custom
                     </h3>
                 </div>
@@ -46,7 +47,7 @@ class LmcItemSelector extends Component {
 }
 
 LmcItemSelector.propTypes = {
-
+    data: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
