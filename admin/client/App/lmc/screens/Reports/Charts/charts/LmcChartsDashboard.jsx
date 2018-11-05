@@ -88,7 +88,6 @@ class LmcChartsDashboard extends React.Component {
             {
                 label: 'Stool',
                 key: 'stool', render: d => {
-                    console.log(d);
                     return (!_.isNumber(d.value))
                         ? d.value || 'Normal'
                         : `Type ${d.value}`;
@@ -106,6 +105,20 @@ class LmcChartsDashboard extends React.Component {
                         5: 'Very Good',
                     };
                     return moods[d.value] || d.value;
+                },
+            },
+            {
+                label: 'Mobility',
+                key: 'mobility',
+                render: (d) => {
+                    const values = {
+                        1: 'Very Poor',
+                        2: 'Poor',
+                        3: 'Neutral',
+                        4: 'Good',
+                        5: 'Very Good',
+                    };
+                    return values[d.value] || d.value;
                 },
             },
         ], 'label');

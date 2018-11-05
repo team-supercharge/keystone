@@ -23,7 +23,7 @@ const BackButton = ({ params }) => {
 };
 
 // Simple HOC that wraps each chart in toolbar, filter and export features
-export default function withToolbar (WrappedComponent, config) {
+export default function withToolbar (WrappedComponent, config = {}) {
     return class extends Component {
         constructor (props) {
             super(props);
@@ -108,10 +108,24 @@ export default function withToolbar (WrappedComponent, config) {
                 <div>
                     { isDashboard ? this.renderToolbar() : null }
                     { !isEmpty && <div style={filterStyle}>
-                        <LmcLogFilter to={to} from={from} blockDatesWithNoData data={data} onChange={this.onFilterChange} onNewDates={this.setDates} />
+                        <LmcLogFilter
+                            to={to}
+                            from={from}
+                            blockFuture
+                            blockDatesWithNoData
+                            data={data}
+                            onChange={this.onFilterChange}
+                            onNewDates={this.setDates}
+                        />
                     </div> }
                     <div style={{ marginRight: 15 }}>
-                        <WrappedComponent to={to} from={from} logs={logs} {...this.props} {...config.childProps} />
+                        <WrappedComponent
+                            to={to}
+                            from={from}
+                            logs={logs}
+                            {...this.props}
+                            {...config.childProps}
+                        />
                     </div>
                 </div>
             );
