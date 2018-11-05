@@ -8,9 +8,61 @@ import {
 	SET_RECURRENCE_TYPE,
 	TOGGLE_RECURRENCE_OPTION,
 	TOGGLE_CREATE_TODO_MODAL,
+
+	LOAD_RESIDENTS,
+	LOAD_TASKS,
+	TASK_LOADING_SUCCESS,
+	RESIDENT_LOADING_SUCCESS,
+	DATA_LOADING_ERROR,
 } from './constants';
 import xhr from 'xhr';
+import {
+	fetchTasks,
+	fetchResidents,
+	createTask,
+} from '../../common/dataService';
 
+
+export function loadTasks() {
+	return (dispatch) => {
+		fetchTasks()
+			.then(data => dispatch(tasksLoaded(data)))
+			.catch(err => dispatch(loadError(err)));
+	}
+}
+
+export function loadResidents() {
+	return (dispatch) => {
+		fetchResidents()
+			.then(data => dispatch(residentsLoaded(data)))
+			.catch(err => dispatch(loadError(err)));
+	}
+}
+
+export function residentsLoaded (data) {
+	return {
+		type: RESIDENT_LOADING_SUCCESS,
+		data,
+	};
+}
+
+export function tasksLoaded (data) {
+	return {
+		type: TASK_LOADING_SUCCESS,
+		data,
+	};
+}
+
+function showLoading () {
+	return { type: SHOW_LOADING };
+}
+function hideLoading () {
+	return { type: HIDE_LOADING };
+}
+
+export function loadError (error) {
+	return { type: DATA_LOADING_ERROR, error };
+}
 
 export function submitForm () {
 	// sent POST to backend!
@@ -46,10 +98,10 @@ export function submitForm () {
 			body: formEncoded,
         }, (err, res) => {
             if (err) {
-                dispatch({ type: SUBMIT_ERROR });
+				alert("Opps: " + err.message);
+                dispatch({ type: TOGGLE_CREATE_TODO_MODAL });
             } else {
-				console.log(res);
-                dispatch({ type: SUBMIT_SUCCESS });
+                dispatch({ type: TOGGLE_CREATE_TODO_MODAL });
             };
         });
 	}
@@ -71,8 +123,14 @@ export function clearFormData ({ key }) {
 };
 
 export function toggleCreateTodoModal () {
-	return { type: TOGGLE_CREATE_TODO_MODAL };
+	return (dispatch, getState) => {
+		console.log(getState());
+	}
 };
+
+// export function toggleCreateTodoModal () {
+// 	return { type: TOGGLE_CREATE_TODO_MODAL };
+// };
 
 export function setRecurrenceType (value) {
 	return {

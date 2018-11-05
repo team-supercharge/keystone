@@ -9,12 +9,13 @@ import activeReducer from './screens/List/reducers/active';
 import itemReducer from './screens/Item/reducer';
 import homeReducer from './screens/Home/reducer';
 import modalReducer from './lmc/screens/Todos/reducer';
-
+import LmcReducers from './lmc/reducers';
 import rootSaga from './sagas';
 
 
 // Combine the reducers to one state
 const reducers = combineReducers({
+	...LmcReducers,
 	modal: modalReducer,
 	lists: listsReducer,
 	active: activeReducer,
