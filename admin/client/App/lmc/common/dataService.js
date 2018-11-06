@@ -6,7 +6,10 @@ const getJSON = ({ url }) => {
             url,
             responseType: 'json',
             method: 'GET',
-            headers: Object.assign({}, Keystone.csrf.header)
+            headers: Object.assign({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }, Keystone.csrf.header)
         }, (err, res) => {
             if (err) {
                 console.log(err);
@@ -45,8 +48,9 @@ export function fetchDailyLogs () {
     return getJSON({ url });
 }
 
-export function fetchTasks () {
-    const url = `${Keystone.adminPath}/api/tasks`;
+export function fetchTasks (date) {
+    let url = `${Keystone.adminPath}/api/reports/tasks`;
+    if (date) url += `?on=${date.toISOString()}`;
     return getJSON({ url });
 }
 
