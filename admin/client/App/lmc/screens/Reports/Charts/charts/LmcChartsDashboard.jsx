@@ -114,7 +114,7 @@ class LmcChartsDashboard extends React.Component {
                     const values = {
                         1: 'Very Poor',
                         2: 'Poor',
-                        3: 'Neutral',
+                        3: 'Average',
                         4: 'Good',
                         5: 'Very Good',
                     };
