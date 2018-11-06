@@ -14,6 +14,7 @@ import LmcTemperatureChart from './LmcTemperatureChart.jsx';
 import LmcWaterlowChart from './LmcWaterlowChart.jsx';
 import LmcWeightChart from './LmcWeightChart.jsx';
 import LmcDailyTotalChart from './LmcDailyTotalChart.jsx';
+import LmcMobilityChart from './LmcMobilityChart.jsx';
 
 
 module.exports = {
@@ -33,4 +34,5 @@ module.exports = {
     LmcDailyChart,
     LmcMustScoreChart,
     LmcDailyTotalChart,
+    LmcMobilityChart,
 };

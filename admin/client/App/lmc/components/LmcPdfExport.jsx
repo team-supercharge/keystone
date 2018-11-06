@@ -148,12 +148,6 @@ const StoolTable = (row, dateFormat) => {
                     {}, {}, {}, {}, {}, {}, {},
                 ],
                 ...row.logs.map(log => {
-                    let revision;
-                    let isRevised = log.revisions && (log.revisions.length > 0);
-                    if (isRevised) {
-                        revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
-                    }
-
                     const type = _.get(log, 'measurements.stool.value');
                     const isBloody = isStoolBloody(log);
                     const isMucus = isStoolMucus(log);
@@ -195,8 +189,8 @@ const StoolTable = (row, dateFormat) => {
                             style: 'tableTextSmall',
                         },
                         {
-                            text: (isRevised)
-                                ? `Edited by ${revision.revokedBy} on ${moment(revision.revokedAt).format('DD/MM/YYYY')}`
+                            text: (log.editedBy)
+                                ? `Edited by ${log.editedBy} on ${moment(log.editedAt).format('DD/MM/YYYY')}`
                                 : '',
                             style: 'tableTextSmall',
                         },
@@ -241,12 +235,6 @@ const LogListTable = (row, dateFormat) => {
                     },
                 ],
                 ...row.logs.map(log => {
-                    let revision;
-                    let isRevised = log.revisions && (log.revisions.length > 0);
-                    if (isRevised) {
-                        revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
-                    }
-
                     return [
                         {
                             text: moment(log.timeLogged).format(dateFormat || 'HH:mm DD/MM/YY'),
@@ -265,10 +253,10 @@ const LogListTable = (row, dateFormat) => {
                             style: 'tableText',
                         },
                         {
-                            text: (isRevised)
-                                ? `Edited by ${revision.revokedBy} on ${moment(revision.revokedAt).format('DD/MM/YYYY')}`
-                                : null,
-                            style: 'tableText',
+                            text: (log.editedBy)
+                                ? `Edited by ${log.editedBy} on ${moment(log.editedAt).format('DD/MM/YYYY')}`
+                                : '',
+                            style: 'tableTextSmall',
                         },
                     ];
                 }),
@@ -495,6 +483,5 @@ const styles = {
         float: 'right',
     },
 };
-
 
 export default LmcPdfExport;

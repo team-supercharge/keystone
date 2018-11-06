@@ -11,13 +11,11 @@ class LmcTimelineRow extends Component {
         const fallback = 'https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png';
         const image = _.get(log, 'itemIcon.url') || _.get(log, 'categoryIcon.url') || fallback;
 
-        let revision;
-        let isRevised = log.revisions && (log.revisions.length > 0);
-        if (isRevised) {
-            revision = _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0];
-        }
+        // let revision = log.revisions
+        //     ? _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0]
+        //     : null;
         // TODO: is this right? should we not use the revision data?
-        
+
         const isFirstOrLast = (index !== (total - 1));
         const timelineStyle = isFirstOrLast
             ? { ...styles.logRow, ...styles.logRowBorder }
@@ -26,7 +24,6 @@ class LmcTimelineRow extends Component {
             ... styles.dot,
             backgroundColor: log.categoryColor,
         };
-
         return (
             <li key={log.id}>
                 <LmcLink disabled={mock} to={`${ Keystone.adminPath }/logs/${ log.id }`} className="lmc-timeline-link">
@@ -48,9 +45,9 @@ class LmcTimelineRow extends Component {
                                     {log.title}
                                 </h3>
                                 <div className="lmc-timeline-desc" style={styles.descriptionText}>{log.description}</div>
-                                { isRevised && revision && revision.revokedBy && revision.revokedAt
+                                { log.editedBy
                                     ? <span style={styles.revisionText}>
-                                        Edited by { revision.revokedBy } on { moment(revision.revokedAt).format('DD/MM/YYYY') }
+                                        Edited by { log.editedBy } on { moment(log.editedAt).format('DD/MM/YYYY') }
                                     </span> : null }
                             </div>
                         </div>
