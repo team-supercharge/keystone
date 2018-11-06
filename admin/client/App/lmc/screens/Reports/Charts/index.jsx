@@ -5,6 +5,9 @@ import { BlankState } from '../../../../elemental';
 import withDataLoader from './withDataLoader.jsx';
 import withToolbar from './withToolbar.jsx';
 import {
+    LmcActivityChart,
+    LmcHealthVisitChart,
+    LmcIncidentsChart,
     LmcBloodOxygenChart,
     LmcBloodPressureChart,
     LmcChartsDashboard,
@@ -32,6 +35,8 @@ class LmcCharts extends React.Component {
 
         const resident = _.find(data, { id: params.resident_id });
         const chartProps = { resident, params };
+
+        // map reporting_id to chart component
         const chartMap = {
             dashboard: LmcChartsDashboard,
             daily: LmcDailyChart,
@@ -48,6 +53,9 @@ class LmcCharts extends React.Component {
             heart_rate: LmcHeartRateChart,
             blood_oxygen: LmcBloodOxygenChart,
             blood_pressure: LmcBloodPressureChart,
+            activity_social: LmcActivityChart,
+            health_visit: LmcHealthVisitChart,
+            incident: LmcIncidentsChart,
         };
 
         const Chart = chartMap[params.chart_type];
@@ -55,7 +63,7 @@ class LmcCharts extends React.Component {
             const ChartWithLoader = withDataLoader(Chart, {
                 url: ({ params }) => `${Keystone.adminPath}/api/reports/charts/${params.chart_type}/${params.resident_id}`,
                 errorMessage: 'No logs to show',
-                enableMockData: params.chart_type !== 'dashboard',
+                enableMockData: !_.includes(['dashboard', 'mobility', 'health_visit', 'incident', 'activity_social'], params.chart_type),
             });
             return <ChartWithLoader {...chartProps} />;
         } else {

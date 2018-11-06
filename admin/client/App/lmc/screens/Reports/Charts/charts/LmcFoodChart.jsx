@@ -28,18 +28,24 @@ class LmcFoodChart extends Component {
 
     render () {
         const { logs } = this.props;
-        const colors = ['#D1D3D4', '#ffdbea', '#E55AA1', '#f29cc3'];
+        const colors = ['#f29cc3', '#c34f8b', '#D1D3D4', '#ffdbea', '#9a9a9a'];
         let allLogs = [];
         let series = [];
         let groups = [
+            {
+                name: 'Pudding',
+                color: colors[4],
+                // color: 'url(#highcharts-default-pattern-2)',
+            },
             {
                 name: 'Snack',
                 color: colors[2],
                 // color: 'url(#highcharts-default-pattern-0)',
             },
             {
-                name: 'Breakfast',
-                color: colors[3],
+                name: 'Dinner',
+                color: colors[1],
+                // color: 'url(#highcharts-default-pattern-2)',
             },
             {
                 name: 'Lunch',
@@ -47,11 +53,9 @@ class LmcFoodChart extends Component {
                 // color: 'url(#highcharts-default-pattern-1)',
             },
             {
-                name: 'Dinner',
-                color: colors[1],
-                // color: 'url(#highcharts-default-pattern-2)',
+                name: 'Breakfast',
+                color: colors[3],
             },
-            
         ];
 
         groups.forEach(({ name, color }) => {
