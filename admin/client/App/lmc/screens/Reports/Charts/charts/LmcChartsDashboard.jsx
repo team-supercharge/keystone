@@ -94,7 +94,7 @@ class LmcChartsDashboard extends React.Component {
             {
                 top: -1,
                 paddingBottom: 2,
-                label: 'H', // for sorting purposes only
+                label: 'Health Visit',
                 renderLabel: d => _.get(d, 'log.title'),
                 key: 'health_visit',
                 render: d => {
