@@ -82,13 +82,10 @@ class LmcResidentsCard extends Component {
 
     render () {
         const { residents } = this.props;
-        let activeResidents;
-        if (residents && residents.length) {
-            activeResidents = _.chain(residents)
-                .filter(res => res.status === 'active')
-                .sortBy('name')
-                .value();
-        }
+        let activeResidents = _.chain(residents)
+            .filter({ status: 'active' })
+            .sortBy('name')
+            .value();
 
         const onClick = () => {
             this.props.onCreate('Resident');
@@ -102,8 +99,8 @@ class LmcResidentsCard extends Component {
                 <div className="lmc-card">
                     <div className="lmc-card-body">
                         { activeResidents && activeResidents.length
-                                ? this.renderResidents(activeResidents)
-                                : this.renderNoResidents() }
+                            ? this.renderResidents(activeResidents)
+                            : this.renderNoResidents() }
                     </div>
                     <div className="lmc-card-footer">
                         <div className="lmc-flex-container">

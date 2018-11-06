@@ -192,6 +192,9 @@ module.exports = Field.create({
 	},
 	renderUI () {
 		const { label, note, path } = this.props;
+		// CO-86 hack: ensure only PDFs are uploaded.
+		// Ideally we'd specify filetype in the model!
+		let fileType = (path === 'pdf') ? '.pdf' : null;
 		const buttons = (
 			<div style={this.hasFile() ? { marginTop: '1em' } : null}>
 				<Button onClick={this.triggerFileBrowser}>
@@ -209,6 +212,7 @@ module.exports = Field.create({
 							{buttons}
 							<HiddenFileInput
 								key={this.state.uploadFieldPath}
+								accept={fileType}
 								name={this.state.uploadFieldPath}
 								onChange={this.handleFileChange}
 								ref="fileInput"

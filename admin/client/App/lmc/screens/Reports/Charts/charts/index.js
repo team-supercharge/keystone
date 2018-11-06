@@ -14,9 +14,16 @@ import LmcTemperatureChart from './LmcTemperatureChart.jsx';
 import LmcWaterlowChart from './LmcWaterlowChart.jsx';
 import LmcWeightChart from './LmcWeightChart.jsx';
 import LmcDailyTotalChart from './LmcDailyTotalChart.jsx';
+import LmcMobilityChart from './LmcMobilityChart.jsx';
+import LmcActivityChart from './LmcActivityChart.jsx';
+import LmcHealthVisitChart from './LmcHealthVisitChart.jsx';
+import LmcIncidentsChart from './LmcIncidentsChart.jsx';
 
 
 module.exports = {
+    LmcActivityChart,
+    LmcHealthVisitChart,
+    LmcIncidentsChart,
     LmcBloodOxygenChart,
     LmcBloodPressureChart,
     LmcHeartRateChart,
@@ -33,4 +40,5 @@ module.exports = {
     LmcDailyChart,
     LmcMustScoreChart,
     LmcDailyTotalChart,
+    LmcMobilityChart,
 };

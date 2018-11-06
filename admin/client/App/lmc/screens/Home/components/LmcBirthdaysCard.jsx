@@ -53,6 +53,7 @@ class LmcBirthdaysCard extends Component {
 
     getBirthdays (residents) {
         return _.chain(residents)
+            .filter({ status: 'active' })
             .cloneDeep()
             .forEach(res => {
                 const { age, nextBirthday } = this.daysUntil(res.dateOfBirth);

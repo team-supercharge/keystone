@@ -5,10 +5,11 @@ import moment from 'moment';
 import LmcResidentLatestLogs from './LmcResidentLatestLogs.jsx';
 
 
-const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
+const KeyFigureLink = ({ label, renderLabel, key, data, render, unit, top, paddingBottom=10 }, resident_id) => {
     const image = _.get(data, 'log.itemIcon.url') || _.get(data, 'log.categoryIcon.url') || fallback;
     const dotStyle = {
         ... styles.dot,
+        top: top || -7,
         backgroundColor: _.get(data, 'log.categoryColor') || '#f9f9f9',
     };
 
@@ -16,15 +17,20 @@ const KeyFigureLink = ({ label, key, data, render, unit }, resident_id) => {
         ? parseFloat(data.value.toFixed(2))
         : data.value;
 
+    
+    const rowTitle = renderLabel
+        ? renderLabel(data)
+        : data.label || label;
+
     return (
         <div key={key}>
             <Link to={`${Keystone.adminPath}/reports/charts/${key}/${resident_id}`}>
-                <div style={styles.timelineContainer}>
+                <div style={{ ...styles.timelineContainer, paddingBottom }}>
                     <div style={dotStyle} className="lmc-timeline-dot">
                         <div className="lmc-dot-icon" style={{ background: `url(${image})`, ...styles.iconStyle }} />
                     </div>
                     <h4 style={styles.measurement}>
-                        {data.label || label}: { render
+                        { rowTitle }: { render
                             ? render(data)
                             : val }{unit}
                     </h4>
@@ -72,11 +78,56 @@ class LmcChartsDashboard extends React.Component {
         );
     }
 
+    formatText(text) {
+        let desc = text;
+        if (desc && desc.length > 40) {
+            desc = desc.slice(0, 37) + '...'
+        }
+        return desc;
+    }
+
     render () {
         const { params, data, mock } = this.props;
         const measurements = _.sortBy([
             { label: 'Fluids', key: 'fluids', unit: 'ml last 24h' },
             { label: 'Food', key: 'meal', unit: ' portions last 24h' },
+            {
+                top: -1,
+                paddingBottom: 2,
+                label: 'H', // for sorting purposes only
+                renderLabel: d => _.get(d, 'log.title'),
+                key: 'health_visit',
+                render: d => {
+                    let desc =  _.get(d, 'log.description') || _.get(d, 'log.title');
+                    return (
+                        <span style={{fontWeight: 400}}>
+                            <br />
+                            <small>{this.formatText(desc)}</small>
+                        </span>
+                    );
+                }
+            },
+            {
+                label: 'Incident',
+                key: 'incident',
+                render: d => _.get(d, 'log.title'),
+            },
+            {
+                label: 'Activities & Social',
+                top: -1,
+                paddingBottom: 2,
+                key: 'activity_social',
+                render: d => {
+                    let desc =  _.get(d, 'log.description') || _.get(d, 'log.title');
+                    return (
+                        <span style={{fontWeight: 400}}>
+                            <br />
+                            <small>{this.formatText(desc)}</small>
+                        </span>
+                    );
+                    // TODO: limit text
+                }
+            },
             { label: 'Blood Pressure', key: 'blood_pressure', unit: 'mmHg' },
             { label: 'Blood Oxygen', key: 'blood_oxygen', unit: '% SpO2' },
             { label: 'Heart Rate', key: 'heart_rate', unit: 'bpm' },
@@ -87,8 +138,8 @@ class LmcChartsDashboard extends React.Component {
             { label: 'Weight', key: 'weight', unit: 'kg' },
             {
                 label: 'Stool',
-                key: 'stool', render: d => {
-                    console.log(d);
+                key: 'stool',
+                render: d => {
                     return (!_.isNumber(d.value))
                         ? d.value || 'Normal'
                         : `Type ${d.value}`;
@@ -106,6 +157,20 @@ class LmcChartsDashboard extends React.Component {
                         5: 'Very Good',
                     };
                     return moods[d.value] || d.value;
+                },
+            },
+            {
+                label: 'Mobility',
+                key: 'mobility',
+                render: (d) => {
+                    const values = {
+                        1: 'Very Poor',
+                        2: 'Poor',
+                        3: 'Average',
+                        4: 'Good',
+                        5: 'Very Good',
+                    };
+                    return values[d.value] || d.value;
                 },
             },
         ], 'label');
@@ -142,12 +207,12 @@ const styles = {
         margin: '0',
     },
     measurement: {
-        marginBottom: 3,
+        marginBottom: 1,
     },
     timestamp: {
         marginTop: 0,
         opacity: 0.5,
-        fontSize: 11,
+        fontSize: 10,
         color: '#000',
     },
     sectionContainer: {
@@ -159,7 +224,7 @@ const styles = {
     },
     dot: {
         position: 'absolute',
-        top: -7,
+        top: -6,
         left: 0,
         width: 44,
         height: 44,
