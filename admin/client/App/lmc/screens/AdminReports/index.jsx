@@ -36,12 +36,12 @@ class LmcAdminReportView extends React.Component {
             <nav className="secondary-navbar" style={styles.nav}>
                 <div style={styles.wrapper}>
                     <ul className="app-nav app-nav--secondary app-nav--left">
-                        <li className={this.isActive('charts')}>
+                        <li className={this.isActive('admin-reports/dashboard')}>
                             <Link to={`${Keystone.adminPath}/admin-reports/dashboard`}>
                                 Dashboard
                             </Link>
                         </li>
-                        <li className={this.isActive('overview/fluids')}>
+                        <li className={this.isActive('admin-reports/home')}>
                             <Link to={`${Keystone.adminPath}/admin-reports/home`}>
                                 By Home
                             </Link>
