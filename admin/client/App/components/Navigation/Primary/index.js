@@ -131,13 +131,37 @@ var PrimaryNavigation = React.createClass({
 	renderLMCReports () {
 
 		const section = {
-			key: 'lmc-reports',
+			key: 'reports',
 			label: 'Reports',
 		};
 
 		const { currentSectionKey } = this.props;
 		const href = `${Keystone.adminPath}/reports/charts`;
-		const isActive = currentSectionKey && currentSectionKey === 'reports';
+		const isActive = currentSectionKey && currentSectionKey === section.key;
+		const className = isActive ? 'primary-navbar__item--active' : null;
+		// console.log(href);
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
+	renderLMCToDos () {
+
+		const section = {
+			key: 'todos',
+			label: 'ToDos',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/todos`;
+		const isActive = currentSectionKey && currentSectionKey === section.key;
 		const className = isActive ? 'primary-navbar__item--active' : null;
 		// console.log(href);
 		return (
@@ -186,6 +210,7 @@ var PrimaryNavigation = React.createClass({
 					<ul className="app-nav app-nav--primary app-nav--left">
 						{this.renderBrand()}
 						{this.renderNavigation()}
+						{ userRole !== 'lmc-admin' ? this.renderLMCToDos() : null }
 						{ userRole !== 'lmc-admin' ? this.renderLMCReports() : null }
 						{ userRole === 'lmc-admin' ? this.renderAdminReports() : null }
 					</ul>

@@ -84,7 +84,6 @@ class LmcAvatarUpload extends React.Component {
                 );
 
                 this.props.onSave(file);
-                console.log(file);
                 this.toggleModal();
             });
     }

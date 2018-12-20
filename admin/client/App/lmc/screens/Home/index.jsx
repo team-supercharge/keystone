@@ -194,7 +194,7 @@ const ERROR_MESSAGE = 'Oops... looks like something went wrong. Please get in to
 // Each consumer can just digest whatever data source it needs and apply the logic
 // Ie. the cards are all independent
 const usersUrl = `${Keystone.adminPath}/api/reports/users`;
-const tasksUrl = `${Keystone.adminPath}/api/reports/daily_tasks`;
+const tasksUrl = `${Keystone.adminPath}/api/reports/tasks/count`;
 const logsUrl = `${Keystone.adminPath}/api/reports/daily_logs`;
 const residentsUrl = `${Keystone.adminPath}/api/reports/residents`;
 

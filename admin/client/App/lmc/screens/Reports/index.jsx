@@ -41,9 +41,7 @@ const styles = {
 };
 
 export default connect((state) => {
-    return {
-        currentList: 'reports',
-    };
+    return { currentList: 'reports' };
 })(LmcReportView);
 
 

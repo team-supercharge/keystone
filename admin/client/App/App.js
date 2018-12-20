@@ -25,6 +25,7 @@ const classes = StyleSheet.create({
 	},
 	body: {
 		flexGrow: 1,
+		background: '#fbfbfb',
 	},
 });
 
@@ -58,8 +59,10 @@ const App = (props) => {
 			// Get the current section we're in for the navigation
 			currentSection = Keystone.nav.by.list[currentList.key];
 		}
-	} else if (props.location && props.location.pathname && props.location.pathname.match('reports')) {
+	} else if (props.location && props.location.pathname && props.location.pathname.match('\/reports')) {
 		currentSection = { key: 'reports' };
+	} else if (props.location && props.location.pathname && props.location.pathname.match('\/todos')) {
+		currentSection = { key: 'todos' };
 	}
 	// Default current section key to dashboard
 	const currentSectionKey = (currentSection && currentSection.key) || 'dashboard';

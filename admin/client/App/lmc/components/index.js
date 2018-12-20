@@ -10,6 +10,12 @@ import LmcSpinner from './LmcSpinner.jsx';
 import LmcLogTimeline from './LmcLogTimeline.jsx';
 import LmcTimelineRow from './LmcTimelineRow.jsx';
 import LmcLink from './LmcLink.jsx';
+import LmcDot from './LmcDot.jsx';
+import LmcSingleDateSelector from './LmcSingleDateSelector.jsx';
+import LmcIconButton from './LmcIconButton.jsx';
+import LmcStep from './LmcStep.jsx';
+import LmcStepList from './LmcStepList.jsx';
+import LmcButton from './LmcButton.jsx';
 
 module.exports = {
     LmcAvatarUpload,
@@ -24,4 +30,10 @@ module.exports = {
     LmcLogTimeline,
     LmcTimelineRow,
     LmcLink,
+    LmcDot,
+    LmcSingleDateSelector,
+    LmcIconButton,
+    LmcStepList,
+    LmcStep,
+    LmcButton,
 };
