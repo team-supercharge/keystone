@@ -103,6 +103,30 @@ var PrimaryNavigation = React.createClass({
 			</PrimaryNavItem>
 		);
 	},
+	renderAdminReports() {
+
+		const section = {
+			key: 'lmc-admin-reports',
+			label: 'Reports',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/admin-reports/dashboard`;
+		const isActive = currentSectionKey && currentSectionKey === 'admin-reports';
+		const className = isActive ? 'primary-navbar__item--active' : null;
+		// console.log(href);
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
 
 	renderLMCReports () {
 
@@ -163,6 +187,7 @@ var PrimaryNavigation = React.createClass({
 						{this.renderBrand()}
 						{this.renderNavigation()}
 						{ userRole !== 'lmc-admin' ? this.renderLMCReports() : null }
+						{ userRole === 'lmc-admin' ? this.renderAdminReports() : null }
 					</ul>
 					{this.renderFrontLink()}
 				</Container>

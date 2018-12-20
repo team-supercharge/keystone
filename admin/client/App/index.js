@@ -32,6 +32,9 @@ function fireGATracking () {
 import LmcReportView from './lmc/screens/Reports/index.jsx';
 import LmcFluidsOverview from './lmc/screens/Reports/Charts/charts/LmcFluidsOverview.jsx';
 import LmcMealsOverview from './lmc/screens/Reports/Charts/charts/LmcMealsOverview.jsx';
+import LmcAdminReportView from './lmc/screens/AdminReports/index.jsx';
+import LmcAdminDashboard from './lmc/screens/AdminReports/LmcAdminDashboard.jsx';
+import LmcAdminHomeDashboard from './lmc/screens/AdminReports/LmcAdminHomeDashboard.jsx';
 import LmcCharts from './lmc/screens/Reports/Charts/index.jsx';
 import LmcHome from './lmc/screens/Home/index.jsx';
 
@@ -63,6 +66,11 @@ ReactDOM.render(
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
+				<Route path="admin-reports" component={LmcAdminReportView} onChange={onListChange}>
+					<Route path="dashboard" component={LmcAdminDashboard} />
+					<Route path="home" component={LmcAdminHomeDashboard} />
+					<Route path="home/:home_id" component={LmcAdminHomeDashboard} />
+				</Route>
 				<Route path="reports" component={LmcReportView} onChange={onListChange}>
 					<Route path="charts" component={LmcCharts} />
 					<Route path="charts/:chart_type/:resident_id" component={LmcCharts} />

@@ -59,7 +59,7 @@ class LmcFluidsChart extends Component {
             chartType: 'column',
             series,
         };
-
+        console.log(config);
         return (
             logs && logs.length
                 ? <div>
