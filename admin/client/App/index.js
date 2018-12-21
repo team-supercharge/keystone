@@ -72,7 +72,7 @@ ReactDOM.render(
 					<Route path="home" component={LmcAdminHomeDashboard} />
 					<Route path="home/:home_id" component={LmcAdminHomeDashboard} />
 				</Route>
-				<Route path="todos" component={LmcTodosView} onChange={onListChange} />
+				<Route path="todos/dashboard" component={LmcTodosView} onChange={onListChange} />
 				<Route path="reports" component={LmcReportView} onChange={onListChange}>
 					<Route path="charts" component={LmcCharts} />
 					<Route path="charts/:chart_type/:resident_id" component={LmcCharts} />

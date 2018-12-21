@@ -5,7 +5,9 @@ import moment from 'moment';
 import _ from 'lodash';
 import { css, StyleSheet } from 'aphrodite/no-important';
 import { colors } from '../../../common/constants';
-
+import { CSSTransition } from 'react-transition-group';
+import AnimateHeight from 'react-animate-height';
+import { Glyph } from 'elemental';
 
 const OverdueLabel = () => (
     <span className={css(classes.taskCounterLabel, classes.taskCounter, classes.overdue)}>
@@ -26,6 +28,7 @@ class LmcTaskListRow extends Component {
             showDetails: false,
         }
         this.toggleDetails = this.toggleDetails.bind(this);
+        this.renderTaskList = this.renderTaskList.bind(this);
     }
 
     toggleDetails() {
@@ -46,33 +49,49 @@ class LmcTaskListRow extends Component {
         }
     }
 
-    renderTaskList(sortedTasks, residents) {
+    renderTaskList() {
+        const { showDetails } = this.state;
+        const { data: { tasks } , residents } = this.props;
+
+        let sortedTasks = _.sortBy(tasks, 'resident.name.first');
         // console.log(sortedTasks, residents, _.find(residents, {id: sortedTasks[0].resident.id}));
         return (
-            <div className={css(classes.taskList)}>
-                { sortedTasks.map((t, index) => (
-                    t.taskType === 'resident'
-                        ? <LmcTaskListResident
-                            resident={_.find(residents, {id: t.resident._id})}
-                            key={t.id}
-                            task={t}
-                            index={index}
-                            total={sortedTasks.length}
-                        /> : null
-                    
-                )) }
-            </div>
+            <AnimateHeight
+                duration={ 500 }
+                height={ showDetails ? 'auto' : 0 } // see props documentation bellow
+            >
+                <div style={{ paddingBottom: 10 }}>
+                    {
+                        sortedTasks.map((t, index) => (
+                            t.taskType === 'resident'
+                                ? <LmcTaskListResident
+                                    key={t.id}
+                                    resident={_.find(residents, {id: t.resident._id})}
+                                    task={t}
+                                    index={index}
+                                    total={sortedTasks.length}
+                                />
+                                : null
+                        ))
+                    }
+                </div>
+            </AnimateHeight>
         )
     }
 
     render() {
-        const { data: { date, id, tasks }, residents } = this.props;
+        const { 
+            data: {
+                date,
+                tasks,
+            }
+        } = this.props;
+        const { showDetails } = this.state;
         if (!tasks || !tasks.length) {
             return null;
         }
         const { title } = tasks[0];
-        const { showDetails } = this.state;
-        let sortedTasks = _.sortBy(tasks, 'resident.name.first');
+
         const {
             completed,
             pending,
@@ -90,12 +109,14 @@ class LmcTaskListRow extends Component {
                         </span>
                         <span className={`${css(classes.taskTitle)} lmctest`}>
                             { titleWithoutGroup }
+                            { showDetails
+                                ? <Glyph id="chevron-icon" className={css(classes.icon)} icon="chevron-up" />
+                                : <Glyph className={css(classes.icon)} icon="chevron-down" />
+                            }
                         </span>
                         <hr className={css(classes.hr)} style={{ left: titleWithoutGroup.length * 7 + 90 }} />
                     </p>
-                    { showDetails
-                        ? this.renderTaskList(sortedTasks, residents)
-                        : null }
+                    { this.renderTaskList() }
                 </td>
                 <td className={css(classes.counts)}>
                     <span className={css(classes.taskCounter, pending === 0 ? classes.empty : (isOverdue ? classes.overdue : classes.pending))}>
@@ -119,7 +140,7 @@ class LmcTaskListRow extends Component {
 
 const classes = StyleSheet.create({
     detailsRow: {
-        padding: '7px 0 2px 5px;',
+        paddingLeft: 5,
         fontSize: 16,
         // ':hover': {
         //     background: 'red',
@@ -131,6 +152,7 @@ const classes = StyleSheet.create({
         /* float: left; */
         margin: 0,
         top: -10,
+        zIndex: 1,
         // left: 35,
     },
     countsLabel: {
@@ -155,19 +177,37 @@ const classes = StyleSheet.create({
     },
     taskTitleContainer: {
         width: '100%',
-        padding: '4px 8px',
-        marginBottom: 3,
+        paddingBottom: 9,
+        paddingTop: 9,
+        marginBottom: 0,
         marginTop: 0,
         cursor: 'pointer',
         transition: 'background .2s ease',
         ':hover': {
+            '> Glyph': {
+                background: '#f3f3f3',
+            },
+            '> #chevron-icon': {
+                background: '#f3f3f3',
+            },
             background: '#f3f3f3',
         },
     },
     taskTitle: {
-        color: colors.red,
+        color: colors.bw80,
         // background: '#fafafa',
         paddingRight: 21,
+    },
+    icon: {
+        color: colors.bw20,
+        zIndex: 2,
+        float: 'right',
+        color: '#c5c5c5',
+        position: 'relative',
+        background: '#fbfbfb',
+        right: 0,
+        top: -3,
+        padding: '9px 5px 9px 5px',
     },
     taskCounterLabel: {
         position: 'relative',

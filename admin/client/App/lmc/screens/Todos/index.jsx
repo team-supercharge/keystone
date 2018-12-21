@@ -7,6 +7,7 @@ import {
 import {
     LmcSingleDateSelector,
     LmcLoadingScreen,
+    LmcSecondaryNavbar,
 } from '../../components';
 
 import LmcTaskCreateModal from './modals/createTask/index.jsx';
@@ -32,46 +33,58 @@ class LmcTodosScreen extends React.Component {
         this.onDateChange = this.onDateChange.bind(this);
     }
 
+    renderNav () {
+        const tabs = [
+            {
+                path: 'todos/dashboard',
+                label: 'Dashboard'
+            }
+        ];
+        return (
+            <LmcSecondaryNavbar tabs={tabs} location={this.props.location} />
+        );
+    };
+
     renderHeader() {
         const { date } = this.state;
-        const { toggleCreateModal } = this.props;
+        
 
         return (
             <div>
-                <div>
+                {/* <div>
                     <h2 style={styles.title}>
-                        Scheduled ToDo's
-                        <GlyphButton
-                            style={styles.button}
-                            onClick={() => toggleCreateModal()}
-                            glyph="plus"
-                            color="success"
-                            position="right">
-                            Add ToDo
-                        </GlyphButton>
+                        
+                        
                     </h2>
-                </div>
+                </div> */}
                 <div style={styles.dateSelectorContainer}>
                     <LmcSingleDateSelector date={date} onChange={this.onDateChange} />
+                    {/* <GlyphButton
+                        style={styles.button}
+                        onClick={() => toggleCreateModal()}
+                        glyph="plus"
+                        color="success"
+                        position="right">
+                        Add ToDo
+                    </GlyphButton> */}
                 </div>
             </div>
         )
     }
 
     renderTasks() {
-        const { tasksFetch, residentsFetch } = this.props;
+        const { tasksFetch, residentsFetch, toggleCreateModal } = this.props;
         if (!tasksFetch || tasksFetch.pending || residentsFetch.pending) {
             return <LmcLoadingScreen />
         }
         if (tasksFetch.rejected) {
-            console.log(tasksFetch)
             return <BlankState heading={tasksFetch.reason || 'Oops. Unable to load To-Do\'s...'} />
         }
         if (tasksFetch.value && (!tasksFetch.value.results || !tasksFetch.value.results.length)) {
             return <BlankState heading={'No To-Do\'s on this date'} />
         }
 
-        return <LmcTaskList data={tasksFetch.value.results} residents={residentsFetch.value.results} />
+        return <LmcTaskList toggleCreateModal={toggleCreateModal} data={tasksFetch.value.results} residents={residentsFetch.value.results} />
     }
 
     onDateChange({ date }) {
@@ -95,9 +108,12 @@ class LmcTodosScreen extends React.Component {
         }
 
         return (
-            <div style={styles.container}>
-                { this.renderHeader() }
-                { this.renderTasks() }
+            <div>
+                { this.renderNav() }
+                <div style={styles.container}>
+                    { this.renderHeader() }
+                    { this.renderTasks() }
+                </div>
             </div>
         );
     }
@@ -123,6 +139,7 @@ const styles = {
     dateSelectorContainer: {
         margin: '0 auto',
         paddingTop: 30,
+        paddingBottom: 20,
         textAlign: 'center',
     }
 };

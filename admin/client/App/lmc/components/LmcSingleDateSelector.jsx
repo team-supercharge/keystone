@@ -31,7 +31,7 @@ class LmcSingleDateSelector extends Component {
         const { date, onChange } = this.props;
         const { focused } = this.state;
         return (
-            <h2>
+            <span>
                 <span style={styles.button} onClick={this.prevDate}>
                     <i className="octicon octicon-chevron-left"></i>
                 </span>
@@ -48,7 +48,7 @@ class LmcSingleDateSelector extends Component {
                 <span style={styles.button} onClick={this.nextDate}>
                     <i className="octicon octicon-chevron-right"></i>
                 </span>
-            </h2>
+            </span>
         );
     }
 }

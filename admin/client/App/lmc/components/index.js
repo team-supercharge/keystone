@@ -16,6 +16,7 @@ import LmcIconButton from './LmcIconButton.jsx';
 import LmcStep from './LmcStep.jsx';
 import LmcStepList from './LmcStepList.jsx';
 import LmcButton from './LmcButton.jsx';
+import LmcSecondaryNavbar from './LmcSecondaryNavbar.jsx';
 
 module.exports = {
     LmcAvatarUpload,
@@ -36,4 +37,5 @@ module.exports = {
     LmcStepList,
     LmcStep,
     LmcButton,
+    LmcSecondaryNavbar,
 };

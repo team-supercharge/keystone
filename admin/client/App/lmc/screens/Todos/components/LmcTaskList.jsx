@@ -4,14 +4,20 @@ import LmcTaskListRow from './LmcTaskListRow.jsx';
 import _ from 'lodash';
 import moment from 'moment';
 import { css, StyleSheet } from 'aphrodite/no-important';
+import { Button, Glyph } from 'elemental';
 
 
 class LmcTaskList extends Component {
     renderHeader() {
+        const { toggleCreateModal } = this.props;
         return (
             <tr className={css(classes.tableHeader)}>
                 <th className={css(classes.todoLabel)}>
-                    To-Do
+                    <span style={{ paddingRight: 10 }}>To-Do</span>
+                    <Button size="xs" onClick={toggleCreateModal}>
+                        <span>Add To-Do</span>
+                        <Glyph size="sm" icon="plus" />
+                    </Button>
                 </th>
                 <th className={css(classes.countLabel)}>
                     Pending / Complete
@@ -44,7 +50,7 @@ const classes = StyleSheet.create({
     table: {
         maxWidth: 750,
         margin: '0 auto',
-        border: 'none'
+        border: 'none',
     },
     tableHeader: {
         lineHeight: '50px',
@@ -61,7 +67,7 @@ const classes = StyleSheet.create({
     todoLabel: {
         textAlign: 'left',
         fontSize: 18,
-        paddingLeft: 66,
+        paddingLeft: 72,
         minWidth: '70%',
         width: '70%',
     }

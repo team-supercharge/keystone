@@ -45,7 +45,7 @@ class LmcTodosDashboard extends React.Component {
                 </div>
                 
                 <div style={styles.dateSelectorContainer}>
-                    <LmcSingleDateSelector date={date} onChange={this.onDateChange} />
+                    <LmcSingleDateSelector style={{ zIndex: 10 }} date={date} onChange={this.onDateChange} />
                 </div>
             </div>
         )
@@ -109,6 +109,7 @@ const styles = {
         margin: '0 auto',
         paddingTop: 30,
         textAlign: 'center',
+        zIndex: 10,
     }
 };
 

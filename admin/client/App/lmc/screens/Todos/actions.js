@@ -122,15 +122,15 @@ export function clearFormData ({ key }) {
 	};
 };
 
-export function toggleCreateTodoModal () {
-	return (dispatch, getState) => {
-		console.log(getState());
-	}
-};
-
 // export function toggleCreateTodoModal () {
-// 	return { type: TOGGLE_CREATE_TODO_MODAL };
+// 	return (dispatch, getState) => {
+// 		console.log(getState());
+// 	}
 // };
+
+export function toggleCreateTodoModal () {
+	return { type: TOGGLE_CREATE_TODO_MODAL };
+};
 
 export function setRecurrenceType (value) {
 	return {
