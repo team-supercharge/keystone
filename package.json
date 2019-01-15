@@ -101,6 +101,7 @@
     "react-router-redux": "4.0.7",
     "react-select": "^1.0.0-rc.1",
     "react-switch": "^3.0.4",
+    "react-transition-group": "^2.5.3",
     "redux": "3.6.0",
     "redux-saga": "0.14.3",
     "redux-thunk": "2.2.0",

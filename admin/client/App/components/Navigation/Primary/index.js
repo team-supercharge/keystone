@@ -210,7 +210,7 @@ var PrimaryNavigation = React.createClass({
 					<ul className="app-nav app-nav--primary app-nav--left">
 						{this.renderBrand()}
 						{this.renderNavigation()}
-						{ userRole !== 'lmc-admin' ? this.renderLMCToDos() : null }
+						{/* { userRole !== 'lmc-admin' ? this.renderLMCToDos() : null } */}
 						{ userRole !== 'lmc-admin' ? this.renderLMCReports() : null }
 						{ userRole === 'lmc-admin' ? this.renderAdminReports() : null }
 					</ul>
