@@ -1,0 +1,442 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcIncidentsCard should render correct snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <h2
+      className="lmc-card-title"
+    >
+      Incidents
+    </h2>
+    <div
+      className="lmc-card"
+    >
+      <div
+        className="lmc-card-body"
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "paddingBottom": 8,
+                "width": "100%",
+              }
+            }
+          >
+            <img
+              alt=""
+              height="45"
+              src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "paddingBottom": 8,
+                "width": "100%",
+              }
+            }
+          >
+            <img
+              alt=""
+              height="45"
+              src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "paddingBottom": 8,
+                "width": "100%",
+              }
+            }
+          >
+            <img
+              alt=""
+              height="45"
+              src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="lmc-card-footer"
+      >
+        <div
+          className="lmc-flex-container"
+        >
+          <p>
+            No
+             
+            incidents
+          </p>
+          <Link
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="TestPath/logs"
+          >
+            <Button
+              aphroditeStyles={Array []}
+              color="default"
+              variant="fill"
+            >
+              <span
+                style={
+                  Object {
+                    "opacity": 0.6,
+                  }
+                }
+              >
+                View All
+              </span>
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "nodes": Array [
+    <div>
+      <h2
+        className="lmc-card-title"
+      >
+        Incidents
+      </h2>
+      <div
+        className="lmc-card"
+      >
+        <div
+          className="lmc-card-body"
+        >
+          <div>
+            <div
+              style={
+                Object {
+                  "paddingBottom": 8,
+                  "width": "100%",
+                }
+              }
+            >
+              <img
+                alt=""
+                height="45"
+                src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingBottom": 8,
+                  "width": "100%",
+                }
+              }
+            >
+              <img
+                alt=""
+                height="45"
+                src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingBottom": 8,
+                  "width": "100%",
+                }
+              }
+            >
+              <img
+                alt=""
+                height="45"
+                src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="lmc-card-footer"
+        >
+          <div
+            className="lmc-flex-container"
+          >
+            <p>
+              No
+               
+              incidents
+            </p>
+            <Link
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="TestPath/logs"
+            >
+              <Button
+                aphroditeStyles={Array []}
+                color="default"
+                variant="fill"
+              >
+                <span
+                  style={
+                    Object {
+                      "opacity": 0.6,
+                    }
+                  }
+                >
+                  View All
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <LmcIncidentsCard
+        logs={Array []}
+        residents={Array []}
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": LmcIncidentsCard {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "logs": Array [],
+          "residents": Array [],
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <h2
+            className="lmc-card-title"
+          >
+            Incidents
+          </h2>
+          <div
+            className="lmc-card"
+          >
+            <div
+              className="lmc-card-body"
+            >
+              <div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 8,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    height="45"
+                    src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+                  />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 8,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    height="45"
+                    src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+                  />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 8,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    height="45"
+                    src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="lmc-card-footer"
+            >
+              <div
+                className="lmc-flex-container"
+              >
+                <p>
+                  No
+                   
+                  incidents
+                </p>
+                <Link
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="TestPath/logs"
+                >
+                  <Button
+                    aphroditeStyles={Array []}
+                    color="default"
+                    variant="fill"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "opacity": 0.6,
+                        }
+                      }
+                    >
+                      View All
+                    </span>
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <h2
+            className="lmc-card-title"
+          >
+            Incidents
+          </h2>
+          <div
+            className="lmc-card"
+          >
+            <div
+              className="lmc-card-body"
+            >
+              <div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 8,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    height="45"
+                    src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+                  />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 8,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    height="45"
+                    src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+                  />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 8,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    height="45"
+                    src="https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092142/profile_row_placeholder.png"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="lmc-card-footer"
+            >
+              <div
+                className="lmc-flex-container"
+              >
+                <p>
+                  No
+                   
+                  incidents
+                </p>
+                <Link
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="TestPath/logs"
+                >
+                  <Button
+                    aphroditeStyles={Array []}
+                    color="default"
+                    variant="fill"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "opacity": 0.6,
+                        }
+                      }
+                    >
+                      View All
+                    </span>
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcIncidentsCard
+    logs={Array []}
+    residents={Array []}
+  />,
+}
+`;
