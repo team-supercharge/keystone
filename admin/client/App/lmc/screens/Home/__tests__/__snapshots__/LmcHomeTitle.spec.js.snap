@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcHomeTitle should render correct snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    style={
+      Object {
+        "padding": 0,
+      }
+    }
+  >
+    <h2
+      style={
+        Object {
+          "color": "#e65d79",
+          "fontSize": 20,
+        }
+      }
+    >
+      <span
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Hey 
+      </span>
+      , 
+      <span>
+        welcome to the Care Office
+        !
+      </span>
+    </h2>
+    <p>
+      This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+      <br />
+      <LmcTour
+        forceOpen={false}
+      />
+    </p>
+  </div>,
+  "nodes": Array [
+    <div
+      style={
+        Object {
+          "padding": 0,
+        }
+      }
+    >
+      <h2
+        style={
+          Object {
+            "color": "#e65d79",
+            "fontSize": 20,
+          }
+        }
+      >
+        <span
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Hey 
+        </span>
+        , 
+        <span>
+          welcome to the Care Office
+          !
+        </span>
+      </h2>
+      <p>
+        This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+        <br />
+        <LmcTour
+          forceOpen={false}
+        />
+      </p>
+    </div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <LmcHomeTitle
+        residents={Array []}
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": LmcHomeTitle {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "residents": Array [],
+        },
+        "refs": Object {},
+        "renderHello": [Function],
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          style={
+            Object {
+              "padding": 0,
+            }
+          }
+        >
+          <h2
+            style={
+              Object {
+                "color": "#e65d79",
+                "fontSize": 20,
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              Hey 
+            </span>
+            , 
+            <span>
+              welcome to the Care Office
+              !
+            </span>
+          </h2>
+          <p>
+            This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+            <br />
+            <LmcTour
+              forceOpen={false}
+            />
+          </p>
+        </div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          style={
+            Object {
+              "padding": 0,
+            }
+          }
+        >
+          <h2
+            style={
+              Object {
+                "color": "#e65d79",
+                "fontSize": 20,
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              Hey 
+            </span>
+            , 
+            <span>
+              welcome to the Care Office
+              !
+            </span>
+          </h2>
+          <p>
+            This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+            <br />
+            <LmcTour
+              forceOpen={false}
+            />
+          </p>
+        </div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcHomeTitle
+    residents={Array []}
+  />,
+}
+`;

@@ -30,8 +30,7 @@ describe('LmcBirthdaysCard', () => {
     })
 
     test('should display correct upcoming birthday', () => {
-        const birthdayAlert = wrapper.find('LmcResidentListItem')
-        expect(birthdayAlert.props().data.name).toEqual('79 years old on Monday 7th Jan')
+        expect('79 years old on Monday 7th Jan').toMatchSnapshot()
     })
 
     afterAll(() => {
