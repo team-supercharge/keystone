@@ -8,9 +8,63 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div />,
+  "node": <div>
+    <div>
+      <h2
+        className="lmc-card-title"
+      >
+        Birthdays
+      </h2>
+      <div
+        className="lmc-card"
+      >
+        <div
+          className="lmc-card-body"
+        >
+          <LmcResidentListItem
+            data={
+              Object {
+                "id": 1,
+                "name": "79 years old on Monday 7th Jan",
+                "picture": undefined,
+                "subheading": "undefined",
+              }
+            }
+            link={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
   "nodes": Array [
-    <div />,
+    <div>
+      <div>
+        <h2
+          className="lmc-card-title"
+        >
+          Birthdays
+        </h2>
+        <div
+          className="lmc-card"
+        >
+          <div
+            className="lmc-card-body"
+          >
+            <LmcResidentListItem
+              data={
+                Object {
+                  "id": 1,
+                  "name": "79 years old on Monday 7th Jan",
+                  "picture": undefined,
+                  "subheading": "undefined",
+                }
+              }
+              link={[Function]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -23,6 +77,7 @@ ShallowWrapper {
           Array [
             Object {
               "dateOfBirth": 1940-01-07T00:00:00.000Z,
+              "id": 1,
             },
           ]
         }
@@ -38,6 +93,7 @@ ShallowWrapper {
           "residents": Array [
             Object {
               "dateOfBirth": 1940-01-07T00:00:00.000Z,
+              "id": 1,
             },
           ],
         },
@@ -61,9 +117,63 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div />,
+        "_currentElement": <div>
+          <div>
+            <h2
+              className="lmc-card-title"
+            >
+              Birthdays
+            </h2>
+            <div
+              className="lmc-card"
+            >
+              <div
+                className="lmc-card-body"
+              >
+                <LmcResidentListItem
+                  data={
+                    Object {
+                      "id": 1,
+                      "name": "79 years old on Monday 7th Jan",
+                      "picture": undefined,
+                      "subheading": "undefined",
+                    }
+                  }
+                  link={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>,
         "_debugID": 2,
-        "_renderedOutput": <div />,
+        "_renderedOutput": <div>
+          <div>
+            <h2
+              className="lmc-card-title"
+            >
+              Birthdays
+            </h2>
+            <div
+              className="lmc-card"
+            >
+              <div
+                className="lmc-card-body"
+              >
+                <LmcResidentListItem
+                  data={
+                    Object {
+                      "id": 1,
+                      "name": "79 years old on Monday 7th Jan",
+                      "picture": undefined,
+                      "subheading": "undefined",
+                    }
+                  }
+                  link={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,
@@ -80,6 +190,7 @@ ShallowWrapper {
       Array [
         Object {
           "dateOfBirth": 1940-01-07T00:00:00.000Z,
+          "id": 1,
         },
       ]
     }
