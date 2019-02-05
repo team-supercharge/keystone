@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LmcBirthdaysCard should display correct upcoming birthday 1`] = `"79 years old on Monday 7th Jan"`;
-
 exports[`LmcBirthdaysCard should render correct snapshot 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {

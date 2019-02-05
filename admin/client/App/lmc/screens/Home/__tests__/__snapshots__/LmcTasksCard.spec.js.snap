@@ -1,0 +1,761 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcTasksCard should render correct snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <h2
+      className="lmc-card-title"
+    >
+      To-Do's & Logs
+    </h2>
+    <div
+      className="lmc-card"
+    >
+      <div
+        className="lmc-card-body"
+      >
+        <div
+          id="intro-js-step-tasks-info"
+          style={
+            Object {
+              "paddingTop": 6,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "paddingBottom": 20,
+              }
+            }
+          >
+            <Link
+              onlyActiveOnIndex={false}
+              style={
+                Object {
+                  "background": "#e65d79",
+                  "borderRadius": 30,
+                  "color": "white",
+                  "fontWeight": 300,
+                  "letterSpacing": 2,
+                  "opacity": 0.9,
+                  "padding": "5px 10px",
+                  "textTransform": "uppercase",
+                }
+              }
+              title="row.label Tasks"
+              to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"pending\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+            >
+              <strong>
+                1
+              </strong>
+               
+              Overdue Today
+            </Link>
+            <br />
+          </div>
+          <div
+            style={
+              Object {
+                "paddingBottom": 20,
+              }
+            }
+          >
+            <Link
+              onlyActiveOnIndex={false}
+              style={
+                Object {
+                  "background": "#ffba66",
+                  "borderRadius": 30,
+                  "color": "white",
+                  "fontWeight": 300,
+                  "letterSpacing": 2,
+                  "opacity": 0.9,
+                  "padding": "5px 10px",
+                  "textTransform": "uppercase",
+                }
+              }
+              title="row.label Tasks"
+              to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"pending\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+            >
+              <strong>
+                1
+              </strong>
+               
+              Pending Today
+            </Link>
+            <br />
+          </div>
+          <div
+            style={
+              Object {
+                "paddingBottom": 20,
+              }
+            }
+          >
+            <Link
+              onlyActiveOnIndex={false}
+              style={
+                Object {
+                  "background": "#b4d78b",
+                  "borderRadius": 30,
+                  "color": "white",
+                  "fontWeight": 300,
+                  "letterSpacing": 2,
+                  "opacity": 0.9,
+                  "padding": "5px 10px",
+                  "textTransform": "uppercase",
+                }
+              }
+              title="row.label Tasks"
+              to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"completed\\",\\"skipped\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+            >
+              <strong>
+                1
+              </strong>
+               
+              Completed Today
+            </Link>
+            <br />
+          </div>
+        </div>
+      </div>
+      <div
+        className="lmc-card-footer"
+      >
+        <div
+          className="lmc-flex-container"
+        >
+          <div
+            style={
+              Object {
+                "maxWidth": 145,
+              }
+            }
+          >
+            <GlyphButton
+              block={true}
+              color="success"
+              glyph="plus"
+              glyphStyle={Object {}}
+              onClick={[Function]}
+              position="left"
+              title="Add To-Do"
+            >
+              <ResponsiveText
+                component="span"
+                visibleLG="Add To-Do"
+                visibleMD="Add"
+                visibleSM="Add"
+              />
+            </GlyphButton>
+          </div>
+          <p
+            style={
+              Object {
+                "marginBottom": 0,
+              }
+            }
+          >
+            3
+             
+            logs
+             recorded today
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "nodes": Array [
+    <div>
+      <h2
+        className="lmc-card-title"
+      >
+        To-Do's & Logs
+      </h2>
+      <div
+        className="lmc-card"
+      >
+        <div
+          className="lmc-card-body"
+        >
+          <div
+            id="intro-js-step-tasks-info"
+            style={
+              Object {
+                "paddingTop": 6,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "paddingBottom": 20,
+                }
+              }
+            >
+              <Link
+                onlyActiveOnIndex={false}
+                style={
+                  Object {
+                    "background": "#e65d79",
+                    "borderRadius": 30,
+                    "color": "white",
+                    "fontWeight": 300,
+                    "letterSpacing": 2,
+                    "opacity": 0.9,
+                    "padding": "5px 10px",
+                    "textTransform": "uppercase",
+                  }
+                }
+                title="row.label Tasks"
+                to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"pending\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+              >
+                <strong>
+                  1
+                </strong>
+                 
+                Overdue Today
+              </Link>
+              <br />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingBottom": 20,
+                }
+              }
+            >
+              <Link
+                onlyActiveOnIndex={false}
+                style={
+                  Object {
+                    "background": "#ffba66",
+                    "borderRadius": 30,
+                    "color": "white",
+                    "fontWeight": 300,
+                    "letterSpacing": 2,
+                    "opacity": 0.9,
+                    "padding": "5px 10px",
+                    "textTransform": "uppercase",
+                  }
+                }
+                title="row.label Tasks"
+                to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"pending\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+              >
+                <strong>
+                  1
+                </strong>
+                 
+                Pending Today
+              </Link>
+              <br />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingBottom": 20,
+                }
+              }
+            >
+              <Link
+                onlyActiveOnIndex={false}
+                style={
+                  Object {
+                    "background": "#b4d78b",
+                    "borderRadius": 30,
+                    "color": "white",
+                    "fontWeight": 300,
+                    "letterSpacing": 2,
+                    "opacity": 0.9,
+                    "padding": "5px 10px",
+                    "textTransform": "uppercase",
+                  }
+                }
+                title="row.label Tasks"
+                to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"completed\\",\\"skipped\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+              >
+                <strong>
+                  1
+                </strong>
+                 
+                Completed Today
+              </Link>
+              <br />
+            </div>
+          </div>
+        </div>
+        <div
+          className="lmc-card-footer"
+        >
+          <div
+            className="lmc-flex-container"
+          >
+            <div
+              style={
+                Object {
+                  "maxWidth": 145,
+                }
+              }
+            >
+              <GlyphButton
+                block={true}
+                color="success"
+                glyph="plus"
+                glyphStyle={Object {}}
+                onClick={[Function]}
+                position="left"
+                title="Add To-Do"
+              >
+                <ResponsiveText
+                  component="span"
+                  visibleLG="Add To-Do"
+                  visibleMD="Add"
+                  visibleSM="Add"
+                />
+              </GlyphButton>
+            </div>
+            <p
+              style={
+                Object {
+                  "marginBottom": 0,
+                }
+              }
+            >
+              3
+               
+              logs
+               recorded today
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <LmcTasksCard
+        logs={
+          Array [
+            Object {},
+            Object {},
+            Object {},
+          ]
+        }
+        onCreate={[MockFunction]}
+        tasks={
+          Object {
+            "completed": 1,
+            "overdue": 1,
+            "pending": 1,
+          }
+        }
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": LmcTasksCard {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "logs": Array [
+            Object {},
+            Object {},
+            Object {},
+          ],
+          "onCreate": [MockFunction],
+          "tasks": Object {
+            "completed": 1,
+            "overdue": 1,
+            "pending": 1,
+          },
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <h2
+            className="lmc-card-title"
+          >
+            To-Do's & Logs
+          </h2>
+          <div
+            className="lmc-card"
+          >
+            <div
+              className="lmc-card-body"
+            >
+              <div
+                id="intro-js-step-tasks-info"
+                style={
+                  Object {
+                    "paddingTop": 6,
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 20,
+                    }
+                  }
+                >
+                  <Link
+                    onlyActiveOnIndex={false}
+                    style={
+                      Object {
+                        "background": "#e65d79",
+                        "borderRadius": 30,
+                        "color": "white",
+                        "fontWeight": 300,
+                        "letterSpacing": 2,
+                        "opacity": 0.9,
+                        "padding": "5px 10px",
+                        "textTransform": "uppercase",
+                      }
+                    }
+                    title="row.label Tasks"
+                    to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"pending\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+                  >
+                    <strong>
+                      1
+                    </strong>
+                     
+                    Overdue Today
+                  </Link>
+                  <br />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 20,
+                    }
+                  }
+                >
+                  <Link
+                    onlyActiveOnIndex={false}
+                    style={
+                      Object {
+                        "background": "#ffba66",
+                        "borderRadius": 30,
+                        "color": "white",
+                        "fontWeight": 300,
+                        "letterSpacing": 2,
+                        "opacity": 0.9,
+                        "padding": "5px 10px",
+                        "textTransform": "uppercase",
+                      }
+                    }
+                    title="row.label Tasks"
+                    to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"pending\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+                  >
+                    <strong>
+                      1
+                    </strong>
+                     
+                    Pending Today
+                  </Link>
+                  <br />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 20,
+                    }
+                  }
+                >
+                  <Link
+                    onlyActiveOnIndex={false}
+                    style={
+                      Object {
+                        "background": "#b4d78b",
+                        "borderRadius": 30,
+                        "color": "white",
+                        "fontWeight": 300,
+                        "letterSpacing": 2,
+                        "opacity": 0.9,
+                        "padding": "5px 10px",
+                        "textTransform": "uppercase",
+                      }
+                    }
+                    title="row.label Tasks"
+                    to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"completed\\",\\"skipped\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+                  >
+                    <strong>
+                      1
+                    </strong>
+                     
+                    Completed Today
+                  </Link>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div
+              className="lmc-card-footer"
+            >
+              <div
+                className="lmc-flex-container"
+              >
+                <div
+                  style={
+                    Object {
+                      "maxWidth": 145,
+                    }
+                  }
+                >
+                  <GlyphButton
+                    block={true}
+                    color="success"
+                    glyph="plus"
+                    glyphStyle={Object {}}
+                    onClick={[Function]}
+                    position="left"
+                    title="Add To-Do"
+                  >
+                    <ResponsiveText
+                      component="span"
+                      visibleLG="Add To-Do"
+                      visibleMD="Add"
+                      visibleSM="Add"
+                    />
+                  </GlyphButton>
+                </div>
+                <p
+                  style={
+                    Object {
+                      "marginBottom": 0,
+                    }
+                  }
+                >
+                  3
+                   
+                  logs
+                   recorded today
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <h2
+            className="lmc-card-title"
+          >
+            To-Do's & Logs
+          </h2>
+          <div
+            className="lmc-card"
+          >
+            <div
+              className="lmc-card-body"
+            >
+              <div
+                id="intro-js-step-tasks-info"
+                style={
+                  Object {
+                    "paddingTop": 6,
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 20,
+                    }
+                  }
+                >
+                  <Link
+                    onlyActiveOnIndex={false}
+                    style={
+                      Object {
+                        "background": "#e65d79",
+                        "borderRadius": 30,
+                        "color": "white",
+                        "fontWeight": 300,
+                        "letterSpacing": 2,
+                        "opacity": 0.9,
+                        "padding": "5px 10px",
+                        "textTransform": "uppercase",
+                      }
+                    }
+                    title="row.label Tasks"
+                    to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"pending\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+                  >
+                    <strong>
+                      1
+                    </strong>
+                     
+                    Overdue Today
+                  </Link>
+                  <br />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 20,
+                    }
+                  }
+                >
+                  <Link
+                    onlyActiveOnIndex={false}
+                    style={
+                      Object {
+                        "background": "#ffba66",
+                        "borderRadius": 30,
+                        "color": "white",
+                        "fontWeight": 300,
+                        "letterSpacing": 2,
+                        "opacity": 0.9,
+                        "padding": "5px 10px",
+                        "textTransform": "uppercase",
+                      }
+                    }
+                    title="row.label Tasks"
+                    to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"pending\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+                  >
+                    <strong>
+                      1
+                    </strong>
+                     
+                    Pending Today
+                  </Link>
+                  <br />
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingBottom": 20,
+                    }
+                  }
+                >
+                  <Link
+                    onlyActiveOnIndex={false}
+                    style={
+                      Object {
+                        "background": "#b4d78b",
+                        "borderRadius": 30,
+                        "color": "white",
+                        "fontWeight": 300,
+                        "letterSpacing": 2,
+                        "opacity": 0.9,
+                        "padding": "5px 10px",
+                        "textTransform": "uppercase",
+                      }
+                    }
+                    title="row.label Tasks"
+                    to="TestPath/tasks?filters=[{\\"path\\":\\"status\\",\\"value\\":[\\"completed\\",\\"skipped\\"]},{\\"path\\":\\"date\\",\\"mode\\":\\"on\\",\\"value\\":\\"2019-01-01T12:00:00.000Z\\",\\"before\\":\\"2019-01-01T23:59:59.999Z\\",\\"after\\":\\"2019-01-01T00:00:00.000Z\\"}]"
+                  >
+                    <strong>
+                      1
+                    </strong>
+                     
+                    Completed Today
+                  </Link>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div
+              className="lmc-card-footer"
+            >
+              <div
+                className="lmc-flex-container"
+              >
+                <div
+                  style={
+                    Object {
+                      "maxWidth": 145,
+                    }
+                  }
+                >
+                  <GlyphButton
+                    block={true}
+                    color="success"
+                    glyph="plus"
+                    glyphStyle={Object {}}
+                    onClick={[Function]}
+                    position="left"
+                    title="Add To-Do"
+                  >
+                    <ResponsiveText
+                      component="span"
+                      visibleLG="Add To-Do"
+                      visibleMD="Add"
+                      visibleSM="Add"
+                    />
+                  </GlyphButton>
+                </div>
+                <p
+                  style={
+                    Object {
+                      "marginBottom": 0,
+                    }
+                  }
+                >
+                  3
+                   
+                  logs
+                   recorded today
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcTasksCard
+    logs={
+      Array [
+        Object {},
+        Object {},
+        Object {},
+      ]
+    }
+    onCreate={[MockFunction]}
+    tasks={
+      Object {
+        "completed": 1,
+        "overdue": 1,
+        "pending": 1,
+      }
+    }
+  />,
+}
+`;
