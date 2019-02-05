@@ -108,12 +108,12 @@ var SigninView = React.createClass({
 		});
 		return (
 			<div style={styles.authWrapper}>
-				<Alert
-					isInvalid={this.state.isInvalid}
-					signedOut={this.state.signedOut}
-					invalidMessage={this.state.invalidMessage}
-				/>
 				<div className={boxClassname}>
+					<Alert
+						isInvalid={this.state.isInvalid}
+						signedOut={this.state.signedOut}
+						invalidMessage={this.state.invalidMessage}
+					/>
 					<h1 className="u-hidden-visually">{this.props.brand ? this.props.brand : 'Keystone'} Sign In </h1>
 					<div className="auth-box__inner">
 						<Brand
