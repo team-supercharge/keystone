@@ -99,7 +99,7 @@ class LmcCharts extends React.Component {
                 <div className="nine columns" style={{ marginLeft: 10, width: '78% !important' }}>
                     <div style={styles.container}>
                         <div style={{ borderRight: '1px solid #e1e1e1', ...styles.childrenContainer }}>
-                            <div style={{ width: '100%', paddingRight: 25 }}>
+                            <div style={{ width: '100%', paddingRight: 25, paddingLeft: 10 }}>
                                 {this.renderChart(this.props)}
                             </div>
                         </div>
@@ -124,9 +124,6 @@ const styles = {
         height: '85vh',
     },
     childrenContainer: {
-        marginLeft: 0,
-        paddingTop: 0,
-        paddingLeft: 15,
         width: '100%',
         display: 'flex',
         overflowY: 'auto',

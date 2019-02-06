@@ -33,10 +33,10 @@ class LmcReportView extends React.Component {
 
 const styles = {
     container: {
-        padding: '0.1em 0 0',
+        padding: '0.1em 0 0 0',
         marginLeft: 'auto',
         marginRight: 'auto',
-        maxWidth: 1270,
+        maxWidth: 1130,
     },
 };
 
