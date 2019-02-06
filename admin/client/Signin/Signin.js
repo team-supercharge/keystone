@@ -36,7 +36,8 @@ var SigninView = React.createClass({
 		this.setState(prevState => ({ 
 			isForgottonPassword: !prevState.isForgottonPassword,
 			isSentEmail: false,
-			isInvalid: false
+			isInvalid: false,
+			signedOut: false
 		}));
 	},
 
@@ -93,14 +94,32 @@ var SigninView = React.createClass({
 
 	handleForgotSubmit(e) {
 		e.preventDefault();
-		// If email is missing, 
 		if (!this.state.email) {
 			return this.displayError('Please enter an email address to send a reset link.')
 		}
 
-		this.setState(prevState => ({
-			isSentEmail: !prevState.isSentEmail
-		}));
+		xhr({
+			// Hardcoded localhost for now
+			url: '/api/v1/forgot-password',
+			method: 'post',
+			json: {
+				email: this.state.email,
+				password: this.state.password,
+			},
+			headers: assign({}, Keystone.csrf.header),
+		}, (err, resp, body) => {
+			console.log(err)
+			console.log(resp)
+			if (err || body && body.error) {
+				return this.displayError(body.error)
+			} else if (resp.statusCode === 429) {
+				return this.displayError("Oh oh, that's too many failed attempts and we've had to freeze your access in case it's someone else trying to get in. Please try again in an hour")
+			} else {
+				this.setState(prevState => ({
+					isSentEmail: !prevState.isSentEmail
+				}));
+			}
+		});
 	},
 	/**
 	 * Display an error message
@@ -130,7 +149,7 @@ var SigninView = React.createClass({
 	renderForgotPasswordForm() {
 		return (
 			<div>
-				<span style={styles.resetInstructions}>
+				<span>
 					Enter your email address to receive a password reset link.
 				</span>
 				<div style={styles.formWrapper}>
@@ -150,7 +169,9 @@ var SigninView = React.createClass({
 							id="forgot-password-submit" 
 							color="primary" 
 							type="submit" 
-							className="lmc-button" style={{ float: 'right', padding: '0 20px', marginTop: 10 }}>
+							className="lmc-button lmc-reset-password-button" 
+							style={{ float: 'right', padding: '0 20px', marginTop: 10 }}
+						>
 							Send Email
 						</Button>
 					</Form>
@@ -165,7 +186,7 @@ var SigninView = React.createClass({
 	renderForgotPasswordConfirmation() {
 		return (
 			<div>
-				<span style={styles.resetInstructions}>
+				<span>
 					Thank you. Please check your email for a password reset link.
 				</span>
 				<div style={styles.formWrapper}>
@@ -274,9 +295,6 @@ const styles = {
 		position: 'relative',
 		top: 18,
 	},
-	resetInstructions: {
-		color: '#e85b78',
-	}
 }
 
 
