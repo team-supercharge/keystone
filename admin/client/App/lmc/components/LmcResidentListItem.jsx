@@ -7,17 +7,25 @@ const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-publ
 class LmcResidentListItem extends Component {
 	render () {
 		const { data, isActive, compact } = this.props;
-		const activeStyle = isActive ? styles.active : null;
 		const profile_pic = data.picture || PLACEHOLDER_IMAGE;
 		const textStyle = compact ? styles.linkTextCompact : styles.linkText;
+		const activeStyle = isActive ? styles.active : null;
+		const activeTextStyle = isActive ? styles.activeText : null;
+		const activePictureStyle = isActive ? styles.activePicture : null;
+		const imgStyle = {
+			float: 'left',
+			marginLeft: '6px',
+			background: `url(${profile_pic})`,
+			...activePictureStyle
+		};
 		return (
-			<li className="lmc-resident-list-item"
+			<li className="lmc-resident-list-item lmc-no-underline"
 				key={data.id}
 				style={{ ...styles.resident, ...activeStyle }}>
 				<Link to={this.props.link(data.id)} style={styles.link}>
 					<div style={styles.residentName}>
-						<span className={compact ? 'lmc-profile-picture__small' : 'lmc-profile-picture'} style={{ float: 'left', background: `url(${profile_pic})` }} />
-						<span style={textStyle}>
+						<span className={compact ? 'lmc-profile-picture__small' : 'lmc-profile-picture'} style={imgStyle} />
+						<span style={{...textStyle, ...activeTextStyle}}>
 							{ data.subheading
 								? <span>
 									<span style={styles.subheading}>
@@ -72,7 +80,7 @@ const styles = {
 	},
 	resident: {
 		display: 'flex',
-		padding: '3px 0 3px 3px',
+		padding: '3px 0 3px 6px',
 	},
 	residentName: {
 		// margin: 'auto 0 auto 8px',
@@ -82,10 +90,17 @@ const styles = {
 		height: '100%',
 	},
 	active: {
-		fontWeight: 600,
 		background: '#f1f1f1',
 		fontSize: 14,
+		boxSizing: 'border-box',
+		borderLeft: '3px solid #e65d78',
 	},
+	activeText: {
+		color: '#e65d78',
+	},
+	activePicture: {
+		marginLeft: '3px', 
+	}
 };
 
 export default LmcResidentListItem;

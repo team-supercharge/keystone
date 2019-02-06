@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcBirthdaysCard should render correct snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <div>
+      <h2
+        className="lmc-card-title"
+      >
+        Birthdays
+      </h2>
+      <div
+        className="lmc-card"
+      >
+        <div
+          className="lmc-card-body"
+        >
+          <LmcResidentListItem
+            data={
+              Object {
+                "id": 1,
+                "name": "79 years old on Monday 7th Jan",
+                "picture": undefined,
+                "subheading": "undefined",
+              }
+            }
+            link={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  "nodes": Array [
+    <div>
+      <div>
+        <h2
+          className="lmc-card-title"
+        >
+          Birthdays
+        </h2>
+        <div
+          className="lmc-card"
+        >
+          <div
+            className="lmc-card-body"
+          >
+            <LmcResidentListItem
+              data={
+                Object {
+                  "id": 1,
+                  "name": "79 years old on Monday 7th Jan",
+                  "picture": undefined,
+                  "subheading": "undefined",
+                }
+              }
+              link={[Function]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <LmcBirthdaysCard
+        residents={
+          Array [
+            Object {
+              "dateOfBirth": 1940-01-07T00:00:00.000Z,
+              "id": 1,
+            },
+          ]
+        }
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": LmcBirthdaysCard {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "getBirthdays": [Function],
+        "props": Object {
+          "residents": Array [
+            Object {
+              "dateOfBirth": 1940-01-07T00:00:00.000Z,
+              "id": 1,
+            },
+          ],
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <div>
+            <h2
+              className="lmc-card-title"
+            >
+              Birthdays
+            </h2>
+            <div
+              className="lmc-card"
+            >
+              <div
+                className="lmc-card-body"
+              >
+                <LmcResidentListItem
+                  data={
+                    Object {
+                      "id": 1,
+                      "name": "79 years old on Monday 7th Jan",
+                      "picture": undefined,
+                      "subheading": "undefined",
+                    }
+                  }
+                  link={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <div>
+            <h2
+              className="lmc-card-title"
+            >
+              Birthdays
+            </h2>
+            <div
+              className="lmc-card"
+            >
+              <div
+                className="lmc-card-body"
+              >
+                <LmcResidentListItem
+                  data={
+                    Object {
+                      "id": 1,
+                      "name": "79 years old on Monday 7th Jan",
+                      "picture": undefined,
+                      "subheading": "undefined",
+                    }
+                  }
+                  link={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcBirthdaysCard
+    residents={
+      Array [
+        Object {
+          "dateOfBirth": 1940-01-07T00:00:00.000Z,
+          "id": 1,
+        },
+      ]
+    }
+  />,
+}
+`;

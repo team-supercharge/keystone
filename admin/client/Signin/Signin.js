@@ -107,35 +107,37 @@ var SigninView = React.createClass({
 			'auth-box--has-errors': this.state.isAnimating,
 		});
 		return (
-			<div style={styles.authWrapper}>
-				<Alert
-					isInvalid={this.state.isInvalid}
-					signedOut={this.state.signedOut}
-					invalidMessage={this.state.invalidMessage}
-				/>
-				<div className={boxClassname}>
-					<h1 className="u-hidden-visually">{this.props.brand ? this.props.brand : 'Keystone'} Sign In </h1>
-					<div className="auth-box__inner">
-						<Brand
-							logo={this.props.logo}
-							brand={this.props.brand}
+			<div className={'lmc-signin-wrapper'}>
+				<div style={styles.authWrapper}>
+					<div className={boxClassname}>
+						<Alert
+							isInvalid={this.state.isInvalid}
+							signedOut={this.state.signedOut}
+							invalidMessage={this.state.invalidMessage}
 						/>
-						{this.props.user ? (
-							<UserInfo
-								adminPath={this.props.from ? this.props.from : Keystone.adminPath}
-								signoutPath={`${Keystone.adminPath}/signout`}
-								userCanAccessKeystone={this.props.userCanAccessKeystone}
-								userName={this.props.user.name}
+						<h1 className="u-hidden-visually">{this.props.brand ? this.props.brand : 'Keystone'} Sign In </h1>
+						<div className="auth-box__inner">
+							<Brand
+								logo={this.props.logo}
+								brand={this.props.brand}
 							/>
-						) : (
-							<LoginForm
-								email={this.state.email}
-								handleInputChange={this.handleInputChange}
-								handleSubmit={this.handleSubmit}
-								isAnimating={this.state.isAnimating}
-								password={this.state.password}
-							/>
-						)}
+							{this.props.user ? (
+								<UserInfo
+									adminPath={this.props.from ? this.props.from : Keystone.adminPath}
+									signoutPath={`${Keystone.adminPath}/signout`}
+									userCanAccessKeystone={this.props.userCanAccessKeystone}
+									userName={this.props.user.name}
+								/>
+							) : (
+								<LoginForm
+									email={this.state.email}
+									handleInputChange={this.handleInputChange}
+									handleSubmit={this.handleSubmit}
+									isAnimating={this.state.isAnimating}
+									password={this.state.password}
+								/>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
