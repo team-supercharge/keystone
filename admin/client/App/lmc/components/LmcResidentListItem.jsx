@@ -54,7 +54,6 @@ const styles = {
 		fontSize: 11,
 		top: 2,
 		position: 'relative',
-		// color: '#e65d78',
 		fontWeight: 500,
 		letterSpacing: 0.4,
 	},
@@ -67,7 +66,6 @@ const styles = {
 		width: '100%',
 	},
 	linkText: {
-		// top: 14,
 		position: 'relative',
 		color: '#222',
 		paddingLeft: 10,
@@ -82,11 +80,8 @@ const styles = {
 		display: 'flex',
 		padding: '3px 0 3px 6px',
 	},
-	residentName: {
-		// margin: 'auto 0 auto 8px',
-	},
+	residentName: {},
 	imageContainer: {
-		// width: 50,
 		height: '100%',
 	},
 	active: {
