@@ -182,18 +182,32 @@ const ListView = React.createClass({
 		const itemCount = pluralize(checkedItems, ('* ' + list.singular.toLowerCase()), ('* ' + list.plural.toLowerCase()));
 		const itemIds = Object.keys(checkedItems);
 
+		const confirmationType = _.get(this.props, 'currentList.id') === 'residents' ? 'danger' : 'warning'
+		const residentsPlural = Object.keys(checkedItems).length > 1 ? 'these residents' : 'this resident'
+
 		this.setState({
 			confirmationDialog: {
 				isOpen: true,
 				label: 'Delete',
-				confirmationType: 'warning',
+				confirmationType: confirmationType,
 				body: (
-					<div>
-						Are you sure you want to delete {itemCount}?
-						<br />
-						<br />
-						This cannot be undone.
-					</div>
+					confirmationType === 'danger'
+						? (
+							<div>
+								Are you sure you want to delete <strong>{itemCount}</strong>? If you go ahead, this can’t be undone.
+								<br />
+								<br />
+								Make sure you only click delete if you want to remove everything about {residentsPlural}, including their profile, care logs, documents and To-Do’s.
+							</div>
+						)
+						: (
+							<div>
+								Are you sure you want to delete {itemCount}?
+								<br />
+								<br />
+								This cannot be undone.
+							</div>
+						)
 				),
 				onConfirmation: () => {
 					this.props.dispatch(deleteItems(itemIds));
@@ -217,6 +231,7 @@ const ListView = React.createClass({
 				isOpen={props.isOpen}
 				onCancel={this.removeConfirmationDialog}
 				onConfirmation={props.onConfirmation}
+				confirmationType={this.state.confirmationDialog.confirmationType}
 			>
 				{props.body}
 			</ConfirmationDialog>

@@ -111,7 +111,6 @@ ConfirmationDialog.propTypes = {
 ConfirmationDialog.defaultProps = {
 	cancelLabel: 'Cancel',
 	confirmationLabel: 'Okay',
-	confirmationType: 'danger',
 	isOpen: false,
 };
 
