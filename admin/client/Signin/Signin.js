@@ -11,6 +11,7 @@ import Alert from './components/Alert';
 import Brand from './components/Brand';
 import UserInfo from './components/UserInfo';
 import LoginForm from './components/LoginForm';
+import { Button, Form, FormField, FormInput } from '../App/elemental';
 
 var SigninView = React.createClass({
 	getInitialState () {
@@ -18,7 +19,9 @@ var SigninView = React.createClass({
 			email: '',
 			password: '',
 			isAnimating: false,
+			isForgottonPassword: false,
 			isInvalid: false,
+			isSentEmail: false,
 			invalidMessage: '',
 			signedOut: window.location.search === '?signedout',
 		};
@@ -29,12 +32,22 @@ var SigninView = React.createClass({
 			this.refs.email.select();
 		}
 	},
+	handleRenderChange () {
+		this.setState(prevState => ({ 
+			isForgottonPassword: !prevState.isForgottonPassword,
+			isSentEmail: false,
+			isInvalid: false,
+			signedOut: false
+		}));
+	},
+
 	handleInputChange (e) {
 		// Set the new state when the input changes
 		const newState = {};
 		newState[e.target.name] = e.target.value;
 		this.setState(newState);
 	},
+
 	handleSubmit (e) {
 		e.preventDefault();
 		// If either password or mail are missing, show an error
@@ -78,6 +91,36 @@ var SigninView = React.createClass({
 			}
 		});
 	},
+
+	handleForgotSubmit(e) {
+		e.preventDefault();
+		if (!this.state.email) {
+			return this.displayError('Please enter an email address to send a reset link.')
+		}
+
+		xhr({
+			// Hardcoded localhost for now
+			url: '/api/v1/forgot-password',
+			method: 'post',
+			json: {
+				email: this.state.email,
+				password: this.state.password,
+			},
+			headers: assign({}, Keystone.csrf.header),
+		}, (err, resp, body) => {
+			console.log(err)
+			console.log(resp)
+			if (err || body && body.error) {
+				return this.displayError(body.error)
+			} else if (resp.statusCode === 429) {
+				return this.displayError("Oh oh, that's too many failed attempts and we've had to freeze your access in case it's someone else trying to get in. Please try again in an hour")
+			} else {
+				this.setState(prevState => ({
+					isSentEmail: !prevState.isSentEmail
+				}));
+			}
+		});
+	},
 	/**
 	 * Display an error message
 	 *
@@ -102,33 +145,114 @@ var SigninView = React.createClass({
 			isAnimating: false,
 		});
 	},
-	render () {
+
+	renderForgotPasswordForm() {
+		return (
+			<div>
+				<span>
+					Enter your email address to receive a password reset link.
+				</span>
+				<div style={styles.formWrapper}>
+					<Form onSubmit={this.handleForgotSubmit} noValidate>
+						<FormField label="Email" htmlFor="email">
+							<FormInput
+								autoFocus
+								type="email"
+								name="email"
+								id="login-email"
+								onChange={this.handleInputChange}
+								value={this.state.email}
+							/>
+						</FormField>
+						<Button 
+							disabled={this.state.isAnimating} 
+							id="forgot-password-submit" 
+							color="primary" 
+							type="submit" 
+							className="lmc-button lmc-reset-password-button" 
+							style={{ float: 'right', padding: '0 20px', marginTop: 10 }}
+						>
+							Send Email
+						</Button>
+					</Form>
+					<a onClick={this.handleRenderChange} style={styles.renderToggle}>
+						Back to login
+					</a>
+				</div>
+			</div>
+		)
+	},
+
+	renderForgotPasswordConfirmation() {
+		return (
+			<div>
+				<span>
+					Thank you. Please check your email for a password reset link.
+				</span>
+				<div style={styles.formWrapper}>
+					<a onClick={this.handleRenderChange} style={styles.renderToggle}>
+						Back to login
+					</a>
+				</div>
+			</div>
+		)
+	},
+
+	renderForgotPasswordScreen() {
 		const boxClassname = classnames('auth-box', {
 			'auth-box--has-errors': this.state.isAnimating,
 		});
 		return (
-			<div className={'lmc-signin-wrapper'}>
-				<div style={styles.authWrapper}>
-					<div className={boxClassname}>
+			<div style={styles.authWrapper}>
+				<div className={boxClassname}>
+					<div className="auth-box__inner">
 						<Alert
 							isInvalid={this.state.isInvalid}
-							signedOut={this.state.signedOut}
 							invalidMessage={this.state.invalidMessage}
 						/>
-						<h1 className="u-hidden-visually">{this.props.brand ? this.props.brand : 'Keystone'} Sign In </h1>
-						<div className="auth-box__inner">
-							<Brand
-								logo={this.props.logo}
-								brand={this.props.brand}
+						<Brand
+							logo={this.props.logo}
+							brand={this.props.brand}
+						/>
+						<div>
+							{ this.state.isSentEmail 
+								? this.renderForgotPasswordConfirmation()
+								: this.renderForgotPasswordForm() }
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		);
+	},
+
+	renderSignInForm() {
+		const boxClassname = classnames('auth-box', {
+			'auth-box--has-errors': this.state.isAnimating,
+		});
+		return (
+			<div style={styles.authWrapper}>
+				<div className={boxClassname}>
+					<Alert
+						isInvalid={this.state.isInvalid}
+						signedOut={this.state.signedOut}
+						invalidMessage={this.state.invalidMessage}
+					/>
+					<h1 className="u-hidden-visually">{this.props.brand ? this.props.brand : 'Keystone'} Sign In </h1>
+					<div className="auth-box__inner">
+						<Brand
+							logo={this.props.logo}
+							brand={this.props.brand}
+						/>
+						{this.props.user ? (
+							<UserInfo
+								adminPath={this.props.from ? this.props.from : Keystone.adminPath}
+								signoutPath={`${Keystone.adminPath}/signout`}
+								userCanAccessKeystone={this.props.userCanAccessKeystone}
+								userName={this.props.user.name}
 							/>
-							{this.props.user ? (
-								<UserInfo
-									adminPath={this.props.from ? this.props.from : Keystone.adminPath}
-									signoutPath={`${Keystone.adminPath}/signout`}
-									userCanAccessKeystone={this.props.userCanAccessKeystone}
-									userName={this.props.user.name}
-								/>
-							) : (
+						) : (
+							<div>
 								<LoginForm
 									email={this.state.email}
 									handleInputChange={this.handleInputChange}
@@ -136,12 +260,25 @@ var SigninView = React.createClass({
 									isAnimating={this.state.isAnimating}
 									password={this.state.password}
 								/>
-							)}
-						</div>
+								<a onClick={this.handleRenderChange} style={styles.renderToggle}>
+									Forgotten your password?
+								</a>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
 		);
+	},
+	
+	render () {
+		return (
+			<div className='lmc-signin-wrapper'>
+				{ this.state.isForgottonPassword 
+					? this.renderForgotPasswordScreen()
+					: this.renderSignInForm() }
+			</div>
+		)
 	},
 });
 
@@ -150,7 +287,14 @@ const styles = {
 		width: 350,
 		margin: '0 auto',
 		paddingTop: 80,
-	}
+	},
+	formWrapper: {
+		marginTop: 18,
+	},
+	renderToggle: {
+		position: 'relative',
+		top: 18,
+	},
 }
 
 
