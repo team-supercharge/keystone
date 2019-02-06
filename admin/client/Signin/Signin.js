@@ -35,7 +35,8 @@ var SigninView = React.createClass({
 	handleRenderChange () {
 		this.setState(prevState => ({ 
 			isForgottonPassword: !prevState.isForgottonPassword,
-			isSentEmail: false
+			isSentEmail: false,
+			isInvalid: false
 		}));
 	},
 
@@ -92,7 +93,11 @@ var SigninView = React.createClass({
 
 	handleForgotSubmit(e) {
 		e.preventDefault();
-		
+		// If email is missing, 
+		if (!this.state.email) {
+			return this.displayError('Please enter an email address to send a reset link.')
+		}
+
 		this.setState(prevState => ({
 			isSentEmail: !prevState.isSentEmail
 		}));
@@ -180,6 +185,10 @@ var SigninView = React.createClass({
 			<div style={styles.authWrapper}>
 				<div className={boxClassname}>
 					<div className="auth-box__inner">
+						<Alert
+							isInvalid={this.state.isInvalid}
+							invalidMessage={this.state.invalidMessage}
+						/>
 						<Brand
 							logo={this.props.logo}
 							brand={this.props.brand}
