@@ -390,6 +390,8 @@ var EditForm = React.createClass({
 			|| this.props.list.key === 'User'
 		);
 
+		const confirmationType = _.get(this.props, 'list.id') === 'residents' ? 'danger' : 'warning'
+
 		return (
 			<form ref="editForm" className="EditForm-container">
 				{(this.state.alerts) ? <AlertMessages alerts={this.state.alerts} /> : null}
@@ -411,6 +413,7 @@ var EditForm = React.createClass({
 					isOpen={this.state.resetDialogIsOpen}
 					onCancel={this.toggleResetDialog}
 					onConfirmation={this.handleReset}
+					confirmationType='warning'
 				>
 					<p>Reset your changes to <strong>{this.props.data.name}</strong>?</p>
 				</ConfirmationDialog>
@@ -419,8 +422,9 @@ var EditForm = React.createClass({
 					isOpen={this.state.deleteDialogIsOpen}
 					onCancel={this.toggleDeleteDialog}
 					onConfirmation={this.handleDelete}
+					confirmationType={confirmationType}
 				>
-					{_.get(this.props, 'list.id') === 'residents'
+					{confirmationType === 'danger'
 						? (
 							<div>
 								Are you sure you want to delete <strong>{this.props.data.name}</strong>? If you go ahead, it can’t be undone. Once the record is gone, it’s gone for good!

@@ -186,6 +186,7 @@ const ListView = React.createClass({
 			confirmationDialog: {
 				isOpen: true,
 				label: 'Delete',
+				confirmationType: 'warning',
 				body: (
 					<div>
 						Are you sure you want to delete {itemCount}?
@@ -371,12 +372,15 @@ const ListView = React.createClass({
 
 		e.preventDefault();
 
+		const confirmationType = _.get(this.props, 'currentList.id') === 'residents' ? 'danger' : 'warning'
+
 		this.setState({
 			confirmationDialog: {
 				isOpen: true,
 				label: 'Delete',
+				confirmationType: confirmationType,
 				body: (
-					_.get(this.props, 'currentList.id') === 'residents'
+					confirmationType === 'danger'
 						? (
 							<div>
 								Are you sure you want to delete <strong>{item.name}</strong>? If you go ahead, it can’t be undone. Once the record is gone, it’s gone for good!
