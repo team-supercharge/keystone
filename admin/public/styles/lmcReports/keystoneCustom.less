@@ -2,6 +2,24 @@
     display: none;
 }
 
+@media screen and (min-width: 880px) and (min-height: 500px) {
+    .lmc-browser-warning-wrapper {
+        background-image: url("https://logmycare.co.uk/wp-content/uploads/2017/12/lmc_404_Asset-5.png");
+        height: 100vh;
+        background-size: 250px;
+        background-repeat: no-repeat;
+        background-position: 60% 120%;
+    }
+}
+
+.lmc-signin-wrapper {
+    height: 100vh;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-image: url("https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/03/30165806/home-page-banner3.png");
+}
+
 .lmc-button {
   -webkit-box-shadow: 1px 2px 4px 1px rgba(0,0,0,0.18) !important;
   -moz-box-shadow: 1px 2px 4px 1px rgba(0,0,0,0.18) !important;
@@ -22,6 +40,23 @@
   -webkit-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.29) !important;
   -moz-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.29) !important;
   box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.29) !important;
+}
+
+.lmc-error-button {
+    text-decoration: none;
+	padding: 15px 40px 15px 40px;
+	background-color: white;
+	color: #e65d78;
+	font-size: 14px;
+	font-weight: 600px;
+	text-transform: uppercase;
+	border-radius: 8px;
+	box-shadow: 2px 2px 11px 2px rgba(0, 0, 0, 0.1);
+}
+
+.lmc-error-button:hover {
+    text-decoration: none;
+    box-shadow: 2px 2px 11px 2px rgba(0, 0, 0, 0.3);
 }
 
 .auth-box {
@@ -100,8 +135,4 @@
 
 div#signin-view {
     height: 100vh;
-    background-size: 80%;
-    background-repeat: no-repeat;
-    background-image: url("https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/03/30165806/home-page-banner3.png");
-    background-position: center bottom;
 }
