@@ -2,16 +2,6 @@
  * Renders a confirmation dialog modal
  */
 
-//  cancelLabel,
-// 	children,
-// 	confirmationLabel,
-// 	confirmationType,
-// 	html,
-// 	isOpen,
-// 	onCancel,
-// 	onConfirmation,
-// 	...props
-
 import React, { PropTypes } from 'react';
 import { Button, Modal, FormInput, FormField } from '../elemental';
 
