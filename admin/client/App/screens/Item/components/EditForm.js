@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import assign from 'object-assign';
+import xhr from 'xhr';
 import _ from 'lodash';
 import {
 	Form,
@@ -63,6 +64,8 @@ var EditForm = React.createClass({
 			loading: false,
 			lastValues: null, // used for resetting
 			focusFirstField: !this.props.list.nameField && !this.props.list.nameFieldIsFormHeader,
+			hasSentEmail: false,
+			feedbackText: null
 		};
 	},
 	componentDidMount () {
@@ -124,6 +127,34 @@ var EditForm = React.createClass({
 		this.setState({
 			confirmationDialog: null,
 		});
+	},
+	resendUserInvite() {
+		const { data } = this.props;
+		const id = data.id;
+		const firstName = data.fields.name.first;
+
+		xhr({
+			url: `${Keystone.adminPath}/api/usess/${id}/resend-invite`,
+			method: 'post',
+			headers: assign({}, Keystone.csrf.header),
+		}, (_err, res, _body) => {
+			if ([401, 403, 404, 429, 500].includes(res.statusCode)) {
+				this.setState({
+					hasSentEmail: false,
+					feedbackText: "We're unable to process your request at this time. Please contact support."
+				});
+			} else if (res.statusCode === 429) {
+				this.setState({
+					hasSentEmail: false,
+					feedbackText: 'Too many failed attempts. Please try again in an hour.'
+				});
+			} else {
+				this.setState({
+					hasSentEmail: true,
+					feedbackText: `Invite sent! ${firstName} should check their inbox for an email now.`
+				});
+			}
+		})
 	},
 	updateItem () {
 		const { data, list } = this.props;
@@ -376,36 +407,14 @@ var EditForm = React.createClass({
 			</div>
 		) : null;
 	},
-	renderAdminPage() {
-		const firstName = this.props.data.fields.name.first
+	renderUserPage () {
 		return (
-			<div>
-				<Button style={styles.resendEmailButton}>
-					<ResponsiveText
-						hiddenXS='Resend invite'
-						visibleXS='Resend invite'
-					/>
-				</Button>
-				<span style={styles.resendConfirmation}>
-					Invite sent! {firstName} should check their inbox for an email now.
-				</span>
-			</div>
-		);
-	},
-	renderCarerPage () {
-		const firstName = this.props.data.fields.name.first
-		return (
-			<div>
-				<Button style={styles.resendEmailButton}>
-					<ResponsiveText
-						hiddenXS='Resend invite'
-						visibleXS='Resend invite'
-					/>
-				</Button>
-				<span style={styles.resendConfirmation}>
-					Invite sent! {firstName} should check their inbox for an email now.
-				</span>
-			</div>
+			<Button onClick={this.resendUserInvite} disabled={this.state.hasSentEmail} style={styles.resendEmailButton}>
+				<ResponsiveText
+					hiddenXS='Resend invite'
+					visibleXS='Resend invite'
+				/>
+			</Button>
 		);
 	},
 	renderResidentPage () {
@@ -419,8 +428,7 @@ var EditForm = React.createClass({
 	render () {
 		const { data, list } = this.props;
 		const isResidentPage = list && (list.key === 'Resident' || list.key === 'User');
-		const isCarerPage = data.fields.role === 'carer'
-		const isAdminPage = data.fields.role === 'carehome-admin'
+		const isUserPage = ['carer', 'carehome-admin'].includes(data.fields.role)
 		const confirmationType = list.id === 'residents' ? 'danger' : 'warning';
 
 		return (
@@ -433,8 +441,12 @@ var EditForm = React.createClass({
 							{/* {this.renderKeyOrId()} */}
 							{isResidentPage && this.renderResidentPage()}
 							{this.renderFormElements()}
-							{isCarerPage && this.renderCarerPage()}
-							{isAdminPage && this.renderAdminPage()}
+							{isUserPage && this.renderUserPage()}
+							{ this.state.feedbackText ? (
+								<span style={styles.resendConfirmation}>
+									{this.state.feedbackText}
+								</span>
+							) : null }
 							{this.renderTrackingMeta()}
 						</Form>
 					</Grid.Col>
