@@ -134,7 +134,7 @@ var EditForm = React.createClass({
 		const firstName = data.fields.name.first;
 
 		xhr({
-			url: `${Keystone.adminPath}/api/usess/${id}/resend-invite`,
+			url: `${Keystone.adminPath}/api/users/${id}/resend-invite`,
 			method: 'post',
 			headers: assign({}, Keystone.csrf.header),
 		}, (_err, res, _body) => {
