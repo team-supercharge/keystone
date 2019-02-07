@@ -151,7 +151,7 @@ var EditForm = React.createClass({
 			} else {
 				this.setState({
 					hasSentEmail: true,
-					feedbackText: `Invite sent! ${firstName} should check their inbox for an email now.`
+					feedbackText: `Invite sent! An email should arrive in ${firstName}'s inbox soon.`
 				});
 			}
 		})
