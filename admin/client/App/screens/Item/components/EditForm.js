@@ -376,6 +376,38 @@ var EditForm = React.createClass({
 			</div>
 		) : null;
 	},
+	renderAdminPage() {
+		const firstName = this.props.data.fields.name.first
+		return (
+			<div>
+				<Button style={styles.resendEmailButton}>
+					<ResponsiveText
+						hiddenXS='Resend invite'
+						visibleXS='Resend invite'
+					/>
+				</Button>
+				<span style={styles.resendConfirmation}>
+					Invite sent! {firstName} should check their inbox for an email now.
+				</span>
+			</div>
+		);
+	},
+	renderCarerPage () {
+		const firstName = this.props.data.fields.name.first
+		return (
+			<div>
+				<Button style={styles.resendEmailButton}>
+					<ResponsiveText
+						hiddenXS='Resend invite'
+						visibleXS='Resend invite'
+					/>
+				</Button>
+				<span style={styles.resendConfirmation}>
+					Invite sent! {firstName} should check their inbox for an email now.
+				</span>
+			</div>
+		);
+	},
 	renderResidentPage () {
 		const onSave = (blob) => {
 			this.setState({ profilePic: blob });
@@ -385,10 +417,11 @@ var EditForm = React.createClass({
 		return <LmcAvatarUpload onSave={onSave} />;
 	},
 	render () {
-		const isResidentPage = this.props.list && (
-			this.props.list.key === 'Resident'
-			|| this.props.list.key === 'User'
-		);
+		const { data, list } = this.props;
+		const isResidentPage = list && (list.key === 'Resident' || list.key === 'User');
+		const isCarerPage = data.fields.role === 'carer'
+		const isAdminPage = data.fields.role === 'carehome-admin'
+		const confirmationType = list.id === 'residents' ? 'danger' : 'warning';
 
 		return (
 			<form ref="editForm" className="EditForm-container">
@@ -400,6 +433,8 @@ var EditForm = React.createClass({
 							{/* {this.renderKeyOrId()} */}
 							{isResidentPage && this.renderResidentPage()}
 							{this.renderFormElements()}
+							{isCarerPage && this.renderCarerPage()}
+							{isAdminPage && this.renderAdminPage()}
 							{this.renderTrackingMeta()}
 						</Form>
 					</Grid.Col>
@@ -411,19 +446,21 @@ var EditForm = React.createClass({
 					isOpen={this.state.resetDialogIsOpen}
 					onCancel={this.toggleResetDialog}
 					onConfirmation={this.handleReset}
+					confirmationType='warning'
 				>
-					<p>Reset your changes to <strong>{this.props.data.name}</strong>?</p>
+					<p>Reset your changes to <strong>{data.name}</strong>?</p>
 				</ConfirmationDialog>
 				<ConfirmationDialog
 					confirmationLabel="Delete"
 					isOpen={this.state.deleteDialogIsOpen}
 					onCancel={this.toggleDeleteDialog}
 					onConfirmation={this.handleDelete}
+					confirmationType={confirmationType}
 				>
-					{_.get(this.props, 'list.id') === 'residents'
+					{confirmationType === 'danger'
 						? (
 							<div>
-								Are you sure you want to delete <strong>{this.props.data.name}</strong>? If you go ahead, it can’t be undone. Once the record is gone, it’s gone for good!
+								Are you sure you want to delete <strong>{data.name}</strong>? If you go ahead, it can’t be undone. Once the record is gone, it’s gone for good!
 								<br />
 								<br />
 								Make sure you only click delete if you want to remove everything about this resident, including their profile, care logs, documents and To-Do’s.
@@ -431,7 +468,7 @@ var EditForm = React.createClass({
 						)
 						: (
 							<div>
-								Are you sure you want to delete <strong>{this.props.data.name}?</strong>
+								Are you sure you want to delete <strong>{data.name}?</strong>
 								<br />
 								<br />
 								This cannot be undone.
@@ -445,6 +482,9 @@ var EditForm = React.createClass({
 });
 
 const styles = {
+	deleteButton: {
+		float: 'right',
+	},
 	footerbar: {
 		backgroundColor: fade(theme.color.body, 93),
 		boxShadow: '0 -2px 0 rgba(0, 0, 0, 0.1)',
@@ -455,9 +495,14 @@ const styles = {
 	footerbarInner: {
 		height: theme.component.height, // FIXME aphrodite bug
 	},
-	deleteButton: {
-		float: 'right',
+	resendConfirmation: {
+		position: 'relative',
+		top: 15,
 	},
+	resendEmailButton: {
+		marginTop: 30,
+		marginRight: 30,
+	}
 };
 
 module.exports = EditForm;
