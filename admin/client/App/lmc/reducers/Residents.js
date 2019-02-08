@@ -4,13 +4,14 @@ import _ from 'lodash';
 import moment from 'moment';
 
 export const residents = createReducer(
-    { loadedMyResidents: [] },
+    {},
     {
-        [types.MY_RESIDENTS_LOADED](state, action) {
-            let newState = {};
-            newState.loadedMyResidents = _(action.result)
-                .orderBy(resident => resident.name.first).value();
-                return newState;
-        }
+        // [types.SET_SELECTED_RESIDENT_ID](state, action) {
+        //     let newState = {};
+        //     newState.loadedMyResidents = _(action.result)
+        //         .orderBy(resident => resident.name.first)
+        //         .value();
+        //         return newState;
+        // }
     }
 );

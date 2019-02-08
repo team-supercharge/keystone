@@ -9,6 +9,7 @@ const getJSON = ({ url }) => {
             headers: Object.assign({
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                // 'Authorization': `Bearer ${Keystone.csrf.token}`,
             }, Keystone.csrf.header)
         }, (err, res) => {
             if (err) {
