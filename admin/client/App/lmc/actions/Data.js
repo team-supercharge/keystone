@@ -20,7 +20,8 @@ export function initialize() {
 
 export function loadList(listId) {
     return (dispatch) => {
-        return getJSON(listId)
+        const url = `${Keystone.adminPath}/api/${listId}`
+        return getJSON({ url })
             .then(res => {
                 dispatch(setLoadedList(res));
             })

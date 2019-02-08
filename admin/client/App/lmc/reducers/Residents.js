@@ -1,17 +1,16 @@
 import * as types from '../constants.js';
 import createReducer from "./createReducer"
 import _ from 'lodash';
-import moment from 'moment';
+
+const initialState = {};
 
 export const residents = createReducer(
-    {},
+    initialState,
     {
-        // [types.SET_SELECTED_RESIDENT_ID](state, action) {
-        //     let newState = {};
-        //     newState.loadedMyResidents = _(action.result)
-        //         .orderBy(resident => resident.name.first)
-        //         .value();
-        //         return newState;
-        // }
+        [types.SET_SELECTED_RESIDENT](state, { id }) {
+            const newState = { ...state }
+            newState.selectedResident = id
+            return newState
+        }
     }
 );

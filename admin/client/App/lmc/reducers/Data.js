@@ -2,15 +2,7 @@ import * as types from '../constants.js';
 import createReducer from "./createReducer"
 import _ from 'lodash';
 
-const initialState = {
-    // users: [],
-    // residents: [],
-    // documents: [],
-    // logs: [],
-    // tasks: [],
-    // logCategories: [],
-    // logCategoryItems: [],
-};
+const initialState = {};
 
 export const data = createReducer(
     initialState,
