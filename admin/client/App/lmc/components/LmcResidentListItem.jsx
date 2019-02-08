@@ -14,7 +14,7 @@ class LmcResidentListItem extends Component {
 		const activePictureStyle = isActive ? styles.activePicture : null;
 		const imgStyle = {
 			float: 'left',
-			marginLeft: '6px',
+			marginLeft: '3px',
 			background: `url(${profile_pic})`,
 			...activePictureStyle
 		};
@@ -78,7 +78,7 @@ const styles = {
 	},
 	resident: {
 		display: 'flex',
-		padding: '3px 0 3px 6px',
+		padding: '7px 0 7px 7px',
 	},
 	residentName: {},
 	imageContainer: {
@@ -94,7 +94,7 @@ const styles = {
 		color: '#e65d78',
 	},
 	activePicture: {
-		marginLeft: '3px', 
+		marginLeft: 0, 
 	}
 };
 

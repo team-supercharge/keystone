@@ -25,7 +25,7 @@ const classes = StyleSheet.create({
 	},
 	body: {
 		flexGrow: 1,
-		background: '#fbfbfb',
+		// background: '#fbfbfb',
 	},
 });
 

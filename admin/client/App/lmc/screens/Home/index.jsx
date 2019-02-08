@@ -16,6 +16,7 @@ import CreateForm from '../../../shared/CreateForm';
 import List from '../../../../utils/List';
 
 import { BlankState } from '../../../elemental';
+import theme from '../../../../theme';
 
 class Home extends React.Component {
 
@@ -184,7 +185,7 @@ const styles = {
         padding: '3em 20px 60px',
         marginLeft: 'auto',
         marginRight: 'auto',
-        maxWidth: 1170,
+        maxWidth: theme.container.size.large,
     },
 };
 

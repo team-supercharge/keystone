@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import theme from '../../../../../theme';
 
 class LmcSecondaryNav extends React.Component {
     constructor (props) {
@@ -61,7 +62,7 @@ const styles = {
         marginRight: 'auto',
         paddingLeft: 20,
         paddingRight: 20,
-        maxWidth: 1170,
+        maxWidth: theme.container.size.large,
     },
 };
 
