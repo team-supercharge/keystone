@@ -74,6 +74,11 @@ module.exports = function createStaticRouter (keystone) {
 	var customStylesPath = keystone.getPath('adminui custom styles') || '';
 
 	var lessOptions = {
+		preprocess: {
+			path: function(pathname) {
+				return pathname.replace(`-v${pkg.version}`, '');
+			}
+		},
 		render: {
 			modifyVars: {
 				elementalPath: JSON.stringify(elementalPath),
@@ -85,6 +90,7 @@ module.exports = function createStaticRouter (keystone) {
 	};
 
 	/* Configure router */
+	router.use(`/styles/keystone-v${pkg.version}.min.css`, less(path.resolve(__dirname + '/../../public/styles'), lessOptions));
 	router.use('/styles', less(path.resolve(__dirname + '/../../public/styles'), lessOptions));
 	router.use('/styles/fonts', express.static(path.resolve(__dirname + '/../../public/js/lib/tinymce/skins/keystone/fonts')));
 	router.get(`/js/fields-v${pkg.version}.js`, bundles.fields.serve);
