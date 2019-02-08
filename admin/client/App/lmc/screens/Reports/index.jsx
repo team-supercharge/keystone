@@ -1,6 +1,7 @@
 import React from 'react';
 import LmcSecondaryNav from './components/LmcSecondaryNav.jsx';
 import { connect } from 'react-redux';
+import theme from '../../../../theme';
 
 
 class LmcReportView extends React.Component {
@@ -36,7 +37,7 @@ const styles = {
         padding: '0.1em 0 0 0',
         marginLeft: 'auto',
         marginRight: 'auto',
-        maxWidth: 1130,
+        maxWidth: theme.container.size.large,
     },
 };
 
