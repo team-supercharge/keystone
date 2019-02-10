@@ -1,6 +1,6 @@
 import xhr from 'xhr';
 
-const getJSON = ({ url }) => {
+export const getJSON = ({ url }) => {
     return new Promise((resolve, reject) => {
         xhr({
             url,

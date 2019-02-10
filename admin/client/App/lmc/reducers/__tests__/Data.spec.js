@@ -16,11 +16,11 @@ describe('Data reducer', () => {
         const action = {
             lists: [
                 { 
-                    data: [{ id: 'User1' }, { id: 'User2' }],
+                    results: [{ id: 'User1' }, { id: 'User2' }],
                     listId: 'users'
                 },
                 {
-                    data: [{ id: 'Log1' }, { id: 'Log2' }],
+                    results: [{ id: 'Log1' }, { id: 'Log2' }],
                     listId: 'logs'
                 },
             ],
@@ -28,8 +28,8 @@ describe('Data reducer', () => {
             type: types.SET_LOADED_LISTS,
         }
         expect(data(initialState, action)).toEqual({
-            users: action.lists[0].data,
-            logs: action.lists[1].data,
+            users: action.lists[0].results,
+            logs: action.lists[1].results,
         })
     })
 
@@ -47,11 +47,11 @@ describe('Data reducer', () => {
         const action = {
             lists: [
                 {
-                    data: [{ id: 'User2' }],
+                    results: [{ id: 'User2' }],
                     listId: 'users',
                 },
                 {
-                    data: [{ id: 'Log2' }],
+                    results: [{ id: 'Log2' }],
                     listId: 'logs'
                 },
             ],

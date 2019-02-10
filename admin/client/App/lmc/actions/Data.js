@@ -4,26 +4,25 @@ import {
     getJSON,
 } from '../common/dataService';
 
-export function initialize() {
+export function initialize () {
     return (dispatch) => {
         const lists = [
             'users',
             'residents',
             'log-categories',
             'log-category-items',
-            'residents',
             'documents',
         ];
         dispatch(loadLists(lists));
     }
 }
 
-export function loadList(listId) {
+export function loadList (listId) {
     return (dispatch) => {
         const url = `${Keystone.adminPath}/api/${listId}`
         return getJSON({ url })
             .then(res => {
-                dispatch(setLoadedList(res));
+                dispatch(setLoadedList(listId, res.results));
             })
             .catch(err => {
                 console.log(err)
@@ -31,10 +30,12 @@ export function loadList(listId) {
     };
 }
 
-export function loadLists(lists) {
+export function loadLists (lists) {
+    const urls = lists.map(listId => `${Keystone.adminPath}/api/${listId}`)
     return (dispatch) => {
-        Promise.all(lists.map(listId => getJSON(listId)))
+        Promise.all(urls.map(url => getJSON({ url })))
             .then(results => {
+                results.forEach((list, index) => { list.listId = lists[index]})
                 dispatch(setLoadedLists(results))
             })
             .catch(err => {
@@ -43,13 +44,13 @@ export function loadLists(lists) {
     };
 }
 
-export function clearLists() {
+export function clearLists () {
     return (dispatch) => {
         dispatch(clearData())
     }
 }
 
-function setLoadedLists({ result }) {
+function setLoadedLists (result) {
     return {
         type: types.SET_LOADED_LISTS,
         overwrite: true,
@@ -57,15 +58,16 @@ function setLoadedLists({ result }) {
     }
 }
 
-function setLoadedList({ result }) {
+function setLoadedList (listId, result) {
     return {
         type: types.SET_LOADED_LIST,
         overwrite: true,
-        result
+        listId: listId,
+        data: result
     };
 }
 
-function clearData() {
+function clearData () {
     return {
         type: types.CLEAR_LISTS,
     }

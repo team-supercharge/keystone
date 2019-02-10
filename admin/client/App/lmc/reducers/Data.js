@@ -7,18 +7,18 @@ const initialState = {};
 export const data = createReducer(
     initialState,
     {
-        [types.SET_LOADED_LISTS](state, { lists, overwrite=true }) {
+        [types.SET_LOADED_LISTS](state, { overwrite=true, lists }) {
             const newState = { ...state };
             lists.forEach(list => {
                 if (overwrite) {
-                    newState[list.listId] = list.data
+                    newState[list.listId] = list.results
                 } else {
-                    newState[list.listId] = _.uniqBy([ ...list.data, ...newState[list.listId] ], 'id');
+                    newState[list.listId] = _.uniqBy([ ...list.results, ...newState[list.listId] ], 'id');
                 }
             })
             return newState;
         },
-        [types.SET_LOADED_LIST](state, { data, listId, overwrite=true, }) {
+        [types.SET_LOADED_LIST](state, { overwrite=true, listId, data }) {
             const newState = { ...state };
             if (overwrite) {
                 newState[listId] = data;
