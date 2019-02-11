@@ -10,7 +10,7 @@ ShallowWrapper {
   "length": 1,
   "node": <li
     id="testId"
-    onClick={[Function]}
+    onClick={[MockFunction]}
     style={
       Object {
         "background": "#f1f1f1",
@@ -54,7 +54,7 @@ ShallowWrapper {
   "nodes": Array [
     <li
       id="testId"
-      onClick={[Function]}
+      onClick={[MockFunction]}
       style={
         Object {
           "background": "#f1f1f1",
@@ -104,7 +104,7 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <LmcResidentsSidebarItem
         isSelected={true}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         resident={
           Object {
             "fields": Object {
@@ -123,7 +123,7 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {
           "isSelected": true,
-          "onClick": [Function],
+          "onClick": [MockFunction],
           "resident": Object {
             "fields": Object {
               "picture": "testPicture",
@@ -154,7 +154,7 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <li
           id="testId"
-          onClick={[Function]}
+          onClick={[MockFunction]}
           style={
             Object {
               "background": "#f1f1f1",
@@ -198,7 +198,7 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <li
           id="testId"
-          onClick={[Function]}
+          onClick={[MockFunction]}
           style={
             Object {
               "background": "#f1f1f1",
@@ -252,7 +252,7 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <LmcResidentsSidebarItem
     isSelected={true}
-    onClick={[Function]}
+    onClick={[MockFunction]}
     resident={
       Object {
         "fields": Object {

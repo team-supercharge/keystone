@@ -24,6 +24,27 @@ ShallowWrapper {
       onFormChange={[Function]}
       onSwitchChange={[Function]}
     />
+    <GlyphButton
+      block={true}
+      color="success"
+      glyph="plus"
+      glyphStyle={Object {}}
+      onClick={[Function]}
+      position="left"
+      style={
+        Object {
+          "borderRadius": 0,
+        }
+      }
+      title="Add a Resident"
+    >
+      <ResponsiveText
+        component="span"
+        visibleLG="Add a Resident"
+        visibleMD="Add a Resident"
+        visibleSM="Add a Resident"
+      />
+    </GlyphButton>
     <ul
       style={
         Object {
@@ -77,6 +98,27 @@ ShallowWrapper {
         onFormChange={[Function]}
         onSwitchChange={[Function]}
       />
+      <GlyphButton
+        block={true}
+        color="success"
+        glyph="plus"
+        glyphStyle={Object {}}
+        onClick={[Function]}
+        position="left"
+        style={
+          Object {
+            "borderRadius": 0,
+          }
+        }
+        title="Add a Resident"
+      >
+        <ResponsiveText
+          component="span"
+          visibleLG="Add a Resident"
+          visibleMD="Add a Resident"
+          visibleSM="Add a Resident"
+        />
+      </GlyphButton>
       <ul
         style={
           Object {
@@ -121,6 +163,7 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcResidentsSidebar
+        onCreate={[MockFunction]}
         residents={
           Array [
             Object {
@@ -158,6 +201,7 @@ ShallowWrapper {
         "handleFormChange": [Function],
         "handleSwitchChange": [Function],
         "props": Object {
+          "onCreate": [MockFunction],
           "residents": Array [
             Object {
               "fields": Object {
@@ -222,6 +266,27 @@ ShallowWrapper {
             onFormChange={[Function]}
             onSwitchChange={[Function]}
           />
+          <GlyphButton
+            block={true}
+            color="success"
+            glyph="plus"
+            glyphStyle={Object {}}
+            onClick={[Function]}
+            position="left"
+            style={
+              Object {
+                "borderRadius": 0,
+              }
+            }
+            title="Add a Resident"
+          >
+            <ResponsiveText
+              component="span"
+              visibleLG="Add a Resident"
+              visibleMD="Add a Resident"
+              visibleSM="Add a Resident"
+            />
+          </GlyphButton>
           <ul
             style={
               Object {
@@ -275,6 +340,27 @@ ShallowWrapper {
             onFormChange={[Function]}
             onSwitchChange={[Function]}
           />
+          <GlyphButton
+            block={true}
+            color="success"
+            glyph="plus"
+            glyphStyle={Object {}}
+            onClick={[Function]}
+            position="left"
+            style={
+              Object {
+                "borderRadius": 0,
+              }
+            }
+            title="Add a Resident"
+          >
+            <ResponsiveText
+              component="span"
+              visibleLG="Add a Resident"
+              visibleMD="Add a Resident"
+              visibleSM="Add a Resident"
+            />
+          </GlyphButton>
           <ul
             style={
               Object {
@@ -323,6 +409,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcResidentsSidebar
+    onCreate={[MockFunction]}
     residents={
       Array [
         Object {

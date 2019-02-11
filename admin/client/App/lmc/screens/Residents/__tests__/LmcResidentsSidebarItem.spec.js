@@ -5,6 +5,7 @@ import LmcResidentsSidebarItem from '../components/LmcResidentsSidebarItem'
 describe('LmcResidentsSidebarItem', () => {
     let wrapper
     let resident
+    const onClickMock = jest.fn()
 
     beforeEach(() => {
         resident = {
@@ -17,7 +18,7 @@ describe('LmcResidentsSidebarItem', () => {
         wrapper = shallow(
             <LmcResidentsSidebarItem
                 resident={resident}
-                onClick={() => {}}
+                onClick={onClickMock}
                 isSelected={true}
             />
         )
@@ -29,5 +30,10 @@ describe('LmcResidentsSidebarItem', () => {
 
     it('renders a list item', () => {
         expect(wrapper.find('li').length).toEqual(1)
+    })
+
+    it('triggers its onClick prop', () => {
+        wrapper.find('li').first().simulate('click')
+        expect(onClickMock).toBeCalledTimes(1)
     })
 })

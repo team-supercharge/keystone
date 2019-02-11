@@ -10,6 +10,7 @@ ShallowWrapper {
   "length": 1,
   "node": <div>
     <Connect(LmcResidentsSidebar)
+      onCreate={[Function]}
       residents={
         Array [
           Object {
@@ -27,6 +28,7 @@ ShallowWrapper {
   "nodes": Array [
     <div>
       <Connect(LmcResidentsSidebar)
+        onCreate={[Function]}
         residents={
           Array [
             Object {
@@ -68,6 +70,7 @@ ShallowWrapper {
       "_instance": LmcResidentsScreen {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "onOpenCreateResident": [Function],
         "props": Object {
           "residents": Array [
             Object {
@@ -102,6 +105,7 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
           <Connect(LmcResidentsSidebar)
+            onCreate={[Function]}
             residents={
               Array [
                 Object {
@@ -119,6 +123,7 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div>
           <Connect(LmcResidentsSidebar)
+            onCreate={[Function]}
             residents={
               Array [
                 Object {

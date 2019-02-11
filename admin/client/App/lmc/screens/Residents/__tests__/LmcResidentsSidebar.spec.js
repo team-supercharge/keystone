@@ -5,6 +5,7 @@ import { LmcResidentsSidebar } from '../components/LmcResidentsSidebar.jsx'
 describe('LmcResidentsSidebar', () => {
     let wrapper
     let residents
+    const onCreateMock = jest.fn()
 
     beforeEach(() => {
         residents = [
@@ -16,6 +17,7 @@ describe('LmcResidentsSidebar', () => {
             <LmcResidentsSidebar
                 residents={residents}
                 selectedResident={residents[0].id}
+                onCreate={onCreateMock}
             />
         )
     })
@@ -34,5 +36,11 @@ describe('LmcResidentsSidebar', () => {
 
     it('renders the sidebar filter', () => {
         expect(wrapper.find('LmcResidentsSidebarFilter').length).toEqual(1)
+    })
+
+    it('triggers its onCreate prop', () => {
+        wrapper.find('GlyphButton').simulate('click')
+        expect(onCreateMock).toBeCalledTimes(1)
+        expect(onCreateMock).toBeCalledWith('Residents')
     })
 })

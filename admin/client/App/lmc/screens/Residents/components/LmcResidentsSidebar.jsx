@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../../actions/actions'
-import { FormInput } from '../../../../elemental'
-import Switch from 'react-switch'
+import { GlyphButton, ResponsiveText } from '../../../../elemental'
 import _ from 'lodash'
 import LmcResidentsSidebarItem from './LmcResidentsSidebarItem.jsx'
 import LmcResidentsSidebarFilter from './LmcResidentsSidebarFilter.jsx'
@@ -49,7 +48,8 @@ export class LmcResidentsSidebar extends Component {
         const { 
             residents, 
             selectedResident, 
-            setSelectedResident 
+            setSelectedResident,
+            onCreate,
         } = this.props;
 
         let shownResidents = _.filter(residents, (resident) => !this.calculateHidden(resident))
@@ -61,6 +61,21 @@ export class LmcResidentsSidebar extends Component {
                     onSwitchChange={this.handleSwitchChange}
                     isChecked={!this.state.displayActiveResidents}
                 />
+                <GlyphButton
+                    block
+                    color='success'
+                    glyph='plus'
+                    position='left'
+                    title={ADD_RESIDENTS_BUTTON_TEXT}
+                    onClick={() => onCreate('Residents')}
+                    style={styles.button}
+                >
+                    <ResponsiveText
+                        visibleSM={ADD_RESIDENTS_BUTTON_TEXT}
+                        visibleMD={ADD_RESIDENTS_BUTTON_TEXT}
+                        visibleLG={ADD_RESIDENTS_BUTTON_TEXT}
+                     />
+                </GlyphButton>
                 <ul style={styles.list}>
                     { shownResidents.map((resident, index) => {
                             return (
@@ -79,6 +94,9 @@ export class LmcResidentsSidebar extends Component {
 }
 
 const styles = {
+    button: {
+        borderRadius: 0,
+    },
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -91,9 +109,12 @@ const styles = {
     }
 };
 
+const ADD_RESIDENTS_BUTTON_TEXT = 'Add a Resident';
+
 LmcResidentsSidebar.propTypes = {
     residents: PropTypes.array,
-    selectedResident: PropTypes.string
+    selectedResident: PropTypes.string,
+    onCreate: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -104,7 +125,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setSelectedResident: (id) => dispatch(ActionCreators.setSelectedResident(id))
+        setSelectedResident: (id) => dispatch(ActionCreators.setSelectedResident(id)),
     }
 }
 

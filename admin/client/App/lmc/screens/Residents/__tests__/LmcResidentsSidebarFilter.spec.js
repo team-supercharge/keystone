@@ -4,8 +4,8 @@ import LmcResidentsSidebarFilter from '../components/LmcResidentsSidebarFilter.j
 
 describe('LmcResidentsSidebarFilter', () => {
     let wrapper
-    let onFormMock = jest.fn()
-    let onSwitchMock = jest.fn()
+    const onFormMock = jest.fn()
+    const onSwitchMock = jest.fn()
 
     beforeEach(() => {
         wrapper = shallow(
