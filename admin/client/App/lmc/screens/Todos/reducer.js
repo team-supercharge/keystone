@@ -47,7 +47,6 @@ function getRecurrenceOptions(type) {
 }
 
 export default function lmcModalReducer (state = initialState, action) {
-    console.log(state);
     switch (action.type) {
         case CLEAR_ALL_FORM_FIELDS:
             return assign({}, initialState);

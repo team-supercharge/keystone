@@ -35,7 +35,7 @@ export function loadLists (lists) {
     return (dispatch) => {
         Promise.all(urls.map(url => getJSON({ url })))
             .then(results => {
-                results.forEach((list, index) => { list.listId = lists[index]})
+                results.forEach((list, index) => { list.listId = lists[index] })
                 dispatch(setLoadedLists(results))
             })
             .catch(err => {

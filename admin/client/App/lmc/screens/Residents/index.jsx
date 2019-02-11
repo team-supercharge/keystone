@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActionCreators } from '../../actions/actions'
 import { connect } from 'react-redux'
+import { LmcSpinner } from '../../components'
+import LmcResidentsSidebar from './components/LmcResidentsSidebar.jsx'
 
-class LmcResidentsScreen extends Component {
-    render() {
+export class LmcResidentsScreen extends Component {
+    constructor(props) {
+        super(props)
+    }
+    
+    render () {
+        const { residents } = this.props;
         return (
-            <div>  
+            <div>
+                { this.props.residents ? (
+                    <LmcResidentsSidebar
+                        residents={residents}
+                        initialSelectedResident={residents[0]}
+                    />
+                ) : <LmcSpinner /> }
             </div>
         );
     }
 }
 
 LmcResidentsScreen.propTypes = {
-    data: PropTypes.object.isRequired,
+    residents: PropTypes.array,
 };
 
 const mapStateToProps = (state) => {
     return {
         residents: state.data.residents,
-        selectedResident: state.residents.selectedResident
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchData: (lists) => dispatch(ActionCreators.initialize()),
-        setSelectedResident: (id) => dispatch(ActionCreators.setSelectedResident(id))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LmcResidentsScreen);
+export default connect(mapStateToProps)(LmcResidentsScreen);

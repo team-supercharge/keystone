@@ -78,6 +78,7 @@ ShallowWrapper {
             Object {
               "dateOfBirth": 1940-01-07T00:00:00.000Z,
               "id": 1,
+              "status": "active",
             },
           ]
         }
@@ -94,6 +95,7 @@ ShallowWrapper {
             Object {
               "dateOfBirth": 1940-01-07T00:00:00.000Z,
               "id": 1,
+              "status": "active",
             },
           ],
         },
@@ -191,6 +193,7 @@ ShallowWrapper {
         Object {
           "dateOfBirth": 1940-01-07T00:00:00.000Z,
           "id": 1,
+          "status": "active",
         },
       ]
     }

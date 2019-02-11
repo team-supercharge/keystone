@@ -19,6 +19,7 @@ import DefaultHome from './screens/Home';
 
 import store from './store';
 
+import { ActionCreators } from './lmc/actions/actions';
 import { setActiveFilters, loadItems } from './screens/List/actions';
 import ReactGA from 'react-ga';
 
@@ -42,6 +43,8 @@ import LmcHome from './lmc/screens/Home/index.jsx';
 
 // Sync the browser history to the Redux store
 const history = syncHistoryWithStore(browserHistory, store);
+
+store.dispatch(ActionCreators.initialize());
 
 // Initialise Keystone.User list
 import { listsByKey } from '../utils/lists';
@@ -68,7 +71,7 @@ ReactDOM.render(
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
-				<Route path ="test" component={LmcResidentsScreen} />
+				<Route path="residents" component={LmcResidentsScreen} />
 				<Route path="admin-reports" component={LmcAdminReportView} onChange={onListChange}>
 					<Route path="dashboard" component={LmcAdminDashboard} />
 					<Route path="home" component={LmcAdminHomeDashboard} />

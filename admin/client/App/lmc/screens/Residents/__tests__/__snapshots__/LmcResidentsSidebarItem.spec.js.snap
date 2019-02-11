@@ -1,0 +1,263 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcResidentsSidebarItem renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <li
+    id="testId"
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "#f1f1f1",
+        "borderLeft": "3px solid #e65d78",
+        "boxSizing": "border-box",
+        "display": "flex",
+        "fontSize": 14,
+        "height": "50px",
+        "listStyleType": "none",
+        "padding": "3px 0 3px 6px",
+      }
+    }
+  >
+    <div>
+      <span
+        className="lmc-profile-picture__small"
+        style={
+          Object {
+            "background": "url(testPicture)",
+            "float": "left",
+            "marginLeft": "3px",
+            "marginTop": "4px",
+          }
+        }
+      />
+      <span
+        style={
+          Object {
+            "color": "#e65d78",
+            "marginLeft": "15px",
+            "position": "relative",
+            "top": "12px",
+          }
+        }
+      >
+        testName
+      </span>
+    </div>
+  </li>,
+  "nodes": Array [
+    <li
+      id="testId"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#f1f1f1",
+          "borderLeft": "3px solid #e65d78",
+          "boxSizing": "border-box",
+          "display": "flex",
+          "fontSize": 14,
+          "height": "50px",
+          "listStyleType": "none",
+          "padding": "3px 0 3px 6px",
+        }
+      }
+    >
+      <div>
+        <span
+          className="lmc-profile-picture__small"
+          style={
+            Object {
+              "background": "url(testPicture)",
+              "float": "left",
+              "marginLeft": "3px",
+              "marginTop": "4px",
+            }
+          }
+        />
+        <span
+          style={
+            Object {
+              "color": "#e65d78",
+              "marginLeft": "15px",
+              "position": "relative",
+              "top": "12px",
+            }
+          }
+        >
+          testName
+        </span>
+      </div>
+    </li>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <LmcResidentsSidebarItem
+        isSelected={true}
+        onClick={[Function]}
+        resident={
+          Object {
+            "fields": Object {
+              "picture": "testPicture",
+            },
+            "id": "testId",
+            "name": "testName",
+          }
+        }
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "isSelected": true,
+          "onClick": [Function],
+          "resident": Object {
+            "fields": Object {
+              "picture": "testPicture",
+            },
+            "id": "testId",
+            "name": "testName",
+          },
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <li
+          id="testId"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "#f1f1f1",
+              "borderLeft": "3px solid #e65d78",
+              "boxSizing": "border-box",
+              "display": "flex",
+              "fontSize": 14,
+              "height": "50px",
+              "listStyleType": "none",
+              "padding": "3px 0 3px 6px",
+            }
+          }
+        >
+          <div>
+            <span
+              className="lmc-profile-picture__small"
+              style={
+                Object {
+                  "background": "url(testPicture)",
+                  "float": "left",
+                  "marginLeft": "3px",
+                  "marginTop": "4px",
+                }
+              }
+            />
+            <span
+              style={
+                Object {
+                  "color": "#e65d78",
+                  "marginLeft": "15px",
+                  "position": "relative",
+                  "top": "12px",
+                }
+              }
+            >
+              testName
+            </span>
+          </div>
+        </li>,
+        "_debugID": 2,
+        "_renderedOutput": <li
+          id="testId"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "#f1f1f1",
+              "borderLeft": "3px solid #e65d78",
+              "boxSizing": "border-box",
+              "display": "flex",
+              "fontSize": 14,
+              "height": "50px",
+              "listStyleType": "none",
+              "padding": "3px 0 3px 6px",
+            }
+          }
+        >
+          <div>
+            <span
+              className="lmc-profile-picture__small"
+              style={
+                Object {
+                  "background": "url(testPicture)",
+                  "float": "left",
+                  "marginLeft": "3px",
+                  "marginTop": "4px",
+                }
+              }
+            />
+            <span
+              style={
+                Object {
+                  "color": "#e65d78",
+                  "marginLeft": "15px",
+                  "position": "relative",
+                  "top": "12px",
+                }
+              }
+            >
+              testName
+            </span>
+          </div>
+        </li>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcResidentsSidebarItem
+    isSelected={true}
+    onClick={[Function]}
+    resident={
+      Object {
+        "fields": Object {
+          "picture": "testPicture",
+        },
+        "id": "testId",
+        "name": "testName",
+      }
+    }
+  />,
+}
+`;
