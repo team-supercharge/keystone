@@ -10,12 +10,6 @@ ShallowWrapper {
   "length": 1,
   "node": <div>
     <Connect(LmcResidentsSidebar)
-      initialSelectedResident={
-        Object {
-          "id": "testId1",
-          "name": "testName1",
-        }
-      }
       residents={
         Array [
           Object {
@@ -33,12 +27,6 @@ ShallowWrapper {
   "nodes": Array [
     <div>
       <Connect(LmcResidentsSidebar)
-        initialSelectedResident={
-          Object {
-            "id": "testId1",
-            "name": "testName1",
-          }
-        }
         residents={
           Array [
             Object {
@@ -114,12 +102,6 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
           <Connect(LmcResidentsSidebar)
-            initialSelectedResident={
-              Object {
-                "id": "testId1",
-                "name": "testName1",
-              }
-            }
             residents={
               Array [
                 Object {
@@ -137,12 +119,6 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div>
           <Connect(LmcResidentsSidebar)
-            initialSelectedResident={
-              Object {
-                "id": "testId1",
-                "name": "testName1",
-              }
-            }
             residents={
               Array [
                 Object {

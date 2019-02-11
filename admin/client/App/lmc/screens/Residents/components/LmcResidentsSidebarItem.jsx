@@ -41,6 +41,7 @@ const styles = {
         marginLeft: '15px',
         position: 'relative',
         top: '12px',
+        cursor: 'pointer',
     },
     selected: {
         background: '#f1f1f1',

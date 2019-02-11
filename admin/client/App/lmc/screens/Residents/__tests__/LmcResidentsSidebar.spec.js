@@ -8,14 +8,14 @@ describe('LmcResidentsSidebar', () => {
 
     beforeEach(() => {
         residents = [
-            { id: 'testId1', name: 'testId2' },
-            { id: 'testId2', name: 'testId2' },
-            { id: 'testId3', name: 'testId3' },
+            { id: 'testId1', name: 'testId2', fields: { status: 'active' } },
+            { id: 'testId2', name: 'testId2', fields: { status: 'active' } },
+            { id: 'testId3', name: 'testId3', fields: { status: 'inactive' } },
         ]
         wrapper = shallow(
             <LmcResidentsSidebar
                 residents={residents}
-                initialSelectedResident={residents[0]}
+                selectedResident={residents[0].id}
             />
         )
     })
@@ -28,7 +28,11 @@ describe('LmcResidentsSidebar', () => {
         expect(wrapper.find('ul').length).toEqual(1)
     })
 
-    it('renders a number of sidebar items based on its residents list', () => {
-        expect(wrapper.find('LmcResidentsSidebarItem').length).toEqual(residents.length)
+    it('renders a number of sidebar items based on its active residents list', () => {
+        expect(wrapper.find('LmcResidentsSidebarItem').length).toEqual(2)
+    })
+
+    it('renders the sidebar filter', () => {
+        expect(wrapper.find('LmcResidentsSidebarFilter').length).toEqual(1)
     })
 })

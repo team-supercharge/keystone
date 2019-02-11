@@ -16,7 +16,6 @@ export class LmcResidentsScreen extends Component {
                 { this.props.residents ? (
                     <LmcResidentsSidebar
                         residents={residents}
-                        initialSelectedResident={residents[0]}
                     />
                 ) : <LmcSpinner /> }
             </div>

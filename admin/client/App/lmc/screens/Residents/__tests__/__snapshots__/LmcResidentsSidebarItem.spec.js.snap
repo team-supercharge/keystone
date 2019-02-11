@@ -40,6 +40,7 @@ ShallowWrapper {
         style={
           Object {
             "color": "#e65d78",
+            "cursor": "pointer",
             "marginLeft": "15px",
             "position": "relative",
             "top": "12px",
@@ -83,6 +84,7 @@ ShallowWrapper {
           style={
             Object {
               "color": "#e65d78",
+              "cursor": "pointer",
               "marginLeft": "15px",
               "position": "relative",
               "top": "12px",
@@ -182,6 +184,7 @@ ShallowWrapper {
               style={
                 Object {
                   "color": "#e65d78",
+                  "cursor": "pointer",
                   "marginLeft": "15px",
                   "position": "relative",
                   "top": "12px",
@@ -225,6 +228,7 @@ ShallowWrapper {
               style={
                 Object {
                   "color": "#e65d78",
+                  "cursor": "pointer",
                   "marginLeft": "15px",
                   "position": "relative",
                   "top": "12px",

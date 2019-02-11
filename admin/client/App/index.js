@@ -71,7 +71,7 @@ ReactDOM.render(
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
-				<Route path="residents" component={LmcResidentsScreen} />
+				<Route path="residents-test" component={LmcResidentsScreen} />
 				<Route path="admin-reports" component={LmcAdminReportView} onChange={onListChange}>
 					<Route path="dashboard" component={LmcAdminDashboard} />
 					<Route path="home" component={LmcAdminHomeDashboard} />
