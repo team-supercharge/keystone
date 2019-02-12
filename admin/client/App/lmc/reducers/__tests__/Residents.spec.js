@@ -4,7 +4,7 @@ import * as types from '../../constants'
 describe('Residents reducer', () => {
     let initialState
 
-    beforeAll(() => {
+    beforeEach(() => {
         initialState = Object.freeze({
             selectedResident: 'testId'
         })
@@ -17,6 +17,19 @@ describe('Residents reducer', () => {
         }
         expect(residents(initialState, action)).toEqual({ 
             selectedResident: 'secondId' 
+        })
+    })
+
+    it('should handle SET_RESIDENT_LOGS', () => {
+        const state = {
+            selectedResidentLogs: [{ item: 'Test Type', residentName: 'User', residentId: 'ID' }]
+        }
+        const action = {
+            type: types.SET_RESIDENT_LOGS,
+            logs: [{ item: 'Basic group / Fall', residentName: 'testUser', residentId: 'testId' }]
+        }
+        expect(residents(state, action)).toEqual({
+            selectedResidentLogs: [{ item: 'Basic group / Fall', residentName: 'testUser', residentId: 'testId' }]
         })
     })
 })

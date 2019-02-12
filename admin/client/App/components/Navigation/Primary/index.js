@@ -186,7 +186,6 @@ var PrimaryNavigation = React.createClass({
 		const { currentSectionKey } = this.props;
 		const href = `${Keystone.adminPath}/residents/profile`;
 		const isActive = currentSectionKey && currentSectionKey === section.key;
-		console.log(currentSectionKey)
 		const className = isActive ? 'primary-navbar__item--active' : null;
 		// console.log(href);
 		return (

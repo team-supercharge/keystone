@@ -11,6 +11,11 @@ export const residents = createReducer(
             const newState = { ...state }
             newState.selectedResident = id
             return newState
+        },
+        [types.SET_RESIDENT_LOGS](state, { logs }) {
+            const newState = { ...state }
+            newState.selectedResidentLogs = logs
+            return newState
         }
     }
 );

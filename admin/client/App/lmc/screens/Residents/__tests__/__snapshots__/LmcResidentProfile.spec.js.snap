@@ -8,13 +8,9 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    Profile
-  </div>,
+  "node": <div />,
   "nodes": Array [
-    <div>
-      Profile
-    </div>,
+    <div />,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -50,13 +46,9 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          Profile
-        </div>,
+        "_currentElement": <div />,
         "_debugID": 2,
-        "_renderedOutput": <div>
-          Profile
-        </div>,
+        "_renderedOutput": <div />,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,

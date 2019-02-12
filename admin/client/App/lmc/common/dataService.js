@@ -25,7 +25,7 @@ export const getJSON = ({ url }) => {
 }
 
 export function fetchResidentLogs (residentId) {
-    const url = `${Keystone.adminPath}/api/reports/logs/${residentId}`;
+    const url = `${Keystone.adminPath}/api/reports/residents/${residentId}/logs`;
     return getJSON({ url });
 };
 
