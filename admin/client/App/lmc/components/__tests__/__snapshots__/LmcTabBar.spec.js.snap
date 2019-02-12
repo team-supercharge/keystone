@@ -1,0 +1,363 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcResidentsNavbar renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <nav
+    className="secondary-navbar"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "height": "58px",
+        "paddingLeft": 20,
+        "paddingRight": 50,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <ul
+        className="app-nav app-nav--secondary app-nav--left"
+      >
+        <li
+          style={
+            Object {
+              "boxSizing": "border-box",
+              "flex": "1",
+              "padding": "7px 10px 9px 10px",
+              "textAlign": "center",
+            }
+          }
+        >
+          <Link
+            className="lmc-secondary-nav-link"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/admin/testResourceUrl/url1"
+          >
+            label1
+          </Link>
+        </li>
+        <li
+          style={
+            Object {
+              "boxSizing": "border-box",
+              "flex": "1",
+              "padding": "7px 10px 9px 10px",
+              "textAlign": "center",
+            }
+          }
+        >
+          <Link
+            className="lmc-secondary-nav-link"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/admin/testResourceUrl/url2"
+          >
+            label2
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </nav>,
+  "nodes": Array [
+    <nav
+      className="secondary-navbar"
+      style={
+        Object {
+          "backgroundColor": "white",
+          "height": "58px",
+          "paddingLeft": 20,
+          "paddingRight": 50,
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
+      >
+        <ul
+          className="app-nav app-nav--secondary app-nav--left"
+        >
+          <li
+            style={
+              Object {
+                "boxSizing": "border-box",
+                "flex": "1",
+                "padding": "7px 10px 9px 10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <Link
+              className="lmc-secondary-nav-link"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/admin/testResourceUrl/url1"
+            >
+              label1
+            </Link>
+          </li>
+          <li
+            style={
+              Object {
+                "boxSizing": "border-box",
+                "flex": "1",
+                "padding": "7px 10px 9px 10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <Link
+              className="lmc-secondary-nav-link"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/admin/testResourceUrl/url2"
+            >
+              label2
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <LmcTabBar
+        items={
+          Array [
+            Object {
+              "label": "label1",
+              "url": "url1",
+            },
+            Object {
+              "label": "label2",
+              "url": "url2",
+            },
+          ]
+        }
+        location={
+          Object {
+            "pathname": "testPathname",
+          }
+        }
+        resourceUrl="testResourceUrl"
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": LmcTabBar {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "isActive": [Function],
+        "props": Object {
+          "items": Array [
+            Object {
+              "label": "label1",
+              "url": "url1",
+            },
+            Object {
+              "label": "label2",
+              "url": "url2",
+            },
+          ],
+          "location": Object {
+            "pathname": "testPathname",
+          },
+          "resourceUrl": "testResourceUrl",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <nav
+          className="secondary-navbar"
+          style={
+            Object {
+              "backgroundColor": "white",
+              "height": "58px",
+              "paddingLeft": 20,
+              "paddingRight": 50,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+              }
+            }
+          >
+            <ul
+              className="app-nav app-nav--secondary app-nav--left"
+            >
+              <li
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "flex": "1",
+                    "padding": "7px 10px 9px 10px",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <Link
+                  className="lmc-secondary-nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/admin/testResourceUrl/url1"
+                >
+                  label1
+                </Link>
+              </li>
+              <li
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "flex": "1",
+                    "padding": "7px 10px 9px 10px",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <Link
+                  className="lmc-secondary-nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/admin/testResourceUrl/url2"
+                >
+                  label2
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>,
+        "_debugID": 2,
+        "_renderedOutput": <nav
+          className="secondary-navbar"
+          style={
+            Object {
+              "backgroundColor": "white",
+              "height": "58px",
+              "paddingLeft": 20,
+              "paddingRight": 50,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+              }
+            }
+          >
+            <ul
+              className="app-nav app-nav--secondary app-nav--left"
+            >
+              <li
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "flex": "1",
+                    "padding": "7px 10px 9px 10px",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <Link
+                  className="lmc-secondary-nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/admin/testResourceUrl/url1"
+                >
+                  label1
+                </Link>
+              </li>
+              <li
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "flex": "1",
+                    "padding": "7px 10px 9px 10px",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <Link
+                  className="lmc-secondary-nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/admin/testResourceUrl/url2"
+                >
+                  label2
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcTabBar
+    items={
+      Array [
+        Object {
+          "label": "label1",
+          "url": "url1",
+        },
+        Object {
+          "label": "label2",
+          "url": "url2",
+        },
+      ]
+    }
+    location={
+      Object {
+        "pathname": "testPathname",
+      }
+    }
+    resourceUrl="testResourceUrl"
+  />,
+}
+`;

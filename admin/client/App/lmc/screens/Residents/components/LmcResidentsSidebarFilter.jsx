@@ -50,8 +50,9 @@ const styles = {
         marginBottom: '15px',
     },
     filterContainer: {
-        padding: '10px 10px 10px 10px',
+        padding: '10px',
         display: 'block',
+        backgroundColor: 'white',
     },
 }
 

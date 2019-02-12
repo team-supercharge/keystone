@@ -97,6 +97,10 @@ const styles = {
     button: {
         borderRadius: 0,
     },
+    container: {
+        flex: '1',
+        zIndex: '1'
+    }
 };
 
 const ADD_RESIDENTS_BUTTON_TEXT = 'Add a Resident';

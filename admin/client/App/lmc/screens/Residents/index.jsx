@@ -6,6 +6,7 @@ import { LmcSpinner } from '../../components'
 import List from '../../../../utils/List';
 import CreateForm from '../../../shared/CreateForm'
 import LmcResidentsSidebar from './components/LmcResidentsSidebar.jsx'
+import LmcTabBar from '../../components/LmcTabBar.jsx'
 
 export class LmcResidentsScreen extends Component {
     constructor(props) {
@@ -59,7 +60,7 @@ export class LmcResidentsScreen extends Component {
     }
     
     render () {
-        const { residents } = this.props;
+        const { residents, children, location } = this.props;
         return (
             <div>
                 { this.renderCreateForm() }
@@ -69,6 +70,16 @@ export class LmcResidentsScreen extends Component {
                             residents={residents}
                             onCreate={this.onOpenCreateResident}
                         />
+                        <div style={styles.rightContainer}>
+                            <LmcTabBar
+                                location={location} 
+                                items={navbarItems}
+                                resourceUrl='residents'    
+                            />
+                            <div>
+                                {children}
+                            </div>
+                        </div>
                     </div>
                 ) : <LmcSpinner /> }
             </div>
@@ -76,11 +87,22 @@ export class LmcResidentsScreen extends Component {
     }
 }
 
+const navbarItems = [
+    { label: 'Profile', url: 'profile' },
+    { label: 'Daily reports', url: 'daily-report' },
+    { label: 'To-Dos', url: 'to-do' },
+    { label: 'Charts', url: 'charts' },
+    { label: 'Documents', url: 'documents' }
+]
+
 const styles = {
     mainContainer: {
         display: 'flex',
-        flexDirection: 'column',
-    }
+        flexDirection: 'row',
+    },
+    rightContainer: {
+        flex: '4',
+    },
 }
 
 LmcResidentsScreen.propTypes = {

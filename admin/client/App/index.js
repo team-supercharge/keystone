@@ -66,12 +66,24 @@ let HomePage = Keystone.user.role === 'carehome-admin'
 	? LmcHome
 	: DefaultHome;
 
+const ProfileTest = () => <div>Profile</div>
+const ReportTest = () => <div>Daily report</div>
+const ToDosTest = () => <div>To-Dos</div>
+const ChartsTest = () => <div>Charts</div>
+const DocumentsTest = () => <div>Documents</div>
+
 ReactDOM.render(
 	<Provider store={store}>
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
-				<Route path="residents-test" component={LmcResidentsScreen} />
+				<Route path="residents" component={LmcResidentsScreen}>
+					<Route path='profile' component={ProfileTest} />
+					<Route path='daily-report' component={ReportTest} />
+					<Route path='to-do' component={ToDosTest} />
+					<Route path='charts' component={ChartsTest} />
+					<Route path='documents' component={DocumentsTest} />
+				</Route>
 				<Route path="admin-reports" component={LmcAdminReportView} onChange={onListChange}>
 					<Route path="dashboard" component={LmcAdminDashboard} />
 					<Route path="home" component={LmcAdminHomeDashboard} />

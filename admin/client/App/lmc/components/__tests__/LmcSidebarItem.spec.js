@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import LmcSidebarItem from '../components/LmcSidebarItem'
+import LmcSidebarItem from '../LmcSidebarItem'
 
 describe('LmcSidebarItem', () => {
     let wrapper

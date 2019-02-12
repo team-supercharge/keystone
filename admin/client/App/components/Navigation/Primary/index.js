@@ -176,7 +176,31 @@ var PrimaryNavigation = React.createClass({
 			</PrimaryNavItem>
 		);
 	},
+	renderResidentsLink () {
 
+		const section = {
+			key: 'residents',
+			label: 'Residents',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/residents/profile`;
+		const isActive = currentSectionKey && currentSectionKey === section.key;
+		console.log(currentSectionKey)
+		const className = isActive ? 'primary-navbar__item--active' : null;
+		// console.log(href);
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
 	// Render the navigation
 	renderNavigation () {
 		if (!this.props.sections || !this.props.sections.length) return null;
@@ -211,6 +235,7 @@ var PrimaryNavigation = React.createClass({
 						{this.renderBrand()}
 						{this.renderNavigation()}
 						{/* { userRole !== 'lmc-admin' ? this.renderLMCToDos() : null } */}
+						{ userRole !== 'lmc-admin' ? this.renderResidentsLink() : null }
 						{ userRole !== 'lmc-admin' ? this.renderLMCReports() : null }
 						{ userRole === 'lmc-admin' ? this.renderAdminReports() : null }
 					</ul>

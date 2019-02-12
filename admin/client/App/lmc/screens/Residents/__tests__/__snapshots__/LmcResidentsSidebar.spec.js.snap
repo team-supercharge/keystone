@@ -10,6 +10,12 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className="lmc-sidebar"
+    style={
+      Object {
+        "flex": "1",
+        "zIndex": "1",
+      }
+    }
   >
     <LmcResidentsSidebarFilter
       isChecked={false}
@@ -71,6 +77,12 @@ ShallowWrapper {
   "nodes": Array [
     <div
       className="lmc-sidebar"
+      style={
+        Object {
+          "flex": "1",
+          "zIndex": "1",
+        }
+      }
     >
       <LmcResidentsSidebarFilter
         isChecked={false}
@@ -226,6 +238,12 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className="lmc-sidebar"
+          style={
+            Object {
+              "flex": "1",
+              "zIndex": "1",
+            }
+          }
         >
           <LmcResidentsSidebarFilter
             isChecked={false}
@@ -287,6 +305,12 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div
           className="lmc-sidebar"
+          style={
+            Object {
+              "flex": "1",
+              "zIndex": "1",
+            }
+          }
         >
           <LmcResidentsSidebarFilter
             isChecked={false}
