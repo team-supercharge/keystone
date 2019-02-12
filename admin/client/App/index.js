@@ -31,6 +31,12 @@ function fireGATracking () {
 
 // Loading custom LMC view
 import LmcResidentsScreen from './lmc/screens/Residents/index.jsx';
+import LmcResidentProfile from './lmc/screens/Residents/components/LmcResidentProfile.jsx';
+import LmcResidentReports from './lmc/screens/Residents/components/LmcResidentReports.jsx';
+import LmcResidentToDos from './lmc/screens/Residents/components/LmcResidentToDos.jsx';
+import LmcResidentCharts from './lmc/screens/Residents/components/LmcResidentCharts.jsx';
+import LmcResidentDocuments from './lmc/screens/Residents/components/LmcResidentDocuments.jsx';
+
 import LmcTodosView from './lmc/screens/Todos/index.jsx';
 import LmcReportView from './lmc/screens/Reports/index.jsx';
 import LmcFluidsOverview from './lmc/screens/Reports/Charts/charts/LmcFluidsOverview.jsx';
@@ -66,23 +72,17 @@ let HomePage = Keystone.user.role === 'carehome-admin'
 	? LmcHome
 	: DefaultHome;
 
-const ProfileTest = () => <div>Profile</div>
-const ReportTest = () => <div>Daily report</div>
-const ToDosTest = () => <div>To-Dos</div>
-const ChartsTest = () => <div>Charts</div>
-const DocumentsTest = () => <div>Documents</div>
-
 ReactDOM.render(
 	<Provider store={store}>
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
 				<Route path="residents" component={LmcResidentsScreen}>
-					<Route path='profile' component={ProfileTest} />
-					<Route path='daily-report' component={ReportTest} />
-					<Route path='to-do' component={ToDosTest} />
-					<Route path='charts' component={ChartsTest} />
-					<Route path='documents' component={DocumentsTest} />
+					<Route path='profile' component={LmcResidentProfile} />
+					<Route path='daily-report' component={LmcResidentReports} />
+					<Route path='to-do' component={LmcResidentToDos} />
+					<Route path='charts' component={LmcResidentCharts} />
+					<Route path='documents' component={LmcResidentDocuments} />
 				</Route>
 				<Route path="admin-reports" component={LmcAdminReportView} onChange={onListChange}>
 					<Route path="dashboard" component={LmcAdminDashboard} />
