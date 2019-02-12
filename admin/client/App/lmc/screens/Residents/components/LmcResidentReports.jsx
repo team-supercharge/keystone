@@ -8,8 +8,9 @@ export class LmcResidentReports extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.selectedResident !== prevProps.selectedResident) {
-            this.props.fetchLogs()
+        const { selectedResident, fetchLogs } = this.props
+        if (selectedResident !== prevProps.selectedResident) {
+            fetchLogs()
         } 
     }
 

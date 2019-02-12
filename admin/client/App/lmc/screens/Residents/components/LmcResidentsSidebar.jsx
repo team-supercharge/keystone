@@ -18,9 +18,9 @@ export class LmcResidentsSidebar extends Component {
     }
 
     componentDidMount () {
-        const { residents, setSelectedResident } = this.props;
+        const { residents, selectedResident, setSelectedResident } = this.props;
         let shownResidents = _.filter(residents, (resident) => !this.calculateHidden(resident))
-        if (shownResidents.length) {
+        if (shownResidents.length && !selectedResident) {
             setSelectedResident(shownResidents[0].id)
         }
     }

@@ -102,6 +102,7 @@ const styles = {
     },
     rightContainer: {
         flex: '4',
+        background: '#fbfbfb'
     },
 }
 
