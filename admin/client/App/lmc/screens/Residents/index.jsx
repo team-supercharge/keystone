@@ -57,7 +57,6 @@ export class LmcResidentsScreen extends Component {
                 </div> : null
         );
     }
-
     
     render () {
         const { residents } = this.props;
@@ -65,13 +64,22 @@ export class LmcResidentsScreen extends Component {
             <div>
                 { this.renderCreateForm() }
                 { residents ? (
-                    <LmcResidentsSidebar
-                        residents={residents}
-                        onCreate={this.onOpenCreateResident}
-                    />
+                    <div style={styles.mainContainer}>
+                        <LmcResidentsSidebar
+                            residents={residents}
+                            onCreate={this.onOpenCreateResident}
+                        />
+                    </div>
                 ) : <LmcSpinner /> }
             </div>
         );
+    }
+}
+
+const styles = {
+    mainContainer: {
+        display: 'flex',
+        flexDirection: 'column',
     }
 }
 

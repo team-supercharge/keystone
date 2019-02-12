@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
 
-const LmcResidentsSidebarItem = ({ resident, onClick, isSelected }) => {
-    const img = Object.entries(resident.fields.picture).length ? resident.fields.picture : PLACEHOLDER_IMAGE
+const LmcSidebarItem = ({ itemData, onClick, isSelected }) => {
+    const img = Object.entries(itemData.fields.picture).length ? itemData.fields.picture : PLACEHOLDER_IMAGE
     const chosenImgStyle = isSelected ? styles.selectedImg : styles.regularImg
     const chosenStyle = isSelected ? styles.selected : styles.regular
     const chosenTextStyle = isSelected ? styles.selectedText : styles.regularText
@@ -14,13 +14,15 @@ const LmcResidentsSidebarItem = ({ resident, onClick, isSelected }) => {
 
     return (
         <li
-            id={resident.id}
+            id={itemData.id}
             onClick={onClick}
             style={{ ...styles.item, ...chosenStyle }}
         >
-            <div>
+            <div style={styles.container}>
                 <span className='lmc-profile-picture__small' style={{ ...chosenImgStyle, ...styles.image, ...imgBackground }} />                
-                <span style={{ ...chosenTextStyle, ...styles.nameText }}>{resident.name}</span>
+                <div style={{ ...chosenTextStyle, ...styles.nameText }}>
+                    {itemData.name}
+                </div>
             </div>
         </li>
     )
@@ -34,14 +36,15 @@ const styles = {
     item : {
         listStyleType: 'none',
         height: '50px',
-        display: 'flex',
 		padding: '3px 0 3px 6px',
     },
     nameText: {
-        marginLeft: '15px',
-        position: 'relative',
-        top: '12px',
         cursor: 'pointer',
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        padding: '12px 10px 0px 15px',
+        minWidth: '0px',
     },
     selected: {
         background: '#f1f1f1',
@@ -63,10 +66,10 @@ const styles = {
     }
 }
 
-LmcResidentsSidebarItem.propTypes = {
-    resident: PropTypes.object.isRequired,
+LmcSidebarItem.propTypes = {
+    itemData: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
     isSelected: PropTypes.bool.isRequired,
 }
 
-export default LmcResidentsSidebarItem
+export default LmcSidebarItem

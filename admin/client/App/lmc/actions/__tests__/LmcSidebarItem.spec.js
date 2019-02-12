@@ -1,14 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import LmcResidentsSidebarItem from '../components/LmcResidentsSidebarItem'
+import LmcSidebarItem from '../components/LmcSidebarItem'
 
-describe('LmcResidentsSidebarItem', () => {
+describe('LmcSidebarItem', () => {
     let wrapper
-    let resident
+    let itemData
     const onClickMock = jest.fn()
 
     beforeEach(() => {
-        resident = {
+        itemData = {
             id: 'testId',
             name: 'testName',
             fields: {
@@ -16,8 +16,8 @@ describe('LmcResidentsSidebarItem', () => {
             }
         }
         wrapper = shallow(
-            <LmcResidentsSidebarItem
-                resident={resident}
+            <LmcSidebarItem
+                itemData={itemData}
                 onClick={onClickMock}
                 isSelected={true}
             />

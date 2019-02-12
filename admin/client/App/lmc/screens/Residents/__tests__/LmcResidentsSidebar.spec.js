@@ -31,7 +31,7 @@ describe('LmcResidentsSidebar', () => {
     })
 
     it('renders a number of sidebar items based on its active residents list', () => {
-        expect(wrapper.find('LmcResidentsSidebarItem').length).toEqual(2)
+        expect(wrapper.find('LmcSidebarItem').length).toEqual(2)
     })
 
     it('renders the sidebar filter', () => {

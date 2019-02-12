@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { ActionCreators } from '../../../actions/actions'
 import { GlyphButton, ResponsiveText } from '../../../../elemental'
 import _ from 'lodash'
-import LmcResidentsSidebarItem from './LmcResidentsSidebarItem.jsx'
+import LmcSidebarItem from '../../../components/LmcSidebarItem.jsx'
 import LmcResidentsSidebarFilter from './LmcResidentsSidebarFilter.jsx'
 
 export class LmcResidentsSidebar extends Component {
@@ -55,7 +55,7 @@ export class LmcResidentsSidebar extends Component {
         let shownResidents = _.filter(residents, (resident) => !this.calculateHidden(resident))
 
         return (
-            <div className='lmc-box-shadow__right' style={styles.container}>
+            <div className='lmc-sidebar' style={styles.container}>
                 <LmcResidentsSidebarFilter
                     onFormChange={this.handleFormChange}
                     onSwitchChange={this.handleSwitchChange}
@@ -76,12 +76,12 @@ export class LmcResidentsSidebar extends Component {
                         visibleLG={ADD_RESIDENTS_BUTTON_TEXT}
                      />
                 </GlyphButton>
-                <ul style={styles.list}>
+                <ul className='lmc-sidebar-list'>
                     { shownResidents.map((resident, index) => {
                             return (
-                                <LmcResidentsSidebarItem 
+                                <LmcSidebarItem 
                                     key={index}
-                                    resident={resident}
+                                    itemData={resident}
                                     onClick={() => setSelectedResident(resident.id)}
                                     isSelected={resident.id === selectedResident}
                                 />
@@ -97,16 +97,6 @@ const styles = {
     button: {
         borderRadius: 0,
     },
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '20vw',
-        height: '100vh',
-    },
-    list: {
-        padding: 0,
-        margin: 0,
-    }
 };
 
 const ADD_RESIDENTS_BUTTON_TEXT = 'Add a Resident';

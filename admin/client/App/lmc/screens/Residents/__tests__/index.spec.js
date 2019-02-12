@@ -1,6 +1,16 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { LmcResidentsScreen } from '../index.jsx'
+import proxyquire from 'proxyquire'
+
+proxyquire.noCallThru()
+
+const CreateForm = () => <div></div>
+const FieldTypes = () => <div></div>
+
+const { LmcResidentsScreen } = proxyquire('../index.jsx', {
+    '../../../shared/CreateForm': CreateForm,
+    'FieldTypes': FieldTypes,
+})
 
 describe('LmcResidentsScreen', () => {
     let wrapper

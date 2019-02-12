@@ -9,15 +9,7 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    className="lmc-box-shadow__right"
-    style={
-      Object {
-        "display": "flex",
-        "flexDirection": "column",
-        "height": "100vh",
-        "width": "20vw",
-      }
-    }
+    className="lmc-sidebar"
   >
     <LmcResidentsSidebarFilter
       isChecked={false}
@@ -46,17 +38,11 @@ ShallowWrapper {
       />
     </GlyphButton>
     <ul
-      style={
-        Object {
-          "margin": 0,
-          "padding": 0,
-        }
-      }
+      className="lmc-sidebar-list"
     >
-      <LmcResidentsSidebarItem
+      <LmcSidebarItem
         isSelected={true}
-        onClick={[Function]}
-        resident={
+        itemData={
           Object {
             "fields": Object {
               "status": "active",
@@ -65,11 +51,11 @@ ShallowWrapper {
             "name": "testId2",
           }
         }
-      />
-      <LmcResidentsSidebarItem
-        isSelected={false}
         onClick={[Function]}
-        resident={
+      />
+      <LmcSidebarItem
+        isSelected={false}
+        itemData={
           Object {
             "fields": Object {
               "status": "active",
@@ -78,20 +64,13 @@ ShallowWrapper {
             "name": "testId2",
           }
         }
+        onClick={[Function]}
       />
     </ul>
   </div>,
   "nodes": Array [
     <div
-      className="lmc-box-shadow__right"
-      style={
-        Object {
-          "display": "flex",
-          "flexDirection": "column",
-          "height": "100vh",
-          "width": "20vw",
-        }
-      }
+      className="lmc-sidebar"
     >
       <LmcResidentsSidebarFilter
         isChecked={false}
@@ -120,17 +99,11 @@ ShallowWrapper {
         />
       </GlyphButton>
       <ul
-        style={
-          Object {
-            "margin": 0,
-            "padding": 0,
-          }
-        }
+        className="lmc-sidebar-list"
       >
-        <LmcResidentsSidebarItem
+        <LmcSidebarItem
           isSelected={true}
-          onClick={[Function]}
-          resident={
+          itemData={
             Object {
               "fields": Object {
                 "status": "active",
@@ -139,11 +112,11 @@ ShallowWrapper {
               "name": "testId2",
             }
           }
-        />
-        <LmcResidentsSidebarItem
-          isSelected={false}
           onClick={[Function]}
-          resident={
+        />
+        <LmcSidebarItem
+          isSelected={false}
+          itemData={
             Object {
               "fields": Object {
                 "status": "active",
@@ -152,6 +125,7 @@ ShallowWrapper {
               "name": "testId2",
             }
           }
+          onClick={[Function]}
         />
       </ul>
     </div>,
@@ -251,15 +225,7 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          className="lmc-box-shadow__right"
-          style={
-            Object {
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100vh",
-              "width": "20vw",
-            }
-          }
+          className="lmc-sidebar"
         >
           <LmcResidentsSidebarFilter
             isChecked={false}
@@ -288,17 +254,11 @@ ShallowWrapper {
             />
           </GlyphButton>
           <ul
-            style={
-              Object {
-                "margin": 0,
-                "padding": 0,
-              }
-            }
+            className="lmc-sidebar-list"
           >
-            <LmcResidentsSidebarItem
+            <LmcSidebarItem
               isSelected={true}
-              onClick={[Function]}
-              resident={
+              itemData={
                 Object {
                   "fields": Object {
                     "status": "active",
@@ -307,11 +267,11 @@ ShallowWrapper {
                   "name": "testId2",
                 }
               }
-            />
-            <LmcResidentsSidebarItem
-              isSelected={false}
               onClick={[Function]}
-              resident={
+            />
+            <LmcSidebarItem
+              isSelected={false}
+              itemData={
                 Object {
                   "fields": Object {
                     "status": "active",
@@ -320,20 +280,13 @@ ShallowWrapper {
                   "name": "testId2",
                 }
               }
+              onClick={[Function]}
             />
           </ul>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div
-          className="lmc-box-shadow__right"
-          style={
-            Object {
-              "display": "flex",
-              "flexDirection": "column",
-              "height": "100vh",
-              "width": "20vw",
-            }
-          }
+          className="lmc-sidebar"
         >
           <LmcResidentsSidebarFilter
             isChecked={false}
@@ -362,17 +315,11 @@ ShallowWrapper {
             />
           </GlyphButton>
           <ul
-            style={
-              Object {
-                "margin": 0,
-                "padding": 0,
-              }
-            }
+            className="lmc-sidebar-list"
           >
-            <LmcResidentsSidebarItem
+            <LmcSidebarItem
               isSelected={true}
-              onClick={[Function]}
-              resident={
+              itemData={
                 Object {
                   "fields": Object {
                     "status": "active",
@@ -381,11 +328,11 @@ ShallowWrapper {
                   "name": "testId2",
                 }
               }
-            />
-            <LmcResidentsSidebarItem
-              isSelected={false}
               onClick={[Function]}
-              resident={
+            />
+            <LmcSidebarItem
+              isSelected={false}
+              itemData={
                 Object {
                   "fields": Object {
                     "status": "active",
@@ -394,6 +341,7 @@ ShallowWrapper {
                   "name": "testId2",
                 }
               }
+              onClick={[Function]}
             />
           </ul>
         </div>,
