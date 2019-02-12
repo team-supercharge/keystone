@@ -430,9 +430,6 @@ var EditForm = React.createClass({
 		const isResidentPage = list && (list.key === 'Resident' || list.key === 'User');
 		const isUserPage = ['carer', 'carehome-admin'].includes(data.fields.role)
 		const confirmationType = list.id === 'residents' ? 'danger' : 'warning';
-
-		const confirmationType = _.get(this.props, 'list.id') === 'residents' ? 'danger' : 'warning'
-
 		return (
 			<form ref="editForm" className="EditForm-container">
 				{(this.state.alerts) ? <AlertMessages alerts={this.state.alerts} /> : null}
