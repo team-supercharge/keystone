@@ -28,7 +28,7 @@ describe('LmcResidentProfile', () => {
 
     it('has a link to edit the selected resident profile', () => {
         const editLink= wrapper.find(Link).first()
-        expect(editLink.text()).toEqual('Edit Information')
+        expect(editLink.props().children).toEqual('Edit Information')
         expect(editLink.props().to).toEqual(`/admin/residents/${selectedResident}`)
     })
 
