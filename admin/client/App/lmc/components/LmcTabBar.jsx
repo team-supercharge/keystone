@@ -26,21 +26,23 @@ export class LmcTabBar extends Component {
                         { items.map((item, index) => {
                             return this.isActive(item.url)
                                 ? <li 
+                                    className='lmc-secondary-nav-link'
                                     key={index}
                                     style={{ ...styles.activeItem, ...styles.item }}
                                 >
                                     <Link 
-                                        className='lmc-secondary-nav-link' 
+                                        className='lmc-secondary-nav-link'
                                         to={`${baseUrl}/${item.url}`}
                                     >
                                         {item.label}
                                     </Link>
                                 </li>
                                 : <li 
+                                    className='lmc-secondary-nav-link'
                                     key={index}
                                     style={styles.item}>
                                     <Link
-                                        className='lmc-secondary-nav-link' 
+                                        className='lmc-secondary-nav-link'
                                         to={`${baseUrl}/${item.url}`}
                                     >
                                         {item.label}
@@ -57,9 +59,6 @@ export class LmcTabBar extends Component {
 const styles = {
     activeItem: {
         borderBottom: '3px solid #e65d78',
-    },
-    activeLink: {
-        color: '#e65d78',
     },
     item: {
         boxSizing: 'border-box',

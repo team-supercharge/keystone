@@ -8,7 +8,7 @@ import 'babel-polyfill';
 import 'whatwg-fetch'; // CO-63: polyfill for window.fetch
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 
@@ -78,6 +78,7 @@ ReactDOM.render(
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
 				<Route path="residents" component={LmcResidentsScreen}>
+					<IndexRedirect to='/admin/residents/profile' />
 					<Route path='profile' component={LmcResidentProfile} />
 					<Route path='daily-report' component={LmcResidentReports} />
 					<Route path='to-do' component={LmcResidentToDos} />

@@ -28,9 +28,11 @@ var SecondaryNavigation = React.createClass({
 	componentWillUnmount () {
 		window.removeEventListener('resize', this.handleResize);
 	},
+
 	handleResize () {
+		const { currentListKey, lists } = this.props
 		this.setState({
-			navIsVisible: this.props.lists && Object.keys(this.props.lists).length > 0 && window.innerWidth >= 768,
+			navIsVisible: lists && Object.keys(lists).length > 0 && window.innerWidth >= 768,
 		});
 	},
 	// Render the navigation
@@ -73,12 +75,21 @@ var SecondaryNavigation = React.createClass({
 		);
 	},
 	render () {
-		if (this.state.navIsVisible === false) return null;
+		const { currentListKey, lists } = this.props
+		if (!this.state.navIsVisible) {
+			console.log('BUG')
+			return null;
+		}
+
+		if (currentListKey === 'residents') {
+			console.log(currentListKey)
+			return null
+		}
 
 		return (
 			<nav className="secondary-navbar">
 				<Container clearFloatingChildren>
-					{this.renderNavigation(this.props.lists)}
+					{this.renderNavigation(lists)}
 				</Container>
 			</nav>
 		);

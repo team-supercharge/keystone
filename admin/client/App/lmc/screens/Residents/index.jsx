@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../actions/actions'
+import { selectList } from '../../../screens/List/actions'
 import { LmcSpinner } from '../../components'
-import List from '../../../../utils/List';
+import List from '../../../../utils/List'
 import CreateForm from '../../../shared/CreateForm'
 import LmcResidentsSidebar from './components/LmcResidentsSidebar.jsx'
 import LmcTabBar from '../../components/LmcTabBar.jsx'
@@ -11,6 +12,10 @@ import LmcTabBar from '../../components/LmcTabBar.jsx'
 export class LmcResidentsScreen extends Component {
     constructor(props) {
         super(props)
+    }
+
+    componentDidMount () {
+        this.props.selectList()
     }
 
     state = {
@@ -23,7 +28,7 @@ export class LmcResidentsScreen extends Component {
         this.setState({ 
             showCreateModal: true,
             currentList: new List(Keystone.lists['Resident']),
-        });
+        })
     }
 
     onCloseCreateResident = () => {
@@ -32,8 +37,8 @@ export class LmcResidentsScreen extends Component {
             this.setState({ 
                 showCreateModal: false, 
                 isModalOpen: true 
-            });
-        });
+            })
+        })
     }
 
     onCreateResidentComplete = (resident) => {
@@ -56,7 +61,7 @@ export class LmcResidentsScreen extends Component {
                         onCreate={resident => this.onCreateResidentComplete(resident)}
                     />
                 </div> : null
-        );
+        )
     }
     
     render () {
@@ -83,15 +88,15 @@ export class LmcResidentsScreen extends Component {
                     </div>
                 ) : <LmcSpinner /> }
             </div>
-        );
+        )
     }
 }
 
 const navbarItems = [
     { label: 'Profile', url: 'profile' },
-    { label: 'Daily reports', url: 'daily-report' },
-    { label: 'To-Dos', url: 'to-do' },
+    { label: 'Daily report', url: 'daily-report' },
     { label: 'Charts', url: 'charts' },
+    { label: 'To-Dos', url: 'to-do' },
     { label: 'Documents', url: 'documents' }
 ]
 
@@ -118,9 +123,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        selectList: () => dispatch(selectList('residents')),
         fetchResidents: () => dispatch(ActionCreators.loadList('residents')),
         setSelectedResident: (id) => dispatch(ActionCreators.setSelectedResident(id))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LmcResidentsScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LmcResidentsScreen)
