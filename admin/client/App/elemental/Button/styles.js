@@ -122,9 +122,9 @@ function buttonFillVariant (textColor, bgColor) {
 function buttonFillDefault () {
 	const borderColor = theme.input.border.color.default;
 	const hoverStyles = {
-		...gradientVertical('#fff', '#eee'),
+		background: '#f0f0f0',
+		// ...gradientVertical('#fff', '#eee'),
 		borderColor: `${darken(borderColor, 5)} ${darken(borderColor, 5)} ${darken(borderColor, 10)}`,
-		boxShadow: '0 1px 0 rgba(0,0,0,0.1)',
 		color: theme.color.text,
 	};
 	const focusStyles = {
