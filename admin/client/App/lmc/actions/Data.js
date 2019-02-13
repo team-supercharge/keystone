@@ -7,7 +7,7 @@ import {
 export function initialize () {
     return (dispatch) => {
         const lists = [
-            'users',
+            'carers',
             'residents',
             'log-categories',
             'log-category-items',
@@ -19,10 +19,10 @@ export function initialize () {
 
 export function loadList (listId) {
     return (dispatch) => {
-        const url = `${Keystone.adminPath}/api/${listId}`
+        const url = `${Keystone.adminPath}/api/reports/${listId}`
         return getJSON({ url })
             .then(res => {
-                dispatch(setLoadedList(listId, res.results));
+                dispatch(setLoadedList(listId, res.result));
             })
             .catch(err => {
                 console.log(err)
@@ -31,7 +31,7 @@ export function loadList (listId) {
 }
 
 export function loadLists (lists) {
-    const urls = lists.map(listId => `${Keystone.adminPath}/api/${listId}`)
+    const urls = lists.map(listId => `${Keystone.adminPath}/api/reports/${listId}`)
     return (dispatch) => {
         Promise.all(urls.map(url => getJSON({ url })))
             .then(results => {

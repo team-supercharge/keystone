@@ -11,9 +11,9 @@ export const data = createReducer(
             const newState = { ...state };
             lists.forEach(list => {
                 if (overwrite) {
-                    newState[list.listId] = list.results
+                    newState[list.listId] = list.result
                 } else {
-                    newState[list.listId] = _.uniqBy([ ...list.results, ...newState[list.listId] ], 'id');
+                    newState[list.listId] = _.uniqBy([ ...list.result, ...newState[list.listId] ], 'id');
                 }
             })
             return newState;

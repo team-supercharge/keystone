@@ -1,5 +1,5 @@
 import * as types from '../constants'
-import { fetchResidentLogs, getJSON } from '../common/dataService'
+import { fetchResidentLogs } from '../common/dataService'
 
 export function setSelectedResident(id) {
     return {

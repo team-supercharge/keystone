@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
 
 const LmcSidebarItem = ({ itemData, onClick, isSelected }) => {
-    const img = Object.entries(itemData.fields.picture).length ? itemData.fields.picture : PLACEHOLDER_IMAGE
+    const img = itemData.picture ? itemData.picture : PLACEHOLDER_IMAGE
     const chosenImgStyle = isSelected ? styles.selectedImg : styles.regularImg
     const chosenStyle = isSelected ? styles.selected : styles.regular
     const chosenTextStyle = isSelected ? styles.selectedText : styles.regularText
@@ -21,7 +21,7 @@ const LmcSidebarItem = ({ itemData, onClick, isSelected }) => {
             <div style={styles.container}>
                 <span className='lmc-profile-picture__small' style={{ ...chosenImgStyle, ...styles.image, ...imgBackground }} />                
                 <div style={{ ...chosenTextStyle, ...styles.nameText }}>
-                    {itemData.name}
+                    {`${itemData.name.first} ${itemData.name.last}`}
                 </div>
             </div>
         </li>

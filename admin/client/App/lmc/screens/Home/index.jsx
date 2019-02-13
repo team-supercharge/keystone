@@ -196,7 +196,7 @@ const ERROR_MESSAGE = 'Oops... looks like something went wrong. Please get in to
 const usersUrl = `${Keystone.adminPath}/api/reports/users`;
 const tasksUrl = `${Keystone.adminPath}/api/reports/tasks/count`;
 const logsUrl = `${Keystone.adminPath}/api/reports/daily_logs`;
-const residentsUrl = `${Keystone.adminPath}/api/reports/residents`;
+const residentsUrl = `${Keystone.adminPath}/api/reports/residents_v0`;
 
 export default connect((props) => ({
     logsFetch: logsUrl,

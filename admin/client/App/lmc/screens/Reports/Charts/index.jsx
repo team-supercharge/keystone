@@ -138,6 +138,6 @@ const styles = {
 };
 
 export default withDataLoader(LmcCharts, {
-    url: () => `${Keystone.adminPath}/api/reports/residents`,
+    url: () => `${Keystone.adminPath}/api/reports/residents_v0`,
     errorMessage: 'You haven\'t added any residents yet',
 });

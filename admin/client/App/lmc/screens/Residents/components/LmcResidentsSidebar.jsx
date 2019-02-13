@@ -26,9 +26,10 @@ export class LmcResidentsSidebar extends Component {
     }
 
     calculateHidden = (resident) => {
+        const { first, last } = resident.name
         return (
-            !resident.name.match(new RegExp(this.state.nameFilter, 'i')) || 
-            (this.state.displayActiveResidents && resident.fields.status !== 'active')
+            !`${first} ${last}`.match(new RegExp(this.state.nameFilter, 'i')) || 
+            (this.state.displayActiveResidents && resident.status !== 'active')
         )
     }
 
