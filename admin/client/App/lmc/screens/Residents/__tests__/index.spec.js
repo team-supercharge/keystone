@@ -36,14 +36,24 @@ describe.skip('LmcResidentsScreen', () => {
         expect(wrapper.find('Connect(LmcResidentsSidebar)').length).toEqual(1)
     })
 
-    it('renders a spinner if no residents data is provided', () => {
-        const secondWrapper = shallow(
+    it('renders a spinner if no data is loaded', () => {
+        const loadingWrapper = shallow(
             <LmcResidentsScreen
                 residents={null}
             />
         )
         expect(wrapper.find('LmcSpinner').length).toEqual(0)
-        expect(secondWrapper.find('Connect(LmcResidentsSidebar)').length).toEqual(0)
-        expect(secondWrapper.find('LmcSpinner').length).toEqual(1)
+        expect(loadingWrapper.find('Connect(LmcResidentsSidebar)').length).toEqual(0)
+        expect(loadingWrapper.find('BlankState').length).toEqual(0)
+        expect(loadingWrapper.find('LmcSpinner').length).toEqual(1)
+    })
+
+    it('renders a message if data is successfully loaded, but there are no residents', () => {
+        const emptyWrapper = shallow(
+            <LmcResidentsScreen
+                residents={[]}
+            />
+        )
+        expect(emptyWrapper.find('BlankState').length).toEqual(1)
     })
 })

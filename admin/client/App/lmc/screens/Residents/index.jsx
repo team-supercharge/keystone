@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { ActionCreators } from '../../actions/actions'
 import { selectList } from '../../../screens/List/actions'
 import { LmcSpinner } from '../../components'
+import { BlankState } from '../../../elemental'
 import List from '../../../../utils/List'
 import CreateForm from '../../../shared/CreateForm'
 import LmcResidentsSidebar from './components/LmcResidentsSidebar.jsx'
@@ -82,7 +83,12 @@ export class LmcResidentsScreen extends Component {
                                 resourceUrl='residents'    
                             />
                             <div>
-                                {children}
+                                { !residents.length ? (
+                                    <BlankState
+                                        heading={NO_RESIDENTS_MESSAGE}
+                                        style={styles.noResidentsMessage}
+                                    />
+                                ) : children}
                             </div>
                         </div>
                     </div>
@@ -100,6 +106,8 @@ const navbarItems = [
     { label: 'Documents', url: 'documents' }
 ]
 
+const NO_RESIDENTS_MESSAGE = "You haven't added any residents yet"
+
 const styles = {
     mainContainer: {
         display: 'flex',
@@ -109,6 +117,10 @@ const styles = {
         flex: '4',
         background: '#fbfbfb'
     },
+    noResidentsMessage: {
+        margin: 50,
+        padding: 60,
+    }
 }
 
 LmcResidentsScreen.propTypes = {
