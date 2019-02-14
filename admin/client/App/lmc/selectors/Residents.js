@@ -1,8 +1,6 @@
 import { createSelector } from 'reselect'
 import _ from 'lodash'
-
-export const getSelectedResident = state => state.residents.selectedResident
-export const getResidentsList = state => state.data.residents
+import { getSelectedResident, getResidentsList } from './Lists'
 
 export const getSelectedResidentProfile = createSelector(
     [ getSelectedResident, getResidentsList ],
