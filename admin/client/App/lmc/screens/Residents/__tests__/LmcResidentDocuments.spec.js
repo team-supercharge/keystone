@@ -1,3 +1,5 @@
+jest.mock('../../../../shared/CreateForm')
+
 import React from 'react'
 import { shallow } from 'enzyme'
 import { LmcResidentDocuments } from '../components/LmcResidentDocuments.jsx'
@@ -41,6 +43,14 @@ describe('LmcResidentDocuments', () => {
 
         documentItem.props().onDelete()
         expect(deleteDocument).toBeCalledTimes(1)
+    })
+
+    it('renders a LmcCreateButton with the correct props', () => {
+        const button = wrapper.find('LmcCreateButton')
+
+        expect(button.props().listId).toEqual('Document')
+        expect(button.props().title).toEqual('Add a Document')
+        expect(button.props().onCreate).toEqual(fetchDocuments)
     })
 
     afterEach(() => {

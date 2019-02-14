@@ -1,3 +1,5 @@
+jest.mock('../../../../shared/CreateForm')
+
 import React from 'react'
 import { shallow } from 'enzyme'
 import proxyquire from 'proxyquire'

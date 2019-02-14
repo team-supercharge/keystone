@@ -1,3 +1,5 @@
+jest.mock('../../../../shared/CreateForm')
+
 import React from 'react'
 import { shallow } from 'enzyme'
 import { LmcResidentsSidebar } from '../components/LmcResidentsSidebar.jsx'
@@ -36,5 +38,13 @@ describe('LmcResidentsSidebar', () => {
 
     it('renders the sidebar filter', () => {
         expect(wrapper.find('LmcResidentsSidebarFilter').length).toEqual(1)
+    })
+
+    it('renders a LmcCreateButton with the correct props', () => {
+        const button = wrapper.find('LmcCreateButton')
+
+        expect(button.props().listId).toEqual('Resident')
+        expect(button.props().title).toEqual('Add a new Resident')
+        expect(button.props().onCreate).toEqual(onCreateMock)
     })
 })

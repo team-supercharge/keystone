@@ -1,3 +1,6 @@
+jest.mock('../../../shared/CreateForm')
+jest.mock('../../../../utils/List')
+
 import React from 'react'
 import { shallow } from 'enzyme'
 import LmcCreateButton from '../LmcCreateButton.jsx'
@@ -37,7 +40,13 @@ describe('LmcCreateButton', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('opens a CreateForm when the button is pressed', () => {
+    it('renders the correct button', () => {
+        const button = wrapper.find('GlyphButton')
+        expect(button.props().title).toEqual('Add a TestList')
+        expect(button.props().style).toEqual(styles.button)
+    })
+
+    it('renders a CreateForm when the button is pressed', () => {
         const button = wrapper.find('GlyphButton')
         expect(wrapper.find('CreateForm').length).toEqual(0)
 

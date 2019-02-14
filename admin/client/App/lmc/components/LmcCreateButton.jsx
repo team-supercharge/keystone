@@ -50,7 +50,7 @@ export default class LmcCreateButton extends Component {
     }
 
     render () {
-        const { listId, style } = this.props
+        const { listId, title, style } = this.props
         const buttonText = `Add a ${listId}`
         return (
             <section>
