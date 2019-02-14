@@ -9,24 +9,14 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <Connect(LmcResidentsSidebar)
-      onCreate={[Function]}
-      residents={
-        Array [
-          Object {
-            "id": "testId1",
-            "name": "testName1",
-          },
-          Object {
-            "id": "testId2",
-            "name": "testName2",
-          },
-        ]
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        }
       }
-    />
-  </div>,
-  "nodes": Array [
-    <div>
+    >
       <Connect(LmcResidentsSidebar)
         onCreate={[Function]}
         residents={
@@ -42,6 +32,108 @@ ShallowWrapper {
           ]
         }
       />
+      <div
+        style={
+          Object {
+            "background": "#fbfbfb",
+            "flex": "4",
+          }
+        }
+      >
+        <Connect(LmcTabBar)
+          items={
+            Array [
+              Object {
+                "label": "Profile",
+                "url": "profile",
+              },
+              Object {
+                "label": "Daily report",
+                "url": "daily-report",
+              },
+              Object {
+                "label": "Charts",
+                "url": "charts",
+              },
+              Object {
+                "label": "To-Dos",
+                "url": "to-do",
+              },
+              Object {
+                "label": "Documents",
+                "url": "documents",
+              },
+            ]
+          }
+          resourceUrl="residents"
+        />
+        <div />
+      </div>
+    </div>
+  </div>,
+  "nodes": Array [
+    <div>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Connect(LmcResidentsSidebar)
+          onCreate={[Function]}
+          residents={
+            Array [
+              Object {
+                "id": "testId1",
+                "name": "testName1",
+              },
+              Object {
+                "id": "testId2",
+                "name": "testName2",
+              },
+            ]
+          }
+        />
+        <div
+          style={
+            Object {
+              "background": "#fbfbfb",
+              "flex": "4",
+            }
+          }
+        >
+          <Connect(LmcTabBar)
+            items={
+              Array [
+                Object {
+                  "label": "Profile",
+                  "url": "profile",
+                },
+                Object {
+                  "label": "Daily report",
+                  "url": "daily-report",
+                },
+                Object {
+                  "label": "Charts",
+                  "url": "charts",
+                },
+                Object {
+                  "label": "To-Dos",
+                  "url": "to-do",
+                },
+                Object {
+                  "label": "Documents",
+                  "url": "documents",
+                },
+              ]
+            }
+            resourceUrl="residents"
+          />
+          <div />
+        </div>
+      </div>
     </div>,
   ],
   "options": Object {},
@@ -70,7 +162,7 @@ ShallowWrapper {
       "_instance": LmcResidentsScreen {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "onOpenCreateResident": [Function],
+        "onCreateResidentComplete": [Function],
         "props": Object {
           "residents": Array [
             Object {
@@ -104,39 +196,131 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <Connect(LmcResidentsSidebar)
-            onCreate={[Function]}
-            residents={
-              Array [
-                Object {
-                  "id": "testId1",
-                  "name": "testName1",
-                },
-                Object {
-                  "id": "testId2",
-                  "name": "testName2",
-                },
-              ]
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
             }
-          />
+          >
+            <Connect(LmcResidentsSidebar)
+              onCreate={[Function]}
+              residents={
+                Array [
+                  Object {
+                    "id": "testId1",
+                    "name": "testName1",
+                  },
+                  Object {
+                    "id": "testId2",
+                    "name": "testName2",
+                  },
+                ]
+              }
+            />
+            <div
+              style={
+                Object {
+                  "background": "#fbfbfb",
+                  "flex": "4",
+                }
+              }
+            >
+              <Connect(LmcTabBar)
+                items={
+                  Array [
+                    Object {
+                      "label": "Profile",
+                      "url": "profile",
+                    },
+                    Object {
+                      "label": "Daily report",
+                      "url": "daily-report",
+                    },
+                    Object {
+                      "label": "Charts",
+                      "url": "charts",
+                    },
+                    Object {
+                      "label": "To-Dos",
+                      "url": "to-do",
+                    },
+                    Object {
+                      "label": "Documents",
+                      "url": "documents",
+                    },
+                  ]
+                }
+                resourceUrl="residents"
+              />
+              <div />
+            </div>
+          </div>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          <Connect(LmcResidentsSidebar)
-            onCreate={[Function]}
-            residents={
-              Array [
-                Object {
-                  "id": "testId1",
-                  "name": "testName1",
-                },
-                Object {
-                  "id": "testId2",
-                  "name": "testName2",
-                },
-              ]
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
             }
-          />
+          >
+            <Connect(LmcResidentsSidebar)
+              onCreate={[Function]}
+              residents={
+                Array [
+                  Object {
+                    "id": "testId1",
+                    "name": "testName1",
+                  },
+                  Object {
+                    "id": "testId2",
+                    "name": "testName2",
+                  },
+                ]
+              }
+            />
+            <div
+              style={
+                Object {
+                  "background": "#fbfbfb",
+                  "flex": "4",
+                }
+              }
+            >
+              <Connect(LmcTabBar)
+                items={
+                  Array [
+                    Object {
+                      "label": "Profile",
+                      "url": "profile",
+                    },
+                    Object {
+                      "label": "Daily report",
+                      "url": "daily-report",
+                    },
+                    Object {
+                      "label": "Charts",
+                      "url": "charts",
+                    },
+                    Object {
+                      "label": "To-Dos",
+                      "url": "to-do",
+                    },
+                    Object {
+                      "label": "Documents",
+                      "url": "documents",
+                    },
+                  ]
+                }
+                resourceUrl="residents"
+              />
+              <div />
+            </div>
+          </div>
         </div>,
       },
       "_renderedNodeType": 0,

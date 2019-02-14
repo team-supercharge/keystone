@@ -6,6 +6,7 @@ import { GlyphButton, ResponsiveText } from '../../../../elemental'
 import _ from 'lodash'
 import LmcSidebarItem from '../../../components/LmcSidebarItem.jsx'
 import LmcResidentsSidebarFilter from './LmcResidentsSidebarFilter.jsx'
+import LmcCreateButton from '../../../components/LmcCreateButton.jsx'
 
 export class LmcResidentsSidebar extends Component {
     constructor(props) {
@@ -62,21 +63,12 @@ export class LmcResidentsSidebar extends Component {
                     onSwitchChange={this.handleSwitchChange}
                     isChecked={!this.state.displayActiveResidents}
                 />
-                <GlyphButton
-                    block
-                    color='success'
-                    glyph='plus'
-                    position='left'
-                    title={ADD_RESIDENTS_BUTTON_TEXT}
-                    onClick={() => onCreate('Residents')}
+                <LmcCreateButton
+                    listId='Resident'
+                    title='Add a new Resident'
+                    onCreate={onCreate}
                     style={styles.button}
-                >
-                    <ResponsiveText
-                        visibleSM={ADD_RESIDENTS_BUTTON_TEXT}
-                        visibleMD={ADD_RESIDENTS_BUTTON_TEXT}
-                        visibleLG={ADD_RESIDENTS_BUTTON_TEXT}
-                     />
-                </GlyphButton>
+                />
                 <ul className='lmc-sidebar-list'>
                         { shownResidents.map((resident, index) => {
                             return (

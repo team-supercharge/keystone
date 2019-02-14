@@ -22,27 +22,16 @@ ShallowWrapper {
       onFormChange={[Function]}
       onSwitchChange={[Function]}
     />
-    <GlyphButton
-      block={true}
-      color="success"
-      glyph="plus"
-      glyphStyle={Object {}}
-      onClick={[Function]}
-      position="left"
+    <LmcCreateButton
+      listId="Resident"
+      onCreate={[MockFunction]}
       style={
         Object {
           "borderRadius": 0,
         }
       }
-      title="Add a Resident"
-    >
-      <ResponsiveText
-        component="span"
-        visibleLG="Add a Resident"
-        visibleMD="Add a Resident"
-        visibleSM="Add a Resident"
-      />
-    </GlyphButton>
+      title="Add a new Resident"
+    />
     <ul
       className="lmc-sidebar-list"
     >
@@ -91,27 +80,16 @@ ShallowWrapper {
         onFormChange={[Function]}
         onSwitchChange={[Function]}
       />
-      <GlyphButton
-        block={true}
-        color="success"
-        glyph="plus"
-        glyphStyle={Object {}}
-        onClick={[Function]}
-        position="left"
+      <LmcCreateButton
+        listId="Resident"
+        onCreate={[MockFunction]}
         style={
           Object {
             "borderRadius": 0,
           }
         }
-        title="Add a Resident"
-      >
-        <ResponsiveText
-          component="span"
-          visibleLG="Add a Resident"
-          visibleMD="Add a Resident"
-          visibleSM="Add a Resident"
-        />
-      </GlyphButton>
+        title="Add a new Resident"
+      />
       <ul
         className="lmc-sidebar-list"
       >
@@ -260,27 +238,16 @@ ShallowWrapper {
             onFormChange={[Function]}
             onSwitchChange={[Function]}
           />
-          <GlyphButton
-            block={true}
-            color="success"
-            glyph="plus"
-            glyphStyle={Object {}}
-            onClick={[Function]}
-            position="left"
+          <LmcCreateButton
+            listId="Resident"
+            onCreate={[MockFunction]}
             style={
               Object {
                 "borderRadius": 0,
               }
             }
-            title="Add a Resident"
-          >
-            <ResponsiveText
-              component="span"
-              visibleLG="Add a Resident"
-              visibleMD="Add a Resident"
-              visibleSM="Add a Resident"
-            />
-          </GlyphButton>
+            title="Add a new Resident"
+          />
           <ul
             className="lmc-sidebar-list"
           >
@@ -329,27 +296,16 @@ ShallowWrapper {
             onFormChange={[Function]}
             onSwitchChange={[Function]}
           />
-          <GlyphButton
-            block={true}
-            color="success"
-            glyph="plus"
-            glyphStyle={Object {}}
-            onClick={[Function]}
-            position="left"
+          <LmcCreateButton
+            listId="Resident"
+            onCreate={[MockFunction]}
             style={
               Object {
                 "borderRadius": 0,
               }
             }
-            title="Add a Resident"
-          >
-            <ResponsiveText
-              component="span"
-              visibleLG="Add a Resident"
-              visibleMD="Add a Resident"
-              visibleSM="Add a Resident"
-            />
-          </GlyphButton>
+            title="Add a new Resident"
+          />
           <ul
             className="lmc-sidebar-list"
           >

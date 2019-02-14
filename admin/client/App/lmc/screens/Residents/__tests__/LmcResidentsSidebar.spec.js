@@ -37,10 +37,4 @@ describe('LmcResidentsSidebar', () => {
     it('renders the sidebar filter', () => {
         expect(wrapper.find('LmcResidentsSidebarFilter').length).toEqual(1)
     })
-
-    it('triggers its onCreate prop', () => {
-        wrapper.find('GlyphButton').simulate('click')
-        expect(onCreateMock).toBeCalledTimes(1)
-        expect(onCreateMock).toBeCalledWith('Residents')
-    })
 })

@@ -1,17 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import proxyquire from 'proxyquire'
-// import { LmcResidentsScreen } from '../index.jsx'
+import { LmcResidentsScreen } from '../index.jsx'
 
-// proxyquire.noCallThru()
-
-// const CreateForm = () => <div></div>
-
-// const { LmcResidentsScreen } = proxyquire('../index.jsx', {
-//     '../../../shared/CreateForm': CreateForm,
-// })
-
-describe.skip('LmcResidentsScreen', () => {
+describe('LmcResidentsScreen', () => {
     let wrapper
     let residents
 

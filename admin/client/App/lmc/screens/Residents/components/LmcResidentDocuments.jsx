@@ -5,6 +5,7 @@ import { ActionCreators } from '../../../actions/actions'
 import { BlankState } from '../../../../elemental'
 import Selectors from '../../../selectors'
 import LmcDocumentItem from './LmcDocumentItem.jsx'
+import LmcCreateButton from '../../../components/LmcCreateButton.jsx'
 
 export class LmcResidentDocuments extends Component {
     componentDidMount () {
@@ -45,6 +46,12 @@ export class LmcResidentDocuments extends Component {
 
         return (
             <div>
+                <LmcCreateButton
+                    listId='Document'
+                    title='Add a Document'
+                    onCreate={this.props.fetchDocuments}
+                    style={styles.addButton}
+                />
                 {hasDocuments ? (
                     this.renderDocuments()
                 ) : (
@@ -61,6 +68,11 @@ export class LmcResidentDocuments extends Component {
 const NO_DOCUMENTS_MESSAGE = "You haven't added any documents for this resident"
 
 const styles = {
+    addButton: {
+        float: 'right',
+        width: 200,
+        margin: '20px 20px 0px 0px',
+    },
     documentContainer: {
         display: 'inline-block',
     },

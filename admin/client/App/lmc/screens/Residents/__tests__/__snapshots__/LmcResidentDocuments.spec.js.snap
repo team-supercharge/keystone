@@ -9,6 +9,18 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
+    <LmcCreateButton
+      listId="Document"
+      onCreate={[MockFunction]}
+      style={
+        Object {
+          "float": "right",
+          "margin": "20px 20px 0px 0px",
+          "width": 200,
+        }
+      }
+      title="Add a Document"
+    />
     <div>
       <span>
         Going to Bed and Sleeping
@@ -35,6 +47,18 @@ ShallowWrapper {
   </div>,
   "nodes": Array [
     <div>
+      <LmcCreateButton
+        listId="Document"
+        onCreate={[MockFunction]}
+        style={
+          Object {
+            "float": "right",
+            "margin": "20px 20px 0px 0px",
+            "width": 200,
+          }
+        }
+        title="Add a Document"
+      />
       <div>
         <span>
           Going to Bed and Sleeping
@@ -119,6 +143,18 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
+          <LmcCreateButton
+            listId="Document"
+            onCreate={[MockFunction]}
+            style={
+              Object {
+                "float": "right",
+                "margin": "20px 20px 0px 0px",
+                "width": 200,
+              }
+            }
+            title="Add a Document"
+          />
           <div>
             <span>
               Going to Bed and Sleeping
@@ -145,6 +181,18 @@ ShallowWrapper {
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
+          <LmcCreateButton
+            listId="Document"
+            onCreate={[MockFunction]}
+            style={
+              Object {
+                "float": "right",
+                "margin": "20px 20px 0px 0px",
+                "width": 200,
+              }
+            }
+            title="Add a Document"
+          />
           <div>
             <span>
               Going to Bed and Sleeping

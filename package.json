@@ -193,6 +193,7 @@
     "test-e2e-bg": "export KNE_SELENIUM_START_PROCESS=false && node test/e2e/server.js --env default",
     "test-e2e-saucelabs": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node test/e2e/server.js --env saucelabs-travis; fi",
     "test-e2e-saucelabs-group": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node test/e2e/server.js --env saucelabs-travis --group ./test/e2e/adminUI/tests/$GROUP; fi",
+    "test-lmc-components": "jest \"admin/client/App/lmc/components/.*\\.spec\\.js\" --watch",
     "test-lmc-screens": "jest \"admin/client/App/lmc/screens/.*\\.spec\\.js\" --watch",
     "test-lmc-state": "jest \"admin/client/App/lmc/(actions|reducers|selectors)/.*\\.spec.js\" --watch",
     "lint": "eslint .",

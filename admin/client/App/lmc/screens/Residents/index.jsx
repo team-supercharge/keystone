@@ -5,8 +5,6 @@ import { ActionCreators } from '../../actions/actions'
 import { selectList } from '../../../screens/List/actions'
 import { LmcSpinner } from '../../components'
 import { BlankState } from '../../../elemental'
-import List from '../../../../utils/List'
-import CreateForm from '../../../shared/CreateForm'
 import LmcResidentsSidebar from './components/LmcResidentsSidebar.jsx'
 import LmcTabBar from '../../components/LmcTabBar.jsx'
 
@@ -19,62 +17,21 @@ export class LmcResidentsScreen extends Component {
         this.props.selectList()
     }
 
-    state = {
-        currentList: null,
-        showCreateModal: false,
-        isModalOpen: true,
-    }
-
-    onOpenCreateResident = () => {
-        this.setState({ 
-            showCreateModal: true,
-            currentList: new List(Keystone.lists['Resident']),
-        })
-    }
-
-    onCloseCreateResident = () => {
-        this.setState({ isModalOpen: false });
-        setTimeout(() => {
-            this.setState({ 
-                showCreateModal: false, 
-                isModalOpen: true 
-            })
-        })
-    }
-
     onCreateResidentComplete = (resident) => {
         const { fetchResidents, setSelectedResident } = this.props
-        this.onCloseCreateResident()
         fetchResidents()
         setSelectedResident(resident.id)
     }
 
-    renderCreateForm = () => {
-        const { showCreateModal, isModalOpen, currentList } = this.state;
-        return (
-            showCreateModal
-                ? <div className="lmc-create-form">
-                    <CreateForm
-                        isOpen={isModalOpen}
-                        list={currentList}
-                        onCancel={() => this.onCloseCreateResident()}
-                        formTitle="Create Resident"
-                        onCreate={resident => this.onCreateResidentComplete(resident)}
-                    />
-                </div> : null
-        )
-    }
-    
     render () {
         const { residents, children, location } = this.props;
         return (
             <div>
-                { this.renderCreateForm() }
                 { residents ? (
                     <div style={styles.mainContainer}>
                         <LmcResidentsSidebar
                             residents={residents}
-                            onCreate={this.onOpenCreateResident}
+                            onCreate={this.onCreateResidentComplete}
                         />
                         <div style={styles.rightContainer}>
                             <LmcTabBar

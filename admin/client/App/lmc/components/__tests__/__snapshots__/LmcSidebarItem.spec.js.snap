@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcSidebarItem renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <li
+    id="testId"
+    onClick={[MockFunction]}
+    style={
+      Object {
+        "background": "#f1f1f1",
+        "borderLeft": "3px solid #e65d78",
+        "boxSizing": "border-box",
+        "fontSize": 14,
+        "height": "50px",
+        "listStyleType": "none",
+        "padding": "3px 0 3px 6px",
+      }
+    }
+  >
+    <div>
+      <span
+        className="lmc-profile-picture__small"
+        style={
+          Object {
+            "background": "url(https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png)",
+            "float": "left",
+            "marginLeft": "3px",
+            "marginTop": "4px",
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "color": "#e65d78",
+            "cursor": "pointer",
+            "minWidth": "0px",
+            "overflow": "hidden",
+            "padding": "12px 10px 0px 15px",
+            "textOverflow": "ellipsis",
+            "whiteSpace": "nowrap",
+          }
+        }
+      >
+        undefined undefined
+      </div>
+    </div>
+  </li>,
+  "nodes": Array [
+    <li
+      id="testId"
+      onClick={[MockFunction]}
+      style={
+        Object {
+          "background": "#f1f1f1",
+          "borderLeft": "3px solid #e65d78",
+          "boxSizing": "border-box",
+          "fontSize": 14,
+          "height": "50px",
+          "listStyleType": "none",
+          "padding": "3px 0 3px 6px",
+        }
+      }
+    >
+      <div>
+        <span
+          className="lmc-profile-picture__small"
+          style={
+            Object {
+              "background": "url(https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png)",
+              "float": "left",
+              "marginLeft": "3px",
+              "marginTop": "4px",
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "color": "#e65d78",
+              "cursor": "pointer",
+              "minWidth": "0px",
+              "overflow": "hidden",
+              "padding": "12px 10px 0px 15px",
+              "textOverflow": "ellipsis",
+              "whiteSpace": "nowrap",
+            }
+          }
+        >
+          undefined undefined
+        </div>
+      </div>
+    </li>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <LmcSidebarItem
+        isSelected={true}
+        itemData={
+          Object {
+            "fields": Object {
+              "picture": "testPicture",
+            },
+            "id": "testId",
+            "name": "testName",
+          }
+        }
+        onClick={[MockFunction]}
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "isSelected": true,
+          "itemData": Object {
+            "fields": Object {
+              "picture": "testPicture",
+            },
+            "id": "testId",
+            "name": "testName",
+          },
+          "onClick": [MockFunction],
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <li
+          id="testId"
+          onClick={[MockFunction]}
+          style={
+            Object {
+              "background": "#f1f1f1",
+              "borderLeft": "3px solid #e65d78",
+              "boxSizing": "border-box",
+              "fontSize": 14,
+              "height": "50px",
+              "listStyleType": "none",
+              "padding": "3px 0 3px 6px",
+            }
+          }
+        >
+          <div>
+            <span
+              className="lmc-profile-picture__small"
+              style={
+                Object {
+                  "background": "url(https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png)",
+                  "float": "left",
+                  "marginLeft": "3px",
+                  "marginTop": "4px",
+                }
+              }
+            />
+            <div
+              style={
+                Object {
+                  "color": "#e65d78",
+                  "cursor": "pointer",
+                  "minWidth": "0px",
+                  "overflow": "hidden",
+                  "padding": "12px 10px 0px 15px",
+                  "textOverflow": "ellipsis",
+                  "whiteSpace": "nowrap",
+                }
+              }
+            >
+              undefined undefined
+            </div>
+          </div>
+        </li>,
+        "_debugID": 2,
+        "_renderedOutput": <li
+          id="testId"
+          onClick={[MockFunction]}
+          style={
+            Object {
+              "background": "#f1f1f1",
+              "borderLeft": "3px solid #e65d78",
+              "boxSizing": "border-box",
+              "fontSize": 14,
+              "height": "50px",
+              "listStyleType": "none",
+              "padding": "3px 0 3px 6px",
+            }
+          }
+        >
+          <div>
+            <span
+              className="lmc-profile-picture__small"
+              style={
+                Object {
+                  "background": "url(https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png)",
+                  "float": "left",
+                  "marginLeft": "3px",
+                  "marginTop": "4px",
+                }
+              }
+            />
+            <div
+              style={
+                Object {
+                  "color": "#e65d78",
+                  "cursor": "pointer",
+                  "minWidth": "0px",
+                  "overflow": "hidden",
+                  "padding": "12px 10px 0px 15px",
+                  "textOverflow": "ellipsis",
+                  "whiteSpace": "nowrap",
+                }
+              }
+            >
+              undefined undefined
+            </div>
+          </div>
+        </li>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcSidebarItem
+    isSelected={true}
+    itemData={
+      Object {
+        "fields": Object {
+          "picture": "testPicture",
+        },
+        "id": "testId",
+        "name": "testName",
+      }
+    }
+    onClick={[MockFunction]}
+  />,
+}
+`;

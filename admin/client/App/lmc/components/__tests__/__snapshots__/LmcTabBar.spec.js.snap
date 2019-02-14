@@ -30,6 +30,7 @@ ShallowWrapper {
         className="app-nav app-nav--secondary app-nav--left"
       >
         <li
+          className="lmc-secondary-nav-link"
           style={
             Object {
               "boxSizing": "border-box",
@@ -49,6 +50,7 @@ ShallowWrapper {
           </Link>
         </li>
         <li
+          className="lmc-secondary-nav-link"
           style={
             Object {
               "boxSizing": "border-box",
@@ -93,6 +95,7 @@ ShallowWrapper {
           className="app-nav app-nav--secondary app-nav--left"
         >
           <li
+            className="lmc-secondary-nav-link"
             style={
               Object {
                 "boxSizing": "border-box",
@@ -112,6 +115,7 @@ ShallowWrapper {
             </Link>
           </li>
           <li
+            className="lmc-secondary-nav-link"
             style={
               Object {
                 "boxSizing": "border-box",
@@ -225,6 +229,7 @@ ShallowWrapper {
               className="app-nav app-nav--secondary app-nav--left"
             >
               <li
+                className="lmc-secondary-nav-link"
                 style={
                   Object {
                     "boxSizing": "border-box",
@@ -244,6 +249,7 @@ ShallowWrapper {
                 </Link>
               </li>
               <li
+                className="lmc-secondary-nav-link"
                 style={
                   Object {
                     "boxSizing": "border-box",
@@ -288,6 +294,7 @@ ShallowWrapper {
               className="app-nav app-nav--secondary app-nav--left"
             >
               <li
+                className="lmc-secondary-nav-link"
                 style={
                   Object {
                     "boxSizing": "border-box",
@@ -307,6 +314,7 @@ ShallowWrapper {
                 </Link>
               </li>
               <li
+                className="lmc-secondary-nav-link"
                 style={
                   Object {
                     "boxSizing": "border-box",
