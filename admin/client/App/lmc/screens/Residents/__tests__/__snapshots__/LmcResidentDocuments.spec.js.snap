@@ -28,6 +28,7 @@ ShallowWrapper {
               "name": "TestDocument",
             }
           }
+          onDelete={[MockFunction]}
         />
       </ul>
     </div>
@@ -53,6 +54,7 @@ ShallowWrapper {
                 "name": "TestDocument",
               }
             }
+            onDelete={[MockFunction]}
           />
         </ul>
       </div>
@@ -65,6 +67,7 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcResidentDocuments
+        deleteDocument={[MockFunction]}
         documents={
           Object {
             "Going to Bed and Sleeping": Array [
@@ -84,6 +87,7 @@ ShallowWrapper {
         "context": Object {},
         "listDocumentsByCategory": [Function],
         "props": Object {
+          "deleteDocument": [MockFunction],
           "documents": Object {
             "Going to Bed and Sleeping": Array [
               Object {
@@ -134,6 +138,7 @@ ShallowWrapper {
                     "name": "TestDocument",
                   }
                 }
+                onDelete={[MockFunction]}
               />
             </ul>
           </div>
@@ -159,6 +164,7 @@ ShallowWrapper {
                     "name": "TestDocument",
                   }
                 }
+                onDelete={[MockFunction]}
               />
             </ul>
           </div>
@@ -175,6 +181,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcResidentDocuments
+    deleteDocument={[MockFunction]}
     documents={
       Object {
         "Going to Bed and Sleeping": Array [

@@ -24,6 +24,29 @@ export const getJSON = ({ url }) => {
     });
 }
 
+export const deleteItem = (id, list) => {
+    const url = `${Keystone.adminPath}/api/${list}/delete`
+    return new Promise((resolve, reject) => {
+        xhr({
+            url: url,
+            method: 'POST',
+            headers: Object.assign({}, Keystone.csrf.header),
+            json: {
+                id: [id]
+            }
+        }, (err, res) => {
+            if (err) {
+                console.log(err)
+                reject({
+                    message: 'The item could not be deleted at this time.'
+                })
+            } else {
+                resolve(res)
+            }
+        })
+    })
+}
+
 export function fetchResidentLogs (residentId) {
     const url = `${Keystone.adminPath}/api/reports/residents/${residentId}/logs`;
     return getJSON({ url });

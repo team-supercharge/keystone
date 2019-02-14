@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../../actions/actions'
-import _ from 'lodash'
-import { BlankState, Button } from '../../../../elemental'
-import { Link } from 'react-router'
+import { BlankState } from '../../../../elemental'
 import Selectors from '../../../selectors'
-import LmcDocumentItem from './LmcDocumentItem'
+import LmcDocumentItem from './LmcDocumentItem.jsx'
 
 export class LmcResidentDocuments extends Component {
     componentDidMount () {
@@ -14,11 +12,13 @@ export class LmcResidentDocuments extends Component {
     }
 
     listDocumentsByCategory = category => {
+        const { documents, deleteDocument } = this.props
         return (
-            this.props.documents[category].map((document, i) => (
+            documents[category].map((document, i) => (
                 <LmcDocumentItem
                     key={i}
                     data={document}
+                    onDelete={deleteDocument}
                 />
             ))
         )
@@ -28,7 +28,9 @@ export class LmcResidentDocuments extends Component {
         return (
             Object.keys(this.props.documents).map(category => (
                 <div key={category}>
-                    <span>{category}</span>
+                    <span>
+                        {category}
+                    </span>
                     <ul style={styles.list}>
                         { this.listDocumentsByCategory(category) }
                     </ul>
@@ -76,6 +78,7 @@ const styles = {
 LmcResidentDocuments.propTypes = {
     documents: PropTypes.object,
     fetchDocuments: PropTypes.func.isRequired,
+    deleteDocument: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
@@ -86,7 +89,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchDocuments: () => dispatch(ActionCreators.loadList('documents'))
+        fetchDocuments: () => dispatch(ActionCreators.loadList('documents')),
+        deleteDocument: (id) => dispatch(ActionCreators.deleteDocument(id)),
     }
 }
 

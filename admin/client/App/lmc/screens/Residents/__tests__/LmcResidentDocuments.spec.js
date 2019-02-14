@@ -5,6 +5,7 @@ import { LmcResidentDocuments } from '../components/LmcResidentDocuments.jsx'
 describe('LmcResidentDocuments', () => {
     let wrapper
     let documents
+    const deleteDocument = jest.fn()
     const fetchDocuments = jest.fn()
 
     beforeEach(() => {
@@ -13,6 +14,7 @@ describe('LmcResidentDocuments', () => {
             <LmcResidentDocuments 
                 documents={documents}
                 fetchDocuments={fetchDocuments}
+                deleteDocument={deleteDocument}
             />
         )
     })
@@ -26,6 +28,7 @@ describe('LmcResidentDocuments', () => {
             <LmcResidentDocuments
                 documents={{}}
                 fetchDocuments={fetchDocuments}
+                deleteDocument={deleteDocument}
             />
         )
         const message = emptyWrapper.find('BlankState')
@@ -35,5 +38,13 @@ describe('LmcResidentDocuments', () => {
     it('should display an LmcDocumentItem component with the correct data', () => {
         const documentItem = wrapper.find('LmcDocumentItem').first()
         expect(documentItem.props().data).toEqual(documents['Going to Bed and Sleeping'][0])
+
+        documentItem.props().onDelete()
+        expect(deleteDocument).toBeCalledTimes(1)
+    })
+
+    afterEach(() => {
+        fetchDocuments.mockClear()
+        deleteDocument.mockClear()
     })
 })
