@@ -78,7 +78,7 @@ export class LmcResidentsSidebar extends Component {
                      />
                 </GlyphButton>
                 <ul className='lmc-sidebar-list'>
-                    { shownResidents.map((resident, index) => {
+                        { shownResidents.map((resident, index) => {
                             return (
                                 <LmcSidebarItem 
                                     key={index}

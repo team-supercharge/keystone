@@ -9,23 +9,49 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <Link
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/admin/residents/testId"
+    <Button
+      aphroditeStyles={Array []}
+      color="default"
+      variant="fill"
     >
-      Edit Information
-    </Link>
-  </div>,
-  "nodes": Array [
-    <div>
       <Link
         onlyActiveOnIndex={false}
-        style={Object {}}
+        style={
+          Object {
+            "color": "black",
+            "display": "block",
+            "height": "100%",
+            "textDecoration": "none",
+          }
+        }
         to="/admin/residents/testId"
       >
         Edit Information
       </Link>
+    </Button>
+  </div>,
+  "nodes": Array [
+    <div>
+      <Button
+        aphroditeStyles={Array []}
+        color="default"
+        variant="fill"
+      >
+        <Link
+          onlyActiveOnIndex={false}
+          style={
+            Object {
+              "color": "black",
+              "display": "block",
+              "height": "100%",
+              "textDecoration": "none",
+            }
+          }
+          to="/admin/residents/testId"
+        >
+          Edit Information
+        </Link>
+      </Button>
     </div>,
   ],
   "options": Object {},
@@ -67,23 +93,49 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <Link
-            onlyActiveOnIndex={false}
-            style={Object {}}
-            to="/admin/residents/testId"
+          <Button
+            aphroditeStyles={Array []}
+            color="default"
+            variant="fill"
           >
-            Edit Information
-          </Link>
+            <Link
+              onlyActiveOnIndex={false}
+              style={
+                Object {
+                  "color": "black",
+                  "display": "block",
+                  "height": "100%",
+                  "textDecoration": "none",
+                }
+              }
+              to="/admin/residents/testId"
+            >
+              Edit Information
+            </Link>
+          </Button>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          <Link
-            onlyActiveOnIndex={false}
-            style={Object {}}
-            to="/admin/residents/testId"
+          <Button
+            aphroditeStyles={Array []}
+            color="default"
+            variant="fill"
           >
-            Edit Information
-          </Link>
+            <Link
+              onlyActiveOnIndex={false}
+              style={
+                Object {
+                  "color": "black",
+                  "display": "block",
+                  "height": "100%",
+                  "textDecoration": "none",
+                }
+              }
+              to="/admin/residents/testId"
+            >
+              Edit Information
+            </Link>
+          </Button>
         </div>,
       },
       "_renderedNodeType": 0,

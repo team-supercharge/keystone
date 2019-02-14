@@ -1,14 +1,51 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { ActionCreators } from '../../../actions/actions'
+import { BlankState } from '../../../../elemental'
 import Selectors from '../../../selectors'
 
 export class LmcResidentDocuments extends Component {
-    render() {
-        console.log(this.props)
+    componentDidMount () {
+        this.props.fetchDocuments()
+    }
+
+    renderDocuments = () => {
+        const { documents } = this.props
+        return JSON.stringify(documents)
+    }
+
+    render () {
+        const { documents } = this.props
+        const hasDocuments = !!Object.keys(documents).length
+
         return (
-            <div>{JSON.stringify(this.props.documents)}</div>
+            <div>
+                {hasDocuments ? (
+                    this.renderDocuments()
+                ) : (
+                    <BlankState
+                        heading={NO_DOCUMENTS_MESSAGE}
+                        style={styles.noDocumentsMessage}
+                    />
+                )}
+            </div>
         )
     }
+}
+
+const NO_DOCUMENTS_MESSAGE = "You haven't added any documents for this resident"
+
+const styles = {
+    noDocumentsMessage: {
+        margin: 50,
+        padding: 60,
+    }
+}
+
+LmcResidentDocuments.propTypes = {
+    documents: PropTypes.object,
+    fetchDocuments: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
@@ -17,4 +54,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(LmcResidentDocuments)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchDocuments: () => dispatch(ActionCreators.loadList('documents'))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LmcResidentDocuments)

@@ -9,9 +9,9 @@ describe('LmcResidentsSidebar', () => {
 
     beforeEach(() => {
         residents = [
-            { id: 'testId1', name: 'testId2', fields: { status: 'active' } },
-            { id: 'testId2', name: 'testId2', fields: { status: 'active' } },
-            { id: 'testId3', name: 'testId3', fields: { status: 'inactive' } },
+            { id: 'testId1', name: { first: 'test', last: 'id1' }, status: 'active' },
+            { id: 'testId2', name: { first: 'test', last: 'id2' }, status: 'active' },
+            { id: 'testId3', name: { first: 'test', last: 'id3' }, status: 'inactive' },
         ]
         wrapper = shallow(
             <LmcResidentsSidebar

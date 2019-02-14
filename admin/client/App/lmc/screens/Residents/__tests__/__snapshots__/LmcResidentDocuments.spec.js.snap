@@ -9,11 +9,11 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    Documents
+    {"Going to Bed and Sleeping":[{"name":"TestDocument"}]}
   </div>,
   "nodes": Array [
     <div>
-      Documents
+      {"Going to Bed and Sleeping":[{"name":"TestDocument"}]}
     </div>,
   ],
   "options": Object {},
@@ -22,15 +22,58 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <LmcResidentDocuments />,
-      "_debugID": 1,
+      "_currentElement": <LmcResidentDocuments
+        documents={
+          Object {
+            "Going to Bed and Sleeping": Array [
+              Object {
+                "name": "TestDocument",
+              },
+            ],
+          }
+        }
+        fetchDocuments={
+          [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />,
+      "_debugID": 4,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": LmcResidentDocuments {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "documents": Object {
+            "Going to Bed and Sleeping": Array [
+              Object {
+                "name": "TestDocument",
+              },
+            ],
+          },
+          "fetchDocuments": [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+        },
         "refs": Object {},
+        "renderDocuments": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
@@ -43,7 +86,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 1,
+      "_mountOrder": 4,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -51,11 +94,11 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          Documents
+          {"Going to Bed and Sleeping":[{"name":"TestDocument"}]}
         </div>,
-        "_debugID": 2,
+        "_debugID": 5,
         "_renderedOutput": <div>
-          Documents
+          {"Going to Bed and Sleeping":[{"name":"TestDocument"}]}
         </div>,
       },
       "_renderedNodeType": 0,
@@ -68,6 +111,29 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <LmcResidentDocuments />,
+  "unrendered": <LmcResidentDocuments
+    documents={
+      Object {
+        "Going to Bed and Sleeping": Array [
+          Object {
+            "name": "TestDocument",
+          },
+        ],
+      }
+    }
+    fetchDocuments={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  />,
 }
 `;

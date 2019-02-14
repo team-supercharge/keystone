@@ -50,11 +50,12 @@ ShallowWrapper {
         isSelected={true}
         itemData={
           Object {
-            "fields": Object {
-              "status": "active",
-            },
             "id": "testId1",
-            "name": "testId2",
+            "name": Object {
+              "first": "test",
+              "last": "id1",
+            },
+            "status": "active",
           }
         }
         onClick={[Function]}
@@ -63,11 +64,12 @@ ShallowWrapper {
         isSelected={false}
         itemData={
           Object {
-            "fields": Object {
-              "status": "active",
-            },
             "id": "testId2",
-            "name": "testId2",
+            "name": Object {
+              "first": "test",
+              "last": "id2",
+            },
+            "status": "active",
           }
         }
         onClick={[Function]}
@@ -117,11 +119,12 @@ ShallowWrapper {
           isSelected={true}
           itemData={
             Object {
-              "fields": Object {
-                "status": "active",
-              },
               "id": "testId1",
-              "name": "testId2",
+              "name": Object {
+                "first": "test",
+                "last": "id1",
+              },
+              "status": "active",
             }
           }
           onClick={[Function]}
@@ -130,11 +133,12 @@ ShallowWrapper {
           isSelected={false}
           itemData={
             Object {
-              "fields": Object {
-                "status": "active",
-              },
               "id": "testId2",
-              "name": "testId2",
+              "name": Object {
+                "first": "test",
+                "last": "id2",
+              },
+              "status": "active",
             }
           }
           onClick={[Function]}
@@ -153,25 +157,28 @@ ShallowWrapper {
         residents={
           Array [
             Object {
-              "fields": Object {
-                "status": "active",
-              },
               "id": "testId1",
-              "name": "testId2",
+              "name": Object {
+                "first": "test",
+                "last": "id1",
+              },
+              "status": "active",
             },
             Object {
-              "fields": Object {
-                "status": "active",
-              },
               "id": "testId2",
-              "name": "testId2",
+              "name": Object {
+                "first": "test",
+                "last": "id2",
+              },
+              "status": "active",
             },
             Object {
-              "fields": Object {
-                "status": "inactive",
-              },
               "id": "testId3",
-              "name": "testId3",
+              "name": Object {
+                "first": "test",
+                "last": "id3",
+              },
+              "status": "inactive",
             },
           ]
         }
@@ -190,25 +197,28 @@ ShallowWrapper {
           "onCreate": [MockFunction],
           "residents": Array [
             Object {
-              "fields": Object {
-                "status": "active",
-              },
               "id": "testId1",
-              "name": "testId2",
+              "name": Object {
+                "first": "test",
+                "last": "id1",
+              },
+              "status": "active",
             },
             Object {
-              "fields": Object {
-                "status": "active",
-              },
               "id": "testId2",
-              "name": "testId2",
+              "name": Object {
+                "first": "test",
+                "last": "id2",
+              },
+              "status": "active",
             },
             Object {
-              "fields": Object {
-                "status": "inactive",
-              },
               "id": "testId3",
-              "name": "testId3",
+              "name": Object {
+                "first": "test",
+                "last": "id3",
+              },
+              "status": "inactive",
             },
           ],
           "selectedResident": "testId1",
@@ -278,11 +288,12 @@ ShallowWrapper {
               isSelected={true}
               itemData={
                 Object {
-                  "fields": Object {
-                    "status": "active",
-                  },
                   "id": "testId1",
-                  "name": "testId2",
+                  "name": Object {
+                    "first": "test",
+                    "last": "id1",
+                  },
+                  "status": "active",
                 }
               }
               onClick={[Function]}
@@ -291,11 +302,12 @@ ShallowWrapper {
               isSelected={false}
               itemData={
                 Object {
-                  "fields": Object {
-                    "status": "active",
-                  },
                   "id": "testId2",
-                  "name": "testId2",
+                  "name": Object {
+                    "first": "test",
+                    "last": "id2",
+                  },
+                  "status": "active",
                 }
               }
               onClick={[Function]}
@@ -345,11 +357,12 @@ ShallowWrapper {
               isSelected={true}
               itemData={
                 Object {
-                  "fields": Object {
-                    "status": "active",
-                  },
                   "id": "testId1",
-                  "name": "testId2",
+                  "name": Object {
+                    "first": "test",
+                    "last": "id1",
+                  },
+                  "status": "active",
                 }
               }
               onClick={[Function]}
@@ -358,11 +371,12 @@ ShallowWrapper {
               isSelected={false}
               itemData={
                 Object {
-                  "fields": Object {
-                    "status": "active",
-                  },
                   "id": "testId2",
-                  "name": "testId2",
+                  "name": Object {
+                    "first": "test",
+                    "last": "id2",
+                  },
+                  "status": "active",
                 }
               }
               onClick={[Function]}
@@ -385,25 +399,28 @@ ShallowWrapper {
     residents={
       Array [
         Object {
-          "fields": Object {
-            "status": "active",
-          },
           "id": "testId1",
-          "name": "testId2",
+          "name": Object {
+            "first": "test",
+            "last": "id1",
+          },
+          "status": "active",
         },
         Object {
-          "fields": Object {
-            "status": "active",
-          },
           "id": "testId2",
-          "name": "testId2",
+          "name": Object {
+            "first": "test",
+            "last": "id2",
+          },
+          "status": "active",
         },
         Object {
-          "fields": Object {
-            "status": "inactive",
-          },
           "id": "testId3",
-          "name": "testId3",
+          "name": Object {
+            "first": "test",
+            "last": "id3",
+          },
+          "status": "inactive",
         },
       ]
     }

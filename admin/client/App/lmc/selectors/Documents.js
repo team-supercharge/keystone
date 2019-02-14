@@ -4,5 +4,10 @@ import { getSelectedResident, getDocumentsList } from './Lists'
 
 export const getSelectedResidentDocuments = createSelector(
     [ getDocumentsList, getSelectedResident ],
-    (documents, id) => _.find(documents, { id })
+    (documents, id) => { return _
+        .chain(documents)
+        .filter({ 'resident': id })
+        .groupBy('categoryName')
+        .value()
+    }
 )
