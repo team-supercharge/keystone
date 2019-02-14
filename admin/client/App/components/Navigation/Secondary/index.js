@@ -77,12 +77,10 @@ var SecondaryNavigation = React.createClass({
 	render () {
 		const { currentListKey, lists } = this.props
 		if (!this.state.navIsVisible) {
-			console.log('BUG')
 			return null;
 		}
 
 		if (currentListKey === 'residents') {
-			console.log(currentListKey)
 			return null
 		}
 

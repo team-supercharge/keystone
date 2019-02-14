@@ -2,17 +2,39 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../../actions/actions'
-import { BlankState } from '../../../../elemental'
+import _ from 'lodash'
+import { BlankState, Button } from '../../../../elemental'
+import { Link } from 'react-router'
 import Selectors from '../../../selectors'
+import LmcDocumentItem from './LmcDocumentItem'
 
 export class LmcResidentDocuments extends Component {
     componentDidMount () {
         this.props.fetchDocuments()
     }
 
+    listDocumentsByCategory = category => {
+        return (
+            this.props.documents[category].map((document, i) => (
+                <LmcDocumentItem
+                    key={i}
+                    data={document}
+                />
+            ))
+        )
+    }
+
     renderDocuments = () => {
-        const { documents } = this.props
-        return JSON.stringify(documents)
+        return (
+            Object.keys(this.props.documents).map(category => (
+                <div key={category}>
+                    <span>{category}</span>
+                    <ul style={styles.list}>
+                        { this.listDocumentsByCategory(category) }
+                    </ul>
+                </div>
+            ))
+        )
     }
 
     render () {
@@ -37,6 +59,14 @@ export class LmcResidentDocuments extends Component {
 const NO_DOCUMENTS_MESSAGE = "You haven't added any documents for this resident"
 
 const styles = {
+    documentContainer: {
+        display: 'inline-block',
+    },
+    list: {
+        listStyle: 'none',
+        listStyleType: 'none',
+        padding: 0,
+    },
     noDocumentsMessage: {
         margin: 50,
         padding: 60,

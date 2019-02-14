@@ -12,12 +12,12 @@ export class LmcResidentProfile extends Component {
             <div>
                 {JSON.stringify(this.props.profile)}
                 <Button color='default'>
-                <Link
-                    to={`${Keystone.adminPath}/residents/${selectedResident}`}
-                    style={styles.linkButtonText}
-                >
-                    Edit Information
-                </Link>
+                    <Link
+                        to={`${Keystone.adminPath}/residents/${selectedResident}`}
+                        style={styles.linkButtonText}
+                    >
+                        Edit Information
+                    </Link>
                 </Button>
             </div>
         )

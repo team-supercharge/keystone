@@ -9,11 +9,53 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    {"Going to Bed and Sleeping":[{"name":"TestDocument"}]}
+    <div>
+      <span>
+        Going to Bed and Sleeping
+      </span>
+      <ul
+        style={
+          Object {
+            "listStyle": "none",
+            "listStyleType": "none",
+            "padding": 0,
+          }
+        }
+      >
+        <LmcDocumentItem
+          data={
+            Object {
+              "name": "TestDocument",
+            }
+          }
+        />
+      </ul>
+    </div>
   </div>,
   "nodes": Array [
     <div>
-      {"Going to Bed and Sleeping":[{"name":"TestDocument"}]}
+      <div>
+        <span>
+          Going to Bed and Sleeping
+        </span>
+        <ul
+          style={
+            Object {
+              "listStyle": "none",
+              "listStyleType": "none",
+              "padding": 0,
+            }
+          }
+        >
+          <LmcDocumentItem
+            data={
+              Object {
+                "name": "TestDocument",
+              }
+            }
+          />
+        </ul>
+      </div>
     </div>,
   ],
   "options": Object {},
@@ -32,26 +74,15 @@ ShallowWrapper {
             ],
           }
         }
-        fetchDocuments={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
-          }
-        }
+        fetchDocuments={[MockFunction]}
       />,
-      "_debugID": 4,
+      "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": LmcResidentDocuments {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "listDocumentsByCategory": [Function],
         "props": Object {
           "documents": Object {
             "Going to Bed and Sleeping": Array [
@@ -60,17 +91,7 @@ ShallowWrapper {
               },
             ],
           },
-          "fetchDocuments": [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": undefined,
-              },
-            ],
-          },
+          "fetchDocuments": [MockFunction],
         },
         "refs": Object {},
         "renderDocuments": [Function],
@@ -86,7 +107,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 4,
+      "_mountOrder": 1,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -94,11 +115,53 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          {"Going to Bed and Sleeping":[{"name":"TestDocument"}]}
+          <div>
+            <span>
+              Going to Bed and Sleeping
+            </span>
+            <ul
+              style={
+                Object {
+                  "listStyle": "none",
+                  "listStyleType": "none",
+                  "padding": 0,
+                }
+              }
+            >
+              <LmcDocumentItem
+                data={
+                  Object {
+                    "name": "TestDocument",
+                  }
+                }
+              />
+            </ul>
+          </div>
         </div>,
-        "_debugID": 5,
+        "_debugID": 2,
         "_renderedOutput": <div>
-          {"Going to Bed and Sleeping":[{"name":"TestDocument"}]}
+          <div>
+            <span>
+              Going to Bed and Sleeping
+            </span>
+            <ul
+              style={
+                Object {
+                  "listStyle": "none",
+                  "listStyleType": "none",
+                  "padding": 0,
+                }
+              }
+            >
+              <LmcDocumentItem
+                data={
+                  Object {
+                    "name": "TestDocument",
+                  }
+                }
+              />
+            </ul>
+          </div>
         </div>,
       },
       "_renderedNodeType": 0,
@@ -121,19 +184,7 @@ ShallowWrapper {
         ],
       }
     }
-    fetchDocuments={
-      [MockFunction] {
-        "calls": Array [
-          Array [],
-        ],
-        "results": Array [
-          Object {
-            "isThrow": false,
-            "value": undefined,
-          },
-        ],
-      }
-    }
+    fetchDocuments={[MockFunction]}
   />,
 }
 `;

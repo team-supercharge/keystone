@@ -1,24 +1,14 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { LmcResidentDocuments } from '../components/LmcResidentDocuments.jsx'
 
 describe('LmcResidentDocuments', () => {
-    let mountedWrapper
     let wrapper
     let documents
     const fetchDocuments = jest.fn()
 
-    beforeAll(() => {
-        documents = { 'Going to Bed and Sleeping': [{ name: 'TestDocument' }]}
-        mountedWrapper = mount(
-            <LmcResidentDocuments
-                documents={documents}
-                fetchDocuments={fetchDocuments}
-            />
-        )
-    })
-
     beforeEach(() => {
+        documents = { 'Going to Bed and Sleeping': [{ name: 'TestDocument' }]}
         wrapper = shallow(
             <LmcResidentDocuments 
                 documents={documents}
@@ -31,10 +21,6 @@ describe('LmcResidentDocuments', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('should fetch its documents when rendered', () => {
-        expect(fetchDocuments).toBeCalledTimes(1)
-    })
-
     it('should display a message if no documents are present', () => {
         const emptyWrapper = shallow(
             <LmcResidentDocuments
@@ -44,5 +30,10 @@ describe('LmcResidentDocuments', () => {
         )
         const message = emptyWrapper.find('BlankState')
         expect(message.props().heading).toEqual("You haven't added any documents for this resident")
+    })
+
+    it('should display an LmcDocumentItem component with the correct data', () => {
+        const documentItem = wrapper.find('LmcDocumentItem').first()
+        expect(documentItem.props().data).toEqual(documents['Going to Bed and Sleeping'][0])
     })
 })
