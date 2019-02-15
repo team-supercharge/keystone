@@ -96,8 +96,6 @@ const styles = {
     }
 };
 
-const ADD_RESIDENTS_BUTTON_TEXT = 'Add a Resident';
-
 LmcResidentsSidebar.propTypes = {
     residents: PropTypes.array,
     selectedResident: PropTypes.string,

@@ -39,7 +39,7 @@ export class LmcResidentsScreen extends Component {
                                 items={navbarItems}
                                 resourceUrl='residents'    
                             />
-                            <div>
+                            <div style={styles.childContainer}>
                                 { !residents.length ? (
                                     <BlankState
                                         heading={NO_RESIDENTS_MESSAGE}
@@ -66,16 +66,20 @@ const navbarItems = [
 const NO_RESIDENTS_MESSAGE = "You haven't added any residents yet"
 
 const styles = {
+    childContainer: {
+        padding: '50px 150px 0px 150px',
+        overflow: 'scroll',
+        height: '85vh',
+    },
     mainContainer: {
         display: 'flex',
         flexDirection: 'row',
     },
     rightContainer: {
-        flex: '4',
-        background: '#fbfbfb'
+        flex: '3.5',
+        background: '#fbfbfb',
     },
     noResidentsMessage: {
-        margin: 50,
         padding: 60,
     }
 }

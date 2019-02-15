@@ -53,24 +53,22 @@ export default class LmcCreateButton extends Component {
         const { listId, title, style } = this.props
         const buttonText = `Add a ${listId}`
         return (
-            <section>
+            <GlyphButton
+                block
+                color='success'
+                glyph='plus'
+                position='left'
+                title={buttonText}
+                onClick={this.onOpenCreateModal}
+                style={style}
+            >
                 { this.renderCreateForm() }
-                <GlyphButton
-                    block
-                    color='success'
-                    glyph='plus'
-                    position='left'
-                    title={buttonText}
-                    onClick={this.onOpenCreateModal}
-                    style={style}
-                >
-                    <ResponsiveText
-                        visibleSM={buttonText}
-                        visibleMD={buttonText}
-                        visibleLG={buttonText}
-                     />
-                </GlyphButton>
-            </section>
+                <ResponsiveText
+                    visibleSM={buttonText}
+                    visibleMD={buttonText}
+                    visibleLG={buttonText}
+                    />
+            </GlyphButton>
         )
     }
 }

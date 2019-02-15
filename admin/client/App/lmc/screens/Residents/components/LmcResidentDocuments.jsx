@@ -27,13 +27,14 @@ export class LmcResidentDocuments extends Component {
 
     renderDocuments = () => {
         return (
-            Object.keys(this.props.documents).map(category => (
-                <div key={category}>
-                    <span>
-                        {category}
-                    </span>
+            Object.keys(this.props.documents).map(categoryName => (
+                <div key={categoryName}>
+                    <h2 style={styles.categoryName}>
+                        {categoryName}
+                    </h2>
+                    <div className='lmc-theme-gradient' style={styles.divider} />
                     <ul style={styles.list}>
-                        { this.listDocumentsByCategory(category) }
+                        { this.listDocumentsByCategory(categoryName) }
                     </ul>
                 </div>
             ))
@@ -52,14 +53,16 @@ export class LmcResidentDocuments extends Component {
                     onCreate={this.props.fetchDocuments}
                     style={styles.addButton}
                 />
-                {hasDocuments ? (
-                    this.renderDocuments()
-                ) : (
-                    <BlankState
-                        heading={NO_DOCUMENTS_MESSAGE}
-                        style={styles.noDocumentsMessage}
-                    />
-                )}
+                    {hasDocuments ? (
+                        <div style={styles.container}>
+                            { this.renderDocuments() }
+                        </div>
+                    ) : (
+                        <BlankState
+                            heading={NO_DOCUMENTS_MESSAGE}
+                            style={styles.noDocumentsMessage}
+                        />
+                    )}
             </div>
         )
     }
@@ -71,7 +74,16 @@ const styles = {
     addButton: {
         float: 'right',
         width: 200,
-        margin: '20px 20px 0px 0px',
+    },
+    categoryName: {
+        marginBottom: '0.3em',
+        fontWeight: 300,
+    },
+    container: {
+    },
+    divider: {
+        height: 2,
+        width: '100%',
     },
     documentContainer: {
         display: 'inline-block',
@@ -82,9 +94,9 @@ const styles = {
         padding: 0,
     },
     noDocumentsMessage: {
-        margin: 50,
-        padding: 60,
-    }
+        position: 'relative',
+        top: 50,
+    },
 }
 
 LmcResidentDocuments.propTypes = {

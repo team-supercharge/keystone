@@ -74,6 +74,7 @@ const styles = {
     },
     wrapper: {
         display: 'flex',
+        minWidth: 800,
     }
 }
 

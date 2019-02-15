@@ -17,30 +17,28 @@ export default class LmcDocumentItem extends Component {
     render () {
         const { data, onDelete } = this.props
         return (
-            <li>
-                <div style={styles.container}>
-                    <span style={styles.documentName}>
-                        {data.name}
-                    </span>
-                    <Button color='default'>
-                        <a
-                            href={data.pdf}
-                            style={styles.linkButtonText}
-                            target='_blank'
-                        >
-                            View
-                        </a>
-                    </Button>
-                    <Button 
-                        onClick={this.toggleDeleteDialog} 
-                        variant="link" 
-                        color="delete"
-                        style={styles.deleteButton} 
-                        data-button="delete"
+            <li style={styles.container}>
+                <span style={styles.documentName}>
+                    {data.name}
+                </span>
+                <Button 
+                    onClick={this.toggleDeleteDialog} 
+                    variant="link" 
+                    color="delete"
+                    style={styles.deleteButton} 
+                    data-button="delete"
+                >
+                    Delete
+                </Button>
+                <Button style={styles.viewButton} color='default'>
+                    <a
+                        href={data.pdf}
+                        style={styles.linkButtonText}
+                        target='_blank'
                     >
-                        Delete
-					</Button>
-                </div>
+                        View
+                    </a>
+                </Button>
                 <ConfirmationDialog
                     confirmationLabel='Delete'
                     confirmationType='danger'
@@ -59,17 +57,21 @@ export default class LmcDocumentItem extends Component {
 
 const styles = {
     container: {
-        display: 'inline-block',
+        height: 60,
     },
     deleteButton: {
         float: 'right',
     },
     documentName: {
-
+        fontSize: 18,
+        paddingTop: 3,
     },
     linkButtonText: {
         color: 'black',
         textDecoration: 'none',
+    },
+    viewButton: {
+        float: 'right',
     }
 }
 
