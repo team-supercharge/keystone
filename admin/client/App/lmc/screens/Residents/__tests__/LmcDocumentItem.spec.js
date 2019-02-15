@@ -1,6 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import MockDate from 'mockdate'
 import LmcDocumentItem from '../components/LmcDocumentItem';
+
+MockDate.set('1/1/2019')
 
 describe('LmcDocumentItem', () => {
     let wrapper
@@ -28,15 +31,18 @@ describe('LmcDocumentItem', () => {
         expect(wrapper.find('li').length).toEqual(1)
     })
 
-    it('renders the data name in a span', () => {
-        expect(wrapper.find('span').props().children).toEqual(data.name)
-    })
-
-    it('displays a link to open the document in a new tab', () => {
+    it('displays a link with the data name to open the document in a new tab', () => {
         const link = wrapper.find('a')
         expect(link.props().href).toEqual(data.pdf)
+        expect(link.props().children).toEqual(data.name)
         expect(link.props().target).toEqual('_blank')
-        expect(link.props().children).toEqual('View')
+    })
+
+    it('displays a button to open the document in a new tab', () => {
+        const button = wrapper.find('Button').at(1)
+        expect(button.props().href).toEqual(data.pdf)
+        expect(button.props().target).toEqual('_blank')
+        expect(button.props().children).toEqual('View')
     })
 
     it('has a confirmation dialog to delete the data', () => {
@@ -53,5 +59,9 @@ describe('LmcDocumentItem', () => {
 
     afterEach(() => {
         onDelete.mockClear()
+    })
+
+    afterAll(() => {
+        MockDate.clear()
     })
 })

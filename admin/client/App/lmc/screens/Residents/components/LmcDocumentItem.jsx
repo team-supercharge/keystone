@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { Button } from '../../../../elemental'
 import ConfirmationDialog from '../../../../shared/ConfirmationDialog'
 
@@ -16,11 +17,30 @@ export default class LmcDocumentItem extends Component {
 
     render () {
         const { data, onDelete } = this.props
+        const currentDate = moment()
+        const diff = currentDate.diff(data.createdAt, 'days')
+
         return (
             <li style={styles.container}>
-                <span style={styles.documentName}>
-                    {data.name}
-                </span>
+                <div style={styles.imageContainer}>
+                    <img 
+                        src={IMAGE_URL} 
+                        style={styles.image} 
+                    />
+                </div>
+                <div style={styles.textContainer}>
+                    <a 
+                        href={data.pdf}
+                        style={styles.documentName}
+                        target='_blank'
+                    >
+                        {data.name}
+                    </a>
+                    <br />
+                    <span style={styles.dateDiff}>
+                        Added {diff} days ago
+                    </span>
+                </div>
                 <Button 
                     onClick={this.toggleDeleteDialog} 
                     variant="link" 
@@ -30,14 +50,13 @@ export default class LmcDocumentItem extends Component {
                 >
                     Delete
                 </Button>
-                <Button style={styles.viewButton} color='default'>
-                    <a
-                        href={data.pdf}
-                        style={styles.linkButtonText}
-                        target='_blank'
-                    >
-                        View
-                    </a>
+                <Button
+                    style={styles.viewButton} 
+                    color='default'
+                    href={data.pdf}
+                    target='_blank'
+                >
+                    View
                 </Button>
                 <ConfirmationDialog
                     confirmationLabel='Delete'
@@ -55,23 +74,46 @@ export default class LmcDocumentItem extends Component {
     }
 }
 
+const IMAGE_URL = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png'
+
 const styles = {
     container: {
-        height: 60,
+        height: 70,
+    },
+    dateDiff: {
+        fontSize: 12,
+        opacity: '0.6',
     },
     deleteButton: {
-        float: 'right',
+        float: 'right'
     },
     documentName: {
-        fontSize: 18,
-        paddingTop: 3,
-    },
-    linkButtonText: {
         color: 'black',
+        fontSize: 15,
         textDecoration: 'none',
+    },
+    image: {
+        width: 20,
+        height: 20,
+        margin: '9px 0px 0px 0px'
+    },
+    imageContainer: {
+        width: 40,
+        height: 40,
+        borderRadius: 40 / 2,
+        textAlign: 'center',
+        backgroundColor: '#8AABC8',
+        float: 'left',
+        position: 'relative',
+        bottom: 2,
+    },
+    textContainer: {
+        display: 'inline-block',
+        paddingLeft: 20,
     },
     viewButton: {
         float: 'right',
+        padding: '0px !important',
     }
 }
 

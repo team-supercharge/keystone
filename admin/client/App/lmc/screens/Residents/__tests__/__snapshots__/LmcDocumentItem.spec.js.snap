@@ -8,52 +8,102 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <li>
+  "node": <li
+    style={
+      Object {
+        "height": 70,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "backgroundColor": "#8AABC8",
+          "borderRadius": 20,
+          "bottom": 2,
+          "float": "left",
+          "height": 40,
+          "position": "relative",
+          "textAlign": "center",
+          "width": 40,
+        }
+      }
+    >
+      <img
+        src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+        style={
+          Object {
+            "height": 20,
+            "margin": "9px 0px 0px 0px",
+            "width": 20,
+          }
+        }
+      />
+    </div>
     <div
       style={
         Object {
           "display": "inline-block",
+          "paddingLeft": 20,
         }
       }
     >
-      <span
-        style={Object {}}
-      >
-        TestDocument
-      </span>
-      <Button
-        aphroditeStyles={Array []}
-        color="default"
-        variant="fill"
-      >
-        <a
-          href="TestLink"
-          style={
-            Object {
-              "color": "black",
-              "textDecoration": "none",
-            }
-          }
-          target="_blank"
-        >
-          View
-        </a>
-      </Button>
-      <Button
-        aphroditeStyles={Array []}
-        color="delete"
-        data-button="delete"
-        onClick={[Function]}
+      <a
+        href="TestLink"
         style={
           Object {
-            "float": "right",
+            "color": "black",
+            "fontSize": 15,
+            "textDecoration": "none",
           }
         }
-        variant="link"
+        target="_blank"
       >
-        Delete
-      </Button>
+        TestDocument
+      </a>
+      <br />
+      <span
+        style={
+          Object {
+            "fontSize": 12,
+            "opacity": "0.6",
+          }
+        }
+      >
+        Added 
+        0
+         days ago
+      </span>
     </div>
+    <Button
+      aphroditeStyles={Array []}
+      color="delete"
+      data-button="delete"
+      onClick={[Function]}
+      style={
+        Object {
+          "float": "right",
+        }
+      }
+      variant="link"
+    >
+      Delete
+    </Button>
+    <Button
+      aphroditeStyles={Array []}
+      color="default"
+      href="TestLink"
+      style={
+        Object {
+          "float": "right",
+          "padding": "0px !important",
+        }
+      }
+      target="_blank"
+      variant="fill"
+    >
+      View
+    </Button>
     <ConfirmationDialog
       cancelLabel="Cancel"
       confirmationLabel="Delete"
@@ -68,52 +118,102 @@ ShallowWrapper {
     </ConfirmationDialog>
   </li>,
   "nodes": Array [
-    <li>
+    <li
+      style={
+        Object {
+          "height": 70,
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "backgroundColor": "#8AABC8",
+            "borderRadius": 20,
+            "bottom": 2,
+            "float": "left",
+            "height": 40,
+            "position": "relative",
+            "textAlign": "center",
+            "width": 40,
+          }
+        }
+      >
+        <img
+          src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+          style={
+            Object {
+              "height": 20,
+              "margin": "9px 0px 0px 0px",
+              "width": 20,
+            }
+          }
+        />
+      </div>
       <div
         style={
           Object {
             "display": "inline-block",
+            "paddingLeft": 20,
           }
         }
       >
-        <span
-          style={Object {}}
-        >
-          TestDocument
-        </span>
-        <Button
-          aphroditeStyles={Array []}
-          color="default"
-          variant="fill"
-        >
-          <a
-            href="TestLink"
-            style={
-              Object {
-                "color": "black",
-                "textDecoration": "none",
-              }
-            }
-            target="_blank"
-          >
-            View
-          </a>
-        </Button>
-        <Button
-          aphroditeStyles={Array []}
-          color="delete"
-          data-button="delete"
-          onClick={[Function]}
+        <a
+          href="TestLink"
           style={
             Object {
-              "float": "right",
+              "color": "black",
+              "fontSize": 15,
+              "textDecoration": "none",
             }
           }
-          variant="link"
+          target="_blank"
         >
-          Delete
-        </Button>
+          TestDocument
+        </a>
+        <br />
+        <span
+          style={
+            Object {
+              "fontSize": 12,
+              "opacity": "0.6",
+            }
+          }
+        >
+          Added 
+          0
+           days ago
+        </span>
       </div>
+      <Button
+        aphroditeStyles={Array []}
+        color="delete"
+        data-button="delete"
+        onClick={[Function]}
+        style={
+          Object {
+            "float": "right",
+          }
+        }
+        variant="link"
+      >
+        Delete
+      </Button>
+      <Button
+        aphroditeStyles={Array []}
+        color="default"
+        href="TestLink"
+        style={
+          Object {
+            "float": "right",
+            "padding": "0px !important",
+          }
+        }
+        target="_blank"
+        variant="fill"
+      >
+        View
+      </Button>
       <ConfirmationDialog
         cancelLabel="Cancel"
         confirmationLabel="Delete"
@@ -179,52 +279,102 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <li>
+        "_currentElement": <li
+          style={
+            Object {
+              "height": 70,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "backgroundColor": "#8AABC8",
+                "borderRadius": 20,
+                "bottom": 2,
+                "float": "left",
+                "height": 40,
+                "position": "relative",
+                "textAlign": "center",
+                "width": 40,
+              }
+            }
+          >
+            <img
+              src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+              style={
+                Object {
+                  "height": 20,
+                  "margin": "9px 0px 0px 0px",
+                  "width": 20,
+                }
+              }
+            />
+          </div>
           <div
             style={
               Object {
                 "display": "inline-block",
+                "paddingLeft": 20,
               }
             }
           >
-            <span
-              style={Object {}}
-            >
-              TestDocument
-            </span>
-            <Button
-              aphroditeStyles={Array []}
-              color="default"
-              variant="fill"
-            >
-              <a
-                href="TestLink"
-                style={
-                  Object {
-                    "color": "black",
-                    "textDecoration": "none",
-                  }
-                }
-                target="_blank"
-              >
-                View
-              </a>
-            </Button>
-            <Button
-              aphroditeStyles={Array []}
-              color="delete"
-              data-button="delete"
-              onClick={[Function]}
+            <a
+              href="TestLink"
               style={
                 Object {
-                  "float": "right",
+                  "color": "black",
+                  "fontSize": 15,
+                  "textDecoration": "none",
                 }
               }
-              variant="link"
+              target="_blank"
             >
-              Delete
-            </Button>
+              TestDocument
+            </a>
+            <br />
+            <span
+              style={
+                Object {
+                  "fontSize": 12,
+                  "opacity": "0.6",
+                }
+              }
+            >
+              Added 
+              0
+               days ago
+            </span>
           </div>
+          <Button
+            aphroditeStyles={Array []}
+            color="delete"
+            data-button="delete"
+            onClick={[Function]}
+            style={
+              Object {
+                "float": "right",
+              }
+            }
+            variant="link"
+          >
+            Delete
+          </Button>
+          <Button
+            aphroditeStyles={Array []}
+            color="default"
+            href="TestLink"
+            style={
+              Object {
+                "float": "right",
+                "padding": "0px !important",
+              }
+            }
+            target="_blank"
+            variant="fill"
+          >
+            View
+          </Button>
           <ConfirmationDialog
             cancelLabel="Cancel"
             confirmationLabel="Delete"
@@ -239,52 +389,102 @@ ShallowWrapper {
           </ConfirmationDialog>
         </li>,
         "_debugID": 2,
-        "_renderedOutput": <li>
+        "_renderedOutput": <li
+          style={
+            Object {
+              "height": 70,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "backgroundColor": "#8AABC8",
+                "borderRadius": 20,
+                "bottom": 2,
+                "float": "left",
+                "height": 40,
+                "position": "relative",
+                "textAlign": "center",
+                "width": 40,
+              }
+            }
+          >
+            <img
+              src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+              style={
+                Object {
+                  "height": 20,
+                  "margin": "9px 0px 0px 0px",
+                  "width": 20,
+                }
+              }
+            />
+          </div>
           <div
             style={
               Object {
                 "display": "inline-block",
+                "paddingLeft": 20,
               }
             }
           >
-            <span
-              style={Object {}}
-            >
-              TestDocument
-            </span>
-            <Button
-              aphroditeStyles={Array []}
-              color="default"
-              variant="fill"
-            >
-              <a
-                href="TestLink"
-                style={
-                  Object {
-                    "color": "black",
-                    "textDecoration": "none",
-                  }
-                }
-                target="_blank"
-              >
-                View
-              </a>
-            </Button>
-            <Button
-              aphroditeStyles={Array []}
-              color="delete"
-              data-button="delete"
-              onClick={[Function]}
+            <a
+              href="TestLink"
               style={
                 Object {
-                  "float": "right",
+                  "color": "black",
+                  "fontSize": 15,
+                  "textDecoration": "none",
                 }
               }
-              variant="link"
+              target="_blank"
             >
-              Delete
-            </Button>
+              TestDocument
+            </a>
+            <br />
+            <span
+              style={
+                Object {
+                  "fontSize": 12,
+                  "opacity": "0.6",
+                }
+              }
+            >
+              Added 
+              0
+               days ago
+            </span>
           </div>
+          <Button
+            aphroditeStyles={Array []}
+            color="delete"
+            data-button="delete"
+            onClick={[Function]}
+            style={
+              Object {
+                "float": "right",
+              }
+            }
+            variant="link"
+          >
+            Delete
+          </Button>
+          <Button
+            aphroditeStyles={Array []}
+            color="default"
+            href="TestLink"
+            style={
+              Object {
+                "float": "right",
+                "padding": "0px !important",
+              }
+            }
+            target="_blank"
+            variant="fill"
+          >
+            View
+          </Button>
           <ConfirmationDialog
             cancelLabel="Cancel"
             confirmationLabel="Delete"

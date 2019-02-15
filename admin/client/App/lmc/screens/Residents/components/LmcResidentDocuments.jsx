@@ -54,7 +54,7 @@ export class LmcResidentDocuments extends Component {
                     style={styles.addButton}
                 />
                     {hasDocuments ? (
-                        <div style={styles.container}>
+                        <div>
                             { this.renderDocuments() }
                         </div>
                     ) : (
@@ -78,8 +78,6 @@ const styles = {
     categoryName: {
         marginBottom: '0.3em',
         fontWeight: 300,
-    },
-    container: {
     },
     divider: {
         height: 2,
