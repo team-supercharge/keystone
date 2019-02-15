@@ -29,6 +29,12 @@ var SecondaryNavigation = React.createClass({
 		window.removeEventListener('resize', this.handleResize);
 	},
 
+	componentWillUpdate (prevProps) {
+		if (this.props !== prevProps) {
+			this.handleResize()
+		}
+	},
+
 	handleResize () {
 		const { currentListKey, lists } = this.props
 		this.setState({
@@ -77,6 +83,7 @@ var SecondaryNavigation = React.createClass({
 	render () {
 		const { currentListKey, lists } = this.props
 		if (!this.state.navIsVisible) {
+			console.log('BUG')
 			return null;
 		}
 
