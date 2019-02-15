@@ -34,15 +34,19 @@ export default class LmcCreateButton extends Component {
     }
 
     renderCreateForm = () => {
-        const { showCreateModal, isModalOpen, currentList } = this.state;
+        const { prefillPath, prefillValue, title } = this.props
+        const { showCreateModal, isModalOpen, currentList } = this.state
+
         return (
             showCreateModal
                 ? <div className="lmc-create-form">
                     <CreateForm
                         isOpen={isModalOpen}
+                        prefillPath={prefillPath}
+                        prefillValue={prefillValue}
                         list={currentList}
                         onCancel={this.onCloseCreateModal}
-                        formTitle={this.props.title}
+                        formTitle={title}
                         onCreate={this.onCreateItemComplete}
                     />
                 </div> : null
@@ -75,7 +79,9 @@ export default class LmcCreateButton extends Component {
 
 LmcCreateButton.propTypes = {
     listId: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    prefillPath: PropTypes.string,
+    prefillValue: PropTypes.string,
     onCreate: PropTypes.func,
     styles: PropTypes.object,
+    title: PropTypes.string.isRequired,
 }

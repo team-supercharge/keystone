@@ -8,7 +8,28 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <section>
+  "node": <GlyphButton
+    block={true}
+    color="success"
+    glyph="plus"
+    glyphStyle={Object {}}
+    onClick={[Function]}
+    position="left"
+    style={
+      Object {
+        "width": 200,
+      }
+    }
+    title="Add a TestList"
+  >
+    <ResponsiveText
+      component="span"
+      visibleLG="Add a TestList"
+      visibleMD="Add a TestList"
+      visibleSM="Add a TestList"
+    />
+  </GlyphButton>,
+  "nodes": Array [
     <GlyphButton
       block={true}
       color="success"
@@ -29,32 +50,7 @@ ShallowWrapper {
         visibleMD="Add a TestList"
         visibleSM="Add a TestList"
       />
-    </GlyphButton>
-  </section>,
-  "nodes": Array [
-    <section>
-      <GlyphButton
-        block={true}
-        color="success"
-        glyph="plus"
-        glyphStyle={Object {}}
-        onClick={[Function]}
-        position="left"
-        style={
-          Object {
-            "width": 200,
-          }
-        }
-        title="Add a TestList"
-      >
-        <ResponsiveText
-          component="span"
-          visibleLG="Add a TestList"
-          visibleMD="Add a TestList"
-          visibleSM="Add a TestList"
-        />
-      </GlyphButton>
-    </section>,
+    </GlyphButton>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -114,55 +110,51 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <section>
-          <GlyphButton
-            block={true}
-            color="success"
-            glyph="plus"
-            glyphStyle={Object {}}
-            onClick={[Function]}
-            position="left"
-            style={
-              Object {
-                "width": 200,
-              }
+        "_currentElement": <GlyphButton
+          block={true}
+          color="success"
+          glyph="plus"
+          glyphStyle={Object {}}
+          onClick={[Function]}
+          position="left"
+          style={
+            Object {
+              "width": 200,
             }
-            title="Add a TestList"
-          >
-            <ResponsiveText
-              component="span"
-              visibleLG="Add a TestList"
-              visibleMD="Add a TestList"
-              visibleSM="Add a TestList"
-            />
-          </GlyphButton>
-        </section>,
+          }
+          title="Add a TestList"
+        >
+          <ResponsiveText
+            component="span"
+            visibleLG="Add a TestList"
+            visibleMD="Add a TestList"
+            visibleSM="Add a TestList"
+          />
+        </GlyphButton>,
         "_debugID": 2,
-        "_renderedOutput": <section>
-          <GlyphButton
-            block={true}
-            color="success"
-            glyph="plus"
-            glyphStyle={Object {}}
-            onClick={[Function]}
-            position="left"
-            style={
-              Object {
-                "width": 200,
-              }
+        "_renderedOutput": <GlyphButton
+          block={true}
+          color="success"
+          glyph="plus"
+          glyphStyle={Object {}}
+          onClick={[Function]}
+          position="left"
+          style={
+            Object {
+              "width": 200,
             }
-            title="Add a TestList"
-          >
-            <ResponsiveText
-              component="span"
-              visibleLG="Add a TestList"
-              visibleMD="Add a TestList"
-              visibleSM="Add a TestList"
-            />
-          </GlyphButton>
-        </section>,
+          }
+          title="Add a TestList"
+        >
+          <ResponsiveText
+            component="span"
+            visibleLG="Add a TestList"
+            visibleMD="Add a TestList"
+            visibleSM="Add a TestList"
+          />
+        </GlyphButton>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

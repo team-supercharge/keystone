@@ -84,6 +84,10 @@ const CreateForm = React.createClass({
 			props.prefillValues = this.prefillValues;
 		}
 
+		if (this.props.prefillPath && field.path === this.props.prefillPath) {
+			props.value = this.props.prefillValue;
+		}
+
 		return props;
 	},
 	// Create a new item when the form is submitted

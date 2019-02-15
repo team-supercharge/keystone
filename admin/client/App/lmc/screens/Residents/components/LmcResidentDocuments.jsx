@@ -42,7 +42,7 @@ export class LmcResidentDocuments extends Component {
     }
 
     render () {
-        const { documents } = this.props
+        const { documents, fetchDocuments, selectedResident } = this.props
         const hasDocuments = !!Object.keys(documents).length
 
         return (
@@ -50,7 +50,9 @@ export class LmcResidentDocuments extends Component {
                 <LmcCreateButton
                     listId='Document'
                     title='Add a Document'
-                    onCreate={this.props.fetchDocuments}
+                    onCreate={fetchDocuments}
+                    prefillPath='resident'
+                    prefillValue={selectedResident}
                     style={styles.addButton}
                 />
                     {hasDocuments ? (
@@ -102,11 +104,13 @@ LmcResidentDocuments.propTypes = {
     documents: PropTypes.object,
     fetchDocuments: PropTypes.func.isRequired,
     deleteDocument: PropTypes.func.isRequired,
+    selectedResident: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = (state) => {
     return {
-        documents: Selectors.getSelectedResidentDocuments(state)
+        documents: Selectors.getSelectedResidentDocuments(state),
+        selectedResident: state.residents.selectedResident,
     }
 }
 

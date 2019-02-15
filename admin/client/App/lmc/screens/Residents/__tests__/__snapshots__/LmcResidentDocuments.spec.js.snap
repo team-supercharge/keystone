@@ -12,6 +12,7 @@ ShallowWrapper {
     <LmcCreateButton
       listId="Document"
       onCreate={[MockFunction]}
+      prefillPath="resident"
       style={
         Object {
           "float": "right",
@@ -68,6 +69,7 @@ ShallowWrapper {
       <LmcCreateButton
         listId="Document"
         onCreate={[MockFunction]}
+        prefillPath="resident"
         style={
           Object {
             "float": "right",
@@ -182,6 +184,7 @@ ShallowWrapper {
           <LmcCreateButton
             listId="Document"
             onCreate={[MockFunction]}
+            prefillPath="resident"
             style={
               Object {
                 "float": "right",
@@ -238,6 +241,7 @@ ShallowWrapper {
           <LmcCreateButton
             listId="Document"
             onCreate={[MockFunction]}
+            prefillPath="resident"
             style={
               Object {
                 "float": "right",
