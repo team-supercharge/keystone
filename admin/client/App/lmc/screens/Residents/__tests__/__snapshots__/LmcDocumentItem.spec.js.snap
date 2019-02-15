@@ -70,9 +70,7 @@ ShallowWrapper {
           }
         }
       >
-        Added 
-        0
-         days ago
+        Today at 12:00 AM
       </span>
     </div>
     <Button
@@ -180,9 +178,7 @@ ShallowWrapper {
             }
           }
         >
-          Added 
-          0
-           days ago
+          Today at 12:00 AM
         </span>
       </div>
       <Button
@@ -341,9 +337,7 @@ ShallowWrapper {
                 }
               }
             >
-              Added 
-              0
-               days ago
+              Today at 12:00 AM
             </span>
           </div>
           <Button
@@ -451,9 +445,7 @@ ShallowWrapper {
                 }
               }
             >
-              Added 
-              0
-               days ago
+              Today at 12:00 AM
             </span>
           </div>
           <Button

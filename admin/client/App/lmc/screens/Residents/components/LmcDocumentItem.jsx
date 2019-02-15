@@ -17,8 +17,8 @@ export default class LmcDocumentItem extends Component {
 
     render () {
         const { data, onDelete } = this.props
-        const currentDate = moment()
-        const diff = currentDate.diff(data.createdAt, 'days')
+        const daysDiff = moment().diff(data.createdAt, 'days')
+        const displayedTime = daysDiff <= 7 ? moment(data.createdAt).calendar() : `Added ${daysDiff} days ago`
 
         return (
             <li style={styles.container}>
@@ -38,7 +38,7 @@ export default class LmcDocumentItem extends Component {
                     </a>
                     <br />
                     <span style={styles.dateDiff}>
-                        Added {diff} days ago
+                        {displayedTime}
                     </span>
                 </div>
                 <Button 
