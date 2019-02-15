@@ -20,10 +20,8 @@ ShallowWrapper {
         Object {
           "backgroundColor": "#8AABC8",
           "borderRadius": 20,
-          "bottom": 2,
           "float": "left",
           "height": 40,
-          "position": "relative",
           "textAlign": "center",
           "width": 40,
         }
@@ -81,6 +79,8 @@ ShallowWrapper {
       style={
         Object {
           "float": "right",
+          "position": "relative",
+          "top": 5,
         }
       }
       variant="link"
@@ -94,7 +94,8 @@ ShallowWrapper {
       style={
         Object {
           "float": "right",
-          "padding": "0px !important",
+          "position": "relative",
+          "top": 5,
         }
       }
       target="_blank"
@@ -102,6 +103,15 @@ ShallowWrapper {
     >
       View
     </Button>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#f2f2f2",
+          "height": 2,
+          "marginTop": 8,
+        }
+      }
+    />
     <ConfirmationDialog
       cancelLabel="Cancel"
       confirmationLabel="Delete"
@@ -128,10 +138,8 @@ ShallowWrapper {
           Object {
             "backgroundColor": "#8AABC8",
             "borderRadius": 20,
-            "bottom": 2,
             "float": "left",
             "height": 40,
-            "position": "relative",
             "textAlign": "center",
             "width": 40,
           }
@@ -189,6 +197,8 @@ ShallowWrapper {
         style={
           Object {
             "float": "right",
+            "position": "relative",
+            "top": 5,
           }
         }
         variant="link"
@@ -202,7 +212,8 @@ ShallowWrapper {
         style={
           Object {
             "float": "right",
-            "padding": "0px !important",
+            "position": "relative",
+            "top": 5,
           }
         }
         target="_blank"
@@ -210,6 +221,15 @@ ShallowWrapper {
       >
         View
       </Button>
+      <div
+        style={
+          Object {
+            "backgroundColor": "#f2f2f2",
+            "height": 2,
+            "marginTop": 8,
+          }
+        }
+      />
       <ConfirmationDialog
         cancelLabel="Cancel"
         confirmationLabel="Delete"
@@ -245,6 +265,7 @@ ShallowWrapper {
       "_instance": LmcDocumentItem {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "handleDeleteConfirm": [Function],
         "props": Object {
           "data": Object {
             "name": "TestDocument",
@@ -287,10 +308,8 @@ ShallowWrapper {
               Object {
                 "backgroundColor": "#8AABC8",
                 "borderRadius": 20,
-                "bottom": 2,
                 "float": "left",
                 "height": 40,
-                "position": "relative",
                 "textAlign": "center",
                 "width": 40,
               }
@@ -348,6 +367,8 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
+                "position": "relative",
+                "top": 5,
               }
             }
             variant="link"
@@ -361,7 +382,8 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
-                "padding": "0px !important",
+                "position": "relative",
+                "top": 5,
               }
             }
             target="_blank"
@@ -369,6 +391,15 @@ ShallowWrapper {
           >
             View
           </Button>
+          <div
+            style={
+              Object {
+                "backgroundColor": "#f2f2f2",
+                "height": 2,
+                "marginTop": 8,
+              }
+            }
+          />
           <ConfirmationDialog
             cancelLabel="Cancel"
             confirmationLabel="Delete"
@@ -395,10 +426,8 @@ ShallowWrapper {
               Object {
                 "backgroundColor": "#8AABC8",
                 "borderRadius": 20,
-                "bottom": 2,
                 "float": "left",
                 "height": 40,
-                "position": "relative",
                 "textAlign": "center",
                 "width": 40,
               }
@@ -456,6 +485,8 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
+                "position": "relative",
+                "top": 5,
               }
             }
             variant="link"
@@ -469,7 +500,8 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
-                "padding": "0px !important",
+                "position": "relative",
+                "top": 5,
               }
             }
             target="_blank"
@@ -477,6 +509,15 @@ ShallowWrapper {
           >
             View
           </Button>
+          <div
+            style={
+              Object {
+                "backgroundColor": "#f2f2f2",
+                "height": 2,
+                "marginTop": 8,
+              }
+            }
+          />
           <ConfirmationDialog
             cancelLabel="Cancel"
             confirmationLabel="Delete"

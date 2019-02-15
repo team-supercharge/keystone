@@ -81,6 +81,7 @@ const styles = {
     },
     divider: {
         height: 2,
+        marginBottom: 22,
         width: '100%',
     },
     documentContainer: {

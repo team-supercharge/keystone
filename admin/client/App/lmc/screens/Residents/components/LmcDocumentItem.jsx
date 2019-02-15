@@ -15,8 +15,13 @@ export default class LmcDocumentItem extends Component {
         }))
     }
 
+    handleDeleteConfirm = (id) => {
+        this.toggleDeleteDialog()
+        this.props.onDelete(id)
+    }
+
     render () {
-        const { data, onDelete } = this.props
+        const { data } = this.props
         const daysDiff = moment().diff(data.createdAt, 'days')
         const displayedTime = daysDiff <= 7 ? moment(data.createdAt).calendar() : `Added ${daysDiff} days ago`
 
@@ -45,25 +50,26 @@ export default class LmcDocumentItem extends Component {
                     onClick={this.toggleDeleteDialog} 
                     variant="link" 
                     color="delete"
-                    style={styles.deleteButton} 
+                    style={styles.button} 
                     data-button="delete"
                 >
                     Delete
                 </Button>
                 <Button
-                    style={styles.viewButton} 
+                    style={styles.button} 
                     color='default'
                     href={data.pdf}
                     target='_blank'
                 >
                     View
                 </Button>
+                <div style={styles.divider} />
                 <ConfirmationDialog
                     confirmationLabel='Delete'
                     confirmationType='danger'
                     isOpen={this.state.deleteDialogOpen}
                     onCancel={this.toggleDeleteDialog}
-                    onConfirmation={() => onDelete(data.id)}
+                    onConfirmation={() => this.handleDeleteConfirm(data.id)}
                 >
                     <div>
                         Are you sure you want to delete this document? If you go ahead, it can’t be undone. Once it's gone, it’s gone for good!
@@ -77,6 +83,11 @@ export default class LmcDocumentItem extends Component {
 const IMAGE_URL = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png'
 
 const styles = {
+    button: {
+        float: 'right',
+        position: 'relative',
+        top: 5,
+    },
     container: {
         height: 70,
     },
@@ -84,8 +95,10 @@ const styles = {
         fontSize: 12,
         opacity: '0.6',
     },
-    deleteButton: {
-        float: 'right'
+    divider: {
+        backgroundColor: '#f2f2f2',
+        height: 2,
+        marginTop: 8,
     },
     documentName: {
         color: 'black',
@@ -104,17 +117,11 @@ const styles = {
         textAlign: 'center',
         backgroundColor: '#8AABC8',
         float: 'left',
-        position: 'relative',
-        bottom: 2,
     },
     textContainer: {
         display: 'inline-block',
         paddingLeft: 20,
     },
-    viewButton: {
-        float: 'right',
-        padding: '0px !important',
-    }
 }
 
 LmcDocumentItem.propTypes = {

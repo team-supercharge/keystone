@@ -14,9 +14,11 @@ export class LmcResidentsScreen extends Component {
     }
 
     componentDidMount () {
-        this.props.selectList()
+        const { selectList, fetchResidents } = this.props
+        selectList()
+        fetchResidents()
     }
-
+    
     onCreateResidentComplete = (resident) => {
         const { fetchResidents, setSelectedResident } = this.props
         fetchResidents()

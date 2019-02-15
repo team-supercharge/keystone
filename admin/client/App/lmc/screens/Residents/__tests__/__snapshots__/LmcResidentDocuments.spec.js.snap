@@ -37,6 +37,7 @@ ShallowWrapper {
           style={
             Object {
               "height": 2,
+              "marginBottom": 22,
               "width": "100%",
             }
           }
@@ -92,6 +93,7 @@ ShallowWrapper {
             style={
               Object {
                 "height": 2,
+                "marginBottom": 22,
                 "width": "100%",
               }
             }
@@ -205,6 +207,7 @@ ShallowWrapper {
                 style={
                   Object {
                     "height": 2,
+                    "marginBottom": 22,
                     "width": "100%",
                   }
                 }
@@ -260,6 +263,7 @@ ShallowWrapper {
                 style={
                   Object {
                     "height": 2,
+                    "marginBottom": 22,
                     "width": "100%",
                   }
                 }

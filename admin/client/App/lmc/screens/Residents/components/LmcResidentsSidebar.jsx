@@ -53,7 +53,7 @@ export class LmcResidentsSidebar extends Component {
             setSelectedResident,
             onCreate,
         } = this.props;
-
+        
         let shownResidents = _.filter(residents, (resident) => !this.calculateHidden(resident))
 
         return (
