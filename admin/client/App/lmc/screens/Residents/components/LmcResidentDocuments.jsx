@@ -8,8 +8,20 @@ import LmcDocumentItem from './LmcDocumentItem.jsx'
 import LmcCreateButton from '../../../components/LmcCreateButton.jsx'
 
 export class LmcResidentDocuments extends Component {
+    state = {
+        documentsFetchInterval: null
+    }
+
     componentDidMount () {
-        this.props.fetchDocuments()
+        const { fetchDocuments } = this.props
+        this.setState({ 
+            documentsFetchInterval: setInterval(fetchDocuments, 600000)
+        })
+        fetchDocuments()
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.documentsFetchInterval)
     }
 
     listDocumentsByCategory = category => {
@@ -55,16 +67,16 @@ export class LmcResidentDocuments extends Component {
                     prefillValue={selectedResident}
                     style={styles.addButton}
                 />
-                    {hasDocuments ? (
-                        <div>
-                            { this.renderDocuments() }
-                        </div>
-                    ) : (
-                        <BlankState
-                            heading={NO_DOCUMENTS_MESSAGE}
-                            style={styles.noDocumentsMessage}
-                        />
-                    )}
+                { hasDocuments ? (
+                    <div>
+                        { this.renderDocuments() }
+                    </div>
+                ) : (
+                    <BlankState
+                        heading={NO_DOCUMENTS_MESSAGE}
+                        style={styles.noDocumentsMessage}
+                    />
+                ) }
             </div>
         )
     }
