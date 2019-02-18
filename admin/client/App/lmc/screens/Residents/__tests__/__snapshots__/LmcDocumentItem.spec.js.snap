@@ -79,6 +79,7 @@ ShallowWrapper {
       style={
         Object {
           "float": "right",
+          "marginLeft": 10,
           "position": "relative",
           "top": 5,
         }
@@ -87,6 +88,23 @@ ShallowWrapper {
     >
       Delete
     </Button>
+    <GlyphButton
+      component={[Function]}
+      glyph="pencil"
+      glyphStyle={Object {}}
+      position="left"
+      style={
+        Object {
+          "float": "right",
+          "marginLeft": 10,
+          "position": "relative",
+          "top": 5,
+        }
+      }
+      to="/admin/documents/TestId"
+    >
+      Edit
+    </GlyphButton>
     <Button
       aphroditeStyles={Array []}
       color="default"
@@ -94,6 +112,7 @@ ShallowWrapper {
       style={
         Object {
           "float": "right",
+          "marginLeft": 10,
           "position": "relative",
           "top": 5,
         }
@@ -197,6 +216,7 @@ ShallowWrapper {
         style={
           Object {
             "float": "right",
+            "marginLeft": 10,
             "position": "relative",
             "top": 5,
           }
@@ -205,6 +225,23 @@ ShallowWrapper {
       >
         Delete
       </Button>
+      <GlyphButton
+        component={[Function]}
+        glyph="pencil"
+        glyphStyle={Object {}}
+        position="left"
+        style={
+          Object {
+            "float": "right",
+            "marginLeft": 10,
+            "position": "relative",
+            "top": 5,
+          }
+        }
+        to="/admin/documents/TestId"
+      >
+        Edit
+      </GlyphButton>
       <Button
         aphroditeStyles={Array []}
         color="default"
@@ -212,6 +249,7 @@ ShallowWrapper {
         style={
           Object {
             "float": "right",
+            "marginLeft": 10,
             "position": "relative",
             "top": 5,
           }
@@ -253,6 +291,7 @@ ShallowWrapper {
       "_currentElement": <LmcDocumentItem
         data={
           Object {
+            "id": "TestId",
             "name": "TestDocument",
             "pdf": "TestLink",
           }
@@ -268,6 +307,7 @@ ShallowWrapper {
         "handleDeleteConfirm": [Function],
         "props": Object {
           "data": Object {
+            "id": "TestId",
             "name": "TestDocument",
             "pdf": "TestLink",
           },
@@ -367,6 +407,7 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
+                "marginLeft": 10,
                 "position": "relative",
                 "top": 5,
               }
@@ -375,6 +416,23 @@ ShallowWrapper {
           >
             Delete
           </Button>
+          <GlyphButton
+            component={[Function]}
+            glyph="pencil"
+            glyphStyle={Object {}}
+            position="left"
+            style={
+              Object {
+                "float": "right",
+                "marginLeft": 10,
+                "position": "relative",
+                "top": 5,
+              }
+            }
+            to="/admin/documents/TestId"
+          >
+            Edit
+          </GlyphButton>
           <Button
             aphroditeStyles={Array []}
             color="default"
@@ -382,6 +440,7 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
+                "marginLeft": 10,
                 "position": "relative",
                 "top": 5,
               }
@@ -485,6 +544,7 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
+                "marginLeft": 10,
                 "position": "relative",
                 "top": 5,
               }
@@ -493,6 +553,23 @@ ShallowWrapper {
           >
             Delete
           </Button>
+          <GlyphButton
+            component={[Function]}
+            glyph="pencil"
+            glyphStyle={Object {}}
+            position="left"
+            style={
+              Object {
+                "float": "right",
+                "marginLeft": 10,
+                "position": "relative",
+                "top": 5,
+              }
+            }
+            to="/admin/documents/TestId"
+          >
+            Edit
+          </GlyphButton>
           <Button
             aphroditeStyles={Array []}
             color="default"
@@ -500,6 +577,7 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
+                "marginLeft": 10,
                 "position": "relative",
                 "top": 5,
               }
@@ -545,6 +623,7 @@ ShallowWrapper {
   "unrendered": <LmcDocumentItem
     data={
       Object {
+        "id": "TestId",
         "name": "TestDocument",
         "pdf": "TestLink",
       }

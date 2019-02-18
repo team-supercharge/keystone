@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { Button } from '../../../../elemental'
+import { Link } from 'react-router'
+import { Button, GlyphButton } from '../../../../elemental'
 import ConfirmationDialog from '../../../../shared/ConfirmationDialog'
 
 export default class LmcDocumentItem extends Component {
@@ -24,6 +25,7 @@ export default class LmcDocumentItem extends Component {
         const { data } = this.props
         const daysDiff = moment().diff(data.createdAt, 'days')
         const displayedTime = daysDiff <= 7 ? moment(data.createdAt).calendar() : `Added ${daysDiff} days ago`
+        const editLink = `${Keystone.adminPath}/documents/${data.id}`
 
         return (
             <li style={styles.container}>
@@ -55,6 +57,15 @@ export default class LmcDocumentItem extends Component {
                 >
                     Delete
                 </Button>
+                <GlyphButton
+                    component={Link}
+                    glyph='pencil'
+                    position='left'                  
+					style={styles.button}
+					to={editLink}
+				>
+				    Edit
+				</GlyphButton>
                 <Button
                     style={styles.button} 
                     color='default'
@@ -87,6 +98,7 @@ const styles = {
         float: 'right',
         position: 'relative',
         top: 5,
+        marginLeft: 10,
     },
     container: {
         height: 70,

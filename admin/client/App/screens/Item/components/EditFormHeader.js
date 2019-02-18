@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import Toolbar from './Toolbar';
 import ToolbarSection from './Toolbar/ToolbarSection';
 import EditFormHeaderSearch from './EditFormHeaderSearch';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 import Drilldown from './Drilldown';
 import { GlyphButton, ResponsiveText } from '../../../elemental';
 
-export const EditFormHeader = React.createClass({
+export const EditFormHead = React.createClass({
 	displayName: 'EditFormHeader',
 	propTypes: {
 		data: React.PropTypes.object,
@@ -48,12 +48,29 @@ export const EditFormHeader = React.createClass({
 	renderDrilldownItems () {
 		const { data, list } = this.props;
 		const items = data.drilldown ? data.drilldown.items : [];
+		let backPath = `${Keystone.adminPath}/${list.path}`
 
-		let backPath = `${Keystone.adminPath}/${list.path}`;
 		const backStyles = { paddingLeft: 0, paddingRight: 0 };
 		// Link to the list page the user came from
 		if (this.props.listActivePage && this.props.listActivePage > 1) {
 			backPath = `${backPath}?page=${this.props.listActivePage}`;
+		}
+
+		// CO-107 - links to previous page in router history for documents
+		if (list.id === 'documents') {
+			return (
+				<GlyphButton
+					component={Link}
+					data-e2e-editform-header-back
+					glyph="chevron-left"
+					position="left"
+					style={backStyles}
+					onClick={() => this.props.router.goBack()}
+					variant="link"
+					>
+					{list.plural}
+				</GlyphButton>
+			);
 		}
 
 		// return a single back button when no drilldown exists
@@ -67,7 +84,7 @@ export const EditFormHeader = React.createClass({
 					style={backStyles}
 					to={backPath}
 					variant="link"
-					>
+				>
 					{list.plural}
 				</GlyphButton>
 			);
@@ -131,9 +148,12 @@ export const EditFormHeader = React.createClass({
 		);
 	},
 	renderCreateButton () {
-		const { nocreate, autocreate, singular } = this.props.list;
+		const { nocreate, autocreate, singular, id} = this.props.list;
 
 		if (nocreate) return null;
+
+		// CO-107 hack - don't show new document button
+		if (id === 'documents') return null;
 
 		let props = {};
 		if (autocreate) {
@@ -156,6 +176,8 @@ export const EditFormHeader = React.createClass({
 		);
 	},
 });
+
+const EditFormHeader = withRouter(EditFormHead)
 
 export default connect((state) => ({
 	listActivePage: state.lists.page.index,

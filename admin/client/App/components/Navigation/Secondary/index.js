@@ -86,7 +86,7 @@ var SecondaryNavigation = React.createClass({
 			return null;
 		}
 
-		if (currentListKey === 'residents') {
+		if (currentListKey === 'residents' || 'documents') {
 			return null
 		}
 

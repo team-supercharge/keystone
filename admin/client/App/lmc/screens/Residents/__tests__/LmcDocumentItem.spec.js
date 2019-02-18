@@ -8,12 +8,17 @@ MockDate.set('1/1/2019')
 describe('LmcDocumentItem', () => {
     let wrapper
     let data
+    let savedKeystone
     const onDelete = jest.fn()
 
     beforeEach(() => {
+        savedKeystone = global.Keystone
+        global.Keystone = { adminPath: '/admin' }
+
         data = {
             name: 'TestDocument',
-            pdf: 'TestLink'
+            pdf: 'TestLink',
+            id: 'TestId'
         }
         wrapper = shallow(
             <LmcDocumentItem
@@ -45,6 +50,12 @@ describe('LmcDocumentItem', () => {
         expect(button.props().children).toEqual('View')
     })
 
+    it('has a button to edit the document', () => {
+        const editButton = wrapper.find('GlyphButton')
+        expect(editButton.props().to).toEqual('/admin/documents/TestId')
+        expect(editButton.props().children).toEqual('Edit')
+    })
+
     it('has a confirmation dialog to delete the data', () => {
         const dialog = wrapper.find('ConfirmationDialog')
         expect(dialog.props().confirmationType).toEqual('danger')
@@ -63,5 +74,6 @@ describe('LmcDocumentItem', () => {
 
     afterAll(() => {
         MockDate.clear()
+        global.Keystone = savedKeystone
     })
 })

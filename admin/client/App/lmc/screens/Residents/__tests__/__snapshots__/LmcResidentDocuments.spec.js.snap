@@ -161,7 +161,9 @@ ShallowWrapper {
         },
         "refs": Object {},
         "renderDocuments": [Function],
-        "state": null,
+        "state": Object {
+          "documentsFetchInterval": null,
+        },
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
