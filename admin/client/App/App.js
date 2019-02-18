@@ -31,11 +31,16 @@ const classes = StyleSheet.create({
 
 const App = (props) => {
 	const listsByPath = require('../utils/lists').listsByPath;
-
 	const intercomUser = {
 		user_id: _.get(Keystone, 'user.id'),
 		name: _.get(Keystone, 'user.name'),
+		company: {
+			id: _.get(Keystone, 'user.home'),
+			name: _.get(Keystone, 'user.homeName')
+		}
 	};
+
+	console.log(intercomUser)
 
 	let children = props.children;
 	// If we're on either a list or an item view
