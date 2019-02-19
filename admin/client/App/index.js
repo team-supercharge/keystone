@@ -30,6 +30,8 @@ function fireGATracking () {
 }
 
 // Loading custom LMC view
+import LmcOrganisationScreen from './lmc/screens/Organisation/index.jsx';
+
 import LmcResidentsScreen from './lmc/screens/Residents/index.jsx';
 import LmcResidentProfile from './lmc/screens/Residents/components/LmcResidentProfile.jsx';
 import LmcResidentReports from './lmc/screens/Residents/components/LmcResidentReports.jsx';
@@ -77,6 +79,7 @@ ReactDOM.render(
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
+				<Route path="users" component={LmcOrganisationScreen} />
 				<Route path="residents" component={LmcResidentsScreen}>
 					<IndexRedirect to='/admin/residents/profile' />
 					<Route path='profile' component={LmcResidentProfile} />

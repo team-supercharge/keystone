@@ -37,7 +37,6 @@ var SecondaryNavigation = React.createClass({
 
 	handleResize () {
 		const { currentListKey } = this.props
-		console.log(currentListKey)
 		this.setState({
 			navIsVisible: 
 				currentListKey !== 'residents' && 

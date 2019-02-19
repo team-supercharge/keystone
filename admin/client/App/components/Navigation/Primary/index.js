@@ -227,8 +227,8 @@ var PrimaryNavigation = React.createClass({
 
 	renderLMCTeam () {
 		const section = {
-			key: 'Team',
-			label: 'Team',
+			key: 'users',
+			label: 'Your Home',
 		};
 
 		const { currentSectionKey } = this.props;
