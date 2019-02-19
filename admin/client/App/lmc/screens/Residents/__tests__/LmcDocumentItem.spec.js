@@ -50,10 +50,10 @@ describe('LmcDocumentItem', () => {
         expect(button.props().children).toEqual('View')
     })
 
-    it('has a button to edit the document', () => {
+    it("has a 'pencil' button to edit the document", () => {
         const editButton = wrapper.find('GlyphButton')
         expect(editButton.props().to).toEqual('/admin/documents/TestId')
-        expect(editButton.props().children).toEqual('Edit')
+        expect(editButton.props().glyph).toEqual('pencil')
     })
 
     it('has a confirmation dialog to delete the data', () => {
