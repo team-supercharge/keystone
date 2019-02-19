@@ -8,12 +8,76 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    Team
+  "node": <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flex": "1",
+          "flexDirection": "column",
+        }
+      }
+    >
+      <LmcSidebar
+        itemLabel="Team Member"
+        items={Array []}
+        listId="User"
+        onCreate={[Function]}
+        selectedItem=""
+        setSelectedItem={[Function]}
+        title="Your team"
+      />
+    </div>
+    <div
+      style={
+        Object {
+          "flex": "3.5",
+        }
+      }
+    />
   </div>,
   "nodes": Array [
-    <div>
-      Team
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flex": "1",
+            "flexDirection": "column",
+          }
+        }
+      >
+        <LmcSidebar
+          itemLabel="Team Member"
+          items={Array []}
+          listId="User"
+          onCreate={[Function]}
+          selectedItem=""
+          setSelectedItem={[Function]}
+          title="Your team"
+        />
+      </div>
+      <div
+        style={
+          Object {
+            "flex": "3.5",
+          }
+        }
+      />
     </div>,
   ],
   "options": Object {},
@@ -29,6 +93,7 @@ ShallowWrapper {
       "_instance": LmcTeamScreen {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "onCreate": [Function],
         "props": Object {},
         "refs": Object {},
         "state": null,
@@ -50,12 +115,76 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          Team
+        "_currentElement": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flex": "1",
+                "flexDirection": "column",
+              }
+            }
+          >
+            <LmcSidebar
+              itemLabel="Team Member"
+              items={Array []}
+              listId="User"
+              onCreate={[Function]}
+              selectedItem=""
+              setSelectedItem={[Function]}
+              title="Your team"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "flex": "3.5",
+              }
+            }
+          />
         </div>,
         "_debugID": 2,
-        "_renderedOutput": <div>
-          Team
+        "_renderedOutput": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flex": "1",
+                "flexDirection": "column",
+              }
+            }
+          >
+            <LmcSidebar
+              itemLabel="Team Member"
+              items={Array []}
+              listId="User"
+              onCreate={[Function]}
+              selectedItem=""
+              setSelectedItem={[Function]}
+              title="Your team"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "flex": "3.5",
+              }
+            }
+          />
         </div>,
       },
       "_renderedNodeType": 0,

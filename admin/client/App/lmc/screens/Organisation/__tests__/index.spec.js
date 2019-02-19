@@ -22,8 +22,8 @@ describe('LmcOrganisationScreen', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('renders an LmcSecondaryNavbar', () => {
-        expect(wrapper.find('LmcSecondaryNavbar').length).toEqual(1)
+    it('renders an LmcTabBar', () => {
+        expect(wrapper.find('Connect(LmcTabBar)').length).toEqual(1)
     })
 
     it('renders its children', () => {

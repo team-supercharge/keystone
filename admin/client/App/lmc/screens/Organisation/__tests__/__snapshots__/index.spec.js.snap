@@ -8,55 +8,91 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    <LmcSecondaryNavbar
-      tabs={
-        Array [
-          Object {
-            "label": "Team",
-            "path": "organisation/team",
-          },
-          Object {
-            "label": "Shift Passwords",
-            "path": "organisation/passwords",
-          },
-          Object {
-            "label": "Documents",
-            "path": "organisation/documents",
-          },
-        ]
+  "node": <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
       }
-    />
+    }
+  >
     <div
-      className="testClass"
+      style={
+        Object {
+          "zIndex": 2,
+        }
+      }
     >
-      Test
-    </div>
-  </div>,
-  "nodes": Array [
-    <div>
-      <LmcSecondaryNavbar
-        tabs={
+      <Connect(LmcTabBar)
+        items={
           Array [
             Object {
               "label": "Team",
-              "path": "organisation/team",
+              "url": "team",
             },
             Object {
               "label": "Shift Passwords",
-              "path": "organisation/passwords",
+              "url": "passwords",
             },
             Object {
               "label": "Documents",
-              "path": "organisation/documents",
+              "url": "documents",
             },
           ]
         }
+        resourceUrl="organisation"
       />
+    </div>
+    <div>
       <div
         className="testClass"
       >
         Test
+      </div>
+    </div>
+  </div>,
+  "nodes": Array [
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "zIndex": 2,
+          }
+        }
+      >
+        <Connect(LmcTabBar)
+          items={
+            Array [
+              Object {
+                "label": "Team",
+                "url": "team",
+              },
+              Object {
+                "label": "Shift Passwords",
+                "url": "passwords",
+              },
+              Object {
+                "label": "Documents",
+                "url": "documents",
+              },
+            ]
+          }
+          resourceUrl="organisation"
+        />
+      </div>
+      <div>
+        <div
+          className="testClass"
+        >
+          Test
+        </div>
       </div>
     </div>,
   ],
@@ -106,55 +142,91 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <LmcSecondaryNavbar
-            tabs={
-              Array [
-                Object {
-                  "label": "Team",
-                  "path": "organisation/team",
-                },
-                Object {
-                  "label": "Shift Passwords",
-                  "path": "organisation/passwords",
-                },
-                Object {
-                  "label": "Documents",
-                  "path": "organisation/documents",
-                },
-              ]
+        "_currentElement": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "column",
             }
-          />
+          }
+        >
           <div
-            className="testClass"
+            style={
+              Object {
+                "zIndex": 2,
+              }
+            }
           >
-            Test
+            <Connect(LmcTabBar)
+              items={
+                Array [
+                  Object {
+                    "label": "Team",
+                    "url": "team",
+                  },
+                  Object {
+                    "label": "Shift Passwords",
+                    "url": "passwords",
+                  },
+                  Object {
+                    "label": "Documents",
+                    "url": "documents",
+                  },
+                ]
+              }
+              resourceUrl="organisation"
+            />
+          </div>
+          <div>
+            <div
+              className="testClass"
+            >
+              Test
+            </div>
           </div>
         </div>,
         "_debugID": 2,
-        "_renderedOutput": <div>
-          <LmcSecondaryNavbar
-            tabs={
-              Array [
-                Object {
-                  "label": "Team",
-                  "path": "organisation/team",
-                },
-                Object {
-                  "label": "Shift Passwords",
-                  "path": "organisation/passwords",
-                },
-                Object {
-                  "label": "Documents",
-                  "path": "organisation/documents",
-                },
-              ]
+        "_renderedOutput": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "column",
             }
-          />
+          }
+        >
           <div
-            className="testClass"
+            style={
+              Object {
+                "zIndex": 2,
+              }
+            }
           >
-            Test
+            <Connect(LmcTabBar)
+              items={
+                Array [
+                  Object {
+                    "label": "Team",
+                    "url": "team",
+                  },
+                  Object {
+                    "label": "Shift Passwords",
+                    "url": "passwords",
+                  },
+                  Object {
+                    "label": "Documents",
+                    "url": "documents",
+                  },
+                ]
+              }
+              resourceUrl="organisation"
+            />
+          </div>
+          <div>
+            <div
+              className="testClass"
+            >
+              Test
+            </div>
           </div>
         </div>,
       },

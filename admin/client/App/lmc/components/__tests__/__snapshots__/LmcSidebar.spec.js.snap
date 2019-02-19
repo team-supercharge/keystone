@@ -17,6 +17,7 @@ ShallowWrapper {
       onSwitchChange={[Function]}
     />
     <LmcCreateButton
+      buttonText="Item"
       listId="Item"
       onCreate={[MockFunction]}
       style={
@@ -69,6 +70,7 @@ ShallowWrapper {
         onSwitchChange={[Function]}
       />
       <LmcCreateButton
+        buttonText="Item"
         listId="Item"
         onCreate={[MockFunction]}
         style={
@@ -227,6 +229,7 @@ ShallowWrapper {
             onSwitchChange={[Function]}
           />
           <LmcCreateButton
+            buttonText="Item"
             listId="Item"
             onCreate={[MockFunction]}
             style={
@@ -279,6 +282,7 @@ ShallowWrapper {
             onSwitchChange={[Function]}
           />
           <LmcCreateButton
+            buttonText="Item"
             listId="Item"
             onCreate={[MockFunction]}
             style={

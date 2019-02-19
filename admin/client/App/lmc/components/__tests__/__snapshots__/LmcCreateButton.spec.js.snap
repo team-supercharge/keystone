@@ -20,13 +20,13 @@ ShallowWrapper {
         "width": 200,
       }
     }
-    title="Add a TestList"
+    title="Add a TestItem"
   >
     <ResponsiveText
       component="span"
-      visibleLG="Add a TestList"
-      visibleMD="Add a TestList"
-      visibleSM="Add a TestList"
+      visibleLG="Add a TestItem"
+      visibleMD="Add a TestItem"
+      visibleSM="Add a TestItem"
     />
   </GlyphButton>,
   "nodes": Array [
@@ -42,13 +42,13 @@ ShallowWrapper {
           "width": 200,
         }
       }
-      title="Add a TestList"
+      title="Add a TestItem"
     >
       <ResponsiveText
         component="span"
-        visibleLG="Add a TestList"
-        visibleMD="Add a TestList"
-        visibleSM="Add a TestList"
+        visibleLG="Add a TestItem"
+        visibleMD="Add a TestItem"
+        visibleSM="Add a TestItem"
       />
     </GlyphButton>,
   ],
@@ -59,6 +59,7 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcCreateButton
+        buttonText="TestItem"
         listId="TestList"
         onCreate={[MockFunction]}
         style={
@@ -78,6 +79,7 @@ ShallowWrapper {
         "onCreateItemComplete": [Function],
         "onOpenCreateModal": [Function],
         "props": Object {
+          "buttonText": "TestItem",
           "listId": "TestList",
           "onCreate": [MockFunction],
           "style": Object {
@@ -122,13 +124,13 @@ ShallowWrapper {
               "width": 200,
             }
           }
-          title="Add a TestList"
+          title="Add a TestItem"
         >
           <ResponsiveText
             component="span"
-            visibleLG="Add a TestList"
-            visibleMD="Add a TestList"
-            visibleSM="Add a TestList"
+            visibleLG="Add a TestItem"
+            visibleMD="Add a TestItem"
+            visibleSM="Add a TestItem"
           />
         </GlyphButton>,
         "_debugID": 2,
@@ -144,13 +146,13 @@ ShallowWrapper {
               "width": 200,
             }
           }
-          title="Add a TestList"
+          title="Add a TestItem"
         >
           <ResponsiveText
             component="span"
-            visibleLG="Add a TestList"
-            visibleMD="Add a TestList"
-            visibleSM="Add a TestList"
+            visibleLG="Add a TestItem"
+            visibleMD="Add a TestItem"
+            visibleSM="Add a TestItem"
           />
         </GlyphButton>,
       },
@@ -165,6 +167,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcCreateButton
+    buttonText="TestItem"
     listId="TestList"
     onCreate={[MockFunction]}
     style={

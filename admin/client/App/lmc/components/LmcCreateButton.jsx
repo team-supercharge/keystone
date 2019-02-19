@@ -54,23 +54,23 @@ export default class LmcCreateButton extends Component {
     }
 
     render () {
-        const { listId, title, style } = this.props
-        const buttonText = `Add a ${listId}`
+        const { buttonText, style } = this.props
+        const fullText = `Add a ${buttonText}`
         return (
             <GlyphButton
                 block
                 color='success'
                 glyph='plus'
                 position='left'
-                title={buttonText}
+                title={fullText}
                 onClick={this.onOpenCreateModal}
                 style={style}
             >
                 { this.renderCreateForm() }
                 <ResponsiveText
-                    visibleSM={buttonText}
-                    visibleMD={buttonText}
-                    visibleLG={buttonText}
+                    visibleSM={fullText}
+                    visibleMD={fullText}
+                    visibleLG={fullText}
                     />
             </GlyphButton>
         )
@@ -78,6 +78,7 @@ export default class LmcCreateButton extends Component {
 }
 
 LmcCreateButton.propTypes = {
+    buttonText: PropTypes.string.isRequired,
     listId: PropTypes.string.isRequired,
     prefillPath: PropTypes.string,
     prefillValue: PropTypes.string,

@@ -39,6 +39,19 @@ export default class LmcSidebar extends Component {
         }))
     }
 
+    renderTitle() {
+        const { title } = this.props
+        if (!title) return null
+
+        return (
+            <div style={styles.titleContainer}>
+                <span style={styles.title}>
+                    { title }
+                </span>
+            </div>
+        )
+    }
+
     render() {
         const { 
             itemLabel,
@@ -53,12 +66,14 @@ export default class LmcSidebar extends Component {
 
         return (
             <div className='lmc-sidebar'>
+                { this.renderTitle() }
                 <LmcSidebarFilter
                     onFormChange={this.handleFormChange}
                     onSwitchChange={this.handleSwitchChange}
                     isChecked={!this.state.displayActiveItems}
                 />
                 <LmcCreateButton
+                    buttonText={itemLabel}
                     listId={listId}
                     title={`Add a new ${itemLabel}`}
                     onCreate={onCreate}
@@ -85,6 +100,13 @@ const styles = {
     button: {
         borderRadius: 0,
     },
+    titleContainer: {
+        backgroundColor: 'white',
+        padding: '50px 0px 20px 0px',
+        fontSize: 20,
+        fontWeight: 600,
+        textAlign: 'center',
+    }
 };
 
 LmcSidebar.propTypes = {
@@ -94,4 +116,5 @@ LmcSidebar.propTypes = {
     onCreate: PropTypes.func.isRequired,
     selectedItem: PropTypes.string,
     setSelectedItem: PropTypes.func.isRequired,
+    title: PropTypes.string,
 };

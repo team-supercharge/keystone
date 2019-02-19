@@ -9,6 +9,7 @@ describe('LmcCreateButton', () => {
     let wrapper
     let listId
     let title
+    let buttonText
     let styles
     const savedKeystone = global.Keystone
     const onCreate = jest.fn()
@@ -20,6 +21,7 @@ describe('LmcCreateButton', () => {
     beforeEach(() => {
         listId = 'TestList'
         title = 'TestTitle'
+        buttonText = 'TestItem'
         styles = {
             button: {
                 width: 200
@@ -30,6 +32,7 @@ describe('LmcCreateButton', () => {
             <LmcCreateButton
                 listId={listId}
                 title={title}
+                buttonText={buttonText}
                 onCreate={onCreate}
                 style={styles.button}
             />
@@ -42,7 +45,7 @@ describe('LmcCreateButton', () => {
 
     it('renders the correct button', () => {
         const button = wrapper.find('GlyphButton')
-        expect(button.props().title).toEqual('Add a TestList')
+        expect(button.props().title).toEqual('Add a TestItem')
         expect(button.props().style).toEqual(styles.button)
     })
 

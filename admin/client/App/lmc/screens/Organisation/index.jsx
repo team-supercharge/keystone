@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import LmcSecondaryNavbar from '../../components/LmcSecondaryNavbar.jsx'
+import LmcTabBar from '../../components/LmcTabBar.jsx'
 
 
 export class LmcOrganisationScreen extends Component {
@@ -9,25 +9,36 @@ export class LmcOrganisationScreen extends Component {
         const { children, location } = this.props
 
         return (
-            <div>
-                <LmcSecondaryNavbar
-                    tabs={tabs}
-                    location={location}
-                />
-                { children }
+            <div style={styles.container}>
+                <div style={styles.navbar}>
+                    <LmcTabBar
+                        items={tabs}
+                        resourceUrl={'organisation'}
+                        location={location}
+                    />
+                </div>
+                <div>
+                    { children }
+                </div>
             </div>
         )
     }
 }
 
 const tabs = [
-    { path: 'organisation/team', label: 'Team' },
-    { path: 'organisation/passwords', label: 'Shift Passwords' },
-    { path: 'organisation/documents', label: 'Documents' }
+    { url: 'team', label: 'Team' },
+    { url: 'passwords', label: 'Shift Passwords' },
+    { url: 'documents', label: 'Documents' }
 ]
 
 const styles = {
-
+    container: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    navbar: {
+        zIndex: 2
+    }
 }
 
 LmcOrganisationScreen.propTypes = {}
