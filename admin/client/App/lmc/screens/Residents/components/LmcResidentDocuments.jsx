@@ -116,7 +116,7 @@ LmcResidentDocuments.propTypes = {
     documents: PropTypes.object,
     fetchDocuments: PropTypes.func.isRequired,
     deleteDocument: PropTypes.func.isRequired,
-    selectedResident: PropTypes.string.isRequired,
+    selectedResident: PropTypes.string,
 }
 
 const mapStateToProps = (state) => {

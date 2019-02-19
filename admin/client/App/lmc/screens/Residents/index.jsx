@@ -37,14 +37,16 @@ export class LmcResidentsScreen extends Component {
             <div>
                 { residents ? (
                     <div style={styles.mainContainer}>
-                        <LmcSidebar
-                            itemLabel='Resident'
-                            listId='Resident'
-                            items={residents}
-                            onCreate={this.onCreateResidentComplete}
-                            selectedItem={selectedResident}
-                            setSelectedItem={setSelectedResident}
-                        />
+                        <div style={styles.leftContainer}>
+                            <LmcSidebar
+                                itemLabel='Resident'
+                                listId='Resident'
+                                items={residents}
+                                onCreate={this.onCreateResidentComplete}
+                                selectedItem={selectedResident}
+                                setSelectedItem={setSelectedResident}
+                            />
+                        </div>
                         <div style={styles.rightContainer}>
                             <LmcTabBar
                                 location={location} 
@@ -88,6 +90,10 @@ const styles = {
         maxWidth: 800,
         margin: '0 auto',
         padding: '50px 0px 0px 0px',
+    },
+    leftContainer: {
+        flex: '1',
+        zIndex: '1',
     },
     mainContainer: {
         display: 'flex',

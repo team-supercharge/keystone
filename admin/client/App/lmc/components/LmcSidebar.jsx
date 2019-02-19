@@ -52,7 +52,7 @@ export default class LmcSidebar extends Component {
         let shownItems = _.filter(items, (item) => !this.calculateHidden(item))
 
         return (
-            <div className='lmc-sidebar' style={styles.container}>
+            <div className='lmc-sidebar'>
                 <LmcSidebarFilter
                     onFormChange={this.handleFormChange}
                     onSwitchChange={this.handleSwitchChange}
@@ -85,10 +85,6 @@ const styles = {
     button: {
         borderRadius: 0,
     },
-    container: {
-        flex: '1',
-        zIndex: '1'
-    }
 };
 
 LmcSidebar.propTypes = {
@@ -96,6 +92,6 @@ LmcSidebar.propTypes = {
     listId: PropTypes.string.isRequired,
     items: PropTypes.array,
     onCreate: PropTypes.func.isRequired,
-    selectedItem: PropTypes.string.isRequired,
+    selectedItem: PropTypes.string,
     setSelectedItem: PropTypes.func.isRequired,
 };

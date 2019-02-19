@@ -10,12 +10,6 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className="lmc-sidebar"
-    style={
-      Object {
-        "flex": "1",
-        "zIndex": "1",
-      }
-    }
   >
     <LmcSidebarFilter
       isChecked={false}
@@ -68,12 +62,6 @@ ShallowWrapper {
   "nodes": Array [
     <div
       className="lmc-sidebar"
-      style={
-        Object {
-          "flex": "1",
-          "zIndex": "1",
-        }
-      }
     >
       <LmcSidebarFilter
         isChecked={false}
@@ -132,7 +120,6 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <LmcSidebar
         itemLabel="Item"
-        itemList="Item"
         items={
           Array [
             Object {
@@ -161,6 +148,7 @@ ShallowWrapper {
             },
           ]
         }
+        listId="Item"
         onCreate={[MockFunction]}
         selectedItem="testId1"
         setSelectedItem={[MockFunction]}
@@ -176,7 +164,6 @@ ShallowWrapper {
         "handleSwitchChange": [Function],
         "props": Object {
           "itemLabel": "Item",
-          "itemList": "Item",
           "items": Array [
             Object {
               "id": "testId1",
@@ -203,6 +190,7 @@ ShallowWrapper {
               "status": "inactive",
             },
           ],
+          "listId": "Item",
           "onCreate": [MockFunction],
           "selectedItem": "testId1",
           "setSelectedItem": [MockFunction],
@@ -232,12 +220,6 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className="lmc-sidebar"
-          style={
-            Object {
-              "flex": "1",
-              "zIndex": "1",
-            }
-          }
         >
           <LmcSidebarFilter
             isChecked={false}
@@ -290,12 +272,6 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div
           className="lmc-sidebar"
-          style={
-            Object {
-              "flex": "1",
-              "zIndex": "1",
-            }
-          }
         >
           <LmcSidebarFilter
             isChecked={false}
@@ -358,7 +334,6 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <LmcSidebar
     itemLabel="Item"
-    itemList="Item"
     items={
       Array [
         Object {
@@ -387,6 +362,7 @@ ShallowWrapper {
         },
       ]
     }
+    listId="Item"
     onCreate={[MockFunction]}
     selectedItem="testId1"
     setSelectedItem={[MockFunction]}

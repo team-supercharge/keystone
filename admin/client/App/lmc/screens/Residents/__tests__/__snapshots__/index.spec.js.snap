@@ -17,21 +17,34 @@ ShallowWrapper {
         }
       }
     >
-      <Connect(LmcResidentsSidebar)
-        onCreate={[Function]}
-        residents={
-          Array [
-            Object {
-              "id": "testId1",
-              "name": "testName1",
-            },
-            Object {
-              "id": "testId2",
-              "name": "testName2",
-            },
-          ]
+      <div
+        style={
+          Object {
+            "flex": "1",
+            "zIndex": "1",
+          }
         }
-      />
+      >
+        <LmcSidebar
+          itemLabel="Resident"
+          items={
+            Array [
+              Object {
+                "id": "testId1",
+                "name": "testName1",
+              },
+              Object {
+                "id": "testId2",
+                "name": "testName2",
+              },
+            ]
+          }
+          listId="Resident"
+          onCreate={[Function]}
+          selectedItem="testId1"
+          setSelectedItem={[MockFunction]}
+        />
+      </div>
       <div
         style={
           Object {
@@ -98,21 +111,34 @@ ShallowWrapper {
           }
         }
       >
-        <Connect(LmcResidentsSidebar)
-          onCreate={[Function]}
-          residents={
-            Array [
-              Object {
-                "id": "testId1",
-                "name": "testName1",
-              },
-              Object {
-                "id": "testId2",
-                "name": "testName2",
-              },
-            ]
+        <div
+          style={
+            Object {
+              "flex": "1",
+              "zIndex": "1",
+            }
           }
-        />
+        >
+          <LmcSidebar
+            itemLabel="Resident"
+            items={
+              Array [
+                Object {
+                  "id": "testId1",
+                  "name": "testName1",
+                },
+                Object {
+                  "id": "testId2",
+                  "name": "testName2",
+                },
+              ]
+            }
+            listId="Resident"
+            onCreate={[Function]}
+            selectedItem="testId1"
+            setSelectedItem={[MockFunction]}
+          />
+        </div>
         <div
           style={
             Object {
@@ -177,6 +203,7 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcResidentsScreen
+        fetchResidents={[MockFunction]}
         residents={
           Array [
             Object {
@@ -189,6 +216,9 @@ ShallowWrapper {
             },
           ]
         }
+        selectList={[MockFunction]}
+        selectedResident="testId1"
+        setSelectedResident={[MockFunction]}
       />,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -198,6 +228,7 @@ ShallowWrapper {
         "context": Object {},
         "onCreateResidentComplete": [Function],
         "props": Object {
+          "fetchResidents": [MockFunction],
           "residents": Array [
             Object {
               "id": "testId1",
@@ -208,6 +239,9 @@ ShallowWrapper {
               "name": "testName2",
             },
           ],
+          "selectList": [MockFunction],
+          "selectedResident": "testId1",
+          "setSelectedResident": [MockFunction],
         },
         "refs": Object {},
         "state": null,
@@ -238,21 +272,34 @@ ShallowWrapper {
               }
             }
           >
-            <Connect(LmcResidentsSidebar)
-              onCreate={[Function]}
-              residents={
-                Array [
-                  Object {
-                    "id": "testId1",
-                    "name": "testName1",
-                  },
-                  Object {
-                    "id": "testId2",
-                    "name": "testName2",
-                  },
-                ]
+            <div
+              style={
+                Object {
+                  "flex": "1",
+                  "zIndex": "1",
+                }
               }
-            />
+            >
+              <LmcSidebar
+                itemLabel="Resident"
+                items={
+                  Array [
+                    Object {
+                      "id": "testId1",
+                      "name": "testName1",
+                    },
+                    Object {
+                      "id": "testId2",
+                      "name": "testName2",
+                    },
+                  ]
+                }
+                listId="Resident"
+                onCreate={[Function]}
+                selectedItem="testId1"
+                setSelectedItem={[MockFunction]}
+              />
+            </div>
             <div
               style={
                 Object {
@@ -319,21 +366,34 @@ ShallowWrapper {
               }
             }
           >
-            <Connect(LmcResidentsSidebar)
-              onCreate={[Function]}
-              residents={
-                Array [
-                  Object {
-                    "id": "testId1",
-                    "name": "testName1",
-                  },
-                  Object {
-                    "id": "testId2",
-                    "name": "testName2",
-                  },
-                ]
+            <div
+              style={
+                Object {
+                  "flex": "1",
+                  "zIndex": "1",
+                }
               }
-            />
+            >
+              <LmcSidebar
+                itemLabel="Resident"
+                items={
+                  Array [
+                    Object {
+                      "id": "testId1",
+                      "name": "testName1",
+                    },
+                    Object {
+                      "id": "testId2",
+                      "name": "testName2",
+                    },
+                  ]
+                }
+                listId="Resident"
+                onCreate={[Function]}
+                selectedItem="testId1"
+                setSelectedItem={[MockFunction]}
+              />
+            </div>
             <div
               style={
                 Object {
@@ -402,6 +462,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcResidentsScreen
+    fetchResidents={[MockFunction]}
     residents={
       Array [
         Object {
@@ -414,6 +475,9 @@ ShallowWrapper {
         },
       ]
     }
+    selectList={[MockFunction]}
+    selectedResident="testId1"
+    setSelectedResident={[MockFunction]}
   />,
 }
 `;
