@@ -9,11 +9,55 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    Organisation
+    <LmcSecondaryNavbar
+      tabs={
+        Array [
+          Object {
+            "label": "Team",
+            "path": "organisation/team",
+          },
+          Object {
+            "label": "Shift Passwords",
+            "path": "organisation/passwords",
+          },
+          Object {
+            "label": "Documents",
+            "path": "organisation/documents",
+          },
+        ]
+      }
+    />
+    <div
+      className="testClass"
+    >
+      Test
+    </div>
   </div>,
   "nodes": Array [
     <div>
-      Organisation
+      <LmcSecondaryNavbar
+        tabs={
+          Array [
+            Object {
+              "label": "Team",
+              "path": "organisation/team",
+            },
+            Object {
+              "label": "Shift Passwords",
+              "path": "organisation/passwords",
+            },
+            Object {
+              "label": "Documents",
+              "path": "organisation/documents",
+            },
+          ]
+        }
+      />
+      <div
+        className="testClass"
+      >
+        Test
+      </div>
     </div>,
   ],
   "options": Object {},
@@ -22,14 +66,26 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <LmcOrganisationScreen />,
+      "_currentElement": <LmcOrganisationScreen>
+        <div
+          className="testClass"
+        >
+          Test
+        </div>
+      </LmcOrganisationScreen>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": LmcOrganisationScreen {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "children": <div
+            className="testClass"
+          >
+            Test
+          </div>,
+        },
         "refs": Object {},
         "state": null,
         "updater": Object {
@@ -51,11 +107,55 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          Organisation
+          <LmcSecondaryNavbar
+            tabs={
+              Array [
+                Object {
+                  "label": "Team",
+                  "path": "organisation/team",
+                },
+                Object {
+                  "label": "Shift Passwords",
+                  "path": "organisation/passwords",
+                },
+                Object {
+                  "label": "Documents",
+                  "path": "organisation/documents",
+                },
+              ]
+            }
+          />
+          <div
+            className="testClass"
+          >
+            Test
+          </div>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          Organisation
+          <LmcSecondaryNavbar
+            tabs={
+              Array [
+                Object {
+                  "label": "Team",
+                  "path": "organisation/team",
+                },
+                Object {
+                  "label": "Shift Passwords",
+                  "path": "organisation/passwords",
+                },
+                Object {
+                  "label": "Documents",
+                  "path": "organisation/documents",
+                },
+              ]
+            }
+          />
+          <div
+            className="testClass"
+          >
+            Test
+          </div>
         </div>,
       },
       "_renderedNodeType": 0,
@@ -68,6 +168,12 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <LmcOrganisationScreen />,
+  "unrendered": <LmcOrganisationScreen>
+    <div
+      className="testClass"
+    >
+      Test
+    </div>
+  </LmcOrganisationScreen>,
 }
 `;

@@ -66,8 +66,8 @@ const App = (props) => {
 			currentSection = { key: 'todos' };
 		} else if (props.location.pathname.match('\/residents')) {
 			currentSection = { key: 'residents' };
-		} else if (props.location.pathname.match('\/users')) {
-			currentSection = { key: 'users' }
+		} else if (props.location.pathname.match('\/organisation')) {
+			currentSection = { key: 'organisation' }
 		}
 	}
 	// Default current section key to dashboard

@@ -225,14 +225,14 @@ var PrimaryNavigation = React.createClass({
 		);
 	},
 
-	renderLMCTeam () {
+	renderLMCOrganisation () {
 		const section = {
-			key: 'users',
+			key: 'organisation',
 			label: 'Your Home',
 		};
 
 		const { currentSectionKey } = this.props;
-		const href = `${Keystone.adminPath}/users`;
+		const href = `${Keystone.adminPath}/organisation`;
 		const isActive = currentSectionKey && currentSectionKey === section.key;
 		const className = isActive ? 'primary-navbar__item--active' : null;
 		// console.log(href);
@@ -282,7 +282,7 @@ var PrimaryNavigation = React.createClass({
 						{this.renderBrand()}
 						{/* { userRole !== 'lmc-admin' ? this.renderLMCToDos() : null } */}
 						{ userRole === 'lmc-admin' ? this.renderNavigation() : null }
-						{ userRole !== 'lmc-admin' ? this.renderLMCTeam() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCOrganisation() : null }
 						{ userRole !== 'lmc-admin' ? this.renderLMCResidents() : null }
 						{ userRole !== 'lmc-admin' ? this.renderLMCLogs() : null }
 						{ userRole !== 'lmc-admin' ? this.renderLMCToDos() : null }
