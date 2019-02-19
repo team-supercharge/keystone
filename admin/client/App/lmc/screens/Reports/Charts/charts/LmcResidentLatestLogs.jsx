@@ -15,7 +15,7 @@ import {
 class LmcResidentLatestLogs extends Component {
     render() {
 		const { logsFetch, resident_id } = this.props;
-		const isEmpty = _.get(logsFetch, 'value.results.length');
+		const isEmpty = _.get(logsFetch, 'value.result.length');
 		return (
             logsFetch.pending
                 ? <LmcLoadingScreen />
@@ -25,7 +25,7 @@ class LmcResidentLatestLogs extends Component {
 							View All Logs
 						</Button>
 					</Link> : null }
-					<LmcLogTimeline logs={logsFetch.value.results} />
+					<LmcLogTimeline logs={logsFetch.value.result} />
 				</div>
         );
     }

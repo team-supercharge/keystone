@@ -80,11 +80,11 @@ class LmcTodosScreen extends React.Component {
         if (tasksFetch.rejected) {
             return <BlankState heading={tasksFetch.reason || 'Oops. Unable to load To-Do\'s...'} />
         }
-        if (tasksFetch.value && (!tasksFetch.value.results || !tasksFetch.value.results.length)) {
+        if (tasksFetch.value && (!tasksFetch.value.result || !tasksFetch.value.result.length)) {
             return <BlankState heading={'No To-Do\'s on this date'} />
         }
 
-        return <LmcTaskList toggleCreateModal={toggleCreateModal} data={tasksFetch.value.results} residents={residentsFetch.value.results} />
+        return <LmcTaskList toggleCreateModal={toggleCreateModal} data={tasksFetch.value.result} residents={residentsFetch.value.result} />
     }
 
     onDateChange({ date }) {

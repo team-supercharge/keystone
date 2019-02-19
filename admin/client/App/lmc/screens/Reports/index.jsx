@@ -73,7 +73,7 @@ export default connect((state) => {
 //     }
 
 //     renderResidents(residents) {
-//         return residents.results.map(resident => (
+//         return residents.result.map(resident => (
 //             <div>
 //                 <a onClick={() => this.loadResidentLogs(resident.id)}>
 //                     { resident.name } - { resident.id }
@@ -84,7 +84,7 @@ export default connect((state) => {
 //     }
 
 //     renderResidentLogs() {
-//         const { results } = this.state.residentLogs;
+//         const { result } = this.state.residentLogs;
 
 //         const styles = {
 //             td: {
@@ -99,8 +99,8 @@ export default connect((state) => {
 
 //         return (
 //             <div>
-//                 <h2>Resident: <strong>{results.residentName}</strong></h2>
-//                 { results.logs.map(row => (
+//                 <h2>Resident: <strong>{result.residentName}</strong></h2>
+//                 { result.logs.map(row => (
 //                     <div>
 //                         <h3>{ row.date }</h3>
 //                         <table>
@@ -162,7 +162,7 @@ export default connect((state) => {
 //                         <div>
 //                             { residents ? 
 //                                 this.renderResidents(residents) : 
-//                                 'No Results'
+//                                 'No result'
 //                             }
 //                         </div>
 //                 }

@@ -35,19 +35,19 @@ class LmcTaskCreateModal extends Component {
     }
 
     filterData(home, categories, allItems, category) {
-        const { group } = home.results[0];
-        const items = _.chain(allItems.results)
+        const { group } = home.result[0];
+        const items = _.chain(allItems.result)
             .filter({ fields: { category }})
             .cloneDeep()
             .map(item => {
-                item.fields.categoryData = _.find(categories.results, { id: item.fields.category });
+                item.fields.categoryData = _.find(categories.result, { id: item.fields.category });
                 return item;
             })
             .value();
 
         return {
             items,
-            categories: _.filter(categories.results, { fields: { group }}),
+            categories: _.filter(categories.result, { fields: { group }}),
         }
     }
 
@@ -86,13 +86,13 @@ class LmcTaskCreateModal extends Component {
         let backText;
 
         if (category) {
-            const categoryData = _.find(categoryFetch.value.results, { id: category });
+            const categoryData = _.find(categoryFetch.value.result, { id: category });
             backIconColor = categoryData.fields.color
             backIcon = categoryData.fields.icon.url;
             const categoryName = backText = this.formatName(categoryData.fields.name);
             
             if (item) {
-                const itemData = _.find(itemFetch.value.results, { id: item });
+                const itemData = _.find(itemFetch.value.result, { id: item });
                 if (itemData.fields.icon.url) backIcon = itemData.fields.icon.url;
                 backText = `${backText} / ${this.formatName(itemData.fields.name)}`;
             }
@@ -119,8 +119,8 @@ class LmcTaskCreateModal extends Component {
         if (allFetches.pending) return <LmcLoadingScreen />;
         if (!allFetches.fulfilled) return <BlankState heading={'Oops.. Something went wrong'} />;
         const { items, categories } = this.filterData(homeFetch.value, categoryFetch.value, itemFetch.value, category && category);
-        const residents = residentsFetch.value.results;
-        const carers = carersFetch.value.results;
+        const residents = residentsFetch.value.result;
+        const carers = carersFetch.value.result;
         const { backIconColor, backIcon, backText } = this.getSelectionSummary();
 
         return (

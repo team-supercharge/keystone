@@ -102,52 +102,52 @@ class Home extends React.Component {
                 <div className="row">
                     <div className="twelve columns">
                         <LmcHomeTitle
-                            residents={residentsFetch.value.results}
-                            home={homeFetch.value.results} />
+                            residents={residentsFetch.value.result}
+                            home={homeFetch.value.result} />
                     </div>
                 </div>
                 <div id="intro-js-step-dashboard">
                     <div className="row">
                         <div className="four columns" id="intro-js-step-residents">
                             <LmcResidentsCard
-                                residents={residentsFetch.value.results}
+                                residents={residentsFetch.value.result}
                                 onCreate={this.onOpenCreateModal} />
                         </div>
                         <div className="four columns" id="intro-js-step-incidents">
                             <LmcIncidentsCard
-                                logs={logsFetch.value.results}
-                                categories={categoriesFetch.value.results}
-                                residents={residentsFetch.value.results}
-                                home={homeFetch.value.results}
+                                logs={logsFetch.value.result}
+                                categories={categoriesFetch.value.result}
+                                residents={residentsFetch.value.result}
+                                home={homeFetch.value.result}
                                 onCreate={this.onOpenCreateModal} />
                         </div>
                         <div className="four columns">
-                            <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.results, 'Home_YouTubeURL')} />
+                            <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.result, 'Home_YouTubeURL')} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="four columns" id="intro-js-step-carers">
                             <LmcCarersCard
-                                logs={logsFetch.value.results}
-                                carers={usersFetch.value.results}
+                                logs={logsFetch.value.result}
+                                carers={usersFetch.value.result}
                                 onCreate={this.onOpenCreateModal} />
-                            <LmcBirthdaysCard residents={residentsFetch.value.results} />
+                            <LmcBirthdaysCard residents={residentsFetch.value.result} />
                         </div>
                         <div className="four columns" id="intro-js-step-tasks">
                             <LmcTasksCard
-                                logs={logsFetch.value.results}
-                                tasks={tasksFetch.value.results}
+                                logs={logsFetch.value.result}
+                                tasks={tasksFetch.value.result}
                                 onCreate={this.onOpenCreateModal} />
                         </div>
                         <div className="four columns" id="intro-js-step-advert">
                             <LmcAdvertCard
-                                url={this.getSettingsValue(settingsFetch.value.results, 'Home_Advert_Link')}
-                                image={this.getSettingsValue(settingsFetch.value.results, 'Home_Advert_Img')}/>
+                                url={this.getSettingsValue(settingsFetch.value.result, 'Home_Advert_Link')}
+                                image={this.getSettingsValue(settingsFetch.value.result, 'Home_Advert_Img')}/>
                         </div>
                     </div>
                     {/* <div className="row">
                         <div className="six columns" id="intro-js-step-residents">
-                            <LmcBirthdaysCard residents={residentsFetch.value.results} />
+                            <LmcBirthdaysCard residents={residentsFetch.value.result} />
                         </div>
                     </div> */}
                 </div>

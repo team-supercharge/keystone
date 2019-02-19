@@ -29,18 +29,18 @@ export default function withDataLoader (WrappedComponent, { enableMockData, erro
             }
 
             if (dataFetch.fulfilled) {
-                const results = dataFetch.value.results;
+                const result = dataFetch.value.result;
                 if (enableMockData
-                    && (_.isArray(results))
-                    && !(results.length > 0)
+                    && (_.isArray(result))
+                    && !(result.length > 0)
                 ) {
                     if (mockDataFetch && mockDataFetch.fulfilled) {
-                        return <WrappedComponent mock data={mockDataFetch.value.results} {...this.props} />;
+                        return <WrappedComponent mock data={mockDataFetch.value.result} {...this.props} />;
                     } else {
                         return <ShowSample params={params} onButtonClick={() => triggerMockFetch()} />;
                     }
                 } else {
-                    return <WrappedComponent data={dataFetch.value.results} {...this.props} />;
+                    return <WrappedComponent data={dataFetch.value.result} {...this.props} />;
                 }
             }
 
