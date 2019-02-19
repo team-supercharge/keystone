@@ -155,12 +155,12 @@ var PrimaryNavigation = React.createClass({
 	renderLMCToDos () {
 
 		const section = {
-			key: 'todos',
+			key: "To-Do's",
 			label: 'ToDos',
 		};
 
 		const { currentSectionKey } = this.props;
-		const href = `${Keystone.adminPath}/todos/dashboard`;
+		const href = `${Keystone.adminPath}/tasks`;
 		const isActive = currentSectionKey && currentSectionKey === section.key;
 		const className = isActive ? 'primary-navbar__item--active' : null;
 		// console.log(href);
@@ -176,7 +176,7 @@ var PrimaryNavigation = React.createClass({
 			</PrimaryNavItem>
 		);
 	},
-	renderResidentsLink () {
+	renderLMCResidents () {
 
 		const section = {
 			key: 'residents',
@@ -185,6 +185,54 @@ var PrimaryNavigation = React.createClass({
 
 		const { currentSectionKey } = this.props;
 		const href = `${Keystone.adminPath}/residents/profile`;
+		const isActive = currentSectionKey && currentSectionKey === section.key;
+		const className = isActive ? 'primary-navbar__item--active' : null;
+		// console.log(href);
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
+
+	renderLMCLogs () {
+		const section = {
+			key: 'Logs',
+			label: 'Logs',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/logs`;
+		const isActive = currentSectionKey && currentSectionKey === section.key;
+		const className = isActive ? 'primary-navbar__item--active' : null;
+		// console.log(href);
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
+
+	renderLMCTeam () {
+		const section = {
+			key: 'Team',
+			label: 'Team',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/users`;
 		const isActive = currentSectionKey && currentSectionKey === section.key;
 		const className = isActive ? 'primary-navbar__item--active' : null;
 		// console.log(href);
@@ -234,7 +282,10 @@ var PrimaryNavigation = React.createClass({
 						{this.renderBrand()}
 						{/* { userRole !== 'lmc-admin' ? this.renderLMCToDos() : null } */}
 						{ userRole === 'lmc-admin' ? this.renderNavigation() : null }
-						{ userRole !== 'lmc-admin' ? this.renderResidentsLink() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCTeam() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCResidents() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCLogs() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCToDos() : null }
 						{ userRole !== 'lmc-admin' ? this.renderLMCReports() : null }
 						{ userRole === 'lmc-admin' ? this.renderAdminReports() : null }
 					</ul>
