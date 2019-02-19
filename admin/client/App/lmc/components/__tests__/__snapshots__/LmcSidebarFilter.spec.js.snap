@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LmcResidentsSidebarFilter renders correctly 1`] = `
+exports[`LmcSidebarFilter renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -52,7 +52,7 @@ ShallowWrapper {
           }
         }
       >
-        Active residents
+        Active
       </span>
       <ReactSwitch
         activeBoxShadow="0px 0px 1px 8px rgba(0, 0, 0, 0.1)"
@@ -130,7 +130,7 @@ ShallowWrapper {
             }
           }
         >
-          Active residents
+          Active
         </span>
         <ReactSwitch
           activeBoxShadow="0px 0px 1px 8px rgba(0, 0, 0, 0.1)"
@@ -170,7 +170,7 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <LmcResidentsSidebarFilter
+      "_currentElement": <LmcSidebarFilter
         isChecked={true}
         onFormChange={[MockFunction]}
         onSwitchChange={[MockFunction]}
@@ -250,7 +250,7 @@ ShallowWrapper {
                 }
               }
             >
-              Active residents
+              Active
             </span>
             <ReactSwitch
               activeBoxShadow="0px 0px 1px 8px rgba(0, 0, 0, 0.1)"
@@ -328,7 +328,7 @@ ShallowWrapper {
                 }
               }
             >
-              Active residents
+              Active
             </span>
             <ReactSwitch
               activeBoxShadow="0px 0px 1px 8px rgba(0, 0, 0, 0.1)"
@@ -372,7 +372,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <LmcResidentsSidebarFilter
+  "unrendered": <LmcSidebarFilter
     isChecked={true}
     onFormChange={[MockFunction]}
     onSwitchChange={[MockFunction]}

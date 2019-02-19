@@ -1,15 +1,15 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import LmcResidentsSidebarFilter from '../components/LmcResidentsSidebarFilter.jsx'
+import LmcSidebarFilter from '../LmcSidebarFilter.jsx'
 
-describe('LmcResidentsSidebarFilter', () => {
+describe('LmcSidebarFilter', () => {
     let wrapper
     const onFormMock = jest.fn()
     const onSwitchMock = jest.fn()
 
     beforeEach(() => {
         wrapper = shallow(
-            <LmcResidentsSidebarFilter
+            <LmcSidebarFilter
                 onFormChange={onFormMock}
                 onSwitchChange={onSwitchMock}
                 isChecked={true}

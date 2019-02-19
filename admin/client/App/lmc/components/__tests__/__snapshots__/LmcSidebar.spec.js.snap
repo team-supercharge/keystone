@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LmcResidentsSidebar should render correctly 1`] = `
+exports[`LmcSidebar should render correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -17,20 +17,20 @@ ShallowWrapper {
       }
     }
   >
-    <LmcResidentsSidebarFilter
+    <LmcSidebarFilter
       isChecked={false}
       onFormChange={[Function]}
       onSwitchChange={[Function]}
     />
     <LmcCreateButton
-      listId="Resident"
+      listId="Item"
       onCreate={[MockFunction]}
       style={
         Object {
           "borderRadius": 0,
         }
       }
-      title="Add a new Resident"
+      title="Add a new Item"
     />
     <ul
       className="lmc-sidebar-list"
@@ -75,20 +75,20 @@ ShallowWrapper {
         }
       }
     >
-      <LmcResidentsSidebarFilter
+      <LmcSidebarFilter
         isChecked={false}
         onFormChange={[Function]}
         onSwitchChange={[Function]}
       />
       <LmcCreateButton
-        listId="Resident"
+        listId="Item"
         onCreate={[MockFunction]}
         style={
           Object {
             "borderRadius": 0,
           }
         }
-        title="Add a new Resident"
+        title="Add a new Item"
       />
       <ul
         className="lmc-sidebar-list"
@@ -130,9 +130,10 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <LmcResidentsSidebar
-        onCreate={[MockFunction]}
-        residents={
+      "_currentElement": <LmcSidebar
+        itemLabel="Item"
+        itemList="Item"
+        items={
           Array [
             Object {
               "id": "testId1",
@@ -160,20 +161,23 @@ ShallowWrapper {
             },
           ]
         }
-        selectedResident="testId1"
+        onCreate={[MockFunction]}
+        selectedItem="testId1"
+        setSelectedItem={[MockFunction]}
       />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": LmcResidentsSidebar {
+      "_instance": LmcSidebar {
         "_reactInternalInstance": [Circular],
         "calculateHidden": [Function],
         "context": Object {},
         "handleFormChange": [Function],
         "handleSwitchChange": [Function],
         "props": Object {
-          "onCreate": [MockFunction],
-          "residents": Array [
+          "itemLabel": "Item",
+          "itemList": "Item",
+          "items": Array [
             Object {
               "id": "testId1",
               "name": Object {
@@ -199,11 +203,13 @@ ShallowWrapper {
               "status": "inactive",
             },
           ],
-          "selectedResident": "testId1",
+          "onCreate": [MockFunction],
+          "selectedItem": "testId1",
+          "setSelectedItem": [MockFunction],
         },
         "refs": Object {},
         "state": Object {
-          "displayActiveResidents": true,
+          "displayActiveItems": true,
           "nameFilter": "",
         },
         "updater": Object {
@@ -233,20 +239,20 @@ ShallowWrapper {
             }
           }
         >
-          <LmcResidentsSidebarFilter
+          <LmcSidebarFilter
             isChecked={false}
             onFormChange={[Function]}
             onSwitchChange={[Function]}
           />
           <LmcCreateButton
-            listId="Resident"
+            listId="Item"
             onCreate={[MockFunction]}
             style={
               Object {
                 "borderRadius": 0,
               }
             }
-            title="Add a new Resident"
+            title="Add a new Item"
           />
           <ul
             className="lmc-sidebar-list"
@@ -291,20 +297,20 @@ ShallowWrapper {
             }
           }
         >
-          <LmcResidentsSidebarFilter
+          <LmcSidebarFilter
             isChecked={false}
             onFormChange={[Function]}
             onSwitchChange={[Function]}
           />
           <LmcCreateButton
-            listId="Resident"
+            listId="Item"
             onCreate={[MockFunction]}
             style={
               Object {
                 "borderRadius": 0,
               }
             }
-            title="Add a new Resident"
+            title="Add a new Item"
           />
           <ul
             className="lmc-sidebar-list"
@@ -350,9 +356,10 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <LmcResidentsSidebar
-    onCreate={[MockFunction]}
-    residents={
+  "unrendered": <LmcSidebar
+    itemLabel="Item"
+    itemList="Item"
+    items={
       Array [
         Object {
           "id": "testId1",
@@ -380,7 +387,9 @@ ShallowWrapper {
         },
       ]
     }
-    selectedResident="testId1"
+    onCreate={[MockFunction]}
+    selectedItem="testId1"
+    setSelectedItem={[MockFunction]}
   />,
 }
 `;

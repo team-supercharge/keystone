@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormInput } from '../../../../elemental'
+import { FormInput } from '../../elemental'
 import Switch from 'react-switch'
 
-const LmcResidentsSidebarFilter = ({ onFormChange, onSwitchChange, isChecked }) => {
+const LmcSidebarFilter = ({ onFormChange, onSwitchChange, isChecked }) => {
     return (
         <div style={styles.filterContainer}>
             <FormInput
                 autofocus
                 name='nameFilter'
-                placeholder="Filter by name"
+                placeholder='Filter by name'
                 style={styles.filter}
                 onChange={onFormChange}
             />
@@ -18,7 +18,7 @@ const LmcResidentsSidebarFilter = ({ onFormChange, onSwitchChange, isChecked }) 
                     style={{ paddingRight: 8, position: 'relative', top: -5, opacity: 0.6 }}
                     onClick={onSwitchChange}
                 >
-                    Active residents
+                    Active
                 </span>
                     <Switch
                         onChange={onSwitchChange}
@@ -56,10 +56,11 @@ const styles = {
     },
 }
 
-LmcResidentsSidebarFilter.propTypes = {
+LmcSidebarFilter.propTypes = {
+    item: PropTypes.string,
     onFormChange: PropTypes.func.isRequired,
     onSwitchChange: PropTypes.func.isRequired,
     isChecked: PropTypes.bool.isRequired,
 }
 
-export default LmcResidentsSidebarFilter
+export default LmcSidebarFilter

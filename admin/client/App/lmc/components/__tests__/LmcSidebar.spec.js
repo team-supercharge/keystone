@@ -1,25 +1,29 @@
-jest.mock('../../../../shared/CreateForm')
+jest.mock('../../../shared/CreateForm')
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import { LmcResidentsSidebar } from '../components/LmcResidentsSidebar.jsx'
+import LmcSidebar from '../LmcSidebar.jsx'
 
-describe('LmcResidentsSidebar', () => {
+describe('LmcSidebar', () => {
     let wrapper
-    let residents
+    let items
     const onCreateMock = jest.fn()
+    const setSelectedItemMock = jest.fn()
 
     beforeEach(() => {
-        residents = [
+        items = [
             { id: 'testId1', name: { first: 'test', last: 'id1' }, status: 'active' },
             { id: 'testId2', name: { first: 'test', last: 'id2' }, status: 'active' },
             { id: 'testId3', name: { first: 'test', last: 'id3' }, status: 'inactive' },
         ]
         wrapper = shallow(
-            <LmcResidentsSidebar
-                residents={residents}
-                selectedResident={residents[0].id}
+            <LmcSidebar
+                itemLabel='Item'
+                listId='Item'
+                items={items}
                 onCreate={onCreateMock}
+                setSelectedItem={setSelectedItemMock}
+                selectedItem={items[0].id}
             />
         )
     })
@@ -32,19 +36,19 @@ describe('LmcResidentsSidebar', () => {
         expect(wrapper.find('ul').length).toEqual(1)
     })
 
-    it('renders a number of sidebar items based on its active residents list', () => {
+    it('renders a number of sidebar items based on its active items list', () => {
         expect(wrapper.find('LmcSidebarItem').length).toEqual(2)
     })
 
     it('renders the sidebar filter', () => {
-        expect(wrapper.find('LmcResidentsSidebarFilter').length).toEqual(1)
+        expect(wrapper.find('LmcSidebarFilter').length).toEqual(1)
     })
 
     it('renders a LmcCreateButton with the correct props', () => {
         const button = wrapper.find('LmcCreateButton')
 
-        expect(button.props().listId).toEqual('Resident')
-        expect(button.props().title).toEqual('Add a new Resident')
+        expect(button.props().listId).toEqual('Item')
+        expect(button.props().title).toEqual('Add a new Item')
         expect(button.props().onCreate).toEqual(onCreateMock)
     })
 })

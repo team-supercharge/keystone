@@ -5,7 +5,7 @@ import { ActionCreators } from '../../actions/actions'
 import { selectList } from '../../../screens/List/actions'
 import { LmcSpinner } from '../../components'
 import { BlankState } from '../../../elemental'
-import LmcResidentsSidebar from './components/LmcResidentsSidebar.jsx'
+import LmcSidebar from '../../components/LmcSidebar.jsx'
 import LmcTabBar from '../../components/LmcTabBar.jsx'
 
 export class LmcResidentsScreen extends Component {
@@ -26,14 +26,24 @@ export class LmcResidentsScreen extends Component {
     }
 
     render () {
-        const { residents, children, location } = this.props;
+        const { 
+            residents, 
+            children, 
+            location,
+            selectedResident,
+            setSelectedResident
+        } = this.props;
         return (
             <div>
                 { residents ? (
                     <div style={styles.mainContainer}>
-                        <LmcResidentsSidebar
-                            residents={residents}
+                        <LmcSidebar
+                            itemLabel='Resident'
+                            listId='Resident'
+                            items={residents}
                             onCreate={this.onCreateResidentComplete}
+                            selectedItem={selectedResident}
+                            setSelectedItem={setSelectedResident}
                         />
                         <div style={styles.rightContainer}>
                             <LmcTabBar
@@ -94,11 +104,16 @@ const styles = {
 
 LmcResidentsScreen.propTypes = {
     residents: PropTypes.array,
+    selectedResident: PropTypes.string,
+    selectList: PropTypes.func.isRequired,
+    fetchResidents: PropTypes.func.isRequired,
+    setSelectedResident: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
     return {
         residents: state.data.residents,
+        selectedResident: state.residents.selectedResident
     };
 };
 
