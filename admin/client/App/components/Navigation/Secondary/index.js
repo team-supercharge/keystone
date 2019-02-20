@@ -39,8 +39,7 @@ var SecondaryNavigation = React.createClass({
 		const { currentListKey } = this.props
 		this.setState({
 			navIsVisible: 
-				currentListKey !== 'residents' && 
-				currentListKey !== 'documents' && 
+				!['users', 'residents', 'documents'].includes(currentListKey) &&
 				window.innerWidth >= 768,
 		});
 	},
@@ -88,7 +87,7 @@ var SecondaryNavigation = React.createClass({
 		if (!this.state.navIsVisible) {
 			return null;
 		}
-		if (currentListKey === 'residents' || currentListKey === 'documents') {
+		if (['users', 'residents', 'documents'].includes(currentListKey)) {
 			return null;
 		}
 
