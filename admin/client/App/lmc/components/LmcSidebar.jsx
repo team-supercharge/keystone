@@ -24,9 +24,10 @@ export default class LmcSidebar extends Component {
 
     calculateHidden = (item) => {
         const { first, last } = item.name
+        const isActive = (item.active || item.status === 'active')
         return (
             !`${first} ${last}`.match(new RegExp(this.state.nameFilter, 'i')) || 
-            (this.state.displayActiveItems && item.status !== 'active')
+            (this.state.displayActiveItems && !isActive)
         )
     }
 

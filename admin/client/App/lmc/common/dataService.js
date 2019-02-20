@@ -1,6 +1,9 @@
 import xhr from 'xhr';
 
 export const getJSON = ({ url }) => {
+    if (url.match(/residents/)) {
+        url += '?anyStatus=true'
+    }
     return new Promise((resolve, reject) => {
         xhr({
             url,
