@@ -6,13 +6,14 @@ import LmcSidebar from '../../../components/LmcSidebar.jsx'
 import { LmcSpinner } from '../../../components';
 
 export class LmcTeamScreen extends Component {
-    onCreate = () => {
-        return
+    onCreateUserComplete = (user) => {
+        const { setSelectedUser, fetchUsers } = this.props
+        fetchUsers()
+        setSelectedUser(user.id)
     }
 
     render() {
         const { selectedUser, setSelectedUser, users } = this.props
-        console.log(users)
         return (
             <div>
                 { users ? (
@@ -22,10 +23,11 @@ export class LmcTeamScreen extends Component {
                                 itemLabel='Team Member'
                                 listId='User'
                                 items={users}
-                                onCreate={this.onCreate}
+                                onCreate={this.onCreateUserComplete}
                                 selectedItem={selectedUser}
                                 setSelectedItem={setSelectedUser}
                                 title='Team Members'
+                                styles={styles.sidebar}
                             />
                         </div>
                         <div style={styles.rightContainer}>
@@ -50,6 +52,10 @@ const styles = {
     rightContainer: {
         flex: '3.5'
     },
+    sidebar: { 
+        height: '83vh', 
+        maxHeight: '83vh' 
+    }
 }
 
 LmcTeamScreen.propTypes = {
@@ -67,7 +73,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setSelectedUser: (id) => dispatch(ActionCreators.setSelectedUser(id))
+        setSelectedUser: (id) => dispatch(ActionCreators.setSelectedUser(id)),
+        fetchUsers: () => dispatch(ActionCreators.loadList('carers'))
     }
 }
 

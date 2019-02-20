@@ -71,7 +71,7 @@ export default class LmcCreateButton extends Component {
                     visibleSM={fullText}
                     visibleMD={fullText}
                     visibleLG={fullText}
-                    />
+                />
             </GlyphButton>
         )
     }

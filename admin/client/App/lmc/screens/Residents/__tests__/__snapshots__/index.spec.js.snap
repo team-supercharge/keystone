@@ -43,6 +43,12 @@ ShallowWrapper {
           onCreate={[Function]}
           selectedItem="testId1"
           setSelectedItem={[MockFunction]}
+          styles={
+            Object {
+              "height": "91.5vh",
+              "maxHeight": "91.5vh",
+            }
+          }
           title="Residents"
         />
       </div>
@@ -138,6 +144,12 @@ ShallowWrapper {
             onCreate={[Function]}
             selectedItem="testId1"
             setSelectedItem={[MockFunction]}
+            styles={
+              Object {
+                "height": "91.5vh",
+                "maxHeight": "91.5vh",
+              }
+            }
             title="Residents"
           />
         </div>
@@ -300,6 +312,12 @@ ShallowWrapper {
                 onCreate={[Function]}
                 selectedItem="testId1"
                 setSelectedItem={[MockFunction]}
+                styles={
+                  Object {
+                    "height": "91.5vh",
+                    "maxHeight": "91.5vh",
+                  }
+                }
                 title="Residents"
               />
             </div>
@@ -395,6 +413,12 @@ ShallowWrapper {
                 onCreate={[Function]}
                 selectedItem="testId1"
                 setSelectedItem={[MockFunction]}
+                styles={
+                  Object {
+                    "height": "91.5vh",
+                    "maxHeight": "91.5vh",
+                  }
+                }
                 title="Residents"
               />
             </div>

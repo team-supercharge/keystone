@@ -53,13 +53,13 @@ export default class LmcSidebar extends Component {
         const { title } = this.props
 
         return (
-            <div style={styles.header}>
-                <span style={styles.title}>
+            <div style={localStyles.header}>
+                <span style={localStyles.title}>
                     { title }
                 </span>
                 <Button
                     color='default'
-                    style={styles.filterButton}
+                    style={localStyles.filterButton}
                     onClick={this.handleFilterToggle}
                 >
                     <Octicon icon={Search} />
@@ -76,12 +76,13 @@ export default class LmcSidebar extends Component {
             selectedItem, 
             setSelectedItem,
             onCreate,
+            styles
         } = this.props;
         
         let shownItems = _.filter(items, (item) => !this.calculateHidden(item))
 
         return (
-            <div className='lmc-sidebar'>
+            <div className='lmc-sidebar' style={styles}>
                 { this.renderHeader() }
                 <LmcSidebarFilter
                     onFormChange={this.handleFormChange}
@@ -94,7 +95,7 @@ export default class LmcSidebar extends Component {
                     listId={listId}
                     title={`Add a new ${itemLabel}`}
                     onCreate={onCreate}
-                    style={styles.button}
+                    style={localStyles.button}
                 />
                 <ul className='lmc-sidebar-list'>
                         { shownItems.map((item, index) => {
@@ -113,7 +114,7 @@ export default class LmcSidebar extends Component {
     }
 }
 
-const styles = {
+const localStyles = {
     button: {
         borderRadius: 0,
     },
@@ -142,4 +143,5 @@ LmcSidebar.propTypes = {
     selectedItem: PropTypes.string,
     setSelectedItem: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
+    styles: PropTypes.object
 };

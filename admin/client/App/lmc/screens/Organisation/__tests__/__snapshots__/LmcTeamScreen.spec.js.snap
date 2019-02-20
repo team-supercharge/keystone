@@ -50,6 +50,12 @@ ShallowWrapper {
           onCreate={[Function]}
           selectedItem="TestId"
           setSelectedItem={[MockFunction]}
+          styles={
+            Object {
+              "height": "83vh",
+              "maxHeight": "83vh",
+            }
+          }
           title="Team Members"
         />
       </div>
@@ -105,6 +111,12 @@ ShallowWrapper {
             onCreate={[Function]}
             selectedItem="TestId"
             setSelectedItem={[MockFunction]}
+            styles={
+              Object {
+                "height": "83vh",
+                "maxHeight": "83vh",
+              }
+            }
             title="Team Members"
           />
         </div>
@@ -152,7 +164,7 @@ ShallowWrapper {
       "_instance": LmcTeamScreen {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "onCreate": [Function],
+        "onCreateUserComplete": [Function],
         "props": Object {
           "selectedUser": "TestId",
           "setSelectedUser": [MockFunction],
@@ -235,6 +247,12 @@ ShallowWrapper {
                 onCreate={[Function]}
                 selectedItem="TestId"
                 setSelectedItem={[MockFunction]}
+                styles={
+                  Object {
+                    "height": "83vh",
+                    "maxHeight": "83vh",
+                  }
+                }
                 title="Team Members"
               />
             </div>
@@ -290,6 +308,12 @@ ShallowWrapper {
                 onCreate={[Function]}
                 selectedItem="TestId"
                 setSelectedItem={[MockFunction]}
+                styles={
+                  Object {
+                    "height": "83vh",
+                    "maxHeight": "83vh",
+                  }
+                }
                 title="Team Members"
               />
             </div>

@@ -46,6 +46,7 @@ export class LmcResidentsScreen extends Component {
                                 selectedItem={selectedResident}
                                 setSelectedItem={setSelectedResident}
                                 title='Residents'
+                                styles={styles.sidebar}                                
                             />
                         </div>
                         <div style={styles.rightContainer}>
@@ -103,6 +104,10 @@ const styles = {
     rightContainer: {
         flex: '3.5',
         background: '#fbfbfb',
+    },
+    sidebar: { 
+        height: '91.5vh', 
+        maxHeight: '91.5vh' 
     },
     noResidentsMessage: {
         padding: 60,
