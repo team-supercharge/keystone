@@ -6,6 +6,12 @@ describe('LmcTeamMemberProfile', () => {
     let wrapper
     let selectedUser
     let selectedUserProfile
+    let savedKeystone
+
+    beforeAll(() => {
+        savedKeystone = global.Keystone
+        global.Keystone = { adminPath: '/admin' }
+    })
 
     beforeEach(() => {
         selectedUser = 'TestId'
@@ -25,5 +31,15 @@ describe('LmcTeamMemberProfile', () => {
 
     it('renders correctly', () => {
         expect(wrapper).toMatchSnapshot()
+    })
+
+    it('renders a link to edit the team member information', () => {
+        const link = wrapper.find('Link')
+        expect(link.props().children).toEqual('Edit Information')
+        expect(link.props().to).toEqual(`${Keystone.adminPath}/users/${selectedUser}`)
+    })
+
+    afterAll(() => {
+        global.Keystone = savedKeystone
     })
 })
