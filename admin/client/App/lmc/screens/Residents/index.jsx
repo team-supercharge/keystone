@@ -45,6 +45,7 @@ export class LmcResidentsScreen extends Component {
                                 onCreate={this.onCreateResidentComplete}
                                 selectedItem={selectedResident}
                                 setSelectedItem={setSelectedResident}
+                                title='Residents'
                             />
                         </div>
                         <div style={styles.rightContainer}>

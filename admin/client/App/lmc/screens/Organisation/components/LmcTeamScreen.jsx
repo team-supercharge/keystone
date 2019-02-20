@@ -19,7 +19,7 @@ export class LmcTeamScreen extends Component {
                         onCreate={this.onCreate}
                         selectedItem={''}
                         setSelectedItem={() => {}}
-                        title='Your team'
+                        title='Team Members'
                     />
                 </div>
                 <div style={styles.rightContainer}>

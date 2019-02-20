@@ -11,8 +11,50 @@ ShallowWrapper {
   "node": <div
     className="lmc-sidebar"
   >
+    <div
+      style={
+        Object {
+          "backgroundColor": "#f7f7f7",
+          "display": "inline-block",
+          "padding": "50px 0px 5px 15px",
+        }
+      }
+    >
+      <span
+        style={
+          Object {
+            "fontSize": 24,
+            "fontWeight": 600,
+          }
+        }
+      >
+        TestTitle
+      </span>
+      <Button
+        aphroditeStyles={Array []}
+        color="default"
+        onClick={[Function]}
+        style={
+          Object {
+            "bottom": 3,
+            "marginLeft": 10,
+            "padding": "0px 12px 0px 10px",
+            "position": "relative",
+          }
+        }
+        variant="fill"
+      >
+        <Octicon
+          className="octicon"
+          icon={[Function]}
+          size={16}
+          verticalAlign="text-bottom"
+        />
+      </Button>
+    </div>
     <LmcSidebarFilter
       isChecked={false}
+      isShowingNameFilter={false}
       onFormChange={[Function]}
       onSwitchChange={[Function]}
     />
@@ -64,8 +106,50 @@ ShallowWrapper {
     <div
       className="lmc-sidebar"
     >
+      <div
+        style={
+          Object {
+            "backgroundColor": "#f7f7f7",
+            "display": "inline-block",
+            "padding": "50px 0px 5px 15px",
+          }
+        }
+      >
+        <span
+          style={
+            Object {
+              "fontSize": 24,
+              "fontWeight": 600,
+            }
+          }
+        >
+          TestTitle
+        </span>
+        <Button
+          aphroditeStyles={Array []}
+          color="default"
+          onClick={[Function]}
+          style={
+            Object {
+              "bottom": 3,
+              "marginLeft": 10,
+              "padding": "0px 12px 0px 10px",
+              "position": "relative",
+            }
+          }
+          variant="fill"
+        >
+          <Octicon
+            className="octicon"
+            icon={[Function]}
+            size={16}
+            verticalAlign="text-bottom"
+          />
+        </Button>
+      </div>
       <LmcSidebarFilter
         isChecked={false}
+        isShowingNameFilter={false}
         onFormChange={[Function]}
         onSwitchChange={[Function]}
       />
@@ -154,6 +238,7 @@ ShallowWrapper {
         onCreate={[MockFunction]}
         selectedItem="testId1"
         setSelectedItem={[MockFunction]}
+        title="TestTitle"
       />,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -162,6 +247,7 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "calculateHidden": [Function],
         "context": Object {},
+        "handleFilterToggle": [Function],
         "handleFormChange": [Function],
         "handleSwitchChange": [Function],
         "props": Object {
@@ -196,10 +282,12 @@ ShallowWrapper {
           "onCreate": [MockFunction],
           "selectedItem": "testId1",
           "setSelectedItem": [MockFunction],
+          "title": "TestTitle",
         },
         "refs": Object {},
         "state": Object {
           "displayActiveItems": true,
+          "displayNameFilter": false,
           "nameFilter": "",
         },
         "updater": Object {
@@ -223,8 +311,50 @@ ShallowWrapper {
         "_currentElement": <div
           className="lmc-sidebar"
         >
+          <div
+            style={
+              Object {
+                "backgroundColor": "#f7f7f7",
+                "display": "inline-block",
+                "padding": "50px 0px 5px 15px",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "fontSize": 24,
+                  "fontWeight": 600,
+                }
+              }
+            >
+              TestTitle
+            </span>
+            <Button
+              aphroditeStyles={Array []}
+              color="default"
+              onClick={[Function]}
+              style={
+                Object {
+                  "bottom": 3,
+                  "marginLeft": 10,
+                  "padding": "0px 12px 0px 10px",
+                  "position": "relative",
+                }
+              }
+              variant="fill"
+            >
+              <Octicon
+                className="octicon"
+                icon={[Function]}
+                size={16}
+                verticalAlign="text-bottom"
+              />
+            </Button>
+          </div>
           <LmcSidebarFilter
             isChecked={false}
+            isShowingNameFilter={false}
             onFormChange={[Function]}
             onSwitchChange={[Function]}
           />
@@ -276,8 +406,50 @@ ShallowWrapper {
         "_renderedOutput": <div
           className="lmc-sidebar"
         >
+          <div
+            style={
+              Object {
+                "backgroundColor": "#f7f7f7",
+                "display": "inline-block",
+                "padding": "50px 0px 5px 15px",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "fontSize": 24,
+                  "fontWeight": 600,
+                }
+              }
+            >
+              TestTitle
+            </span>
+            <Button
+              aphroditeStyles={Array []}
+              color="default"
+              onClick={[Function]}
+              style={
+                Object {
+                  "bottom": 3,
+                  "marginLeft": 10,
+                  "padding": "0px 12px 0px 10px",
+                  "position": "relative",
+                }
+              }
+              variant="fill"
+            >
+              <Octicon
+                className="octicon"
+                icon={[Function]}
+                size={16}
+                verticalAlign="text-bottom"
+              />
+            </Button>
+          </div>
           <LmcSidebarFilter
             isChecked={false}
+            isShowingNameFilter={false}
             onFormChange={[Function]}
             onSwitchChange={[Function]}
           />
@@ -370,6 +542,7 @@ ShallowWrapper {
     onCreate={[MockFunction]}
     selectedItem="testId1"
     setSelectedItem={[MockFunction]}
+    title="TestTitle"
   />,
 }
 `;

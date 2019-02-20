@@ -32,7 +32,7 @@ ShallowWrapper {
         onCreate={[Function]}
         selectedItem=""
         setSelectedItem={[Function]}
-        title="Your team"
+        title="Team Members"
       />
     </div>
     <div
@@ -68,7 +68,7 @@ ShallowWrapper {
           onCreate={[Function]}
           selectedItem=""
           setSelectedItem={[Function]}
-          title="Your team"
+          title="Team Members"
         />
       </div>
       <div
@@ -139,7 +139,7 @@ ShallowWrapper {
               onCreate={[Function]}
               selectedItem=""
               setSelectedItem={[Function]}
-              title="Your team"
+              title="Team Members"
             />
           </div>
           <div
@@ -175,7 +175,7 @@ ShallowWrapper {
               onCreate={[Function]}
               selectedItem=""
               setSelectedItem={[Function]}
-              title="Your team"
+              title="Team Members"
             />
           </div>
           <div

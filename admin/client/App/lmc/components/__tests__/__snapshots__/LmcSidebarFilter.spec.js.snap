@@ -11,33 +11,41 @@ ShallowWrapper {
   "node": <div
     style={
       Object {
-        "backgroundColor": "white",
+        "backgroundColor": "#f7f7f7",
         "display": "block",
-        "padding": "10px",
       }
     }
   >
-    <FormInput
-      autofocus={true}
-      name="nameFilter"
-      onChange={[MockFunction]}
-      placeholder="Filter by name"
-      size="default"
+    <div
       style={
         Object {
-          "borderRadius": "3px",
-          "height": "40px",
-          "marginBottom": "15px",
+          "padding": "3px 14px 3px 14px",
         }
       }
-      type="text"
-    />
+    >
+      <FormInput
+        autofocus={true}
+        name="nameFilter"
+        onChange={[MockFunction]}
+        placeholder="Filter by name"
+        size="default"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "height": "40px",
+            "marginBottom": "15px",
+          }
+        }
+        type="text"
+      />
+    </div>
     <span
       onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
-          "float": "right",
+          "float": "left",
+          "padding": "0px 0px 46px 17px",
         }
       }
     >
@@ -68,7 +76,7 @@ ShallowWrapper {
         onColor="#e65d78"
         onHandleColor="#fff"
         uncheckedIcon={false}
-        width={40}
+        width={50}
       />
       <span
         onClick={[MockFunction]}
@@ -89,33 +97,41 @@ ShallowWrapper {
     <div
       style={
         Object {
-          "backgroundColor": "white",
+          "backgroundColor": "#f7f7f7",
           "display": "block",
-          "padding": "10px",
         }
       }
     >
-      <FormInput
-        autofocus={true}
-        name="nameFilter"
-        onChange={[MockFunction]}
-        placeholder="Filter by name"
-        size="default"
+      <div
         style={
           Object {
-            "borderRadius": "3px",
-            "height": "40px",
-            "marginBottom": "15px",
+            "padding": "3px 14px 3px 14px",
           }
         }
-        type="text"
-      />
+      >
+        <FormInput
+          autofocus={true}
+          name="nameFilter"
+          onChange={[MockFunction]}
+          placeholder="Filter by name"
+          size="default"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "height": "40px",
+              "marginBottom": "15px",
+            }
+          }
+          type="text"
+        />
+      </div>
       <span
         onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
-            "float": "right",
+            "float": "left",
+            "padding": "0px 0px 46px 17px",
           }
         }
       >
@@ -146,7 +162,7 @@ ShallowWrapper {
           onColor="#e65d78"
           onHandleColor="#fff"
           uncheckedIcon={false}
-          width={40}
+          width={50}
         />
         <span
           onClick={[MockFunction]}
@@ -172,6 +188,7 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <LmcSidebarFilter
         isChecked={true}
+        isShowingNameFilter={true}
         onFormChange={[MockFunction]}
         onSwitchChange={[MockFunction]}
       />,
@@ -183,6 +200,7 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {
           "isChecked": true,
+          "isShowingNameFilter": true,
           "onFormChange": [MockFunction],
           "onSwitchChange": [MockFunction],
         },
@@ -209,33 +227,41 @@ ShallowWrapper {
         "_currentElement": <div
           style={
             Object {
-              "backgroundColor": "white",
+              "backgroundColor": "#f7f7f7",
               "display": "block",
-              "padding": "10px",
             }
           }
         >
-          <FormInput
-            autofocus={true}
-            name="nameFilter"
-            onChange={[MockFunction]}
-            placeholder="Filter by name"
-            size="default"
+          <div
             style={
               Object {
-                "borderRadius": "3px",
-                "height": "40px",
-                "marginBottom": "15px",
+                "padding": "3px 14px 3px 14px",
               }
             }
-            type="text"
-          />
+          >
+            <FormInput
+              autofocus={true}
+              name="nameFilter"
+              onChange={[MockFunction]}
+              placeholder="Filter by name"
+              size="default"
+              style={
+                Object {
+                  "borderRadius": "3px",
+                  "height": "40px",
+                  "marginBottom": "15px",
+                }
+              }
+              type="text"
+            />
+          </div>
           <span
             onClick={[Function]}
             style={
               Object {
                 "cursor": "pointer",
-                "float": "right",
+                "float": "left",
+                "padding": "0px 0px 46px 17px",
               }
             }
           >
@@ -266,7 +292,7 @@ ShallowWrapper {
               onColor="#e65d78"
               onHandleColor="#fff"
               uncheckedIcon={false}
-              width={40}
+              width={50}
             />
             <span
               onClick={[MockFunction]}
@@ -287,33 +313,41 @@ ShallowWrapper {
         "_renderedOutput": <div
           style={
             Object {
-              "backgroundColor": "white",
+              "backgroundColor": "#f7f7f7",
               "display": "block",
-              "padding": "10px",
             }
           }
         >
-          <FormInput
-            autofocus={true}
-            name="nameFilter"
-            onChange={[MockFunction]}
-            placeholder="Filter by name"
-            size="default"
+          <div
             style={
               Object {
-                "borderRadius": "3px",
-                "height": "40px",
-                "marginBottom": "15px",
+                "padding": "3px 14px 3px 14px",
               }
             }
-            type="text"
-          />
+          >
+            <FormInput
+              autofocus={true}
+              name="nameFilter"
+              onChange={[MockFunction]}
+              placeholder="Filter by name"
+              size="default"
+              style={
+                Object {
+                  "borderRadius": "3px",
+                  "height": "40px",
+                  "marginBottom": "15px",
+                }
+              }
+              type="text"
+            />
+          </div>
           <span
             onClick={[Function]}
             style={
               Object {
                 "cursor": "pointer",
-                "float": "right",
+                "float": "left",
+                "padding": "0px 0px 46px 17px",
               }
             }
           >
@@ -344,7 +378,7 @@ ShallowWrapper {
               onColor="#e65d78"
               onHandleColor="#fff"
               uncheckedIcon={false}
-              width={40}
+              width={50}
             />
             <span
               onClick={[MockFunction]}
@@ -374,6 +408,7 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <LmcSidebarFilter
     isChecked={true}
+    isShowingNameFilter={true}
     onFormChange={[MockFunction]}
     onSwitchChange={[MockFunction]}
   />,

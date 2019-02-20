@@ -24,6 +24,7 @@ describe('LmcSidebar', () => {
                 onCreate={onCreateMock}
                 setSelectedItem={setSelectedItemMock}
                 selectedItem={items[0].id}
+                title='TestTitle'
             />
         )
     })

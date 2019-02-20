@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
+import { Button } from '../../elemental'
+import Octicon, { Search } from '@githubprimer/octicons-react'
 import LmcSidebarItem from './LmcSidebarItem.jsx'
 import LmcSidebarFilter from './LmcSidebarFilter.jsx'
 import LmcCreateButton from './LmcCreateButton.jsx'
@@ -8,7 +10,8 @@ import LmcCreateButton from './LmcCreateButton.jsx'
 export default class LmcSidebar extends Component {
     state = {
         nameFilter: '',
-        displayActiveItems: true
+        displayActiveItems: true,
+        displayNameFilter: false
     }
 
     componentDidMount () {
@@ -39,15 +42,27 @@ export default class LmcSidebar extends Component {
         }))
     }
 
-    renderTitle() {
+    handleFilterToggle = () => {
+        this.setState(prevState => ({
+            displayNameFilter: !prevState.displayNameFilter
+        }))
+    }
+
+    renderHeader() {
         const { title } = this.props
-        if (!title) return null
 
         return (
-            <div style={styles.titleContainer}>
+            <div style={styles.header}>
                 <span style={styles.title}>
                     { title }
                 </span>
+                <Button
+                    color='default'
+                    style={styles.filterButton}
+                    onClick={this.handleFilterToggle}
+                >
+                    <Octicon icon={Search} />
+                </Button>
             </div>
         )
     }
@@ -66,11 +81,12 @@ export default class LmcSidebar extends Component {
 
         return (
             <div className='lmc-sidebar'>
-                { this.renderTitle() }
+                { this.renderHeader() }
                 <LmcSidebarFilter
                     onFormChange={this.handleFormChange}
                     onSwitchChange={this.handleSwitchChange}
                     isChecked={!this.state.displayActiveItems}
+                    isShowingNameFilter={this.state.displayNameFilter}
                 />
                 <LmcCreateButton
                     buttonText={itemLabel}
@@ -100,12 +116,20 @@ const styles = {
     button: {
         borderRadius: 0,
     },
-    titleContainer: {
-        backgroundColor: 'white',
-        padding: '50px 0px 20px 0px',
-        fontSize: 20,
+    filterButton: {
+        padding: '0px 12px 0px 10px',
+        marginLeft: 10,
+        position: 'relative',
+        bottom: 3,
+    },
+    header: {
+        backgroundColor: '#f7f7f7',
+        padding: '50px 0px 5px 15px',
+        display: 'inline-block',
+    },
+    title: {
+        fontSize: 24,
         fontWeight: 600,
-        textAlign: 'center',
     }
 };
 
@@ -116,5 +140,5 @@ LmcSidebar.propTypes = {
     onCreate: PropTypes.func.isRequired,
     selectedItem: PropTypes.string,
     setSelectedItem: PropTypes.func.isRequired,
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
 };

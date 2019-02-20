@@ -43,6 +43,7 @@ ShallowWrapper {
           onCreate={[Function]}
           selectedItem="testId1"
           setSelectedItem={[MockFunction]}
+          title="Residents"
         />
       </div>
       <div
@@ -137,6 +138,7 @@ ShallowWrapper {
             onCreate={[Function]}
             selectedItem="testId1"
             setSelectedItem={[MockFunction]}
+            title="Residents"
           />
         </div>
         <div
@@ -298,6 +300,7 @@ ShallowWrapper {
                 onCreate={[Function]}
                 selectedItem="testId1"
                 setSelectedItem={[MockFunction]}
+                title="Residents"
               />
             </div>
             <div
@@ -392,6 +395,7 @@ ShallowWrapper {
                 onCreate={[Function]}
                 selectedItem="testId1"
                 setSelectedItem={[MockFunction]}
+                title="Residents"
               />
             </div>
             <div
