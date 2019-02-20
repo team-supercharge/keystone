@@ -10,6 +10,7 @@ ShallowWrapper {
   "length": 1,
   "node": <div>
     <LmcCreateButton
+      buttonText="Document"
       listId="Document"
       onCreate={[MockFunction]}
       prefillPath="resident"
@@ -67,6 +68,7 @@ ShallowWrapper {
   "nodes": Array [
     <div>
       <LmcCreateButton
+        buttonText="Document"
         listId="Document"
         onCreate={[MockFunction]}
         prefillPath="resident"
@@ -184,6 +186,7 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
           <LmcCreateButton
+            buttonText="Document"
             listId="Document"
             onCreate={[MockFunction]}
             prefillPath="resident"
@@ -241,6 +244,7 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div>
           <LmcCreateButton
+            buttonText="Document"
             listId="Document"
             onCreate={[MockFunction]}
             prefillPath="resident"

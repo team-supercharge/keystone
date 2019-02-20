@@ -117,6 +117,7 @@ export default class LmcSidebar extends Component {
 const localStyles = {
     button: {
         borderRadius: 0,
+        minHeight: 35,
     },
     filterButton: {
         padding: '0px 12px 0px 10px',

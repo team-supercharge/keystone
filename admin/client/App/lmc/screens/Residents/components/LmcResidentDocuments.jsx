@@ -60,6 +60,7 @@ export class LmcResidentDocuments extends Component {
         return (
             <div>
                 <LmcCreateButton
+                    buttonText='Document'
                     listId='Document'
                     title='Add a Document'
                     onCreate={fetchDocuments}

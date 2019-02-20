@@ -92,7 +92,7 @@ ShallowWrapper {
       component={[Function]}
       glyph="pencil"
       glyphStyle={Object {}}
-      position="default"
+      position="left"
       style={
         Object {
           "float": "right",
@@ -102,7 +102,9 @@ ShallowWrapper {
         }
       }
       to="/admin/documents/TestId"
-    />
+    >
+      Edit
+    </GlyphButton>
     <Button
       aphroditeStyles={Array []}
       color="default"
@@ -227,7 +229,7 @@ ShallowWrapper {
         component={[Function]}
         glyph="pencil"
         glyphStyle={Object {}}
-        position="default"
+        position="left"
         style={
           Object {
             "float": "right",
@@ -237,7 +239,9 @@ ShallowWrapper {
           }
         }
         to="/admin/documents/TestId"
-      />
+      >
+        Edit
+      </GlyphButton>
       <Button
         aphroditeStyles={Array []}
         color="default"
@@ -416,7 +420,7 @@ ShallowWrapper {
             component={[Function]}
             glyph="pencil"
             glyphStyle={Object {}}
-            position="default"
+            position="left"
             style={
               Object {
                 "float": "right",
@@ -426,7 +430,9 @@ ShallowWrapper {
               }
             }
             to="/admin/documents/TestId"
-          />
+          >
+            Edit
+          </GlyphButton>
           <Button
             aphroditeStyles={Array []}
             color="default"
@@ -551,7 +557,7 @@ ShallowWrapper {
             component={[Function]}
             glyph="pencil"
             glyphStyle={Object {}}
-            position="default"
+            position="left"
             style={
               Object {
                 "float": "right",
@@ -561,7 +567,9 @@ ShallowWrapper {
               }
             }
             to="/admin/documents/TestId"
-          />
+          >
+            Edit
+          </GlyphButton>
           <Button
             aphroditeStyles={Array []}
             color="default"

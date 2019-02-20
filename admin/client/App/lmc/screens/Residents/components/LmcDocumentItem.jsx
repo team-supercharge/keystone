@@ -60,9 +60,12 @@ export default class LmcDocumentItem extends Component {
                 <GlyphButton
                     component={Link}
                     glyph='pencil'
+                    position='left'
 					style={styles.button}
 					to={editLink}
-				/>
+				>
+                    Edit
+                </GlyphButton>
                 <Button
                     style={styles.button} 
                     color='default'

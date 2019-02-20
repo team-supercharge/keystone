@@ -65,6 +65,7 @@ ShallowWrapper {
       style={
         Object {
           "borderRadius": 0,
+          "minHeight": 35,
         }
       }
       title="Add a new Item"
@@ -160,6 +161,7 @@ ShallowWrapper {
         style={
           Object {
             "borderRadius": 0,
+            "minHeight": 35,
           }
         }
         title="Add a new Item"
@@ -365,6 +367,7 @@ ShallowWrapper {
             style={
               Object {
                 "borderRadius": 0,
+                "minHeight": 35,
               }
             }
             title="Add a new Item"
@@ -460,6 +463,7 @@ ShallowWrapper {
             style={
               Object {
                 "borderRadius": 0,
+                "minHeight": 35,
               }
             }
             title="Add a new Item"

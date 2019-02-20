@@ -63,9 +63,26 @@ ShallowWrapper {
         style={
           Object {
             "flex": "3.5",
+            "height": "83vh",
+            "overflow": "scroll",
+            "wordWrap": "break-word",
           }
         }
-      />
+      >
+        <div
+          style={
+            Object {
+              "margin": "0 auto",
+              "maxWidth": 800,
+              "padding": "50px 0px 0px 0px",
+            }
+          }
+        >
+          <Connect(LmcTeamMemberProfile)
+            selectedUser="TestId"
+          />
+        </div>
+      </div>
     </div>
   </div>,
   "nodes": Array [
@@ -124,9 +141,26 @@ ShallowWrapper {
           style={
             Object {
               "flex": "3.5",
+              "height": "83vh",
+              "overflow": "scroll",
+              "wordWrap": "break-word",
             }
           }
-        />
+        >
+          <div
+            style={
+              Object {
+                "margin": "0 auto",
+                "maxWidth": 800,
+                "padding": "50px 0px 0px 0px",
+              }
+            }
+          >
+            <Connect(LmcTeamMemberProfile)
+              selectedUser="TestId"
+            />
+          </div>
+        </div>
       </div>
     </div>,
   ],
@@ -137,6 +171,7 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcTeamScreen
+        fetchUsers={[MockFunction]}
         selectedUser="TestId"
         setSelectedUser={[MockFunction]}
         users={
@@ -166,6 +201,7 @@ ShallowWrapper {
         "context": Object {},
         "onCreateUserComplete": [Function],
         "props": Object {
+          "fetchUsers": [MockFunction],
           "selectedUser": "TestId",
           "setSelectedUser": [MockFunction],
           "users": Array [
@@ -186,6 +222,7 @@ ShallowWrapper {
           ],
         },
         "refs": Object {},
+        "renderUserInfo": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
@@ -260,9 +297,26 @@ ShallowWrapper {
               style={
                 Object {
                   "flex": "3.5",
+                  "height": "83vh",
+                  "overflow": "scroll",
+                  "wordWrap": "break-word",
                 }
               }
-            />
+            >
+              <div
+                style={
+                  Object {
+                    "margin": "0 auto",
+                    "maxWidth": 800,
+                    "padding": "50px 0px 0px 0px",
+                  }
+                }
+              >
+                <Connect(LmcTeamMemberProfile)
+                  selectedUser="TestId"
+                />
+              </div>
+            </div>
           </div>
         </div>,
         "_debugID": 2,
@@ -321,9 +375,26 @@ ShallowWrapper {
               style={
                 Object {
                   "flex": "3.5",
+                  "height": "83vh",
+                  "overflow": "scroll",
+                  "wordWrap": "break-word",
                 }
               }
-            />
+            >
+              <div
+                style={
+                  Object {
+                    "margin": "0 auto",
+                    "maxWidth": 800,
+                    "padding": "50px 0px 0px 0px",
+                  }
+                }
+              >
+                <Connect(LmcTeamMemberProfile)
+                  selectedUser="TestId"
+                />
+              </div>
+            </div>
           </div>
         </div>,
       },
@@ -338,6 +409,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcTeamScreen
+    fetchUsers={[MockFunction]}
     selectedUser="TestId"
     setSelectedUser={[MockFunction]}
     users={
