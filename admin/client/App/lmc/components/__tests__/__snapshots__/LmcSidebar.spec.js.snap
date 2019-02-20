@@ -32,6 +32,7 @@ ShallowWrapper {
       </span>
       <Button
         aphroditeStyles={Array []}
+        className="lmc-filter-button"
         color="default"
         onClick={[Function]}
         style={
@@ -128,6 +129,7 @@ ShallowWrapper {
         </span>
         <Button
           aphroditeStyles={Array []}
+          className="lmc-filter-button"
           color="default"
           onClick={[Function]}
           style={
@@ -334,6 +336,7 @@ ShallowWrapper {
             </span>
             <Button
               aphroditeStyles={Array []}
+              className="lmc-filter-button"
               color="default"
               onClick={[Function]}
               style={
@@ -430,6 +433,7 @@ ShallowWrapper {
             </span>
             <Button
               aphroditeStyles={Array []}
+              className="lmc-filter-button"
               color="default"
               onClick={[Function]}
               style={

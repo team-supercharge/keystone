@@ -51,6 +51,7 @@ export default class LmcSidebar extends Component {
 
     renderHeader() {
         const { title } = this.props
+        const activeStyles = this.state.displayNameFilter ? localStyles.activeButton : null
 
         return (
             <div style={localStyles.header}>
@@ -58,8 +59,9 @@ export default class LmcSidebar extends Component {
                     { title }
                 </span>
                 <Button
+			        className='lmc-filter-button'
                     color='default'
-                    style={localStyles.filterButton}
+                    style={{ ...activeStyles, ...localStyles.filterButton}}
                     onClick={this.handleFilterToggle}
                 >
                     <Octicon icon={Search} />
@@ -115,6 +117,10 @@ export default class LmcSidebar extends Component {
 }
 
 const localStyles = {
+    activeButton: {
+        background: '#dddddd',
+        color: '#e85b78',
+    },
     button: {
         borderRadius: 0,
         minHeight: 35,

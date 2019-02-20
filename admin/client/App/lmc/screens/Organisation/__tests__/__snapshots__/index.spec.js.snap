@@ -35,7 +35,7 @@ ShallowWrapper {
               "url": "passwords",
             },
             Object {
-              "label": "Documents",
+              "label": "Policies & Procedures",
               "url": "documents",
             },
           ]
@@ -79,7 +79,7 @@ ShallowWrapper {
                 "url": "passwords",
               },
               Object {
-                "label": "Documents",
+                "label": "Policies & Procedures",
                 "url": "documents",
               },
             ]
@@ -169,7 +169,7 @@ ShallowWrapper {
                     "url": "passwords",
                   },
                   Object {
-                    "label": "Documents",
+                    "label": "Policies & Procedures",
                     "url": "documents",
                   },
                 ]
@@ -213,7 +213,7 @@ ShallowWrapper {
                     "url": "passwords",
                   },
                   Object {
-                    "label": "Documents",
+                    "label": "Policies & Procedures",
                     "url": "documents",
                   },
                 ]

@@ -28,7 +28,7 @@ export class LmcOrganisationScreen extends Component {
 const tabs = [
     { url: 'team', label: 'Team' },
     { url: 'passwords', label: 'Shift Passwords' },
-    { url: 'documents', label: 'Documents' }
+    { url: 'documents', label: 'Policies & Procedures' }
 ]
 
 const styles = {
