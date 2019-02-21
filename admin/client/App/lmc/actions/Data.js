@@ -12,6 +12,7 @@ export function initialize () {
             'log-categories',
             'log-category-items',
             'documents',
+            'home-documents'
         ];
         dispatch(loadLists(lists));
     }

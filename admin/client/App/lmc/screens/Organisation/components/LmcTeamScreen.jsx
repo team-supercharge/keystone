@@ -8,6 +8,10 @@ import { LmcSpinner } from '../../../components';
 import LmcTeamMemberProfile from './LmcTeamMemberProfile.jsx';
 
 export class LmcTeamScreen extends Component {
+    componentDidMount () {
+        this.props.fetchUsers()
+    }
+    
     onCreateUserComplete = (user) => {
         const { setSelectedUser, fetchUsers } = this.props
         fetchUsers()

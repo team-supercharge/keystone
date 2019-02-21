@@ -99,9 +99,6 @@ const styles = {
         marginBottom: 22,
         width: '100%',
     },
-    documentContainer: {
-        display: 'inline-block',
-    },
     list: {
         listStyle: 'none',
         listStyleType: 'none',
