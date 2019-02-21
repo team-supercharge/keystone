@@ -57,6 +57,7 @@ ShallowWrapper {
           Object {
             "background": "#fbfbfb",
             "flex": "3.5",
+            "minWidth": 0,
           }
         }
       >
@@ -92,6 +93,7 @@ ShallowWrapper {
             Object {
               "height": "85vh",
               "overflow": "scroll",
+              "padding": "50px 20px 0px 20px",
             }
           }
         >
@@ -100,7 +102,6 @@ ShallowWrapper {
               Object {
                 "margin": "0 auto",
                 "maxWidth": 800,
-                "padding": "50px 0px 0px 0px",
               }
             }
           />
@@ -158,6 +159,7 @@ ShallowWrapper {
             Object {
               "background": "#fbfbfb",
               "flex": "3.5",
+              "minWidth": 0,
             }
           }
         >
@@ -193,6 +195,7 @@ ShallowWrapper {
               Object {
                 "height": "85vh",
                 "overflow": "scroll",
+                "padding": "50px 20px 0px 20px",
               }
             }
           >
@@ -201,7 +204,6 @@ ShallowWrapper {
                 Object {
                   "margin": "0 auto",
                   "maxWidth": 800,
-                  "padding": "50px 0px 0px 0px",
                 }
               }
             />
@@ -326,6 +328,7 @@ ShallowWrapper {
                 Object {
                   "background": "#fbfbfb",
                   "flex": "3.5",
+                  "minWidth": 0,
                 }
               }
             >
@@ -361,6 +364,7 @@ ShallowWrapper {
                   Object {
                     "height": "85vh",
                     "overflow": "scroll",
+                    "padding": "50px 20px 0px 20px",
                   }
                 }
               >
@@ -369,7 +373,6 @@ ShallowWrapper {
                     Object {
                       "margin": "0 auto",
                       "maxWidth": 800,
-                      "padding": "50px 0px 0px 0px",
                     }
                   }
                 />
@@ -427,6 +430,7 @@ ShallowWrapper {
                 Object {
                   "background": "#fbfbfb",
                   "flex": "3.5",
+                  "minWidth": 0,
                 }
               }
             >
@@ -462,6 +466,7 @@ ShallowWrapper {
                   Object {
                     "height": "85vh",
                     "overflow": "scroll",
+                    "padding": "50px 20px 0px 20px",
                   }
                 }
               >
@@ -470,7 +475,6 @@ ShallowWrapper {
                     Object {
                       "margin": "0 auto",
                       "maxWidth": 800,
-                      "padding": "50px 0px 0px 0px",
                     }
                   }
                 />

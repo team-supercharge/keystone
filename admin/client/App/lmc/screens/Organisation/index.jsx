@@ -27,14 +27,15 @@ export class LmcOrganisationScreen extends Component {
 
 const tabs = [
     { url: 'team', label: 'Team' },
-    { url: 'passwords', label: 'Shift Passwords' },
+    { url: 'shift-passwords', label: 'Shift Passwords' },
     { url: 'documents', label: 'Policies & Procedures' }
 ]
 
 const styles = {
     container: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        wordWrap: 'break-word',
     },
     navbar: {
         zIndex: 2

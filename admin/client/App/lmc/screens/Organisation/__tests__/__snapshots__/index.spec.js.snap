@@ -13,6 +13,7 @@ ShallowWrapper {
       Object {
         "display": "flex",
         "flexDirection": "column",
+        "wordWrap": "break-word",
       }
     }
   >
@@ -32,7 +33,7 @@ ShallowWrapper {
             },
             Object {
               "label": "Shift Passwords",
-              "url": "passwords",
+              "url": "shift-passwords",
             },
             Object {
               "label": "Policies & Procedures",
@@ -57,6 +58,7 @@ ShallowWrapper {
         Object {
           "display": "flex",
           "flexDirection": "column",
+          "wordWrap": "break-word",
         }
       }
     >
@@ -76,7 +78,7 @@ ShallowWrapper {
               },
               Object {
                 "label": "Shift Passwords",
-                "url": "passwords",
+                "url": "shift-passwords",
               },
               Object {
                 "label": "Policies & Procedures",
@@ -147,6 +149,7 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "column",
+              "wordWrap": "break-word",
             }
           }
         >
@@ -166,7 +169,7 @@ ShallowWrapper {
                   },
                   Object {
                     "label": "Shift Passwords",
-                    "url": "passwords",
+                    "url": "shift-passwords",
                   },
                   Object {
                     "label": "Policies & Procedures",
@@ -191,6 +194,7 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "column",
+              "wordWrap": "break-word",
             }
           }
         >
@@ -210,7 +214,7 @@ ShallowWrapper {
                   },
                   Object {
                     "label": "Shift Passwords",
-                    "url": "passwords",
+                    "url": "shift-passwords",
                   },
                   Object {
                     "label": "Policies & Procedures",
