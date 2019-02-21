@@ -20,7 +20,7 @@ export class LmcOrganisationDocuments extends Component {
         fetchDocuments()
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
         clearInterval(this.state.documentsFetchInterval)
     }
 
@@ -66,11 +66,11 @@ const styles = {
     content: {
         maxWidth: 1000,
         margin: '0 auto',
-        padding: '50px 20px 0px 20px',
     },
     mainContainer: {
         overflow: 'scroll',
         height: '85vh',
+        padding: '50px 20px 0px 20px',
     },
     noDocumentsMessage: {
         position: 'relative',

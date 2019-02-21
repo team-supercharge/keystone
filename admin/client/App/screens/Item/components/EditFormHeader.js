@@ -58,7 +58,7 @@ export const EditFormHead = React.createClass({
 
 		// CO-107 - links to previous page in router history for documents
 		// CO-115 - does the same for users (team members)
-		if (list.id === 'documents' || list.id === 'users') {
+		if (['documents', 'home-documents', 'users'].includes(list.id)) {
 			return (
 				<GlyphButton
 					component={Link}

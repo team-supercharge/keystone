@@ -87,11 +87,11 @@ const styles = {
     childContainer: {
         overflow: 'scroll',
         height: '85vh',
+        padding: '50px 20px 0px 20px',
     },
     childWidth: {
         maxWidth: 800,
         margin: '0 auto',
-        padding: '50px 0px 0px 0px',
     },
     leftContainer: {
         flex: '1',
@@ -104,6 +104,7 @@ const styles = {
     rightContainer: {
         flex: '3.5',
         background: '#fbfbfb',
+        minWidth: 0,
     },
     sidebar: { 
         height: '91.5vh', 

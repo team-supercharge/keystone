@@ -68,20 +68,6 @@ const styles = {
         float: 'right',
         width: 200,
     },
-    categoryName: {
-        marginBottom: '0.3em',
-        fontWeight: 300,
-    },
-    divider: {
-        height: 2,
-        marginBottom: 22,
-        width: '100%',
-    },
-    list: {
-        listStyle: 'none',
-        listStyleType: 'none',
-        padding: 0,
-    },
     noDocumentsMessage: {
         position: 'relative',
         top: 50,
