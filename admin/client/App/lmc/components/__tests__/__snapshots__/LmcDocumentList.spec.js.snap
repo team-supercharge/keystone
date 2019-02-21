@@ -1,0 +1,446 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcDocumentList renders correctlty 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <div>
+      <h2
+        style={
+          Object {
+            "fontWeight": 300,
+            "marginBottom": "0.3em",
+          }
+        }
+      >
+        CategoryName1
+      </h2>
+      <div
+        className="lmc-theme-gradient"
+        style={
+          Object {
+            "height": 2,
+            "marginBottom": 22,
+            "width": "100%",
+          }
+        }
+      />
+      <ul
+        style={
+          Object {
+            "listStyle": "none",
+            "listStyleType": "none",
+            "padding": 0,
+          }
+        }
+      >
+        <LmcDocumentItem
+          data={
+            Object {
+              "name": "TestDocument",
+            }
+          }
+          listId="testId"
+          onDelete={[MockFunction]}
+        />
+      </ul>
+    </div>
+    <div>
+      <h2
+        style={
+          Object {
+            "fontWeight": 300,
+            "marginBottom": "0.3em",
+          }
+        }
+      >
+        CategoryName2
+      </h2>
+      <div
+        className="lmc-theme-gradient"
+        style={
+          Object {
+            "height": 2,
+            "marginBottom": 22,
+            "width": "100%",
+          }
+        }
+      />
+      <ul
+        style={
+          Object {
+            "listStyle": "none",
+            "listStyleType": "none",
+            "padding": 0,
+          }
+        }
+      >
+        <LmcDocumentItem
+          data={
+            Object {
+              "name": "TestDocument2",
+            }
+          }
+          listId="testId"
+          onDelete={[MockFunction]}
+        />
+      </ul>
+    </div>
+  </div>,
+  "nodes": Array [
+    <div>
+      <div>
+        <h2
+          style={
+            Object {
+              "fontWeight": 300,
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          CategoryName1
+        </h2>
+        <div
+          className="lmc-theme-gradient"
+          style={
+            Object {
+              "height": 2,
+              "marginBottom": 22,
+              "width": "100%",
+            }
+          }
+        />
+        <ul
+          style={
+            Object {
+              "listStyle": "none",
+              "listStyleType": "none",
+              "padding": 0,
+            }
+          }
+        >
+          <LmcDocumentItem
+            data={
+              Object {
+                "name": "TestDocument",
+              }
+            }
+            listId="testId"
+            onDelete={[MockFunction]}
+          />
+        </ul>
+      </div>
+      <div>
+        <h2
+          style={
+            Object {
+              "fontWeight": 300,
+              "marginBottom": "0.3em",
+            }
+          }
+        >
+          CategoryName2
+        </h2>
+        <div
+          className="lmc-theme-gradient"
+          style={
+            Object {
+              "height": 2,
+              "marginBottom": 22,
+              "width": "100%",
+            }
+          }
+        />
+        <ul
+          style={
+            Object {
+              "listStyle": "none",
+              "listStyleType": "none",
+              "padding": 0,
+            }
+          }
+        >
+          <LmcDocumentItem
+            data={
+              Object {
+                "name": "TestDocument2",
+              }
+            }
+            listId="testId"
+            onDelete={[MockFunction]}
+          />
+        </ul>
+      </div>
+    </div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <LmcDocumentList
+        documents={
+          Object {
+            "CategoryName1": Array [
+              Object {
+                "name": "TestDocument",
+              },
+            ],
+            "CategoryName2": Array [
+              Object {
+                "name": "TestDocument2",
+              },
+            ],
+          }
+        }
+        listId="testId"
+        onDelete={[MockFunction]}
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "documents": Object {
+            "CategoryName1": Array [
+              Object {
+                "name": "TestDocument",
+              },
+            ],
+            "CategoryName2": Array [
+              Object {
+                "name": "TestDocument2",
+              },
+            ],
+          },
+          "listId": "testId",
+          "onDelete": [MockFunction],
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "marginBottom": "0.3em",
+                }
+              }
+            >
+              CategoryName1
+            </h2>
+            <div
+              className="lmc-theme-gradient"
+              style={
+                Object {
+                  "height": 2,
+                  "marginBottom": 22,
+                  "width": "100%",
+                }
+              }
+            />
+            <ul
+              style={
+                Object {
+                  "listStyle": "none",
+                  "listStyleType": "none",
+                  "padding": 0,
+                }
+              }
+            >
+              <LmcDocumentItem
+                data={
+                  Object {
+                    "name": "TestDocument",
+                  }
+                }
+                listId="testId"
+                onDelete={[MockFunction]}
+              />
+            </ul>
+          </div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "marginBottom": "0.3em",
+                }
+              }
+            >
+              CategoryName2
+            </h2>
+            <div
+              className="lmc-theme-gradient"
+              style={
+                Object {
+                  "height": 2,
+                  "marginBottom": 22,
+                  "width": "100%",
+                }
+              }
+            />
+            <ul
+              style={
+                Object {
+                  "listStyle": "none",
+                  "listStyleType": "none",
+                  "padding": 0,
+                }
+              }
+            >
+              <LmcDocumentItem
+                data={
+                  Object {
+                    "name": "TestDocument2",
+                  }
+                }
+                listId="testId"
+                onDelete={[MockFunction]}
+              />
+            </ul>
+          </div>
+        </div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "marginBottom": "0.3em",
+                }
+              }
+            >
+              CategoryName1
+            </h2>
+            <div
+              className="lmc-theme-gradient"
+              style={
+                Object {
+                  "height": 2,
+                  "marginBottom": 22,
+                  "width": "100%",
+                }
+              }
+            />
+            <ul
+              style={
+                Object {
+                  "listStyle": "none",
+                  "listStyleType": "none",
+                  "padding": 0,
+                }
+              }
+            >
+              <LmcDocumentItem
+                data={
+                  Object {
+                    "name": "TestDocument",
+                  }
+                }
+                listId="testId"
+                onDelete={[MockFunction]}
+              />
+            </ul>
+          </div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "marginBottom": "0.3em",
+                }
+              }
+            >
+              CategoryName2
+            </h2>
+            <div
+              className="lmc-theme-gradient"
+              style={
+                Object {
+                  "height": 2,
+                  "marginBottom": 22,
+                  "width": "100%",
+                }
+              }
+            />
+            <ul
+              style={
+                Object {
+                  "listStyle": "none",
+                  "listStyleType": "none",
+                  "padding": 0,
+                }
+              }
+            >
+              <LmcDocumentItem
+                data={
+                  Object {
+                    "name": "TestDocument2",
+                  }
+                }
+                listId="testId"
+                onDelete={[MockFunction]}
+              />
+            </ul>
+          </div>
+        </div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcDocumentList
+    documents={
+      Object {
+        "CategoryName1": Array [
+          Object {
+            "name": "TestDocument",
+          },
+        ],
+        "CategoryName2": Array [
+          Object {
+            "name": "TestDocument2",
+          },
+        ],
+      }
+    }
+    listId="testId"
+    onDelete={[MockFunction]}
+  />,
+}
+`;

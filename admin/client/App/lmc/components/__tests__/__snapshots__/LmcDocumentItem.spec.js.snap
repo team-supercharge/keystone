@@ -101,7 +101,7 @@ ShallowWrapper {
           "top": 5,
         }
       }
-      to="/admin/documents/TestId"
+      to="/admin/testListId/TestId"
     >
       Edit
     </GlyphButton>
@@ -238,7 +238,7 @@ ShallowWrapper {
             "top": 5,
           }
         }
-        to="/admin/documents/TestId"
+        to="/admin/testListId/TestId"
       >
         Edit
       </GlyphButton>
@@ -296,6 +296,7 @@ ShallowWrapper {
             "pdf": "TestLink",
           }
         }
+        listId="testListId"
         onDelete={[MockFunction]}
       />,
       "_debugID": 1,
@@ -311,6 +312,7 @@ ShallowWrapper {
             "name": "TestDocument",
             "pdf": "TestLink",
           },
+          "listId": "testListId",
           "onDelete": [MockFunction],
         },
         "refs": Object {},
@@ -429,7 +431,7 @@ ShallowWrapper {
                 "top": 5,
               }
             }
-            to="/admin/documents/TestId"
+            to="/admin/testListId/TestId"
           >
             Edit
           </GlyphButton>
@@ -566,7 +568,7 @@ ShallowWrapper {
                 "top": 5,
               }
             }
-            to="/admin/documents/TestId"
+            to="/admin/testListId/TestId"
           >
             Edit
           </GlyphButton>
@@ -628,6 +630,7 @@ ShallowWrapper {
         "pdf": "TestLink",
       }
     }
+    listId="testListId"
     onDelete={[MockFunction]}
   />,
 }

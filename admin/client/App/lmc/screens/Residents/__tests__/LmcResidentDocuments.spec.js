@@ -6,15 +6,15 @@ import { LmcResidentDocuments } from '../components/LmcResidentDocuments.jsx'
 
 describe('LmcResidentDocuments', () => {
     let wrapper
-    let documents
+    let residentDocuments
     const deleteDocument = jest.fn()
     const fetchDocuments = jest.fn()
 
     beforeEach(() => {
-        documents = { 'Going to Bed and Sleeping': [{ name: 'TestDocument' }]}
+        residentDocuments = { 'Going to Bed and Sleeping': [{ name: 'TestDocument' }]}
         wrapper = shallow(
             <LmcResidentDocuments 
-                documents={documents}
+                documents={residentDocuments}
                 fetchDocuments={fetchDocuments}
                 deleteDocument={deleteDocument}
             />
@@ -37,12 +37,13 @@ describe('LmcResidentDocuments', () => {
         expect(message.props().heading).toEqual("You haven't added any documents for this resident")
     })
 
-    it('should display an LmcDocumentItem component with the correct data', () => {
-        const documentItem = wrapper.find('LmcDocumentItem').first()
-        expect(documentItem.props().data).toEqual(documents['Going to Bed and Sleeping'][0])
+    it('renders an LmcDocumentList with the correct props', () => {
+        const list = wrapper.find('LmcDocumentList')
+        const { documents, listId, onDelete } = list.props()
 
-        documentItem.props().onDelete()
-        expect(deleteDocument).toBeCalledTimes(1)
+        expect(documents).toEqual(residentDocuments)
+        expect(listId).toEqual('documents')
+        expect(onDelete).toEqual(deleteDocument)
     })
 
     it('renders a LmcCreateButton with the correct props', () => {

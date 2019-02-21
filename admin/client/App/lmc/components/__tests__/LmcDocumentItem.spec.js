@@ -1,13 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import MockDate from 'mockdate'
-import LmcDocumentItem from '../components/LmcDocumentItem';
+import LmcDocumentItem from '../LmcDocumentItem.jsx';
 
 MockDate.set('1/1/2019')
 
 describe('LmcDocumentItem', () => {
     let wrapper
     let data
+    let listId
     let savedKeystone
     const onDelete = jest.fn()
 
@@ -20,10 +21,13 @@ describe('LmcDocumentItem', () => {
             pdf: 'TestLink',
             id: 'TestId'
         }
+        listId = 'testListId'
+
         wrapper = shallow(
             <LmcDocumentItem
                 data={data}
                 onDelete={onDelete}
+                listId={listId}
             />
         )
     })
@@ -52,7 +56,7 @@ describe('LmcDocumentItem', () => {
 
     it("has a 'pencil' button to edit the document", () => {
         const editButton = wrapper.find('GlyphButton')
-        expect(editButton.props().to).toEqual('/admin/documents/TestId')
+        expect(editButton.props().to).toEqual(`/admin/${listId}/TestId`)
         expect(editButton.props().glyph).toEqual('pencil')
     })
 

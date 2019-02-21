@@ -2,41 +2,55 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ActionCreators } from '../../../actions/actions'
 import { connect } from 'react-redux'
+import Selectors from '../../../selectors'
 import { BlankState } from '../../../../elemental'
 import LmcCreateButton from '../../../components/LmcCreateButton.jsx'
+import LmcDocumentList from '../../../components/LmcDocumentList.jsx'
 
 export class LmcOrganisationDocuments extends Component {
-    renderDocuments = () => {
-        return (
-            <div>
-                { JSON.stringify(this.props.documents) }
-            </div>
-        )
+    state = {
+        documentsFetchInterval: null
     }
 
-    render() {
-        const { documents, fetchDocuments } = this.props
-        const hasDocuments = documents && documents.length
+    componentDidMount () {
+        const { fetchDocuments } = this.props
+        this.setState({ 
+            documentsFetchInterval: setInterval(fetchDocuments, 600000)
+        })
+        fetchDocuments()
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.documentsFetchInterval)
+    }
+
+    render () {
+        const { documents, deleteDocument, fetchDocuments } = this.props
+        const hasDocuments = !!Object.keys(documents).length
 
         return (
             <div style={styles.mainContainer}>
-                <LmcCreateButton
-                    buttonText='Document'
-                    title='Add a Document'
-                    listId='HomeDocument'
-                    onCreate={fetchDocuments}
-                    style={styles.createButton}
-                />
-                { hasDocuments ? (
-                    <div>
-                        { this.renderDocuments() }
-                    </div>
-                ) : (
-                    <BlankState
-                        heading={NO_DOCUMENTS_MESSAGE}
-                        style={styles.noDocumentsMessage}
+                <div style={styles.content}>
+                    <LmcCreateButton
+                        buttonText='Document'
+                        title='Add a Document'
+                        listId='HomeDocument'
+                        onCreate={fetchDocuments}
+                        style={styles.createButton}
                     />
-                )}
+                    { hasDocuments ? (
+                        <LmcDocumentList
+                            documents={documents}
+                            listId='home-documents'
+                            onDelete={deleteDocument}
+                        />
+                    ) : (
+                        <BlankState
+                            heading={NO_DOCUMENTS_MESSAGE}
+                            style={styles.noDocumentsMessage}
+                        />
+                    )}
+                </div>
             </div>
         )
     }
@@ -49,28 +63,37 @@ const styles = {
         float: 'right',
         width: 200,
     },
+    content: {
+        maxWidth: 1000,
+        margin: '0 auto',
+        padding: '50px 20px 0px 20px',
+    },
     mainContainer: {
-        
+        overflow: 'scroll',
+        height: '85vh',
     },
     noDocumentsMessage: {
-
+        position: 'relative',
+        top: 50,
     }
 }
 
 LmcOrganisationDocuments.propTypes = {
-    documents: PropTypes.array,
-    fetchDocuments: PropTypes.func.isRequired
+    documents: PropTypes.object,
+    deleteDocument: PropTypes.func.isRequired,
+    fetchDocuments: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
     return {
-        documents: state.data['home-documents']
+        documents: Selectors.groupHomeDocuments(state)
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchDocuments: () => dispatch(ActionCreators.loadList('home-documents'))
+        fetchDocuments: () => dispatch(ActionCreators.loadList('home-documents')),
+        deleteDocument: (id) => dispatch(ActionCreators.deleteDocument(id, 'home-documents')),
     }
 }
 

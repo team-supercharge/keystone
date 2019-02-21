@@ -9,24 +9,21 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    style={Object {}}
+    style={
+      Object {
+        "height": "85vh",
+        "overflow": "scroll",
+      }
+    }
   >
-    <LmcCreateButton
-      buttonText="Document"
-      listId="HomeDocument"
-      onCreate={[MockFunction]}
+    <div
       style={
         Object {
-          "float": "right",
-          "width": 200,
+          "margin": "0 auto",
+          "maxWidth": 1000,
+          "padding": "50px 20px 0px 20px",
         }
       }
-      title="Add a Document"
-    />
-  </div>,
-  "nodes": Array [
-    <div
-      style={Object {}}
     >
       <LmcCreateButton
         buttonText="Document"
@@ -40,6 +37,75 @@ ShallowWrapper {
         }
         title="Add a Document"
       />
+      <LmcDocumentList
+        documents={
+          Object {
+            "Policies": Array [
+              Object {
+                "name": "TestDocument",
+              },
+            ],
+            "Procedures": Array [
+              Object {
+                "name": "TestDocument2",
+              },
+            ],
+          }
+        }
+        listId="home-documents"
+        onDelete={[MockFunction]}
+      />
+    </div>
+  </div>,
+  "nodes": Array [
+    <div
+      style={
+        Object {
+          "height": "85vh",
+          "overflow": "scroll",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "margin": "0 auto",
+            "maxWidth": 1000,
+            "padding": "50px 20px 0px 20px",
+          }
+        }
+      >
+        <LmcCreateButton
+          buttonText="Document"
+          listId="HomeDocument"
+          onCreate={[MockFunction]}
+          style={
+            Object {
+              "float": "right",
+              "width": 200,
+            }
+          }
+          title="Add a Document"
+        />
+        <LmcDocumentList
+          documents={
+            Object {
+              "Policies": Array [
+                Object {
+                  "name": "TestDocument",
+                },
+              ],
+              "Procedures": Array [
+                Object {
+                  "name": "TestDocument2",
+                },
+              ],
+            }
+          }
+          listId="home-documents"
+          onDelete={[MockFunction]}
+        />
+      </div>
     </div>,
   ],
   "options": Object {},
@@ -49,14 +115,20 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcOrganisationDocuments
+        deleteDocument={[MockFunction]}
         documents={
-          Array [
-            Object {
-              "category": "TestCategoryId",
-              "id": "TestId",
-              "name": "TestName",
-            },
-          ]
+          Object {
+            "Policies": Array [
+              Object {
+                "name": "TestDocument",
+              },
+            ],
+            "Procedures": Array [
+              Object {
+                "name": "TestDocument2",
+              },
+            ],
+          }
         }
         fetchDocuments={[MockFunction]}
       />,
@@ -67,17 +139,25 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
-          "documents": Array [
-            Object {
-              "category": "TestCategoryId",
-              "id": "TestId",
-              "name": "TestName",
-            },
-          ],
+          "deleteDocument": [MockFunction],
+          "documents": Object {
+            "Policies": Array [
+              Object {
+                "name": "TestDocument",
+              },
+            ],
+            "Procedures": Array [
+              Object {
+                "name": "TestDocument2",
+              },
+            ],
+          },
           "fetchDocuments": [MockFunction],
         },
         "refs": Object {},
-        "state": null,
+        "state": Object {
+          "documentsFetchInterval": null,
+        },
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -97,37 +177,103 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          style={Object {}}
+          style={
+            Object {
+              "height": "85vh",
+              "overflow": "scroll",
+            }
+          }
         >
-          <LmcCreateButton
-            buttonText="Document"
-            listId="HomeDocument"
-            onCreate={[MockFunction]}
+          <div
             style={
               Object {
-                "float": "right",
-                "width": 200,
+                "margin": "0 auto",
+                "maxWidth": 1000,
+                "padding": "50px 20px 0px 20px",
               }
             }
-            title="Add a Document"
-          />
+          >
+            <LmcCreateButton
+              buttonText="Document"
+              listId="HomeDocument"
+              onCreate={[MockFunction]}
+              style={
+                Object {
+                  "float": "right",
+                  "width": 200,
+                }
+              }
+              title="Add a Document"
+            />
+            <LmcDocumentList
+              documents={
+                Object {
+                  "Policies": Array [
+                    Object {
+                      "name": "TestDocument",
+                    },
+                  ],
+                  "Procedures": Array [
+                    Object {
+                      "name": "TestDocument2",
+                    },
+                  ],
+                }
+              }
+              listId="home-documents"
+              onDelete={[MockFunction]}
+            />
+          </div>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div
-          style={Object {}}
+          style={
+            Object {
+              "height": "85vh",
+              "overflow": "scroll",
+            }
+          }
         >
-          <LmcCreateButton
-            buttonText="Document"
-            listId="HomeDocument"
-            onCreate={[MockFunction]}
+          <div
             style={
               Object {
-                "float": "right",
-                "width": 200,
+                "margin": "0 auto",
+                "maxWidth": 1000,
+                "padding": "50px 20px 0px 20px",
               }
             }
-            title="Add a Document"
-          />
+          >
+            <LmcCreateButton
+              buttonText="Document"
+              listId="HomeDocument"
+              onCreate={[MockFunction]}
+              style={
+                Object {
+                  "float": "right",
+                  "width": 200,
+                }
+              }
+              title="Add a Document"
+            />
+            <LmcDocumentList
+              documents={
+                Object {
+                  "Policies": Array [
+                    Object {
+                      "name": "TestDocument",
+                    },
+                  ],
+                  "Procedures": Array [
+                    Object {
+                      "name": "TestDocument2",
+                    },
+                  ],
+                }
+              }
+              listId="home-documents"
+              onDelete={[MockFunction]}
+            />
+          </div>
         </div>,
       },
       "_renderedNodeType": 0,
@@ -141,14 +287,20 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcOrganisationDocuments
+    deleteDocument={[MockFunction]}
     documents={
-      Array [
-        Object {
-          "category": "TestCategoryId",
-          "id": "TestId",
-          "name": "TestName",
-        },
-      ]
+      Object {
+        "Policies": Array [
+          Object {
+            "name": "TestDocument",
+          },
+        ],
+        "Procedures": Array [
+          Object {
+            "name": "TestDocument2",
+          },
+        ],
+      }
     }
     fetchDocuments={[MockFunction]}
   />,

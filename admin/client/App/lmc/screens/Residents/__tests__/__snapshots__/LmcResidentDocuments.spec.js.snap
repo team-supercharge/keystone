@@ -22,48 +22,19 @@ ShallowWrapper {
       }
       title="Add a Document"
     />
-    <div>
-      <div>
-        <h2
-          style={
+    <LmcDocumentList
+      documents={
+        Object {
+          "Going to Bed and Sleeping": Array [
             Object {
-              "fontWeight": 300,
-              "marginBottom": "0.3em",
-            }
-          }
-        >
-          Going to Bed and Sleeping
-        </h2>
-        <div
-          className="lmc-theme-gradient"
-          style={
-            Object {
-              "height": 2,
-              "marginBottom": 22,
-              "width": "100%",
-            }
-          }
-        />
-        <ul
-          style={
-            Object {
-              "listStyle": "none",
-              "listStyleType": "none",
-              "padding": 0,
-            }
-          }
-        >
-          <LmcDocumentItem
-            data={
-              Object {
-                "name": "TestDocument",
-              }
-            }
-            onDelete={[MockFunction]}
-          />
-        </ul>
-      </div>
-    </div>
+              "name": "TestDocument",
+            },
+          ],
+        }
+      }
+      listId="documents"
+      onDelete={[MockFunction]}
+    />
   </div>,
   "nodes": Array [
     <div>
@@ -80,48 +51,19 @@ ShallowWrapper {
         }
         title="Add a Document"
       />
-      <div>
-        <div>
-          <h2
-            style={
+      <LmcDocumentList
+        documents={
+          Object {
+            "Going to Bed and Sleeping": Array [
               Object {
-                "fontWeight": 300,
-                "marginBottom": "0.3em",
-              }
-            }
-          >
-            Going to Bed and Sleeping
-          </h2>
-          <div
-            className="lmc-theme-gradient"
-            style={
-              Object {
-                "height": 2,
-                "marginBottom": 22,
-                "width": "100%",
-              }
-            }
-          />
-          <ul
-            style={
-              Object {
-                "listStyle": "none",
-                "listStyleType": "none",
-                "padding": 0,
-              }
-            }
-          >
-            <LmcDocumentItem
-              data={
-                Object {
-                  "name": "TestDocument",
-                }
-              }
-              onDelete={[MockFunction]}
-            />
-          </ul>
-        </div>
-      </div>
+                "name": "TestDocument",
+              },
+            ],
+          }
+        }
+        listId="documents"
+        onDelete={[MockFunction]}
+      />
     </div>,
   ],
   "options": Object {},
@@ -149,7 +91,6 @@ ShallowWrapper {
       "_instance": LmcResidentDocuments {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "listDocumentsByCategory": [Function],
         "props": Object {
           "deleteDocument": [MockFunction],
           "documents": Object {
@@ -162,7 +103,6 @@ ShallowWrapper {
           "fetchDocuments": [MockFunction],
         },
         "refs": Object {},
-        "renderDocuments": [Function],
         "state": Object {
           "documentsFetchInterval": null,
         },
@@ -198,48 +138,19 @@ ShallowWrapper {
             }
             title="Add a Document"
           />
-          <div>
-            <div>
-              <h2
-                style={
+          <LmcDocumentList
+            documents={
+              Object {
+                "Going to Bed and Sleeping": Array [
                   Object {
-                    "fontWeight": 300,
-                    "marginBottom": "0.3em",
-                  }
-                }
-              >
-                Going to Bed and Sleeping
-              </h2>
-              <div
-                className="lmc-theme-gradient"
-                style={
-                  Object {
-                    "height": 2,
-                    "marginBottom": 22,
-                    "width": "100%",
-                  }
-                }
-              />
-              <ul
-                style={
-                  Object {
-                    "listStyle": "none",
-                    "listStyleType": "none",
-                    "padding": 0,
-                  }
-                }
-              >
-                <LmcDocumentItem
-                  data={
-                    Object {
-                      "name": "TestDocument",
-                    }
-                  }
-                  onDelete={[MockFunction]}
-                />
-              </ul>
-            </div>
-          </div>
+                    "name": "TestDocument",
+                  },
+                ],
+              }
+            }
+            listId="documents"
+            onDelete={[MockFunction]}
+          />
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
@@ -256,48 +167,19 @@ ShallowWrapper {
             }
             title="Add a Document"
           />
-          <div>
-            <div>
-              <h2
-                style={
+          <LmcDocumentList
+            documents={
+              Object {
+                "Going to Bed and Sleeping": Array [
                   Object {
-                    "fontWeight": 300,
-                    "marginBottom": "0.3em",
-                  }
-                }
-              >
-                Going to Bed and Sleeping
-              </h2>
-              <div
-                className="lmc-theme-gradient"
-                style={
-                  Object {
-                    "height": 2,
-                    "marginBottom": 22,
-                    "width": "100%",
-                  }
-                }
-              />
-              <ul
-                style={
-                  Object {
-                    "listStyle": "none",
-                    "listStyleType": "none",
-                    "padding": 0,
-                  }
-                }
-              >
-                <LmcDocumentItem
-                  data={
-                    Object {
-                      "name": "TestDocument",
-                    }
-                  }
-                  onDelete={[MockFunction]}
-                />
-              </ul>
-            </div>
-          </div>
+                    "name": "TestDocument",
+                  },
+                ],
+              }
+            }
+            listId="documents"
+            onDelete={[MockFunction]}
+          />
         </div>,
       },
       "_renderedNodeType": 0,
