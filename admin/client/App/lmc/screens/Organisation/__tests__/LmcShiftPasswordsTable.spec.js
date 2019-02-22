@@ -6,6 +6,7 @@ describe('LmcShiftPasswordsTable', () => {
     let wrapper
     let shifts
     let savedKeystone
+    const onDelete = jest.fn()
 
     beforeAll(() => {
         savedKeystone = global.Keystone
@@ -21,6 +22,7 @@ describe('LmcShiftPasswordsTable', () => {
         wrapper = shallow(
             <LmcShiftPasswordsTable
                 shifts={shifts}
+                onDelete={onDelete}
             />
         )
     })
@@ -29,14 +31,21 @@ describe('LmcShiftPasswordsTable', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('renders a table', () => {
-        expect(wrapper.find('table').length).toEqual(1)
+    it('renders an unordered list', () => {
+        expect(wrapper.find('ul').length).toEqual(1)
+    })
+
+    it('renders an LmcShiftPasswordItem for each shift', () => {
+        expect(wrapper.find('LmcShiftPasswordItem').length).toEqual(
+            shifts.length
+        )
     })
 
     it('shows a message + link to support article for no shifts', () => {
         const emptyWrapper = shallow(
             <LmcShiftPasswordsTable
                 shifts={undefined}
+                onDelete={onDelete}
             />
         )
 
