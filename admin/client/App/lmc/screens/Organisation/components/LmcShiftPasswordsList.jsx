@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { BlankState } from '../../../../elemental'
 import LmcShiftPasswordItem from './LmcShiftPasswordItem.jsx'
 
-const LmcShiftPasswordsTable = ({ shifts, onDelete }) => {
+const LmcShiftPasswordsList = ({ shifts, onDelete }) => {
     const headings = ['Title', 'Start / End', 'Access Time', 'Actions']
     const hasShifts = shifts && shifts.length
     return ( 
@@ -111,9 +111,9 @@ const styles = {
     },
 }
 
-LmcShiftPasswordsTable.propTypes = {
+LmcShiftPasswordsList.propTypes = {
     shifts: PropTypes.array,
     onDelete: PropTypes.func.isRequired
 }
 
-export default LmcShiftPasswordsTable
+export default LmcShiftPasswordsList

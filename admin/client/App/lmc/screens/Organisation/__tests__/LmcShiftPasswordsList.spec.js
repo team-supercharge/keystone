@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import LmcShiftPasswordsTable from '../components/LmcShiftPasswordsTable.jsx'
+import LmcShiftPasswordsList from '../components/LmcShiftPasswordsList.jsx'
 
-describe('LmcShiftPasswordsTable', () => {
+describe('LmcShiftPasswordsList', () => {
     let wrapper
     let shifts
     let savedKeystone
@@ -20,7 +20,7 @@ describe('LmcShiftPasswordsTable', () => {
         ]
 
         wrapper = shallow(
-            <LmcShiftPasswordsTable
+            <LmcShiftPasswordsList
                 shifts={shifts}
                 onDelete={onDelete}
             />
@@ -43,7 +43,7 @@ describe('LmcShiftPasswordsTable', () => {
 
     it('shows a message + link to support article for no shifts', () => {
         const emptyWrapper = shallow(
-            <LmcShiftPasswordsTable
+            <LmcShiftPasswordsList
                 shifts={undefined}
                 onDelete={onDelete}
             />

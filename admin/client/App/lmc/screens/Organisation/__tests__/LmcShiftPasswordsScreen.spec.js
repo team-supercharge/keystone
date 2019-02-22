@@ -29,8 +29,8 @@ describe('LmcShiftPasswordsScreen', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('renders an LmcShiftPasswordsTable', () => {
-        expect(wrapper.find('LmcShiftPasswordsTable').length).toEqual(1)
+    it('renders an LmcShiftPasswordsList', () => {
+        expect(wrapper.find('LmcShiftPasswordsList').length).toEqual(1)
     })
 
     it('renders an LmcCreateButton', () => {

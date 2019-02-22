@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ActionCreators } from '../../../actions/actions'
 import { connect } from 'react-redux'
 import LmcSpinner from '../../../components/LmcSpinner.jsx'
-import LmcShiftPasswordsTable from './LmcShiftPasswordsTable.jsx'
+import LmcShiftPasswordsList from './LmcShiftPasswordsList.jsx'
 import LmcCreateButton from '../../../components/LmcCreateButton.jsx'
 
 export class LmcShiftPasswordsScreen extends Component {
@@ -25,7 +25,7 @@ export class LmcShiftPasswordsScreen extends Component {
                         style={styles.addButton}
                     />
                     { shifts ? (
-                        <LmcShiftPasswordsTable
+                        <LmcShiftPasswordsList
                             shifts={shifts}
                             onDelete={deleteShift}
                         />
