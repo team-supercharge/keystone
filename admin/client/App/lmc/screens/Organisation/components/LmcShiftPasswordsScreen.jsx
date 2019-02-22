@@ -7,22 +7,27 @@ import LmcShiftPasswordsTable from './LmcShiftPasswordsTable.jsx'
 import LmcCreateButton from '../../../components/LmcCreateButton.jsx'
 
 export class LmcShiftPasswordsScreen extends Component {
+    state = { 
+        deleteDialogOpen: false
+    }
+
     render() {
-        const { shifts, fetchShifts } = this.props
+        const { shifts, deleteShift, fetchShifts } = this.props
 
         return (
             <div style={styles.mainContainer}>
                 <div style={styles.content}>
                     <LmcCreateButton
-                        buttonText='Shift Password'
+                        buttonText='Shift'
                         listId='Shift'
-                        title='Add a Shift Password'
+                        title='Add a Shift'
                         onCreate={fetchShifts}
                         style={styles.addButton}
                     />
                     { shifts ? (
                         <LmcShiftPasswordsTable
                             shifts={shifts}
+                            onDelete={deleteShift}
                         />
                     ) : (
                         <LmcSpinner />
@@ -63,6 +68,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        deleteShift: (id) => dispatch(ActionCreators.deleteShift(id)),
         fetchShifts: () => dispatch(ActionCreators.loadList('shifts'))
     }
 }

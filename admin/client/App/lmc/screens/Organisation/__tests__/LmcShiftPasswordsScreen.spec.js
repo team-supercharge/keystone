@@ -8,6 +8,7 @@ describe('LmcShiftPasswordsScreen', () => {
     let wrapper
     let shifts
     const fetchShiftsMock = jest.fn()
+    const onDeleteMock = jest.fn()
 
     beforeEach(() => {
         shifts = [
@@ -19,6 +20,7 @@ describe('LmcShiftPasswordsScreen', () => {
             <LmcShiftPasswordsScreen 
                 shifts={shifts}
                 fetchShifts={fetchShiftsMock}
+                onDelete={onDeleteMock}
             />
         )
     })
@@ -35,9 +37,9 @@ describe('LmcShiftPasswordsScreen', () => {
         const button = wrapper.find('LmcCreateButton')
         const { buttonText, listId, title, onCreate } = button.props()
 
-        expect(buttonText).toEqual('Shift Password')
+        expect(buttonText).toEqual('Shift')
         expect(listId).toEqual('Shift')
-        expect(title).toEqual('Add a Shift Password')
+        expect(title).toEqual('Add a Shift')
         expect(onCreate).toEqual(fetchShiftsMock)
     })
 
@@ -46,6 +48,7 @@ describe('LmcShiftPasswordsScreen', () => {
             <LmcShiftPasswordsScreen
                 shifts={null}
                 fetchShifts={fetchShiftsMock}
+                onDelete={onDeleteMock}
             />
         )
 

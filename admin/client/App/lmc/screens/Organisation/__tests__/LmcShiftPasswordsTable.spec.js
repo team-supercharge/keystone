@@ -5,6 +5,12 @@ import LmcShiftPasswordsTable from '../components/LmcShiftPasswordsTable.jsx'
 describe('LmcShiftPasswordsTable', () => {
     let wrapper
     let shifts
+    let savedKeystone
+
+    beforeAll(() => {
+        savedKeystone = global.Keystone
+        global.Keystone = { adminPath: '/admin' }
+    })
 
     beforeEach(() => {
         shifts = [
@@ -40,5 +46,9 @@ describe('LmcShiftPasswordsTable', () => {
         const link = emptyWrapper.find('a')
         const supportLink = 'https://support.logmycare.co.uk/the-care-office/finishing-your-essential-setup/how-do-i-set-up-a-shift-password'
         expect(link.props().href).toEqual(supportLink)
+    })
+
+    afterAll(() => {
+        global.Keystone = savedKeystone
     })
 })

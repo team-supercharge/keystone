@@ -1,49 +1,51 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { BlankState } from '../../../../elemental'
+import LmcShiftPasswordItem from './LmcShiftPasswordItem.jsx'
 
-const NO_SHIFTS_MESSAGE = "You haven't added any shift passwords yet"
-const SUPPORT_LINK = 'https://support.logmycare.co.uk/the-care-office/finishing-your-essential-setup/how-do-i-set-up-a-shift-password'
-
-const renderTable = (shifts) => {
-    return (
-        <div>
-            <h2 style={styles.title}>
-                Shift Passwords
-            </h2>
-            <div className='lmc-theme-gradient' style={styles.divider} />
-            <table cellPadding="0" cellSpacing="0" className="Table ItemList">
-                <thead>
-                    <tr>
-                        <th>
-                            Title
-                        </th>
-                        <th>
-                            Start
-                        </th>
-                        <th>
-                            End
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            Shift 1
-                        </td>
-                        <td>
-                            08:99
-                        </td>
-                        <td>
-                            13:22
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            {/* <ul style={styles.list}>
-            { JSON.stringify(shifts) }
-            </ul> */}
-        </div>
+const LmcShiftPasswordsTable = ({ shifts, onDelete }) => {
+    const headings = ['Title', 'Start', 'End', 'Access Time', 'Actions']
+    const hasShifts = shifts && shifts.length
+    return ( 
+        hasShifts ? (
+            <div>
+                <h2 style={styles.title}>
+                    Shift Passwords
+                </h2>
+                <div className='lmc-theme-gradient' style={styles.divider} />
+                <table 
+                    cellPadding="0" 
+                    cellSpacing="0" 
+                    className="Table ItemList"
+                >
+                    <thead>
+                        <tr>
+                            { headings.map(heading => {
+                                return (
+                                    <th 
+                                        key={heading}
+                                        style={styles.heading}
+                                    >
+                                        { heading }
+                                    </th>
+                                )
+                            })}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { shifts.map(shift => {
+                            return (
+                                <LmcShiftPasswordItem
+                                    key={shift.id}
+                                    shift={shift}
+                                    onDelete={onDelete}
+                                />
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
+        ) : renderEmptyPage()
     )
 }
 
@@ -67,11 +69,8 @@ const renderEmptyPage = () => {
     )
 }
 
-const LmcShiftPasswordsTable = ({ shifts }) => {
-    const hasShifts = shifts && shifts.length
-    
-    return ( hasShifts ? renderTable(shifts) : renderEmptyPage() )
-}
+const NO_SHIFTS_MESSAGE = "You haven't added any shift passwords yet"
+const SUPPORT_LINK = 'https://support.logmycare.co.uk/the-care-office/finishing-your-essential-setup/how-do-i-set-up-a-shift-password'
 
 const styles = {
     title: {
@@ -82,6 +81,10 @@ const styles = {
         height: 2,
         marginBottom: 22,
         width: '100%',
+    },
+    heading: {
+        fontWeight: 300,
+        fontSize: 20,
     },
     list: {
         listStyle: 'none',
@@ -98,7 +101,8 @@ const styles = {
 }
 
 LmcShiftPasswordsTable.propTypes = {
-    shifts: PropTypes.array
+    shifts: PropTypes.array,
+    onDelete: PropTypes.func.isRequired
 }
 
 export default LmcShiftPasswordsTable
