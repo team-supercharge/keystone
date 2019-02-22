@@ -44,8 +44,8 @@ export default class LmcShiftPasswordItem extends Component {
                         component={Link}
                         glyph='pencil'
                         position='left'
-                        style={styles.button}
                         to={`${Keystone.adminPath}/shifts/${shift.id}`}
+                        style={styles.button}
                     >
                         Edit
                     </GlyphButton>
@@ -53,7 +53,7 @@ export default class LmcShiftPasswordItem extends Component {
                         onClick={this.toggleDeleteDialog} 
                         variant="link" 
                         color="delete"
-                        style={styles.button} 
+                        style={styles.button}
                         data-button="delete"
                     >
                         Delete
@@ -84,6 +84,9 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 12,
+    },
+    button: {
+        width: 76,
     },
     entry: {
         width: '25%',
