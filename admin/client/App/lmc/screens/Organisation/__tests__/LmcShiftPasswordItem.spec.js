@@ -6,6 +6,7 @@ describe('LmcShiftPasswordItem', () => {
     let wrapper
     let shift
     let savedKeystone
+    const onDeleteMock = jest.fn()
 
     beforeAll(() => {
         savedKeystone = global.Keystone
@@ -24,7 +25,7 @@ describe('LmcShiftPasswordItem', () => {
         wrapper = shallow(
             <LmcShiftPasswordItem
                 shift={shift}
-                onDelete={jest.fn()}
+                onDelete={onDeleteMock}
             />
         )
     })
@@ -33,9 +34,24 @@ describe('LmcShiftPasswordItem', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
+    it('renders a list item', () => {
+        expect(wrapper.find('li').length).toEqual(1)
+    })
+
+    it('renders a confirmation dialog to trigger its onDelete prop', () => {
+        const dialog = wrapper.find('ConfirmationDialog')
+        dialog.props().onConfirmation()
+        expect(onDeleteMock).toHaveBeenCalledTimes(1)
+        expect(onDeleteMock).toHaveBeenCalledWith(shift.id)
+    })
+
     it('renders a button to edit the shift', () => {
         const button = wrapper.find('GlyphButton')
         expect(button.props().to).toEqual(`${Keystone.adminPath}/shifts/${shift.id}`)
+    })
+
+    afterEach(() => {
+        onDeleteMock.mockClear()
     })
 
     afterAll(() => {

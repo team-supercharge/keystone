@@ -4,7 +4,7 @@ import { BlankState } from '../../../../elemental'
 import LmcShiftPasswordItem from './LmcShiftPasswordItem.jsx'
 
 const LmcShiftPasswordsTable = ({ shifts, onDelete }) => {
-    const headings = ['Title', 'Start', 'End', 'Access Time', 'Actions']
+    const headings = ['Title', 'Start / End', 'Access Time', 'Actions']
     const hasShifts = shifts && shifts.length
     return ( 
         hasShifts ? (
@@ -13,37 +13,33 @@ const LmcShiftPasswordsTable = ({ shifts, onDelete }) => {
                     Shift Passwords
                 </h2>
                 <div className='lmc-theme-gradient' style={styles.divider} />
-                <table 
-                    cellPadding="0" 
-                    cellSpacing="0" 
-                    className="Table ItemList"
-                >
-                    <thead>
-                        <tr>
-                            { headings.map(heading => {
-                                return (
-                                    <th 
-                                        key={heading}
-                                        style={styles.heading}
-                                    >
-                                        { heading }
-                                    </th>
-                                )
-                            })}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { shifts.map(shift => {
-                            return (
+                <div style={styles.headingsContainer}>
+                    { headings.map((heading, i) => {
+                        return (
+                            <div 
+                                key={i}
+                                style={styles.heading}
+                            >
+                                { heading }
+                            </div>
+                        )
+                    })}
+                </div>
+                <div style={styles.subDivider} />
+                <ul style={styles.list}>
+                    { shifts.map(shift => {
+                        return (
+                            <div key={shift.id}>
                                 <LmcShiftPasswordItem
-                                    key={shift.id}
                                     shift={shift}
                                     onDelete={onDelete}
                                 />
-                            )
-                        })}
-                    </tbody>
-                </table>
+                                <div style={styles.subDivider} />
+                            </div>
+                        )
+                    })}
+                </ul>  
+                
             </div>
         ) : renderEmptyPage()
     )
@@ -83,8 +79,18 @@ const styles = {
         width: '100%',
     },
     heading: {
+        width: '25%',
+        minWidth: 70,
         fontWeight: 300,
         fontSize: 20,
+        color: '#999999'
+    },
+    headingsContainer: {
+        width: '100%',
+        minWidth: 290,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     list: {
         listStyle: 'none',
@@ -94,6 +100,11 @@ const styles = {
     noShiftsMessage: {
         position: 'relative',
         top: 50,
+    },
+    subDivider: {
+        backgroundColor: '#f2f2f2',
+        height: 2,
+        marginTop: 8,
     },
     supportLink: {
         paddingLeft: 5,

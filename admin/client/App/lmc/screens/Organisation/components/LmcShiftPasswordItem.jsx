@@ -23,28 +23,23 @@ export default class LmcShiftPasswordItem extends Component {
     render () {
         const { shift } = this.props
         return (
-            <tr>
-                <td style={styles.entry}>
-                    <span style={styles.entry}>
+            <li style={styles.container}>
+                <div style={styles.entry}>
+                    <span>
                         { shift.title }
                     </span>
-                </td>
-                <td style={styles.entry}>
-                    <span style={styles.entry}>
-                        { shift.startTime }
+                </div>
+                <div style={styles.entry}>
+                    <span>
+                        { shift.startTime } - { shift.endTime }
                     </span>
-                </td>
-                <td style={styles.entry}>
-                    <span style={styles.entry}>
-                        { shift.endTime }
+                </div>
+                <div style={styles.entry}>
+                    <span>
+                        { shift.length } hours
                     </span>
-                </td>
-                <td style={styles.entry}>
-                    <span style={styles.entry}>
-                        {`${shift.length} hours`}
-                    </span>
-                </td>
-                <td style={styles.entryActions}>
+                </div>
+                <div style={styles.entryActions}>
                     <GlyphButton
                         component={Link}
                         glyph='pencil'
@@ -75,17 +70,31 @@ export default class LmcShiftPasswordItem extends Component {
                             If you go ahead, it can’t be undone.
                         </div>
                     </ConfirmationDialog>
-                </td>
-            </tr>
+                </div>
+            </li>
         ) 
     }
 }
 
 const styles = {
-    entry: {
-        height: 70,
+    container: {
+        width: '100%',
+        minWidth: 290,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 12,
     },
-
+    entry: {
+        width: '25%',
+        minWidth: 70,
+    },
+    entryActions: {
+        width: '25%',
+        minWidth: 70,
+        position: 'relative',
+        bottom: 5,
+    }
 }
 
 LmcShiftPasswordItem.propTypes = {

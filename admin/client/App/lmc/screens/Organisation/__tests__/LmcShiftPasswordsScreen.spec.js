@@ -8,7 +8,7 @@ describe('LmcShiftPasswordsScreen', () => {
     let wrapper
     let shifts
     const fetchShiftsMock = jest.fn()
-    const onDeleteMock = jest.fn()
+    const deleteShiftMock = jest.fn()
 
     beforeEach(() => {
         shifts = [
@@ -20,7 +20,7 @@ describe('LmcShiftPasswordsScreen', () => {
             <LmcShiftPasswordsScreen 
                 shifts={shifts}
                 fetchShifts={fetchShiftsMock}
-                onDelete={onDeleteMock}
+                deleteShift={deleteShiftMock}
             />
         )
     })
@@ -48,7 +48,7 @@ describe('LmcShiftPasswordsScreen', () => {
             <LmcShiftPasswordsScreen
                 shifts={null}
                 fetchShifts={fetchShiftsMock}
-                onDelete={onDeleteMock}
+                deleteShift={deleteShiftMock}
             />
         )
 
