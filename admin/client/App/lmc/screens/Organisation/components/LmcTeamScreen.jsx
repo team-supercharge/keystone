@@ -62,39 +62,36 @@ export class LmcTeamScreen extends Component {
 
     renderMobile = () => {
         const { selectedUser, setSelectedUser, users } = this.props
-        return (
-            <div>
-                { !selectedUser ? (
-                    <LmcSidebar
-                        itemLabel='Team Member'
-                        listId='User'
-                        items={users}
-                        onCreate={this.onCreateUserComplete}
-                        selectedItem={null}
-                        setSelectedItem={setSelectedUser}
-                        title='Team Members'
-                        styles={styles.sidebar}
-                    />
-                ) : (
-                    <div style={styles.mobileContainer}>
-                        <GlyphButton
-                            glyph="chevron-left"
-                            position="left"
-                            style={styles.backLink}
-                            onClick={() => setSelectedUser(null)}
-                            variant="link"
-                        >
-                            Back
-                        </GlyphButton>
-                        { this.renderUserInfo() }
-                    </div>
-                )}
+        return !selectedUser ? (
+            <LmcSidebar
+                itemLabel='Team Member'
+                listId='User'
+                items={users}
+                onCreate={this.onCreateUserComplete}
+                selectedItem={null}
+                setSelectedItem={setSelectedUser}
+                title='Team Members'
+                styles={styles.sidebar}
+            />
+        ) : (
+            <div style={styles.mobileContainer}>
+                <GlyphButton
+                    glyph="chevron-left"
+                    position="left"
+                    style={styles.backLink}
+                    onClick={() => setSelectedUser(null)}
+                    variant="link"
+                >
+                    Back
+                </GlyphButton>
+                { this.renderUserInfo() }
             </div>
         )
     }
 
     render() {
-        const chosenRender = (isBrowser || isTablet) ? this.renderDesktop : this.renderMobile
+        const chosenRender = 
+            (isBrowser || isTablet) ? this.renderDesktop : this.renderMobile
         return this.props.users ? chosenRender() : <LmcSpinner />
     }
 }

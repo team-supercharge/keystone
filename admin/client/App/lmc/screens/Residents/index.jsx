@@ -31,40 +31,36 @@ export class LmcResidentsScreen extends Component {
             setSelectedResident
         } = this.props;
         return (
-            <div>
-                { residents ? (
-                    <div style={styles.mainContainer}>
-                        <div style={styles.leftContainer}>
-                            <LmcSidebar
-                                itemLabel='Resident'
-                                listId='Resident'
-                                items={residents}
-                                onCreate={this.onCreateResidentComplete}
-                                selectedItem={selectedResident}
-                                setSelectedItem={setSelectedResident}
-                                title='Residents'
-                                styles={styles.sidebar}                                
-                            />
-                        </div>
-                        <div style={styles.rightContainer}>
-                            <LmcTabBar
-                                location={location} 
-                                items={navbarItems}
-                                resourceUrl='residents'    
-                            />
-                            <div style={styles.childContainer}>
-                                <div style={styles.childWidth}>
-                                    { !residents.length ? (
-                                        <BlankState
-                                            heading={NO_RESIDENTS_MESSAGE}
-                                            style={styles.noResidentsMessage}
-                                        />
-                                    ) : children}
-                                </div>
-                            </div>
+            <div style={styles.mainContainer}>
+                <div style={styles.leftContainer}>
+                    <LmcSidebar
+                        itemLabel='Resident'
+                        listId='Resident'
+                        items={residents}
+                        onCreate={this.onCreateResidentComplete}
+                        selectedItem={selectedResident}
+                        setSelectedItem={setSelectedResident}
+                        title='Residents'
+                        styles={styles.sidebar}                                
+                    />
+                </div>
+                <div style={styles.rightContainer}>
+                    <LmcTabBar
+                        location={location} 
+                        items={navbarItems}
+                        resourceUrl='residents'    
+                    />
+                    <div style={styles.childContainer}>
+                        <div style={styles.childWidth}>
+                            { !residents.length ? (
+                                <BlankState
+                                    heading={NO_RESIDENTS_MESSAGE}
+                                    style={styles.noResidentsMessage}
+                                />
+                            ) : children}
                         </div>
                     </div>
-                ) : <LmcSpinner /> }
+                </div>
             </div>
         )
     }
@@ -78,65 +74,62 @@ export class LmcResidentsScreen extends Component {
             setSelectedResident
         } = this.props;
 
-        return (
-            <div >
-                { !selectedResident ? (
-                    <LmcSidebar
-                        itemLabel='Resident'
-                        listId='Resident'
-                        items={residents}
-                        onCreate={this.onCreateResidentComplete}
-                        selectedItem={selectedResident}
-                        setSelectedItem={setSelectedResident}
-                        title='Residents'
-                        styles={styles.sidebar}                                
-                    /> 
-                ) : (
-                    <div style={styles.mobileContainer}>
-                        <LmcTabBar
-                            location={location} 
-                            items={navbarItems}
-                            resourceUrl='residents'    
-                        />
-                        <div style={styles.childContainer}>
-                            <GlyphButton
-                                glyph="chevron-left"
-                                position="left"
-                                style={styles.backLink}
-                                onClick={() => setSelectedResident(null)}
-                                variant="link"
-                            >
-					            Back
-				            </GlyphButton>
-                            <div style={styles.childWidth}>
-                                { !residents.length ? (
-                                    <BlankState
-                                        heading={NO_RESIDENTS_MESSAGE}
-                                        style={styles.noResidentsMessage}
-                                    />
-                                ) : children}
-                            </div>
-                        </div>
-                    </div> 
-                ) }
-            </div>
-        ) 
+        return !selectedResident ? (
+            <LmcSidebar
+                itemLabel='Resident'
+                listId='Resident'
+                items={residents}
+                onCreate={this.onCreateResidentComplete}
+                selectedItem={selectedResident}
+                setSelectedItem={setSelectedResident}
+                title='Residents'
+                styles={styles.sidebar}                                
+            /> 
+        ) : (
+            <div style={styles.mobileContainer}>
+                <LmcTabBar
+                    location={location} 
+                    items={navbarItems}
+                    resourceUrl='residents'    
+                />
+                <div style={styles.childContainer}>
+                    <GlyphButton
+                        glyph="chevron-left"
+                        position="left"
+                        style={styles.backLink}
+                        onClick={() => setSelectedResident(null)}
+                        variant="link"
+                    >
+                        Back
+                    </GlyphButton>
+                    <div style={styles.childWidth}>
+                        { !residents.length ? (
+                            <BlankState
+                                heading={NO_RESIDENTS_MESSAGE}
+                                style={styles.noResidentsMessage}
+                            />
+                        ) : children}
+                    </div>
+                </div>
+            </div> 
+        )
     }
 
     render () {
-        const chosenRender = (isBrowser || isTablet) ? this.renderDesktop : this.renderMobile
+        const chosenRender = 
+            (isBrowser || isTablet) ? this.renderDesktop : this.renderMobile
         return this.props.residents ? chosenRender() : <LmcSpinner />
     }
 }
 
 const navbarItems = [
-    { label: 'Profile', url: 'profile' },
+    { label: 'Profile', url: 'profile', octicon: 'person' },
 
     // Removing these until these components are completed
-    // { label: 'Daily report', url: 'daily-report' },
-    // { label: 'Charts', url: 'charts' },
-    // { label: 'To-Dos', url: 'to-do' },
-    { label: 'Documents', url: 'documents' }
+    // { label: 'Daily report', url: 'daily-report', octicon: 'calendar' },
+    // { label: 'Charts', url: 'charts', octicon: 'graph' },
+    // { label: 'To-Dos', url: 'to-do', octicon: 'checklist' },
+    { label: 'Documents', url: 'documents', octicon: 'file' }
 ]
 
 const NO_RESIDENTS_MESSAGE = "You haven't added any residents yet"
@@ -169,11 +162,13 @@ const styles = {
     mobileContainer: {
         background: '#fbfbfb',
         minWidth: 0,
+        wordWrap: 'break-word',
     },
     rightContainer: {
         flex: '3.5',
         background: '#fbfbfb',
         minWidth: 0,
+        wordWrap: 'break-word',
     },
     sidebar: { 
         height: '91.5vh', 

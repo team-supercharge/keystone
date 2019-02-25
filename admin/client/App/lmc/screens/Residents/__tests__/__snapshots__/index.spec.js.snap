@@ -8,7 +8,97 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "flex": "1",
+          "zIndex": "1",
+        }
+      }
+    >
+      <LmcSidebar
+        itemLabel="Resident"
+        items={
+          Array [
+            Object {
+              "id": "testId1",
+              "name": "testName1",
+            },
+            Object {
+              "id": "testId2",
+              "name": "testName2",
+            },
+          ]
+        }
+        listId="Resident"
+        onCreate={[Function]}
+        selectedItem="testId1"
+        setSelectedItem={[MockFunction]}
+        styles={
+          Object {
+            "height": "91.5vh",
+            "maxHeight": "91.5vh",
+          }
+        }
+        title="Residents"
+      />
+    </div>
+    <div
+      style={
+        Object {
+          "background": "#fbfbfb",
+          "flex": "3.5",
+          "minWidth": 0,
+          "wordWrap": "break-word",
+        }
+      }
+    >
+      <Connect(LmcTabBar)
+        items={
+          Array [
+            Object {
+              "label": "Profile",
+              "octicon": "person",
+              "url": "profile",
+            },
+            Object {
+              "label": "Documents",
+              "octicon": "file",
+              "url": "documents",
+            },
+          ]
+        }
+        resourceUrl="residents"
+      />
+      <div
+        style={
+          Object {
+            "height": "85vh",
+            "overflow": "scroll",
+            "padding": "50px 20px 0px 20px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "margin": "0 auto",
+              "maxWidth": 800,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>,
+  "nodes": Array [
     <div
       style={
         Object {
@@ -58,6 +148,7 @@ ShallowWrapper {
             "background": "#fbfbfb",
             "flex": "3.5",
             "minWidth": 0,
+            "wordWrap": "break-word",
           }
         }
       >
@@ -66,10 +157,12 @@ ShallowWrapper {
             Array [
               Object {
                 "label": "Profile",
+                "octicon": "person",
                 "url": "profile",
               },
               Object {
                 "label": "Documents",
+                "octicon": "file",
                 "url": "documents",
               },
             ]
@@ -93,97 +186,6 @@ ShallowWrapper {
               }
             }
           />
-        </div>
-      </div>
-    </div>
-  </div>,
-  "nodes": Array [
-    <div>
-      <div
-        style={
-          Object {
-            "display": "flex",
-            "flexDirection": "row",
-          }
-        }
-      >
-        <div
-          style={
-            Object {
-              "flex": "1",
-              "zIndex": "1",
-            }
-          }
-        >
-          <LmcSidebar
-            itemLabel="Resident"
-            items={
-              Array [
-                Object {
-                  "id": "testId1",
-                  "name": "testName1",
-                },
-                Object {
-                  "id": "testId2",
-                  "name": "testName2",
-                },
-              ]
-            }
-            listId="Resident"
-            onCreate={[Function]}
-            selectedItem="testId1"
-            setSelectedItem={[MockFunction]}
-            styles={
-              Object {
-                "height": "91.5vh",
-                "maxHeight": "91.5vh",
-              }
-            }
-            title="Residents"
-          />
-        </div>
-        <div
-          style={
-            Object {
-              "background": "#fbfbfb",
-              "flex": "3.5",
-              "minWidth": 0,
-            }
-          }
-        >
-          <Connect(LmcTabBar)
-            items={
-              Array [
-                Object {
-                  "label": "Profile",
-                  "url": "profile",
-                },
-                Object {
-                  "label": "Documents",
-                  "url": "documents",
-                },
-              ]
-            }
-            resourceUrl="residents"
-          />
-          <div
-            style={
-              Object {
-                "height": "85vh",
-                "overflow": "scroll",
-                "padding": "50px 20px 0px 20px",
-              }
-            }
-          >
-            <div
-              style={
-                Object {
-                  "margin": "0 auto",
-                  "maxWidth": 800,
-                }
-              }
-            />
-          </div>
         </div>
       </div>
     </div>,
@@ -257,182 +259,184 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
           <div
             style={
               Object {
-                "display": "flex",
-                "flexDirection": "row",
+                "flex": "1",
+                "zIndex": "1",
               }
             }
           >
-            <div
-              style={
-                Object {
-                  "flex": "1",
-                  "zIndex": "1",
-                }
-              }
-            >
-              <LmcSidebar
-                itemLabel="Resident"
-                items={
-                  Array [
-                    Object {
-                      "id": "testId1",
-                      "name": "testName1",
-                    },
-                    Object {
-                      "id": "testId2",
-                      "name": "testName2",
-                    },
-                  ]
-                }
-                listId="Resident"
-                onCreate={[Function]}
-                selectedItem="testId1"
-                setSelectedItem={[MockFunction]}
-                styles={
+            <LmcSidebar
+              itemLabel="Resident"
+              items={
+                Array [
                   Object {
-                    "height": "91.5vh",
-                    "maxHeight": "91.5vh",
-                  }
+                    "id": "testId1",
+                    "name": "testName1",
+                  },
+                  Object {
+                    "id": "testId2",
+                    "name": "testName2",
+                  },
+                ]
+              }
+              listId="Resident"
+              onCreate={[Function]}
+              selectedItem="testId1"
+              setSelectedItem={[MockFunction]}
+              styles={
+                Object {
+                  "height": "91.5vh",
+                  "maxHeight": "91.5vh",
                 }
-                title="Residents"
-              />
-            </div>
+              }
+              title="Residents"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "background": "#fbfbfb",
+                "flex": "3.5",
+                "minWidth": 0,
+                "wordWrap": "break-word",
+              }
+            }
+          >
+            <Connect(LmcTabBar)
+              items={
+                Array [
+                  Object {
+                    "label": "Profile",
+                    "octicon": "person",
+                    "url": "profile",
+                  },
+                  Object {
+                    "label": "Documents",
+                    "octicon": "file",
+                    "url": "documents",
+                  },
+                ]
+              }
+              resourceUrl="residents"
+            />
             <div
               style={
                 Object {
-                  "background": "#fbfbfb",
-                  "flex": "3.5",
-                  "minWidth": 0,
+                  "height": "85vh",
+                  "overflow": "scroll",
+                  "padding": "50px 20px 0px 20px",
                 }
               }
             >
-              <Connect(LmcTabBar)
-                items={
-                  Array [
-                    Object {
-                      "label": "Profile",
-                      "url": "profile",
-                    },
-                    Object {
-                      "label": "Documents",
-                      "url": "documents",
-                    },
-                  ]
-                }
-                resourceUrl="residents"
-              />
               <div
                 style={
                   Object {
-                    "height": "85vh",
-                    "overflow": "scroll",
-                    "padding": "50px 20px 0px 20px",
+                    "margin": "0 auto",
+                    "maxWidth": 800,
                   }
                 }
-              >
-                <div
-                  style={
-                    Object {
-                      "margin": "0 auto",
-                      "maxWidth": 800,
-                    }
-                  }
-                />
-              </div>
+              />
             </div>
           </div>
         </div>,
         "_debugID": 2,
-        "_renderedOutput": <div>
+        "_renderedOutput": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
           <div
             style={
               Object {
-                "display": "flex",
-                "flexDirection": "row",
+                "flex": "1",
+                "zIndex": "1",
               }
             }
           >
-            <div
-              style={
-                Object {
-                  "flex": "1",
-                  "zIndex": "1",
-                }
-              }
-            >
-              <LmcSidebar
-                itemLabel="Resident"
-                items={
-                  Array [
-                    Object {
-                      "id": "testId1",
-                      "name": "testName1",
-                    },
-                    Object {
-                      "id": "testId2",
-                      "name": "testName2",
-                    },
-                  ]
-                }
-                listId="Resident"
-                onCreate={[Function]}
-                selectedItem="testId1"
-                setSelectedItem={[MockFunction]}
-                styles={
+            <LmcSidebar
+              itemLabel="Resident"
+              items={
+                Array [
                   Object {
-                    "height": "91.5vh",
-                    "maxHeight": "91.5vh",
-                  }
+                    "id": "testId1",
+                    "name": "testName1",
+                  },
+                  Object {
+                    "id": "testId2",
+                    "name": "testName2",
+                  },
+                ]
+              }
+              listId="Resident"
+              onCreate={[Function]}
+              selectedItem="testId1"
+              setSelectedItem={[MockFunction]}
+              styles={
+                Object {
+                  "height": "91.5vh",
+                  "maxHeight": "91.5vh",
                 }
-                title="Residents"
-              />
-            </div>
+              }
+              title="Residents"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "background": "#fbfbfb",
+                "flex": "3.5",
+                "minWidth": 0,
+                "wordWrap": "break-word",
+              }
+            }
+          >
+            <Connect(LmcTabBar)
+              items={
+                Array [
+                  Object {
+                    "label": "Profile",
+                    "octicon": "person",
+                    "url": "profile",
+                  },
+                  Object {
+                    "label": "Documents",
+                    "octicon": "file",
+                    "url": "documents",
+                  },
+                ]
+              }
+              resourceUrl="residents"
+            />
             <div
               style={
                 Object {
-                  "background": "#fbfbfb",
-                  "flex": "3.5",
-                  "minWidth": 0,
+                  "height": "85vh",
+                  "overflow": "scroll",
+                  "padding": "50px 20px 0px 20px",
                 }
               }
             >
-              <Connect(LmcTabBar)
-                items={
-                  Array [
-                    Object {
-                      "label": "Profile",
-                      "url": "profile",
-                    },
-                    Object {
-                      "label": "Documents",
-                      "url": "documents",
-                    },
-                  ]
-                }
-                resourceUrl="residents"
-              />
               <div
                 style={
                   Object {
-                    "height": "85vh",
-                    "overflow": "scroll",
-                    "padding": "50px 20px 0px 20px",
+                    "margin": "0 auto",
+                    "maxWidth": 800,
                   }
                 }
-              >
-                <div
-                  style={
-                    Object {
-                      "margin": "0 auto",
-                      "maxWidth": 800,
-                    }
-                  }
-                />
-              </div>
+              />
             </div>
           </div>
         </div>,
