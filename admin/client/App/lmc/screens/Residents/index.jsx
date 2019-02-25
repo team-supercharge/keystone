@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../actions/actions'
 import { selectList } from '../../../screens/List/actions'
-import { isBrowser } from 'react-device-detect'
+import { isBrowser, isTablet } from 'react-device-detect'
 import { LmcSpinner } from '../../components'
 import { BlankState, GlyphButton } from '../../../elemental'
 import LmcSidebar from '../../components/LmcSidebar.jsx'
@@ -124,7 +124,7 @@ export class LmcResidentsScreen extends Component {
     }
 
     render () {
-        const chosenRender = isBrowser ? this.renderDesktop : this.renderMobile
+        const chosenRender = (isBrowser || isTablet) ? this.renderDesktop : this.renderMobile
         return this.props.residents ? chosenRender() : <LmcSpinner />
     }
 }

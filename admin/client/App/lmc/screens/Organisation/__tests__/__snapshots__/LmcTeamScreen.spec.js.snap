@@ -8,7 +8,80 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "flex": "1",
+        }
+      }
+    >
+      <LmcSidebar
+        itemLabel="Team Member"
+        items={
+          Array [
+            Object {
+              "active": true,
+              "name": Object {
+                "first": "Test",
+                "last": "Carer",
+              },
+            },
+            Object {
+              "active": true,
+              "name": Object {
+                "first": "Test2",
+                "last": "Carer2",
+              },
+            },
+          ]
+        }
+        listId="User"
+        onCreate={[Function]}
+        selectedItem="TestId"
+        setSelectedItem={[MockFunction]}
+        styles={
+          Object {
+            "height": "83vh",
+            "maxHeight": "83vh",
+          }
+        }
+        title="Team Members"
+      />
+    </div>
+    <div
+      style={
+        Object {
+          "flex": "3.5",
+          "height": "83vh",
+          "overflow": "scroll",
+          "wordWrap": "break-word",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "margin": "0 auto",
+            "maxWidth": 800,
+            "padding": "50px 0px 0px 0px",
+          }
+        }
+      >
+        <Connect(LmcTeamMemberProfile)
+          selectedUser="TestId"
+        />
+      </div>
+    </div>
+  </div>,
+  "nodes": Array [
     <div
       style={
         Object {
@@ -20,9 +93,7 @@ ShallowWrapper {
       <div
         style={
           Object {
-            "display": "flex",
             "flex": "1",
-            "flexDirection": "column",
           }
         }
       >
@@ -81,85 +152,6 @@ ShallowWrapper {
           <Connect(LmcTeamMemberProfile)
             selectedUser="TestId"
           />
-        </div>
-      </div>
-    </div>
-  </div>,
-  "nodes": Array [
-    <div>
-      <div
-        style={
-          Object {
-            "display": "flex",
-            "flexDirection": "row",
-          }
-        }
-      >
-        <div
-          style={
-            Object {
-              "display": "flex",
-              "flex": "1",
-              "flexDirection": "column",
-            }
-          }
-        >
-          <LmcSidebar
-            itemLabel="Team Member"
-            items={
-              Array [
-                Object {
-                  "active": true,
-                  "name": Object {
-                    "first": "Test",
-                    "last": "Carer",
-                  },
-                },
-                Object {
-                  "active": true,
-                  "name": Object {
-                    "first": "Test2",
-                    "last": "Carer2",
-                  },
-                },
-              ]
-            }
-            listId="User"
-            onCreate={[Function]}
-            selectedItem="TestId"
-            setSelectedItem={[MockFunction]}
-            styles={
-              Object {
-                "height": "83vh",
-                "maxHeight": "83vh",
-              }
-            }
-            title="Team Members"
-          />
-        </div>
-        <div
-          style={
-            Object {
-              "flex": "3.5",
-              "height": "83vh",
-              "overflow": "scroll",
-              "wordWrap": "break-word",
-            }
-          }
-        >
-          <div
-            style={
-              Object {
-                "margin": "0 auto",
-                "maxWidth": 800,
-                "padding": "50px 0px 0px 0px",
-              }
-            }
-          >
-            <Connect(LmcTeamMemberProfile)
-              selectedUser="TestId"
-            />
-          </div>
         </div>
       </div>
     </div>,
@@ -222,6 +214,8 @@ ShallowWrapper {
           ],
         },
         "refs": Object {},
+        "renderDesktop": [Function],
+        "renderMobile": [Function],
         "renderUserInfo": [Function],
         "state": null,
         "updater": Object {
@@ -242,158 +236,150 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
           <div
             style={
               Object {
-                "display": "flex",
-                "flexDirection": "row",
+                "flex": "1",
+              }
+            }
+          >
+            <LmcSidebar
+              itemLabel="Team Member"
+              items={
+                Array [
+                  Object {
+                    "active": true,
+                    "name": Object {
+                      "first": "Test",
+                      "last": "Carer",
+                    },
+                  },
+                  Object {
+                    "active": true,
+                    "name": Object {
+                      "first": "Test2",
+                      "last": "Carer2",
+                    },
+                  },
+                ]
+              }
+              listId="User"
+              onCreate={[Function]}
+              selectedItem="TestId"
+              setSelectedItem={[MockFunction]}
+              styles={
+                Object {
+                  "height": "83vh",
+                  "maxHeight": "83vh",
+                }
+              }
+              title="Team Members"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "flex": "3.5",
+                "height": "83vh",
+                "overflow": "scroll",
+                "wordWrap": "break-word",
               }
             }
           >
             <div
               style={
                 Object {
-                  "display": "flex",
-                  "flex": "1",
-                  "flexDirection": "column",
+                  "margin": "0 auto",
+                  "maxWidth": 800,
+                  "padding": "50px 0px 0px 0px",
                 }
               }
             >
-              <LmcSidebar
-                itemLabel="Team Member"
-                items={
-                  Array [
-                    Object {
-                      "active": true,
-                      "name": Object {
-                        "first": "Test",
-                        "last": "Carer",
-                      },
-                    },
-                    Object {
-                      "active": true,
-                      "name": Object {
-                        "first": "Test2",
-                        "last": "Carer2",
-                      },
-                    },
-                  ]
-                }
-                listId="User"
-                onCreate={[Function]}
-                selectedItem="TestId"
-                setSelectedItem={[MockFunction]}
-                styles={
-                  Object {
-                    "height": "83vh",
-                    "maxHeight": "83vh",
-                  }
-                }
-                title="Team Members"
+              <Connect(LmcTeamMemberProfile)
+                selectedUser="TestId"
               />
-            </div>
-            <div
-              style={
-                Object {
-                  "flex": "3.5",
-                  "height": "83vh",
-                  "overflow": "scroll",
-                  "wordWrap": "break-word",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "margin": "0 auto",
-                    "maxWidth": 800,
-                    "padding": "50px 0px 0px 0px",
-                  }
-                }
-              >
-                <Connect(LmcTeamMemberProfile)
-                  selectedUser="TestId"
-                />
-              </div>
             </div>
           </div>
         </div>,
         "_debugID": 2,
-        "_renderedOutput": <div>
+        "_renderedOutput": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
           <div
             style={
               Object {
-                "display": "flex",
-                "flexDirection": "row",
+                "flex": "1",
+              }
+            }
+          >
+            <LmcSidebar
+              itemLabel="Team Member"
+              items={
+                Array [
+                  Object {
+                    "active": true,
+                    "name": Object {
+                      "first": "Test",
+                      "last": "Carer",
+                    },
+                  },
+                  Object {
+                    "active": true,
+                    "name": Object {
+                      "first": "Test2",
+                      "last": "Carer2",
+                    },
+                  },
+                ]
+              }
+              listId="User"
+              onCreate={[Function]}
+              selectedItem="TestId"
+              setSelectedItem={[MockFunction]}
+              styles={
+                Object {
+                  "height": "83vh",
+                  "maxHeight": "83vh",
+                }
+              }
+              title="Team Members"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "flex": "3.5",
+                "height": "83vh",
+                "overflow": "scroll",
+                "wordWrap": "break-word",
               }
             }
           >
             <div
               style={
                 Object {
-                  "display": "flex",
-                  "flex": "1",
-                  "flexDirection": "column",
+                  "margin": "0 auto",
+                  "maxWidth": 800,
+                  "padding": "50px 0px 0px 0px",
                 }
               }
             >
-              <LmcSidebar
-                itemLabel="Team Member"
-                items={
-                  Array [
-                    Object {
-                      "active": true,
-                      "name": Object {
-                        "first": "Test",
-                        "last": "Carer",
-                      },
-                    },
-                    Object {
-                      "active": true,
-                      "name": Object {
-                        "first": "Test2",
-                        "last": "Carer2",
-                      },
-                    },
-                  ]
-                }
-                listId="User"
-                onCreate={[Function]}
-                selectedItem="TestId"
-                setSelectedItem={[MockFunction]}
-                styles={
-                  Object {
-                    "height": "83vh",
-                    "maxHeight": "83vh",
-                  }
-                }
-                title="Team Members"
+              <Connect(LmcTeamMemberProfile)
+                selectedUser="TestId"
               />
-            </div>
-            <div
-              style={
-                Object {
-                  "flex": "3.5",
-                  "height": "83vh",
-                  "overflow": "scroll",
-                  "wordWrap": "break-word",
-                }
-              }
-            >
-              <div
-                style={
-                  Object {
-                    "margin": "0 auto",
-                    "maxWidth": 800,
-                    "padding": "50px 0px 0px 0px",
-                  }
-                }
-              >
-                <Connect(LmcTeamMemberProfile)
-                  selectedUser="TestId"
-                />
-              </div>
             </div>
           </div>
         </div>,

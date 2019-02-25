@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import List from '../../../utils/List'
 import CreateForm from '../../shared/CreateForm'
+import { isBrowser } from 'react-device-detect'
 import { GlyphButton, ResponsiveText } from '../../elemental'
 
 export default class LmcCreateButton extends Component {
@@ -57,12 +58,13 @@ export default class LmcCreateButton extends Component {
         const { buttonText, style } = this.props
         const fullText = `Add a ${buttonText}`
         const medText = 'Add'
+        const glyphPosition = isBrowser ? 'left' : 'default'
         return (
             <GlyphButton
                 block
                 color='success'
                 glyph='plus'
-                position='left'
+                position={glyphPosition}
                 title={fullText}
                 onClick={this.onOpenCreateModal}
                 style={style}
