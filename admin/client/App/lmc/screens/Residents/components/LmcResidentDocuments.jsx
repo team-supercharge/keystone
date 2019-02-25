@@ -66,7 +66,7 @@ const NO_DOCUMENTS_MESSAGE = "You haven't added any documents for this resident"
 const styles = {
     addButton: {
         float: 'right',
-        width: 200,
+        width: '15vw',
     },
     noDocumentsMessage: {
         position: 'relative',

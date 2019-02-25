@@ -31,6 +31,8 @@ const styles = {
     categoryName: {
         marginBottom: '0.3em',
         fontWeight: 300,
+        textOverflow: 'ellipsis',
+        hyphens: 'auto',
     },
     divider: {
         height: 2,

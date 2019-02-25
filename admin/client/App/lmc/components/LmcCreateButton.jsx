@@ -56,6 +56,7 @@ export default class LmcCreateButton extends Component {
     render () {
         const { buttonText, style } = this.props
         const fullText = `Add a ${buttonText}`
+        const medText = 'Add'
         return (
             <GlyphButton
                 block
@@ -68,8 +69,8 @@ export default class LmcCreateButton extends Component {
             >
                 { this.renderCreateForm() }
                 <ResponsiveText
-                    visibleSM={fullText}
-                    visibleMD={fullText}
+                    visibleSM={null}
+                    visibleMD={medText}
                     visibleLG={fullText}
                 />
             </GlyphButton>

@@ -17,7 +17,7 @@ ShallowWrapper {
       style={
         Object {
           "float": "right",
-          "width": 200,
+          "width": "15vw",
         }
       }
       title="Add a Document"
@@ -46,7 +46,7 @@ ShallowWrapper {
         style={
           Object {
             "float": "right",
-            "width": 200,
+            "width": "15vw",
           }
         }
         title="Add a Document"
@@ -133,7 +133,7 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
-                "width": 200,
+                "width": "15vw",
               }
             }
             title="Add a Document"
@@ -162,7 +162,7 @@ ShallowWrapper {
             style={
               Object {
                 "float": "right",
-                "width": 200,
+                "width": "15vw",
               }
             }
             title="Add a Document"

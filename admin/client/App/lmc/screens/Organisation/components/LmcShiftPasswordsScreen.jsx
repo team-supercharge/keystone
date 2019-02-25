@@ -40,7 +40,7 @@ export class LmcShiftPasswordsScreen extends Component {
 
 const styles = {
     addButton: {
-        width: 200,
+        width: '15vw',
         float: 'right',
     },
     mainContainer: {

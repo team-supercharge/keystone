@@ -36,7 +36,7 @@ ShallowWrapper {
               "url": "shift-passwords",
             },
             Object {
-              "label": "Policies & Procedures",
+              "label": "Documents",
               "url": "documents",
             },
           ]
@@ -81,7 +81,7 @@ ShallowWrapper {
                 "url": "shift-passwords",
               },
               Object {
-                "label": "Policies & Procedures",
+                "label": "Documents",
                 "url": "documents",
               },
             ]
@@ -172,7 +172,7 @@ ShallowWrapper {
                     "url": "shift-passwords",
                   },
                   Object {
-                    "label": "Policies & Procedures",
+                    "label": "Documents",
                     "url": "documents",
                   },
                 ]
@@ -217,7 +217,7 @@ ShallowWrapper {
                     "url": "shift-passwords",
                   },
                   Object {
-                    "label": "Policies & Procedures",
+                    "label": "Documents",
                     "url": "documents",
                   },
                 ]

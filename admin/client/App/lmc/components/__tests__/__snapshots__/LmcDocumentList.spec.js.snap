@@ -14,7 +14,9 @@ ShallowWrapper {
         style={
           Object {
             "fontWeight": 300,
+            "hyphens": "auto",
             "marginBottom": "0.3em",
+            "textOverflow": "ellipsis",
           }
         }
       >
@@ -55,7 +57,9 @@ ShallowWrapper {
         style={
           Object {
             "fontWeight": 300,
+            "hyphens": "auto",
             "marginBottom": "0.3em",
+            "textOverflow": "ellipsis",
           }
         }
       >
@@ -99,7 +103,9 @@ ShallowWrapper {
           style={
             Object {
               "fontWeight": 300,
+              "hyphens": "auto",
               "marginBottom": "0.3em",
+              "textOverflow": "ellipsis",
             }
           }
         >
@@ -140,7 +146,9 @@ ShallowWrapper {
           style={
             Object {
               "fontWeight": 300,
+              "hyphens": "auto",
               "marginBottom": "0.3em",
+              "textOverflow": "ellipsis",
             }
           }
         >
@@ -250,7 +258,9 @@ ShallowWrapper {
               style={
                 Object {
                   "fontWeight": 300,
+                  "hyphens": "auto",
                   "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
                 }
               }
             >
@@ -291,7 +301,9 @@ ShallowWrapper {
               style={
                 Object {
                   "fontWeight": 300,
+                  "hyphens": "auto",
                   "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
                 }
               }
             >
@@ -335,7 +347,9 @@ ShallowWrapper {
               style={
                 Object {
                   "fontWeight": 300,
+                  "hyphens": "auto",
                   "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
                 }
               }
             >
@@ -376,7 +390,9 @@ ShallowWrapper {
               style={
                 Object {
                   "fontWeight": 300,
+                  "hyphens": "auto",
                   "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
                 }
               }
             >

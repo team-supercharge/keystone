@@ -25,8 +25,8 @@ ShallowWrapper {
     <ResponsiveText
       component="span"
       visibleLG="Add a TestItem"
-      visibleMD="Add a TestItem"
-      visibleSM="Add a TestItem"
+      visibleMD="Add"
+      visibleSM={null}
     />
   </GlyphButton>,
   "nodes": Array [
@@ -47,8 +47,8 @@ ShallowWrapper {
       <ResponsiveText
         component="span"
         visibleLG="Add a TestItem"
-        visibleMD="Add a TestItem"
-        visibleSM="Add a TestItem"
+        visibleMD="Add"
+        visibleSM={null}
       />
     </GlyphButton>,
   ],
@@ -129,8 +129,8 @@ ShallowWrapper {
           <ResponsiveText
             component="span"
             visibleLG="Add a TestItem"
-            visibleMD="Add a TestItem"
-            visibleSM="Add a TestItem"
+            visibleMD="Add"
+            visibleSM={null}
           />
         </GlyphButton>,
         "_debugID": 2,
@@ -151,8 +151,8 @@ ShallowWrapper {
           <ResponsiveText
             component="span"
             visibleLG="Add a TestItem"
-            visibleMD="Add a TestItem"
-            visibleSM="Add a TestItem"
+            visibleMD="Add"
+            visibleSM={null}
           />
         </GlyphButton>,
       },

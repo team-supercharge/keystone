@@ -61,7 +61,7 @@ const NO_DOCUMENTS_MESSAGE = "You haven't added any documents for your home yet"
 const styles = {
     createButton: {
         float: 'right',
-        width: 200,
+        width: '15vw',
     },
     content: {
         maxWidth: 1000,

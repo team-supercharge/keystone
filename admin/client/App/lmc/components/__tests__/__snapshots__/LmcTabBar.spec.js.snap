@@ -23,7 +23,6 @@ ShallowWrapper {
       style={
         Object {
           "display": "flex",
-          "minWidth": 800,
         }
       }
     >
@@ -89,7 +88,6 @@ ShallowWrapper {
         style={
           Object {
             "display": "flex",
-            "minWidth": 800,
           }
         }
       >
@@ -224,7 +222,6 @@ ShallowWrapper {
             style={
               Object {
                 "display": "flex",
-                "minWidth": 800,
               }
             }
           >
@@ -290,7 +287,6 @@ ShallowWrapper {
             style={
               Object {
                 "display": "flex",
-                "minWidth": 800,
               }
             }
           >
