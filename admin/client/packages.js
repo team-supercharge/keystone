@@ -25,6 +25,7 @@ module.exports = [
 	'react-alt-text',
 	'react-color',
 	'react-day-picker',
+	'react-device-detect',
 	'react-dnd-html5-backend',
 	'react-dnd',
 	'react-dom',

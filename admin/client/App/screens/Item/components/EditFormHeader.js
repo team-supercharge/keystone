@@ -58,7 +58,7 @@ export const EditFormHead = React.createClass({
 
 		// CO-107 - links to previous page in router history for documents
 		// CO-115 - does the same for all organisation dashboard lists
-		if (['documents', 'home-documents', 'users', 'shifts'].includes(list.id)) {
+		if (['documents', 'home-documents', 'residents', 'users', 'shifts'].includes(list.id)) {
 			return (
 				<GlyphButton
 					component={Link}
@@ -68,8 +68,8 @@ export const EditFormHead = React.createClass({
 					style={backStyles}
 					onClick={() => this.props.router.goBack()}
 					variant="link"
-					>
-					{list.plural}
+				>
+					Back
 				</GlyphButton>
 			);
 		}

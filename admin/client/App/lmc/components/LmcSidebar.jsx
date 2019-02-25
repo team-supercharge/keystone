@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
+import { isBrowser } from 'react-device-detect'
 import { Button } from '../../elemental'
 import Octicon, { Search } from '@githubprimer/octicons-react'
 import LmcSidebarItem from './LmcSidebarItem.jsx'
@@ -17,7 +18,7 @@ export default class LmcSidebar extends Component {
     componentDidMount () {
         const { items, selectedItem, setSelectedItem } = this.props;
         let shownItems = _.filter(items, (item) => !this.calculateHidden(item))
-        if (shownItems.length && !selectedItem) {
+        if (isBrowser && shownItems.length && !selectedItem) {
             setSelectedItem(shownItems[0].id)
         }
     }
@@ -38,13 +39,14 @@ export default class LmcSidebar extends Component {
     }
 
     handleSwitchChange = () => {
-        this.setState(prevState => ({ 
+        this.setState(prevState => ({
             displayActiveItems: !prevState.displayActiveItems 
         }))
     }
 
     handleFilterToggle = () => {
         this.setState(prevState => ({
+            nameFilter: '', 
             displayNameFilter: !prevState.displayNameFilter
         }))
     }

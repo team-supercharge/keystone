@@ -3,16 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../actions/actions'
 import { selectList } from '../../../screens/List/actions'
+import { isBrowser } from 'react-device-detect'
 import { LmcSpinner } from '../../components'
-import { BlankState } from '../../../elemental'
+import { BlankState, GlyphButton } from '../../../elemental'
 import LmcSidebar from '../../components/LmcSidebar.jsx'
 import LmcTabBar from '../../components/LmcTabBar.jsx'
 
 export class LmcResidentsScreen extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount () {
         const { selectList, fetchResidents } = this.props
         selectList()
@@ -25,7 +22,7 @@ export class LmcResidentsScreen extends Component {
         setSelectedResident(resident.id)
     }
 
-    render () {
+    renderDesktop = () => {
         const { 
             residents, 
             children, 
@@ -71,19 +68,87 @@ export class LmcResidentsScreen extends Component {
             </div>
         )
     }
+
+    renderMobile = () => {
+        const { 
+            residents, 
+            children, 
+            location,
+            selectedResident,
+            setSelectedResident
+        } = this.props;
+
+        return (
+            <div >
+                { !selectedResident ? (
+                    <LmcSidebar
+                        itemLabel='Resident'
+                        listId='Resident'
+                        items={residents}
+                        onCreate={this.onCreateResidentComplete}
+                        selectedItem={selectedResident}
+                        setSelectedItem={setSelectedResident}
+                        title='Residents'
+                        styles={styles.sidebar}                                
+                    /> 
+                ) : (
+                    <div style={styles.mobileContainer}>
+                        <LmcTabBar
+                            location={location} 
+                            items={navbarItems}
+                            resourceUrl='residents'    
+                        />
+                        <div style={styles.childContainer}>
+                            <GlyphButton
+                                glyph="chevron-left"
+                                position="left"
+                                style={styles.backLink}
+                                onClick={() => setSelectedResident(null)}
+                                variant="link"
+                            >
+					            Back
+				            </GlyphButton>
+                            <div style={styles.childWidth}>
+                                { !residents.length ? (
+                                    <BlankState
+                                        heading={NO_RESIDENTS_MESSAGE}
+                                        style={styles.noResidentsMessage}
+                                    />
+                                ) : children}
+                            </div>
+                        </div>
+                    </div> 
+                ) }
+            </div>
+        ) 
+    }
+
+    render () {
+        const chosenRender = isBrowser ? this.renderDesktop : this.renderMobile
+        return this.props.residents ? chosenRender() : <LmcSpinner />
+    }
 }
 
 const navbarItems = [
     { label: 'Profile', url: 'profile' },
-    { label: 'Daily report', url: 'daily-report' },
-    { label: 'Charts', url: 'charts' },
-    { label: 'To-Dos', url: 'to-do' },
+
+    // Removing these until these components are completed
+    // { label: 'Daily report', url: 'daily-report' },
+    // { label: 'Charts', url: 'charts' },
+    // { label: 'To-Dos', url: 'to-do' },
     { label: 'Documents', url: 'documents' }
 ]
 
 const NO_RESIDENTS_MESSAGE = "You haven't added any residents yet"
 
 const styles = {
+    backLink: {
+        paddingLeft: 0,
+        paddingRight: 0,
+        position: 'relative',
+        bottom: 40,
+        right: 10,
+    },
     childContainer: {
         overflow: 'scroll',
         height: '85vh',
@@ -100,6 +165,10 @@ const styles = {
     mainContainer: {
         display: 'flex',
         flexDirection: 'row',
+    },
+    mobileContainer: {
+        background: '#fbfbfb',
+        minWidth: 0,
     },
     rightContainer: {
         flex: '3.5',

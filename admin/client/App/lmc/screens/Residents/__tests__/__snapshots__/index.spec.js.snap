@@ -69,18 +69,6 @@ ShallowWrapper {
                 "url": "profile",
               },
               Object {
-                "label": "Daily report",
-                "url": "daily-report",
-              },
-              Object {
-                "label": "Charts",
-                "url": "charts",
-              },
-              Object {
-                "label": "To-Dos",
-                "url": "to-do",
-              },
-              Object {
                 "label": "Documents",
                 "url": "documents",
               },
@@ -171,18 +159,6 @@ ShallowWrapper {
                   "url": "profile",
                 },
                 Object {
-                  "label": "Daily report",
-                  "url": "daily-report",
-                },
-                Object {
-                  "label": "Charts",
-                  "url": "charts",
-                },
-                Object {
-                  "label": "To-Dos",
-                  "url": "to-do",
-                },
-                Object {
                   "label": "Documents",
                   "url": "documents",
                 },
@@ -260,6 +236,8 @@ ShallowWrapper {
           "setSelectedResident": [MockFunction],
         },
         "refs": Object {},
+        "renderDesktop": [Function],
+        "renderMobile": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
@@ -338,18 +316,6 @@ ShallowWrapper {
                     Object {
                       "label": "Profile",
                       "url": "profile",
-                    },
-                    Object {
-                      "label": "Daily report",
-                      "url": "daily-report",
-                    },
-                    Object {
-                      "label": "Charts",
-                      "url": "charts",
-                    },
-                    Object {
-                      "label": "To-Dos",
-                      "url": "to-do",
                     },
                     Object {
                       "label": "Documents",
@@ -440,18 +406,6 @@ ShallowWrapper {
                     Object {
                       "label": "Profile",
                       "url": "profile",
-                    },
-                    Object {
-                      "label": "Daily report",
-                      "url": "daily-report",
-                    },
-                    Object {
-                      "label": "Charts",
-                      "url": "charts",
-                    },
-                    Object {
-                      "label": "To-Dos",
-                      "url": "to-do",
                     },
                     Object {
                       "label": "Documents",
