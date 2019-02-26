@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Transition from 'react-addons-css-transition-group';
+import { isBrowser, isTablet } from 'react-device-detect';
 
 import MobileSectionItem from './SectionItem';
 
@@ -34,7 +35,7 @@ const MobileNavigation = React.createClass({
 	},
 	handleResize () {
 		this.setState({
-			barIsVisible: window.innerWidth < 768,
+			barIsVisible: !(isBrowser || isTablet) || window.innerWidth < 860,
 		});
 	},
 	// Toggle the menu

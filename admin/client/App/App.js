@@ -9,7 +9,8 @@ import { Link } from 'react-router';
 import { css, StyleSheet } from 'aphrodite/no-important';
 import Intercom from 'react-intercom';
 import _ from 'lodash';
-
+import { isBrowser, isTablet } from 'react-device-detect';
+import LmcMobileNavigation from './lmc/components/navigation/LmcMobileNavigation.jsx';
 import MobileNavigation from './components/Navigation/Mobile';
 import PrimaryNavigation from './components/Navigation/Primary';
 import SecondaryNavigation from './components/Navigation/Secondary';
@@ -72,17 +73,19 @@ const App = (props) => {
 	}
 	// Default current section key to dashboard
 	const currentSectionKey = (currentSection && currentSection.key) || 'dashboard';
+	const wrapperStyle = (isBrowser || isTablet) ? styles.wrapper : null
 
 	return (
-		<div className={css(classes.wrapper)}>
+		<div className={css(classes.wrapper)} style={{ ...wrapperStyle }}>
 			<header>
-				<MobileNavigation
+				<LmcMobileNavigation />
+				{/* <MobileNavigation
 					brand={Keystone.brand}
 					currentListKey={props.params.listId}
 					currentSectionKey={currentSectionKey}
 					sections={Keystone.nav.sections}
 					signoutUrl={Keystone.signoutUrl}
-				/>
+				/> */}
 				<PrimaryNavigation
 					currentSectionKey={currentSectionKey}
 					brand={Keystone.brand}
@@ -105,6 +108,13 @@ const App = (props) => {
 			<Intercom appID={INTERCOM_APP_ID} {...intercomUser} />
 		</div>
 	);
+};
+
+const styles = {
+	wrapper: {
+		minWidth: 870,
+		overflow: 'scroll'
+	}
 };
 
 module.exports = App;
