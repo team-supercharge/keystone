@@ -2,12 +2,14 @@ jest.mock('../../../../shared/CreateForm')
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import proxyquire from 'proxyquire'
 import { LmcResidentsScreen } from '../index.jsx'
 
 describe('LmcResidentsScreen', () => {
     let wrapper
     let residents
+    const fetchResidentsMock = jest.fn()
+    const selectListMock = jest.fn()
+    const setSelectedResidentMock = jest.fn()
 
     beforeEach(() => {
         residents = [
@@ -17,7 +19,11 @@ describe('LmcResidentsScreen', () => {
 
         wrapper = shallow(
             <LmcResidentsScreen
+                fetchResidents={fetchResidentsMock}
                 residents={residents}
+                selectedResident={residents[0].id}
+                selectList={selectListMock}
+                setSelectedResident={setSelectedResidentMock}
             />
         )
     })
@@ -26,14 +32,18 @@ describe('LmcResidentsScreen', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('renders the LmcResidentsSidebar', () => {
-        expect(wrapper.find('Connect(LmcResidentsSidebar)').length).toEqual(1)
+    it('renders an LmcSidebar', () => {
+        expect(wrapper.find('LmcSidebar').length).toEqual(1)
     })
 
     it('renders a spinner if no data is loaded', () => {
         const loadingWrapper = shallow(
             <LmcResidentsScreen
+                fetchResidents={fetchResidentsMock}
                 residents={null}
+                selectedResident={null}
+                selectList={selectListMock}
+                setSelectedResident={setSelectedResidentMock}
             />
         )
         expect(wrapper.find('LmcSpinner').length).toEqual(0)
@@ -45,7 +55,11 @@ describe('LmcResidentsScreen', () => {
     it('renders a message if data is successfully loaded, but there are no residents', () => {
         const emptyWrapper = shallow(
             <LmcResidentsScreen
+                fetchResidents={fetchResidentsMock}
                 residents={[]}
+                selectedResident={null}
+                selectList={selectListMock}
+                setSelectedResident={setSelectedResidentMock}
             />
         )
         expect(emptyWrapper.find('BlankState').length).toEqual(1)

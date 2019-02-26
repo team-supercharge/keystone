@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import _ from 'lodash'
-import { getSelectedResident, getDocumentsList } from './Lists'
+import { getSelectedResident, getDocumentsList, getHomeDocumentsList } from './Lists'
 
 export const getSelectedResidentDocuments = createSelector(
     [ getDocumentsList, getSelectedResident ],
@@ -11,3 +11,13 @@ export const getSelectedResidentDocuments = createSelector(
         .value()
     }
 )
+
+export const groupHomeDocuments = createSelector(
+    [ getHomeDocumentsList ],
+    (documents) => { return _
+        .chain(documents)
+        .groupBy('categoryName')
+        .value()
+    }
+)
+

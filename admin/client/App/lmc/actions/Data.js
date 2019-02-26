@@ -9,9 +9,11 @@ export function initialize () {
         const lists = [
             'carers',
             'residents',
+            'shifts',
             'log-categories',
             'log-category-items',
             'documents',
+            'home-documents'
         ];
         dispatch(loadLists(lists));
     }

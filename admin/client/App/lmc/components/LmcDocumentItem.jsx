@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { Link } from 'react-router'
-import { Button, GlyphButton } from '../../../../elemental'
-import ConfirmationDialog from '../../../../shared/ConfirmationDialog'
+import { Button, GlyphButton } from '../../elemental'
+import ConfirmationDialog from '../../shared/ConfirmationDialog'
 
 export default class LmcDocumentItem extends Component {
     state = {
@@ -22,10 +22,12 @@ export default class LmcDocumentItem extends Component {
     }
 
     render () {
-        const { data } = this.props
+        const { data, listId } = this.props
         const daysDiff = moment().diff(data.createdAt, 'days')
-        const displayedTime = daysDiff <= 7 ? moment(data.createdAt).calendar() : `Added ${daysDiff} days ago`
-        const editLink = `${Keystone.adminPath}/documents/${data.id}`
+        const displayedTime = daysDiff <= 7 
+            ? moment(data.createdAt).calendar() 
+            : `Added ${daysDiff} days ago`
+        const editLink = `${Keystone.adminPath}/${listId}/${data.id}`
 
         return (
             <li style={styles.container}>
@@ -60,12 +62,12 @@ export default class LmcDocumentItem extends Component {
                 <GlyphButton
                     component={Link}
                     glyph='pencil'
-                    position='left'                  
+                    position='left'
 					style={styles.button}
 					to={editLink}
 				>
-				    Edit
-				</GlyphButton>
+                    Edit
+                </GlyphButton>
                 <Button
                     style={styles.button} 
                     color='default'
@@ -83,7 +85,9 @@ export default class LmcDocumentItem extends Component {
                     onConfirmation={() => this.handleDeleteConfirm(data.id)}
                 >
                     <div>
-                        Are you sure you want to delete this document? If you go ahead, it can’t be undone. Once it's gone, it’s gone for good!
+                        Are you sure you want to delete this document? 
+                        If you go ahead, it can’t be undone. 
+                        Once it's gone, it’s gone for good!
                     </div>
                 </ConfirmationDialog>
             </li>
@@ -138,5 +142,6 @@ const styles = {
 
 LmcDocumentItem.propTypes = {
     data: PropTypes.object.isRequired,
+    listId: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
 }

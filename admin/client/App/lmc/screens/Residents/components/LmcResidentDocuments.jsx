@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { ActionCreators } from '../../../actions/actions'
 import { BlankState } from '../../../../elemental'
 import Selectors from '../../../selectors'
-import LmcDocumentItem from './LmcDocumentItem.jsx'
 import LmcCreateButton from '../../../components/LmcCreateButton.jsx'
+import LmcDocumentList from '../../../components/LmcDocumentList.jsx'
 
 export class LmcResidentDocuments extends Component {
     state = {
@@ -24,42 +24,19 @@ export class LmcResidentDocuments extends Component {
         clearInterval(this.state.documentsFetchInterval)
     }
 
-    listDocumentsByCategory = category => {
-        const { documents, deleteDocument } = this.props
-        return (
-            documents[category].map((document, i) => (
-                <LmcDocumentItem
-                    key={i}
-                    data={document}
-                    onDelete={deleteDocument}
-                />
-            ))
-        )
-    }
-
-    renderDocuments = () => {
-        return (
-            Object.keys(this.props.documents).map(categoryName => (
-                <div key={categoryName}>
-                    <h2 style={styles.categoryName}>
-                        {categoryName}
-                    </h2>
-                    <div className='lmc-theme-gradient' style={styles.divider} />
-                    <ul style={styles.list}>
-                        { this.listDocumentsByCategory(categoryName) }
-                    </ul>
-                </div>
-            ))
-        )
-    }
-
     render () {
-        const { documents, fetchDocuments, selectedResident } = this.props
+        const { 
+            documents, 
+            deleteDocument, 
+            fetchDocuments, 
+            selectedResident 
+        } = this.props
         const hasDocuments = !!Object.keys(documents).length
 
         return (
             <div>
                 <LmcCreateButton
+                    buttonText='Document'
                     listId='Document'
                     title='Add a Document'
                     onCreate={fetchDocuments}
@@ -68,9 +45,11 @@ export class LmcResidentDocuments extends Component {
                     style={styles.addButton}
                 />
                 { hasDocuments ? (
-                    <div>
-                        { this.renderDocuments() }
-                    </div>
+                    <LmcDocumentList
+                        documents={documents}
+                        listId={'documents'}
+                        onDelete={deleteDocument}
+                    />
                 ) : (
                     <BlankState
                         heading={NO_DOCUMENTS_MESSAGE}
@@ -87,24 +66,7 @@ const NO_DOCUMENTS_MESSAGE = "You haven't added any documents for this resident"
 const styles = {
     addButton: {
         float: 'right',
-        width: 200,
-    },
-    categoryName: {
-        marginBottom: '0.3em',
-        fontWeight: 300,
-    },
-    divider: {
-        height: 2,
-        marginBottom: 22,
-        width: '100%',
-    },
-    documentContainer: {
-        display: 'inline-block',
-    },
-    list: {
-        listStyle: 'none',
-        listStyleType: 'none',
-        padding: 0,
+        width: '15vw',
     },
     noDocumentsMessage: {
         position: 'relative',
@@ -116,7 +78,7 @@ LmcResidentDocuments.propTypes = {
     documents: PropTypes.object,
     fetchDocuments: PropTypes.func.isRequired,
     deleteDocument: PropTypes.func.isRequired,
-    selectedResident: PropTypes.string.isRequired,
+    selectedResident: PropTypes.string,
 }
 
 const mapStateToProps = (state) => {
@@ -129,7 +91,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchDocuments: () => dispatch(ActionCreators.loadList('documents')),
-        deleteDocument: (id) => dispatch(ActionCreators.deleteDocument(id)),
+        deleteDocument: (id) => dispatch(ActionCreators.deleteDocument(id, 'documents')),
     }
 }
 

@@ -1,12 +1,11 @@
 import { deleteItem } from '../common/dataService'
 import { loadList } from './Data'
 
-export function deleteDocument(id) {
+export function deleteDocument(id, listId) {
     return (dispatch) => {
-        const url = 'documents'
-        return deleteItem(id, url)
+        return deleteItem(id, listId)
             .then(() => {
-                dispatch(loadList('documents'))
+                dispatch(loadList(listId))
             })
             .catch(err => {
                 console.log(err)

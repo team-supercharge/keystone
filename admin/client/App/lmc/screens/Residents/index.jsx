@@ -3,16 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../actions/actions'
 import { selectList } from '../../../screens/List/actions'
+import { isBrowser, isTablet } from 'react-device-detect'
 import { LmcSpinner } from '../../components'
-import { BlankState } from '../../../elemental'
-import LmcResidentsSidebar from './components/LmcResidentsSidebar.jsx'
+import { BlankState, GlyphButton } from '../../../elemental'
+import LmcSidebar from '../../components/LmcSidebar.jsx'
 import LmcTabBar from '../../components/LmcTabBar.jsx'
 
 export class LmcResidentsScreen extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount () {
         const { selectList, fetchResidents } = this.props
         selectList()
@@ -25,67 +22,157 @@ export class LmcResidentsScreen extends Component {
         setSelectedResident(resident.id)
     }
 
-    render () {
-        const { residents, children, location } = this.props;
+    renderDesktop = () => {
+        const { 
+            residents, 
+            children, 
+            location,
+            selectedResident,
+            setSelectedResident
+        } = this.props;
         return (
-            <div>
-                { residents ? (
-                    <div style={styles.mainContainer}>
-                        <LmcResidentsSidebar
-                            residents={residents}
-                            onCreate={this.onCreateResidentComplete}
-                        />
-                        <div style={styles.rightContainer}>
-                            <LmcTabBar
-                                location={location} 
-                                items={navbarItems}
-                                resourceUrl='residents'    
-                            />
-                            <div style={styles.childContainer}>
-                                <div style={styles.childWidth}>
-                                    { !residents.length ? (
-                                        <BlankState
-                                            heading={NO_RESIDENTS_MESSAGE}
-                                            style={styles.noResidentsMessage}
-                                        />
-                                    ) : children}
-                                </div>
-                            </div>
+            <div style={styles.mainContainer}>
+                <div style={styles.leftContainer}>
+                    <LmcSidebar
+                        itemLabel='Resident'
+                        listId='Resident'
+                        items={residents}
+                        onCreate={this.onCreateResidentComplete}
+                        selectedItem={selectedResident}
+                        setSelectedItem={setSelectedResident}
+                        title='Residents'
+                        styles={styles.sidebar}                                
+                    />
+                </div>
+                <div style={styles.rightContainer}>
+                    <LmcTabBar
+                        location={location} 
+                        items={navbarItems}
+                        resourceUrl='residents'    
+                    />
+                    <div style={styles.childContainer}>
+                        <div style={styles.childWidth}>
+                            { !residents.length ? (
+                                <BlankState
+                                    heading={NO_RESIDENTS_MESSAGE}
+                                    style={styles.noResidentsMessage}
+                                />
+                            ) : children}
                         </div>
                     </div>
-                ) : <LmcSpinner /> }
+                </div>
             </div>
         )
+    }
+
+    renderMobile = () => {
+        const { 
+            residents, 
+            children, 
+            location,
+            selectedResident,
+            setSelectedResident
+        } = this.props;
+
+        return !selectedResident ? (
+            <LmcSidebar
+                itemLabel='Resident'
+                listId='Resident'
+                items={residents}
+                onCreate={this.onCreateResidentComplete}
+                selectedItem={selectedResident}
+                setSelectedItem={setSelectedResident}
+                title='Residents'
+                styles={styles.sidebar}                                
+            /> 
+        ) : (
+            <div style={styles.mobileContainer}>
+                <LmcTabBar
+                    location={location} 
+                    items={navbarItems}
+                    resourceUrl='residents'    
+                />
+                <div style={styles.childContainer}>
+                    <GlyphButton
+                        glyph="chevron-left"
+                        position="left"
+                        style={styles.backLink}
+                        onClick={() => setSelectedResident(null)}
+                        variant="link"
+                    >
+                        Back
+                    </GlyphButton>
+                    <div style={styles.childWidth}>
+                        { !residents.length ? (
+                            <BlankState
+                                heading={NO_RESIDENTS_MESSAGE}
+                                style={styles.noResidentsMessage}
+                            />
+                        ) : children}
+                    </div>
+                </div>
+            </div> 
+        )
+    }
+
+    render () {
+        const chosenRender = 
+            (isBrowser || isTablet) ? this.renderDesktop : this.renderMobile
+        return this.props.residents ? chosenRender() : <LmcSpinner />
     }
 }
 
 const navbarItems = [
-    { label: 'Profile', url: 'profile' },
-    { label: 'Daily report', url: 'daily-report' },
-    { label: 'Charts', url: 'charts' },
-    { label: 'To-Dos', url: 'to-do' },
-    { label: 'Documents', url: 'documents' }
+    { label: 'Profile', url: 'profile', octicon: 'person' },
+
+    // Removing these until these components are completed
+    // { label: 'Daily report', url: 'daily-report', octicon: 'calendar' },
+    // { label: 'Charts', url: 'charts', octicon: 'graph' },
+    // { label: 'To-Dos', url: 'to-do', octicon: 'checklist' },
+    { label: 'Documents', url: 'documents', octicon: 'file' }
 ]
 
 const NO_RESIDENTS_MESSAGE = "You haven't added any residents yet"
 
 const styles = {
+    backLink: {
+        paddingLeft: 0,
+        paddingRight: 0,
+        position: 'relative',
+        bottom: 40,
+        right: 10,
+    },
     childContainer: {
         overflow: 'scroll',
         height: '85vh',
+        padding: '50px 20px 0px 20px',
     },
     childWidth: {
         maxWidth: 800,
         margin: '0 auto',
-        padding: '50px 0px 0px 0px',
+    },
+    leftContainer: {
+        flex: '1',
+        zIndex: '1',
     },
     mainContainer: {
         display: 'flex',
         flexDirection: 'row',
     },
+    mobileContainer: {
+        background: '#fbfbfb',
+        minWidth: 0,
+        wordWrap: 'break-word',
+    },
     rightContainer: {
         flex: '3.5',
         background: '#fbfbfb',
+        minWidth: 0,
+        wordWrap: 'break-word',
+    },
+    sidebar: { 
+        height: '91.5vh', 
+        maxHeight: '91.5vh' 
     },
     noResidentsMessage: {
         padding: 60,
@@ -94,11 +181,16 @@ const styles = {
 
 LmcResidentsScreen.propTypes = {
     residents: PropTypes.array,
+    selectedResident: PropTypes.string,
+    selectList: PropTypes.func.isRequired,
+    fetchResidents: PropTypes.func.isRequired,
+    setSelectedResident: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
     return {
         residents: state.data.residents,
+        selectedResident: state.residents.selectedResident
     };
 };
 

@@ -114,7 +114,6 @@ var PrimaryNavigation = React.createClass({
 		const href = `${Keystone.adminPath}/admin-reports/dashboard`;
 		const isActive = currentSectionKey && currentSectionKey === 'admin-reports';
 		const className = isActive ? 'primary-navbar__item--active' : null;
-		// console.log(href);
 		return (
 			<PrimaryNavItem
 				active={isActive}
@@ -139,7 +138,6 @@ var PrimaryNavigation = React.createClass({
 		const href = `${Keystone.adminPath}/reports/charts`;
 		const isActive = currentSectionKey && currentSectionKey === section.key;
 		const className = isActive ? 'primary-navbar__item--active' : null;
-		// console.log(href);
 		return (
 			<PrimaryNavItem
 				active={isActive}
@@ -155,15 +153,14 @@ var PrimaryNavigation = React.createClass({
 	renderLMCToDos () {
 
 		const section = {
-			key: 'todos',
-			label: 'ToDos',
+			key: "To-Do's",
+			label: 'To-Dos',
 		};
 
 		const { currentSectionKey } = this.props;
-		const href = `${Keystone.adminPath}/todos/dashboard`;
+		const href = `${Keystone.adminPath}/tasks`;
 		const isActive = currentSectionKey && currentSectionKey === section.key;
 		const className = isActive ? 'primary-navbar__item--active' : null;
-		// console.log(href);
 		return (
 			<PrimaryNavItem
 				active={isActive}
@@ -176,7 +173,7 @@ var PrimaryNavigation = React.createClass({
 			</PrimaryNavItem>
 		);
 	},
-	renderResidentsLink () {
+	renderLMCResidents () {
 
 		const section = {
 			key: 'residents',
@@ -187,7 +184,52 @@ var PrimaryNavigation = React.createClass({
 		const href = `${Keystone.adminPath}/residents/profile`;
 		const isActive = currentSectionKey && currentSectionKey === section.key;
 		const className = isActive ? 'primary-navbar__item--active' : null;
-		// console.log(href);
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
+
+	renderLMCLogs () {
+		const section = {
+			key: 'Logs',
+			label: 'Logs',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/logs`;
+		const isActive = currentSectionKey && currentSectionKey === section.key;
+		const className = isActive ? 'primary-navbar__item--active' : null;
+		return (
+			<PrimaryNavItem
+				active={isActive}
+				key={section.key}
+				label={section.label}
+				className={className}
+				to={href}
+			>
+				{ section.label }
+			</PrimaryNavItem>
+		);
+	},
+
+	renderLMCOrganisation () {
+		const section = {
+			key: 'organisation',
+			label: 'Organisation',
+		};
+
+		const { currentSectionKey } = this.props;
+		const href = `${Keystone.adminPath}/organisation`;
+		const isActive = currentSectionKey && currentSectionKey === section.key;
+		const className = isActive ? 'primary-navbar__item--active' : null;
 		return (
 			<PrimaryNavItem
 				active={isActive}
@@ -209,7 +251,6 @@ var PrimaryNavigation = React.createClass({
 			const href = section.lists[0].external ? section.lists[0].path : `${Keystone.adminPath}/${section.lists[0].path}`;
 			const isActive = this.props.currentSectionKey && this.props.currentSectionKey === section.key;
 			const className = isActive ? 'primary-navbar__item--active' : null;
-			// console.log(href);
 			return (
 				<PrimaryNavItem
 					active={isActive}
@@ -226,17 +267,18 @@ var PrimaryNavigation = React.createClass({
 	render () {
 		if (!this.state.navIsVisible) return null;
 		const { userRole } = this.state;
-		// console.log(this.props.currentSectionKey);
 		return (
 			<nav className="primary-navbar">
 				<Container clearFloatingChildren>
 					<ul className="app-nav app-nav--primary app-nav--left">
 						{this.renderBrand()}
-						{/* { userRole !== 'lmc-admin' ? this.renderLMCToDos() : null } */}
 						{ userRole === 'lmc-admin' ? this.renderNavigation() : null }
-						{ userRole !== 'lmc-admin' ? this.renderResidentsLink() : null }
-						{ userRole !== 'lmc-admin' ? this.renderLMCReports() : null }
 						{ userRole === 'lmc-admin' ? this.renderAdminReports() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCOrganisation() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCResidents() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCLogs() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCToDos() : null }
+						{ userRole !== 'lmc-admin' ? this.renderLMCReports() : null }
 					</ul>
 					{this.renderFrontLink()}
 				</Container>

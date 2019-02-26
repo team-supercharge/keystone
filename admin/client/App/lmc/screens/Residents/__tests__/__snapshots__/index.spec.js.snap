@@ -8,18 +8,25 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+      }
+    }
+  >
     <div
       style={
         Object {
-          "display": "flex",
-          "flexDirection": "row",
+          "flex": "1",
+          "zIndex": "1",
         }
       }
     >
-      <Connect(LmcResidentsSidebar)
-        onCreate={[Function]}
-        residents={
+      <LmcSidebar
+        itemLabel="Resident"
+        items={
           Array [
             Object {
               "id": "testId1",
@@ -31,76 +38,86 @@ ShallowWrapper {
             },
           ]
         }
+        listId="Resident"
+        onCreate={[Function]}
+        selectedItem="testId1"
+        setSelectedItem={[MockFunction]}
+        styles={
+          Object {
+            "height": "91.5vh",
+            "maxHeight": "91.5vh",
+          }
+        }
+        title="Residents"
+      />
+    </div>
+    <div
+      style={
+        Object {
+          "background": "#fbfbfb",
+          "flex": "3.5",
+          "minWidth": 0,
+          "wordWrap": "break-word",
+        }
+      }
+    >
+      <Connect(LmcTabBar)
+        items={
+          Array [
+            Object {
+              "label": "Profile",
+              "octicon": "person",
+              "url": "profile",
+            },
+            Object {
+              "label": "Documents",
+              "octicon": "file",
+              "url": "documents",
+            },
+          ]
+        }
+        resourceUrl="residents"
       />
       <div
         style={
           Object {
-            "background": "#fbfbfb",
-            "flex": "3.5",
+            "height": "85vh",
+            "overflow": "scroll",
+            "padding": "50px 20px 0px 20px",
           }
         }
       >
-        <Connect(LmcTabBar)
-          items={
-            Array [
-              Object {
-                "label": "Profile",
-                "url": "profile",
-              },
-              Object {
-                "label": "Daily report",
-                "url": "daily-report",
-              },
-              Object {
-                "label": "Charts",
-                "url": "charts",
-              },
-              Object {
-                "label": "To-Dos",
-                "url": "to-do",
-              },
-              Object {
-                "label": "Documents",
-                "url": "documents",
-              },
-            ]
-          }
-          resourceUrl="residents"
-        />
         <div
           style={
             Object {
-              "height": "85vh",
-              "overflow": "scroll",
+              "margin": "0 auto",
+              "maxWidth": 800,
             }
           }
-        >
-          <div
-            style={
-              Object {
-                "margin": "0 auto",
-                "maxWidth": 800,
-                "padding": "50px 0px 0px 0px",
-              }
-            }
-          />
-        </div>
+        />
       </div>
     </div>
   </div>,
   "nodes": Array [
-    <div>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        }
+      }
+    >
       <div
         style={
           Object {
-            "display": "flex",
-            "flexDirection": "row",
+            "flex": "1",
+            "zIndex": "1",
           }
         }
       >
-        <Connect(LmcResidentsSidebar)
-          onCreate={[Function]}
-          residents={
+        <LmcSidebar
+          itemLabel="Resident"
+          items={
             Array [
               Object {
                 "id": "testId1",
@@ -112,60 +129,63 @@ ShallowWrapper {
               },
             ]
           }
+          listId="Resident"
+          onCreate={[Function]}
+          selectedItem="testId1"
+          setSelectedItem={[MockFunction]}
+          styles={
+            Object {
+              "height": "91.5vh",
+              "maxHeight": "91.5vh",
+            }
+          }
+          title="Residents"
+        />
+      </div>
+      <div
+        style={
+          Object {
+            "background": "#fbfbfb",
+            "flex": "3.5",
+            "minWidth": 0,
+            "wordWrap": "break-word",
+          }
+        }
+      >
+        <Connect(LmcTabBar)
+          items={
+            Array [
+              Object {
+                "label": "Profile",
+                "octicon": "person",
+                "url": "profile",
+              },
+              Object {
+                "label": "Documents",
+                "octicon": "file",
+                "url": "documents",
+              },
+            ]
+          }
+          resourceUrl="residents"
         />
         <div
           style={
             Object {
-              "background": "#fbfbfb",
-              "flex": "3.5",
+              "height": "85vh",
+              "overflow": "scroll",
+              "padding": "50px 20px 0px 20px",
             }
           }
         >
-          <Connect(LmcTabBar)
-            items={
-              Array [
-                Object {
-                  "label": "Profile",
-                  "url": "profile",
-                },
-                Object {
-                  "label": "Daily report",
-                  "url": "daily-report",
-                },
-                Object {
-                  "label": "Charts",
-                  "url": "charts",
-                },
-                Object {
-                  "label": "To-Dos",
-                  "url": "to-do",
-                },
-                Object {
-                  "label": "Documents",
-                  "url": "documents",
-                },
-              ]
-            }
-            resourceUrl="residents"
-          />
           <div
             style={
               Object {
-                "height": "85vh",
-                "overflow": "scroll",
+                "margin": "0 auto",
+                "maxWidth": 800,
               }
             }
-          >
-            <div
-              style={
-                Object {
-                  "margin": "0 auto",
-                  "maxWidth": 800,
-                  "padding": "50px 0px 0px 0px",
-                }
-              }
-            />
-          </div>
+          />
         </div>
       </div>
     </div>,
@@ -177,6 +197,7 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcResidentsScreen
+        fetchResidents={[MockFunction]}
         residents={
           Array [
             Object {
@@ -189,6 +210,9 @@ ShallowWrapper {
             },
           ]
         }
+        selectList={[MockFunction]}
+        selectedResident="testId1"
+        setSelectedResident={[MockFunction]}
       />,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -198,6 +222,7 @@ ShallowWrapper {
         "context": Object {},
         "onCreateResidentComplete": [Function],
         "props": Object {
+          "fetchResidents": [MockFunction],
           "residents": Array [
             Object {
               "id": "testId1",
@@ -208,8 +233,13 @@ ShallowWrapper {
               "name": "testName2",
             },
           ],
+          "selectList": [MockFunction],
+          "selectedResident": "testId1",
+          "setSelectedResident": [MockFunction],
         },
         "refs": Object {},
+        "renderDesktop": [Function],
+        "renderMobile": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
@@ -229,18 +259,25 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
           <div
             style={
               Object {
-                "display": "flex",
-                "flexDirection": "row",
+                "flex": "1",
+                "zIndex": "1",
               }
             }
           >
-            <Connect(LmcResidentsSidebar)
-              onCreate={[Function]}
-              residents={
+            <LmcSidebar
+              itemLabel="Resident"
+              items={
                 Array [
                   Object {
                     "id": "testId1",
@@ -252,76 +289,86 @@ ShallowWrapper {
                   },
                 ]
               }
+              listId="Resident"
+              onCreate={[Function]}
+              selectedItem="testId1"
+              setSelectedItem={[MockFunction]}
+              styles={
+                Object {
+                  "height": "91.5vh",
+                  "maxHeight": "91.5vh",
+                }
+              }
+              title="Residents"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "background": "#fbfbfb",
+                "flex": "3.5",
+                "minWidth": 0,
+                "wordWrap": "break-word",
+              }
+            }
+          >
+            <Connect(LmcTabBar)
+              items={
+                Array [
+                  Object {
+                    "label": "Profile",
+                    "octicon": "person",
+                    "url": "profile",
+                  },
+                  Object {
+                    "label": "Documents",
+                    "octicon": "file",
+                    "url": "documents",
+                  },
+                ]
+              }
+              resourceUrl="residents"
             />
             <div
               style={
                 Object {
-                  "background": "#fbfbfb",
-                  "flex": "3.5",
+                  "height": "85vh",
+                  "overflow": "scroll",
+                  "padding": "50px 20px 0px 20px",
                 }
               }
             >
-              <Connect(LmcTabBar)
-                items={
-                  Array [
-                    Object {
-                      "label": "Profile",
-                      "url": "profile",
-                    },
-                    Object {
-                      "label": "Daily report",
-                      "url": "daily-report",
-                    },
-                    Object {
-                      "label": "Charts",
-                      "url": "charts",
-                    },
-                    Object {
-                      "label": "To-Dos",
-                      "url": "to-do",
-                    },
-                    Object {
-                      "label": "Documents",
-                      "url": "documents",
-                    },
-                  ]
-                }
-                resourceUrl="residents"
-              />
               <div
                 style={
                   Object {
-                    "height": "85vh",
-                    "overflow": "scroll",
+                    "margin": "0 auto",
+                    "maxWidth": 800,
                   }
                 }
-              >
-                <div
-                  style={
-                    Object {
-                      "margin": "0 auto",
-                      "maxWidth": 800,
-                      "padding": "50px 0px 0px 0px",
-                    }
-                  }
-                />
-              </div>
+              />
             </div>
           </div>
         </div>,
         "_debugID": 2,
-        "_renderedOutput": <div>
+        "_renderedOutput": <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
           <div
             style={
               Object {
-                "display": "flex",
-                "flexDirection": "row",
+                "flex": "1",
+                "zIndex": "1",
               }
             }
           >
-            <Connect(LmcResidentsSidebar)
-              onCreate={[Function]}
-              residents={
+            <LmcSidebar
+              itemLabel="Resident"
+              items={
                 Array [
                   Object {
                     "id": "testId1",
@@ -333,60 +380,63 @@ ShallowWrapper {
                   },
                 ]
               }
+              listId="Resident"
+              onCreate={[Function]}
+              selectedItem="testId1"
+              setSelectedItem={[MockFunction]}
+              styles={
+                Object {
+                  "height": "91.5vh",
+                  "maxHeight": "91.5vh",
+                }
+              }
+              title="Residents"
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "background": "#fbfbfb",
+                "flex": "3.5",
+                "minWidth": 0,
+                "wordWrap": "break-word",
+              }
+            }
+          >
+            <Connect(LmcTabBar)
+              items={
+                Array [
+                  Object {
+                    "label": "Profile",
+                    "octicon": "person",
+                    "url": "profile",
+                  },
+                  Object {
+                    "label": "Documents",
+                    "octicon": "file",
+                    "url": "documents",
+                  },
+                ]
+              }
+              resourceUrl="residents"
             />
             <div
               style={
                 Object {
-                  "background": "#fbfbfb",
-                  "flex": "3.5",
+                  "height": "85vh",
+                  "overflow": "scroll",
+                  "padding": "50px 20px 0px 20px",
                 }
               }
             >
-              <Connect(LmcTabBar)
-                items={
-                  Array [
-                    Object {
-                      "label": "Profile",
-                      "url": "profile",
-                    },
-                    Object {
-                      "label": "Daily report",
-                      "url": "daily-report",
-                    },
-                    Object {
-                      "label": "Charts",
-                      "url": "charts",
-                    },
-                    Object {
-                      "label": "To-Dos",
-                      "url": "to-do",
-                    },
-                    Object {
-                      "label": "Documents",
-                      "url": "documents",
-                    },
-                  ]
-                }
-                resourceUrl="residents"
-              />
               <div
                 style={
                   Object {
-                    "height": "85vh",
-                    "overflow": "scroll",
+                    "margin": "0 auto",
+                    "maxWidth": 800,
                   }
                 }
-              >
-                <div
-                  style={
-                    Object {
-                      "margin": "0 auto",
-                      "maxWidth": 800,
-                      "padding": "50px 0px 0px 0px",
-                    }
-                  }
-                />
-              </div>
+              />
             </div>
           </div>
         </div>,
@@ -402,6 +452,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcResidentsScreen
+    fetchResidents={[MockFunction]}
     residents={
       Array [
         Object {
@@ -414,6 +465,9 @@ ShallowWrapper {
         },
       ]
     }
+    selectList={[MockFunction]}
+    selectedResident="testId1"
+    setSelectedResident={[MockFunction]}
   />,
 }
 `;

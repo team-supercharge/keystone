@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LmcResidentsSidebarFilter renders correctly 1`] = `
+exports[`LmcSidebarFilter renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -11,33 +11,41 @@ ShallowWrapper {
   "node": <div
     style={
       Object {
-        "backgroundColor": "white",
+        "backgroundColor": "#f7f7f7",
         "display": "block",
-        "padding": "10px",
       }
     }
   >
-    <FormInput
-      autofocus={true}
-      name="nameFilter"
-      onChange={[MockFunction]}
-      placeholder="Filter by name"
-      size="default"
+    <div
       style={
         Object {
-          "borderRadius": "3px",
-          "height": "40px",
-          "marginBottom": "15px",
+          "padding": "3px 14px 3px 14px",
         }
       }
-      type="text"
-    />
+    >
+      <FormInput
+        autofocus={true}
+        name="nameFilter"
+        onChange={[MockFunction]}
+        placeholder="Filter by name"
+        size="default"
+        style={
+          Object {
+            "borderRadius": "3px",
+            "height": "40px",
+            "marginBottom": "15px",
+          }
+        }
+        type="text"
+      />
+    </div>
     <span
       onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
-          "float": "right",
+          "float": "left",
+          "padding": "0px 0px 46px 17px",
         }
       }
     >
@@ -52,7 +60,7 @@ ShallowWrapper {
           }
         }
       >
-        Active residents
+        Active
       </span>
       <ReactSwitch
         activeBoxShadow="0px 0px 1px 8px rgba(0, 0, 0, 0.1)"
@@ -68,7 +76,7 @@ ShallowWrapper {
         onColor="#e65d78"
         onHandleColor="#fff"
         uncheckedIcon={false}
-        width={40}
+        width={50}
       />
       <span
         onClick={[MockFunction]}
@@ -89,33 +97,41 @@ ShallowWrapper {
     <div
       style={
         Object {
-          "backgroundColor": "white",
+          "backgroundColor": "#f7f7f7",
           "display": "block",
-          "padding": "10px",
         }
       }
     >
-      <FormInput
-        autofocus={true}
-        name="nameFilter"
-        onChange={[MockFunction]}
-        placeholder="Filter by name"
-        size="default"
+      <div
         style={
           Object {
-            "borderRadius": "3px",
-            "height": "40px",
-            "marginBottom": "15px",
+            "padding": "3px 14px 3px 14px",
           }
         }
-        type="text"
-      />
+      >
+        <FormInput
+          autofocus={true}
+          name="nameFilter"
+          onChange={[MockFunction]}
+          placeholder="Filter by name"
+          size="default"
+          style={
+            Object {
+              "borderRadius": "3px",
+              "height": "40px",
+              "marginBottom": "15px",
+            }
+          }
+          type="text"
+        />
+      </div>
       <span
         onClick={[Function]}
         style={
           Object {
             "cursor": "pointer",
-            "float": "right",
+            "float": "left",
+            "padding": "0px 0px 46px 17px",
           }
         }
       >
@@ -130,7 +146,7 @@ ShallowWrapper {
             }
           }
         >
-          Active residents
+          Active
         </span>
         <ReactSwitch
           activeBoxShadow="0px 0px 1px 8px rgba(0, 0, 0, 0.1)"
@@ -146,7 +162,7 @@ ShallowWrapper {
           onColor="#e65d78"
           onHandleColor="#fff"
           uncheckedIcon={false}
-          width={40}
+          width={50}
         />
         <span
           onClick={[MockFunction]}
@@ -170,8 +186,9 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <LmcResidentsSidebarFilter
+      "_currentElement": <LmcSidebarFilter
         isChecked={true}
+        isShowingNameFilter={true}
         onFormChange={[MockFunction]}
         onSwitchChange={[MockFunction]}
       />,
@@ -183,6 +200,7 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {
           "isChecked": true,
+          "isShowingNameFilter": true,
           "onFormChange": [MockFunction],
           "onSwitchChange": [MockFunction],
         },
@@ -209,33 +227,41 @@ ShallowWrapper {
         "_currentElement": <div
           style={
             Object {
-              "backgroundColor": "white",
+              "backgroundColor": "#f7f7f7",
               "display": "block",
-              "padding": "10px",
             }
           }
         >
-          <FormInput
-            autofocus={true}
-            name="nameFilter"
-            onChange={[MockFunction]}
-            placeholder="Filter by name"
-            size="default"
+          <div
             style={
               Object {
-                "borderRadius": "3px",
-                "height": "40px",
-                "marginBottom": "15px",
+                "padding": "3px 14px 3px 14px",
               }
             }
-            type="text"
-          />
+          >
+            <FormInput
+              autofocus={true}
+              name="nameFilter"
+              onChange={[MockFunction]}
+              placeholder="Filter by name"
+              size="default"
+              style={
+                Object {
+                  "borderRadius": "3px",
+                  "height": "40px",
+                  "marginBottom": "15px",
+                }
+              }
+              type="text"
+            />
+          </div>
           <span
             onClick={[Function]}
             style={
               Object {
                 "cursor": "pointer",
-                "float": "right",
+                "float": "left",
+                "padding": "0px 0px 46px 17px",
               }
             }
           >
@@ -250,7 +276,7 @@ ShallowWrapper {
                 }
               }
             >
-              Active residents
+              Active
             </span>
             <ReactSwitch
               activeBoxShadow="0px 0px 1px 8px rgba(0, 0, 0, 0.1)"
@@ -266,7 +292,7 @@ ShallowWrapper {
               onColor="#e65d78"
               onHandleColor="#fff"
               uncheckedIcon={false}
-              width={40}
+              width={50}
             />
             <span
               onClick={[MockFunction]}
@@ -287,33 +313,41 @@ ShallowWrapper {
         "_renderedOutput": <div
           style={
             Object {
-              "backgroundColor": "white",
+              "backgroundColor": "#f7f7f7",
               "display": "block",
-              "padding": "10px",
             }
           }
         >
-          <FormInput
-            autofocus={true}
-            name="nameFilter"
-            onChange={[MockFunction]}
-            placeholder="Filter by name"
-            size="default"
+          <div
             style={
               Object {
-                "borderRadius": "3px",
-                "height": "40px",
-                "marginBottom": "15px",
+                "padding": "3px 14px 3px 14px",
               }
             }
-            type="text"
-          />
+          >
+            <FormInput
+              autofocus={true}
+              name="nameFilter"
+              onChange={[MockFunction]}
+              placeholder="Filter by name"
+              size="default"
+              style={
+                Object {
+                  "borderRadius": "3px",
+                  "height": "40px",
+                  "marginBottom": "15px",
+                }
+              }
+              type="text"
+            />
+          </div>
           <span
             onClick={[Function]}
             style={
               Object {
                 "cursor": "pointer",
-                "float": "right",
+                "float": "left",
+                "padding": "0px 0px 46px 17px",
               }
             }
           >
@@ -328,7 +362,7 @@ ShallowWrapper {
                 }
               }
             >
-              Active residents
+              Active
             </span>
             <ReactSwitch
               activeBoxShadow="0px 0px 1px 8px rgba(0, 0, 0, 0.1)"
@@ -344,7 +378,7 @@ ShallowWrapper {
               onColor="#e65d78"
               onHandleColor="#fff"
               uncheckedIcon={false}
-              width={40}
+              width={50}
             />
             <span
               onClick={[MockFunction]}
@@ -372,8 +406,9 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <LmcResidentsSidebarFilter
+  "unrendered": <LmcSidebarFilter
     isChecked={true}
+    isShowingNameFilter={true}
     onFormChange={[MockFunction]}
     onSwitchChange={[MockFunction]}
   />,

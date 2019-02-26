@@ -30,6 +30,11 @@ function fireGATracking () {
 }
 
 // Loading custom LMC view
+import LmcOrganisationScreen from './lmc/screens/Organisation/index.jsx';
+import LmcTeamScreen from './lmc/screens/Organisation/components/LmcTeamScreen.jsx';
+import LmcShiftPasswordsScreen from './lmc/screens/Organisation/components/LmcShiftPasswordsScreen.jsx';
+import LmcOrganisationDocuments from './lmc/screens/Organisation/components/LmcOrganisationDocuments.jsx';
+
 import LmcResidentsScreen from './lmc/screens/Residents/index.jsx';
 import LmcResidentProfile from './lmc/screens/Residents/components/LmcResidentProfile.jsx';
 import LmcResidentReports from './lmc/screens/Residents/components/LmcResidentReports.jsx';
@@ -77,6 +82,12 @@ ReactDOM.render(
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
+				<Route path="organisation" component={LmcOrganisationScreen}>
+					<IndexRedirect to='/admin/organisation/team' />
+					<Route path='team' component={LmcTeamScreen} />
+					<Route path='shift-passwords' component={LmcShiftPasswordsScreen} />
+					<Route path='documents' component={LmcOrganisationDocuments} />
+				</Route>
 				<Route path="residents" component={LmcResidentsScreen}>
 					<IndexRedirect to='/admin/residents/profile' />
 					<Route path='profile' component={LmcResidentProfile} />
