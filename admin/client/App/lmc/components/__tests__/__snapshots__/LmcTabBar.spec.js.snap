@@ -8,64 +8,7 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <nav
-    className="secondary-navbar"
-    style={
-      Object {
-        "backgroundColor": "white",
-        "height": "58px",
-        "paddingLeft": 20,
-        "paddingRight": 50,
-      }
-    }
-  >
-    <ul
-      className="app-nav app-nav--secondary app-nav--left"
-      style={null}
-    >
-      <li
-        className="lmc-secondary-nav-link"
-        style={
-          Object {
-            "boxSizing": "border-box",
-            "flex": "1",
-            "padding": "7px 10px 9px 10px",
-            "textAlign": "center",
-          }
-        }
-      >
-        <Link
-          className="lmc-secondary-nav-link"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/admin/testResourceUrl/url1"
-        >
-          label1
-        </Link>
-      </li>
-      <li
-        className="lmc-secondary-nav-link"
-        style={
-          Object {
-            "boxSizing": "border-box",
-            "flex": "1",
-            "padding": "7px 10px 9px 10px",
-            "textAlign": "center",
-          }
-        }
-      >
-        <Link
-          className="lmc-secondary-nav-link"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-          to="/admin/testResourceUrl/url2"
-        >
-          label2
-        </Link>
-      </li>
-    </ul>
-  </nav>,
-  "nodes": Array [
+  "node": <div>
     <nav
       className="secondary-navbar"
       style={
@@ -79,7 +22,6 @@ ShallowWrapper {
     >
       <ul
         className="app-nav app-nav--secondary app-nav--left"
-        style={null}
       >
         <li
           className="lmc-secondary-nav-link"
@@ -122,7 +64,67 @@ ShallowWrapper {
           </Link>
         </li>
       </ul>
-    </nav>,
+    </nav>
+  </div>,
+  "nodes": Array [
+    <div>
+      <nav
+        className="secondary-navbar"
+        style={
+          Object {
+            "backgroundColor": "white",
+            "height": "58px",
+            "paddingLeft": 20,
+            "paddingRight": 50,
+          }
+        }
+      >
+        <ul
+          className="app-nav app-nav--secondary app-nav--left"
+        >
+          <li
+            className="lmc-secondary-nav-link"
+            style={
+              Object {
+                "boxSizing": "border-box",
+                "flex": "1",
+                "padding": "7px 10px 9px 10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <Link
+              className="lmc-secondary-nav-link"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/admin/testResourceUrl/url1"
+            >
+              label1
+            </Link>
+          </li>
+          <li
+            className="lmc-secondary-nav-link"
+            style={
+              Object {
+                "boxSizing": "border-box",
+                "flex": "1",
+                "padding": "7px 10px 9px 10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <Link
+              className="lmc-secondary-nav-link"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/admin/testResourceUrl/url2"
+            >
+              label2
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -194,121 +196,123 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <nav
-          className="secondary-navbar"
-          style={
-            Object {
-              "backgroundColor": "white",
-              "height": "58px",
-              "paddingLeft": 20,
-              "paddingRight": 50,
+        "_currentElement": <div>
+          <nav
+            className="secondary-navbar"
+            style={
+              Object {
+                "backgroundColor": "white",
+                "height": "58px",
+                "paddingLeft": 20,
+                "paddingRight": 50,
+              }
             }
-          }
-        >
-          <ul
-            className="app-nav app-nav--secondary app-nav--left"
-            style={null}
           >
-            <li
-              className="lmc-secondary-nav-link"
-              style={
-                Object {
-                  "boxSizing": "border-box",
-                  "flex": "1",
-                  "padding": "7px 10px 9px 10px",
-                  "textAlign": "center",
-                }
-              }
+            <ul
+              className="app-nav app-nav--secondary app-nav--left"
             >
-              <Link
+              <li
                 className="lmc-secondary-nav-link"
-                onlyActiveOnIndex={false}
-                style={Object {}}
-                to="/admin/testResourceUrl/url1"
-              >
-                label1
-              </Link>
-            </li>
-            <li
-              className="lmc-secondary-nav-link"
-              style={
-                Object {
-                  "boxSizing": "border-box",
-                  "flex": "1",
-                  "padding": "7px 10px 9px 10px",
-                  "textAlign": "center",
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "flex": "1",
+                    "padding": "7px 10px 9px 10px",
+                    "textAlign": "center",
+                  }
                 }
-              }
-            >
-              <Link
-                className="lmc-secondary-nav-link"
-                onlyActiveOnIndex={false}
-                style={Object {}}
-                to="/admin/testResourceUrl/url2"
               >
-                label2
-              </Link>
-            </li>
-          </ul>
-        </nav>,
+                <Link
+                  className="lmc-secondary-nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/admin/testResourceUrl/url1"
+                >
+                  label1
+                </Link>
+              </li>
+              <li
+                className="lmc-secondary-nav-link"
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "flex": "1",
+                    "padding": "7px 10px 9px 10px",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <Link
+                  className="lmc-secondary-nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/admin/testResourceUrl/url2"
+                >
+                  label2
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>,
         "_debugID": 2,
-        "_renderedOutput": <nav
-          className="secondary-navbar"
-          style={
-            Object {
-              "backgroundColor": "white",
-              "height": "58px",
-              "paddingLeft": 20,
-              "paddingRight": 50,
+        "_renderedOutput": <div>
+          <nav
+            className="secondary-navbar"
+            style={
+              Object {
+                "backgroundColor": "white",
+                "height": "58px",
+                "paddingLeft": 20,
+                "paddingRight": 50,
+              }
             }
-          }
-        >
-          <ul
-            className="app-nav app-nav--secondary app-nav--left"
-            style={null}
           >
-            <li
-              className="lmc-secondary-nav-link"
-              style={
-                Object {
-                  "boxSizing": "border-box",
-                  "flex": "1",
-                  "padding": "7px 10px 9px 10px",
-                  "textAlign": "center",
-                }
-              }
+            <ul
+              className="app-nav app-nav--secondary app-nav--left"
             >
-              <Link
+              <li
                 className="lmc-secondary-nav-link"
-                onlyActiveOnIndex={false}
-                style={Object {}}
-                to="/admin/testResourceUrl/url1"
-              >
-                label1
-              </Link>
-            </li>
-            <li
-              className="lmc-secondary-nav-link"
-              style={
-                Object {
-                  "boxSizing": "border-box",
-                  "flex": "1",
-                  "padding": "7px 10px 9px 10px",
-                  "textAlign": "center",
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "flex": "1",
+                    "padding": "7px 10px 9px 10px",
+                    "textAlign": "center",
+                  }
                 }
-              }
-            >
-              <Link
-                className="lmc-secondary-nav-link"
-                onlyActiveOnIndex={false}
-                style={Object {}}
-                to="/admin/testResourceUrl/url2"
               >
-                label2
-              </Link>
-            </li>
-          </ul>
-        </nav>,
+                <Link
+                  className="lmc-secondary-nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/admin/testResourceUrl/url1"
+                >
+                  label1
+                </Link>
+              </li>
+              <li
+                className="lmc-secondary-nav-link"
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "flex": "1",
+                    "padding": "7px 10px 9px 10px",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <Link
+                  className="lmc-secondary-nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/admin/testResourceUrl/url2"
+                >
+                  label2
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,
