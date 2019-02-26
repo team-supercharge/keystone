@@ -78,14 +78,9 @@ const App = (props) => {
 	return (
 		<div className={css(classes.wrapper)} style={{ ...wrapperStyle }}>
 			<header>
-				<LmcMobileNavigation />
-				{/* <MobileNavigation
-					brand={Keystone.brand}
-					currentListKey={props.params.listId}
-					currentSectionKey={currentSectionKey}
-					sections={Keystone.nav.sections}
-					signoutUrl={Keystone.signoutUrl}
-				/> */}
+				<LmcMobileNavigation
+					location={props.location}
+				/>
 				<PrimaryNavigation
 					currentSectionKey={currentSectionKey}
 					brand={Keystone.brand}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { isBrowser, isTablet } from 'react-device-detect'
 import { GlyphButton } from '../../../elemental'
+import Transition from 'react-addons-css-transition-group';
 import LmcMobileNavMenu from './LmcMobileNavMenu.jsx'
 
 export default class LmcMobileNavigation extends Component {
@@ -16,12 +17,13 @@ export default class LmcMobileNavigation extends Component {
     }
 
     renderMenu () {
-        const { sections } = this.props
         if (!this.state.menuIsVisible) return null
-
+        console.log('HI')
         return (
             <LmcMobileNavMenu
-                sections={sections}
+                location={this.props.location}
+                sections={NAV_SECTIONS}
+                toggleMenu={this.toggleMenu}
             />
         )
     }
@@ -50,12 +52,48 @@ export default class LmcMobileNavigation extends Component {
                             alt="Log my Care" 
                         />
                     </span>
-                    { this.renderMenu() }
                 </div>
+                <Transition
+                    transitionName="MobileNavigation__menu"
+                    transitionEnterTimeout={260}
+                    transitionLeaveTimeout={200}
+                >
+                    { this.renderMenu() }
+                </Transition>
             </div>
         )
     }    
 }
+
+const NAV_SECTIONS = [
+    { 
+        label: 'Organisation', 
+        path: 'organisation', 
+        items: []
+    },
+    {
+        label: 'Residents',
+        path: 'residents',
+        items: []
+    },
+    {
+        label: 'Logs',
+        path: 'logs',
+        items: [
+            { label: 'Revisions', path: 'log-revisions' },
+        ],
+    },
+    {
+        label: 'To-Dos',
+        path: 'tasks',
+        items: []
+    },
+    {
+        label: 'Reports',
+        path: 'reports/charts',
+        items: []
+    }
+]
 
 const styles = {
     backgroundContainer: {
@@ -82,5 +120,5 @@ const styles = {
 }
 
 LmcMobileNavigation.propTypes = {
-    sections: PropTypes.array.isRequired
+    location: PropTypes.object.isRequired
 }

@@ -8,26 +8,29 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div />,
+  "node": null,
   "nodes": Array [
-    <div />,
+    null,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
     "_instance": ShallowComponentWrapper {
       "_calledComponentWillUnmount": false,
-      "_compositeType": 2,
+      "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcMobileNavMenu
+        location={Object {}}
         sections={Array []}
       />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": StatelessComponent {
+      "_instance": LmcMobileNavMenu {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "isActive": [Function],
         "props": Object {
+          "location": Object {},
           "sections": Array [],
         },
         "refs": Object {},
@@ -50,11 +53,11 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div />,
+        "_currentElement": null,
         "_debugID": 2,
-        "_renderedOutput": <div />,
+        "_renderedOutput": null,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 2,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -65,6 +68,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcMobileNavMenu
+    location={Object {}}
     sections={Array []}
   />,
 }

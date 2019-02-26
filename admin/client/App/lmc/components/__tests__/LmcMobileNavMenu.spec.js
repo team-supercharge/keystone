@@ -5,12 +5,16 @@ import LmcMobileNavMenu from '../navigation/LmcMobileNavMenu.jsx'
 describe('LmcMobileNavMenu', () => {
     let wrapper 
     let sections
+    let location
 
     beforeEach(() => {
         sections = []
+        location = {}
+        
         wrapper = shallow(
             <LmcMobileNavMenu
                 sections={sections}
+                location={location}
             />
         )
     })

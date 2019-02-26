@@ -9,14 +9,14 @@ jest.mock('react-device-detect', () => ({
 
 describe('LmcMobileNavigation', () => {
     let wrapper
-    let sections
+    let location
 
     beforeEach(() => {
         global.Keystone = { adminPath: '/admin' }
-        sections = []
+        location = {}
         wrapper = shallow(
             <LmcMobileNavigation
-                sections={sections}
+                location={location}
             />
         )
     })
