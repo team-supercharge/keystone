@@ -22,18 +22,18 @@ export class LmcTabBar extends Component {
     render () {
         const { items, resourceUrl } = this.props
         const baseUrl = `${Keystone.adminPath}/${resourceUrl}`
-        const navbarStyles = (isBrowser || isTablet) ? styles.navbar : mobileStyles.navbar
-        const listStyles = (isBrowser || isTablet) ? null : mobileStyles.list
+        const styles = (isBrowser || isTablet) ? desktopStyles : mobileStyles
 
         return (
-            <nav className='secondary-navbar' style={navbarStyles}>
-                <ul className="app-nav app-nav--secondary app-nav--left" style={listStyles}>
+            <div style={styles.backgroundContainer}>
+            <nav className='secondary-navbar' style={styles.navbar}> 
+                <ul className="app-nav app-nav--secondary app-nav--left" style={styles.list}>
                     { items.map((item, index) => {
                         return this.isActive(item.url)
                             ? <li 
                                 className='lmc-secondary-nav-link'
                                 key={index}
-                                style={{ ...styles.activeItem, ...styles.item }}
+                                style={{ ...desktopStyles.activeItem, ...styles.item }}
                             >
                                 <Link 
                                     className='lmc-secondary-nav-link'
@@ -56,11 +56,12 @@ export class LmcTabBar extends Component {
                     }) }
                 </ul>
             </nav>
+            </div>
         )
     }
 }
 
-const styles = {
+const desktopStyles = {
     activeItem: {
         borderBottom: '3px solid #e65d78',
     },
@@ -79,14 +80,26 @@ const styles = {
 }
 
 const mobileStyles = {
+    backgroundContainer: {
+        height: 40,
+        width: '100%',
+    },
+    item: {
+        boxSizing: 'border-box',
+        flex: '1',
+        textAlign: 'center',
+    },
     list: {
         display: 'flex',
         justifyContent: 'center',
         width: '100%',
     },
     navbar: {
-        height: '58px',
+        height: 40,
         backgroundColor: 'white',
+        position: 'fixed',
+        width: '100%',
+        zIndex: 2
     }
 }
 
