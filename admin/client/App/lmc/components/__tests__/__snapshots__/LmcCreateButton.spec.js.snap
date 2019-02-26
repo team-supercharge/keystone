@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcCreateButton renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <GlyphButton
+    block={true}
+    color="success"
+    glyph="plus"
+    glyphStyle={Object {}}
+    onClick={[Function]}
+    position="left"
+    style={
+      Object {
+        "width": 200,
+      }
+    }
+    title="Add a TestList"
+  >
+    <ResponsiveText
+      component="span"
+      visibleLG="Add a TestList"
+      visibleMD="Add a TestList"
+      visibleSM="Add a TestList"
+    />
+  </GlyphButton>,
+  "nodes": Array [
+    <GlyphButton
+      block={true}
+      color="success"
+      glyph="plus"
+      glyphStyle={Object {}}
+      onClick={[Function]}
+      position="left"
+      style={
+        Object {
+          "width": 200,
+        }
+      }
+      title="Add a TestList"
+    >
+      <ResponsiveText
+        component="span"
+        visibleLG="Add a TestList"
+        visibleMD="Add a TestList"
+        visibleSM="Add a TestList"
+      />
+    </GlyphButton>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <LmcCreateButton
+        listId="TestList"
+        onCreate={[MockFunction]}
+        style={
+          Object {
+            "width": 200,
+          }
+        }
+        title="TestTitle"
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": LmcCreateButton {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "onCloseCreateModal": [Function],
+        "onCreateItemComplete": [Function],
+        "onOpenCreateModal": [Function],
+        "props": Object {
+          "listId": "TestList",
+          "onCreate": [MockFunction],
+          "style": Object {
+            "width": 200,
+          },
+          "title": "TestTitle",
+        },
+        "refs": Object {},
+        "renderCreateForm": [Function],
+        "state": Object {
+          "currentList": null,
+          "isModalOpen": true,
+          "showCreateModal": false,
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <GlyphButton
+          block={true}
+          color="success"
+          glyph="plus"
+          glyphStyle={Object {}}
+          onClick={[Function]}
+          position="left"
+          style={
+            Object {
+              "width": 200,
+            }
+          }
+          title="Add a TestList"
+        >
+          <ResponsiveText
+            component="span"
+            visibleLG="Add a TestList"
+            visibleMD="Add a TestList"
+            visibleSM="Add a TestList"
+          />
+        </GlyphButton>,
+        "_debugID": 2,
+        "_renderedOutput": <GlyphButton
+          block={true}
+          color="success"
+          glyph="plus"
+          glyphStyle={Object {}}
+          onClick={[Function]}
+          position="left"
+          style={
+            Object {
+              "width": 200,
+            }
+          }
+          title="Add a TestList"
+        >
+          <ResponsiveText
+            component="span"
+            visibleLG="Add a TestList"
+            visibleMD="Add a TestList"
+            visibleSM="Add a TestList"
+          />
+        </GlyphButton>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcCreateButton
+    listId="TestList"
+    onCreate={[MockFunction]}
+    style={
+      Object {
+        "width": 200,
+      }
+    }
+    title="TestTitle"
+  />,
+}
+`;

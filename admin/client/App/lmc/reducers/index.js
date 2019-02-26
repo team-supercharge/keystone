@@ -1,11 +1,10 @@
-import { combineReducers } from "redux";
-import * as taskReducer from "./Tasks";
-import * as residentReducer from "./Residents";
+import * as dataReducer from "./Data";
 import * as globalReducer from './Global';
+import * as residentsReducer from './Residents'
 
 export default Object.assign(
     {},
-    taskReducer,
-    residentReducer,
+    dataReducer,
     globalReducer,
+    residentsReducer
 );

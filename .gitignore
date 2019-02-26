@@ -34,4 +34,4 @@ admin/public/styles/keystone-v*.min.css
 
 test/e2e/drivers/*
 
-yarn.lock
+package-lock.json

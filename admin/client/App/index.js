@@ -8,7 +8,7 @@ import 'babel-polyfill';
 import 'whatwg-fetch'; // CO-63: polyfill for window.fetch
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 
@@ -19,6 +19,7 @@ import DefaultHome from './screens/Home';
 
 import store from './store';
 
+import { ActionCreators } from './lmc/actions/actions';
 import { setActiveFilters, loadItems } from './screens/List/actions';
 import ReactGA from 'react-ga';
 
@@ -29,6 +30,13 @@ function fireGATracking () {
 }
 
 // Loading custom LMC view
+import LmcResidentsScreen from './lmc/screens/Residents/index.jsx';
+import LmcResidentProfile from './lmc/screens/Residents/components/LmcResidentProfile.jsx';
+import LmcResidentReports from './lmc/screens/Residents/components/LmcResidentReports.jsx';
+import LmcResidentToDos from './lmc/screens/Residents/components/LmcResidentToDos.jsx';
+import LmcResidentCharts from './lmc/screens/Residents/components/LmcResidentCharts.jsx';
+import LmcResidentDocuments from './lmc/screens/Residents/components/LmcResidentDocuments.jsx';
+
 import LmcTodosView from './lmc/screens/Todos/index.jsx';
 import LmcReportView from './lmc/screens/Reports/index.jsx';
 import LmcFluidsOverview from './lmc/screens/Reports/Charts/charts/LmcFluidsOverview.jsx';
@@ -41,6 +49,8 @@ import LmcHome from './lmc/screens/Home/index.jsx';
 
 // Sync the browser history to the Redux store
 const history = syncHistoryWithStore(browserHistory, store);
+
+store.dispatch(ActionCreators.initialize());
 
 // Initialise Keystone.User list
 import { listsByKey } from '../utils/lists';
@@ -67,6 +77,14 @@ ReactDOM.render(
 		<Router onUpdate={fireGATracking} history={history}>
 			<Route path={Keystone.adminPath} component={App}>
 				<IndexRoute component={HomePage} />
+				<Route path="residents" component={LmcResidentsScreen}>
+					<IndexRedirect to='/admin/residents/profile' />
+					<Route path='profile' component={LmcResidentProfile} />
+					<Route path='daily-report' component={LmcResidentReports} />
+					<Route path='to-do' component={LmcResidentToDos} />
+					<Route path='charts' component={LmcResidentCharts} />
+					<Route path='documents' component={LmcResidentDocuments} />
+				</Route>
 				<Route path="admin-reports" component={LmcAdminReportView} onChange={onListChange}>
 					<Route path="dashboard" component={LmcAdminDashboard} />
 					<Route path="home" component={LmcAdminHomeDashboard} />

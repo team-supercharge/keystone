@@ -4,7 +4,7 @@ var path = require('path');
 var pkg = require('../../../package.json');
 var templatePath = path.resolve(__dirname, '../templates/index.html');
 
-module.exports = function IndexRoute (req, res) {
+module.exports = async function IndexRoute (req, res) {
 	var keystone = req.keystone;
 	var lists = {};
 	_.forEach(keystone.lists, function (list, key) {
@@ -12,6 +12,8 @@ module.exports = function IndexRoute (req, res) {
 	});
 
 	var UserList = keystone.list(keystone.get('user model'));
+
+	const Home = await keystone.list('Home').model.findOne({ _id: req.user.home });
 
 	var orphanedLists = keystone.getOrphanedLists().map(function (list) {
 		return _.pick(list, ['key', 'label', 'path']);
@@ -42,6 +44,7 @@ module.exports = function IndexRoute (req, res) {
 			role: req.user.role,
 			firstLogin: req.user.firstLogin,
 			home: req.user.home,
+			homeName: Home.name
 		},
 		ga: {
 			property: keystone.get('ga property'),

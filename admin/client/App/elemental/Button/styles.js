@@ -16,7 +16,7 @@ exports.common = {
 	base: {
 		'appearance': 'none',
 		'background': 'none',
-		'borderWidth': theme.button.borderWidth,
+		'borderWidth': 0, //theme.button.borderWidth,
 		'borderStyle': 'solid',
 		'borderColor': 'transparent',
 		'borderRadius': theme.button.borderRadius,
@@ -79,14 +79,16 @@ exports.common = {
 // ----------------
 function buttonFillVariant (textColor, bgColor) {
 	const hoverStyles = {
-		...gradientVertical(lighten(bgColor, 10), darken(bgColor, 5)),
+		background: lighten(bgColor, 10),
+		// ...gradientVertical(lighten(bgColor, 10), darken(bgColor, 5)),
 		borderColor: `${darken(bgColor, 5)} ${darken(bgColor, 10)} ${darken(bgColor, 15)}`,
 		boxShadow: '0 1px 0 rgba(0,0,0,0.1)',
 		color: textColor,
 		outline: 'none',
 	};
 	const focusStyles = {
-		...gradientVertical(lighten(bgColor, 10), darken(bgColor, 5)),
+		background: bgColor,
+		// ...gradientVertical(lighten(bgColor, 10), darken(bgColor, 5)),
 		borderColor: `${darken(bgColor, 5)} ${darken(bgColor, 10)} ${darken(bgColor, 15)}`,
 		boxShadow: `0 0 0 3px ${fade(bgColor, 25)}`,
 		color: textColor,
@@ -100,12 +102,13 @@ function buttonFillVariant (textColor, bgColor) {
 	};
 	return {
 		base: {
-			...gradientVertical(lighten(bgColor, 5), darken(bgColor, 10), bgColor),
+			// ...gradientVertical(lighten(bgColor, 5), darken(bgColor, 10), bgColor),
+			background: bgColor,
 			'borderColor': `${darken(bgColor, 10)} ${darken(bgColor, 20)} ${darken(bgColor, 25)}`,
 			'boxShadow': 'inset 0 1px 0 rgba(255, 255, 255, 0.1)',
 			'color': textColor,
 			'fontWeight': 400,
-			'textShadow': '0 -1px 0 rgba(0, 0, 0, 0.25)',
+			// 'textShadow': '0 -1px 0 rgba(0, 0, 0, 0.25)',
 
 			':hover': hoverStyles,
 			':focus': focusStyles,
@@ -119,9 +122,9 @@ function buttonFillVariant (textColor, bgColor) {
 function buttonFillDefault () {
 	const borderColor = theme.input.border.color.default;
 	const hoverStyles = {
-		...gradientVertical('#fff', '#eee'),
+		background: '#f0f0f0',
+		// ...gradientVertical('#fff', '#eee'),
 		borderColor: `${darken(borderColor, 5)} ${darken(borderColor, 5)} ${darken(borderColor, 10)}`,
-		boxShadow: '0 1px 0 rgba(0,0,0,0.1)',
 		color: theme.color.text,
 	};
 	const focusStyles = {
@@ -138,7 +141,8 @@ function buttonFillDefault () {
 	};
 	return {
 		base: {
-			...gradientVertical('#fafafa', '#eaeaea'),
+			// ...gradientVertical('#fafafa', '#eaeaea'),
+			background: '#eaeaea',
 			'borderColor': `${borderColor} ${darken(borderColor, 6)} ${darken(borderColor, 12)}`,
 			'color': theme.color.text,
 			'textShadow': '0 1px 0 white',

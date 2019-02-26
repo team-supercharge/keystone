@@ -15,7 +15,8 @@ describe('LmcBirthdaysCard', () => {
         residents = [
             {
                 id: 1,
-                dateOfBirth: birthday
+                dateOfBirth: birthday,
+                status: 'active'
             }
         ]
         wrapper = shallow((
