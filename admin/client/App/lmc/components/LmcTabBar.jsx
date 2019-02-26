@@ -19,43 +19,45 @@ export class LmcTabBar extends Component {
         return (isBrowser || isTablet) ? desktopLabel : mobileLabel
     }
 
-    render () {
+    renderItems () {
         const { items, resourceUrl } = this.props
         const baseUrl = `${Keystone.adminPath}/${resourceUrl}`
         const styles = (isBrowser || isTablet) ? desktopStyles : mobileStyles
 
+        return items.map((item, index) => {
+            const activeStyles = this.isActive(item.url) ? desktopStyles.activeItem : null
+            return (
+                <li 
+                    className='lmc-secondary-nav-link'
+                    key={index}
+                    style={{ ...activeStyles, ...styles.item }}
+                >
+                    <Link 
+                        className='lmc-secondary-nav-link'
+                        to={`${baseUrl}/${item.url}`}
+                    >
+                        {this.renderLabel(item)}
+                    </Link>
+                </li>
+            )
+        })
+    }
+
+    render () {
+        const styles = (isBrowser || isTablet) ? desktopStyles : mobileStyles
         return (
             <div style={styles.backgroundContainer}>
-            <nav className='secondary-navbar' style={styles.navbar}> 
-                <ul className="app-nav app-nav--secondary app-nav--left" style={styles.list}>
-                    { items.map((item, index) => {
-                        return this.isActive(item.url)
-                            ? <li 
-                                className='lmc-secondary-nav-link'
-                                key={index}
-                                style={{ ...desktopStyles.activeItem, ...styles.item }}
-                            >
-                                <Link 
-                                    className='lmc-secondary-nav-link'
-                                    to={`${baseUrl}/${item.url}`}
-                                >
-                                    {this.renderLabel(item)}
-                                </Link>
-                            </li>
-                            : <li 
-                                className='lmc-secondary-nav-link'
-                                key={index}
-                                style={styles.item}>
-                                <Link
-                                    className='lmc-secondary-nav-link'
-                                    to={`${baseUrl}/${item.url}`}
-                                >
-                                    {this.renderLabel(item)}
-                                </Link>
-                            </li>
-                    }) }
-                </ul>
-            </nav>
+                <nav 
+                    className='secondary-navbar' 
+                    style={styles.navbar}
+                > 
+                    <ul 
+                        className="app-nav app-nav--secondary app-nav--left" 
+                        style={styles.list}
+                    >
+                        { this.renderItems() }
+                    </ul>
+                </nav>
             </div>
         )
     }
