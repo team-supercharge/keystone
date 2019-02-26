@@ -4,11 +4,9 @@ import LmcResidentsCard from '../components/LmcResidentsCard'
 
 describe('LmcResidentsCard', () => {
     let wrapper
-    let savedKeystone
     let residents
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: 'TestPath' }
     })
 
@@ -36,9 +34,5 @@ describe('LmcResidentsCard', () => {
         const profileLink = wrapper.find('LmcProfileLink')
         expect(profileLink.props().name).toEqual('TestName')
         expect(profileLink.props().to).toEqual('TestPath/residents/1')
-    })
-
-    afterAll(() => {
-        global.Keystone = savedKeystone
     })
 })

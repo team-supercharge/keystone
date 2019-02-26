@@ -11,7 +11,6 @@ describe('LmcCreateButton', () => {
     let title
     let buttonText
     let styles
-    const savedKeystone = global.Keystone
     const onCreate = jest.fn()
 
     beforeAll(() => {
@@ -59,9 +58,5 @@ describe('LmcCreateButton', () => {
 
     afterEach(() => {
         onCreate.mockClear()
-    })
-    
-    afterAll(() => {
-        global.Keystone = savedKeystone
     })
 })

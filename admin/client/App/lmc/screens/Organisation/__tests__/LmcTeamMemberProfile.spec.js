@@ -6,10 +6,8 @@ describe('LmcTeamMemberProfile', () => {
     let wrapper
     let selectedUser
     let selectedUserProfile
-    let savedKeystone
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: '/admin' }
     })
 
@@ -37,9 +35,5 @@ describe('LmcTeamMemberProfile', () => {
         const link = wrapper.find('Link')
         expect(link.props().children).toEqual('Edit Information')
         expect(link.props().to).toEqual(`${Keystone.adminPath}/users/${selectedUser}`)
-    })
-
-    afterAll(() => {
-        global.Keystone = savedKeystone
     })
 })

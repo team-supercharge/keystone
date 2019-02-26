@@ -7,10 +7,8 @@ MockDate.set('1/1/2019')
 
 describe('LmcHomeTitle', () => {
     let wrapper
-    let savedKeystone
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { 
             user: { 
                 firstLogin: new Date('1/1/2019') 
@@ -32,6 +30,5 @@ describe('LmcHomeTitle', () => {
 
     afterAll(() => {
         MockDate.reset()
-        global.Keystone = savedKeystone
     })
 })

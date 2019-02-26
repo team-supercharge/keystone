@@ -5,11 +5,9 @@ import LmcShiftPasswordsList from '../components/LmcShiftPasswordsList.jsx'
 describe('LmcShiftPasswordsList', () => {
     let wrapper
     let shifts
-    let savedKeystone
     const onDelete = jest.fn()
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: '/admin' }
     })
 
@@ -55,9 +53,5 @@ describe('LmcShiftPasswordsList', () => {
         const link = emptyWrapper.find('a')
         const supportLink = 'https://support.logmycare.co.uk/the-care-office/finishing-your-essential-setup/how-do-i-set-up-a-shift-password'
         expect(link.props().href).toEqual(supportLink)
-    })
-
-    afterAll(() => {
-        global.Keystone = savedKeystone
     })
 })

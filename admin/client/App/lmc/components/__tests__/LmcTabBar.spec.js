@@ -8,10 +8,8 @@ describe('LmcResidentsNavbar', () => {
     let items
     let resourceUrl
     let location
-    let savedKeystone
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = {
             adminPath: '/admin'
         }
@@ -53,9 +51,5 @@ describe('LmcResidentsNavbar', () => {
 
         expect(firstLink.props().to).toEqual('/admin/testResourceUrl/url1')
         expect(secondLink.props().to).toEqual('/admin/testResourceUrl/url2')
-    })
-
-    afterAll(() => {
-        global.Keystone = savedKeystone
     })
 })

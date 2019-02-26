@@ -9,11 +9,9 @@ describe('LmcDocumentItem', () => {
     let wrapper
     let data
     let listId
-    let savedKeystone
     const onDelete = jest.fn()
 
     beforeEach(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: '/admin' }
 
         data = {
@@ -78,6 +76,5 @@ describe('LmcDocumentItem', () => {
 
     afterAll(() => {
         MockDate.clear()
-        global.Keystone = savedKeystone
     })
 })

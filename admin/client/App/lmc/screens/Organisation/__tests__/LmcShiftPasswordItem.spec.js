@@ -5,11 +5,9 @@ import LmcShiftPasswordItem from '../components/LmcShiftPasswordItem.jsx'
 describe('LmcShiftPasswordItem', () => {
     let wrapper
     let shift
-    let savedKeystone
     const onDeleteMock = jest.fn()
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: '/admin' }
     })
 
@@ -52,9 +50,5 @@ describe('LmcShiftPasswordItem', () => {
 
     afterEach(() => {
         onDeleteMock.mockClear()
-    })
-
-    afterAll(() => {
-        global.Keystone = savedKeystone
     })
 })

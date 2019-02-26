@@ -6,10 +6,8 @@ import { Link } from 'react-router'
 describe('LmcResidentProfile', () => {
     let wrapper
     let selectedResident
-    let savedKeystone
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: '/admin' }
     })
 
@@ -30,9 +28,5 @@ describe('LmcResidentProfile', () => {
         const editLink= wrapper.find(Link).first()
         expect(editLink.props().children).toEqual('Edit Information')
         expect(editLink.props().to).toEqual(`/admin/residents/${selectedResident}`)
-    })
-
-    afterAll(() => {
-        global.Keystone = savedKeystone
     })
 })
