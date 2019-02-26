@@ -85,7 +85,11 @@ const NAV_SECTIONS = [
     {
         label: 'To-Dos',
         path: 'tasks',
-        items: []
+        items: [
+            { label: 'All Scheduled', path: 'tasks?filters=%5B%7B%22path%22%3A%22status%22%2C%22inverted%22%3Afalse%2C%22value%22%3A%5B%22pending%22%5D%7D%5D' },
+            { label: 'Completed', path: 'tasks?filters=%5B%7B%22path%22%3A%22status%22%2C%22inverted%22%3Afalse%2C%22value%22%3A%5B%22completed%22%2C%22skipped%22%5D%7D%5D' },
+            { label: 'Recurring', path: 'recurring-tasks' }
+        ]
     },
     {
         label: 'Reports',
