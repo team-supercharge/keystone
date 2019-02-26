@@ -41,15 +41,27 @@ ShallowWrapper {
           }
         }
       >
-        <LmcDocumentItem
-          data={
-            Object {
-              "name": "TestDocument",
+        <div>
+          <LmcDocumentItem
+            data={
+              Object {
+                "name": "TestDocument",
+              }
             }
-          }
-          listId="testId"
-          onDelete={[MockFunction]}
-        />
+            listId="testId"
+            onDelete={[MockFunction]}
+          />
+          <div
+            style={
+              Object {
+                "backgroundColor": "#f2f2f2",
+                "height": 2,
+                "marginBottom": 12,
+                "marginTop": 8,
+              }
+            }
+          />
+        </div>
       </ul>
     </div>
     <div>
@@ -84,15 +96,27 @@ ShallowWrapper {
           }
         }
       >
-        <LmcDocumentItem
-          data={
-            Object {
-              "name": "TestDocument2",
+        <div>
+          <LmcDocumentItem
+            data={
+              Object {
+                "name": "TestDocument2",
+              }
             }
-          }
-          listId="testId"
-          onDelete={[MockFunction]}
-        />
+            listId="testId"
+            onDelete={[MockFunction]}
+          />
+          <div
+            style={
+              Object {
+                "backgroundColor": "#f2f2f2",
+                "height": 2,
+                "marginBottom": 12,
+                "marginTop": 8,
+              }
+            }
+          />
+        </div>
       </ul>
     </div>
   </div>,
@@ -130,15 +154,27 @@ ShallowWrapper {
             }
           }
         >
-          <LmcDocumentItem
-            data={
-              Object {
-                "name": "TestDocument",
+          <div>
+            <LmcDocumentItem
+              data={
+                Object {
+                  "name": "TestDocument",
+                }
               }
-            }
-            listId="testId"
-            onDelete={[MockFunction]}
-          />
+              listId="testId"
+              onDelete={[MockFunction]}
+            />
+            <div
+              style={
+                Object {
+                  "backgroundColor": "#f2f2f2",
+                  "height": 2,
+                  "marginBottom": 12,
+                  "marginTop": 8,
+                }
+              }
+            />
+          </div>
         </ul>
       </div>
       <div>
@@ -173,15 +209,27 @@ ShallowWrapper {
             }
           }
         >
-          <LmcDocumentItem
-            data={
-              Object {
-                "name": "TestDocument2",
+          <div>
+            <LmcDocumentItem
+              data={
+                Object {
+                  "name": "TestDocument2",
+                }
               }
-            }
-            listId="testId"
-            onDelete={[MockFunction]}
-          />
+              listId="testId"
+              onDelete={[MockFunction]}
+            />
+            <div
+              style={
+                Object {
+                  "backgroundColor": "#f2f2f2",
+                  "height": 2,
+                  "marginBottom": 12,
+                  "marginTop": 8,
+                }
+              }
+            />
+          </div>
         </ul>
       </div>
     </div>,
@@ -285,15 +333,27 @@ ShallowWrapper {
                 }
               }
             >
-              <LmcDocumentItem
-                data={
-                  Object {
-                    "name": "TestDocument",
+              <div>
+                <LmcDocumentItem
+                  data={
+                    Object {
+                      "name": "TestDocument",
+                    }
                   }
-                }
-                listId="testId"
-                onDelete={[MockFunction]}
-              />
+                  listId="testId"
+                  onDelete={[MockFunction]}
+                />
+                <div
+                  style={
+                    Object {
+                      "backgroundColor": "#f2f2f2",
+                      "height": 2,
+                      "marginBottom": 12,
+                      "marginTop": 8,
+                    }
+                  }
+                />
+              </div>
             </ul>
           </div>
           <div>
@@ -328,15 +388,27 @@ ShallowWrapper {
                 }
               }
             >
-              <LmcDocumentItem
-                data={
-                  Object {
-                    "name": "TestDocument2",
+              <div>
+                <LmcDocumentItem
+                  data={
+                    Object {
+                      "name": "TestDocument2",
+                    }
                   }
-                }
-                listId="testId"
-                onDelete={[MockFunction]}
-              />
+                  listId="testId"
+                  onDelete={[MockFunction]}
+                />
+                <div
+                  style={
+                    Object {
+                      "backgroundColor": "#f2f2f2",
+                      "height": 2,
+                      "marginBottom": 12,
+                      "marginTop": 8,
+                    }
+                  }
+                />
+              </div>
             </ul>
           </div>
         </div>,
@@ -374,15 +446,27 @@ ShallowWrapper {
                 }
               }
             >
-              <LmcDocumentItem
-                data={
-                  Object {
-                    "name": "TestDocument",
+              <div>
+                <LmcDocumentItem
+                  data={
+                    Object {
+                      "name": "TestDocument",
+                    }
                   }
-                }
-                listId="testId"
-                onDelete={[MockFunction]}
-              />
+                  listId="testId"
+                  onDelete={[MockFunction]}
+                />
+                <div
+                  style={
+                    Object {
+                      "backgroundColor": "#f2f2f2",
+                      "height": 2,
+                      "marginBottom": 12,
+                      "marginTop": 8,
+                    }
+                  }
+                />
+              </div>
             </ul>
           </div>
           <div>
@@ -417,15 +501,27 @@ ShallowWrapper {
                 }
               }
             >
-              <LmcDocumentItem
-                data={
-                  Object {
-                    "name": "TestDocument2",
+              <div>
+                <LmcDocumentItem
+                  data={
+                    Object {
+                      "name": "TestDocument2",
+                    }
                   }
-                }
-                listId="testId"
-                onDelete={[MockFunction]}
-              />
+                  listId="testId"
+                  onDelete={[MockFunction]}
+                />
+                <div
+                  style={
+                    Object {
+                      "backgroundColor": "#f2f2f2",
+                      "height": 2,
+                      "marginBottom": 12,
+                      "marginTop": 8,
+                    }
+                  }
+                />
+              </div>
             </ul>
           </div>
         </div>,

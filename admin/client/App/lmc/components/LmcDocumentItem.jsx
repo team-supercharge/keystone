@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import { isBrowser, isTablet } from 'react-device-detect'
 import { Link } from 'react-router'
 import { Button, GlyphButton } from '../../elemental'
 import ConfirmationDialog from '../../shared/ConfirmationDialog'
@@ -28,55 +29,59 @@ export default class LmcDocumentItem extends Component {
             ? moment(data.createdAt).calendar() 
             : `Added ${daysDiff} days ago`
         const editLink = `${Keystone.adminPath}/${listId}/${data.id}`
+        const chosenStyles = (isBrowser || isTablet) ? desktopStyles : mobileStyles
 
         return (
-            <li style={styles.container}>
-                <div style={styles.imageContainer}>
-                    <img 
-                        src={IMAGE_URL} 
-                        style={styles.image} 
-                    />
+            <li style={chosenStyles.container}>
+                <div style={chosenStyles.infoContainer}>
+                    <div style={desktopStyles.imageContainer}>
+                        <img 
+                            src={IMAGE_URL} 
+                            style={desktopStyles.image} 
+                        />
+                    </div>
+                    <div style={desktopStyles.textContainer}>
+                        <a 
+                            href={data.pdf}
+                            style={desktopStyles.documentName}
+                            target='_blank'
+                        >
+                            {data.name}
+                        </a>
+                        <br />
+                        <span style={desktopStyles.dateDiff}>
+                            {displayedTime}
+                        </span>
+                    </div>
                 </div>
-                <div style={styles.textContainer}>
-                    <a 
+                <div style={chosenStyles.buttonContainer}>
+                    <Button
+                        style={chosenStyles.button} 
+                        color='default'
                         href={data.pdf}
-                        style={styles.documentName}
                         target='_blank'
                     >
-                        {data.name}
-                    </a>
-                    <br />
-                    <span style={styles.dateDiff}>
-                        {displayedTime}
-                    </span>
+                        View
+                    </Button>
+                    <GlyphButton
+                        component={Link}
+                        glyph='pencil'
+                        position='left'
+                        style={chosenStyles.button}
+                        to={editLink}
+                    >
+                        Edit
+                    </GlyphButton>
+                    <Button 
+                        onClick={this.toggleDeleteDialog} 
+                        variant="link" 
+                        color="delete"
+                        style={chosenStyles.button} 
+                        data-button="delete"
+                    >
+                        Delete
+                    </Button>
                 </div>
-                <Button 
-                    onClick={this.toggleDeleteDialog} 
-                    variant="link" 
-                    color="delete"
-                    style={styles.button} 
-                    data-button="delete"
-                >
-                    Delete
-                </Button>
-                <GlyphButton
-                    component={Link}
-                    glyph='pencil'
-                    position='left'
-					style={styles.button}
-					to={editLink}
-				>
-                    Edit
-                </GlyphButton>
-                <Button
-                    style={styles.button} 
-                    color='default'
-                    href={data.pdf}
-                    target='_blank'
-                >
-                    View
-                </Button>
-                <div style={styles.divider} />
                 <ConfirmationDialog
                     confirmationLabel='Delete'
                     confirmationType='danger'
@@ -97,24 +102,26 @@ export default class LmcDocumentItem extends Component {
 
 const IMAGE_URL = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png'
 
-const styles = {
+const desktopStyles = {
     button: {
-        float: 'right',
         position: 'relative',
         top: 5,
         marginLeft: 10,
     },
+    buttonContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+    },
     container: {
-        height: 70,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 8,
     },
     dateDiff: {
         fontSize: 12,
         opacity: '0.6',
-    },
-    divider: {
-        backgroundColor: '#f2f2f2',
-        height: 2,
-        marginTop: 8,
     },
     documentName: {
         color: 'black',
@@ -137,6 +144,25 @@ const styles = {
     textContainer: {
         display: 'inline-block',
         paddingLeft: 20,
+    },
+}
+
+const mobileStyles = {
+    container: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    button: {
+        float: 'left',
+        position: 'relative',
+        top: 5,
+        marginRight: 10,
+    },
+    buttonContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        paddingTop: 8,
+        marginBottom: 8,
     },
 }
 

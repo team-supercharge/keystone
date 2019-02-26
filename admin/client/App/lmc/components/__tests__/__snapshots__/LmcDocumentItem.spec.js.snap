@@ -11,147 +11,14 @@ ShallowWrapper {
   "node": <li
     style={
       Object {
-        "height": 70,
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginBottom": 8,
       }
     }
   >
-    <div
-      style={
-        Object {
-          "backgroundColor": "#8AABC8",
-          "borderRadius": 20,
-          "float": "left",
-          "height": 40,
-          "textAlign": "center",
-          "width": 40,
-        }
-      }
-    >
-      <img
-        src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
-        style={
-          Object {
-            "height": 20,
-            "margin": "9px 0px 0px 0px",
-            "width": 20,
-          }
-        }
-      />
-    </div>
-    <div
-      style={
-        Object {
-          "display": "inline-block",
-          "paddingLeft": 20,
-        }
-      }
-    >
-      <a
-        href="TestLink"
-        style={
-          Object {
-            "color": "black",
-            "fontSize": 15,
-            "textDecoration": "none",
-          }
-        }
-        target="_blank"
-      >
-        TestDocument
-      </a>
-      <br />
-      <span
-        style={
-          Object {
-            "fontSize": 12,
-            "opacity": "0.6",
-          }
-        }
-      >
-        Today at 12:00 AM
-      </span>
-    </div>
-    <Button
-      aphroditeStyles={Array []}
-      color="delete"
-      data-button="delete"
-      onClick={[Function]}
-      style={
-        Object {
-          "float": "right",
-          "marginLeft": 10,
-          "position": "relative",
-          "top": 5,
-        }
-      }
-      variant="link"
-    >
-      Delete
-    </Button>
-    <GlyphButton
-      component={[Function]}
-      glyph="pencil"
-      glyphStyle={Object {}}
-      position="left"
-      style={
-        Object {
-          "float": "right",
-          "marginLeft": 10,
-          "position": "relative",
-          "top": 5,
-        }
-      }
-      to="/admin/testListId/TestId"
-    >
-      Edit
-    </GlyphButton>
-    <Button
-      aphroditeStyles={Array []}
-      color="default"
-      href="TestLink"
-      style={
-        Object {
-          "float": "right",
-          "marginLeft": 10,
-          "position": "relative",
-          "top": 5,
-        }
-      }
-      target="_blank"
-      variant="fill"
-    >
-      View
-    </Button>
-    <div
-      style={
-        Object {
-          "backgroundColor": "#f2f2f2",
-          "height": 2,
-          "marginTop": 8,
-        }
-      }
-    />
-    <ConfirmationDialog
-      cancelLabel="Cancel"
-      confirmationLabel="Delete"
-      confirmationType="danger"
-      isOpen={false}
-      onCancel={[Function]}
-      onConfirmation={[Function]}
-    >
-      <div>
-        Are you sure you want to delete this document? If you go ahead, it can’t be undone. Once it's gone, it’s gone for good!
-      </div>
-    </ConfirmationDialog>
-  </li>,
-  "nodes": Array [
-    <li
-      style={
-        Object {
-          "height": 70,
-        }
-      }
-    >
+    <div>
       <div
         style={
           Object {
@@ -208,22 +75,31 @@ ShallowWrapper {
           Today at 12:00 AM
         </span>
       </div>
+    </div>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        }
+      }
+    >
       <Button
         aphroditeStyles={Array []}
-        color="delete"
-        data-button="delete"
-        onClick={[Function]}
+        color="default"
+        href="TestLink"
         style={
           Object {
-            "float": "right",
             "marginLeft": 10,
             "position": "relative",
             "top": 5,
           }
         }
-        variant="link"
+        target="_blank"
+        variant="fill"
       >
-        Delete
+        View
       </Button>
       <GlyphButton
         component={[Function]}
@@ -232,7 +108,6 @@ ShallowWrapper {
         position="left"
         style={
           Object {
-            "float": "right",
             "marginLeft": 10,
             "position": "relative",
             "top": 5,
@@ -244,30 +119,161 @@ ShallowWrapper {
       </GlyphButton>
       <Button
         aphroditeStyles={Array []}
-        color="default"
-        href="TestLink"
+        color="delete"
+        data-button="delete"
+        onClick={[Function]}
         style={
           Object {
-            "float": "right",
             "marginLeft": 10,
             "position": "relative",
             "top": 5,
           }
         }
-        target="_blank"
-        variant="fill"
+        variant="link"
       >
-        View
+        Delete
       </Button>
+    </div>
+    <ConfirmationDialog
+      cancelLabel="Cancel"
+      confirmationLabel="Delete"
+      confirmationType="danger"
+      isOpen={false}
+      onCancel={[Function]}
+      onConfirmation={[Function]}
+    >
+      <div>
+        Are you sure you want to delete this document? If you go ahead, it can’t be undone. Once it's gone, it’s gone for good!
+      </div>
+    </ConfirmationDialog>
+  </li>,
+  "nodes": Array [
+    <li
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginBottom": 8,
+        }
+      }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "backgroundColor": "#8AABC8",
+              "borderRadius": 20,
+              "float": "left",
+              "height": 40,
+              "textAlign": "center",
+              "width": 40,
+            }
+          }
+        >
+          <img
+            src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+            style={
+              Object {
+                "height": 20,
+                "margin": "9px 0px 0px 0px",
+                "width": 20,
+              }
+            }
+          />
+        </div>
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+              "paddingLeft": 20,
+            }
+          }
+        >
+          <a
+            href="TestLink"
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 15,
+                "textDecoration": "none",
+              }
+            }
+            target="_blank"
+          >
+            TestDocument
+          </a>
+          <br />
+          <span
+            style={
+              Object {
+                "fontSize": 12,
+                "opacity": "0.6",
+              }
+            }
+          >
+            Today at 12:00 AM
+          </span>
+        </div>
+      </div>
       <div
         style={
           Object {
-            "backgroundColor": "#f2f2f2",
-            "height": 2,
-            "marginTop": 8,
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
           }
         }
-      />
+      >
+        <Button
+          aphroditeStyles={Array []}
+          color="default"
+          href="TestLink"
+          style={
+            Object {
+              "marginLeft": 10,
+              "position": "relative",
+              "top": 5,
+            }
+          }
+          target="_blank"
+          variant="fill"
+        >
+          View
+        </Button>
+        <GlyphButton
+          component={[Function]}
+          glyph="pencil"
+          glyphStyle={Object {}}
+          position="left"
+          style={
+            Object {
+              "marginLeft": 10,
+              "position": "relative",
+              "top": 5,
+            }
+          }
+          to="/admin/testListId/TestId"
+        >
+          Edit
+        </GlyphButton>
+        <Button
+          aphroditeStyles={Array []}
+          color="delete"
+          data-button="delete"
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": 10,
+              "position": "relative",
+              "top": 5,
+            }
+          }
+          variant="link"
+        >
+          Delete
+        </Button>
+      </div>
       <ConfirmationDialog
         cancelLabel="Cancel"
         confirmationLabel="Delete"
@@ -341,126 +347,129 @@ ShallowWrapper {
         "_currentElement": <li
           style={
             Object {
-              "height": 70,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 8,
             }
           }
         >
-          <div
-            style={
-              Object {
-                "backgroundColor": "#8AABC8",
-                "borderRadius": 20,
-                "float": "left",
-                "height": 40,
-                "textAlign": "center",
-                "width": 40,
-              }
-            }
-          >
-            <img
-              src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+          <div>
+            <div
               style={
                 Object {
-                  "height": 20,
-                  "margin": "9px 0px 0px 0px",
-                  "width": 20,
+                  "backgroundColor": "#8AABC8",
+                  "borderRadius": 20,
+                  "float": "left",
+                  "height": 40,
+                  "textAlign": "center",
+                  "width": 40,
                 }
               }
-            />
+            >
+              <img
+                src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+                style={
+                  Object {
+                    "height": 20,
+                    "margin": "9px 0px 0px 0px",
+                    "width": 20,
+                  }
+                }
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                  "paddingLeft": 20,
+                }
+              }
+            >
+              <a
+                href="TestLink"
+                style={
+                  Object {
+                    "color": "black",
+                    "fontSize": 15,
+                    "textDecoration": "none",
+                  }
+                }
+                target="_blank"
+              >
+                TestDocument
+              </a>
+              <br />
+              <span
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                Today at 12:00 AM
+              </span>
+            </div>
           </div>
           <div
             style={
               Object {
-                "display": "inline-block",
-                "paddingLeft": 20,
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "flex-end",
               }
             }
           >
-            <a
+            <Button
+              aphroditeStyles={Array []}
+              color="default"
               href="TestLink"
               style={
                 Object {
-                  "color": "black",
-                  "fontSize": 15,
-                  "textDecoration": "none",
+                  "marginLeft": 10,
+                  "position": "relative",
+                  "top": 5,
                 }
               }
               target="_blank"
+              variant="fill"
             >
-              TestDocument
-            </a>
-            <br />
-            <span
+              View
+            </Button>
+            <GlyphButton
+              component={[Function]}
+              glyph="pencil"
+              glyphStyle={Object {}}
+              position="left"
               style={
                 Object {
-                  "fontSize": 12,
-                  "opacity": "0.6",
+                  "marginLeft": 10,
+                  "position": "relative",
+                  "top": 5,
                 }
               }
+              to="/admin/testListId/TestId"
             >
-              Today at 12:00 AM
-            </span>
+              Edit
+            </GlyphButton>
+            <Button
+              aphroditeStyles={Array []}
+              color="delete"
+              data-button="delete"
+              onClick={[Function]}
+              style={
+                Object {
+                  "marginLeft": 10,
+                  "position": "relative",
+                  "top": 5,
+                }
+              }
+              variant="link"
+            >
+              Delete
+            </Button>
           </div>
-          <Button
-            aphroditeStyles={Array []}
-            color="delete"
-            data-button="delete"
-            onClick={[Function]}
-            style={
-              Object {
-                "float": "right",
-                "marginLeft": 10,
-                "position": "relative",
-                "top": 5,
-              }
-            }
-            variant="link"
-          >
-            Delete
-          </Button>
-          <GlyphButton
-            component={[Function]}
-            glyph="pencil"
-            glyphStyle={Object {}}
-            position="left"
-            style={
-              Object {
-                "float": "right",
-                "marginLeft": 10,
-                "position": "relative",
-                "top": 5,
-              }
-            }
-            to="/admin/testListId/TestId"
-          >
-            Edit
-          </GlyphButton>
-          <Button
-            aphroditeStyles={Array []}
-            color="default"
-            href="TestLink"
-            style={
-              Object {
-                "float": "right",
-                "marginLeft": 10,
-                "position": "relative",
-                "top": 5,
-              }
-            }
-            target="_blank"
-            variant="fill"
-          >
-            View
-          </Button>
-          <div
-            style={
-              Object {
-                "backgroundColor": "#f2f2f2",
-                "height": 2,
-                "marginTop": 8,
-              }
-            }
-          />
           <ConfirmationDialog
             cancelLabel="Cancel"
             confirmationLabel="Delete"
@@ -478,126 +487,129 @@ ShallowWrapper {
         "_renderedOutput": <li
           style={
             Object {
-              "height": 70,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 8,
             }
           }
         >
-          <div
-            style={
-              Object {
-                "backgroundColor": "#8AABC8",
-                "borderRadius": 20,
-                "float": "left",
-                "height": 40,
-                "textAlign": "center",
-                "width": 40,
-              }
-            }
-          >
-            <img
-              src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+          <div>
+            <div
               style={
                 Object {
-                  "height": 20,
-                  "margin": "9px 0px 0px 0px",
-                  "width": 20,
+                  "backgroundColor": "#8AABC8",
+                  "borderRadius": 20,
+                  "float": "left",
+                  "height": 40,
+                  "textAlign": "center",
+                  "width": 40,
                 }
               }
-            />
+            >
+              <img
+                src="https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/assessment.png"
+                style={
+                  Object {
+                    "height": 20,
+                    "margin": "9px 0px 0px 0px",
+                    "width": 20,
+                  }
+                }
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                  "paddingLeft": 20,
+                }
+              }
+            >
+              <a
+                href="TestLink"
+                style={
+                  Object {
+                    "color": "black",
+                    "fontSize": 15,
+                    "textDecoration": "none",
+                  }
+                }
+                target="_blank"
+              >
+                TestDocument
+              </a>
+              <br />
+              <span
+                style={
+                  Object {
+                    "fontSize": 12,
+                    "opacity": "0.6",
+                  }
+                }
+              >
+                Today at 12:00 AM
+              </span>
+            </div>
           </div>
           <div
             style={
               Object {
-                "display": "inline-block",
-                "paddingLeft": 20,
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "flex-end",
               }
             }
           >
-            <a
+            <Button
+              aphroditeStyles={Array []}
+              color="default"
               href="TestLink"
               style={
                 Object {
-                  "color": "black",
-                  "fontSize": 15,
-                  "textDecoration": "none",
+                  "marginLeft": 10,
+                  "position": "relative",
+                  "top": 5,
                 }
               }
               target="_blank"
+              variant="fill"
             >
-              TestDocument
-            </a>
-            <br />
-            <span
+              View
+            </Button>
+            <GlyphButton
+              component={[Function]}
+              glyph="pencil"
+              glyphStyle={Object {}}
+              position="left"
               style={
                 Object {
-                  "fontSize": 12,
-                  "opacity": "0.6",
+                  "marginLeft": 10,
+                  "position": "relative",
+                  "top": 5,
                 }
               }
+              to="/admin/testListId/TestId"
             >
-              Today at 12:00 AM
-            </span>
+              Edit
+            </GlyphButton>
+            <Button
+              aphroditeStyles={Array []}
+              color="delete"
+              data-button="delete"
+              onClick={[Function]}
+              style={
+                Object {
+                  "marginLeft": 10,
+                  "position": "relative",
+                  "top": 5,
+                }
+              }
+              variant="link"
+            >
+              Delete
+            </Button>
           </div>
-          <Button
-            aphroditeStyles={Array []}
-            color="delete"
-            data-button="delete"
-            onClick={[Function]}
-            style={
-              Object {
-                "float": "right",
-                "marginLeft": 10,
-                "position": "relative",
-                "top": 5,
-              }
-            }
-            variant="link"
-          >
-            Delete
-          </Button>
-          <GlyphButton
-            component={[Function]}
-            glyph="pencil"
-            glyphStyle={Object {}}
-            position="left"
-            style={
-              Object {
-                "float": "right",
-                "marginLeft": 10,
-                "position": "relative",
-                "top": 5,
-              }
-            }
-            to="/admin/testListId/TestId"
-          >
-            Edit
-          </GlyphButton>
-          <Button
-            aphroditeStyles={Array []}
-            color="default"
-            href="TestLink"
-            style={
-              Object {
-                "float": "right",
-                "marginLeft": 10,
-                "position": "relative",
-                "top": 5,
-              }
-            }
-            target="_blank"
-            variant="fill"
-          >
-            View
-          </Button>
-          <div
-            style={
-              Object {
-                "backgroundColor": "#f2f2f2",
-                "height": 2,
-                "marginTop": 8,
-              }
-            }
-          />
           <ConfirmationDialog
             cancelLabel="Cancel"
             confirmationLabel="Delete"

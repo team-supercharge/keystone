@@ -46,7 +46,7 @@ describe('LmcDocumentItem', () => {
     })
 
     it('displays a button to open the document in a new tab', () => {
-        const button = wrapper.find('Button').at(1)
+        const button = wrapper.find('Button').first()
         expect(button.props().href).toEqual(data.pdf)
         expect(button.props().target).toEqual('_blank')
         expect(button.props().children).toEqual('View')

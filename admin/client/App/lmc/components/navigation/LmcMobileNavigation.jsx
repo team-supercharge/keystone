@@ -18,7 +18,6 @@ export default class LmcMobileNavigation extends Component {
 
     renderMenu () {
         if (!this.state.menuIsVisible) return null
-        console.log('HI')
         return (
             <LmcMobileNavMenu
                 location={this.props.location}
