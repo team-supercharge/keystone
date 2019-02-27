@@ -108,7 +108,7 @@ var PrimaryNavigation = React.createClass({
 
 		const section = {
 			key: 'lmc-admin-reports',
-			label: 'Reports',
+			label: 'Charts',
 		};
 
 		const { currentSectionKey } = this.props;

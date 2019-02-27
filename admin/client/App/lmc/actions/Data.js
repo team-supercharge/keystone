@@ -6,6 +6,7 @@ import {
 
 export function initialize () {
     return (dispatch) => {
+        if (Keystone.user.role !== 'carehome-admin') return;
         const lists = [
             'carers',
             'residents',

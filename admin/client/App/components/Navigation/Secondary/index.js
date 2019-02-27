@@ -84,11 +84,13 @@ var SecondaryNavigation = React.createClass({
 	},
 	render () {
 		const { currentListKey, lists } = this.props
-		if (!this.state.navIsVisible) {
-			return null;
-		}
-		if (['users', 'residents', 'documents', 'shifts', 'home-documents'].includes(currentListKey)) {
-			return null;
+		if (Keystone.user.role === 'carehome-admin') {
+			if (!this.state.navIsVisible) {
+				return null;
+			}
+			if (['users', 'residents', 'documents', 'shifts', 'home-documents'].includes(currentListKey)) {
+				return null;
+			}
 		}
 
 		return (
