@@ -91,7 +91,7 @@ ShallowWrapper {
           style={
             Object {
               "margin": "0 auto",
-              "maxWidth": 800,
+              "maxWidth": 1000,
             }
           }
         />
@@ -182,7 +182,7 @@ ShallowWrapper {
             style={
               Object {
                 "margin": "0 auto",
-                "maxWidth": 800,
+                "maxWidth": 1000,
               }
             }
           />
@@ -342,7 +342,7 @@ ShallowWrapper {
                 style={
                   Object {
                     "margin": "0 auto",
-                    "maxWidth": 800,
+                    "maxWidth": 1000,
                   }
                 }
               />
@@ -433,7 +433,7 @@ ShallowWrapper {
                 style={
                   Object {
                     "margin": "0 auto",
-                    "maxWidth": 800,
+                    "maxWidth": 1000,
                   }
                 }
               />

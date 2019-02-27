@@ -163,6 +163,7 @@ const mobileStyles = {
         flexDirection: 'row',
         paddingTop: 8,
         marginBottom: 8,
+        marginLeft: 59,
     },
 }
 

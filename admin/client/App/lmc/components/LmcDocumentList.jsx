@@ -6,7 +6,7 @@ const LmcDocumentList = ({ documents, onDelete, listId }) => {
     return (
         <div>
             { Object.keys(documents).map(categoryName => (
-                <div key={categoryName}>
+                <div key={categoryName} style={styles.container}>
                     <h2 style={styles.categoryName}>
                         {categoryName}
                     </h2>
@@ -36,6 +36,9 @@ const styles = {
         fontWeight: 300,
         textOverflow: 'ellipsis',
         hyphens: 'auto',
+    },
+    container: {
+        marginBottom: 40,
     },
     divider: {
         height: 2,
