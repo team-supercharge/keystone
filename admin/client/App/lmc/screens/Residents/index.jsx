@@ -126,7 +126,7 @@ const navbarItems = [
     { label: 'Profile', url: 'profile', octicon: 'person' },
 
     // Removing these until these components are completed
-    // { label: 'Daily report', url: 'daily-report', octicon: 'calendar' },
+    { label: 'Daily report', url: 'daily-report', octicon: 'calendar' },
     // { label: 'Charts', url: 'charts', octicon: 'graph' },
     // { label: 'To-Dos', url: 'to-do', octicon: 'checklist' },
     { label: 'Documents', url: 'documents', octicon: 'file' }

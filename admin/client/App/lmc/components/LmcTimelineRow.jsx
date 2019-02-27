@@ -6,50 +6,86 @@ import LmcLink from './LmcLink.jsx';
 
 
 class LmcTimelineRow extends Component {
-    render () {
-        const { mock, index, total, log, dateFormat } = this.props;
-        const fallback = 'https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png';
-        const image = _.get(log, 'itemIcon.url') || _.get(log, 'categoryIcon.url') || fallback;
 
-        // let revision = log.revisions
-        //     ? _.sortBy(log.revisions, d => Date.now() - new Date(d.revokedAt))[0]
-        //     : null;
-        // TODO: is this right? should we not use the revision data?
+    renderIconTimeline() {
+        const { item } = this.props;
+        const image = _.get(item, 'itemIcon.url')
+            || _.get(item, 'categoryIcon.url')
+            || 'https://cdn2.iconfinder.com/data/icons/business-office-14/256/5-128.png';
+
+        const dotStyle = {
+            ...styles.dot,
+            backgroundColor: item.categoryColor,
+        };
+    
+        return (
+            <div style={dotStyle} className="lmc-timeline-dot">
+                <div className="lmc-dot-icon" style={{ background: `url(${image})`, ...styles.iconStyle }} />
+            </div>
+        )
+    }
+
+    renderHeader() {
+        const { item, dateFormat } = this.props;
+        return (
+            <div style={styles.smallText} className="lmc-timeline-date">
+                { moment(item.timeLogged || item.date).format(dateFormat || 'HH:mm') } - {item.carerName || 'Carer name'}
+                { item.witnessedBy
+                    ? <span>
+                        <span style={{ opacity: 0.7 }}>, witnessed by </span>{item.witnessedBy}
+                    </span> : null }
+            </div>
+        )
+    }
+
+    renderFooter() {
+        const { item } = this.props;
+        if (!item.editedBy) return null;
+        return (
+            <span style={styles.revisionText}>
+                Edited by { item.editedBy } on { moment(item.editedAt).format('DD/MM/YYYY') }
+            </span> 
+        )
+    }
+
+    renderContent() {
+        const { item } = this.props;
+        return (
+            <div style={styles.content}>
+                {this.renderHeader()}
+                <h3 style={styles.titleText}>
+                    {item.title}
+                </h3>
+                <div className="lmc-timeline-desc" style={styles.descriptionText}>
+                    {item.description}
+                </div>
+                {this.renderFooter()}
+            </div>
+        )
+    }
+
+    render () {
+        const {
+            disabled,
+            index,
+            total,
+            item,
+        } = this.props;
 
         const isFirstOrLast = (index !== (total - 1));
         const timelineStyle = isFirstOrLast
-            ? { ...styles.logRow, ...styles.logRowBorder }
-            : styles.logRow;
-        const dotStyle = {
-            ... styles.dot,
-            backgroundColor: log.categoryColor,
-        };
+            ? { ...styles.item, ...styles.itemBorder }
+            : styles.item;
+
+        const url = `${ Keystone.adminPath }/logs/${ item.id }`;
+
         return (
-            <li key={log.id}>
-                <LmcLink disabled={mock} to={`${ Keystone.adminPath }/logs/${ log.id }`} className="lmc-timeline-link">
+            <li key={item.id}>
+                <LmcLink disabled={disabled} to={url} className="lmc-timeline-link">
                     <div style={styles.container}>
                         <div style={timelineStyle}>
-                            <div style={dotStyle} className="lmc-timeline-dot">
-                                <div className="lmc-dot-icon" style={{ background: `url(${image})`, ...styles.iconStyle }} />
-                            </div>
-
-                            <div style={styles.logContent}>
-                                <div style={styles.smallText} className="lmc-timeline-date">
-                                    { moment(log.timeLogged).format(dateFormat || 'HH:mm') } - {log.carerName || 'Carer name'}
-                                    { log.witnessedBy
-                                        ? <span>
-                                            <span style={{ opacity: 0.7 }}>, witnessed by </span>{log.witnessedBy}
-                                        </span> : null }
-                                </div>
-                                <h3 style={styles.titleText}>
-                                    {log.title}
-                                </h3>
-                                <div className="lmc-timeline-desc" style={styles.descriptionText}>{log.description}</div>
-                                { log.editedBy
-                                    ? <span style={styles.revisionText}>
-                                        Edited by { log.editedBy } on { moment(log.editedAt).format('DD/MM/YYYY') }
-                                    </span> : null }
-                            </div>
+                            {this.renderIconTimeline()}
+                            {this.renderContent()}
                         </div>
                     </div>
                 </LmcLink>
@@ -60,7 +96,8 @@ class LmcTimelineRow extends Component {
 
 LmcTimelineRow.propTypes = {
     index: PropTypes.number.isRequired,
-    log: PropTypes.object.isRequired,
+    item: PropTypes.object.isRequired,
+    disabled: PropTypes.bool,
     total: PropTypes.number.isRequired,
 };
 
@@ -69,7 +106,7 @@ const styles = {
     container: {
         paddingLeft: 20,
     },
-    logContent: {
+    content: {
         position: 'relative',
         top: -25,
     },
@@ -86,28 +123,22 @@ const styles = {
     },
     descriptionText: {
         fontSize: 12,
-		// marginLeft: 60,
         color: '#444444',
     },
     revisionText: {
-        // paddingLeft: 15,
         fontSize: 11,
         opacity: 0.5,
-		// marginLeft: 60,
         color: '#444444',
     },
-    logRow: {
+    item: {
         position: 'relative',
         paddingLeft: 40,
         paddingBottom: 15,
         margin: '0',
         borderLeft: '4px solid rgba(0,0,0,0)', /* this is super hacky... */
     },
-    logRowBorder: {
+    itemBorder: {
         borderLeft: '4px solid #e4e4e4',
-    },
-    logRowPadded: {
-        paddingTop: 30,
     },
     dot: {
         position: 'absolute',

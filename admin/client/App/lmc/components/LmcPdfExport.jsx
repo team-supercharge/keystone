@@ -334,7 +334,7 @@ class LmcPdfExport extends React.Component {
                             [
                                 heading,
                                 {
-                                    text: `${resident.name} - ${title}`,
+                                    text: `${resident.name.first} ${resident.name.last} - ${title}`,
                                     style: ['h1'],
                                     margin: [0, 0, 0, 30],
                                 },
@@ -434,7 +434,7 @@ class LmcPdfExport extends React.Component {
                 ? this.getDocDefinition(this.props, image, StoolTable)
                 : this.getDocDefinition(this.props, image, LogListTable);
             // pdfMake.createPdf(docDefinition).open();
-            pdfMake.createPdf(docDefinition).download(`${resident.name} ${title}.pdf`);
+            pdfMake.createPdf(docDefinition).download(`${resident.name.first} ${resident.name.last} - ${title}.pdf`);
             this.setState({ isLoading: false });
         };
 
