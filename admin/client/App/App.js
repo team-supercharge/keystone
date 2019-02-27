@@ -40,8 +40,6 @@ const App = (props) => {
 		}
 	};
 
-	console.log(intercomUser)
-
 	let children = props.children;
 	// If we're on either a list or an item view
 	let currentList, currentSection;

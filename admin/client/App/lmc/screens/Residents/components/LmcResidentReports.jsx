@@ -1,22 +1,83 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ActionCreators } from '../../../actions/actions'
+// import { ActionCreators } from '../../../actions/actions'
+import LmcDataSource from './LmcDataSource.jsx'
+import LmcLogTimeline from '../../../components/LmcLogTimeline.jsx'
+import LmcPdfExport from '../../../components/LmcPdfExport.jsx'
+import LmcDateRangePicker from '../../../components/LmcDateRangePicker.jsx'
+import Selectors from '../../../selectors'
+import moment from 'moment'
 
 export class LmcResidentReports extends Component {
-    componentDidMount() {
-        this.props.fetchLogs()
+    constructor(props) {
+        super(props)
+        this.state = {
+            startDate: moment().subtract(10, 'days'),
+            endDate: moment(),
+        }
+        this.setDateRange = this.setDateRange.bind(this);
     }
 
-    componentDidUpdate(prevProps) {
-        const { selectedResident, fetchLogs } = this.props
-        if (selectedResident !== prevProps.selectedResident) {
-            fetchLogs()
-        } 
+    setDateRange ({ startDate, endDate }) {
+        this.setState({
+            endDate: endDate ? moment(endDate).endOf('day') : null,
+            startDate: startDate ? moment(startDate).startOf('day') : null,
+        });
+    }
+
+    renderSuccess(logs) {
+        const { residentProfile } = this.props
+        return (
+            <div>
+                {logs && logs.length ?
+                    <LmcPdfExport
+                        logs={logs}
+                        resident={residentProfile}
+                        title='Daily Report'
+                        headerDate={true}
+                        groupBy='date'
+                        dateFormat='HH:MM'
+                /> : null}
+                <LmcLogTimeline logs={logs} />
+            </div>
+        )
+    }
+
+    getQuery() {
+        const {
+            startDate,
+            endDate
+        } = this.state;
+        let query = {};
+        if (endDate) query.to = endDate.toISOString()
+        if (startDate) query.from = startDate.toISOString()
+        return query
     }
 
     render() {
+        const { selectedResident } = this.props
+        if (!selectedResident) return null
+        const {
+            startDate,
+            endDate
+        } = this.state;
+        let query = this.getQuery();
+
         return (
-            <div>{JSON.stringify(this.props.logs)}</div>
+            <div>
+                <LmcDateRangePicker
+                    startDate={startDate}
+                    endDate={endDate}
+                    maximumNights={28}
+                    blockFuture
+                    onChange={this.setDateRange}
+                />
+                <LmcDataSource
+                    query={query}
+                    url={`${Keystone.adminPath}/api/reports/residents/${selectedResident}/logs`}
+                    renderSuccess={(logs) => this.renderSuccess(logs)}
+                />
+            </div>
         )
     }
 }
@@ -24,13 +85,13 @@ export class LmcResidentReports extends Component {
 const mapStateToProps = (state) => {
     return {
         selectedResident: state.residents.selectedResident,
-        logs: state.residents.selectedResidentLogs
+        residentProfile: Selectors.getSelectedResidentProfile(state)
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchLogs: () => dispatch(ActionCreators.loadResidentLogs())
+        // fetchLogs: () => dispatch(ActionCreators.loadResidentLogs())
     }
 }
 
