@@ -4,6 +4,9 @@ export const getJSON = ({ url }) => {
     if (url.match(/residents/)) {
         url += '?anyStatus=true'
     }
+    if (url.match(/carers/)) {
+        url += '?withCounts=true'
+    }
     return new Promise((resolve, reject) => {
         xhr({
             url,

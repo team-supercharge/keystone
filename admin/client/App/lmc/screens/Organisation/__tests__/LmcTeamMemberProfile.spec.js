@@ -15,6 +15,7 @@ describe('LmcTeamMemberProfile', () => {
         selectedUser = 'TestId'
         selectedUserProfile = {
             name: { first: 'Test', last: 'TeamMember' },
+            email: 'TestEmail',
             id: selectedUser,
             active: true,
             picture: 'TestPictureUrl',
@@ -22,7 +23,7 @@ describe('LmcTeamMemberProfile', () => {
         wrapper = shallow(
             <LmcTeamMemberProfile
                 selectedUser={selectedUser}
-                selectedUserProfile={selectedUserProfile}
+                profile={selectedUserProfile}
             />
         )
     })
@@ -31,9 +32,9 @@ describe('LmcTeamMemberProfile', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('renders a link to edit the team member information', () => {
-        const link = wrapper.find('Link')
-        expect(link.props().children).toEqual('Edit Information')
-        expect(link.props().to).toEqual(`${Keystone.adminPath}/users/${selectedUser}`)
+    it('renders a button to edit the team member information', () => {
+        const button = wrapper.find('GlyphButton')
+        expect(button.props().children).toEqual('Edit')
+        expect(button.props().to).toEqual(`${Keystone.adminPath}/users/${selectedUser}`)
     })
 })

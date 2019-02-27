@@ -62,6 +62,7 @@ ShallowWrapper {
           "flex": "3.5",
           "height": "83vh",
           "overflow": "scroll",
+          "padding": "0px 20px 0px 20px",
           "wordWrap": "break-word",
         }
       }
@@ -70,8 +71,8 @@ ShallowWrapper {
         style={
           Object {
             "margin": "0 auto",
-            "maxWidth": 800,
-            "padding": "50px 0px 0px 0px",
+            "maxWidth": 1000,
+            "paddingTop": 50,
           }
         }
       >
@@ -136,6 +137,7 @@ ShallowWrapper {
             "flex": "3.5",
             "height": "83vh",
             "overflow": "scroll",
+            "padding": "0px 20px 0px 20px",
             "wordWrap": "break-word",
           }
         }
@@ -144,8 +146,8 @@ ShallowWrapper {
           style={
             Object {
               "margin": "0 auto",
-              "maxWidth": 800,
-              "padding": "50px 0px 0px 0px",
+              "maxWidth": 1000,
+              "paddingTop": 50,
             }
           }
         >
@@ -290,6 +292,7 @@ ShallowWrapper {
                 "flex": "3.5",
                 "height": "83vh",
                 "overflow": "scroll",
+                "padding": "0px 20px 0px 20px",
                 "wordWrap": "break-word",
               }
             }
@@ -298,8 +301,8 @@ ShallowWrapper {
               style={
                 Object {
                   "margin": "0 auto",
-                  "maxWidth": 800,
-                  "padding": "50px 0px 0px 0px",
+                  "maxWidth": 1000,
+                  "paddingTop": 50,
                 }
               }
             >
@@ -364,6 +367,7 @@ ShallowWrapper {
                 "flex": "3.5",
                 "height": "83vh",
                 "overflow": "scroll",
+                "padding": "0px 20px 0px 20px",
                 "wordWrap": "break-word",
               }
             }
@@ -372,8 +376,8 @@ ShallowWrapper {
               style={
                 Object {
                   "margin": "0 auto",
-                  "maxWidth": 800,
-                  "padding": "50px 0px 0px 0px",
+                  "maxWidth": 1000,
+                  "paddingTop": 50,
                 }
               }
             >
