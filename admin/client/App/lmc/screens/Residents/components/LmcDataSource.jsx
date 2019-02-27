@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-refetch'
 import _ from 'lodash'
 import LmcLoadingScreen from '../../../components/LmcLoadingScreen.jsx'
@@ -7,24 +8,45 @@ import { BlankState } from '../../../../elemental'
 export class LmcDataSource extends Component {
     render () {
         const {
-            dataFetch,
+            dataFetch: {
+                pending,
+                rejected,
+                reason,
+                value,
+                fulfilled
+            },
             errorMessage,
+            noResultMessage,
             renderSuccess,
+            ...props
         } = this.props
 
-        if (dataFetch.pending) {
-            return <LmcLoadingScreen />
+        if (pending) return <LmcLoadingScreen {...props} />
+
+        if (rejected) {
+            const msg = errorMessage || reason.message || 'Oops.. Something went wrong'
+            return <BlankState heading={msg} {...props} />
         }
 
-        if (dataFetch.rejected) {
-            const msg = errorMessage || dataFetch.reason.message || 'Oops.. Something went wrong'
-            return <BlankState heading={msg} />
-        }
-
-        if (dataFetch.fulfilled) {
-            return renderSuccess(dataFetch.value.result)
+        if (fulfilled) {
+            if (_.get(value, 'result.length')) {
+                return (
+                    <div {...props}>
+                        {renderSuccess(value.result)}
+                    </div>
+                )
+            } else {
+                return <BlankState heading={noResultMessage || 'No result'} {...props} />
+            }
         }
     }
+}
+
+LmcDataSource.propTypes = {
+    dataFetch: PropTypes.object.isRequired,
+    renderSuccess: PropTypes.func.isRequired,
+    errorMessage: PropTypes.object,
+    noResultMessage: PropTypes.object,
 }
 
 // https://stackoverflow.com/questions/1714786/query-string-encoding-of-a-javascript-object

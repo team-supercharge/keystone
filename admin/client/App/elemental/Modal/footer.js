@@ -25,7 +25,7 @@ ModalFooter.defaultProps = {
 
 const classes = StyleSheet.create({
 	footer: {
-		borderTop: `2px solid ${theme.color.gray10}`,
+		// borderTop: `2px solid ${theme.color.gray10}`,
 		display: 'flex',
 		paddingBottom: theme.modal.padding.footer.vertical,
 		paddingLeft: theme.modal.padding.footer.horizontal,

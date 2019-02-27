@@ -10,6 +10,8 @@ import AlertMessages from './AlertMessages';
 import { Fields } from 'FieldTypes';
 import InvalidFieldType from './InvalidFieldType';
 import { Button, Form, Modal } from '../elemental';
+import Swal from 'sweetalert2'
+
 
 const CreateForm = React.createClass({
 	displayName: 'CreateForm',
@@ -97,6 +99,18 @@ const CreateForm = React.createClass({
 		const formData = new FormData(createForm);
 		this.props.list.createItem(formData, (err, data) => {
 			if (data) {
+				const Toast = Swal.mixin({
+					toast: true,
+					position: 'top',
+					showConfirmButton: false,
+					timer: 5000
+				})
+
+				Toast.fire({
+					type: 'success',
+					title: 'Successfully created ' + this.props.list.singular
+				})
+
 				if (this.props.onCreate) {
 					this.props.onCreate(data);
 				} else {
@@ -171,6 +185,7 @@ const CreateForm = React.createClass({
 			form.push(React.createElement(Fields[field.type], fieldProps));
 		});
 
+		// https://github.com/sweetalert2/sweetalert2-react-content/blob/master/src/index.js
 		return (
 			<Form layout="horizontal" onSubmit={this.submitForm}>
 				<Modal.Header

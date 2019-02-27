@@ -52,7 +52,7 @@ ModalHeader.contextTypes = {
 const classes = StyleSheet.create({
 	header: {
 		alignItems: 'center',
-		borderBottom: `2px solid ${theme.color.gray10}`,
+		// borderBottom: `2px solid ${theme.color.gray10}`,
 		display: 'flex',
 		paddingBottom: theme.modal.padding.header.vertical,
 		paddingLeft: theme.modal.padding.header.horizontal,

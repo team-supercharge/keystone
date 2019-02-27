@@ -41,4 +41,5 @@ module.exports = [
 	'redux',
 	'vkey',
 	'xhr',
+	'sweetalert2'
 ];

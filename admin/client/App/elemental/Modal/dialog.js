@@ -80,7 +80,7 @@ class ModalDialog extends Component {
 				<div className={css(classes.dialog)} style={{ width }} data-screen-id="modal-dialog">
 					{children}
 				</div>
-				<ScrollLock />
+				{/* <ScrollLock /> */}
 			</div>
 		);
 	}
