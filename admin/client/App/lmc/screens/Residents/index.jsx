@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../actions/actions'
-import { selectList } from '../../../screens/List/actions'
 import { isBrowser, isTablet } from 'react-device-detect'
 import { LmcSpinner } from '../../components'
 import { BlankState, GlyphButton } from '../../../elemental'
@@ -11,9 +10,7 @@ import LmcTabBar from '../../components/LmcTabBar.jsx'
 
 export class LmcResidentsScreen extends Component {
     componentDidMount () {
-        const { selectList, fetchResidents } = this.props
-        selectList()
-        fetchResidents()
+        this.props.fetchResidents()
     }
     
     onCreateResidentComplete = (resident) => {
@@ -190,14 +187,13 @@ LmcResidentsScreen.propTypes = {
 const mapStateToProps = (state) => {
     return {
         residents: state.data.residents,
-        selectedResident: state.residents.selectedResident
+        selectedResident: state.residents.selectedResident,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectList: () => dispatch(selectList('residents')),
-        fetchResidents: () => dispatch(ActionCreators.loadList('residents')),
+        fetchResidents: () => dispatch(ActionCreators.fetchResidents()),
         setSelectedResident: (id) => dispatch(ActionCreators.setSelectedResident(id))
     }
 }
