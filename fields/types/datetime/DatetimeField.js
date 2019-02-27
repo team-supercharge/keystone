@@ -10,6 +10,11 @@ import {
 	InlineGroup as Group,
 	InlineGroupSection as Section,
 } from '../../../admin/client/App/elemental';
+import Cleave from 'cleave.js/react';
+import styles from '../../../admin/client/App/elemental/FormInput/styles';
+import { css, StyleSheet } from 'aphrodite/no-important';
+
+const timeInputClasses = StyleSheet.create(styles);
 
 module.exports = Field.create({
 
@@ -112,6 +117,7 @@ module.exports = Field.create({
 
 	renderUI () {
 		var input;
+
 		if (this.shouldRenderField()) {
 			input = (
 				<div>
@@ -126,11 +132,23 @@ module.exports = Field.create({
 							/>
 						</Section>
 						<Section grow>
-							<FormInput
+							{/* <FormInput
 								autoComplete="off"
 								name={this.getInputName(this.props.paths.time)}
 								onChange={this.timeChanged}
 								placeholder={this.state.timePlaceholder}
+								value={this.state.timeValue}
+							/> */}
+							<Cleave
+								className={css(timeInputClasses.FormInput)}
+								name={this.getInputName(this.props.paths.time)}
+								onChange={this.timeChanged}
+								options={{
+									time: true,
+									timePattern: ['h', 'm']
+								}}
+								placeholder={this.state.timePlaceholder}
+								ref="input"
 								value={this.state.timeValue}
 							/>
 						</Section>
