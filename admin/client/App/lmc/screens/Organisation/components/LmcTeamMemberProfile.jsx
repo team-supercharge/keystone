@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Selectors from '../../../selectors/index'
 import { connect } from 'react-redux'
@@ -14,15 +14,18 @@ export const LmcTeamMemberProfile = ({ profile, selectedUser }) => {
         <div>
             <div 
                 className='lmc-profile-picture__large' 
-                style={{ ...styles.image, background: `url(${profile.picture || PLACEHOLDER_IMAGE})` }} 
+                style={{ 
+                    ...styles.image, 
+                    background: `url(${profile.picture || PLACEHOLDER_IMAGE})` 
+                }} 
             />
-            <div className='lmc-profile-main-info' style={styles.infoBox}>
+            <div className='lmc-profile-main-info'>
                 <div style={styles.basicInfoContainer}>
                     <span style={styles.name}>
                         { `${profile.name.first} ${profile.name.last}` }
                     </span>
                     <span style={styles.basicInfoText}>
-                        { role }
+                        Role: { role }
                     </span>
                     <span style={styles.basicInfoText} >
                         { profile.email }
@@ -45,7 +48,7 @@ export const LmcTeamMemberProfile = ({ profile, selectedUser }) => {
     )
 }
 
-const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png';
+const PLACEHOLDER_IMAGE = 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png'
 
 const styles = {
     basicInfoContainer: {
@@ -68,12 +71,6 @@ const styles = {
     image: {
         position: 'relative',
         zIndex: 1,
-    },
-    linkButtonText: {
-        color: 'black',
-        display: 'block',
-        height: '100%',
-        textDecoration: 'none'
     },
     name: {
         fontWeight: 600,
