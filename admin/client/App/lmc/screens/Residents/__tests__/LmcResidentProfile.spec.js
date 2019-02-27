@@ -2,22 +2,30 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { LmcResidentProfile } from '../components/LmcResidentProfile.jsx'
 import { Link } from 'react-router'
+import MockDate from 'mockdate'
+
+MockDate.set('1/1/2019')
 
 describe('LmcResidentProfile', () => {
     let wrapper
     let selectedResident
-    let savedKeystone
+    let profile
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: '/admin' }
     })
 
     beforeEach(() => {
         selectedResident = 'testId'
+        profile = {
+            name: { first: 'Test', last: 'Resident' },
+            status: 'active',
+            dateOfBirth: new Date(1900, 2, 1)
+        }
         wrapper = shallow(
             <LmcResidentProfile 
                 selectedResident={selectedResident}
+                profile={profile}
             />
         )
     })
@@ -27,12 +35,18 @@ describe('LmcResidentProfile', () => {
     })
 
     it('has a link to edit the selected resident profile', () => {
-        const editLink= wrapper.find(Link).first()
-        expect(editLink.props().children).toEqual('Edit Information')
-        expect(editLink.props().to).toEqual(`/admin/residents/${selectedResident}`)
+        const button = wrapper.find('GlyphButton')
+        expect(button.props().children).toEqual('Edit')
+        expect(button.props().to).toEqual(`/admin/residents/${selectedResident}`)
     })
 
-    afterAll(() => {
-        global.Keystone = savedKeystone
+    it('renders the resident name in its first span', () => {
+        const name = wrapper.find('span').first()
+        expect(name.text()).toEqual('Test Resident')
+    })
+
+    it('renders the resident age and birthday in its second span', () => {
+        const birthdayAndAge = wrapper.find('span').at(1)
+        expect(birthdayAndAge.text()).toEqual('1st March 1900 (118)')
     })
 })

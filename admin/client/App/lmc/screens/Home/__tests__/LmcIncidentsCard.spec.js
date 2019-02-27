@@ -7,10 +7,8 @@ MockDate.set('1/1/2019')
 
 describe('LmcIncidentsCard', () => {
     let wrapper
-    let savedKeystone
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: 'TestPath' }
     })
 
@@ -29,6 +27,5 @@ describe('LmcIncidentsCard', () => {
     
     afterAll(() => {
         MockDate.reset()
-        global.Keystone = savedKeystone
     })
 })

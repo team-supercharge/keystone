@@ -11,6 +11,7 @@ module.exports = [
 	'async',
 	'blacklist',
 	'classnames',
+	'cleave.js/react',
 	'display-name',
 	'elemental',
 	'expression-match',

@@ -117,6 +117,7 @@ const styles = {
         height: '83vh',
         overflow: 'scroll',
         wordWrap: 'break-word',
+        padding: '0px 20px 0px 20px',
     },
     noUsersMessage: {
         padding: 60,
@@ -126,15 +127,16 @@ const styles = {
         height: '83vh',
         overflow: 'scroll',
         wordWrap: 'break-word',
+        padding: '0px 20px 0px 20px',
     },
     sidebar: { 
         height: '83vh', 
         maxHeight: '83vh' 
     },
     userInfoContainer: {
-        maxWidth: 800,
+        maxWidth: 1000,
         margin: '0 auto',
-        padding: '50px 0px 0px 0px',
+        paddingTop: 50,
     }
 }
 

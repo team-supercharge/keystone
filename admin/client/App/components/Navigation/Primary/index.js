@@ -6,6 +6,7 @@
 import React from 'react';
 import { Container } from '../../../elemental';
 import PrimaryNavItem from './NavItem';
+import { isBrowser, isTablet } from 'react-device-detect';
 import _ from 'lodash';
 import { fetchCurrentUser } from '../../../lmc/common/dataService';
 
@@ -39,7 +40,7 @@ var PrimaryNavigation = React.createClass({
 	},
 	handleResize () {
 		this.setState({
-			navIsVisible: window.innerWidth >= 768,
+			navIsVisible: isBrowser || isTablet,
 		});
 	},
 	// Render the sign out button

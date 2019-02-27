@@ -7,13 +7,11 @@ MockDate.set('1/1/2019')
 
 describe('LmcTasksCard', () => {
     let wrapper
-    let savedKeystone
     let onCreate
     let logs
     let tasks
 
     beforeAll(() => {
-        savedKeystone = global.Keystone
         global.Keystone = { adminPath: 'TestPath' }
         onCreate = jest.fn()
     })
@@ -45,7 +43,6 @@ describe('LmcTasksCard', () => {
     })
 
     afterAll(() => {
-        global.Keystone = savedKeystone
         MockDate.reset()
     })
 })

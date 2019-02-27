@@ -1,34 +1,32 @@
 import moment from 'moment';
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import { FormInput } from '../../admin/client/App/elemental';
+import Cleave from 'cleave.js/react';
 import DayPicker from 'react-day-picker';
 import Popout from '../../admin/client/App/shared/Popout';
-
+import styles from '../../admin/client/App/elemental/FormInput/styles';
+import { css, StyleSheet } from 'aphrodite/no-important';
 
 let lastId = 0;
+
+const classes = StyleSheet.create(styles);
+const FORMAT = 'DD-MM-YYYY'
 
 module.exports = React.createClass({
 	displayName: 'DateInput',
 	propTypes: {
 		className: React.PropTypes.string,
-		format: React.PropTypes.string,
 		name: React.PropTypes.string,
 		onChange: React.PropTypes.func.isRequired,
 		path: React.PropTypes.string,
 		value: React.PropTypes.string,
 	},
-	getDefaultProps () {
-		return {
-			format: 'YYYY-MM-DD',
-		};
-	},
 	getInitialState () {
 		const id = ++lastId;
 		let month = new Date();
-		const { format, value } = this.props;
-		if (moment(value, format, true).isValid()) {
-			month = moment(value, format).toDate();
+		const { value } = this.props;
+		if (moment(value, FORMAT, true).isValid()) {
+			month = moment(value, FORMAT).toDate();
 		}
 		return {
 			id: `_DateInput_${id}`,
@@ -43,7 +41,7 @@ module.exports = React.createClass({
 	componentWillReceiveProps: function (newProps) {
 		if (newProps.value === this.props.value) return;
 		this.setState({
-			month: moment(newProps.value, this.props.format).toDate(),
+			month: moment(newProps.value, FORMAT).toDate(),
 			inputValue: newProps.value,
 		}, this.showCurrentMonth);
 	},
@@ -59,12 +57,12 @@ module.exports = React.createClass({
 		if (e.key === 'Enter') {
 			e.preventDefault();
 			// If the date is strictly equal to the format string, dispatch onChange
-			if (moment(this.state.inputValue, this.props.format, true).isValid()) {
+			if (moment(this.state.inputValue, FORMAT, true).isValid()) {
 				this.props.onChange({ value: this.state.inputValue });
 			// If the date is not strictly equal, only change the tab that is displayed
-			} else if (moment(this.state.inputValue, this.props.format).isValid()) {
+			} else if (moment(this.state.inputValue, FORMAT).isValid()) {
 				this.setState({
-					month: moment(this.state.inputValue, this.props.format).toDate(),
+					month: moment(this.state.inputValue, FORMAT).toDate(),
 				}, this.showCurrentMonth);
 			}
 		}
@@ -72,7 +70,7 @@ module.exports = React.createClass({
 	handleDaySelect (e, date, modifiers) {
 		if (modifiers && modifiers.disabled) return;
 
-		var value = moment(date).format(this.props.format);
+		var value = moment(date).format(FORMAT);
 
 		this.props.onChange({ value });
 		this.setState({
@@ -114,20 +112,24 @@ module.exports = React.createClass({
 		const selectedDay = this.props.value;
 		// react-day-picker adds a class to the selected day based on this
 		const modifiers = {
-			selected: (day) => moment(day).format(this.props.format) === selectedDay,
+			selected: (day) => moment(day).format(FORMAT) === selectedDay,
 		};
 
 		return (
 			<div className={this.props.className || ''}>
-				<FormInput
-					autoComplete="off"
+				<Cleave
+					className={css(classes.FormInput)}
 					id={this.state.id}
 					name={this.props.name}
 					onChange={this.handleInputChange}
 					onFocus={this.handleFocus}
 					onBlur={this.handleBlur}
 					onKeyPress={this.handleKeyPress}
-					placeholder={this.props.format}
+					options={{
+						date: true,
+						datePattern: ['d', 'm', 'Y']
+					}}
+					placeholder={FORMAT}
 					ref="input"
 					value={this.state.inputValue}
 				/>

@@ -60,7 +60,7 @@ function setLoadedLists (result) {
     }
 }
 
-function setLoadedList (listId, result) {
+export function setLoadedList (listId, result) {
     return {
         type: types.SET_LOADED_LIST,
         overwrite: true,
