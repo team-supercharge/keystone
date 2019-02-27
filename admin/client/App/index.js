@@ -39,7 +39,8 @@ import LmcResidentsScreen from './lmc/screens/Residents/index.jsx';
 import LmcResidentProfile from './lmc/screens/Residents/components/LmcResidentProfile.jsx';
 import LmcResidentReports from './lmc/screens/Residents/components/LmcResidentReports.jsx';
 import LmcResidentToDos from './lmc/screens/Residents/components/LmcResidentToDos.jsx';
-import LmcResidentCharts from './lmc/screens/Residents/components/LmcResidentCharts.jsx';
+import LmcResidentChartsDashboard from './lmc/screens/Residents/components/LmcResidentChartsDashboard.jsx';
+import LmcResidentChart from './lmc/screens/Residents/components/LmcResidentChart.jsx';
 import LmcResidentDocuments from './lmc/screens/Residents/components/LmcResidentDocuments.jsx';
 
 import LmcTodosView from './lmc/screens/Todos/index.jsx';
@@ -51,6 +52,7 @@ import LmcAdminDashboard from './lmc/screens/AdminReports/LmcAdminDashboard.jsx'
 import LmcAdminHomeDashboard from './lmc/screens/AdminReports/LmcAdminHomeDashboard.jsx';
 import LmcCharts from './lmc/screens/Reports/Charts/index.jsx';
 import LmcHome from './lmc/screens/Home/index.jsx';
+
 
 // Sync the browser history to the Redux store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -93,7 +95,8 @@ ReactDOM.render(
 					<Route path='profile' component={LmcResidentProfile} />
 					<Route path='daily-report' component={LmcResidentReports} />
 					<Route path='to-do' component={LmcResidentToDos} />
-					<Route path='charts' component={LmcResidentCharts} />
+					<Route path='charts' component={LmcResidentChartsDashboard} />
+					<Route path='charts/:reporting_id' component={LmcResidentChart} />
 					<Route path='documents' component={LmcResidentDocuments} />
 				</Route>
 				<Route path="admin-reports" component={LmcAdminReportView} onChange={onListChange}>

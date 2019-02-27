@@ -1,13 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { LmcResidentCharts } from '../components/LmcResidentCharts.jsx'
+import { LmcResidentChartsDashboard } from '../components/LmcResidentChartsDashboard.jsx'
 
-describe('LmcResidentCharts', () => {
+
+describe('LmcResidentChartsDashboard', () => {
     let wrapper
 
     beforeEach(() => {
         wrapper = shallow(
-            <LmcResidentCharts />
+            <LmcResidentChartsDashboard />
         )
     })
 

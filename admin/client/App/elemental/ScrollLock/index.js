@@ -3,13 +3,15 @@ import { Component } from 'react';
 export default class ScrollLock extends Component {
 	constructor () {
 		super();
-		this.lockCount = 0;
+		this.state = { lockCount: 0 }
 	}
 	componentWillMount () {
 		if (typeof window === 'undefined') return;
 
-		this.lockCount++;
-		if (this.lockCount > 1) return;
+		this.setState({
+			lockCount: this.state.lockCount + 1
+		})
+		if (this.state.lockCount > 1) return;
 
 		//	FIXME iOS ignores overflow on body
 		try {
@@ -24,10 +26,12 @@ export default class ScrollLock extends Component {
 		}
 	}
 	componentWillUnmount () {
-		if (typeof window === 'undefined' || this.lockCount === 0) return;
+		// if (typeof window === 'undefined' || this.state.lockCount === 0) return;
 
-		this.lockCount--;
-		if (this.lockCount > 0) return; // Still locked
+		this.setState({
+			lockCount: this.state.lockCount - 1
+		})
+		// if (this.state.lockCount > 0) return; // Still locked
 
 		//	FIXME iOS ignores overflow on body
 		try {

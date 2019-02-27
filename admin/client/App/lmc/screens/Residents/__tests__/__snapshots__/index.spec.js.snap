@@ -70,6 +70,16 @@ ShallowWrapper {
               "url": "profile",
             },
             Object {
+              "label": "Daily report",
+              "octicon": "calendar",
+              "url": "daily-report",
+            },
+            Object {
+              "label": "Charts",
+              "octicon": "graph",
+              "url": "charts",
+            },
+            Object {
               "label": "Documents",
               "octicon": "file",
               "url": "documents",
@@ -159,6 +169,16 @@ ShallowWrapper {
                 "label": "Profile",
                 "octicon": "person",
                 "url": "profile",
+              },
+              Object {
+                "label": "Daily report",
+                "octicon": "calendar",
+                "url": "daily-report",
+              },
+              Object {
+                "label": "Charts",
+                "octicon": "graph",
+                "url": "charts",
               },
               Object {
                 "label": "Documents",
@@ -321,6 +341,16 @@ ShallowWrapper {
                     "url": "profile",
                   },
                   Object {
+                    "label": "Daily report",
+                    "octicon": "calendar",
+                    "url": "daily-report",
+                  },
+                  Object {
+                    "label": "Charts",
+                    "octicon": "graph",
+                    "url": "charts",
+                  },
+                  Object {
                     "label": "Documents",
                     "octicon": "file",
                     "url": "documents",
@@ -410,6 +440,16 @@ ShallowWrapper {
                     "label": "Profile",
                     "octicon": "person",
                     "url": "profile",
+                  },
+                  Object {
+                    "label": "Daily report",
+                    "octicon": "calendar",
+                    "url": "daily-report",
+                  },
+                  Object {
+                    "label": "Charts",
+                    "octicon": "graph",
+                    "url": "charts",
                   },
                   Object {
                     "label": "Documents",

@@ -15,6 +15,7 @@ export class LmcResidentReports extends Component {
             startDate: moment().subtract(10, 'days'),
             endDate: moment(),
         }
+        this.renderSuccess = this.renderSuccess.bind(this);
         this.setDateRange = this.setDateRange.bind(this);
     }
 
@@ -27,17 +28,17 @@ export class LmcResidentReports extends Component {
 
     renderSuccess(logs) {
         const { residentProfile } = this.props
+        if (!logs || !logs.length) return null;
         return (
             <div>
-                {logs && logs.length ?
-                    <LmcPdfExport
-                        logs={logs}
-                        resident={residentProfile}
-                        title='Daily Report'
-                        headerDate={true}
-                        groupBy='date'
-                        dateFormat='HH:MM'
-                /> : null}
+                <LmcPdfExport
+                    logs={logs}
+                    resident={residentProfile}
+                    title='Daily Report'
+                    headerDate={true}
+                    groupBy='date'
+                    dateFormat='HH:MM'
+                />
                 <LmcLogTimeline logs={logs} />
             </div>
         )
@@ -72,11 +73,14 @@ export class LmcResidentReports extends Component {
                     blockFuture
                     onChange={this.setDateRange}
                 />
-                <LmcDataSource
-                    query={query}
-                    url={`${Keystone.adminPath}/api/reports/residents/${selectedResident}/logs`}
-                    renderSuccess={(logs) => this.renderSuccess(logs)}
-                />
+                <div style={{ marginTop: 10 }}>
+                    <LmcDataSource
+                        query={query}
+                        emptyMessage='No logs to display'
+                        url={`${Keystone.adminPath}/api/reports/residents/${selectedResident}/logs`}
+                        renderSuccess={this.renderSuccess}
+                    />
+                </div>
             </div>
         )
     }
@@ -89,10 +93,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        // fetchLogs: () => dispatch(ActionCreators.loadResidentLogs())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LmcResidentReports)
+export default connect(mapStateToProps)(LmcResidentReports)
