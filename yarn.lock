@@ -2219,6 +2219,11 @@ clean-css@^4.1.11:
   dependencies:
     source-map "~0.6.0"
 
+cleave.js@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/cleave.js/-/cleave.js-1.4.7.tgz#5e94f4880946aa778b55ecaafc76d122600ff4d0"
+  integrity sha512-+fewLSc8Q5Bi6vYEaTEz1Qsl+z7KT3EmN0iNexszN36CZCmcZs5EAYsJB9ZvQoDoEudGF9Vb7/VF/f7ns/tCgA==
+
 cli-color@^0.3.2:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/cli-color/-/cli-color-0.3.3.tgz#12d5bdd158ff8a0b0db401198913c03df069f6f5"

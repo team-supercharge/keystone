@@ -1,9 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Selectors from '../../../selectors/index'
+import { isBrowser, isTablet } from 'react-device-detect'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { GlyphButton } from '../../../../elemental'
+
+const renderEditButton = (link) => {
+    return (isBrowser || isTablet) ? (
+        <GlyphButton
+            component={Link}
+            glyph='pencil'
+            position='left'
+            style={styles.editButton}
+            to={link}
+        >
+            Edit
+        </GlyphButton>
+    ) : (
+        <GlyphButton
+            component={Link}
+            glyph='pencil'
+            position='default'
+            style={styles.editButton}
+            to={link}
+        />
+    )
+}
 
 export const LmcTeamMemberProfile = ({ profile, selectedUser }) => {
     if (!profile) return null
@@ -34,15 +57,7 @@ export const LmcTeamMemberProfile = ({ profile, selectedUser }) => {
                         { `${profile.logCount} logs this month` }
                     </span>
                 </div>
-                <GlyphButton
-                    component={Link}
-                    glyph='pencil'
-                    position='left'
-                    style={styles.editButton}
-                    to={editLink}
-                >
-                    Edit
-                </GlyphButton>
+                { renderEditButton(editLink) }
             </div>
         </div>
     )
