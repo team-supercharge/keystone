@@ -7,71 +7,49 @@ import {
 import LmcTimelineRow from './LmcTimelineRow.jsx';
 
 
+const LmcLogDay = (perDay, index) => {
+	const total = _.get(perDay, 'logs.length') || 0;
+	const Logs = _.sortBy(perDay.logs, d => -moment(d.timeLogged).toDate())
+		.map((log, index) => <LmcTimelineRow key={log.id} log={log} index={index} total={total} />);
+
+	return (
+		<ul style={styles.logsList} key={index}>
+			<li style={styles.logHeader}>
+				<h2 style={styles.logDate}>
+					{moment(perDay.date).format('ddd DD MMM')}
+				</h2>
+				<div className="lmc-theme-gradient" style={styles.divider} />
+			</li>
+			{ Logs }
+		</ul>
+	);
+};
+
 export default class LmcLogTimeline extends React.Component {
-	groupByDay(logs) {
-		return _.chain(logs)
-			.map(log => {
-				let timeLogged = moment(log.timeLogged);
-				return {
-					...log,
-					date: timeLogged.format('YYYY-MM-DD'),
-					timeLoggedDate: timeLogged.toDate(),
-					timeLogged
-				}
-			})
-			.groupBy('date')
-			.map((group, date) => ({
-				date,
-				logs: _.sortBy(group, '-timeLoggedDate')
-			}))
-			.sortBy(({ date }) => -moment(date).valueOf())
-			.value();
-	}
-
-	renderLogs(section) {
-		const total = _.get(section, 'logs.length') || 0;
-		return (<div>{
-			section.logs.map((log, index) => (
-					<LmcTimelineRow
-						key={log.id}
-						item={log}
-						index={index}
-						total={total}
-					/>
-				))
-		}</div>)
-	}
-
-	renderSection(section, index) {
-		return (
-			<ul style={styles.logsList} key={index}>
-				<li style={styles.logHeader}>
-					<h2 style={styles.logDate}>
-						{moment(section.date).format('ddd DD MMM')}
-					</h2>
-					<div className="lmc-theme-gradient" style={styles.divider} />
-				</li>
-				{ this.renderLogs(section) }
-			</ul>
-		);
-	}
-
-	render() {
-		const { logs } = this.props;
-		const isEmpty = !logs || !logs.length;
-		const sections = this.groupByDay(logs);
-
+    groupByDay(logs) {
+        return _.chain(logs)
+            .sortBy(d => moment(d.timeLogged).toDate(), 'desc')
+            .reverse()
+            .groupBy(({ timeLogged }) => moment(timeLogged).format('YYYY-MM-DD'))
+            .map((group, date) => ({ date, logs: group }))
+            .sortBy(({ date }) => -moment(date).valueOf())
+            .value();
+    }
+    render() {
+        const { logs } = this.props;
+        const isEmpty = !logs || !logs.length;
+        const logsByDay = this.groupByDay(logs);
 		return (
 			<div style={styles.container}>
 				<div style={styles.logsContainer}>
 					{ isEmpty
 						? <BlankState heading={`No logs found...`} style={{ marginTop: 40 }} />
-						: sections.map((section, index) => this.renderSection(section, index))
+						: logsByDay.map(LmcLogDay)
 					}
 				</div>
 			</div>
-		);
-	}
+        );
+    }
 }
 
 

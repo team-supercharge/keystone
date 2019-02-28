@@ -6,6 +6,8 @@ import {
     GlyphButton,
     Spinner,
 } from '../../elemental';
+import { browserName } from 'react-device-detect';
+
 
 // https://github.com/bpampuch/pdfmake/issues/910
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -270,6 +272,7 @@ class LmcPdfExport extends React.Component {
     constructor (props) {
         super(props);
         this.exportPdf = this.exportPdf.bind(this);
+        this.triggerDownload = this.triggerDownload.bind(this);
         this.state = { isLoading: false };
     }
 
@@ -334,7 +337,7 @@ class LmcPdfExport extends React.Component {
                             [
                                 heading,
                                 {
-                                    text: `${resident.name.first} ${resident.name.last} - ${title}`,
+                                    text: `${resident.name} - ${title}`,
                                     style: ['h1'],
                                     margin: [0, 0, 0, 30],
                                 },
@@ -417,39 +420,46 @@ class LmcPdfExport extends React.Component {
         };
     }
 
+    SVGtoPNG(svg) {
+        return new Promise((resolve, reject) => {
+            saveSvgAsPng.svgAsPngUri(svg, { scale: 3, canvg }, function (uri) {
+                resolve(uri);
+            });
+        });
+    }
+    triggerDownload (image) {
+        const { resident, title, type } = this.props;
+        const docDefinition = (type === 'stool')
+            ? this.getDocDefinition(this.props, image, StoolTable)
+            : this.getDocDefinition(this.props, image, LogListTable);
+
+        pdfMake.createPdf(docDefinition)
+            .download(`${resident.name.first} ${resident.name.last} - ${title}.pdf`);
+
+        this.setState({ isLoading: false });
+    }
+
     exportPdf () {
         this.setState({ isLoading: true });
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
-        const { resident, title, type } = this.props;
-        const SVGtoPNG = function (svg) {
-            return new Promise((resolve, reject) => {
-                saveSvgAsPng.svgAsPngUri(svg, { scale: 3, canvg }, function (uri) {
-                    resolve(uri);
-                });
-            });
-        };
 
-        const triggerDownload = (image) => {
-            const docDefinition = (type === 'stool')
-                ? this.getDocDefinition(this.props, image, StoolTable)
-                : this.getDocDefinition(this.props, image, LogListTable);
-            // pdfMake.createPdf(docDefinition).open();
-            pdfMake.createPdf(docDefinition).download(`${resident.name.first} ${resident.name.last} - ${title}.pdf`);
-            this.setState({ isLoading: false });
-        };
-
-        let chartElements = document.getElementsByClassName('highcharts-root');
-        if (chartElements.length) {
-            SVGtoPNG(chartElements[0])
-                .then(triggerDownload)
-                .catch((e) => {
-                    // eg. IE.
-                    // requires manual conversion..
-                    console.log(e);
-                    triggerDownload();
-                });
-        } else {
-            triggerDownload();
+        try {
+            let chartElements = document.getElementsByClassName('highcharts-root');
+            if (browserName === "Chrome" && chartElements && chartElements.length) {
+                this.SVGtoPNG(chartElements[0])
+                    .then(this.triggerDownload)
+                    .catch((e) => {
+                        // eg. IE.
+                        // requires manual conversion..
+                        console.log('SVGtoPNG Error: ', e);
+                        this.triggerDownload();
+                    });
+            } else {
+                this.triggerDownload();
+            }
+        } catch (e) {
+            console.log('exportPdf Exception: ', e);
+            this.triggerDownload();
         }
     }
 
