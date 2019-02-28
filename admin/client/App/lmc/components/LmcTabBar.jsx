@@ -50,7 +50,7 @@ export class LmcTabBar extends Component {
                 <nav 
                     className='secondary-navbar' 
                     style={styles.navbar}
-                > 
+                >
                     <ul 
                         className="app-nav app-nav--secondary app-nav--left" 
                         style={styles.list}

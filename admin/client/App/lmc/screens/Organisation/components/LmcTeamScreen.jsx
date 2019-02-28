@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { ActionCreators } from '../../../actions/actions'
 import { isBrowser, isTablet } from 'react-device-detect'
 import { BlankState, GlyphButton } from '../../../../elemental'
+import theme from '../../../../../theme'
 import LmcSidebar from '../../../components/LmcSidebar.jsx'
 import { LmcSpinner } from '../../../components'
 import LmcTeamMemberProfile from './LmcTeamMemberProfile.jsx'
@@ -113,7 +114,9 @@ const styles = {
     },
     mainContainer: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        maxWidth: theme.container.size.large,
+        margin: '0 auto',
     },
     mobileContainer: {
         height: '87vh',

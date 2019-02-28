@@ -7,7 +7,7 @@ import { LmcResidentsScreen } from '../index.jsx'
 describe('LmcResidentsScreen', () => {
     let wrapper
     let residents
-    const fetchResidentsMock = jest.fn()
+    const fetchResidentsAndSelectMock = jest.fn()
     const selectListMock = jest.fn()
     const setSelectedResidentMock = jest.fn()
 
@@ -19,7 +19,7 @@ describe('LmcResidentsScreen', () => {
 
         wrapper = shallow(
             <LmcResidentsScreen
-                fetchResidents={fetchResidentsMock}
+                fetchResidentsAndSelect={fetchResidentsAndSelectMock}
                 residents={residents}
                 selectedResident={residents[0].id}
                 selectList={selectListMock}
@@ -39,7 +39,7 @@ describe('LmcResidentsScreen', () => {
     it('renders a spinner if no data is loaded', () => {
         const loadingWrapper = shallow(
             <LmcResidentsScreen
-                fetchResidents={fetchResidentsMock}
+                fetchResidentsAndSelect={fetchResidentsAndSelectMock}
                 residents={null}
                 selectedResident={null}
                 selectList={selectListMock}
@@ -55,7 +55,7 @@ describe('LmcResidentsScreen', () => {
     it('renders a message if data is successfully loaded, but there are no residents', () => {
         const emptyWrapper = shallow(
             <LmcResidentsScreen
-                fetchResidents={fetchResidentsMock}
+                fetchResidentsAndSelect={fetchResidentsAndSelectMock}
                 residents={[]}
                 selectedResident={null}
                 selectList={selectListMock}

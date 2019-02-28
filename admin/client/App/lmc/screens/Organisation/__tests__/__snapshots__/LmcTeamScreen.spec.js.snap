@@ -13,6 +13,8 @@ ShallowWrapper {
       Object {
         "display": "flex",
         "flexDirection": "row",
+        "margin": "0 auto",
+        "maxWidth": 2000,
       }
     }
   >
@@ -88,6 +90,8 @@ ShallowWrapper {
         Object {
           "display": "flex",
           "flexDirection": "row",
+          "margin": "0 auto",
+          "maxWidth": 2000,
         }
       }
     >
@@ -243,6 +247,8 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
+              "margin": "0 auto",
+              "maxWidth": 2000,
             }
           }
         >
@@ -318,6 +324,8 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
+              "margin": "0 auto",
+              "maxWidth": 2000,
             }
           }
         >

@@ -13,6 +13,8 @@ ShallowWrapper {
       Object {
         "display": "flex",
         "flexDirection": "row",
+        "margin": "0 auto",
+        "maxWidth": 2000,
       }
     }
   >
@@ -105,6 +107,8 @@ ShallowWrapper {
         Object {
           "display": "flex",
           "flexDirection": "row",
+          "margin": "0 auto",
+          "maxWidth": 2000,
         }
       }
     >
@@ -199,7 +203,7 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcResidentsScreen
-        fetchResidents={[MockFunction]}
+        fetchResidentsAndSelect={[MockFunction]}
         residents={
           Array [
             Object {
@@ -224,7 +228,7 @@ ShallowWrapper {
         "context": Object {},
         "onCreateResidentComplete": [Function],
         "props": Object {
-          "fetchResidents": [MockFunction],
+          "fetchResidentsAndSelect": [MockFunction],
           "residents": Array [
             Object {
               "id": "testId1",
@@ -266,6 +270,8 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
+              "margin": "0 auto",
+              "maxWidth": 2000,
             }
           }
         >
@@ -358,6 +364,8 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
+              "margin": "0 auto",
+              "maxWidth": 2000,
             }
           }
         >
@@ -456,7 +464,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcResidentsScreen
-    fetchResidents={[MockFunction]}
+    fetchResidentsAndSelect={[MockFunction]}
     residents={
       Array [
         Object {

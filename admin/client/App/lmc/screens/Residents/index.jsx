@@ -5,6 +5,7 @@ import { ActionCreators } from '../../actions/actions'
 import { isBrowser, isTablet } from 'react-device-detect'
 import { LmcSpinner } from '../../components'
 import { BlankState, GlyphButton } from '../../../elemental'
+import theme from '../../../../theme'
 import LmcSidebar from '../../components/LmcSidebar.jsx'
 import LmcTabBar from '../../components/LmcTabBar.jsx'
 
@@ -159,6 +160,8 @@ const styles = {
     mainContainer: {
         display: 'flex',
         flexDirection: 'row',
+        maxWidth: theme.container.size.large,
+        margin: '0 auto',
     },
     mobileBackLink: {
         paddingLeft: 0,
