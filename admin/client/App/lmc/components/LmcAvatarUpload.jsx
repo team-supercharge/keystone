@@ -6,6 +6,8 @@ import {
     Modal,
     Button,
 } from '../../elemental';
+import { isIE, isEdge } from 'react-device-detect';
+import Swal from 'sweetalert2';
 
 
 class LmcAvatarUpload extends React.Component {
@@ -13,6 +15,7 @@ class LmcAvatarUpload extends React.Component {
         super(props);
         this.handleDrop = this.handleDrop.bind(this);
         this.renderAvatarEditor = this.renderAvatarEditor.bind(this);
+        this.renderBrowserAlert = this.renderBrowserAlert.bind(this);
         this.handleScale = this.handleScale.bind(this);
         this.save = this.save.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
@@ -132,7 +135,9 @@ class LmcAvatarUpload extends React.Component {
     }
 
     toggleModal() {
-        // reset state
+        if (isIE || isEdge) {
+            return this.renderBrowserAlert()
+        }
         this.setState({
             image: null,
             scale: 1,
@@ -159,6 +164,15 @@ class LmcAvatarUpload extends React.Component {
                 }}
             </Dropzone>
         )
+    }
+
+    renderBrowserAlert() {
+        return Swal.fire({
+            title: 'Oops!',
+            html: "Looks like you're using a browser that doesn't support this feature of Log my Care.<br/><br/>Please use <a href='https://www.google.com/chrome/'>Google Chrome</a>, <a href='https://www.mozilla.org/en-GB/firefox/new/'>Firefox</a>, or <a href='https://www.apple.com/uk/safari/'>Safari</a> instead.",
+            type: 'info',
+            confirmButtonText: 'OK'
+          })
     }
 
     renderModal() {
