@@ -9,18 +9,18 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <div>
-      <h2
-        className="lmc-card-title"
-      >
-        Birthdays
-      </h2>
+    <h2
+      className="lmc-card-title"
+    >
+      Birthdays
+    </h2>
+    <div
+      className="lmc-card"
+    >
       <div
-        className="lmc-card"
+        className="lmc-card-body"
       >
-        <div
-          className="lmc-card-body"
-        >
+        <div>
           <LmcResidentListItem
             data={
               Object {
@@ -38,18 +38,18 @@ ShallowWrapper {
   </div>,
   "nodes": Array [
     <div>
-      <div>
-        <h2
-          className="lmc-card-title"
-        >
-          Birthdays
-        </h2>
+      <h2
+        className="lmc-card-title"
+      >
+        Birthdays
+      </h2>
+      <div
+        className="lmc-card"
+      >
         <div
-          className="lmc-card"
+          className="lmc-card-body"
         >
-          <div
-            className="lmc-card-body"
-          >
+          <div>
             <LmcResidentListItem
               data={
                 Object {
@@ -120,18 +120,18 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <div>
-            <h2
-              className="lmc-card-title"
-            >
-              Birthdays
-            </h2>
+          <h2
+            className="lmc-card-title"
+          >
+            Birthdays
+          </h2>
+          <div
+            className="lmc-card"
+          >
             <div
-              className="lmc-card"
+              className="lmc-card-body"
             >
-              <div
-                className="lmc-card-body"
-              >
+              <div>
                 <LmcResidentListItem
                   data={
                     Object {
@@ -149,18 +149,18 @@ ShallowWrapper {
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          <div>
-            <h2
-              className="lmc-card-title"
-            >
-              Birthdays
-            </h2>
+          <h2
+            className="lmc-card-title"
+          >
+            Birthdays
+          </h2>
+          <div
+            className="lmc-card"
+          >
             <div
-              className="lmc-card"
+              className="lmc-card-body"
             >
-              <div
-                className="lmc-card-body"
-              >
+              <div>
                 <LmcResidentListItem
                   data={
                     Object {

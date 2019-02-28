@@ -77,7 +77,7 @@ class LmcHomeTitle extends React.Component {
         } 
         if (isNewHome) {
             return (
-                <p>
+                <p style={styles.tourIntro}>
                     This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
                     <br/>
                     <LmcTour forceOpen={!Keystone.user.firstLogin}/>
@@ -117,6 +117,13 @@ const styles = {
     bold: {
         fontWeight: 'bold',
     },
+    tourIntro: {
+        color: '#999999',
+        fontWeight: 400,
+        fontSize: 18,
+        maxWidth: 800,
+        lineHeight: '21px',
+    }
 };
 
 const DAYS_UNTIL_TOUR_HIDDEN = 7;

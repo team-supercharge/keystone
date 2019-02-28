@@ -15,10 +15,11 @@ export function fetchResidents() {
         const url = `${Keystone.adminPath}/api/reports/residents`
         return getJSON({ url })
             .then(res => {
-                dispatch(setLoadedList('residents', res.result))
+                const residents = res.result
+                dispatch(setLoadedList('residents', residents))
                 const id = getState().residents.selectedResident
-                if (!_.find(res.result, { id })) {
-                    dispatch(setSelectedResident(res.result[0].id))
+                if (!_.find(residents, { id }) && residents.length) {
+                    dispatch(setSelectedResident(residents[0].id))
                 }
             })
             .catch(err => {

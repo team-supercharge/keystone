@@ -34,19 +34,12 @@ class LmcBirthdaysCard extends Component {
 
         return (
             <div>
-                <h2 className="lmc-card-title">
-                    { TITLE }
-                </h2>
-                <div className="lmc-card">
-                    <div className="lmc-card-body">
-                        { data.map(resident => (
-                            <LmcResidentListItem
-                                key={resident.id}
-                                data={resident}
-                                link={d => `${Keystone.adminPath}/residents/${d}`} />
-                        )) }
-                    </div>
-                </div>
+                { data.map(resident => (
+                    <LmcResidentListItem
+                        key={resident.id}
+                        data={resident}
+                        link={d => `${Keystone.adminPath}/residents/${d}`} />
+                )) }
             </div>
         );
     }
@@ -92,9 +85,16 @@ class LmcBirthdaysCard extends Component {
         const birthdays = this.getBirthdays(residents);
         return (
             <div>
-                { birthdays && birthdays.length
-                    ? this.renderBirthdays(birthdays)
-                    : null }
+                <h2 className="lmc-card-title">
+                    { TITLE }
+                </h2>
+                <div className="lmc-card">
+                    <div className="lmc-card-body">
+                    { birthdays && birthdays.length
+                        ? this.renderBirthdays(birthdays) 
+                        : 'Birthdays will appear once you add a resident to your home.'}
+                    </div>
+                </div>
             </div>
         );
     }

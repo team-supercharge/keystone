@@ -18,7 +18,7 @@ export const colors = {
 // move prifile pic from marketing to backend!
 export const images = {
     learn_more_advert: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/careoffice-home-screen-advert.png',
-    profile_placeholder: 'https://s3-eu-west-2.amazonaws.com/lmc-marketing-public/wp-content/uploads/2018/04/12092141/profile_pic_placeholder.png',
+    profile_placeholder: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png',
     list_bullet: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/list-style.png',
     list_bullet_last: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/list-style-last.png',
     green_tick: 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/green-tick.png',
