@@ -28,7 +28,7 @@ ShallowWrapper {
         items={
           Array [
             Object {
-              "label": "Team",
+              "label": "Team Members",
               "octicon": "organization",
               "url": "team",
             },
@@ -36,11 +36,6 @@ ShallowWrapper {
               "label": "Shift Passwords",
               "octicon": "key",
               "url": "shift-passwords",
-            },
-            Object {
-              "label": "Documents",
-              "octicon": "file",
-              "url": "documents",
             },
           ]
         }
@@ -76,7 +71,7 @@ ShallowWrapper {
           items={
             Array [
               Object {
-                "label": "Team",
+                "label": "Team Members",
                 "octicon": "organization",
                 "url": "team",
               },
@@ -84,11 +79,6 @@ ShallowWrapper {
                 "label": "Shift Passwords",
                 "octicon": "key",
                 "url": "shift-passwords",
-              },
-              Object {
-                "label": "Documents",
-                "octicon": "file",
-                "url": "documents",
               },
             ]
           }
@@ -170,7 +160,7 @@ ShallowWrapper {
               items={
                 Array [
                   Object {
-                    "label": "Team",
+                    "label": "Team Members",
                     "octicon": "organization",
                     "url": "team",
                   },
@@ -178,11 +168,6 @@ ShallowWrapper {
                     "label": "Shift Passwords",
                     "octicon": "key",
                     "url": "shift-passwords",
-                  },
-                  Object {
-                    "label": "Documents",
-                    "octicon": "file",
-                    "url": "documents",
                   },
                 ]
               }
@@ -218,7 +203,7 @@ ShallowWrapper {
               items={
                 Array [
                   Object {
-                    "label": "Team",
+                    "label": "Team Members",
                     "octicon": "organization",
                     "url": "team",
                   },
@@ -226,11 +211,6 @@ ShallowWrapper {
                     "label": "Shift Passwords",
                     "octicon": "key",
                     "url": "shift-passwords",
-                  },
-                  Object {
-                    "label": "Documents",
-                    "octicon": "file",
-                    "url": "documents",
                   },
                 ]
               }
