@@ -434,7 +434,7 @@ class LmcPdfExport extends React.Component {
             : this.getDocDefinition(this.props, image, LogListTable);
 
         pdfMake.createPdf(docDefinition)
-            .download(`${resident.name.first} ${resident.name.last} - ${title}.pdf`);
+            .download(`${resident.name} - ${title}.pdf`);
 
         this.setState({ isLoading: false });
     }
