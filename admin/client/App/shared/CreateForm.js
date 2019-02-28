@@ -42,6 +42,7 @@ const CreateForm = React.createClass({
 		return {
 			values: values,
 			alerts: {},
+			isSubmitting: false
 		};
 	},
 	componentDidMount () {
@@ -95,6 +96,7 @@ const CreateForm = React.createClass({
 	// Create a new item when the form is submitted
 	submitForm (event) {
 		event.preventDefault();
+		this.setState({ isSubmitting: true })
 		const createForm = event.target;
 		const formData = new FormData(createForm);
 		this.props.list.createItem(formData, (err, data) => {
@@ -123,6 +125,7 @@ const CreateForm = React.createClass({
 								success: 'Item created',
 							},
 						},
+						isSubmitting: false
 					});
 				}
 			} else {
@@ -140,6 +143,7 @@ const CreateForm = React.createClass({
 					alerts: {
 						error: err,
 					},
+					isSubmitting: false
 				});
 			}
 		});
@@ -198,7 +202,11 @@ const CreateForm = React.createClass({
 					{form}
 				</Modal.Body>
 				<Modal.Footer>
-					<Button color="success" type="submit" data-button-type="submit">
+					<Button 
+						color="success" 
+						type="submit" 
+						disabled={this.state.isSubmitting}
+						data-button-type="submit">
 						{ this.props.submitLabel || 'Add' }
 					</Button>
 					<Button
