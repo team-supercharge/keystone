@@ -102,13 +102,14 @@ const CreateForm = React.createClass({
 				const Toast = Swal.mixin({
 					toast: true,
 					position: 'top',
+					iconColor: '#9DD5C0',
 					showConfirmButton: false,
-					timer: 5000
+					timer: 3000
 				})
 
 				Toast.fire({
 					type: 'success',
-					title: 'Successfully created ' + this.props.list.singular
+					title: 'Added a ' + this.props.list.singular
 				})
 
 				if (this.props.onCreate) {

@@ -31,7 +31,7 @@ export default function withToolbar (WrappedComponent, config = {}) {
             const logs = this.getLogs(props.data, from);
             let state = { showMock: false };
             // if the filter doesn't return a large enough dataset (len 3), show the whole window
-            if (props.data && (logs.length < props.data.length) && (logs.length > 1)) {
+            if (props.data && (logs.length < props.data.length) && (logs.length > 0)) {
                 state.to = to;
                 state.from = from;
                 state.logs = logs;
