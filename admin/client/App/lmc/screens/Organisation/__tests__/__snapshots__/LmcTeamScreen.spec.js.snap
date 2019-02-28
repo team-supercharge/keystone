@@ -13,6 +13,8 @@ ShallowWrapper {
       Object {
         "display": "flex",
         "flexDirection": "row",
+        "margin": "0 auto",
+        "maxWidth": 2000,
       }
     }
   >
@@ -49,8 +51,8 @@ ShallowWrapper {
         setSelectedItem={[MockFunction]}
         styles={
           Object {
-            "height": "83vh",
-            "maxHeight": "83vh",
+            "height": "87vh",
+            "maxHeight": "87vh",
           }
         }
         title="Team Members"
@@ -60,7 +62,7 @@ ShallowWrapper {
       style={
         Object {
           "flex": "3.5",
-          "height": "83vh",
+          "height": "87vh",
           "overflow": "scroll",
           "padding": "0px 20px 0px 20px",
           "wordWrap": "break-word",
@@ -88,6 +90,8 @@ ShallowWrapper {
         Object {
           "display": "flex",
           "flexDirection": "row",
+          "margin": "0 auto",
+          "maxWidth": 2000,
         }
       }
     >
@@ -124,8 +128,8 @@ ShallowWrapper {
           setSelectedItem={[MockFunction]}
           styles={
             Object {
-              "height": "83vh",
-              "maxHeight": "83vh",
+              "height": "87vh",
+              "maxHeight": "87vh",
             }
           }
           title="Team Members"
@@ -135,7 +139,7 @@ ShallowWrapper {
         style={
           Object {
             "flex": "3.5",
-            "height": "83vh",
+            "height": "87vh",
             "overflow": "scroll",
             "padding": "0px 20px 0px 20px",
             "wordWrap": "break-word",
@@ -243,6 +247,8 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
+              "margin": "0 auto",
+              "maxWidth": 2000,
             }
           }
         >
@@ -279,8 +285,8 @@ ShallowWrapper {
               setSelectedItem={[MockFunction]}
               styles={
                 Object {
-                  "height": "83vh",
-                  "maxHeight": "83vh",
+                  "height": "87vh",
+                  "maxHeight": "87vh",
                 }
               }
               title="Team Members"
@@ -290,7 +296,7 @@ ShallowWrapper {
             style={
               Object {
                 "flex": "3.5",
-                "height": "83vh",
+                "height": "87vh",
                 "overflow": "scroll",
                 "padding": "0px 20px 0px 20px",
                 "wordWrap": "break-word",
@@ -318,6 +324,8 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
+              "margin": "0 auto",
+              "maxWidth": 2000,
             }
           }
         >
@@ -354,8 +362,8 @@ ShallowWrapper {
               setSelectedItem={[MockFunction]}
               styles={
                 Object {
-                  "height": "83vh",
-                  "maxHeight": "83vh",
+                  "height": "87vh",
+                  "maxHeight": "87vh",
                 }
               }
               title="Team Members"
@@ -365,7 +373,7 @@ ShallowWrapper {
             style={
               Object {
                 "flex": "3.5",
-                "height": "83vh",
+                "height": "87vh",
                 "overflow": "scroll",
                 "padding": "0px 20px 0px 20px",
                 "wordWrap": "break-word",

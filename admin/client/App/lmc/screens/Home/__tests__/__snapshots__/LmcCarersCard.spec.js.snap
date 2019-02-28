@@ -65,7 +65,7 @@ ShallowWrapper {
             <Link
               onlyActiveOnIndex={false}
               style={Object {}}
-              to="TestPath/users"
+              to="TestPath/organisation"
             >
               <Button
                 aphroditeStyles={Array []}
@@ -146,7 +146,7 @@ ShallowWrapper {
               <Link
                 onlyActiveOnIndex={false}
                 style={Object {}}
-                to="TestPath/users"
+                to="TestPath/organisation"
               >
                 <Button
                   aphroditeStyles={Array []}
@@ -289,7 +289,7 @@ ShallowWrapper {
                   <Link
                     onlyActiveOnIndex={false}
                     style={Object {}}
-                    to="TestPath/users"
+                    to="TestPath/organisation"
                   >
                     <Button
                       aphroditeStyles={Array []}
@@ -370,7 +370,7 @@ ShallowWrapper {
                   <Link
                     onlyActiveOnIndex={false}
                     style={Object {}}
-                    to="TestPath/users"
+                    to="TestPath/organisation"
                   >
                     <Button
                       aphroditeStyles={Array []}

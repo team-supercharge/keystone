@@ -13,6 +13,8 @@ ShallowWrapper {
       Object {
         "display": "flex",
         "flexDirection": "row",
+        "margin": "0 auto",
+        "maxWidth": 2000,
       }
     }
   >
@@ -81,9 +83,10 @@ ShallowWrapper {
       <div
         style={
           Object {
-            "height": "85vh",
-            "overflow": "scroll",
+            "height": "86vh",
+            "overflowY": "scroll",
             "padding": "50px 20px 0px 20px",
+            "width": "100%",
           }
         }
       >
@@ -104,6 +107,8 @@ ShallowWrapper {
         Object {
           "display": "flex",
           "flexDirection": "row",
+          "margin": "0 auto",
+          "maxWidth": 2000,
         }
       }
     >
@@ -172,9 +177,10 @@ ShallowWrapper {
         <div
           style={
             Object {
-              "height": "85vh",
-              "overflow": "scroll",
+              "height": "86vh",
+              "overflowY": "scroll",
               "padding": "50px 20px 0px 20px",
+              "width": "100%",
             }
           }
         >
@@ -197,7 +203,7 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcResidentsScreen
-        fetchResidents={[MockFunction]}
+        fetchResidentsAndSelect={[MockFunction]}
         residents={
           Array [
             Object {
@@ -222,7 +228,7 @@ ShallowWrapper {
         "context": Object {},
         "onCreateResidentComplete": [Function],
         "props": Object {
-          "fetchResidents": [MockFunction],
+          "fetchResidentsAndSelect": [MockFunction],
           "residents": Array [
             Object {
               "id": "testId1",
@@ -264,6 +270,8 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
+              "margin": "0 auto",
+              "maxWidth": 2000,
             }
           }
         >
@@ -332,9 +340,10 @@ ShallowWrapper {
             <div
               style={
                 Object {
-                  "height": "85vh",
-                  "overflow": "scroll",
+                  "height": "86vh",
+                  "overflowY": "scroll",
                   "padding": "50px 20px 0px 20px",
+                  "width": "100%",
                 }
               }
             >
@@ -355,6 +364,8 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
+              "margin": "0 auto",
+              "maxWidth": 2000,
             }
           }
         >
@@ -423,9 +434,10 @@ ShallowWrapper {
             <div
               style={
                 Object {
-                  "height": "85vh",
-                  "overflow": "scroll",
+                  "height": "86vh",
+                  "overflowY": "scroll",
                   "padding": "50px 20px 0px 20px",
+                  "width": "100%",
                 }
               }
             >
@@ -452,7 +464,7 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcResidentsScreen
-    fetchResidents={[MockFunction]}
+    fetchResidentsAndSelect={[MockFunction]}
     residents={
       Array [
         Object {

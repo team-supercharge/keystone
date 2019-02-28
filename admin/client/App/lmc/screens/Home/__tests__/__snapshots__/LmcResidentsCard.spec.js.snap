@@ -24,9 +24,10 @@ ShallowWrapper {
           <div
             className="lmc-flex-grid"
           >
-            <LmcProfileLink
+            <Connect(LmcProfileLink)
+              id={1}
+              list="residents"
               name="TestName"
-              to="TestPath/residents/1"
             />
           </div>
         </div>
@@ -112,9 +113,10 @@ ShallowWrapper {
             <div
               className="lmc-flex-grid"
             >
-              <LmcProfileLink
+              <Connect(LmcProfileLink)
+                id={1}
+                list="residents"
                 name="TestName"
-                to="TestPath/residents/1"
               />
             </div>
           </div>
@@ -258,9 +260,10 @@ ShallowWrapper {
                 <div
                   className="lmc-flex-grid"
                 >
-                  <LmcProfileLink
+                  <Connect(LmcProfileLink)
+                    id={1}
+                    list="residents"
                     name="TestName"
-                    to="TestPath/residents/1"
                   />
                 </div>
               </div>
@@ -346,9 +349,10 @@ ShallowWrapper {
                 <div
                   className="lmc-flex-grid"
                 >
-                  <LmcProfileLink
+                  <Connect(LmcProfileLink)
+                    id={1}
+                    list="residents"
                     name="TestName"
-                    to="TestPath/residents/1"
                   />
                 </div>
               </div>

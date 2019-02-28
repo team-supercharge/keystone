@@ -50,7 +50,7 @@ export class LmcTabBar extends Component {
                 <nav 
                     className='secondary-navbar' 
                     style={styles.navbar}
-                > 
+                >
                     <ul 
                         className="app-nav app-nav--secondary app-nav--left" 
                         style={styles.list}
@@ -71,10 +71,9 @@ const desktopStyles = {
         boxSizing: 'border-box',
         flex: '1',
         textAlign: 'center',
-        padding: '7px 10px 9px 10px',
     },
     navbar: {
-        height: '58px',
+        height: 41.5,
         backgroundColor: 'white',
         paddingLeft: 20,
         paddingRight: 50,

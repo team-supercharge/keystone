@@ -14,7 +14,7 @@ ShallowWrapper {
       style={
         Object {
           "backgroundColor": "white",
-          "height": "58px",
+          "height": 41.5,
           "paddingLeft": 20,
           "paddingRight": 50,
         }
@@ -29,7 +29,6 @@ ShallowWrapper {
             Object {
               "boxSizing": "border-box",
               "flex": "1",
-              "padding": "7px 10px 9px 10px",
               "textAlign": "center",
             }
           }
@@ -49,7 +48,6 @@ ShallowWrapper {
             Object {
               "boxSizing": "border-box",
               "flex": "1",
-              "padding": "7px 10px 9px 10px",
               "textAlign": "center",
             }
           }
@@ -73,7 +71,7 @@ ShallowWrapper {
         style={
           Object {
             "backgroundColor": "white",
-            "height": "58px",
+            "height": 41.5,
             "paddingLeft": 20,
             "paddingRight": 50,
           }
@@ -88,7 +86,6 @@ ShallowWrapper {
               Object {
                 "boxSizing": "border-box",
                 "flex": "1",
-                "padding": "7px 10px 9px 10px",
                 "textAlign": "center",
               }
             }
@@ -108,7 +105,6 @@ ShallowWrapper {
               Object {
                 "boxSizing": "border-box",
                 "flex": "1",
-                "padding": "7px 10px 9px 10px",
                 "textAlign": "center",
               }
             }
@@ -202,7 +198,7 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "white",
-                "height": "58px",
+                "height": 41.5,
                 "paddingLeft": 20,
                 "paddingRight": 50,
               }
@@ -217,7 +213,6 @@ ShallowWrapper {
                   Object {
                     "boxSizing": "border-box",
                     "flex": "1",
-                    "padding": "7px 10px 9px 10px",
                     "textAlign": "center",
                   }
                 }
@@ -237,7 +232,6 @@ ShallowWrapper {
                   Object {
                     "boxSizing": "border-box",
                     "flex": "1",
-                    "padding": "7px 10px 9px 10px",
                     "textAlign": "center",
                   }
                 }
@@ -261,7 +255,7 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "white",
-                "height": "58px",
+                "height": 41.5,
                 "paddingLeft": 20,
                 "paddingRight": 50,
               }
@@ -276,7 +270,6 @@ ShallowWrapper {
                   Object {
                     "boxSizing": "border-box",
                     "flex": "1",
-                    "padding": "7px 10px 9px 10px",
                     "textAlign": "center",
                   }
                 }
@@ -296,7 +289,6 @@ ShallowWrapper {
                   Object {
                     "boxSizing": "border-box",
                     "flex": "1",
-                    "padding": "7px 10px 9px 10px",
                     "textAlign": "center",
                   }
                 }

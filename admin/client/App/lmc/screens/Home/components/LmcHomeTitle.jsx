@@ -62,40 +62,45 @@ class LmcHomeTitle extends React.Component {
         );
     }
 
-    render () {
+    renderMessages () {
         const { residents } = this.props;
 
         const birthdayBoysNGirls = _.sortBy(residents.filter(res => {
             return res.dateOfBirth && (moment(res.dateOfBirth).format('MM/DD') === moment().format('MM/DD'));
         }), 'name');
-
         const isNewHome = !Keystone.user.firstLogin
             || moment().diff(Keystone.user.firstLogin, 'days') < DAYS_UNTIL_TOUR_HIDDEN
             || (!residents || !residents.length);
 
+        if (!isNewHome && !birthdayBoysNGirls.length) {
+            return this.renderHello()
+        } 
+        if (isNewHome) {
+            return (
+                <p>
+                    This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+                    <br/>
+                    <LmcTour forceOpen={!Keystone.user.firstLogin}/>
+                </p>
+            )
+        }
+        if (birthdayBoysNGirls.length) {
+            return this.renderBirthdays(birthdayBoysNGirls)
+        }
+    }
+
+    render () {
         const user_name = Keystone.user.name && Keystone.user.name.split(' ').length > 1
             ? Keystone.user.name.split(' ')[0]
             : Keystone.user.name;
-
+        
         return (
             <div style={styles.container}>
                 <h2 style={styles.title}>
                     <span style={styles.bold}>
                         Hey { user_name }
-                    </span>, {
-                        birthdayBoysNGirls.length
-                            ? this.renderBirthdays(birthdayBoysNGirls)
-                            : this.renderHello()
-                    }
+                    </span>, { this.renderMessages() }
                 </h2>
-                { isNewHome
-                    ? <p>
-                        This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
-                        <br/>
-                        <LmcTour forceOpen={!Keystone.user.firstLogin}/>
-                    </p>
-                    : null
-                }
             </div>
         );
     }

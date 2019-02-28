@@ -18,8 +18,10 @@ ShallowWrapper {
       className="lmc-card"
       style={
         Object {
+          "borderRadius": 5,
+          "maxHeight": 260,
           "minHeight": 258,
-          "paddingTop": 18,
+          "overflow": "hidden",
         }
       }
     >
@@ -33,9 +35,9 @@ ShallowWrapper {
           style={
             Object {
               "border": "none",
+              "maxHeight": 260,
             }
           }
-          width="345"
         />
       </div>
     </div>
@@ -51,8 +53,10 @@ ShallowWrapper {
         className="lmc-card"
         style={
           Object {
+            "borderRadius": 5,
+            "maxHeight": 260,
             "minHeight": 258,
-            "paddingTop": 18,
+            "overflow": "hidden",
           }
         }
       >
@@ -66,9 +70,9 @@ ShallowWrapper {
             style={
               Object {
                 "border": "none",
+                "maxHeight": 260,
               }
             }
-            width="345"
           />
         </div>
       </div>
@@ -122,8 +126,10 @@ ShallowWrapper {
             className="lmc-card"
             style={
               Object {
+                "borderRadius": 5,
+                "maxHeight": 260,
                 "minHeight": 258,
-                "paddingTop": 18,
+                "overflow": "hidden",
               }
             }
           >
@@ -137,9 +143,9 @@ ShallowWrapper {
                 style={
                   Object {
                     "border": "none",
+                    "maxHeight": 260,
                   }
                 }
-                width="345"
               />
             </div>
           </div>
@@ -155,8 +161,10 @@ ShallowWrapper {
             className="lmc-card"
             style={
               Object {
+                "borderRadius": 5,
+                "maxHeight": 260,
                 "minHeight": 258,
-                "paddingTop": 18,
+                "overflow": "hidden",
               }
             }
           >
@@ -170,9 +178,9 @@ ShallowWrapper {
                 style={
                   Object {
                     "border": "none",
+                    "maxHeight": 260,
                   }
                 }
-                width="345"
               />
             </div>
           </div>

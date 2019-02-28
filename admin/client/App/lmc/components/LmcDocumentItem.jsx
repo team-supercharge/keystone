@@ -30,7 +30,6 @@ export default class LmcDocumentItem extends Component {
             : `Added ${daysDiff} days ago`
         const editLink = `${Keystone.adminPath}/${listId}/${data.id}`
         const chosenStyles = (isBrowser || isTablet) ? desktopStyles : mobileStyles
-
         return (
             <li style={chosenStyles.container}>
                 <div style={chosenStyles.infoContainer}>
@@ -84,7 +83,7 @@ export default class LmcDocumentItem extends Component {
                 </div>
                 <ConfirmationDialog
                     confirmationLabel='Delete'
-                    confirmationType='danger'
+                    confirmationType='warning'
                     isOpen={this.state.deleteDialogOpen}
                     onCancel={this.toggleDeleteDialog}
                     onConfirmation={() => this.handleDeleteConfirm(data.id)}

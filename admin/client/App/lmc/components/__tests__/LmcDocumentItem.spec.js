@@ -60,7 +60,7 @@ describe('LmcDocumentItem', () => {
 
     it('has a confirmation dialog to delete the data', () => {
         const dialog = wrapper.find('ConfirmationDialog')
-        expect(dialog.props().confirmationType).toEqual('danger')
+        expect(dialog.props().confirmationType).toEqual('warning')
         expect(dialog.props().confirmationLabel).toEqual('Delete')
     })
 

@@ -51,9 +51,10 @@ class LmcResidentsCard extends Component {
                     { _.take(activeResidents, hiddenResidents ? max_residents_displayed - 1 : max_residents_displayed)
                         .map((row, index) =>
                             <LmcProfileLink
-                                to={`${ Keystone.adminPath }/residents/${ row.id }`}
+                                list='residents'
                                 key={row.id}
                                 name={row.name}
+                                id={row.id}
                                 picture={row.picture}
                             />) }
                     { hiddenResidents

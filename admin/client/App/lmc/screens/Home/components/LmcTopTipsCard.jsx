@@ -17,8 +17,7 @@ class LmcTopTipsCard extends Component {
                     {/* <div className="lmc-card-body"> */}
                         <div className="videoWrapper">
                             <iframe
-                                style={{ border: 'none' }}
-                                width="345"
+                                style={styles.video}
                                 ref="iframe"
                                 src={video || defaultVideo}
                                 frameBorder="0"
@@ -38,9 +37,15 @@ class LmcTopTipsCard extends Component {
 }
 const styles = {
     card: {
-        paddingTop: 18,
         minHeight: 258,
+        maxHeight: 260,
+        borderRadius: 5,
+        overflow: 'hidden',
     },
+    video: {
+        border: 'none', 
+        maxHeight: 260
+    }
 };
 
 const TITLE = 'Top Tips';

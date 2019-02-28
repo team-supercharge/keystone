@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { ActionCreators } from '../../../actions/actions'
 import { isBrowser, isTablet } from 'react-device-detect'
 import { BlankState, GlyphButton } from '../../../../elemental'
+import theme from '../../../../../theme'
 import LmcSidebar from '../../../components/LmcSidebar.jsx'
 import { LmcSpinner } from '../../../components'
 import LmcTeamMemberProfile from './LmcTeamMemberProfile.jsx'
@@ -21,8 +22,10 @@ export class LmcTeamScreen extends Component {
 
     renderUserInfo = () => {
         const { selectedUser, users } = this.props
+        const chosenContainerStyles = (isBrowser || isTablet) ?
+            styles.userInfoContainer : styles.mobileUserContainer
         return (
-            <div style={styles.userInfoContainer}>
+            <div style={chosenContainerStyles}>
                 { users.length ? (
                     <LmcTeamMemberProfile
                         selectedUser={selectedUser}
@@ -111,27 +114,34 @@ const styles = {
     },
     mainContainer: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        maxWidth: theme.container.size.large,
+        margin: '0 auto',
     },
     mobileContainer: {
-        height: '83vh',
+        height: '87vh',
         overflow: 'scroll',
         wordWrap: 'break-word',
         padding: '0px 20px 0px 20px',
+    },
+    mobileUserContainer: {
+        maxWidth: 1000,
+        margin: '0 auto',
+        paddingTop: 20,
     },
     noUsersMessage: {
         padding: 60,
     },
     rightContainer: {
         flex: '3.5',
-        height: '83vh',
+        height: '87vh',
         overflow: 'scroll',
         wordWrap: 'break-word',
         padding: '0px 20px 0px 20px',
     },
     sidebar: { 
-        height: '83vh', 
-        maxHeight: '83vh' 
+        height: '87vh', 
+        maxHeight: '87vh' 
     },
     userInfoContainer: {
         maxWidth: 1000,

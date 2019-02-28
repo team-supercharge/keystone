@@ -31,8 +31,8 @@ describe('LmcResidentsCard', () => {
     })
 
     test('should have a link to the correct resident profile', () => {
-        const profileLink = wrapper.find('LmcProfileLink')
+        const profileLink = wrapper.find('Connect(LmcProfileLink)')
         expect(profileLink.props().name).toEqual('TestName')
-        expect(profileLink.props().to).toEqual('TestPath/residents/1')
+        expect(profileLink.props().id).toEqual(1)
     })
 })

@@ -137,7 +137,7 @@ ShallowWrapper {
     <ConfirmationDialog
       cancelLabel="Cancel"
       confirmationLabel="Delete"
-      confirmationType="danger"
+      confirmationType="warning"
       isOpen={false}
       onCancel={[Function]}
       onConfirmation={[Function]}
@@ -277,7 +277,7 @@ ShallowWrapper {
       <ConfirmationDialog
         cancelLabel="Cancel"
         confirmationLabel="Delete"
-        confirmationType="danger"
+        confirmationType="warning"
         isOpen={false}
         onCancel={[Function]}
         onConfirmation={[Function]}
@@ -473,7 +473,7 @@ ShallowWrapper {
           <ConfirmationDialog
             cancelLabel="Cancel"
             confirmationLabel="Delete"
-            confirmationType="danger"
+            confirmationType="warning"
             isOpen={false}
             onCancel={[Function]}
             onConfirmation={[Function]}
@@ -613,7 +613,7 @@ ShallowWrapper {
           <ConfirmationDialog
             cancelLabel="Cancel"
             confirmationLabel="Delete"
-            confirmationType="danger"
+            confirmationType="warning"
             isOpen={false}
             onCancel={[Function]}
             onConfirmation={[Function]}
