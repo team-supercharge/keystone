@@ -39,8 +39,9 @@ class LmcCarersCard extends Component {
                 <div className="lmc-flex-grid">
                     { _.take(activeCarers, n_showing).map((row, index) =>
                         <LmcProfileLink
-                            to={`${ Keystone.adminPath }/users/${ row.id }`}
+                            list='organisation'
                             key={row.id}
+                            id={row.id}
                             name={row.name}
                             picture={row.picture}
                         />) }
@@ -113,7 +114,7 @@ class LmcCarersCard extends Component {
                                 </GlyphButton>
                             </div>
                             <div style={styles.buttonContainer}>
-                                <Link to={`${Keystone.adminPath}/users`}>
+                                <Link to={`${Keystone.adminPath}/organisation`}>
                                     <Button color="default">
                                         <span style={styles.viewAllButton}>
                                             View All
