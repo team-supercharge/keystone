@@ -65,8 +65,13 @@ export default class LmcMobileNavigation extends Component {
 }
 
 const NAV_SECTIONS = [
+    {
+        label: 'Dashboard',
+        path: '',
+        items: []
+    },
     { 
-        label: 'Organisation', 
+        label: 'Team', 
         path: 'organisation', 
         items: []
     },
@@ -90,11 +95,6 @@ const NAV_SECTIONS = [
             { label: 'Completed', path: 'tasks?filters=%5B%7B%22path%22%3A%22status%22%2C%22inverted%22%3Afalse%2C%22value%22%3A%5B%22completed%22%2C%22skipped%22%5D%7D%5D' },
             { label: 'Recurring', path: 'recurring-tasks' }
         ]
-    },
-    {
-        label: 'Reports',
-        path: 'reports/charts',
-        items: []
     }
 ]
 

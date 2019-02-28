@@ -10,7 +10,11 @@ import LmcTabBar from '../../components/LmcTabBar.jsx'
 
 export class LmcResidentsScreen extends Component {
     componentDidMount () {
-        this.props.fetchResidents()
+        if (isBrowser || isTablet) {
+            this.props.fetchResidentsAndSelect()
+        } else {
+            this.props.fetchResidents()
+        }
     }
     
     onCreateResidentComplete = (resident) => {
@@ -89,11 +93,11 @@ export class LmcResidentsScreen extends Component {
                     items={navbarItems}
                     resourceUrl='residents'    
                 />
-                <div style={styles.childContainer}>
+                <div style={styles.mobileChildContainer}>
                     <GlyphButton
                         glyph="chevron-left"
                         position="left"
-                        style={styles.backLink}
+                        style={styles.mobileBackLink}
                         onClick={() => setSelectedResident(null)}
                         variant="link"
                     >
@@ -139,8 +143,9 @@ const styles = {
         right: 10,
     },
     childContainer: {
-        overflow: 'scroll',
-        height: '85vh',
+        overflowY: 'scroll',
+        height: '86vh',
+        width: '100%',
         padding: '50px 20px 0px 20px',
     },
     childWidth: {
@@ -154,6 +159,19 @@ const styles = {
     mainContainer: {
         display: 'flex',
         flexDirection: 'row',
+    },
+    mobileBackLink: {
+        paddingLeft: 0,
+        paddingRight: 0,
+        position: 'relative',
+        bottom: 10,
+        right: 10,
+    },
+    mobileChildContainer: {
+        overflowY: 'scroll',
+        height: '86vh',
+        width: '100%',
+        padding: '20px 20px 0px 20px',
     },
     mobileContainer: {
         background: '#fbfbfb',
@@ -180,6 +198,7 @@ LmcResidentsScreen.propTypes = {
     selectedResident: PropTypes.string,
     selectList: PropTypes.func.isRequired,
     fetchResidents: PropTypes.func.isRequired,
+    fetchResidentsAndSelect: PropTypes.func.isRequired,
     setSelectedResident: PropTypes.func.isRequired,
 };
 
@@ -192,7 +211,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchResidents: () => dispatch(ActionCreators.fetchResidents()),
+        fetchResidentsAndSelect: () => dispatch(ActionCreators.fetchResidents()),
+        fetchResidents: () => dispatch(ActionCreators.loadList('residents')),
         setSelectedResident: (id) => dispatch(ActionCreators.setSelectedResident(id))
     }
 }

@@ -56,6 +56,8 @@ class ConfirmationDialog extends React.Component {
 			console.error('Warning: FormNote cannot render `children` and `html`. You must provide one or the other.');
 		}
 
+		const chosenColor = ['danger', 'warning'].includes(confirmationType) ? 'danger' : confirmationType
+
 		return (
 			<Modal.Dialog
 				backdropClosesModal
@@ -75,7 +77,7 @@ class ConfirmationDialog extends React.Component {
 					<Button 
 						autoFocus size="small" 
 						data-button-type="confirm" 
-						color={confirmationType} 
+						color={chosenColor}
 						disabled={this.state.deleteText !== 'DELETE' && confirmationType === 'danger'} 
 						onClick={onConfirmation}
 					>

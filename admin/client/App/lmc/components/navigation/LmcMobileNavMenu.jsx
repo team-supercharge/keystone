@@ -5,7 +5,10 @@ import LmcMobileNavSection from './LmcMobileNavSection.jsx'
 export default class LmcMobileNavMenu extends Component {
     isActive = (url) => {
         const pathname = this.props.location.pathname
-        if (pathname) {
+        if (!url) {
+            return pathname === `${Keystone.adminPath}/` ? true : false
+        }
+        if (pathname && url) {
             return pathname.match(url) ? true : false
         }
     }

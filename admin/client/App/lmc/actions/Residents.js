@@ -17,8 +17,8 @@ export function fetchResidents() {
             .then(res => {
                 dispatch(setLoadedList('residents', res.result))
                 const id = getState().residents.selectedResident
-                if (!_.find(res, { id })) {
-                    dispatch(setSelectedResident(res[0].id))
+                if (!_.find(res.result, { id })) {
+                    dispatch(setSelectedResident(res.result[0].id))
                 }
             })
             .catch(err => {
