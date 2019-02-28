@@ -33,18 +33,14 @@ ShallowWrapper {
         Hey 
       </span>
       , 
-      <span>
-        welcome to the Care Office
-        !
-      </span>
+      <p>
+        This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+        <br />
+        <LmcTour
+          forceOpen={false}
+        />
+      </p>
     </h2>
-    <p>
-      This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
-      <br />
-      <LmcTour
-        forceOpen={false}
-      />
-    </p>
   </div>,
   "nodes": Array [
     <div
@@ -72,18 +68,14 @@ ShallowWrapper {
           Hey 
         </span>
         , 
-        <span>
-          welcome to the Care Office
-          !
-        </span>
+        <p>
+          This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+          <br />
+          <LmcTour
+            forceOpen={false}
+          />
+        </p>
       </h2>
-      <p>
-        This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
-        <br />
-        <LmcTour
-          forceOpen={false}
-        />
-      </p>
     </div>,
   ],
   "options": Object {},
@@ -150,18 +142,14 @@ ShallowWrapper {
               Hey 
             </span>
             , 
-            <span>
-              welcome to the Care Office
-              !
-            </span>
+            <p>
+              This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+              <br />
+              <LmcTour
+                forceOpen={false}
+              />
+            </p>
           </h2>
-          <p>
-            This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
-            <br />
-            <LmcTour
-              forceOpen={false}
-            />
-          </p>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div
@@ -189,18 +177,14 @@ ShallowWrapper {
               Hey 
             </span>
             , 
-            <span>
-              welcome to the Care Office
-              !
-            </span>
+            <p>
+              This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+              <br />
+              <LmcTour
+                forceOpen={false}
+              />
+            </p>
           </h2>
-          <p>
-            This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
-            <br />
-            <LmcTour
-              forceOpen={false}
-            />
-          </p>
         </div>,
       },
       "_renderedNodeType": 0,

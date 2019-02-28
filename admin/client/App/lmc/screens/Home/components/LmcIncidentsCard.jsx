@@ -108,7 +108,6 @@ class LmcIncidentsCard extends Component {
             .find(cat => cat.name && cat.name.match(/incident/i))
             .get('id')
             .value();
-
         if (logs && logs.length) {
             incidents = _.filter(logs, { categoryId });
         }

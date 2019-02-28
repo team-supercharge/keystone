@@ -103,7 +103,7 @@ class Home extends React.Component {
                     <div className="twelve columns">
                         <LmcHomeTitle
                             residents={residentsFetch.value.result}
-                            home={homeFetch.value.result} />
+                            home={homeFetch.value.results} />
                     </div>
                 </div>
                 <div id="intro-js-step-dashboard">
@@ -116,21 +116,21 @@ class Home extends React.Component {
                         <div className="four columns" id="intro-js-step-incidents">
                             <LmcIncidentsCard
                                 logs={logsFetch.value.result}
-                                categories={categoriesFetch.value.result}
+                                categories={categoriesFetch.value.results}
                                 residents={residentsFetch.value.result}
-                                home={homeFetch.value.result}
+                                home={homeFetch.value.results}
                                 onCreate={this.onOpenCreateModal} />
+
                         </div>
-                        <div className="four columns">
-                            <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.result, 'Home_YouTubeURL')} />
-                        </div>
-                    </div>
-                    <div className="row">
                         <div className="four columns" id="intro-js-step-carers">
                             <LmcCarersCard
                                 logs={logsFetch.value.result}
                                 carers={usersFetch.value.result}
                                 onCreate={this.onOpenCreateModal} />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="four columns" id="intro-js-step-incidents">
                             <LmcBirthdaysCard residents={residentsFetch.value.result} />
                         </div>
                         <div className="four columns" id="intro-js-step-tasks">
@@ -140,18 +140,18 @@ class Home extends React.Component {
                                 onCreate={this.onOpenCreateModal} />
                         </div>
                         <div className="four columns" id="intro-js-step-advert">
-                            <LmcAdvertCard
+                            <LmcTopTipsCard video={this.getSettingsValue(settingsFetch.value.result, 'Home_YouTubeURL')} />
+                        </div>
+                        
+                    </div>
+                    <div className="row">
+                        <div className="four columns">
+                                <LmcAdvertCard
                                 url={this.getSettingsValue(settingsFetch.value.result, 'Home_Advert_Link')}
                                 image={this.getSettingsValue(settingsFetch.value.result, 'Home_Advert_Img')}/>
                         </div>
                     </div>
-                    {/* <div className="row">
-                        <div className="six columns" id="intro-js-step-residents">
-                            <LmcBirthdaysCard residents={residentsFetch.value.result} />
-                        </div>
-                    </div> */}
                 </div>
-                {/* </div> */}
                 { this.renderCreateForm() }
             </div>
         );
