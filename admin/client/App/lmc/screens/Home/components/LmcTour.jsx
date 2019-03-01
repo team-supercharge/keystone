@@ -140,7 +140,7 @@ const TOUR_TASKS = 'The last section shows you the status of today’s To-Do
 const TOUR_TASKS_INFO = 'You can instantly see how many To-Do\'s are overdue, pending and have been completed today.';
 const TOUR_ADVERT = 'On the right you can see our tips and tricks videos to help you make the most of Log my Care along with our latest offers.';
 const TOUR_NAVBAR = 'Along the top you\'ll see menu options for all features, including how to access our help centre.';
-const TOUR_DONE = '<br/>That\'s it - you\'ve finished the walkthrough of the Care Office!<br/>Check your email for further instructions on setting up the Carer App.';
+const TOUR_DONE = 'That\'s it - you\'ve finished the walkthrough of the Care Office!';
 
 
 export default LmcTour;
