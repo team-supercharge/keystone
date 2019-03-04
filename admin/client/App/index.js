@@ -22,6 +22,7 @@ import store from './store';
 import { ActionCreators } from './lmc/actions/actions';
 import { setActiveFilters, loadItems } from './screens/List/actions';
 import ReactGA from 'react-ga';
+import initializeFirebase from '../utils/firebase';
 
 const GA_ID = Keystone.ga && Keystone.ga.property && Keystone.production;
 if (GA_ID) ReactGA.initialize(Keystone.ga.property);
@@ -55,7 +56,11 @@ import LmcHome from './lmc/screens/Home/index.jsx';
 // Sync the browser history to the Redux store
 const history = syncHistoryWithStore(browserHistory, store);
 
+// Load LMC lists
 store.dispatch(ActionCreators.initialize());
+
+// Initialise firebase
+initializeFirebase();
 
 // Initialise Keystone.User list
 import { listsByKey } from '../utils/lists';

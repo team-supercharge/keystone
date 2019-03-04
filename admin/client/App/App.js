@@ -11,7 +11,6 @@ import Intercom from 'react-intercom';
 import _ from 'lodash';
 import { isBrowser, isTablet } from 'react-device-detect';
 import LmcMobileNavigation from './lmc/components/navigation/LmcMobileNavigation.jsx';
-import MobileNavigation from './components/Navigation/Mobile';
 import PrimaryNavigation from './components/Navigation/Primary';
 import SecondaryNavigation from './components/Navigation/Secondary';
 import Footer from './components/Footer';
