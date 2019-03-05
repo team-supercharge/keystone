@@ -15,23 +15,25 @@ const register = (token) => {
 }
 
 export default () => {
-    firebase.initializeApp(FIREBASE_CONFIG);
-    const messaging = firebase.messaging();
-    messaging.usePublicVapidKey('BGGJ6DUZjryd06qgcEU-T1RsxbLK4cWVDLP7m4snIf0YUK6Iw3TvQtd359QNyqXxDU2A5juyrcWR7z23Sc-w75I');
+    if (firebase.messaging.isSupported()) {
+        firebase.initializeApp(FIREBASE_CONFIG);
+        const messaging = firebase.messaging();
+        messaging.usePublicVapidKey('BGGJ6DUZjryd06qgcEU-T1RsxbLK4cWVDLP7m4snIf0YUK6Iw3TvQtd359QNyqXxDU2A5juyrcWR7z23Sc-w75I');
 
-    messaging.requestPermission()
-    .then(() => {
-        console.log('Got permission')
-        return messaging.getToken()
-    })
-    .then((token) => {
-        register(token)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+        messaging.requestPermission()
+        .then(() => {
+            console.log('Got permission')
+            return messaging.getToken()
+        })
+        .then((token) => {
+            register(token)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 
-    messaging.onMessage((payload) => {
-        console.log('onMessage', payload)
-    })
+        messaging.onMessage((payload) => {
+            console.log('onMessage', payload)
+        })
+    }
 }
