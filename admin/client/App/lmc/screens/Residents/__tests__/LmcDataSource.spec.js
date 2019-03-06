@@ -5,18 +5,15 @@ import { LmcDataSource } from '../components/LmcDataSource.jsx'
 describe('LmcDataSource', () => {
     let wrapper
     beforeEach(() => {
-        wrapper = shallow(
-            <LmcDataSource />
-        )
-    })
-
-    it('renders correctly', () => {
         const wrapper = shallow(
             <LmcDataSource
                 dataFetch={{ fulfilled: true }}
                 renderSuccess={() => ( <div id="res"></div> )}
             />
         );
+    })
+
+    it('renders correctly', () => {
         expect(wrapper).toMatchSnapshot()
     })
 })

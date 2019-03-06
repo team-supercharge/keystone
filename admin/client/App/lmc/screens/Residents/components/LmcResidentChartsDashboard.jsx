@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-export class LmcResidentCharts extends Component {
+export class LmcResidentChartsDashboard extends Component {
     render() {
         return (
             <div>Charts</div>
@@ -13,4 +13,4 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps)(LmcResidentCharts)
+export default connect(mapStateToProps)(LmcResidentChartsDashboard)
