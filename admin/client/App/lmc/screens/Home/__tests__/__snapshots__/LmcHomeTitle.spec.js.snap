@@ -33,6 +33,23 @@ ShallowWrapper {
         Hey 
       </span>
       , 
+      <p
+        style={
+          Object {
+            "color": "#999999",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "lineHeight": "21px",
+            "maxWidth": 800,
+          }
+        }
+      >
+        This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+        <br />
+        <LmcTour
+          forceOpen={false}
+        />
+      </p>
     </h2>
   </div>,
   "nodes": Array [
@@ -61,6 +78,23 @@ ShallowWrapper {
           Hey 
         </span>
         , 
+        <p
+          style={
+            Object {
+              "color": "#999999",
+              "fontSize": 18,
+              "fontWeight": 400,
+              "lineHeight": "21px",
+              "maxWidth": 800,
+            }
+          }
+        >
+          This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+          <br />
+          <LmcTour
+            forceOpen={false}
+          />
+        </p>
       </h2>
     </div>,
   ],
@@ -128,6 +162,23 @@ ShallowWrapper {
               Hey 
             </span>
             , 
+            <p
+              style={
+                Object {
+                  "color": "#999999",
+                  "fontSize": 18,
+                  "fontWeight": 400,
+                  "lineHeight": "21px",
+                  "maxWidth": 800,
+                }
+              }
+            >
+              This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+              <br />
+              <LmcTour
+                forceOpen={false}
+              />
+            </p>
           </h2>
         </div>,
         "_debugID": 2,
@@ -156,6 +207,23 @@ ShallowWrapper {
               Hey 
             </span>
             , 
+            <p
+              style={
+                Object {
+                  "color": "#999999",
+                  "fontSize": 18,
+                  "fontWeight": 400,
+                  "lineHeight": "21px",
+                  "maxWidth": 800,
+                }
+              }
+            >
+              This is where you manage your team, residents and the care provided in your home.​ To help you get started we’ve come up with a quick tour. This shouldn’t take more than a few minutes and at the end you’ll be a Rockstar when it comes to using it.​
+              <br />
+              <LmcTour
+                forceOpen={false}
+              />
+            </p>
           </h2>
         </div>,
       },

@@ -22,7 +22,7 @@ import store from './store';
 import { ActionCreators } from './lmc/actions/actions';
 import { setActiveFilters, loadItems } from './screens/List/actions';
 import ReactGA from 'react-ga';
-import initializeFirebase from '../utils/firebase';
+import initializeFirebase from './lmc/common/firebase';
 
 const GA_ID = Keystone.ga && Keystone.ga.property && Keystone.production;
 if (GA_ID) ReactGA.initialize(Keystone.ga.property);
