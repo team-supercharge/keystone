@@ -1,24 +1,24 @@
 import Swal from 'sweetalert2'
 
-const notifyIncident = (payload) => {
+export const notifyIncident = (payload) => {
     const { carerName, residentName, itemName } = payload.data
     const title = payload.notification.title
 
-    let text;
+    let text
     if (itemName.match(/Fall/)) {
-      text = `${residentName} has had a fall.`;
+      text = `${residentName} has had a fall.`
     }
     if (itemName.match(/Assault/)) {
-      text = `${residentName} has been involved in an assault.`;
+      text = `${residentName} has been involved in an assault.`
     }
     if (itemName.match(/Medication/)) {
-      text = `${residentName} has had a medication error.`;
+      text = `${residentName} has had a medication error.`
     }
     if (itemName.match(/Missing/)) {
-      text = `${residentName} has been reported as missing.`;
+      text = `${residentName} has been reported as missing.`
     }
     if (itemName.match(/Injury/)) {
-      text = `${residentName} has had an injury.`;
+      text = `${residentName} has had an injury.`
     }
 
     const html = `<p>${text}</p><p>Logged by: ${carerName}`
@@ -30,5 +30,3 @@ const notifyIncident = (payload) => {
         confirmButtonClass: 'lmc-custom-notification-confirm',
     })
 }
-
-export default notifyIncident

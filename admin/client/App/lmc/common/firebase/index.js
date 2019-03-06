@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import FCM from 'firebase/messaging' // required import for FCM functionality
 import register from './register'
-import notifyIncident from './notifyIncident'
+import { notifyIncident } from './notifications'
 
 const FIREBASE_CONFIG = {
     apiKey: "AIzaSyDrgw5aHG9His4a9x-xU9EhwkHtCsdQ80g",
