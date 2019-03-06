@@ -1,6 +1,8 @@
 import firebase from 'firebase/app'
 import cloudMessaging from 'firebase/messaging'
 import xhr from 'xhr'
+import Swal from 'sweetalert2'
+import theme from '../theme'
 import { browserName } from 'react-device-detect'
 
 const FIREBASE_CONFIG = {
@@ -34,7 +36,34 @@ const register = (token) => {
             }
         })
     })
-    
+}
+
+const handleIncident = (payload) => {
+    const { carerName, residentName, itemName } = payload.data
+
+    let text;
+    if (itemName.match(/Fall/)) {
+      text = `${residentName} has had a fall.`;
+    }
+    if (itemName.match(/Assault/)) {
+      text = `${residentName} has been involved in an assault.`;
+    }
+    if (itemName.match(/Medication/)) {
+      text = `${residentName} has had a medication error.`;
+    }
+    if (itemName.match(/Missing/)) {
+      text = `${residentName} has been reported as missing.`;
+    }
+    if (itemName.match(/Injury/)) {
+      text = `${residentName} has had an injury.`;
+    }
+
+    Swal.fire({
+        title,
+        type: 'warning',
+        html: `<p>${text}</p><p>Logged by: ${carerName}</p>`,
+        confirmButtonColor: theme.color.info,
+    })
 }
 
 export default () => {
@@ -54,8 +83,14 @@ export default () => {
                 console.log(err)
             })
 
-        messaging.onMessage((payload) => {
-            console.log('onMessage', payload)
+        messaging.onMessage(payload => {
+            switch (payload.data.type) {
+                case 'incident':
+                    handleIncident(payload)
+                    break;
+                default:
+                    break;
+            }
         })
     }
 }
