@@ -20,6 +20,7 @@ describe('LmcResidentProfile', () => {
         profile = {
             name: { first: 'Test', last: 'Resident' },
             preferredName: 'Testy',
+            location: { room: '12' },
             status: 'active',
             dateOfBirth: new Date(1900, 2, 1)
         }
@@ -54,5 +55,10 @@ describe('LmcResidentProfile', () => {
     it('renders the resident preferred name', () => {
         const preferredNameText = `Preferred name: ${profile.preferredName}`
         expect(wrapper.text().includes(preferredNameText)).toBe(true)
+    })
+
+    it('renders the resident room number', () => {
+        const roomNumberText = `ROOM${profile.location.room}`
+        expect(wrapper.text().includes(roomNumberText)).toBe(true)
     })
 })

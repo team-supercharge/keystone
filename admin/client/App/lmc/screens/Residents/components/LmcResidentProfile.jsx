@@ -7,6 +7,33 @@ import { isBrowser, isTablet } from 'react-device-detect'
 import moment from 'moment'
 import { GlyphButton } from '../../../../elemental'
 import Selectors from '../../../selectors'
+import theme from '../../../../../theme'
+
+export const LmcResidentProfile = ({ selectedResident, profile }) => {
+    if (!profile) return null
+    const editLink = `${Keystone.adminPath}/residents/${selectedResident}`
+   
+    return (
+        <div>
+            <div 
+                className='lmc-profile-picture__large' 
+                style={{ 
+                    ...styles.image, 
+                    background: `url(${profile.picture || PLACEHOLDER_IMAGE})` 
+                }} 
+            />
+            <div className='lmc-profile-main-info'>
+                { renderBasicInfo(profile) }
+                <div style={styles.descriptionContainer}> 
+                    <div style={styles.descriptionText}>
+                        { profile.summary }
+                    </div>
+                </div>
+                { renderEditButton(editLink) }
+            </div>
+        </div>
+    )
+}
 
 const renderEditButton = (link) => {
     return (isBrowser || isTablet) ? (
@@ -30,57 +57,64 @@ const renderEditButton = (link) => {
     )
 }
 
-export const LmcResidentProfile = ({ selectedResident, profile }) => {
-    if (!profile) return null
-    const editLink = `${Keystone.adminPath}/residents/${selectedResident}`
-    const birthday = moment(profile.dateOfBirth).format('Do MMMM YYYY')
-    const age = moment().diff(profile.dateOfBirth, 'years')
+const renderLocation = (isShowingLocation, location) => {
+    if (!isShowingLocation) return null
+    const labels = ['building', 'floor', 'room', 'bed']
 
     return (
-        <div>
-            <div 
-                className='lmc-profile-picture__large' 
-                style={{ 
-                    ...styles.image, 
-                    background: `url(${profile.picture || PLACEHOLDER_IMAGE})` 
-                }} 
-            />
-            <div className='lmc-profile-main-info'>
-                <div style={styles.basicInfoContainer}>
-                    <span style={styles.name}>
-                        {`${profile.name.first} ${profile.name.last}`}
-                    </span>
-                        { profile.preferredName ? (
-                            <span style={styles.basicInfoText}>
-                                Preferred name:
-                                    <span style={styles.highlightText}>
-                                        {` ${profile.preferredName}`}
-                                    </span>
-                            </span>
-                        ) : null }
-                    <span style={styles.basicInfoText}>
-                        {birthday} (
-                            <span style={styles.highlightText}>
-                                {age}
-                            </span>
-                        )
-                    </span>
-                    <span style={{
-                        ...styles.basicInfoText,
-                        marginTop: 20
-                    }}>
-                            Status: {_.capitalize(profile.status)}
-                    </span>
-                    <div style={styles.divider} />
-                </div>
-                <div style={styles.descriptionContainer}> 
-                    <div style={styles.descriptionText}>
-                        { profile.summary }
+        <div style={styles.locationContainer}>
+            { labels.map(label => {
+                if (!location[label]) return null
+
+                return (
+                    <div style={styles.locationSubContainer}>
+                        <div style={styles.locationLabel}>
+                            {label.toUpperCase()}
+                        </div>
+                        <div style={styles.locationValue}>
+                            {location[label]}
+                        </div>
                     </div>
-                </div>
-                { renderEditButton(editLink) }
-            </div>
+                )
+            }) }
         </div>
+    )
+}
+
+const renderBasicInfo = (profile) => {
+    const birthday = moment(profile.dateOfBirth).format('Do MMMM YYYY')
+    const age = moment().diff(profile.dateOfBirth, 'years')
+    const isShowingLocation = !!Object.keys(profile.location).length
+
+    return (
+        <div style={styles.basicInfoContainer}>
+            <span style={styles.name}>
+                {`${profile.name.first} ${profile.name.last}`}
+            </span>
+            { profile.preferredName ? (
+                <span style={styles.basicInfoText}>
+                    Preferred name:
+                        <span style={styles.highlightText}>
+                            {` ${profile.preferredName}`}
+                        </span>
+                </span>
+            ) : null }
+            <span style={styles.basicInfoText}>
+                {birthday} (
+                    <span style={styles.highlightText}>
+                        {age}
+                    </span>
+                )
+            </span>
+            <span style={{ ...styles.basicInfoText, marginTop: 20 }}>            
+                Status: {_.capitalize(profile.status)}
+            </span>
+            { isShowingLocation 
+                ? <div style={styles.divider} /> 
+                : null }
+            { renderLocation(isShowingLocation, profile.location) }
+            <div style={styles.divider} /> 
+        </div> 
     )
 }
 
@@ -108,7 +142,7 @@ const styles = {
         width: '90%',
     },
     divider: {
-        background: '#f2f2f2',
+        background: theme.color.gray05,
         height: 1,
         margin: 'auto',
         marginTop: 20,
@@ -130,6 +164,32 @@ const styles = {
     name: {
         fontWeight: 600,
         fontSize: 24,
+    },
+    locationContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        margin: '0 auto',
+        marginTop: 25,
+        marginBottom: 10,
+    },
+    locationLabel: {
+        color: '#999999',
+        fontSize: 9,
+        fontWeight: 600,
+    },
+    locationSubContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '0px 5px 0px 5px',
+    },
+    locationValue: {
+        backgroundColor: theme.color.info,
+        borderRadius: 1000,
+        color: 'white',
+        padding: '2px 20px 2px 20px',
+        fontSize: 16,
+        fontWeight: 300,
+        float: 'left',
     }
 }
 
