@@ -68,7 +68,7 @@ const styles = {
         margin: '0 auto',
     },
     mainContainer: {
-        overflow: 'scroll',
+        overflow: 'auto',
         height: '85vh',
         padding: '50px 20px 0px 20px',
     },

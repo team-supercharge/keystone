@@ -110,7 +110,7 @@ const App = (props) => {
 const styles = {
 	wrapper: {
 		minWidth: 870,
-		overflow: 'scroll'
+		overflow: 'auto'
 	}
 };
 

@@ -144,7 +144,7 @@ const styles = {
         right: 10,
     },
     childContainer: {
-        overflowY: 'scroll',
+        overflowY: 'auto',
         height: '86vh',
         width: '100%',
         padding: '50px 20px 0px 20px',
@@ -171,7 +171,7 @@ const styles = {
         right: 10,
     },
     mobileChildContainer: {
-        overflowY: 'scroll',
+        overflowY: 'auto',
         height: '86vh',
         width: '100%',
         padding: '20px 20px 0px 20px',

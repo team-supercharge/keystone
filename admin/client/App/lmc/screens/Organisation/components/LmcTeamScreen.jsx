@@ -120,7 +120,7 @@ const styles = {
     },
     mobileContainer: {
         height: '87vh',
-        overflow: 'scroll',
+        overflow: 'auto',
         wordWrap: 'break-word',
         padding: '0px 20px 0px 20px',
     },
@@ -135,7 +135,7 @@ const styles = {
     rightContainer: {
         flex: '3.5',
         height: '87vh',
-        overflow: 'scroll',
+        overflow: 'auto',
         wordWrap: 'break-word',
         padding: '0px 20px 0px 20px',
     },

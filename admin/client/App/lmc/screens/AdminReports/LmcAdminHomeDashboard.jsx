@@ -180,14 +180,14 @@ const styles = {
         // width: '30%',
         // float: 'left',
         height: '80vh',
-        overflow: 'scroll',
+        overflow: 'auto',
     },
     homeDetails: {
         // width: '70%',
         paddingTop: 20,
         paddingHorisontal: 20,
         height: '90vh',
-        overflow: 'scroll',
+        overflow: 'auto',
         // float: 'left'
     },
     homeHeader: {},

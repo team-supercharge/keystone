@@ -45,7 +45,7 @@ const styles = {
     },
     mainContainer: {
         padding: '50px 20px 0px 20px',
-        overflow: 'scroll',
+        overflow: 'auto',
         height: '83vh',
     },
     content: {
