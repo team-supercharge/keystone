@@ -50,9 +50,17 @@ export const LmcResidentProfile = ({ selectedResident, profile }) => {
                     <span style={styles.name}>
                         {`${profile.name.first} ${profile.name.last}`}
                     </span>
+                        { profile.preferredName ? (
+                            <span style={styles.basicInfoText}>
+                                Preferred name:
+                                    <span style={styles.highlightText}>
+                                        {` ${profile.preferredName}`}
+                                    </span>
+                            </span>
+                        ) : null }
                     <span style={styles.basicInfoText}>
                         {birthday} (
-                            <span style={styles.age}>
+                            <span style={styles.highlightText}>
                                 {age}
                             </span>
                         )
@@ -79,9 +87,6 @@ export const LmcResidentProfile = ({ selectedResident, profile }) => {
 const PLACEHOLDER_IMAGE = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png';
 
 const styles = {
-    age: {
-        color: 'black'
-    },
     basicInfoContainer: {
         width: '100%',
         textAlign: 'center',
@@ -114,6 +119,9 @@ const styles = {
         position: 'absolute',
         top: 20,
         right: 20,
+    },
+    highlightText: {
+        color: 'black'
     },
     image: {
         position: 'relative',

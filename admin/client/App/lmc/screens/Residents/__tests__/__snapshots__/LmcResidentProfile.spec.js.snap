@@ -52,6 +52,26 @@ ShallowWrapper {
             }
           }
         >
+          Preferred name:
+          <span
+            style={
+              Object {
+                "color": "black",
+              }
+            }
+          >
+             Testy
+          </span>
+        </span>
+        <span
+          style={
+            Object {
+              "color": "#999999",
+              "fontSize": 18,
+              "fontWeight": 300,
+            }
+          }
+        >
           1st March 1900
            (
           <span
@@ -171,6 +191,26 @@ ShallowWrapper {
               }
             }
           >
+            Preferred name:
+            <span
+              style={
+                Object {
+                  "color": "black",
+                }
+              }
+            >
+               Testy
+            </span>
+          </span>
+          <span
+            style={
+              Object {
+                "color": "#999999",
+                "fontSize": 18,
+                "fontWeight": 300,
+              }
+            }
+          >
             1st March 1900
              (
             <span
@@ -260,6 +300,7 @@ ShallowWrapper {
               "first": "Test",
               "last": "Resident",
             },
+            "preferredName": "Testy",
             "status": "active",
           }
         }
@@ -278,6 +319,7 @@ ShallowWrapper {
               "first": "Test",
               "last": "Resident",
             },
+            "preferredName": "Testy",
             "status": "active",
           },
           "selectedResident": "testId",
@@ -336,6 +378,26 @@ ShallowWrapper {
                 }
               >
                 Test Resident
+              </span>
+              <span
+                style={
+                  Object {
+                    "color": "#999999",
+                    "fontSize": 18,
+                    "fontWeight": 300,
+                  }
+                }
+              >
+                Preferred name:
+                <span
+                  style={
+                    Object {
+                      "color": "black",
+                    }
+                  }
+                >
+                   Testy
+                </span>
               </span>
               <span
                 style={
@@ -465,6 +527,26 @@ ShallowWrapper {
                   }
                 }
               >
+                Preferred name:
+                <span
+                  style={
+                    Object {
+                      "color": "black",
+                    }
+                  }
+                >
+                   Testy
+                </span>
+              </span>
+              <span
+                style={
+                  Object {
+                    "color": "#999999",
+                    "fontSize": 18,
+                    "fontWeight": 300,
+                  }
+                }
+              >
                 1st March 1900
                  (
                 <span
@@ -558,6 +640,7 @@ ShallowWrapper {
           "first": "Test",
           "last": "Resident",
         },
+        "preferredName": "Testy",
         "status": "active",
       }
     }

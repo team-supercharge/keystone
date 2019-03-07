@@ -94,7 +94,7 @@ ShallowWrapper {
         style={
           Object {
             "height": "86vh",
-            "overflowY": "scroll",
+            "overflowY": "auto",
             "padding": "50px 20px 0px 20px",
             "width": "100%",
           }
@@ -198,7 +198,7 @@ ShallowWrapper {
           style={
             Object {
               "height": "86vh",
-              "overflowY": "scroll",
+              "overflowY": "auto",
               "padding": "50px 20px 0px 20px",
               "width": "100%",
             }
@@ -371,7 +371,7 @@ ShallowWrapper {
               style={
                 Object {
                   "height": "86vh",
-                  "overflowY": "scroll",
+                  "overflowY": "auto",
                   "padding": "50px 20px 0px 20px",
                   "width": "100%",
                 }
@@ -475,7 +475,7 @@ ShallowWrapper {
               style={
                 Object {
                   "height": "86vh",
-                  "overflowY": "scroll",
+                  "overflowY": "auto",
                   "padding": "50px 20px 0px 20px",
                   "width": "100%",
                 }

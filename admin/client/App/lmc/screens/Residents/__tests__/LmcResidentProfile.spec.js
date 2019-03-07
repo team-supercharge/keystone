@@ -19,6 +19,7 @@ describe('LmcResidentProfile', () => {
         selectedResident = 'testId'
         profile = {
             name: { first: 'Test', last: 'Resident' },
+            preferredName: 'Testy',
             status: 'active',
             dateOfBirth: new Date(1900, 2, 1)
         }
@@ -45,8 +46,13 @@ describe('LmcResidentProfile', () => {
         expect(name.text()).toEqual('Test Resident')
     })
 
-    it('renders the resident age and birthday in its second span', () => {
-        const birthdayAndAge = wrapper.find('span').at(1)
-        expect(birthdayAndAge.text()).toEqual('1st March 1900 (118)')
+    it('renders the resident age and birthday', () => {
+        const birthdayAndAge = '1st March 1900 (118)'
+        expect(wrapper.text().includes(birthdayAndAge)).toBe(true)
+    })
+
+    it('renders the resident preferred name', () => {
+        const preferredNameText = `Preferred name: ${profile.preferredName}`
+        expect(wrapper.text().includes(preferredNameText)).toBe(true)
     })
 })
