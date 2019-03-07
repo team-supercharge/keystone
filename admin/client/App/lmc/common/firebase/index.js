@@ -13,7 +13,9 @@ const FIREBASE_CONFIG = {
 };
 
 export default () => {
-    if (firebase.messaging.isSupported()) {
+    if (firebase.messaging.isSupported() && 
+        Keystone.user.role !== 'lmc-admin' &&
+        Keystone.user.features.notifications) {
         firebase.initializeApp(FIREBASE_CONFIG);
         const messaging = firebase.messaging();
         messaging.usePublicVapidKey('BGGJ6DUZjryd06qgcEU-T1RsxbLK4cWVDLP7m4snIf0YUK6Iw3TvQtd359QNyqXxDU2A5juyrcWR7z23Sc-w75I');

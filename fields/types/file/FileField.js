@@ -68,11 +68,6 @@ module.exports = Field.create({
 	hasExisting () {
 		return this.props.value && !!this.props.value.filename;
 	},
-	getFilename () {
-		return this.state.userSelectedFile
-			? this.state.userSelectedFile.name
-			: this.props.value.filename;
-	},
 
 	// ==============================
 	// METHODS
@@ -121,31 +116,22 @@ module.exports = Field.create({
 	// RENDERERS
 	// ==============================
 
-	renderFileNameAndChangeMessage () {
-		const href = this.props.value ? this.props.value.url : undefined;
-		return (
-			<div>
-				{(this.hasFile() && !this.state.removeExisting) ? (
-					<FileChangeMessage href={href} target="_blank">
-						{this.getFilename()}
-					</FileChangeMessage>
-				) : null}
-				{this.renderChangeMessage()}
-			</div>
-		);
-	},
 	renderChangeMessage () {
 		if (this.state.userSelectedFile) {
 			return (
-				<FileChangeMessage color="success">
-					Save to Upload
-				</FileChangeMessage>
+				<div style={{ marginTop: '1em' }}>
+					<FileChangeMessage color="success">
+						Save to Upload
+					</FileChangeMessage>
+				</div>
 			);
 		} else if (this.state.removeExisting) {
 			return (
-				<FileChangeMessage color="danger">
-					File {this.props.autoCleanup ? 'deleted' : 'removed'} - save to confirm
-				</FileChangeMessage>
+				<div style={{ marginTop: '1em' }}>
+					<FileChangeMessage color="danger">
+						File {this.props.autoCleanup ? 'deleted' : 'removed'} - save to confirm
+					</FileChangeMessage>
+				</div>
 			);
 		} else {
 			return null;
@@ -196,11 +182,9 @@ module.exports = Field.create({
 		// Ideally we'd specify filetype in the model!
 		let fileType = (path === 'pdf') ? '.pdf' : null;
 		const buttons = (
-			<div style={this.hasFile() ? { marginTop: '1em' } : null}>
-				<Button onClick={this.triggerFileBrowser}>
-					{this.hasFile() ? 'Change' : 'Upload'} File
-				</Button>
-			</div>
+			<Button onClick={this.triggerFileBrowser}>
+				{this.hasFile() ? 'Change' : 'Upload'} File
+			</Button>
 		);
 
 		return (
@@ -208,8 +192,8 @@ module.exports = Field.create({
 				<FormField label={label} htmlFor={path}>
 					{this.shouldRenderField() ? (
 						<div>
-							{this.hasFile() && this.renderFileNameAndChangeMessage()}
 							{buttons}
+							{this.hasFile() && this.renderChangeMessage()}
 							<HiddenFileInput
 								key={this.state.uploadFieldPath}
 								accept={fileType}
@@ -222,7 +206,7 @@ module.exports = Field.create({
 					) : (
 						<div>
 							{this.hasFile()
-								? this.renderFileNameAndChangeMessage()
+								? this.renderChangeMessage()
 								: <FormInput noedit>no file</FormInput>}
 						</div>
 					)}
