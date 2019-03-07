@@ -15,6 +15,7 @@ module.exports = [
 	'display-name',
 	'elemental',
 	'expression-match',
+	'firebase',
 	'i',
 	'list-to-array',
 	'lodash',

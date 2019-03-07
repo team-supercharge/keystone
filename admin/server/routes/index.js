@@ -44,7 +44,12 @@ module.exports = async function IndexRoute (req, res) {
 			role: req.user.role,
 			firstLogin: req.user.firstLogin,
 			home: req.user.home,
-			homeName: Home ? Home.name : null
+			homeName: Home ? Home.name : null,
+			features: Home ? {
+				handovers: Home.handovers,
+				notifications: Home.notifications,
+				pro: Home.pro
+			} : null,
 		},
 		ga: {
 			property: keystone.get('ga property'),
