@@ -137,6 +137,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         flex: '1',
+        justifyContent: 'center'
     },
     basicInfoText: {
         color: '#999999',
@@ -160,6 +161,7 @@ const styles = {
         height: 1,
         margin: 'auto',
         marginTop: 20,
+        marginBottom: 20,
         width: '90%',
     },
     editButton: {
@@ -176,11 +178,11 @@ const styles = {
         zIndex: 1,
     },
     locationContainer: {
+        alignItems: 'center',
         display: 'flex',
         flexDirection: 'row',
+        flexWrap: 'wrap',
         margin: '0 auto',
-        marginTop: 25,
-        marginBottom: 10,
     },
     locationLabel: {
         color: '#999999',
@@ -190,7 +192,7 @@ const styles = {
     locationSubContainer: {
         display: 'flex',
         flexDirection: 'column',
-        margin: '0px 5px 0px 5px',
+        margin: '10px 5px 10px 5px',
     },
     locationValue: {
         backgroundColor: theme.color.info,

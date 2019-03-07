@@ -28,6 +28,7 @@ ShallowWrapper {
             "display": "flex",
             "flex": "1",
             "flexDirection": "column",
+            "justifyContent": "center",
             "textAlign": "center",
             "width": "100%",
           }
@@ -103,6 +104,7 @@ ShallowWrapper {
               "background": "#F2F2F2",
               "height": 1,
               "margin": "auto",
+              "marginBottom": 20,
               "marginTop": 20,
               "width": "90%",
             }
@@ -111,11 +113,11 @@ ShallowWrapper {
         <div
           style={
             Object {
+              "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
+              "flexWrap": "wrap",
               "margin": "0 auto",
-              "marginBottom": 10,
-              "marginTop": 25,
             }
           }
         >
@@ -124,7 +126,7 @@ ShallowWrapper {
               Object {
                 "display": "flex",
                 "flexDirection": "column",
-                "margin": "0px 5px 0px 5px",
+                "margin": "10px 5px 10px 5px",
               }
             }
           >
@@ -162,6 +164,7 @@ ShallowWrapper {
               "background": "#F2F2F2",
               "height": 1,
               "margin": "auto",
+              "marginBottom": 20,
               "marginTop": 20,
               "width": "90%",
             }
@@ -225,6 +228,7 @@ ShallowWrapper {
               "display": "flex",
               "flex": "1",
               "flexDirection": "column",
+              "justifyContent": "center",
               "textAlign": "center",
               "width": "100%",
             }
@@ -300,6 +304,7 @@ ShallowWrapper {
                 "background": "#F2F2F2",
                 "height": 1,
                 "margin": "auto",
+                "marginBottom": 20,
                 "marginTop": 20,
                 "width": "90%",
               }
@@ -308,11 +313,11 @@ ShallowWrapper {
           <div
             style={
               Object {
+                "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
+                "flexWrap": "wrap",
                 "margin": "0 auto",
-                "marginBottom": 10,
-                "marginTop": 25,
               }
             }
           >
@@ -321,7 +326,7 @@ ShallowWrapper {
                 Object {
                   "display": "flex",
                   "flexDirection": "column",
-                  "margin": "0px 5px 0px 5px",
+                  "margin": "10px 5px 10px 5px",
                 }
               }
             >
@@ -359,6 +364,7 @@ ShallowWrapper {
                 "background": "#F2F2F2",
                 "height": 1,
                 "margin": "auto",
+                "marginBottom": 20,
                 "marginTop": 20,
                 "width": "90%",
               }
@@ -486,6 +492,7 @@ ShallowWrapper {
                   "display": "flex",
                   "flex": "1",
                   "flexDirection": "column",
+                  "justifyContent": "center",
                   "textAlign": "center",
                   "width": "100%",
                 }
@@ -561,6 +568,7 @@ ShallowWrapper {
                     "background": "#F2F2F2",
                     "height": 1,
                     "margin": "auto",
+                    "marginBottom": 20,
                     "marginTop": 20,
                     "width": "90%",
                   }
@@ -569,11 +577,11 @@ ShallowWrapper {
               <div
                 style={
                   Object {
+                    "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexWrap": "wrap",
                     "margin": "0 auto",
-                    "marginBottom": 10,
-                    "marginTop": 25,
                   }
                 }
               >
@@ -582,7 +590,7 @@ ShallowWrapper {
                     Object {
                       "display": "flex",
                       "flexDirection": "column",
-                      "margin": "0px 5px 0px 5px",
+                      "margin": "10px 5px 10px 5px",
                     }
                   }
                 >
@@ -620,6 +628,7 @@ ShallowWrapper {
                     "background": "#F2F2F2",
                     "height": 1,
                     "margin": "auto",
+                    "marginBottom": 20,
                     "marginTop": 20,
                     "width": "90%",
                   }
@@ -683,6 +692,7 @@ ShallowWrapper {
                   "display": "flex",
                   "flex": "1",
                   "flexDirection": "column",
+                  "justifyContent": "center",
                   "textAlign": "center",
                   "width": "100%",
                 }
@@ -758,6 +768,7 @@ ShallowWrapper {
                     "background": "#F2F2F2",
                     "height": 1,
                     "margin": "auto",
+                    "marginBottom": 20,
                     "marginTop": 20,
                     "width": "90%",
                   }
@@ -766,11 +777,11 @@ ShallowWrapper {
               <div
                 style={
                   Object {
+                    "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "row",
+                    "flexWrap": "wrap",
                     "margin": "0 auto",
-                    "marginBottom": 10,
-                    "marginTop": 25,
                   }
                 }
               >
@@ -779,7 +790,7 @@ ShallowWrapper {
                     Object {
                       "display": "flex",
                       "flexDirection": "column",
-                      "margin": "0px 5px 0px 5px",
+                      "margin": "10px 5px 10px 5px",
                     }
                   }
                 >
@@ -817,6 +828,7 @@ ShallowWrapper {
                     "background": "#F2F2F2",
                     "height": 1,
                     "margin": "auto",
+                    "marginBottom": 20,
                     "marginTop": 20,
                     "width": "90%",
                   }
