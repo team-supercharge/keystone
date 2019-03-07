@@ -63,11 +63,14 @@ const renderLocation = (isShowingLocation, location) => {
 
     return (
         <div style={styles.locationContainer}>
-            { labels.map(label => {
+            { labels.map((label, i) => {
                 if (!location[label]) return null
 
                 return (
-                    <div style={styles.locationSubContainer}>
+                    <div 
+                        key={i} 
+                        style={styles.locationSubContainer}
+                    >
                         <div style={styles.locationLabel}>
                             {label.toUpperCase()}
                         </div>
@@ -81,6 +84,23 @@ const renderLocation = (isShowingLocation, location) => {
     )
 }
 
+const renderNames = (profile) => {
+    const displayName = profile.preferredName
+        ? profile.preferredName
+        : profile.name.first
+
+    return (
+        <div style={styles.namesContainer}>
+            <span style={styles.displayName}>
+                {displayName}
+            </span>
+            <span style={styles.basicInfoText}>
+                {`${profile.name.first} ${profile.name.last}`}
+            </span>
+        </div>
+    )
+}
+
 const renderBasicInfo = (profile) => {
     const birthday = moment(profile.dateOfBirth).format('Do MMMM YYYY')
     const age = moment().diff(profile.dateOfBirth, 'years')
@@ -88,17 +108,7 @@ const renderBasicInfo = (profile) => {
 
     return (
         <div style={styles.basicInfoContainer}>
-            <span style={styles.name}>
-                {`${profile.name.first} ${profile.name.last}`}
-            </span>
-            { profile.preferredName ? (
-                <span style={styles.basicInfoText}>
-                    Preferred name:
-                        <span style={styles.highlightText}>
-                            {` ${profile.preferredName}`}
-                        </span>
-                </span>
-            ) : null }
+            { renderNames(profile) }
             <span style={styles.basicInfoText}>
                 {birthday} (
                     <span style={styles.highlightText}>
@@ -107,7 +117,7 @@ const renderBasicInfo = (profile) => {
                 )
             </span>
             <span style={{ ...styles.basicInfoText, marginTop: 20 }}>            
-                Status: {_.capitalize(profile.status)}
+                {_.capitalize(profile.status)}
             </span>
             { isShowingLocation 
                 ? <div style={styles.divider} /> 
@@ -141,6 +151,10 @@ const styles = {
         margin: 'auto',
         width: '90%',
     },
+    displayName: {
+        fontWeight: 600,
+        fontSize: 24,
+    },
     divider: {
         background: theme.color.gray05,
         height: 1,
@@ -160,10 +174,6 @@ const styles = {
     image: {
         position: 'relative',
         zIndex: 1,
-    },
-    name: {
-        fontWeight: 600,
-        fontSize: 24,
     },
     locationContainer: {
         display: 'flex',
@@ -190,6 +200,10 @@ const styles = {
         fontSize: 16,
         fontWeight: 300,
         float: 'left',
+    },
+    namesContainer: {
+        display: 'flex',
+        flexDirection: 'column',
     }
 }
 

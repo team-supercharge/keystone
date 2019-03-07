@@ -42,9 +42,9 @@ describe('LmcResidentProfile', () => {
         expect(button.props().to).toEqual(`/admin/residents/${selectedResident}`)
     })
 
-    it('renders the resident name in its first span', () => {
-        const name = wrapper.find('span').first()
-        expect(name.text()).toEqual('Test Resident')
+    it('renders the resident name', () => {
+        const nameText = `${profile.name.first} ${profile.name.last}`
+        expect(wrapper.text().includes(nameText)).toBe(true)
     })
 
     it('renders the resident age and birthday', () => {
@@ -53,8 +53,7 @@ describe('LmcResidentProfile', () => {
     })
 
     it('renders the resident preferred name', () => {
-        const preferredNameText = `Preferred name: ${profile.preferredName}`
-        expect(wrapper.text().includes(preferredNameText)).toBe(true)
+        expect(wrapper.text().includes(profile.preferredName)).toBe(true)
     })
 
     it('renders the resident room number', () => {
