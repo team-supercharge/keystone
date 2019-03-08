@@ -9,11 +9,71 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    Handovers
+    <LmcCurrentHandover
+      logs={
+        Array [
+          Object {
+            "createdBy": "TestCarer",
+            "description": "This is a log",
+            "id": "TestId",
+          },
+        ]
+      }
+      notes={
+        Array [
+          Object {
+            "createdBy": "TestCarer",
+            "id": "TestId",
+            "note": "This is a note",
+          },
+        ]
+      }
+    />
+    <LmcHandoversHistory
+      handovers={
+        Array [
+          Object {
+            "createdBy": "TestCarer",
+            "id": "TestId",
+            "witnessedBy": "TestCarer2",
+          },
+        ]
+      }
+    />
   </div>,
   "nodes": Array [
     <div>
-      Handovers
+      <LmcCurrentHandover
+        logs={
+          Array [
+            Object {
+              "createdBy": "TestCarer",
+              "description": "This is a log",
+              "id": "TestId",
+            },
+          ]
+        }
+        notes={
+          Array [
+            Object {
+              "createdBy": "TestCarer",
+              "id": "TestId",
+              "note": "This is a note",
+            },
+          ]
+        }
+      />
+      <LmcHandoversHistory
+        handovers={
+          Array [
+            Object {
+              "createdBy": "TestCarer",
+              "id": "TestId",
+              "witnessedBy": "TestCarer2",
+            },
+          ]
+        }
+      />
     </div>,
   ],
   "options": Object {},
@@ -22,14 +82,68 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <LmcHandoversDashboard />,
+      "_currentElement": <LmcHandoversDashboard
+        currentHandoverLogs={
+          Array [
+            Object {
+              "createdBy": "TestCarer",
+              "description": "This is a log",
+              "id": "TestId",
+            },
+          ]
+        }
+        currentHandoverNotes={
+          Array [
+            Object {
+              "createdBy": "TestCarer",
+              "id": "TestId",
+              "note": "This is a note",
+            },
+          ]
+        }
+        fetchCurrentHandoverLogs={[MockFunction]}
+        fetchCurrentHandoverNotes={[MockFunction]}
+        handoverHistory={
+          Array [
+            Object {
+              "createdBy": "TestCarer",
+              "id": "TestId",
+              "witnessedBy": "TestCarer2",
+            },
+          ]
+        }
+      />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": LmcHandoversDashboard {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "currentHandoverLogs": Array [
+            Object {
+              "createdBy": "TestCarer",
+              "description": "This is a log",
+              "id": "TestId",
+            },
+          ],
+          "currentHandoverNotes": Array [
+            Object {
+              "createdBy": "TestCarer",
+              "id": "TestId",
+              "note": "This is a note",
+            },
+          ],
+          "fetchCurrentHandoverLogs": [MockFunction],
+          "fetchCurrentHandoverNotes": [MockFunction],
+          "handoverHistory": Array [
+            Object {
+              "createdBy": "TestCarer",
+              "id": "TestId",
+              "witnessedBy": "TestCarer2",
+            },
+          ],
+        },
         "refs": Object {},
         "showProAlert": [Function],
         "state": null,
@@ -52,11 +166,71 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          Handovers
+          <LmcCurrentHandover
+            logs={
+              Array [
+                Object {
+                  "createdBy": "TestCarer",
+                  "description": "This is a log",
+                  "id": "TestId",
+                },
+              ]
+            }
+            notes={
+              Array [
+                Object {
+                  "createdBy": "TestCarer",
+                  "id": "TestId",
+                  "note": "This is a note",
+                },
+              ]
+            }
+          />
+          <LmcHandoversHistory
+            handovers={
+              Array [
+                Object {
+                  "createdBy": "TestCarer",
+                  "id": "TestId",
+                  "witnessedBy": "TestCarer2",
+                },
+              ]
+            }
+          />
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          Handovers
+          <LmcCurrentHandover
+            logs={
+              Array [
+                Object {
+                  "createdBy": "TestCarer",
+                  "description": "This is a log",
+                  "id": "TestId",
+                },
+              ]
+            }
+            notes={
+              Array [
+                Object {
+                  "createdBy": "TestCarer",
+                  "id": "TestId",
+                  "note": "This is a note",
+                },
+              ]
+            }
+          />
+          <LmcHandoversHistory
+            handovers={
+              Array [
+                Object {
+                  "createdBy": "TestCarer",
+                  "id": "TestId",
+                  "witnessedBy": "TestCarer2",
+                },
+              ]
+            }
+          />
         </div>,
       },
       "_renderedNodeType": 0,
@@ -69,6 +243,36 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <LmcHandoversDashboard />,
+  "unrendered": <LmcHandoversDashboard
+    currentHandoverLogs={
+      Array [
+        Object {
+          "createdBy": "TestCarer",
+          "description": "This is a log",
+          "id": "TestId",
+        },
+      ]
+    }
+    currentHandoverNotes={
+      Array [
+        Object {
+          "createdBy": "TestCarer",
+          "id": "TestId",
+          "note": "This is a note",
+        },
+      ]
+    }
+    fetchCurrentHandoverLogs={[MockFunction]}
+    fetchCurrentHandoverNotes={[MockFunction]}
+    handoverHistory={
+      Array [
+        Object {
+          "createdBy": "TestCarer",
+          "id": "TestId",
+          "witnessedBy": "TestCarer2",
+        },
+      ]
+    }
+  />,
 }
 `;

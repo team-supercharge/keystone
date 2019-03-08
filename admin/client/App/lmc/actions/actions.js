@@ -4,6 +4,7 @@ import * as ResidentActions from './Residents';
 import * as DocumentActions from './Documents';
 import * as UserActions from './Users';
 import * as ShiftActions from './Shifts';
+import * as HandoverActions from './Handovers';
 
 export const ActionCreators = Object.assign(
     {},
@@ -12,5 +13,6 @@ export const ActionCreators = Object.assign(
     ResidentActions,
     DocumentActions,
     UserActions,
-    ShiftActions
+    ShiftActions,
+    HandoverActions
 );
