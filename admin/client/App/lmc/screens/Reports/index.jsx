@@ -1,8 +1,9 @@
 import React from 'react';
-import LmcSecondaryNav from './components/LmcSecondaryNav.jsx';
+// import LmcSecondaryNav from './components/LmcSecondaryNav.jsx';
+import LmcTabBar from '../../components/LmcTabBar.jsx';
 import { connect } from 'react-redux';
 import theme from '../../../../theme';
-
+import Swal from 'sweetalert2';
 
 class LmcReportView extends React.Component {
 
@@ -23,7 +24,7 @@ class LmcReportView extends React.Component {
     render () {
         return (
             <div>
-                <LmcSecondaryNav {...this.props} />
+                <LmcTabBar location={this.props.location} items={tabs} resourceUrl='reports' />
                 <div style={styles.container}>
                     {this.props.children}
                 </div>
@@ -31,6 +32,13 @@ class LmcReportView extends React.Component {
         );
     }
 };
+
+const tabs = [
+    { url: 'charts', label: 'Resident Charts' },
+    { url: 'overview/fluids', label: 'Fluids Overview' },
+    { url: 'overview/meals', label: 'Food Overview' },
+    { url: 'overview/handovers', label: 'Handovers' }
+]
 
 const styles = {
     container: {
