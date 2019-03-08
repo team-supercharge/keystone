@@ -7,6 +7,33 @@ import { isBrowser, isTablet } from 'react-device-detect'
 import moment from 'moment'
 import { GlyphButton } from '../../../../elemental'
 import Selectors from '../../../selectors'
+import theme from '../../../../../theme'
+
+export const LmcResidentProfile = ({ selectedResident, profile }) => {
+    if (!profile) return null
+    const editLink = `${Keystone.adminPath}/residents/${selectedResident}`
+   
+    return (
+        <div>
+            <div 
+                className='lmc-profile-picture__large' 
+                style={{ 
+                    ...styles.image, 
+                    background: `url(${profile.picture || PLACEHOLDER_IMAGE})` 
+                }} 
+            />
+            <div className='lmc-profile-main-info'>
+                { renderBasicInfo(profile) }
+                <div style={styles.descriptionContainer}> 
+                    <div style={styles.descriptionText}>
+                        { profile.summary }
+                    </div>
+                </div>
+                { renderEditButton(editLink) }
+            </div>
+        </div>
+    )
+}
 
 const renderEditButton = (link) => {
     return (isBrowser || isTablet) ? (
@@ -30,64 +57,87 @@ const renderEditButton = (link) => {
     )
 }
 
-export const LmcResidentProfile = ({ selectedResident, profile }) => {
-    if (!profile) return null
-    const editLink = `${Keystone.adminPath}/residents/${selectedResident}`
-    const birthday = moment(profile.dateOfBirth).format('Do MMMM YYYY')
-    const age = moment().diff(profile.dateOfBirth, 'years')
+const renderLocation = (isShowingLocation, location) => {
+    if (!isShowingLocation) return null
+    const labels = ['building', 'floor', 'room', 'bed']
 
     return (
-        <div>
-            <div 
-                className='lmc-profile-picture__large' 
-                style={{ 
-                    ...styles.image, 
-                    background: `url(${profile.picture || PLACEHOLDER_IMAGE})` 
-                }} 
-            />
-            <div className='lmc-profile-main-info'>
-                <div style={styles.basicInfoContainer}>
-                    <span style={styles.name}>
-                        {`${profile.name.first} ${profile.name.last}`}
-                    </span>
-                    <span style={styles.basicInfoText}>
-                        {birthday} (
-                            <span style={styles.age}>
-                                {age}
-                            </span>
-                        )
-                    </span>
-                    <span style={{
-                        ...styles.basicInfoText,
-                        marginTop: 20
-                    }}>
-                            Status: {_.capitalize(profile.status)}
-                    </span>
-                    <div style={styles.divider} />
-                </div>
-                <div style={styles.descriptionContainer}> 
-                    <div style={styles.descriptionText}>
-                        { profile.summary }
+        <div style={styles.locationContainer}>
+            { labels.map((label, i) => {
+                if (!location[label]) return null
+
+                return (
+                    <div 
+                        key={i} 
+                        style={styles.locationSubContainer}
+                    >
+                        <div style={styles.locationLabel}>
+                            {label.toUpperCase()}
+                        </div>
+                        <div style={styles.locationValue}>
+                            {location[label]}
+                        </div>
                     </div>
-                </div>
-                { renderEditButton(editLink) }
-            </div>
+                )
+            }) }
         </div>
+    )
+}
+
+const renderNames = (profile) => {
+    const displayName = profile.preferredName
+        ? profile.preferredName
+        : profile.name.first
+
+    return (
+        <div style={styles.namesContainer}>
+            <span style={styles.displayName}>
+                {displayName}
+            </span>
+            <span style={styles.basicInfoText}>
+                {`${profile.name.first} ${profile.name.last}`}
+            </span>
+        </div>
+    )
+}
+
+const renderBasicInfo = (profile) => {
+    const birthday = moment(profile.dateOfBirth).format('Do MMMM YYYY')
+    const age = moment().diff(profile.dateOfBirth, 'years')
+    const isShowingLocation = !!Object.keys(profile.location).length
+
+    return (
+        <div style={styles.basicInfoContainer}>
+            { renderNames(profile) }
+            <span style={styles.basicInfoText}>
+                {birthday} (
+                    <span style={styles.highlightText}>
+                        {age}
+                    </span>
+                )
+            </span>
+            <span style={{ ...styles.basicInfoText, marginTop: 20 }}>            
+                {_.capitalize(profile.status)}
+            </span>
+            { isShowingLocation 
+                ? <div style={styles.divider} /> 
+                : null }
+            { renderLocation(isShowingLocation, profile.location) }
+            <div style={styles.divider} /> 
+        </div> 
     )
 }
 
 const PLACEHOLDER_IMAGE = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png';
 
 const styles = {
-    age: {
-        color: 'black'
-    },
     basicInfoContainer: {
         width: '100%',
         textAlign: 'center',
         display: 'flex',
         flexDirection: 'column',
         flex: '1',
+        justifyContent: 'center'
     },
     basicInfoText: {
         color: '#999999',
@@ -102,11 +152,16 @@ const styles = {
         margin: 'auto',
         width: '90%',
     },
+    displayName: {
+        fontWeight: 600,
+        fontSize: 24,
+    },
     divider: {
-        background: '#f2f2f2',
+        background: theme.color.gray05,
         height: 1,
         margin: 'auto',
         marginTop: 20,
+        marginBottom: 20,
         width: '90%',
     },
     editButton: {
@@ -115,13 +170,42 @@ const styles = {
         top: 20,
         right: 20,
     },
+    highlightText: {
+        color: 'black'
+    },
     image: {
         position: 'relative',
         zIndex: 1,
     },
-    name: {
+    locationContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        margin: '0 auto',
+    },
+    locationLabel: {
+        color: '#999999',
+        fontSize: 9,
         fontWeight: 600,
-        fontSize: 24,
+    },
+    locationSubContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '10px 5px 10px 5px',
+    },
+    locationValue: {
+        backgroundColor: theme.color.info,
+        borderRadius: 1000,
+        color: 'white',
+        padding: '2px 20px 2px 20px',
+        fontSize: 16,
+        fontWeight: 300,
+        float: 'left',
+    },
+    namesContainer: {
+        display: 'flex',
+        flexDirection: 'column',
     }
 }
 

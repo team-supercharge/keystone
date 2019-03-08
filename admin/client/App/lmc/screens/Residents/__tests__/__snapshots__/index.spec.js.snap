@@ -72,6 +72,16 @@ ShallowWrapper {
               "url": "profile",
             },
             Object {
+              "label": "Daily Logs",
+              "octicon": "calendar",
+              "url": "daily-report",
+            },
+            Object {
+              "label": "Charts",
+              "octicon": "graph",
+              "url": "charts",
+            },
+            Object {
               "label": "Documents",
               "octicon": "file",
               "url": "documents",
@@ -84,7 +94,7 @@ ShallowWrapper {
         style={
           Object {
             "height": "86vh",
-            "overflowY": "scroll",
+            "overflowY": "auto",
             "padding": "50px 20px 0px 20px",
             "width": "100%",
           }
@@ -166,6 +176,16 @@ ShallowWrapper {
                 "url": "profile",
               },
               Object {
+                "label": "Daily Logs",
+                "octicon": "calendar",
+                "url": "daily-report",
+              },
+              Object {
+                "label": "Charts",
+                "octicon": "graph",
+                "url": "charts",
+              },
+              Object {
                 "label": "Documents",
                 "octicon": "file",
                 "url": "documents",
@@ -178,7 +198,7 @@ ShallowWrapper {
           style={
             Object {
               "height": "86vh",
-              "overflowY": "scroll",
+              "overflowY": "auto",
               "padding": "50px 20px 0px 20px",
               "width": "100%",
             }
@@ -329,6 +349,16 @@ ShallowWrapper {
                     "url": "profile",
                   },
                   Object {
+                    "label": "Daily Logs",
+                    "octicon": "calendar",
+                    "url": "daily-report",
+                  },
+                  Object {
+                    "label": "Charts",
+                    "octicon": "graph",
+                    "url": "charts",
+                  },
+                  Object {
                     "label": "Documents",
                     "octicon": "file",
                     "url": "documents",
@@ -341,7 +371,7 @@ ShallowWrapper {
               style={
                 Object {
                   "height": "86vh",
-                  "overflowY": "scroll",
+                  "overflowY": "auto",
                   "padding": "50px 20px 0px 20px",
                   "width": "100%",
                 }
@@ -423,6 +453,16 @@ ShallowWrapper {
                     "url": "profile",
                   },
                   Object {
+                    "label": "Daily Logs",
+                    "octicon": "calendar",
+                    "url": "daily-report",
+                  },
+                  Object {
+                    "label": "Charts",
+                    "octicon": "graph",
+                    "url": "charts",
+                  },
+                  Object {
                     "label": "Documents",
                     "octicon": "file",
                     "url": "documents",
@@ -435,7 +475,7 @@ ShallowWrapper {
               style={
                 Object {
                   "height": "86vh",
-                  "overflowY": "scroll",
+                  "overflowY": "auto",
                   "padding": "50px 20px 0px 20px",
                   "width": "100%",
                 }

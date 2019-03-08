@@ -63,7 +63,7 @@ ShallowWrapper {
         Object {
           "flex": "3.5",
           "height": "87vh",
-          "overflow": "scroll",
+          "overflow": "auto",
           "padding": "0px 20px 0px 20px",
           "wordWrap": "break-word",
         }
@@ -140,7 +140,7 @@ ShallowWrapper {
           Object {
             "flex": "3.5",
             "height": "87vh",
-            "overflow": "scroll",
+            "overflow": "auto",
             "padding": "0px 20px 0px 20px",
             "wordWrap": "break-word",
           }
@@ -297,7 +297,7 @@ ShallowWrapper {
               Object {
                 "flex": "3.5",
                 "height": "87vh",
-                "overflow": "scroll",
+                "overflow": "auto",
                 "padding": "0px 20px 0px 20px",
                 "wordWrap": "break-word",
               }
@@ -374,7 +374,7 @@ ShallowWrapper {
               Object {
                 "flex": "3.5",
                 "height": "87vh",
-                "overflow": "scroll",
+                "overflow": "auto",
                 "padding": "0px 20px 0px 20px",
                 "wordWrap": "break-word",
               }

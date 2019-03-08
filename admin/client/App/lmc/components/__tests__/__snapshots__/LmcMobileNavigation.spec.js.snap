@@ -51,6 +51,14 @@ ShallowWrapper {
           width={100}
         />
       </span>
+      <GlyphButton
+        className="lmc-mobile-sign-out-button"
+        glyph="sign-out"
+        glyphSize="small"
+        glyphStyle={Object {}}
+        onClick={[Function]}
+        position="default"
+      />
     </div>
     <CSSTransitionGroup
       transitionAppear={false}
@@ -105,6 +113,14 @@ ShallowWrapper {
             width={100}
           />
         </span>
+        <GlyphButton
+          className="lmc-mobile-sign-out-button"
+          glyph="sign-out"
+          glyphSize="small"
+          glyphStyle={Object {}}
+          onClick={[Function]}
+          position="default"
+        />
       </div>
       <CSSTransitionGroup
         transitionAppear={false}
@@ -200,6 +216,14 @@ ShallowWrapper {
                 width={100}
               />
             </span>
+            <GlyphButton
+              className="lmc-mobile-sign-out-button"
+              glyph="sign-out"
+              glyphSize="small"
+              glyphStyle={Object {}}
+              onClick={[Function]}
+              position="default"
+            />
           </div>
           <CSSTransitionGroup
             transitionAppear={false}
@@ -254,6 +278,14 @@ ShallowWrapper {
                 width={100}
               />
             </span>
+            <GlyphButton
+              className="lmc-mobile-sign-out-button"
+              glyph="sign-out"
+              glyphSize="small"
+              glyphStyle={Object {}}
+              onClick={[Function]}
+              position="default"
+            />
           </div>
           <CSSTransitionGroup
             transitionAppear={false}

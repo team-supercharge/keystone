@@ -101,7 +101,8 @@ export default class LmcSidebar extends Component {
                     onCreate={onCreate}
                     style={localStyles.button}
                 />
-                <ul className='lmc-sidebar-list'>
+                { shownItems.length ? (
+                    <ul className='lmc-sidebar-list'>
                         { shownItems.map((item, index) => {
                             return (
                                 <LmcSidebarItem 
@@ -112,7 +113,12 @@ export default class LmcSidebar extends Component {
                                 />
                             )
                         }) }
-                </ul>
+                    </ul>
+                ) : (
+                    <div style={localStyles.noMatchesText}>
+                        No matches
+                    </div>
+                ) }
             </div>
         )
     }
@@ -137,6 +143,13 @@ const localStyles = {
         backgroundColor: '#f7f7f7',
         padding: '50px 0px 5px 15px',
         display: 'inline-block',
+    },
+    noMatchesText: {
+        color: '#999999',
+        fontSize: 20,
+        fontWeight: 300,
+        margin: '0 auto',
+        paddingTop: 20,
     },
     title: {
         fontSize: 24,

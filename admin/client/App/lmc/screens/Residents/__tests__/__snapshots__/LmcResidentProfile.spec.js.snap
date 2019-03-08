@@ -28,21 +28,42 @@ ShallowWrapper {
             "display": "flex",
             "flex": "1",
             "flexDirection": "column",
+            "justifyContent": "center",
             "textAlign": "center",
             "width": "100%",
           }
         }
       >
-        <span
+        <div
           style={
             Object {
-              "fontSize": 24,
-              "fontWeight": 600,
+              "display": "flex",
+              "flexDirection": "column",
             }
           }
         >
-          Test Resident
-        </span>
+          <span
+            style={
+              Object {
+                "fontSize": 24,
+                "fontWeight": 600,
+              }
+            }
+          >
+            Testy
+          </span>
+          <span
+            style={
+              Object {
+                "color": "#999999",
+                "fontSize": 18,
+                "fontWeight": 300,
+              }
+            }
+          >
+            Test Resident
+          </span>
+        </div>
         <span
           style={
             Object {
@@ -75,15 +96,75 @@ ShallowWrapper {
             }
           }
         >
-          Status: 
           Active
         </span>
         <div
           style={
             Object {
-              "background": "#f2f2f2",
+              "background": "#F2F2F2",
               "height": 1,
               "margin": "auto",
+              "marginBottom": 20,
+              "marginTop": 20,
+              "width": "90%",
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "justifyContent": "center",
+              "margin": "0 auto",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "margin": "10px 5px 10px 5px",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "color": "#999999",
+                  "fontSize": 9,
+                  "fontWeight": 600,
+                }
+              }
+            >
+              ROOM
+            </div>
+            <div
+              style={
+                Object {
+                  "backgroundColor": "#E85B78",
+                  "borderRadius": 1000,
+                  "color": "white",
+                  "float": "left",
+                  "fontSize": 16,
+                  "fontWeight": 300,
+                  "padding": "2px 20px 2px 20px",
+                }
+              }
+            >
+              12
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "background": "#F2F2F2",
+              "height": 1,
+              "margin": "auto",
+              "marginBottom": 20,
               "marginTop": 20,
               "width": "90%",
             }
@@ -147,21 +228,42 @@ ShallowWrapper {
               "display": "flex",
               "flex": "1",
               "flexDirection": "column",
+              "justifyContent": "center",
               "textAlign": "center",
               "width": "100%",
             }
           }
         >
-          <span
+          <div
             style={
               Object {
-                "fontSize": 24,
-                "fontWeight": 600,
+                "display": "flex",
+                "flexDirection": "column",
               }
             }
           >
-            Test Resident
-          </span>
+            <span
+              style={
+                Object {
+                  "fontSize": 24,
+                  "fontWeight": 600,
+                }
+              }
+            >
+              Testy
+            </span>
+            <span
+              style={
+                Object {
+                  "color": "#999999",
+                  "fontSize": 18,
+                  "fontWeight": 300,
+                }
+              }
+            >
+              Test Resident
+            </span>
+          </div>
           <span
             style={
               Object {
@@ -194,15 +296,75 @@ ShallowWrapper {
               }
             }
           >
-            Status: 
             Active
           </span>
           <div
             style={
               Object {
-                "background": "#f2f2f2",
+                "background": "#F2F2F2",
                 "height": 1,
                 "margin": "auto",
+                "marginBottom": 20,
+                "marginTop": 20,
+                "width": "90%",
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "justifyContent": "center",
+                "margin": "0 auto",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "margin": "10px 5px 10px 5px",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "color": "#999999",
+                    "fontSize": 9,
+                    "fontWeight": 600,
+                  }
+                }
+              >
+                ROOM
+              </div>
+              <div
+                style={
+                  Object {
+                    "backgroundColor": "#E85B78",
+                    "borderRadius": 1000,
+                    "color": "white",
+                    "float": "left",
+                    "fontSize": 16,
+                    "fontWeight": 300,
+                    "padding": "2px 20px 2px 20px",
+                  }
+                }
+              >
+                12
+              </div>
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "background": "#F2F2F2",
+                "height": 1,
+                "margin": "auto",
+                "marginBottom": 20,
                 "marginTop": 20,
                 "width": "90%",
               }
@@ -256,10 +418,14 @@ ShallowWrapper {
         profile={
           Object {
             "dateOfBirth": 1900-03-01T00:00:00.000Z,
+            "location": Object {
+              "room": "12",
+            },
             "name": Object {
               "first": "Test",
               "last": "Resident",
             },
+            "preferredName": "Testy",
             "status": "active",
           }
         }
@@ -274,10 +440,14 @@ ShallowWrapper {
         "props": Object {
           "profile": Object {
             "dateOfBirth": 1900-03-01T00:00:00.000Z,
+            "location": Object {
+              "room": "12",
+            },
             "name": Object {
               "first": "Test",
               "last": "Resident",
             },
+            "preferredName": "Testy",
             "status": "active",
           },
           "selectedResident": "testId",
@@ -322,21 +492,42 @@ ShallowWrapper {
                   "display": "flex",
                   "flex": "1",
                   "flexDirection": "column",
+                  "justifyContent": "center",
                   "textAlign": "center",
                   "width": "100%",
                 }
               }
             >
-              <span
+              <div
                 style={
                   Object {
-                    "fontSize": 24,
-                    "fontWeight": 600,
+                    "display": "flex",
+                    "flexDirection": "column",
                   }
                 }
               >
-                Test Resident
-              </span>
+                <span
+                  style={
+                    Object {
+                      "fontSize": 24,
+                      "fontWeight": 600,
+                    }
+                  }
+                >
+                  Testy
+                </span>
+                <span
+                  style={
+                    Object {
+                      "color": "#999999",
+                      "fontSize": 18,
+                      "fontWeight": 300,
+                    }
+                  }
+                >
+                  Test Resident
+                </span>
+              </div>
               <span
                 style={
                   Object {
@@ -369,15 +560,75 @@ ShallowWrapper {
                   }
                 }
               >
-                Status: 
                 Active
               </span>
               <div
                 style={
                   Object {
-                    "background": "#f2f2f2",
+                    "background": "#F2F2F2",
                     "height": 1,
                     "margin": "auto",
+                    "marginBottom": 20,
+                    "marginTop": 20,
+                    "width": "90%",
+                  }
+                }
+              />
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                    "margin": "0 auto",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "margin": "10px 5px 10px 5px",
+                    }
+                  }
+                >
+                  <div
+                    style={
+                      Object {
+                        "color": "#999999",
+                        "fontSize": 9,
+                        "fontWeight": 600,
+                      }
+                    }
+                  >
+                    ROOM
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "backgroundColor": "#E85B78",
+                        "borderRadius": 1000,
+                        "color": "white",
+                        "float": "left",
+                        "fontSize": 16,
+                        "fontWeight": 300,
+                        "padding": "2px 20px 2px 20px",
+                      }
+                    }
+                  >
+                    12
+                  </div>
+                </div>
+              </div>
+              <div
+                style={
+                  Object {
+                    "background": "#F2F2F2",
+                    "height": 1,
+                    "margin": "auto",
+                    "marginBottom": 20,
                     "marginTop": 20,
                     "width": "90%",
                   }
@@ -441,21 +692,42 @@ ShallowWrapper {
                   "display": "flex",
                   "flex": "1",
                   "flexDirection": "column",
+                  "justifyContent": "center",
                   "textAlign": "center",
                   "width": "100%",
                 }
               }
             >
-              <span
+              <div
                 style={
                   Object {
-                    "fontSize": 24,
-                    "fontWeight": 600,
+                    "display": "flex",
+                    "flexDirection": "column",
                   }
                 }
               >
-                Test Resident
-              </span>
+                <span
+                  style={
+                    Object {
+                      "fontSize": 24,
+                      "fontWeight": 600,
+                    }
+                  }
+                >
+                  Testy
+                </span>
+                <span
+                  style={
+                    Object {
+                      "color": "#999999",
+                      "fontSize": 18,
+                      "fontWeight": 300,
+                    }
+                  }
+                >
+                  Test Resident
+                </span>
+              </div>
               <span
                 style={
                   Object {
@@ -488,15 +760,75 @@ ShallowWrapper {
                   }
                 }
               >
-                Status: 
                 Active
               </span>
               <div
                 style={
                   Object {
-                    "background": "#f2f2f2",
+                    "background": "#F2F2F2",
                     "height": 1,
                     "margin": "auto",
+                    "marginBottom": 20,
+                    "marginTop": 20,
+                    "width": "90%",
+                  }
+                }
+              />
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                    "margin": "0 auto",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "margin": "10px 5px 10px 5px",
+                    }
+                  }
+                >
+                  <div
+                    style={
+                      Object {
+                        "color": "#999999",
+                        "fontSize": 9,
+                        "fontWeight": 600,
+                      }
+                    }
+                  >
+                    ROOM
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "backgroundColor": "#E85B78",
+                        "borderRadius": 1000,
+                        "color": "white",
+                        "float": "left",
+                        "fontSize": 16,
+                        "fontWeight": 300,
+                        "padding": "2px 20px 2px 20px",
+                      }
+                    }
+                  >
+                    12
+                  </div>
+                </div>
+              </div>
+              <div
+                style={
+                  Object {
+                    "background": "#F2F2F2",
+                    "height": 1,
+                    "margin": "auto",
+                    "marginBottom": 20,
                     "marginTop": 20,
                     "width": "90%",
                   }
@@ -554,10 +886,14 @@ ShallowWrapper {
     profile={
       Object {
         "dateOfBirth": 1900-03-01T00:00:00.000Z,
+        "location": Object {
+          "room": "12",
+        },
         "name": Object {
           "first": "Test",
           "last": "Resident",
         },
+        "preferredName": "Testy",
         "status": "active",
       }
     }

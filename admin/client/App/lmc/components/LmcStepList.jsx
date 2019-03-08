@@ -118,7 +118,7 @@ const classes = StyleSheet.create({
         left: 0,
         top: 0,
         height: '100vh',
-        overflow: 'scroll',
+        overflow: 'auto',
         background: 'white',
     },
     selectionContainer: {
