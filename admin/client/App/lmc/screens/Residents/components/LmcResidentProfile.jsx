@@ -178,10 +178,10 @@ const styles = {
         zIndex: 1,
     },
     locationContainer: {
-        alignItems: 'center',
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
+        justifyContent: 'center',
         margin: '0 auto',
     },
     locationLabel: {

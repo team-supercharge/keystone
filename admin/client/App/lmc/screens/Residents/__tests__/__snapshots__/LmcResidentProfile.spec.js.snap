@@ -113,10 +113,10 @@ ShallowWrapper {
         <div
           style={
             Object {
-              "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
               "flexWrap": "wrap",
+              "justifyContent": "center",
               "margin": "0 auto",
             }
           }
@@ -313,10 +313,10 @@ ShallowWrapper {
           <div
             style={
               Object {
-                "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
                 "flexWrap": "wrap",
+                "justifyContent": "center",
                 "margin": "0 auto",
               }
             }
@@ -577,10 +577,10 @@ ShallowWrapper {
               <div
                 style={
                   Object {
-                    "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "row",
                     "flexWrap": "wrap",
+                    "justifyContent": "center",
                     "margin": "0 auto",
                   }
                 }
@@ -777,10 +777,10 @@ ShallowWrapper {
               <div
                 style={
                   Object {
-                    "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "row",
                     "flexWrap": "wrap",
+                    "justifyContent": "center",
                     "margin": "0 auto",
                   }
                 }
