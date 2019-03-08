@@ -5,6 +5,9 @@ export const notifyIncident = (payload) => {
     const title = payload.notification.title
 
     let text
+    if (itemName.match(/ABC/)) {
+      text = `${residentName} has had an antisocial incident.`
+    }
     if (itemName.match(/Fall/)) {
       text = `${residentName} has had a fall.`
     }
@@ -17,7 +20,10 @@ export const notifyIncident = (payload) => {
     if (itemName.match(/Missing/)) {
       text = `${residentName} has been reported as missing.`
     }
-    if (itemName.match(/Injury/)) {
+    if (itemName.match(/Illness/)) {
+      text = `${residentName} has been reported as ill.`
+    }
+    if (itemName.match(/Injury/)) {I
       text = `${residentName} has had an injury.`
     }
 
