@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ActionCreators } from '../actions/actions'
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 const PLACEHOLDER_IMAGE = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png';
 
 class LmcResidentListItem extends Component {
+	handleClick = () => {
+		const { data, setSelectedResident } = this.props
+		setSelectedResident(data.id)
+	}
+
 	render () {
 		const { data, isActive, compact } = this.props;
 		const profile_pic = data.picture || PLACEHOLDER_IMAGE;
@@ -22,7 +29,11 @@ class LmcResidentListItem extends Component {
 			<li className="lmc-resident-list-item lmc-no-underline"
 				key={data.id}
 				style={{ ...styles.resident, ...activeStyle }}>
-				<Link to={this.props.link(data.id)} style={styles.link}>
+				<Link
+					onClick={this.handleClick} 
+					to={`${Keystone.adminPath}/residents`} 
+					style={styles.link}
+				>
 					<div style={styles.residentName}>
 						<span className={compact ? 'lmc-profile-picture__small' : 'lmc-profile-picture'} style={imgStyle} />
 						<span style={{...textStyle, ...activeTextStyle}}>
@@ -43,10 +54,6 @@ class LmcResidentListItem extends Component {
 		);
 	}
 }
-
-LmcResidentListItem.propTypes = {
-	data: PropTypes.object.isRequired,
-};
 
 const styles = {
 	subheading: {
@@ -98,4 +105,15 @@ const styles = {
 	}
 };
 
-export default LmcResidentListItem;
+LmcResidentListItem.propTypes = {
+	data: PropTypes.object.isRequired,
+	setSelectedResident: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setSelectedResident: (id) => dispatch(ActionCreators.setSelectedResident(id))
+	}
+}
+
+export default connect(null, mapDispatchToProps)(LmcResidentListItem)
