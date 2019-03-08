@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ActionCreators } from '../actions/actions'
 import { Link } from 'react-router';
@@ -6,53 +6,45 @@ import { connect } from 'react-redux';
 
 const PLACEHOLDER_IMAGE = 'https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png';
 
-class LmcResidentListItem extends Component {
-	handleClick = () => {
-		const { data, setSelectedResident } = this.props
-		setSelectedResident(data.id)
-	}
-
-	render () {
-		const { data, isActive, compact } = this.props;
-		const profile_pic = data.picture || PLACEHOLDER_IMAGE;
-		const textStyle = compact ? styles.linkTextCompact : styles.linkText;
-		const activeStyle = isActive ? styles.active : null;
-		const activeTextStyle = isActive ? styles.activeText : null;
-		const activePictureStyle = isActive ? styles.activePicture : null;
-		const imgStyle = {
-			float: 'left',
-			marginLeft: '3px',
-			background: `url(${profile_pic})`,
-			...activePictureStyle
-		};
-		return (
-			<li className="lmc-resident-list-item lmc-no-underline"
-				key={data.id}
-				style={{ ...styles.resident, ...activeStyle }}>
-				<Link
-					onClick={this.handleClick} 
-					to={`${Keystone.adminPath}/residents`} 
-					style={styles.link}
-				>
-					<div style={styles.residentName}>
-						<span className={compact ? 'lmc-profile-picture__small' : 'lmc-profile-picture'} style={imgStyle} />
-						<span style={{...textStyle, ...activeTextStyle}}>
-							{ data.subheading
-								? <span>
-									<span style={styles.subheading}>
-										{ data.subheading } <br/>
-									</span>
-									<span style={styles.mainText}>
-										{ data.name }
-									</span>
+export const LmcResidentListItem = ({ compact, data, isActive, setSelectedResident }) => {
+	const profile_pic = data.picture || PLACEHOLDER_IMAGE;
+	const textStyle = compact ? styles.linkTextCompact : styles.linkText;
+	const activeStyle = isActive ? styles.active : null;
+	const activeTextStyle = isActive ? styles.activeText : null;
+	const activePictureStyle = isActive ? styles.activePicture : null;
+	const imgStyle = {
+		float: 'left',
+		marginLeft: '3px',
+		background: `url(${profile_pic})`,
+		...activePictureStyle
+	};
+	return (
+		<li className="lmc-resident-list-item lmc-no-underline"
+			key={data.id}
+			style={{ ...styles.resident, ...activeStyle }}>
+			<Link
+				onClick={() => setSelectedResident(data.id)}
+				to={`${Keystone.adminPath}/residents`} 
+				style={styles.link}
+			>
+				<div style={styles.residentName}>
+					<span className={compact ? 'lmc-profile-picture__small' : 'lmc-profile-picture'} style={imgStyle} />
+					<span style={{...textStyle, ...activeTextStyle}}>
+						{ data.subheading
+							? <span>
+								<span style={styles.subheading}>
+									{ data.subheading } <br/>
 								</span>
-								: data.name }
-						</span>
-					</div>
-				</Link>
-			</li>
-		);
-	}
+								<span style={styles.mainText}>
+									{ data.name }
+								</span>
+							</span>
+							: data.name }
+					</span>
+				</div>
+			</Link>
+		</li>
+	);
 }
 
 const styles = {

@@ -26,7 +26,7 @@ describe('LmcMobileNavigation', () => {
     })
     
     it('renders an LmcMobileNavMenu when the button is clicked', () => {
-        const button = wrapper.find('GlyphButton')
+        const button = wrapper.find('GlyphButton').first()
         expect(wrapper.find('LmcMobileNavMenu').length).toEqual(0)
 
         button.simulate('click')

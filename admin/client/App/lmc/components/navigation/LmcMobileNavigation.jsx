@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { isBrowser, isTablet } from 'react-device-detect'
 import { GlyphButton } from '../../../elemental'
-import Transition from 'react-addons-css-transition-group';
+import { Link } from 'react-router'
+import Transition from 'react-addons-css-transition-group'
 import LmcMobileNavMenu from './LmcMobileNavMenu.jsx'
 
 export default class LmcMobileNavigation extends Component {
@@ -51,6 +52,12 @@ export default class LmcMobileNavigation extends Component {
                             alt="Log my Care" 
                         />
                     </span>
+                    <GlyphButton
+                        className='lmc-mobile-sign-out-button'
+                        glyph='sign-out'
+                        glyphSize='small'
+                        onClick={() => window.location = `${Keystone.adminPath}/signout`}
+                    />
                 </div>
                 <Transition
                     transitionName="MobileNavigation__menu"
@@ -114,12 +121,12 @@ const styles = {
         top: 0,
         width: '100%',
         zIndex: 10,
-        textAlign: 'center',
+        textAlign: 'center'
     },
     logoContainer: {
         position: 'relative',
         top: 6,
-    }
+    },
 }
 
 LmcMobileNavigation.propTypes = {
