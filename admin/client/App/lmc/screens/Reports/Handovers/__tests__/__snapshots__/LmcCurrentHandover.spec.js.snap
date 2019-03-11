@@ -9,90 +9,15 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <h2
-      style={
-        Object {
-          "fontWeight": 300,
-          "hyphens": "auto",
-          "marginBottom": "0.3em",
-          "textOverflow": "ellipsis",
-        }
-      }
-    >
-      Current Handover
-    </h2>
-    <div
-      className="lmc-theme-gradient"
-      style={
-        Object {
-          "height": 2,
-          "marginBottom": 22,
-          "width": "100%",
-        }
-      }
-    />
     <div
       style={
         Object {
           "display": "flex",
           "flexDirection": "row",
-          "width": "100%",
+          "justifyContent": "space-between",
         }
       }
     >
-      <div
-        style={
-          Object {
-            "paddingRight": 20,
-            "width": "60%",
-          }
-        }
-      >
-        <div>
-          <LmcHandoverResidentItem
-            data={
-              Object {
-                "logs": Array [
-                  Object {
-                    "createdBy": "TestCarer",
-                    "description": "This is a log",
-                    "id": "TestId",
-                  },
-                ],
-                "resident": Object {
-                  "id": "TestId2",
-                  "name": "TestResident",
-                  "picture": "TestPicture",
-                },
-              }
-            }
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "flex": "1",
-            "width": "40%",
-          }
-        }
-      >
-        <LmcHandoverNotes
-          notes={
-            Array [
-              Object {
-                "createdBy": "TestCarer",
-                "id": "TestId",
-                "note": "This is a note",
-              },
-            ]
-          }
-        />
-      </div>
-    </div>
-  </div>,
-  "nodes": Array [
-    <div>
       <h2
         style={
           Object {
@@ -105,16 +30,47 @@ ShallowWrapper {
       >
         Current Handover
       </h2>
-      <div
-        className="lmc-theme-gradient"
-        style={
-          Object {
-            "height": 2,
-            "marginBottom": 22,
-            "width": "100%",
-          }
-        }
+      <GlyphButton
+        className="lmc-collapse-button"
+        glyph="chevron-up"
+        glyphStyle={Object {}}
+        onClick={[Function]}
+        position="default"
       />
+    </div>
+    <div
+      className="lmc-theme-gradient"
+      style={
+        Object {
+          "height": 2,
+          "marginBottom": 22,
+          "width": "100%",
+        }
+      }
+    />
+    <AnimateHeight
+      animateOpacity={false}
+      animationStateClasses={
+        Object {
+          "animating": "rah-animating",
+          "animatingDown": "rah-animating--down",
+          "animatingToHeightAuto": "rah-animating--to-height-auto",
+          "animatingToHeightSpecific": "rah-animating--to-height-specific",
+          "animatingToHeightZero": "rah-animating--to-height-zero",
+          "animatingUp": "rah-animating--up",
+          "static": "rah-static",
+          "staticHeightAuto": "rah-static--height-auto",
+          "staticHeightSpecific": "rah-static--height-specific",
+          "staticHeightZero": "rah-static--height-zero",
+        }
+      }
+      applyInlineTransitions={true}
+      delay={0}
+      duration={500}
+      easing="ease"
+      height="auto"
+      style={Object {}}
+    >
       <div
         style={
           Object {
@@ -174,6 +130,132 @@ ShallowWrapper {
           />
         </div>
       </div>
+    </AnimateHeight>
+  </div>,
+  "nodes": Array [
+    <div>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <h2
+          style={
+            Object {
+              "fontWeight": 300,
+              "hyphens": "auto",
+              "marginBottom": "0.3em",
+              "textOverflow": "ellipsis",
+            }
+          }
+        >
+          Current Handover
+        </h2>
+        <GlyphButton
+          className="lmc-collapse-button"
+          glyph="chevron-up"
+          glyphStyle={Object {}}
+          onClick={[Function]}
+          position="default"
+        />
+      </div>
+      <div
+        className="lmc-theme-gradient"
+        style={
+          Object {
+            "height": 2,
+            "marginBottom": 22,
+            "width": "100%",
+          }
+        }
+      />
+      <AnimateHeight
+        animateOpacity={false}
+        animationStateClasses={
+          Object {
+            "animating": "rah-animating",
+            "animatingDown": "rah-animating--down",
+            "animatingToHeightAuto": "rah-animating--to-height-auto",
+            "animatingToHeightSpecific": "rah-animating--to-height-specific",
+            "animatingToHeightZero": "rah-animating--to-height-zero",
+            "animatingUp": "rah-animating--up",
+            "static": "rah-static",
+            "staticHeightAuto": "rah-static--height-auto",
+            "staticHeightSpecific": "rah-static--height-specific",
+            "staticHeightZero": "rah-static--height-zero",
+          }
+        }
+        applyInlineTransitions={true}
+        delay={0}
+        duration={500}
+        easing="ease"
+        height="auto"
+        style={Object {}}
+      >
+        <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "paddingRight": 20,
+                "width": "60%",
+              }
+            }
+          >
+            <div>
+              <LmcHandoverResidentItem
+                data={
+                  Object {
+                    "logs": Array [
+                      Object {
+                        "createdBy": "TestCarer",
+                        "description": "This is a log",
+                        "id": "TestId",
+                      },
+                    ],
+                    "resident": Object {
+                      "id": "TestId2",
+                      "name": "TestResident",
+                      "picture": "TestPicture",
+                    },
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "flex": "1",
+                "width": "40%",
+              }
+            }
+          >
+            <LmcHandoverNotes
+              notes={
+                Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "id": "TestId",
+                    "note": "This is a note",
+                  },
+                ]
+              }
+            />
+          </div>
+        </div>
+      </AnimateHeight>
     </div>,
   ],
   "options": Object {},
@@ -243,7 +325,10 @@ ShallowWrapper {
           ],
         },
         "refs": Object {},
-        "state": null,
+        "state": Object {
+          "isShowingContent": true,
+        },
+        "toggleContent": [Function],
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -263,18 +348,35 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <h2
+          <div
             style={
               Object {
-                "fontWeight": 300,
-                "hyphens": "auto",
-                "marginBottom": "0.3em",
-                "textOverflow": "ellipsis",
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
               }
             }
           >
-            Current Handover
-          </h2>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "hyphens": "auto",
+                  "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
+                }
+              }
+            >
+              Current Handover
+            </h2>
+            <GlyphButton
+              className="lmc-collapse-button"
+              glyph="chevron-up"
+              glyphStyle={Object {}}
+              onClick={[Function]}
+              position="default"
+            />
+          </div>
           <div
             className="lmc-theme-gradient"
             style={
@@ -285,80 +387,121 @@ ShallowWrapper {
               }
             }
           />
-          <div
-            style={
+          <AnimateHeight
+            animateOpacity={false}
+            animationStateClasses={
               Object {
-                "display": "flex",
-                "flexDirection": "row",
-                "width": "100%",
+                "animating": "rah-animating",
+                "animatingDown": "rah-animating--down",
+                "animatingToHeightAuto": "rah-animating--to-height-auto",
+                "animatingToHeightSpecific": "rah-animating--to-height-specific",
+                "animatingToHeightZero": "rah-animating--to-height-zero",
+                "animatingUp": "rah-animating--up",
+                "static": "rah-static",
+                "staticHeightAuto": "rah-static--height-auto",
+                "staticHeightSpecific": "rah-static--height-specific",
+                "staticHeightZero": "rah-static--height-zero",
               }
             }
+            applyInlineTransitions={true}
+            delay={0}
+            duration={500}
+            easing="ease"
+            height="auto"
+            style={Object {}}
           >
             <div
               style={
                 Object {
-                  "paddingRight": 20,
-                  "width": "60%",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "width": "100%",
                 }
               }
             >
-              <div>
-                <LmcHandoverResidentItem
-                  data={
-                    Object {
-                      "logs": Array [
-                        Object {
-                          "createdBy": "TestCarer",
-                          "description": "This is a log",
-                          "id": "TestId",
+              <div
+                style={
+                  Object {
+                    "paddingRight": 20,
+                    "width": "60%",
+                  }
+                }
+              >
+                <div>
+                  <LmcHandoverResidentItem
+                    data={
+                      Object {
+                        "logs": Array [
+                          Object {
+                            "createdBy": "TestCarer",
+                            "description": "This is a log",
+                            "id": "TestId",
+                          },
+                        ],
+                        "resident": Object {
+                          "id": "TestId2",
+                          "name": "TestResident",
+                          "picture": "TestPicture",
                         },
-                      ],
-                      "resident": Object {
-                        "id": "TestId2",
-                        "name": "TestResident",
-                        "picture": "TestPicture",
-                      },
+                      }
                     }
+                  />
+                </div>
+              </div>
+              <div
+                style={
+                  Object {
+                    "flex": "1",
+                    "width": "40%",
+                  }
+                }
+              >
+                <LmcHandoverNotes
+                  notes={
+                    Array [
+                      Object {
+                        "createdBy": "TestCarer",
+                        "id": "TestId",
+                        "note": "This is a note",
+                      },
+                    ]
                   }
                 />
               </div>
             </div>
-            <div
-              style={
-                Object {
-                  "flex": "1",
-                  "width": "40%",
-                }
-              }
-            >
-              <LmcHandoverNotes
-                notes={
-                  Array [
-                    Object {
-                      "createdBy": "TestCarer",
-                      "id": "TestId",
-                      "note": "This is a note",
-                    },
-                  ]
-                }
-              />
-            </div>
-          </div>
+          </AnimateHeight>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          <h2
+          <div
             style={
               Object {
-                "fontWeight": 300,
-                "hyphens": "auto",
-                "marginBottom": "0.3em",
-                "textOverflow": "ellipsis",
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
               }
             }
           >
-            Current Handover
-          </h2>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "hyphens": "auto",
+                  "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
+                }
+              }
+            >
+              Current Handover
+            </h2>
+            <GlyphButton
+              className="lmc-collapse-button"
+              glyph="chevron-up"
+              glyphStyle={Object {}}
+              onClick={[Function]}
+              position="default"
+            />
+          </div>
           <div
             className="lmc-theme-gradient"
             style={
@@ -369,65 +512,89 @@ ShallowWrapper {
               }
             }
           />
-          <div
-            style={
+          <AnimateHeight
+            animateOpacity={false}
+            animationStateClasses={
               Object {
-                "display": "flex",
-                "flexDirection": "row",
-                "width": "100%",
+                "animating": "rah-animating",
+                "animatingDown": "rah-animating--down",
+                "animatingToHeightAuto": "rah-animating--to-height-auto",
+                "animatingToHeightSpecific": "rah-animating--to-height-specific",
+                "animatingToHeightZero": "rah-animating--to-height-zero",
+                "animatingUp": "rah-animating--up",
+                "static": "rah-static",
+                "staticHeightAuto": "rah-static--height-auto",
+                "staticHeightSpecific": "rah-static--height-specific",
+                "staticHeightZero": "rah-static--height-zero",
               }
             }
+            applyInlineTransitions={true}
+            delay={0}
+            duration={500}
+            easing="ease"
+            height="auto"
+            style={Object {}}
           >
             <div
               style={
                 Object {
-                  "paddingRight": 20,
-                  "width": "60%",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "width": "100%",
                 }
               }
             >
-              <div>
-                <LmcHandoverResidentItem
-                  data={
-                    Object {
-                      "logs": Array [
-                        Object {
-                          "createdBy": "TestCarer",
-                          "description": "This is a log",
-                          "id": "TestId",
+              <div
+                style={
+                  Object {
+                    "paddingRight": 20,
+                    "width": "60%",
+                  }
+                }
+              >
+                <div>
+                  <LmcHandoverResidentItem
+                    data={
+                      Object {
+                        "logs": Array [
+                          Object {
+                            "createdBy": "TestCarer",
+                            "description": "This is a log",
+                            "id": "TestId",
+                          },
+                        ],
+                        "resident": Object {
+                          "id": "TestId2",
+                          "name": "TestResident",
+                          "picture": "TestPicture",
                         },
-                      ],
-                      "resident": Object {
-                        "id": "TestId2",
-                        "name": "TestResident",
-                        "picture": "TestPicture",
-                      },
+                      }
                     }
+                  />
+                </div>
+              </div>
+              <div
+                style={
+                  Object {
+                    "flex": "1",
+                    "width": "40%",
+                  }
+                }
+              >
+                <LmcHandoverNotes
+                  notes={
+                    Array [
+                      Object {
+                        "createdBy": "TestCarer",
+                        "id": "TestId",
+                        "note": "This is a note",
+                      },
+                    ]
                   }
                 />
               </div>
             </div>
-            <div
-              style={
-                Object {
-                  "flex": "1",
-                  "width": "40%",
-                }
-              }
-            >
-              <LmcHandoverNotes
-                notes={
-                  Array [
-                    Object {
-                      "createdBy": "TestCarer",
-                      "id": "TestId",
-                      "note": "This is a note",
-                    },
-                  ]
-                }
-              />
-            </div>
-          </div>
+          </AnimateHeight>
         </div>,
       },
       "_renderedNodeType": 0,
