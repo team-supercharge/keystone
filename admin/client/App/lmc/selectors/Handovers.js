@@ -12,7 +12,7 @@ export const groupCurrentHandoverLogs = createSelector(
             logsByResident: _(handover.logs)
                 .groupBy('resident')
                 .map((logs, resident) => ({
-                    data: logs,
+                    logs,
                     resident: residentsById[resident]
                 }))
                 .value(),

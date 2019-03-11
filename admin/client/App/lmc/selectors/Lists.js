@@ -6,3 +6,5 @@ export const getSelectedUser = state => state.users.selectedUser
 export const getUsersList = state => state.data.carers
 export const getHandoversList = state => state.data.handovers
 export const getCurrentHandover = state => state.handovers.current
+export const getLogCategories = state => state.data['log-categories']
+export const getLogCategoryItems = state => state.data['log-category-items']

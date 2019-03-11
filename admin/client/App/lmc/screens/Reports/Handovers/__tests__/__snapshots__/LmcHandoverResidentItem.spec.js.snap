@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcHandoverResidentItem renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <div
+        className="lmc-profile-picture__handover"
+        style={
+          Object {
+            "background": "url(TestPicture)",
+          }
+        }
+      />
+      <span
+        style={
+          Object {
+            "fontSize": 16,
+            "fontWeight": 600,
+            "left": 20,
+            "position": "relative",
+            "top": 12,
+          }
+        }
+      >
+        undefined undefined
+      </span>
+    </div>
+    <ul
+      style={
+        Object {
+          "listStyleType": "none",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+        }
+      }
+    >
+      <LmcTimelineRow
+        index={0}
+        log={
+          Object {
+            "createdBy": "TestCarer",
+            "description": "This is a log",
+            "id": "TestId",
+          }
+        }
+        total={1}
+      />
+    </ul>
+  </div>,
+  "nodes": Array [
+    <div>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+          }
+        }
+      >
+        <div
+          className="lmc-profile-picture__handover"
+          style={
+            Object {
+              "background": "url(TestPicture)",
+            }
+          }
+        />
+        <span
+          style={
+            Object {
+              "fontSize": 16,
+              "fontWeight": 600,
+              "left": 20,
+              "position": "relative",
+              "top": 12,
+            }
+          }
+        >
+          undefined undefined
+        </span>
+      </div>
+      <ul
+        style={
+          Object {
+            "listStyleType": "none",
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+          }
+        }
+      >
+        <LmcTimelineRow
+          index={0}
+          log={
+            Object {
+              "createdBy": "TestCarer",
+              "description": "This is a log",
+              "id": "TestId",
+            }
+          }
+          total={1}
+        />
+      </ul>
+    </div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <LmcHandoverResidentItem
+        data={
+          Object {
+            "logs": Array [
+              Object {
+                "createdBy": "TestCarer",
+                "description": "This is a log",
+                "id": "TestId",
+              },
+            ],
+            "resident": Object {
+              "id": "TestId2",
+              "name": "TestResident",
+              "picture": "TestPicture",
+            },
+          }
+        }
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "data": Object {
+            "logs": Array [
+              Object {
+                "createdBy": "TestCarer",
+                "description": "This is a log",
+                "id": "TestId",
+              },
+            ],
+            "resident": Object {
+              "id": "TestId2",
+              "name": "TestResident",
+              "picture": "TestPicture",
+            },
+          },
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+              }
+            }
+          >
+            <div
+              className="lmc-profile-picture__handover"
+              style={
+                Object {
+                  "background": "url(TestPicture)",
+                }
+              }
+            />
+            <span
+              style={
+                Object {
+                  "fontSize": 16,
+                  "fontWeight": 600,
+                  "left": 20,
+                  "position": "relative",
+                  "top": 12,
+                }
+              }
+            >
+              undefined undefined
+            </span>
+          </div>
+          <ul
+            style={
+              Object {
+                "listStyleType": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+              }
+            }
+          >
+            <LmcTimelineRow
+              index={0}
+              log={
+                Object {
+                  "createdBy": "TestCarer",
+                  "description": "This is a log",
+                  "id": "TestId",
+                }
+              }
+              total={1}
+            />
+          </ul>
+        </div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+              }
+            }
+          >
+            <div
+              className="lmc-profile-picture__handover"
+              style={
+                Object {
+                  "background": "url(TestPicture)",
+                }
+              }
+            />
+            <span
+              style={
+                Object {
+                  "fontSize": 16,
+                  "fontWeight": 600,
+                  "left": 20,
+                  "position": "relative",
+                  "top": 12,
+                }
+              }
+            >
+              undefined undefined
+            </span>
+          </div>
+          <ul
+            style={
+              Object {
+                "listStyleType": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+              }
+            }
+          >
+            <LmcTimelineRow
+              index={0}
+              log={
+                Object {
+                  "createdBy": "TestCarer",
+                  "description": "This is a log",
+                  "id": "TestId",
+                }
+              }
+              total={1}
+            />
+          </ul>
+        </div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcHandoverResidentItem
+    data={
+      Object {
+        "logs": Array [
+          Object {
+            "createdBy": "TestCarer",
+            "description": "This is a log",
+            "id": "TestId",
+          },
+        ],
+        "resident": Object {
+          "id": "TestId2",
+          "name": "TestResident",
+          "picture": "TestPicture",
+        },
+      }
+    }
+  />,
+}
+`;

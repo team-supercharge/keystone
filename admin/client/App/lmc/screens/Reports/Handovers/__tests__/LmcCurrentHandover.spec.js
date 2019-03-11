@@ -13,7 +13,7 @@ describe('LmcCurrentHandover', () => {
         ]
         logsByResident = [
             { 
-                data: { id: 'TestId', description: 'This is a log', createdBy: 'TestCarer' },
+                logs: [{ id: 'TestId', description: 'This is a log', createdBy: 'TestCarer' }],
                 resident: { id: 'TestId2', name: 'TestResident', picture: 'TestPicture' }
             }
         ]
