@@ -4,15 +4,10 @@ import { browserName } from 'react-device-detect'
 const register = (token) => {
     return new Promise((resolve, reject) => {
         xhr({
-            url: `${Keystone.adminPath}/api/devices/register`,
+            url: `${Keystone.adminPath}/api/notifications/subscribe`,
             method: 'POST',
             headers: Object.assign({}, Keystone.csrf.header),
-            json: {
-                token,
-                deviceID: Keystone.user.id,
-                deviceType: 'Browser',
-                platform: browserName
-            }
+            json: { token }
         }, (err, resp, body) => {
             if (err || body && body.error) {
                 reject({
