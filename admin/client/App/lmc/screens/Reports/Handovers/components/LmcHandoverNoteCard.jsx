@@ -1,23 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
 const LmcHandoverNoteCard = ({ note }) => {
     const carer = note.carer
-
     return (
         <div 
             style={styles.noteContainer}
         >
-            <div style={styles.carerContainer}>
-                <div 
-                    className="lmc-profile-picture__handover__small" 
-                    style={{
-                        background: `url(${carer.picture || PLACEHOLDER_IMAGE})` 
-                    }} 
-                />
-                <span style={styles.carerName}>
-                    { `${carer.name.first} ${carer.name.last}` }
-                </span>
+            <div style={styles.topContainer}>
+                <div style={styles.carerContainer}>
+                    <div 
+                        className="lmc-profile-picture__handover__small" 
+                        style={{
+                            background: `url(${carer.picture || PLACEHOLDER_IMAGE})` 
+                        }} 
+                    />
+                    <span style={styles.carerName}>
+                        { `${carer.name.first} ${carer.name.last}` }
+                    </span>
+                </div>
+                <div style={styles.timeContainer}>
+                    { moment(note.createdOn).format('HH:mm ddd') }
+                </div>
+            </div>
+            <div style={styles.textContainer}>
+                { note.note }
             </div>
         </div>
     )
@@ -29,13 +37,13 @@ const styles = {
     carerContainer: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
     },
     carerName: {
         fontSize: 14,
-        opacity: 0.6,
+        fontWeight: 600,
         position: 'relative',
-        top: 6,
+        top: 7,
         left: 15,
         margin: 0
     },
@@ -43,8 +51,26 @@ const styles = {
         background: 'white',
         borderRadius: 10,
         border: '1px #999999 solid',
+        marginBottom: '0.6em',
+        minHeight: 100,
+        padding: 10,
         width: '100%',
     },
+    textContainer: {
+        fontSize: 12,
+        opacity: 0.8,
+        paddingTop: 10,
+    },
+    timeContainer: {
+        fontSize: 12,
+        opacity: 0.5,
+        padding: '7px 7px 0px 0px',
+    },
+    topContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    }
 }
 
 LmcHandoverNoteCard.propTypes = {

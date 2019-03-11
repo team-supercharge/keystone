@@ -14,6 +14,9 @@ ShallowWrapper {
         "background": "white",
         "border": "1px #999999 solid",
         "borderRadius": 10,
+        "marginBottom": "0.6em",
+        "minHeight": 100,
+        "padding": 10,
         "width": "100%",
       }
     }
@@ -23,42 +26,7 @@ ShallowWrapper {
         Object {
           "display": "flex",
           "flexDirection": "row",
-          "justifyContent": "flex-start",
-        }
-      }
-    >
-      <div
-        className="lmc-profile-picture__handover__small"
-        style={
-          Object {
-            "background": "url(TestPicture)",
-          }
-        }
-      />
-      <span
-        style={
-          Object {
-            "fontSize": 14,
-            "left": 15,
-            "margin": 0,
-            "opacity": 0.6,
-            "position": "relative",
-            "top": 6,
-          }
-        }
-      >
-        Test Carer
-      </span>
-    </div>
-  </div>,
-  "nodes": Array [
-    <div
-      style={
-        Object {
-          "background": "white",
-          "border": "1px #999999 solid",
-          "borderRadius": 10,
-          "width": "100%",
+          "justifyContent": "space-between",
         }
       }
     >
@@ -83,17 +51,115 @@ ShallowWrapper {
           style={
             Object {
               "fontSize": 14,
+              "fontWeight": 600,
               "left": 15,
               "margin": 0,
-              "opacity": 0.6,
               "position": "relative",
-              "top": 6,
+              "top": 7,
             }
           }
         >
           Test Carer
         </span>
       </div>
+      <div
+        style={
+          Object {
+            "fontSize": 12,
+            "opacity": 0.5,
+            "padding": "7px 7px 0px 0px",
+          }
+        }
+      >
+        00:00 Tue
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "fontSize": 12,
+          "opacity": 0.8,
+          "paddingTop": 10,
+        }
+      }
+    />
+  </div>,
+  "nodes": Array [
+    <div
+      style={
+        Object {
+          "background": "white",
+          "border": "1px #999999 solid",
+          "borderRadius": 10,
+          "marginBottom": "0.6em",
+          "minHeight": 100,
+          "padding": 10,
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+            }
+          }
+        >
+          <div
+            className="lmc-profile-picture__handover__small"
+            style={
+              Object {
+                "background": "url(TestPicture)",
+              }
+            }
+          />
+          <span
+            style={
+              Object {
+                "fontSize": 14,
+                "fontWeight": 600,
+                "left": 15,
+                "margin": 0,
+                "position": "relative",
+                "top": 7,
+              }
+            }
+          >
+            Test Carer
+          </span>
+        </div>
+        <div
+          style={
+            Object {
+              "fontSize": 12,
+              "opacity": 0.5,
+              "padding": "7px 7px 0px 0px",
+            }
+          }
+        >
+          00:00 Tue
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingTop": 10,
+          }
+        }
+      />
     </div>,
   ],
   "options": Object {},
@@ -162,6 +228,9 @@ ShallowWrapper {
               "background": "white",
               "border": "1px #999999 solid",
               "borderRadius": 10,
+              "marginBottom": "0.6em",
+              "minHeight": 100,
+              "padding": 10,
               "width": "100%",
             }
           }
@@ -171,33 +240,63 @@ ShallowWrapper {
               Object {
                 "display": "flex",
                 "flexDirection": "row",
-                "justifyContent": "flex-start",
+                "justifyContent": "space-between",
               }
             }
           >
             <div
-              className="lmc-profile-picture__handover__small"
               style={
                 Object {
-                  "background": "url(TestPicture)",
-                }
-              }
-            />
-            <span
-              style={
-                Object {
-                  "fontSize": 14,
-                  "left": 15,
-                  "margin": 0,
-                  "opacity": 0.6,
-                  "position": "relative",
-                  "top": 6,
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
                 }
               }
             >
-              Test Carer
-            </span>
+              <div
+                className="lmc-profile-picture__handover__small"
+                style={
+                  Object {
+                    "background": "url(TestPicture)",
+                  }
+                }
+              />
+              <span
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": 600,
+                    "left": 15,
+                    "margin": 0,
+                    "position": "relative",
+                    "top": 7,
+                  }
+                }
+              >
+                Test Carer
+              </span>
+            </div>
+            <div
+              style={
+                Object {
+                  "fontSize": 12,
+                  "opacity": 0.5,
+                  "padding": "7px 7px 0px 0px",
+                }
+              }
+            >
+              00:00 Tue
+            </div>
           </div>
+          <div
+            style={
+              Object {
+                "fontSize": 12,
+                "opacity": 0.8,
+                "paddingTop": 10,
+              }
+            }
+          />
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div
@@ -206,6 +305,9 @@ ShallowWrapper {
               "background": "white",
               "border": "1px #999999 solid",
               "borderRadius": 10,
+              "marginBottom": "0.6em",
+              "minHeight": 100,
+              "padding": 10,
               "width": "100%",
             }
           }
@@ -215,33 +317,63 @@ ShallowWrapper {
               Object {
                 "display": "flex",
                 "flexDirection": "row",
-                "justifyContent": "flex-start",
+                "justifyContent": "space-between",
               }
             }
           >
             <div
-              className="lmc-profile-picture__handover__small"
               style={
                 Object {
-                  "background": "url(TestPicture)",
-                }
-              }
-            />
-            <span
-              style={
-                Object {
-                  "fontSize": 14,
-                  "left": 15,
-                  "margin": 0,
-                  "opacity": 0.6,
-                  "position": "relative",
-                  "top": 6,
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
                 }
               }
             >
-              Test Carer
-            </span>
+              <div
+                className="lmc-profile-picture__handover__small"
+                style={
+                  Object {
+                    "background": "url(TestPicture)",
+                  }
+                }
+              />
+              <span
+                style={
+                  Object {
+                    "fontSize": 14,
+                    "fontWeight": 600,
+                    "left": 15,
+                    "margin": 0,
+                    "position": "relative",
+                    "top": 7,
+                  }
+                }
+              >
+                Test Carer
+              </span>
+            </div>
+            <div
+              style={
+                Object {
+                  "fontSize": 12,
+                  "opacity": 0.5,
+                  "padding": "7px 7px 0px 0px",
+                }
+              }
+            >
+              00:00 Tue
+            </div>
           </div>
+          <div
+            style={
+              Object {
+                "fontSize": 12,
+                "opacity": 0.8,
+                "paddingTop": 10,
+              }
+            }
+          />
         </div>,
       },
       "_renderedNodeType": 0,

@@ -71,6 +71,7 @@ LmcTimelineRow.propTypes = {
 const styles = {
     container: {
         paddingLeft: 18,
+        paddingRight: 50,
     },
     logContent: {
         position: 'relative',

@@ -163,7 +163,6 @@ ShallowWrapper {
           ],
         },
         "refs": Object {},
-        "showProAlert": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],

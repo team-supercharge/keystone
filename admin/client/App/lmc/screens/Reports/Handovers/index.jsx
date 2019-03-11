@@ -4,31 +4,20 @@ import { ActionCreators } from '../../../actions/actions'
 import Selectors from '../../../selectors'
 import { connect } from 'react-redux'
 import { BlankState } from '../../../../elemental'
-import Swal from 'sweetalert2'
 import LmcSpinner from '../../../components/LmcSpinner.jsx'
 import LmcHandoversHistory from './components/LmcHandoversHistory.jsx'
 import LmcCurrentHandover from './components/LmcCurrentHandover.jsx';
+import { showProAlert } from '../../../common/notifications';
 
 export class LmcHandoversDashboard extends Component {
     componentDidMount () {
         this.props.fetchCurrentHandover()
     }
 
-    showProAlert = () => {
-        Swal.fire({
-            title: 'Whoops!',
-            html: 'You need to enable PRO mode to access this feature.<br>For more information, <a href="https://logmycare.co.uk/pricing/" target="_blank">click here.</a>',
-            type: 'info',
-            confirmButtonClass: 'lmc-custom-notification-confirm',
-            onClose: () => this.props.router.goBack()
-        })
-    }
-
     render () {
         const { currentHandover, handoverHistory } = this.props
-
         if (!Keystone.user.features.handovers) {
-            return <div>{ this.showProAlert() }</div>
+            return <div>{ showProAlert(this) }</div>
         }
         if (!handoverHistory || !currentHandover) {
             return <div><LmcSpinner /></div>

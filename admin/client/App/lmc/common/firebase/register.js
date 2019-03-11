@@ -7,12 +7,7 @@ const register = (token) => {
             url: `${Keystone.adminPath}/api/devices/register`,
             method: 'POST',
             headers: Object.assign({}, Keystone.csrf.header),
-            json: {
-                token,
-                deviceID: Keystone.user.id,
-                deviceType: 'Browser',
-                platform: browserName
-            }
+            json: { token }
         }, (err, resp, body) => {
             if (err || body && body.error) {
                 reject({
