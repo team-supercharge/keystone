@@ -48,7 +48,7 @@ import LmcTodosView from './lmc/screens/Todos/index.jsx';
 import LmcReportView from './lmc/screens/Reports/index.jsx';
 import LmcFluidsOverview from './lmc/screens/Reports/Charts/charts/LmcFluidsOverview.jsx';
 import LmcMealsOverview from './lmc/screens/Reports/Charts/charts/LmcMealsOverview.jsx';
-import LmcHandoversDashboard from './lmc/screens/Reports/Handovers/LmcHandoversDashboard.jsx';
+import LmcHandoversDashboard from './lmc/screens/Reports/Handovers/index.jsx';
 import LmcAdminReportView from './lmc/screens/AdminReports/index.jsx';
 import LmcAdminDashboard from './lmc/screens/AdminReports/LmcAdminDashboard.jsx';
 import LmcAdminHomeDashboard from './lmc/screens/AdminReports/LmcAdminHomeDashboard.jsx';

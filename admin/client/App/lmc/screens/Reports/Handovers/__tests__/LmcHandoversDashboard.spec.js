@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { LmcHandoversDashboard } from '../LmcHandoversDashboard.jsx'
+import { LmcHandoversDashboard } from '../index.jsx'
 
 describe('LmcHandoversDashboard', () => {
     let wrapper

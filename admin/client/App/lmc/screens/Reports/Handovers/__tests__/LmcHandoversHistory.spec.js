@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import LmcHandoversHistory from '../LmcHandoversHistory.jsx'
+import LmcHandoversHistory from '../components/LmcHandoversHistory.jsx'
 
 describe('LmcHandoversHistory', () => {
     let wrapper

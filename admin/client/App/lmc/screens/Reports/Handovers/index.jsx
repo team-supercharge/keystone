@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { BlankState } from '../../../../elemental'
 import Swal from 'sweetalert2'
 import LmcSpinner from '../../../components/LmcSpinner.jsx'
-import LmcHandoversHistory from './LmcHandoversHistory.jsx'
-import LmcCurrentHandover from './LmcCurrentHandover.jsx';
+import LmcHandoversHistory from './components/LmcHandoversHistory.jsx'
+import LmcCurrentHandover from './components/LmcCurrentHandover.jsx';
 
 export class LmcHandoversDashboard extends Component {
     componentDidMount () {

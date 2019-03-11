@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import LmcCurrentHandover from '../LmcCurrentHandover.jsx'
+import LmcCurrentHandover from '../components/LmcCurrentHandover.jsx'
 
 describe('LmcCurrentHandover', () => {
     let wrapper
