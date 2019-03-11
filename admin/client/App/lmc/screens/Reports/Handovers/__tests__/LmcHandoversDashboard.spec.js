@@ -38,7 +38,7 @@ describe('LmcHandoversDashboard', () => {
         const emptyWrapper = shallow(
             <LmcHandoversDashboard 
                 handoverHistory={[]}
-                currentHandover={{ logs: [], notes: [] }}
+                currentHandover={{ logsByResident: [], notes: [] }}
                 fetchCurrentHandover={fetchCurrentHandover}
             />)
         

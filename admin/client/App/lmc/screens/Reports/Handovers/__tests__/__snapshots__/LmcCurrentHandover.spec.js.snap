@@ -9,21 +9,73 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <p>
-      [{"id":"TestId","description":"This is a log","createdBy":"TestCarer"}]
-    </p>
-    <p>
-      [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
-    </p>
+    <div>
+      <h2
+        style={
+          Object {
+            "fontWeight": 300,
+            "hyphens": "auto",
+            "marginBottom": "0.3em",
+            "textOverflow": "ellipsis",
+          }
+        }
+      >
+        Current Handover
+      </h2>
+      <div
+        className="lmc-theme-gradient"
+        style={
+          Object {
+            "height": 2,
+            "marginBottom": 22,
+            "width": "100%",
+          }
+        }
+      />
+      <div>
+        <p>
+          [{"data":{"id":"TestId","description":"This is a log","createdBy":"TestCarer"},"resident":{"id":"TestId2","name":"TestResident","picture":"TestPicture"}}]
+        </p>
+        <p>
+          [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
+        </p>
+      </div>
+    </div>
   </div>,
   "nodes": Array [
     <div>
-      <p>
-        [{"id":"TestId","description":"This is a log","createdBy":"TestCarer"}]
-      </p>
-      <p>
-        [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
-      </p>
+      <div>
+        <h2
+          style={
+            Object {
+              "fontWeight": 300,
+              "hyphens": "auto",
+              "marginBottom": "0.3em",
+              "textOverflow": "ellipsis",
+            }
+          }
+        >
+          Current Handover
+        </h2>
+        <div
+          className="lmc-theme-gradient"
+          style={
+            Object {
+              "height": 2,
+              "marginBottom": 22,
+              "width": "100%",
+            }
+          }
+        />
+        <div>
+          <p>
+            [{"data":{"id":"TestId","description":"This is a log","createdBy":"TestCarer"},"resident":{"id":"TestId2","name":"TestResident","picture":"TestPicture"}}]
+          </p>
+          <p>
+            [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
+          </p>
+        </div>
+      </div>
     </div>,
   ],
   "options": Object {},
@@ -33,12 +85,19 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <LmcCurrentHandover
-        logs={
+        logsByResident={
           Array [
             Object {
-              "createdBy": "TestCarer",
-              "description": "This is a log",
-              "id": "TestId",
+              "data": Object {
+                "createdBy": "TestCarer",
+                "description": "This is a log",
+                "id": "TestId",
+              },
+              "resident": Object {
+                "id": "TestId2",
+                "name": "TestResident",
+                "picture": "TestPicture",
+              },
             },
           ]
         }
@@ -59,11 +118,18 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
-          "logs": Array [
+          "logsByResident": Array [
             Object {
-              "createdBy": "TestCarer",
-              "description": "This is a log",
-              "id": "TestId",
+              "data": Object {
+                "createdBy": "TestCarer",
+                "description": "This is a log",
+                "id": "TestId",
+              },
+              "resident": Object {
+                "id": "TestId2",
+                "name": "TestResident",
+                "picture": "TestPicture",
+              },
             },
           ],
           "notes": Array [
@@ -95,21 +161,73 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <p>
-            [{"id":"TestId","description":"This is a log","createdBy":"TestCarer"}]
-          </p>
-          <p>
-            [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
-          </p>
+          <div>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "hyphens": "auto",
+                  "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
+                }
+              }
+            >
+              Current Handover
+            </h2>
+            <div
+              className="lmc-theme-gradient"
+              style={
+                Object {
+                  "height": 2,
+                  "marginBottom": 22,
+                  "width": "100%",
+                }
+              }
+            />
+            <div>
+              <p>
+                [{"data":{"id":"TestId","description":"This is a log","createdBy":"TestCarer"},"resident":{"id":"TestId2","name":"TestResident","picture":"TestPicture"}}]
+              </p>
+              <p>
+                [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
+              </p>
+            </div>
+          </div>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          <p>
-            [{"id":"TestId","description":"This is a log","createdBy":"TestCarer"}]
-          </p>
-          <p>
-            [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
-          </p>
+          <div>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "hyphens": "auto",
+                  "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
+                }
+              }
+            >
+              Current Handover
+            </h2>
+            <div
+              className="lmc-theme-gradient"
+              style={
+                Object {
+                  "height": 2,
+                  "marginBottom": 22,
+                  "width": "100%",
+                }
+              }
+            />
+            <div>
+              <p>
+                [{"data":{"id":"TestId","description":"This is a log","createdBy":"TestCarer"},"resident":{"id":"TestId2","name":"TestResident","picture":"TestPicture"}}]
+              </p>
+              <p>
+                [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
+              </p>
+            </div>
+          </div>
         </div>,
       },
       "_renderedNodeType": 0,
@@ -123,12 +241,19 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <LmcCurrentHandover
-    logs={
+    logsByResident={
       Array [
         Object {
-          "createdBy": "TestCarer",
-          "description": "This is a log",
-          "id": "TestId",
+          "data": Object {
+            "createdBy": "TestCarer",
+            "description": "This is a log",
+            "id": "TestId",
+          },
+          "resident": Object {
+            "id": "TestId2",
+            "name": "TestResident",
+            "picture": "TestPicture",
+          },
         },
       ]
     }

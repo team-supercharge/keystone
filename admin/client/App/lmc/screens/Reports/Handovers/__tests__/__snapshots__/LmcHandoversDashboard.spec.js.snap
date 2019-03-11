@@ -8,51 +8,25 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    <LmcCurrentHandover
-      logs={
-        Array [
-          Object {
-            "createdBy": "TestCarer",
-            "id": "TestId",
-            "note": "This is a note",
-          },
-        ]
+  "node": <div
+    style={
+      Object {
+        "height": "83vh",
+        "overflow": "auto",
+        "padding": "50px 20px 0px 20px",
       }
-      notes={
-        Array [
-          Object {
-            "createdBy": "TestCarer",
-            "description": "This is a log",
-            "id": "TestId",
-          },
-        ]
-      }
-    />
-    <LmcHandoversHistory
-      handovers={
-        Array [
-          Object {
-            "createdBy": "TestCarer",
-            "id": "TestId",
-            "witnessedBy": "TestCarer2",
-          },
-        ]
-      }
-    />
-  </div>,
-  "nodes": Array [
-    <div>
-      <LmcCurrentHandover
-        logs={
-          Array [
-            Object {
-              "createdBy": "TestCarer",
-              "id": "TestId",
-              "note": "This is a note",
-            },
-          ]
+    }
+  >
+    <div
+      style={
+        Object {
+          "margin": "0 auto",
+          "maxWidth": 1000,
+          "wordWrap": "break-word",
         }
+      }
+    >
+      <LmcCurrentHandover
         notes={
           Array [
             Object {
@@ -74,6 +48,50 @@ ShallowWrapper {
           ]
         }
       />
+    </div>
+  </div>,
+  "nodes": Array [
+    <div
+      style={
+        Object {
+          "height": "83vh",
+          "overflow": "auto",
+          "padding": "50px 20px 0px 20px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "margin": "0 auto",
+            "maxWidth": 1000,
+            "wordWrap": "break-word",
+          }
+        }
+      >
+        <LmcCurrentHandover
+          notes={
+            Array [
+              Object {
+                "createdBy": "TestCarer",
+                "description": "This is a log",
+                "id": "TestId",
+              },
+            ]
+          }
+        />
+        <LmcHandoversHistory
+          handovers={
+            Array [
+              Object {
+                "createdBy": "TestCarer",
+                "id": "TestId",
+                "witnessedBy": "TestCarer2",
+              },
+            ]
+          }
+        />
+      </div>
     </div>,
   ],
   "options": Object {},
@@ -165,72 +183,90 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <LmcCurrentHandover
-            logs={
-              Array [
-                Object {
-                  "createdBy": "TestCarer",
-                  "id": "TestId",
-                  "note": "This is a note",
-                },
-              ]
+        "_currentElement": <div
+          style={
+            Object {
+              "height": "83vh",
+              "overflow": "auto",
+              "padding": "50px 20px 0px 20px",
             }
-            notes={
-              Array [
-                Object {
-                  "createdBy": "TestCarer",
-                  "description": "This is a log",
-                  "id": "TestId",
-                },
-              ]
+          }
+        >
+          <div
+            style={
+              Object {
+                "margin": "0 auto",
+                "maxWidth": 1000,
+                "wordWrap": "break-word",
+              }
             }
-          />
-          <LmcHandoversHistory
-            handovers={
-              Array [
-                Object {
-                  "createdBy": "TestCarer",
-                  "id": "TestId",
-                  "witnessedBy": "TestCarer2",
-                },
-              ]
-            }
-          />
+          >
+            <LmcCurrentHandover
+              notes={
+                Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "description": "This is a log",
+                    "id": "TestId",
+                  },
+                ]
+              }
+            />
+            <LmcHandoversHistory
+              handovers={
+                Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "id": "TestId",
+                    "witnessedBy": "TestCarer2",
+                  },
+                ]
+              }
+            />
+          </div>
         </div>,
         "_debugID": 2,
-        "_renderedOutput": <div>
-          <LmcCurrentHandover
-            logs={
-              Array [
-                Object {
-                  "createdBy": "TestCarer",
-                  "id": "TestId",
-                  "note": "This is a note",
-                },
-              ]
+        "_renderedOutput": <div
+          style={
+            Object {
+              "height": "83vh",
+              "overflow": "auto",
+              "padding": "50px 20px 0px 20px",
             }
-            notes={
-              Array [
-                Object {
-                  "createdBy": "TestCarer",
-                  "description": "This is a log",
-                  "id": "TestId",
-                },
-              ]
+          }
+        >
+          <div
+            style={
+              Object {
+                "margin": "0 auto",
+                "maxWidth": 1000,
+                "wordWrap": "break-word",
+              }
             }
-          />
-          <LmcHandoversHistory
-            handovers={
-              Array [
-                Object {
-                  "createdBy": "TestCarer",
-                  "id": "TestId",
-                  "witnessedBy": "TestCarer2",
-                },
-              ]
-            }
-          />
+          >
+            <LmcCurrentHandover
+              notes={
+                Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "description": "This is a log",
+                    "id": "TestId",
+                  },
+                ]
+              }
+            />
+            <LmcHandoversHistory
+              handovers={
+                Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "id": "TestId",
+                    "witnessedBy": "TestCarer2",
+                  },
+                ]
+              }
+            />
+          </div>
         </div>,
       },
       "_renderedNodeType": 0,

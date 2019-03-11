@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ActionCreators } from '../../../actions/actions'
+import Selectors from '../../../selectors'
 import { connect } from 'react-redux'
 import { BlankState } from '../../../../elemental'
 import Swal from 'sweetalert2'
@@ -33,9 +34,9 @@ export class LmcHandoversDashboard extends Component {
             return <div><LmcSpinner /></div>
         }
 
-        const { logs, notes } = currentHandover
+        const { logsByResident, notes } = currentHandover
 
-        if (!handoverHistory.length && !logs.length && !notes.length) {
+        if (!handoverHistory.length && !logsByResident.length && !notes.length) {
             return (
                 <div>
                     <BlankState
@@ -45,16 +46,31 @@ export class LmcHandoversDashboard extends Component {
             )
         }
         return (
-            <div>
-                <LmcCurrentHandover
-                    logs={logs}
-                    notes={notes}
-                />
-                <LmcHandoversHistory
-                    handovers={handoverHistory}
-                />
+            <div style={styles.mainContainer}>
+                <div style={styles.content}>
+                    <LmcCurrentHandover
+                        logsByResident={logsByResident}
+                        notes={notes}
+                    />
+                    <LmcHandoversHistory
+                        handovers={handoverHistory}
+                    />
+                </div>
             </div>
         )
+    }
+}
+
+const styles = {
+    mainContainer: {
+        padding: '50px 20px 0px 20px',
+        overflow: 'auto',
+        height: '83vh',
+    },
+    content: {
+        maxWidth: 1000,
+        margin: '0 auto',
+        wordWrap: 'break-word',
     }
 }
 
@@ -66,7 +82,7 @@ LmcHandoversDashboard.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        currentHandover: state.handovers.current,
+        currentHandover: Selectors.groupCurrentHandoverLogs(state),
         handoverHistory: state.data.handovers,
     }
 }

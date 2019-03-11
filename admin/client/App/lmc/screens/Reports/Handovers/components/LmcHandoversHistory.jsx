@@ -6,7 +6,7 @@ export default class LmcHandoversHistory extends Component {
         const { handovers } = this.props
         return (
             <div>
-                { JSON.stringify(handovers) }
+                {/* { JSON.stringify(handovers) } */}
             </div>
         )
     }

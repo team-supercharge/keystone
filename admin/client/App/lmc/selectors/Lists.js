@@ -4,3 +4,5 @@ export const getHomeDocumentsList = state => state.data['home-documents']
 export const getDocumentsList = state => state.data.documents
 export const getSelectedUser = state => state.users.selectedUser
 export const getUsersList = state => state.data.carers
+export const getHandoversList = state => state.data.handovers
+export const getCurrentHandover = state => state.handovers.current
