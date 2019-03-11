@@ -10,9 +10,7 @@ import LmcCurrentHandover from './LmcCurrentHandover.jsx';
 
 export class LmcHandoversDashboard extends Component {
     componentDidMount () {
-        const { fetchCurrentHandoverLogs, fetchCurrentHandoverNotes } = this.props
-        fetchCurrentHandoverLogs()
-        fetchCurrentHandoverNotes()
+        this.props.fetchCurrentHandover()
     }
 
     showProAlert = () => {
@@ -26,34 +24,31 @@ export class LmcHandoversDashboard extends Component {
     }
 
     render () {
-        const { 
-            handoverHistory, 
-            currentHandoverLogs, 
-            currentHandoverNotes 
-        } = this.props
+        const { currentHandover, handoverHistory } = this.props
 
         if (!Keystone.user.features.handovers) {
             return <div>{ this.showProAlert() }</div>
         }
-        if (!handoverHistory || !currentHandoverLogs || !currentHandoverNotes) {
+        if (!handoverHistory || !currentHandover) {
             return <div><LmcSpinner /></div>
         }
-        if (!handoverHistory.length && 
-            !currentHandoverLogs.length && 
-            !currentHandoverNotes.length) {
-                return (
-                    <div>
-                        <BlankState
-                            heading='No handovers information found...'
-                        />
-                    </div>
-                )
+
+        const { logs, notes } = currentHandover
+
+        if (!handoverHistory.length && !logs.length && !notes.length) {
+            return (
+                <div>
+                    <BlankState
+                        heading='No handovers information found...'
+                    />
+                </div>
+            )
         }
         return (
             <div>
                 <LmcCurrentHandover
-                    logs={currentHandoverLogs}
-                    notes={currentHandoverNotes}
+                    logs={logs}
+                    notes={notes}
                 />
                 <LmcHandoversHistory
                     handovers={handoverHistory}
@@ -64,25 +59,21 @@ export class LmcHandoversDashboard extends Component {
 }
 
 LmcHandoversDashboard.propTypes = {
-    currentHandoverLogs: PropTypes.array,
-    currentHandoverNotes: PropTypes.array,
-    fetchCurrentHandoverLogs: PropTypes.func.isRequired,
-    fetchCurrentHandoverNotes: PropTypes.func.isRequired,
+    currentHandover: PropTypes.object,
+    fetchCurrentHandover: PropTypes.func.isRequired,
     handoverHistory: PropTypes.array
 }
 
 const mapStateToProps = (state) => {
     return {
-        currentHandoverLogs: state.handovers.currentLogs,
-        currentHandoverNotes: state.handovers.currentNotes,
+        currentHandover: state.handovers.current,
         handoverHistory: state.data.handovers,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchCurrentHandoverLogs: () => dispatch(ActionCreators.fetchCurrentHandoverLogs()),
-        fetchCurrentHandoverNotes: () => dispatch(ActionCreators.fetchCurrentHandoverNotes())
+        fetchCurrentHandover: () => dispatch(ActionCreators.fetchCurrentHandover()),
     }
 }
 

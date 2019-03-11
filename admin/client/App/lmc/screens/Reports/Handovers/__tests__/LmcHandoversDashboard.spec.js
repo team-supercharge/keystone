@@ -4,11 +4,9 @@ import { LmcHandoversDashboard } from '../LmcHandoversDashboard.jsx'
 
 describe('LmcHandoversDashboard', () => {
     let wrapper
-    let currentHandoverNotes
-    let currentHandoverLogs
+    let currentHandover
     let handoverHistory
-    const fetchCurrentHandoverLogs = jest.fn()
-    const fetchCurrentHandoverNotes = jest.fn()
+    const fetchCurrentHandover = jest.fn()
     global.Keystone = { 
         adminPath: '/admin', 
         user: { features: { handovers: true } } 
@@ -18,20 +16,16 @@ describe('LmcHandoversDashboard', () => {
         handoverHistory = [
             { id: 'TestId', createdBy: 'TestCarer', witnessedBy: 'TestCarer2' }
         ]
-        currentHandoverNotes = [
-            { id: 'TestId', note: 'This is a note', createdBy: 'TestCarer' }
-        ]
-        currentHandoverLogs = [
-            { id: 'TestId', description: 'This is a log', createdBy: 'TestCarer' }
-        ]
+        currentHandover = {
+            logs: [{ id: 'TestId', note: 'This is a note', createdBy: 'TestCarer' }],
+            notes: [{ id: 'TestId', description: 'This is a log', createdBy: 'TestCarer' }]
+        }
 
         wrapper = shallow(
             <LmcHandoversDashboard 
                 handoverHistory={handoverHistory}
-                currentHandoverLogs={currentHandoverLogs}
-                currentHandoverNotes={currentHandoverNotes}
-                fetchCurrentHandoverLogs={fetchCurrentHandoverLogs}
-                fetchCurrentHandoverNotes={fetchCurrentHandoverNotes}
+                currentHandover={currentHandover}
+                fetchCurrentHandover={fetchCurrentHandover}
             />
         )
     })
@@ -44,10 +38,8 @@ describe('LmcHandoversDashboard', () => {
         const emptyWrapper = shallow(
             <LmcHandoversDashboard 
                 handoverHistory={[]}
-                currentHandoverLogs={[]}
-                currentHandoverNotes={[]}
-                fetchCurrentHandoverLogs={fetchCurrentHandoverLogs}
-                fetchCurrentHandoverNotes={fetchCurrentHandoverNotes}
+                currentHandover={{ logs: [], notes: [] }}
+                fetchCurrentHandover={fetchCurrentHandover}
             />)
         
         expect(wrapper.find('BlankState').length).toEqual(0)

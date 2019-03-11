@@ -1,12 +1,12 @@
 import * as types from '../constants'
 import { getJSON } from '../common/dataService'
 
-export function fetchCurrentHandoverLogs() {
+export function fetchCurrentHandover() {
     return (dispatch) => {
-        const url = `${Keystone.adminPath}/api/reports/handovers/current/logs`
+        const url = `${Keystone.adminPath}/api/reports/handovers/current`
         return getJSON({ url })
             .then(res => {
-                dispatch(setCurrentHandoverLogs(res.result))
+                dispatch(setCurrentHandover(res.result))
             })
             .catch(e => {
                 console.log(e)
@@ -14,29 +14,9 @@ export function fetchCurrentHandoverLogs() {
     }
 }
 
-export function fetchCurrentHandoverNotes() {
-    return (dispatch) => {
-        const url = `${Keystone.adminPath}/api/reports/handovers/current/notes`
-        return getJSON({ url })
-            .then(res => {
-                dispatch(setCurrentHandoverNotes(res.result))
-            })
-            .catch(e => {
-                console.log(e)
-            })
-    }
-}
-
-function setCurrentHandoverLogs(logs) {
+function setCurrentHandover(data) {
     return {
-        logs,
-        type: types.SET_CURRENT_HANDOVER_LOGS
-    }
-}
-
-function setCurrentHandoverNotes(notes) {
-    return {
-        notes,
-        type: types.SET_CURRENT_HANDOVER_NOTES
+        data,
+        type: types.SET_CURRENT_HANDOVER
     }
 }
