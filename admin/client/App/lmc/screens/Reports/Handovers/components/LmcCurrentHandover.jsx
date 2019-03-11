@@ -15,9 +15,8 @@ export default class LmcCurrentHandover extends Component {
                     <div style={styles.leftContainer}>
                         { logsByResident.map((logGroup, i) => {
                             return (
-                                <div>
+                                <div key={i}>
                                     <LmcHandoverResidentItem
-                                        key={i}
                                         data={logGroup}
                                     />
                                 </div>

@@ -30,22 +30,35 @@ ShallowWrapper {
         style={
           Object {
             "fontSize": 16,
-            "fontWeight": 600,
             "left": 20,
             "position": "relative",
             "top": 12,
           }
         }
       >
-        undefined undefined
+        <span
+          style={
+            Object {
+              "fontWeight": 600,
+            }
+          }
+        >
+          Testy
+        </span>
+         (
+        Test Name
+        )
       </span>
     </div>
     <ul
       style={
         Object {
+          "left": 50,
           "listStyleType": "none",
           "paddingBottom": 0,
           "paddingLeft": 0,
+          "position": "relative",
+          "top": 20,
         }
       }
     >
@@ -85,22 +98,35 @@ ShallowWrapper {
           style={
             Object {
               "fontSize": 16,
-              "fontWeight": 600,
               "left": 20,
               "position": "relative",
               "top": 12,
             }
           }
         >
-          undefined undefined
+          <span
+            style={
+              Object {
+                "fontWeight": 600,
+              }
+            }
+          >
+            Testy
+          </span>
+           (
+          Test Name
+          )
         </span>
       </div>
       <ul
         style={
           Object {
+            "left": 50,
             "listStyleType": "none",
             "paddingBottom": 0,
             "paddingLeft": 0,
+            "position": "relative",
+            "top": 20,
           }
         }
       >
@@ -136,8 +162,12 @@ ShallowWrapper {
             ],
             "resident": Object {
               "id": "TestId2",
-              "name": "TestResident",
+              "name": Object {
+                "first": "Test",
+                "last": "Name",
+              },
               "picture": "TestPicture",
+              "preferredName": "Testy",
             },
           }
         }
@@ -159,8 +189,12 @@ ShallowWrapper {
             ],
             "resident": Object {
               "id": "TestId2",
-              "name": "TestResident",
+              "name": Object {
+                "first": "Test",
+                "last": "Name",
+              },
               "picture": "TestPicture",
+              "preferredName": "Testy",
             },
           },
         },
@@ -206,22 +240,35 @@ ShallowWrapper {
               style={
                 Object {
                   "fontSize": 16,
-                  "fontWeight": 600,
                   "left": 20,
                   "position": "relative",
                   "top": 12,
                 }
               }
             >
-              undefined undefined
+              <span
+                style={
+                  Object {
+                    "fontWeight": 600,
+                  }
+                }
+              >
+                Testy
+              </span>
+               (
+              Test Name
+              )
             </span>
           </div>
           <ul
             style={
               Object {
+                "left": 50,
                 "listStyleType": "none",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
+                "position": "relative",
+                "top": 20,
               }
             }
           >
@@ -261,22 +308,35 @@ ShallowWrapper {
               style={
                 Object {
                   "fontSize": 16,
-                  "fontWeight": 600,
                   "left": 20,
                   "position": "relative",
                   "top": 12,
                 }
               }
             >
-              undefined undefined
+              <span
+                style={
+                  Object {
+                    "fontWeight": 600,
+                  }
+                }
+              >
+                Testy
+              </span>
+               (
+              Test Name
+              )
             </span>
           </div>
           <ul
             style={
               Object {
+                "left": 50,
                 "listStyleType": "none",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
+                "position": "relative",
+                "top": 20,
               }
             }
           >
@@ -316,8 +376,12 @@ ShallowWrapper {
         ],
         "resident": Object {
           "id": "TestId2",
-          "name": "TestResident",
+          "name": Object {
+            "first": "Test",
+            "last": "Name",
+          },
           "picture": "TestPicture",
+          "preferredName": "Testy",
         },
       }
     }

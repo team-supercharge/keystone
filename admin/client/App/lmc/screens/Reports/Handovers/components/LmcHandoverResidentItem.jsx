@@ -4,6 +4,8 @@ import LmcTimelineRow from '../../../../components/LmcTimelineRow.jsx'
 
 const LmcHandoverResidentItem = ({ data }) => {
     const { logs, resident } = data
+    const chosenName = resident.preferredName || resident.name.first
+    
     return (
         <div>
             <div style={styles.residentContainer}>
@@ -15,7 +17,7 @@ const LmcHandoverResidentItem = ({ data }) => {
                     }} 
                 />
                 <span style={styles.residentName}>
-                    { `${resident.name.first} ${resident.name.last}` }
+                    <span style={styles.preferredName}>{chosenName}</span> ({ `${resident.name.first} ${resident.name.last}` })
                 </span>
             </div>
             <ul style={styles.logContainer}>
@@ -39,9 +41,12 @@ const PLACEHOLDER_IMAGE = 'https://s3.eu-west-2.amazonaws.com/lmc-data-productio
 
 const styles = {
     logContainer: {
-        paddingLeft: 0,
-		paddingBottom: 0,
 		listStyleType: 'none',
+        paddingLeft: 0,
+        paddingBottom: 0,
+        position: 'relative',
+        top: 20,
+        left: 50
     },
     residentContainer: {
         display: 'flex',
@@ -50,11 +55,13 @@ const styles = {
     },
     residentName: {
         fontSize: 16,
-        fontWeight: 600,
         position: 'relative',
         top: 12,
         left: 20
     },
+    preferredName: {
+        fontWeight: 600
+    }
 }
 LmcHandoverResidentItem.propTypes = {
     data: PropTypes.object.isRequired
