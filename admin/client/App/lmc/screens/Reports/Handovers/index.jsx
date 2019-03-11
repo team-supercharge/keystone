@@ -72,7 +72,7 @@ LmcHandoversDashboard.propTypes = {
 const mapStateToProps = (state) => {
     return {
         currentHandover: Selectors.formatCurrentHandover(state),
-        handoverHistory: state.data.handovers,
+        handoverHistory: Selectors.formatHandoverHistory(state),
     }
 }
 

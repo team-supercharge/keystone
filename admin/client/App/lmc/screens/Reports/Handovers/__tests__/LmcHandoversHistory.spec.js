@@ -7,9 +7,20 @@ describe('LmcHandoversHistory', () => {
     let handovers
 
     beforeEach(() => {
-        handovers = [
-            { id: 'TestId', createdBy: 'TestCarer', witnessedBy: 'TestCarer2' }
-        ]
+        handovers = {
+            'Mar 11th': [
+            { 
+                notes: [{ id: 'TestId', note: 'This is a note', createdBy: 'TestCarer' }],
+                logsByResident: [
+                    { 
+                        logs: [{ id: 'TestId', description: 'This is a log', createdBy: 'TestCarer' }],
+                        resident: { id: 'TestId2', name: 'TestResident', picture: 'TestPicture' }
+                    }
+                ],
+                seenBy: ['TestId1', 'TestId2', 'TestId3']
+            }
+        ]}
+            
         wrapper = shallow(
             <LmcHandoversHistory
                 handovers={handovers}

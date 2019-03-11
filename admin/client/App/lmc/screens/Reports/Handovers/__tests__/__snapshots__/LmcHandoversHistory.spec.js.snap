@@ -8,9 +8,127 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div />,
+  "node": <div>
+    <div>
+      <h2
+        style={
+          Object {
+            "fontWeight": 300,
+            "hyphens": "auto",
+            "marginBottom": "0.3em",
+            "textOverflow": "ellipsis",
+          }
+        }
+      >
+        Mar 11th
+      </h2>
+      <div
+        className="lmc-theme-gradient"
+        style={
+          Object {
+            "height": 2,
+            "marginBottom": 22,
+            "width": "100%",
+          }
+        }
+      />
+      <LmcHandoverHistoryItem
+        handover={
+          Object {
+            "logsByResident": Array [
+              Object {
+                "logs": Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "description": "This is a log",
+                    "id": "TestId",
+                  },
+                ],
+                "resident": Object {
+                  "id": "TestId2",
+                  "name": "TestResident",
+                  "picture": "TestPicture",
+                },
+              },
+            ],
+            "notes": Array [
+              Object {
+                "createdBy": "TestCarer",
+                "id": "TestId",
+                "note": "This is a note",
+              },
+            ],
+            "seenBy": Array [
+              "TestId1",
+              "TestId2",
+              "TestId3",
+            ],
+          }
+        }
+      />
+    </div>
+  </div>,
   "nodes": Array [
-    <div />,
+    <div>
+      <div>
+        <h2
+          style={
+            Object {
+              "fontWeight": 300,
+              "hyphens": "auto",
+              "marginBottom": "0.3em",
+              "textOverflow": "ellipsis",
+            }
+          }
+        >
+          Mar 11th
+        </h2>
+        <div
+          className="lmc-theme-gradient"
+          style={
+            Object {
+              "height": 2,
+              "marginBottom": 22,
+              "width": "100%",
+            }
+          }
+        />
+        <LmcHandoverHistoryItem
+          handover={
+            Object {
+              "logsByResident": Array [
+                Object {
+                  "logs": Array [
+                    Object {
+                      "createdBy": "TestCarer",
+                      "description": "This is a log",
+                      "id": "TestId",
+                    },
+                  ],
+                  "resident": Object {
+                    "id": "TestId2",
+                    "name": "TestResident",
+                    "picture": "TestPicture",
+                  },
+                },
+              ],
+              "notes": Array [
+                Object {
+                  "createdBy": "TestCarer",
+                  "id": "TestId",
+                  "note": "This is a note",
+                },
+              ],
+              "seenBy": Array [
+                "TestId1",
+                "TestId2",
+                "TestId3",
+              ],
+            }
+          }
+        />
+      </div>
+    </div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -20,13 +138,40 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <LmcHandoversHistory
         handovers={
-          Array [
-            Object {
-              "createdBy": "TestCarer",
-              "id": "TestId",
-              "witnessedBy": "TestCarer2",
-            },
-          ]
+          Object {
+            "Mar 11th": Array [
+              Object {
+                "logsByResident": Array [
+                  Object {
+                    "logs": Array [
+                      Object {
+                        "createdBy": "TestCarer",
+                        "description": "This is a log",
+                        "id": "TestId",
+                      },
+                    ],
+                    "resident": Object {
+                      "id": "TestId2",
+                      "name": "TestResident",
+                      "picture": "TestPicture",
+                    },
+                  },
+                ],
+                "notes": Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "id": "TestId",
+                    "note": "This is a note",
+                  },
+                ],
+                "seenBy": Array [
+                  "TestId1",
+                  "TestId2",
+                  "TestId3",
+                ],
+              },
+            ],
+          }
         }
       />,
       "_debugID": 1,
@@ -36,13 +181,40 @@ ShallowWrapper {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
-          "handovers": Array [
-            Object {
-              "createdBy": "TestCarer",
-              "id": "TestId",
-              "witnessedBy": "TestCarer2",
-            },
-          ],
+          "handovers": Object {
+            "Mar 11th": Array [
+              Object {
+                "logsByResident": Array [
+                  Object {
+                    "logs": Array [
+                      Object {
+                        "createdBy": "TestCarer",
+                        "description": "This is a log",
+                        "id": "TestId",
+                      },
+                    ],
+                    "resident": Object {
+                      "id": "TestId2",
+                      "name": "TestResident",
+                      "picture": "TestPicture",
+                    },
+                  },
+                ],
+                "notes": Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "id": "TestId",
+                    "note": "This is a note",
+                  },
+                ],
+                "seenBy": Array [
+                  "TestId1",
+                  "TestId2",
+                  "TestId3",
+                ],
+              },
+            ],
+          },
         },
         "refs": Object {},
         "state": null,
@@ -64,9 +236,127 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div />,
+        "_currentElement": <div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "hyphens": "auto",
+                  "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
+                }
+              }
+            >
+              Mar 11th
+            </h2>
+            <div
+              className="lmc-theme-gradient"
+              style={
+                Object {
+                  "height": 2,
+                  "marginBottom": 22,
+                  "width": "100%",
+                }
+              }
+            />
+            <LmcHandoverHistoryItem
+              handover={
+                Object {
+                  "logsByResident": Array [
+                    Object {
+                      "logs": Array [
+                        Object {
+                          "createdBy": "TestCarer",
+                          "description": "This is a log",
+                          "id": "TestId",
+                        },
+                      ],
+                      "resident": Object {
+                        "id": "TestId2",
+                        "name": "TestResident",
+                        "picture": "TestPicture",
+                      },
+                    },
+                  ],
+                  "notes": Array [
+                    Object {
+                      "createdBy": "TestCarer",
+                      "id": "TestId",
+                      "note": "This is a note",
+                    },
+                  ],
+                  "seenBy": Array [
+                    "TestId1",
+                    "TestId2",
+                    "TestId3",
+                  ],
+                }
+              }
+            />
+          </div>
+        </div>,
         "_debugID": 2,
-        "_renderedOutput": <div />,
+        "_renderedOutput": <div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "fontWeight": 300,
+                  "hyphens": "auto",
+                  "marginBottom": "0.3em",
+                  "textOverflow": "ellipsis",
+                }
+              }
+            >
+              Mar 11th
+            </h2>
+            <div
+              className="lmc-theme-gradient"
+              style={
+                Object {
+                  "height": 2,
+                  "marginBottom": 22,
+                  "width": "100%",
+                }
+              }
+            />
+            <LmcHandoverHistoryItem
+              handover={
+                Object {
+                  "logsByResident": Array [
+                    Object {
+                      "logs": Array [
+                        Object {
+                          "createdBy": "TestCarer",
+                          "description": "This is a log",
+                          "id": "TestId",
+                        },
+                      ],
+                      "resident": Object {
+                        "id": "TestId2",
+                        "name": "TestResident",
+                        "picture": "TestPicture",
+                      },
+                    },
+                  ],
+                  "notes": Array [
+                    Object {
+                      "createdBy": "TestCarer",
+                      "id": "TestId",
+                      "note": "This is a note",
+                    },
+                  ],
+                  "seenBy": Array [
+                    "TestId1",
+                    "TestId2",
+                    "TestId3",
+                  ],
+                }
+              }
+            />
+          </div>
+        </div>,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,
@@ -80,13 +370,40 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <LmcHandoversHistory
     handovers={
-      Array [
-        Object {
-          "createdBy": "TestCarer",
-          "id": "TestId",
-          "witnessedBy": "TestCarer2",
-        },
-      ]
+      Object {
+        "Mar 11th": Array [
+          Object {
+            "logsByResident": Array [
+              Object {
+                "logs": Array [
+                  Object {
+                    "createdBy": "TestCarer",
+                    "description": "This is a log",
+                    "id": "TestId",
+                  },
+                ],
+                "resident": Object {
+                  "id": "TestId2",
+                  "name": "TestResident",
+                  "picture": "TestPicture",
+                },
+              },
+            ],
+            "notes": Array [
+              Object {
+                "createdBy": "TestCarer",
+                "id": "TestId",
+                "note": "This is a note",
+              },
+            ],
+            "seenBy": Array [
+              "TestId1",
+              "TestId2",
+              "TestId3",
+            ],
+          },
+        ],
+      }
     }
   />,
 }
