@@ -77,9 +77,17 @@ ShallowWrapper {
           }
         }
       >
-        <p>
-          [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
-        </p>
+        <LmcHandoverNotes
+          notes={
+            Array [
+              Object {
+                "createdBy": "TestCarer",
+                "id": "TestId",
+                "note": "This is a note",
+              },
+            ]
+          }
+        />
       </div>
     </div>
   </div>,
@@ -153,9 +161,17 @@ ShallowWrapper {
             }
           }
         >
-          <p>
-            [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
-          </p>
+          <LmcHandoverNotes
+            notes={
+              Array [
+                Object {
+                  "createdBy": "TestCarer",
+                  "id": "TestId",
+                  "note": "This is a note",
+                },
+              ]
+            }
+          />
         </div>
       </div>
     </div>,
@@ -315,9 +331,17 @@ ShallowWrapper {
                 }
               }
             >
-              <p>
-                [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
-              </p>
+              <LmcHandoverNotes
+                notes={
+                  Array [
+                    Object {
+                      "createdBy": "TestCarer",
+                      "id": "TestId",
+                      "note": "This is a note",
+                    },
+                  ]
+                }
+              />
             </div>
           </div>
         </div>,
@@ -391,9 +415,17 @@ ShallowWrapper {
                 }
               }
             >
-              <p>
-                [{"id":"TestId","note":"This is a note","createdBy":"TestCarer"}]
-              </p>
+              <LmcHandoverNotes
+                notes={
+                  Array [
+                    Object {
+                      "createdBy": "TestCarer",
+                      "id": "TestId",
+                      "note": "This is a note",
+                    },
+                  ]
+                }
+              />
             </div>
           </div>
         </div>,

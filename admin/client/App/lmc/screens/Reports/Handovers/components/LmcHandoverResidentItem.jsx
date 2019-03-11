@@ -12,7 +12,6 @@ const LmcHandoverResidentItem = ({ data }) => {
                 <div 
                     className="lmc-profile-picture__handover" 
                     style={{
-                        ...styles.residentPicture,
                         background: `url(${resident.picture || PLACEHOLDER_IMAGE})` 
                     }} 
                 />

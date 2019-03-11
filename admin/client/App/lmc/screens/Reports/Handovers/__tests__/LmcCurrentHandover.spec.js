@@ -33,4 +33,9 @@ describe('LmcCurrentHandover', () => {
         const heading = wrapper.find('h2')
         expect(heading.text()).toEqual('Current Handover')
     })
+
+    it('renders a LmcHandoverResidentItem and LmcHandoverNotes', () => {
+        expect(wrapper.find('LmcHandoverNotes').length).toEqual(1)
+        expect(wrapper.find('LmcHandoverResidentItem').length).toEqual(1)
+    })
 })

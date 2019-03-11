@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import LmcHandoverResidentItem from './LmcHandoverResidentItem.jsx'
+import LmcHandoverNotes from './LmcHandoverNotes.jsx'
 
 export default class LmcCurrentHandover extends Component {
     render () {
@@ -24,7 +25,9 @@ export default class LmcCurrentHandover extends Component {
                         })}
                     </div>
                     <div style={styles.rightContainer}>
-                        <p>{JSON.stringify(notes)}</p>
+                        <LmcHandoverNotes
+                            notes={notes}
+                        />
                     </div>
                 </div>
             </div>
