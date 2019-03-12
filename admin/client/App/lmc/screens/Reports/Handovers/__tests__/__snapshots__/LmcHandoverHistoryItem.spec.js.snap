@@ -303,6 +303,8 @@ ShallowWrapper {
           },
         },
         "refs": Object {},
+        "renderData": [Function],
+        "renderHandoverCarers": [Function],
         "state": Object {
           "isShowingContent": false,
         },

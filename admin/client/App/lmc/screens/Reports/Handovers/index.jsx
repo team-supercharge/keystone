@@ -25,12 +25,14 @@ export class LmcHandoversDashboard extends Component {
 
         const { logsByResident, notes } = currentHandover
 
-        if (!handoverHistory.length && !logsByResident.length && !notes.length) {
+        if (!Object.keys(handoverHistory).length && !logsByResident.length && !notes.length) {
             return (
-                <div>
-                    <BlankState
-                        heading='No handovers information found...'
-                    />
+                <div style={styles.mainContainer}>
+                    <div style={styles.content}>
+                        <BlankState
+                            heading='No handovers information found...'
+                        />
+                    </div>
                 </div>
             )
         }
@@ -52,9 +54,9 @@ export class LmcHandoversDashboard extends Component {
 
 const styles = {
     mainContainer: {
-        padding: '50px 20px 0px 20px',
+        padding: '50px 20px 100px 20px',
         overflow: 'auto',
-        height: '83vh',
+        height: '85vh'
     },
     content: {
         maxWidth: 1000,

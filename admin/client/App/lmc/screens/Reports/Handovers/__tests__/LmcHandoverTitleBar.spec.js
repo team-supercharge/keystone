@@ -33,9 +33,9 @@ describe('LmcHandoverTitleBar', () => {
         expect(wrapper.text().includes(witnessedBy.name.first)).toBe(true)
     })
 
-    it('triggers its onClick prop when clicking its glyph button', () => {
-        const button = wrapper.find('GlyphButton')
-        button.simulate('click')
+    it('triggers its onClick prop when clicking its main container', () => {
+        const container = wrapper.find('div').first()
+        container.simulate('click')
         expect(onClick).toHaveBeenCalledTimes(1)
     })
 })

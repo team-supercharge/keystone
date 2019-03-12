@@ -34,10 +34,10 @@ class LmcReportView extends React.Component {
 };
 
 const tabs = [
-    { url: 'charts', label: 'Resident Charts' },
-    { url: 'overview/fluids', label: 'Fluids Overview' },
-    { url: 'overview/meals', label: 'Food Overview' },
-    { url: 'overview/handovers', label: 'Handovers' }
+    { url: 'charts', label: 'Resident Charts', mobileLabel: 'Charts' },
+    { url: 'overview/fluids', label: 'Fluids Overview', mobileLabel: 'Fluids' },
+    { url: 'overview/meals', label: 'Food Overview', mobileLabel: 'Food' },
+    { url: 'overview/handovers', label: 'Handovers', mobileLabel: 'Handovers' }
 ]
 
 const styles = {

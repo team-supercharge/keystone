@@ -9,7 +9,6 @@ export default class LmcHandoversHistory extends Component {
             <div>
                 { Object.keys(handovers).map((date, i) => {
                     const currentHandoversList = handovers[date]
-
                     return (
                         <div key={i}>
                             <h2 style={styles.heading}>
@@ -38,7 +37,7 @@ export default class LmcHandoversHistory extends Component {
 const styles = {
     divider: {
         height: 2,
-        marginBottom: 22,
+        marginBottom: 12,
         width: '100%',
     },
     heading: {

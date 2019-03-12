@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { isBrowser, isTablet } from 'react-device-detect'
 import { GlyphButton } from '../../../../../elemental'
 
 export default class LmcHandoverTitleBar extends Component {
@@ -29,45 +30,55 @@ export default class LmcHandoverTitleBar extends Component {
         // Between dawn and noon
         return 'Morning';
     }
+
+    renderCarers = () => {
+        const { createdBy, witnessedBy } = this.props
+        return (
+            <div style={styles.carersContainer}>
+                <div style={styles.carer}>
+                    <span style={styles.name}>
+                        By {createdBy.name.first} {createdBy.name.last}
+                    </span>
+                    <div 
+                        className='lmc-profile-picture__handover__small'
+                        style={{
+                            ...styles.carerImage,
+                            background: `url(${createdBy.picture || PLACEHOLDER_IMAGE})`
+                        }}
+                    />
+                </div>
+                <div style={styles.carer}>
+                    <span style={styles.name}>
+                        to {witnessedBy.name.first} {witnessedBy.name.last}
+                    </span>
+                    <div 
+                        className='lmc-profile-picture__handover__small'
+                        style={{
+                            ...styles.carerImage,
+                            background: `url(${witnessedBy.picture || PLACEHOLDER_IMAGE})`
+                        }}
+                    />
+                </div>
+            </div>
+        )
+    }
     
     render () { 
-        const { createdOn, createdBy, witnessedBy } = this.props
+        const isDesktopStyles = (isBrowser || isTablet)
         return (
-            <div style={styles.container}>
+            <div 
+                onClick={this.handleClick}
+                style={styles.container}
+            >
                 <div style={styles.handoverTime}>
-                    {`${this.formatTimePeriod()} at ${moment(createdOn).format('HH:mm')}`}
+                    {`${this.formatTimePeriod()} at ${moment(this.props.createdOn).format('HH:mm')}`}
                 </div>
                 <div style={styles.rightContainer}>
-                    <div style={styles.carersContainer}>
-                        <div style={styles.carer}>
-                            <span style={styles.name}>
-                                By {createdBy.name.first} {createdBy.name.last}
-                            </span>
-                            <div 
-                                className='lmc-profile-picture__handover__small'
-                                style={{
-                                    ...styles.carerImage,
-                                    background: `url(${createdBy.picture || PLACEHOLDER_IMAGE})`
-                                }}
-                            />
-                        </div>
-                        <div style={styles.carer}>
-                            <span style={styles.name}>
-                                To {witnessedBy.name.first} {witnessedBy.name.last}
-                            </span>
-                            <div 
-                                className='lmc-profile-picture__handover__small'
-                                style={{
-                                    ...styles.carerImage,
-                                    background: `url(${witnessedBy.picture || PLACEHOLDER_IMAGE})`
-                                }}
-                            />
-                        </div>
-                    </div>
+                    { isDesktopStyles && this.renderCarers() }
                     <GlyphButton
                         className='lmc-collapse-button'
                         glyph={this.state.isClicked ? 'chevron-up' : 'chevron-down'}
-                        onClick={this.handleClick}
+                        style={styles.glyph}
                     />
                 </div>
             </div>
@@ -88,10 +99,10 @@ const styles = {
     carersContainer: {
         display: 'flex',
         flexDirection: 'row',
-        paddingTop: 10,
     },
     container: {
         borderBottom: '1px #eaeaea solid',
+        cursor: 'pointer',
         display: 'flex',
         flexDirection: 'row',
         height: 50,
@@ -99,9 +110,12 @@ const styles = {
         marginBottom: 10,
         width: '100%',
     },
+    glyph: {
+        paddingBottom: 10
+    },
     handoverTime: {
         height: '100%',
-        paddingTop: 20,
+        paddingTop: 10,
         textOverflow: 'ellipsis',
         hyphens: 'auto',
     },

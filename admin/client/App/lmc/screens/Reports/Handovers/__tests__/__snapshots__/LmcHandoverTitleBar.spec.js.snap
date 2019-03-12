@@ -9,9 +9,11 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
+    onClick={[Function]}
     style={
       Object {
         "borderBottom": "1px #eaeaea solid",
+        "cursor": "pointer",
         "display": "flex",
         "flexDirection": "row",
         "height": 50,
@@ -26,7 +28,7 @@ ShallowWrapper {
         Object {
           "height": "100%",
           "hyphens": "auto",
-          "paddingTop": 20,
+          "paddingTop": 10,
           "textOverflow": "ellipsis",
         }
       }
@@ -46,7 +48,6 @@ ShallowWrapper {
           Object {
             "display": "flex",
             "flexDirection": "row",
-            "paddingTop": 10,
           }
         }
       >
@@ -101,7 +102,7 @@ ShallowWrapper {
               }
             }
           >
-            To 
+            to 
             Test2
              
             Carer2
@@ -121,16 +122,22 @@ ShallowWrapper {
         className="lmc-collapse-button"
         glyph="chevron-down"
         glyphStyle={Object {}}
-        onClick={[Function]}
         position="default"
+        style={
+          Object {
+            "paddingBottom": 10,
+          }
+        }
       />
     </div>
   </div>,
   "nodes": Array [
     <div
+      onClick={[Function]}
       style={
         Object {
           "borderBottom": "1px #eaeaea solid",
+          "cursor": "pointer",
           "display": "flex",
           "flexDirection": "row",
           "height": 50,
@@ -145,7 +152,7 @@ ShallowWrapper {
           Object {
             "height": "100%",
             "hyphens": "auto",
-            "paddingTop": 20,
+            "paddingTop": 10,
             "textOverflow": "ellipsis",
           }
         }
@@ -165,7 +172,6 @@ ShallowWrapper {
             Object {
               "display": "flex",
               "flexDirection": "row",
-              "paddingTop": 10,
             }
           }
         >
@@ -220,7 +226,7 @@ ShallowWrapper {
                 }
               }
             >
-              To 
+              to 
               Test2
                
               Carer2
@@ -240,8 +246,12 @@ ShallowWrapper {
           className="lmc-collapse-button"
           glyph="chevron-down"
           glyphStyle={Object {}}
-          onClick={[Function]}
           position="default"
+          style={
+            Object {
+              "paddingBottom": 10,
+            }
+          }
         />
       </div>
     </div>,
@@ -301,6 +311,7 @@ ShallowWrapper {
           },
         },
         "refs": Object {},
+        "renderCarers": [Function],
         "state": Object {
           "isClicked": false,
         },
@@ -323,9 +334,11 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
+          onClick={[Function]}
           style={
             Object {
               "borderBottom": "1px #eaeaea solid",
+              "cursor": "pointer",
               "display": "flex",
               "flexDirection": "row",
               "height": 50,
@@ -340,7 +353,7 @@ ShallowWrapper {
               Object {
                 "height": "100%",
                 "hyphens": "auto",
-                "paddingTop": 20,
+                "paddingTop": 10,
                 "textOverflow": "ellipsis",
               }
             }
@@ -360,7 +373,6 @@ ShallowWrapper {
                 Object {
                   "display": "flex",
                   "flexDirection": "row",
-                  "paddingTop": 10,
                 }
               }
             >
@@ -415,7 +427,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  To 
+                  to 
                   Test2
                    
                   Carer2
@@ -435,16 +447,22 @@ ShallowWrapper {
               className="lmc-collapse-button"
               glyph="chevron-down"
               glyphStyle={Object {}}
-              onClick={[Function]}
               position="default"
+              style={
+                Object {
+                  "paddingBottom": 10,
+                }
+              }
             />
           </div>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div
+          onClick={[Function]}
           style={
             Object {
               "borderBottom": "1px #eaeaea solid",
+              "cursor": "pointer",
               "display": "flex",
               "flexDirection": "row",
               "height": 50,
@@ -459,7 +477,7 @@ ShallowWrapper {
               Object {
                 "height": "100%",
                 "hyphens": "auto",
-                "paddingTop": 20,
+                "paddingTop": 10,
                 "textOverflow": "ellipsis",
               }
             }
@@ -479,7 +497,6 @@ ShallowWrapper {
                 Object {
                   "display": "flex",
                   "flexDirection": "row",
-                  "paddingTop": 10,
                 }
               }
             >
@@ -534,7 +551,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  To 
+                  to 
                   Test2
                    
                   Carer2
@@ -554,8 +571,12 @@ ShallowWrapper {
               className="lmc-collapse-button"
               glyph="chevron-down"
               glyphStyle={Object {}}
-              onClick={[Function]}
               position="default"
+              style={
+                Object {
+                  "paddingBottom": 10,
+                }
+              }
             />
           </div>
         </div>,

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import LmcHandoverResidentItem from './LmcHandoverResidentItem.jsx'
 import LmcHandoverNotes from './LmcHandoverNotes.jsx'
 import AnimateHeight from 'react-animate-height'
-import { GlyphButton } from '../../../../../elemental'
+import { BlankState, GlyphButton } from '../../../../../elemental'
+import { isBrowser, isTablet } from 'react-device-detect'
 
 export default class LmcCurrentHandover extends Component {
     state = {
@@ -15,8 +16,58 @@ export default class LmcCurrentHandover extends Component {
             isShowingContent: !prevState.isShowingContent
         }))
     }
-    render () {
+
+    renderData () {
         const { logsByResident, notes } = this.props
+        const isDesktopStyles = (isBrowser || isTablet)
+        const isEmpty = (!logsByResident.length && !notes.length)
+
+        return (
+            <AnimateHeight
+                duration={ 500 }
+                height={ this.state.isShowingContent ? 'auto' : 0 }
+            >
+                { isEmpty ? (
+                    <div style={styles.dataContainer}>
+                        <BlankState
+                            heading='Nothing to see here!'
+                            style={{ width: '100%' }}
+                        />
+                    </div>
+                ) : (
+                    <div 
+                        style={{ 
+                            ...styles.dataContainer,
+                            flexDirection: isDesktopStyles ? 'row' : 'column'
+                        }}
+                    >
+                        <div 
+                            style={isDesktopStyles ? styles.leftContainer : null}
+                        >
+                            { logsByResident.map((logGroup, i) => {
+                                return (
+                                    <div key={i}>
+                                        <LmcHandoverResidentItem
+                                            data={logGroup}
+                                        />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        <div 
+                            style={isDesktopStyles ? styles.rightContainer : null}
+                        >
+                            <LmcHandoverNotes
+                                notes={notes}
+                            />
+                        </div>
+                    </div>
+                ) }
+            </AnimateHeight>
+        )
+    }
+
+    render () {
         return (
             <div>
                 <div style={styles.headingContainer}>
@@ -30,29 +81,7 @@ export default class LmcCurrentHandover extends Component {
                     />
                 </div>
                 <div className='lmc-theme-gradient' style={styles.divider} />
-                <AnimateHeight
-                    duration={ 500 }
-                    height={ this.state.isShowingContent ? 'auto' : 0 } // see props documentation bellow
-                >
-                    <div style={styles.dataContainer}>
-                        <div style={styles.leftContainer}>
-                            { logsByResident.map((logGroup, i) => {
-                                return (
-                                    <div key={i}>
-                                        <LmcHandoverResidentItem
-                                            data={logGroup}
-                                        />
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        <div style={styles.rightContainer}>
-                            <LmcHandoverNotes
-                                notes={notes}
-                            />
-                        </div>
-                    </div>
-                </AnimateHeight>
+                { this.renderData() }
             </div>
         )
     }
@@ -61,7 +90,6 @@ export default class LmcCurrentHandover extends Component {
 const styles = {
     dataContainer: {
         display: 'flex',
-        flexDirection: 'row',
         width: '100%'
     },
     divider: {
