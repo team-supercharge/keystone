@@ -1,0 +1,580 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcHandoverTitleBar renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    style={
+      Object {
+        "borderBottom": "1px #eaeaea solid",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "space-between",
+        "marginBottom": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "100%",
+          "hyphens": "auto",
+          "paddingTop": 20,
+          "textOverflow": "ellipsis",
+        }
+      }
+    >
+      Morning at undefined
+    </div>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "paddingTop": 10,
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <span
+            style={
+              Object {
+                "display": "block",
+                "fontSize": 12,
+                "opacity": 0.8,
+                "padding": "10px 10px 0px 0px",
+              }
+            }
+          >
+            By 
+            Test
+          </span>
+          <div
+            className="lmc-profile-picture__handover__small"
+            style={
+              Object {
+                "background": "url(TestPicture)",
+                "marginRight": 10,
+              }
+            }
+          />
+        </div>
+        <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <span
+            style={
+              Object {
+                "display": "block",
+                "fontSize": 12,
+                "opacity": 0.8,
+                "padding": "10px 10px 0px 0px",
+              }
+            }
+          >
+            To 
+            Test2
+          </span>
+          <div
+            className="lmc-profile-picture__handover__small"
+            style={
+              Object {
+                "background": "url(TestPicture2)",
+                "marginRight": 10,
+              }
+            }
+          />
+        </div>
+      </div>
+      <GlyphButton
+        className="lmc-collapse-button"
+        glyph="chevron-down"
+        glyphStyle={Object {}}
+        onClick={[Function]}
+        position="default"
+      />
+    </div>
+  </div>,
+  "nodes": Array [
+    <div
+      style={
+        Object {
+          "borderBottom": "1px #eaeaea solid",
+          "display": "flex",
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "space-between",
+          "marginBottom": 10,
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "hyphens": "auto",
+            "paddingTop": 20,
+            "textOverflow": "ellipsis",
+          }
+        }
+      >
+        Morning at undefined
+      </div>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "paddingTop": 10,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": 12,
+                  "opacity": 0.8,
+                  "padding": "10px 10px 0px 0px",
+                }
+              }
+            >
+              By 
+              Test
+            </span>
+            <div
+              className="lmc-profile-picture__handover__small"
+              style={
+                Object {
+                  "background": "url(TestPicture)",
+                  "marginRight": 10,
+                }
+              }
+            />
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": 12,
+                  "opacity": 0.8,
+                  "padding": "10px 10px 0px 0px",
+                }
+              }
+            >
+              To 
+              Test2
+            </span>
+            <div
+              className="lmc-profile-picture__handover__small"
+              style={
+                Object {
+                  "background": "url(TestPicture2)",
+                  "marginRight": 10,
+                }
+              }
+            />
+          </div>
+        </div>
+        <GlyphButton
+          className="lmc-collapse-button"
+          glyph="chevron-down"
+          glyphStyle={Object {}}
+          onClick={[Function]}
+          position="default"
+        />
+      </div>
+    </div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <LmcHandoverTitleBar
+        createdBy={
+          Object {
+            "name": Object {
+              "first": "Test",
+              "last": "Carer",
+            },
+            "picture": "TestPicture",
+          }
+        }
+        createdOn="Tue Jan 01 2019 00:00:00 GMT+0000 (GMT)"
+        onClick={[MockFunction]}
+        witnessedBy={
+          Object {
+            "name": Object {
+              "first": "Test2",
+              "last": "Carer2",
+            },
+            "picture": "TestPicture2",
+          }
+        }
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": LmcHandoverTitleBar {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "formatTimePeriod": [Function],
+        "handleClick": [Function],
+        "props": Object {
+          "createdBy": Object {
+            "name": Object {
+              "first": "Test",
+              "last": "Carer",
+            },
+            "picture": "TestPicture",
+          },
+          "createdOn": "Tue Jan 01 2019 00:00:00 GMT+0000 (GMT)",
+          "onClick": [MockFunction],
+          "witnessedBy": Object {
+            "name": Object {
+              "first": "Test2",
+              "last": "Carer2",
+            },
+            "picture": "TestPicture2",
+          },
+        },
+        "refs": Object {},
+        "state": Object {
+          "isClicked": false,
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          style={
+            Object {
+              "borderBottom": "1px #eaeaea solid",
+              "display": "flex",
+              "flexDirection": "row",
+              "height": 50,
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "height": "100%",
+                "hyphens": "auto",
+                "paddingTop": 20,
+                "textOverflow": "ellipsis",
+              }
+            }
+          >
+            Morning at undefined
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "paddingTop": 10,
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "display": "block",
+                      "fontSize": 12,
+                      "opacity": 0.8,
+                      "padding": "10px 10px 0px 0px",
+                    }
+                  }
+                >
+                  By 
+                  Test
+                </span>
+                <div
+                  className="lmc-profile-picture__handover__small"
+                  style={
+                    Object {
+                      "background": "url(TestPicture)",
+                      "marginRight": 10,
+                    }
+                  }
+                />
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "display": "block",
+                      "fontSize": 12,
+                      "opacity": 0.8,
+                      "padding": "10px 10px 0px 0px",
+                    }
+                  }
+                >
+                  To 
+                  Test2
+                </span>
+                <div
+                  className="lmc-profile-picture__handover__small"
+                  style={
+                    Object {
+                      "background": "url(TestPicture2)",
+                      "marginRight": 10,
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <GlyphButton
+              className="lmc-collapse-button"
+              glyph="chevron-down"
+              glyphStyle={Object {}}
+              onClick={[Function]}
+              position="default"
+            />
+          </div>
+        </div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          style={
+            Object {
+              "borderBottom": "1px #eaeaea solid",
+              "display": "flex",
+              "flexDirection": "row",
+              "height": 50,
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "height": "100%",
+                "hyphens": "auto",
+                "paddingTop": 20,
+                "textOverflow": "ellipsis",
+              }
+            }
+          >
+            Morning at undefined
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "paddingTop": 10,
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "display": "block",
+                      "fontSize": 12,
+                      "opacity": 0.8,
+                      "padding": "10px 10px 0px 0px",
+                    }
+                  }
+                >
+                  By 
+                  Test
+                </span>
+                <div
+                  className="lmc-profile-picture__handover__small"
+                  style={
+                    Object {
+                      "background": "url(TestPicture)",
+                      "marginRight": 10,
+                    }
+                  }
+                />
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "display": "block",
+                      "fontSize": 12,
+                      "opacity": 0.8,
+                      "padding": "10px 10px 0px 0px",
+                    }
+                  }
+                >
+                  To 
+                  Test2
+                </span>
+                <div
+                  className="lmc-profile-picture__handover__small"
+                  style={
+                    Object {
+                      "background": "url(TestPicture2)",
+                      "marginRight": 10,
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <GlyphButton
+              className="lmc-collapse-button"
+              glyph="chevron-down"
+              glyphStyle={Object {}}
+              onClick={[Function]}
+              position="default"
+            />
+          </div>
+        </div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcHandoverTitleBar
+    createdBy={
+      Object {
+        "name": Object {
+          "first": "Test",
+          "last": "Carer",
+        },
+        "picture": "TestPicture",
+      }
+    }
+    createdOn="Tue Jan 01 2019 00:00:00 GMT+0000 (GMT)"
+    onClick={[MockFunction]}
+    witnessedBy={
+      Object {
+        "name": Object {
+          "first": "Test2",
+          "last": "Carer2",
+        },
+        "picture": "TestPicture2",
+      }
+    }
+  />,
+}
+`;

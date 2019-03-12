@@ -16,6 +16,7 @@ ShallowWrapper {
             "fontWeight": 300,
             "hyphens": "auto",
             "marginBottom": "0.3em",
+            "marginTop": 20,
             "textOverflow": "ellipsis",
           }
         }
@@ -77,6 +78,7 @@ ShallowWrapper {
               "fontWeight": 300,
               "hyphens": "auto",
               "marginBottom": "0.3em",
+              "marginTop": 20,
               "textOverflow": "ellipsis",
             }
           }
@@ -244,6 +246,7 @@ ShallowWrapper {
                   "fontWeight": 300,
                   "hyphens": "auto",
                   "marginBottom": "0.3em",
+                  "marginTop": 20,
                   "textOverflow": "ellipsis",
                 }
               }
@@ -305,6 +308,7 @@ ShallowWrapper {
                   "fontWeight": 300,
                   "hyphens": "auto",
                   "marginBottom": "0.3em",
+                  "marginTop": 20,
                   "textOverflow": "ellipsis",
                 }
               }

@@ -42,6 +42,7 @@ const styles = {
         width: '100%',
     },
     heading: {
+        marginTop: 20,
         marginBottom: '0.3em',
         fontWeight: 300,
         textOverflow: 'ellipsis',

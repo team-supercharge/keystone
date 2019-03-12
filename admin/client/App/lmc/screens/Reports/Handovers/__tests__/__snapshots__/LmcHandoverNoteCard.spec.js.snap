@@ -12,7 +12,7 @@ ShallowWrapper {
     style={
       Object {
         "background": "white",
-        "border": "1px #999999 solid",
+        "border": "1px #eaeaea solid",
         "borderRadius": 10,
         "marginBottom": "0.6em",
         "minHeight": 100,
@@ -51,15 +51,15 @@ ShallowWrapper {
           style={
             Object {
               "fontSize": 14,
-              "fontWeight": 600,
               "left": 15,
               "margin": 0,
+              "opacity": 0.5,
               "position": "relative",
               "top": 7,
             }
           }
         >
-          Test Carer
+          Test
         </span>
       </div>
       <div
@@ -82,14 +82,16 @@ ShallowWrapper {
           "paddingTop": 10,
         }
       }
-    />
+    >
+      Lorem ipsum
+    </div>
   </div>,
   "nodes": Array [
     <div
       style={
         Object {
           "background": "white",
-          "border": "1px #999999 solid",
+          "border": "1px #eaeaea solid",
           "borderRadius": 10,
           "marginBottom": "0.6em",
           "minHeight": 100,
@@ -128,15 +130,15 @@ ShallowWrapper {
             style={
               Object {
                 "fontSize": 14,
-                "fontWeight": 600,
                 "left": 15,
                 "margin": 0,
+                "opacity": 0.5,
                 "position": "relative",
                 "top": 7,
               }
             }
           >
-            Test Carer
+            Test
           </span>
         </div>
         <div
@@ -159,7 +161,9 @@ ShallowWrapper {
             "paddingTop": 10,
           }
         }
-      />
+      >
+        Lorem ipsum
+      </div>
     </div>,
   ],
   "options": Object {},
@@ -180,6 +184,7 @@ ShallowWrapper {
             },
             "createdOn": 2019-01-01T00:00:00.000Z,
             "id": "id",
+            "note": "Lorem ipsum",
           }
         }
       />,
@@ -200,6 +205,7 @@ ShallowWrapper {
             },
             "createdOn": 2019-01-01T00:00:00.000Z,
             "id": "id",
+            "note": "Lorem ipsum",
           },
         },
         "refs": Object {},
@@ -226,7 +232,7 @@ ShallowWrapper {
           style={
             Object {
               "background": "white",
-              "border": "1px #999999 solid",
+              "border": "1px #eaeaea solid",
               "borderRadius": 10,
               "marginBottom": "0.6em",
               "minHeight": 100,
@@ -265,15 +271,15 @@ ShallowWrapper {
                 style={
                   Object {
                     "fontSize": 14,
-                    "fontWeight": 600,
                     "left": 15,
                     "margin": 0,
+                    "opacity": 0.5,
                     "position": "relative",
                     "top": 7,
                   }
                 }
               >
-                Test Carer
+                Test
               </span>
             </div>
             <div
@@ -296,14 +302,16 @@ ShallowWrapper {
                 "paddingTop": 10,
               }
             }
-          />
+          >
+            Lorem ipsum
+          </div>
         </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           style={
             Object {
               "background": "white",
-              "border": "1px #999999 solid",
+              "border": "1px #eaeaea solid",
               "borderRadius": 10,
               "marginBottom": "0.6em",
               "minHeight": 100,
@@ -342,15 +350,15 @@ ShallowWrapper {
                 style={
                   Object {
                     "fontSize": 14,
-                    "fontWeight": 600,
                     "left": 15,
                     "margin": 0,
+                    "opacity": 0.5,
                     "position": "relative",
                     "top": 7,
                   }
                 }
               >
-                Test Carer
+                Test
               </span>
             </div>
             <div
@@ -373,7 +381,9 @@ ShallowWrapper {
                 "paddingTop": 10,
               }
             }
-          />
+          >
+            Lorem ipsum
+          </div>
         </div>,
       },
       "_renderedNodeType": 0,
@@ -398,6 +408,7 @@ ShallowWrapper {
         },
         "createdOn": 2019-01-01T00:00:00.000Z,
         "id": "id",
+        "note": "Lorem ipsum",
       }
     }
   />,
