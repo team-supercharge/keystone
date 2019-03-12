@@ -45,7 +45,7 @@ const styles = {
         paddingBottom: 0,
         position: 'relative',
         top: 20,
-        left: 50
+        left: 70
     },
     residentContainer: {
         display: 'flex',

@@ -53,7 +53,7 @@ ShallowWrapper {
     <ul
       style={
         Object {
-          "left": 50,
+          "left": 70,
           "listStyleType": "none",
           "paddingBottom": 0,
           "paddingLeft": 0,
@@ -121,7 +121,7 @@ ShallowWrapper {
       <ul
         style={
           Object {
-            "left": 50,
+            "left": 70,
             "listStyleType": "none",
             "paddingBottom": 0,
             "paddingLeft": 0,
@@ -263,7 +263,7 @@ ShallowWrapper {
           <ul
             style={
               Object {
-                "left": 50,
+                "left": 70,
                 "listStyleType": "none",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -331,7 +331,7 @@ ShallowWrapper {
           <ul
             style={
               Object {
-                "left": 50,
+                "left": 70,
                 "listStyleType": "none",
                 "paddingBottom": 0,
                 "paddingLeft": 0,

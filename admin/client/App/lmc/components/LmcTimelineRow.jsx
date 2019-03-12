@@ -78,7 +78,7 @@ const styles = {
         top: -25,
     },
     mainContainer: {
-        maxWidth: '90%',
+        maxWidth: '85%',
     },
     smallText: {
         color: '#7b7b7b',
