@@ -1,0 +1,758 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LmcSeenByList renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <div
+      onClick={[Function]}
+      style={
+        Object {
+          "cursor": "pointer",
+          "display": "flex",
+          "flexDirection": "row",
+          "padding": "20px 0px 20px 0px",
+        }
+      }
+    >
+      <span
+        style={
+          Object {
+            "flexShrink": 0,
+            "fontSize": 12,
+            "marginRight": 10,
+            "opacity": 0.8,
+            "paddingTop": 8,
+          }
+        }
+      >
+        Seen by
+      </span>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+          }
+        }
+      >
+        <div
+          style={null}
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <div
+              className="lmc-profile-picture__handover__small"
+              style={
+                Object {
+                  "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                  "marginRight": 2,
+                }
+              }
+            />
+            <span
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              test
+               
+              carer
+            </span>
+          </div>
+        </div>
+        <div
+          style={null}
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <div
+              className="lmc-profile-picture__handover__small"
+              style={
+                Object {
+                  "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                  "marginRight": 2,
+                }
+              }
+            />
+            <span
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              test
+               
+              carer2
+            </span>
+          </div>
+        </div>
+        <div
+          style={null}
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <div
+              className="lmc-profile-picture__handover__small"
+              style={
+                Object {
+                  "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                  "marginRight": 2,
+                }
+              }
+            />
+            <span
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              test
+               
+              carer3
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "nodes": Array [
+    <div>
+      <div
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+            "display": "flex",
+            "flexDirection": "row",
+            "padding": "20px 0px 20px 0px",
+          }
+        }
+      >
+        <span
+          style={
+            Object {
+              "flexShrink": 0,
+              "fontSize": 12,
+              "marginRight": 10,
+              "opacity": 0.8,
+              "paddingTop": 8,
+            }
+          }
+        >
+          Seen by
+        </span>
+        <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+            }
+          }
+        >
+          <div
+            style={null}
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <div
+                className="lmc-profile-picture__handover__small"
+                style={
+                  Object {
+                    "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                    "marginRight": 2,
+                  }
+                }
+              />
+              <span
+                style={
+                  Object {
+                    "display": "none",
+                  }
+                }
+              >
+                test
+                 
+                carer
+              </span>
+            </div>
+          </div>
+          <div
+            style={null}
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <div
+                className="lmc-profile-picture__handover__small"
+                style={
+                  Object {
+                    "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                    "marginRight": 2,
+                  }
+                }
+              />
+              <span
+                style={
+                  Object {
+                    "display": "none",
+                  }
+                }
+              >
+                test
+                 
+                carer2
+              </span>
+            </div>
+          </div>
+          <div
+            style={null}
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <div
+                className="lmc-profile-picture__handover__small"
+                style={
+                  Object {
+                    "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                    "marginRight": 2,
+                  }
+                }
+              />
+              <span
+                style={
+                  Object {
+                    "display": "none",
+                  }
+                }
+              >
+                test
+                 
+                carer3
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <LmcSeenByList
+        carers={
+          Array [
+            Object {
+              "id": "id1",
+              "name": Object {
+                "first": "test",
+                "last": "carer",
+              },
+            },
+            Object {
+              "id": "id2",
+              "name": Object {
+                "first": "test",
+                "last": "carer2",
+              },
+            },
+            Object {
+              "id": "id3",
+              "name": Object {
+                "first": "test",
+                "last": "carer3",
+              },
+            },
+          ]
+        }
+        seenBy={
+          Array [
+            Object {
+              "id": "id1",
+              "name": Object {
+                "first": "test",
+                "last": "carer",
+              },
+            },
+            Object {
+              "id": "id2",
+              "name": Object {
+                "first": "test",
+                "last": "carer2",
+              },
+            },
+            Object {
+              "id": "id3",
+              "name": Object {
+                "first": "test",
+                "last": "carer3",
+              },
+            },
+          ]
+        }
+      />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": LmcSeenByList {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "carers": Array [
+            Object {
+              "id": "id1",
+              "name": Object {
+                "first": "test",
+                "last": "carer",
+              },
+            },
+            Object {
+              "id": "id2",
+              "name": Object {
+                "first": "test",
+                "last": "carer2",
+              },
+            },
+            Object {
+              "id": "id3",
+              "name": Object {
+                "first": "test",
+                "last": "carer3",
+              },
+            },
+          ],
+          "seenBy": Array [
+            Object {
+              "id": "id1",
+              "name": Object {
+                "first": "test",
+                "last": "carer",
+              },
+            },
+            Object {
+              "id": "id2",
+              "name": Object {
+                "first": "test",
+                "last": "carer2",
+              },
+            },
+            Object {
+              "id": "id3",
+              "name": Object {
+                "first": "test",
+                "last": "carer3",
+              },
+            },
+          ],
+        },
+        "refs": Object {},
+        "renderPicture": [Function],
+        "state": Object {
+          "isExpanded": false,
+        },
+        "toggleExpand": [Function],
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <div
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "display": "flex",
+                "flexDirection": "row",
+                "padding": "20px 0px 20px 0px",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "flexShrink": 0,
+                  "fontSize": 12,
+                  "marginRight": 10,
+                  "opacity": 0.8,
+                  "paddingTop": 8,
+                }
+              }
+            >
+              Seen by
+            </span>
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <div
+                style={null}
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <div
+                    className="lmc-profile-picture__handover__small"
+                    style={
+                      Object {
+                        "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                        "marginRight": 2,
+                      }
+                    }
+                  />
+                  <span
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  >
+                    test
+                     
+                    carer
+                  </span>
+                </div>
+              </div>
+              <div
+                style={null}
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <div
+                    className="lmc-profile-picture__handover__small"
+                    style={
+                      Object {
+                        "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                        "marginRight": 2,
+                      }
+                    }
+                  />
+                  <span
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  >
+                    test
+                     
+                    carer2
+                  </span>
+                </div>
+              </div>
+              <div
+                style={null}
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <div
+                    className="lmc-profile-picture__handover__small"
+                    style={
+                      Object {
+                        "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                        "marginRight": 2,
+                      }
+                    }
+                  />
+                  <span
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  >
+                    test
+                     
+                    carer3
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <div
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "display": "flex",
+                "flexDirection": "row",
+                "padding": "20px 0px 20px 0px",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "flexShrink": 0,
+                  "fontSize": 12,
+                  "marginRight": 10,
+                  "opacity": 0.8,
+                  "paddingTop": 8,
+                }
+              }
+            >
+              Seen by
+            </span>
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <div
+                style={null}
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <div
+                    className="lmc-profile-picture__handover__small"
+                    style={
+                      Object {
+                        "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                        "marginRight": 2,
+                      }
+                    }
+                  />
+                  <span
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  >
+                    test
+                     
+                    carer
+                  </span>
+                </div>
+              </div>
+              <div
+                style={null}
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <div
+                    className="lmc-profile-picture__handover__small"
+                    style={
+                      Object {
+                        "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                        "marginRight": 2,
+                      }
+                    }
+                  />
+                  <span
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  >
+                    test
+                     
+                    carer2
+                  </span>
+                </div>
+              </div>
+              <div
+                style={null}
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <div
+                    className="lmc-profile-picture__handover__small"
+                    style={
+                      Object {
+                        "background": "url(https://s3.eu-west-2.amazonaws.com/lmc-data-production/public/profile_pic_placeholder.png)",
+                        "marginRight": 2,
+                      }
+                    }
+                  />
+                  <span
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  >
+                    test
+                     
+                    carer3
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <LmcSeenByList
+    carers={
+      Array [
+        Object {
+          "id": "id1",
+          "name": Object {
+            "first": "test",
+            "last": "carer",
+          },
+        },
+        Object {
+          "id": "id2",
+          "name": Object {
+            "first": "test",
+            "last": "carer2",
+          },
+        },
+        Object {
+          "id": "id3",
+          "name": Object {
+            "first": "test",
+            "last": "carer3",
+          },
+        },
+      ]
+    }
+    seenBy={
+      Array [
+        Object {
+          "id": "id1",
+          "name": Object {
+            "first": "test",
+            "last": "carer",
+          },
+        },
+        Object {
+          "id": "id2",
+          "name": Object {
+            "first": "test",
+            "last": "carer2",
+          },
+        },
+        Object {
+          "id": "id3",
+          "name": Object {
+            "first": "test",
+            "last": "carer3",
+          },
+        },
+      ]
+    }
+  />,
+}
+`;
