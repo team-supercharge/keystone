@@ -46,9 +46,11 @@ module.exports = async function IndexRoute (req, res) {
 			home: req.user.home,
 			homeName: Home ? Home.name : null,
 			features: Home ? {
+				homeDocuments: Home.homeDocuments,
 				handovers: Home.handovers,
+				offlineMode: Home.offlineMode,
 				notifications: Home.notifications,
-				pro: Home.pro
+				pro: Home.pro || Home.offlineMode // legacy for app v2.1.0
 			} : null,
 		},
 		ga: {
