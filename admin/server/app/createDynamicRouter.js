@@ -1,6 +1,7 @@
-var bodyParser = require('body-parser');
-var express = require('express');
-var multer = require('multer');
+const bodyParser = require('body-parser');
+const express = require('express');
+const multer = require('multer');
+const helmet = require('helmet')
 
 module.exports = function createDynamicRouter (keystone) {
 	// ensure keystone nav has been initialised
@@ -9,10 +10,10 @@ module.exports = function createDynamicRouter (keystone) {
 		keystone.nav = keystone.initNav();
 	}
 
-	var router = express.Router();
-	var IndexRoute = require('../routes/index');
-	var SigninRoute = require('../routes/signin');
-	var SignoutRoute = require('../routes/signout');
+	const router = express.Router();
+	const IndexRoute = require('../routes/index');
+	const SigninRoute = require('../routes/signin');
+	const SignoutRoute = require('../routes/signout');
 
 	// Use bodyParser and multer to parse request bodies and file uploads
 	router.use(bodyParser.json({}));
@@ -24,6 +25,15 @@ module.exports = function createDynamicRouter (keystone) {
 		req.keystone = keystone;
 		next();
 	});
+
+	router.use(helmet.xssFilter());
+	router.use(helmet.frameguard());
+	router.use(helmet.noSniff());
+	router.use(helmet.dnsPrefetchControl());
+	router.use(helmet.hidePoweredBy());
+	router.use(helmet.ieNoOpen());
+	router.use(helmet.hsts());
+	router.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
 	if (keystone.get('healthchecks')) {
 		router.use('/server-health', require('./createHealthchecksHandler')(keystone));
