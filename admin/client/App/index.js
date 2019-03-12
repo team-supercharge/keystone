@@ -111,6 +111,7 @@ ReactDOM.render(
 				</Route>
 				<Route path="todos/dashboard" component={LmcTodosView} onChange={onListChange} />
 				<Route path="reports" component={LmcReportView} onChange={onListChange}>
+					<IndexRedirect to='/admin/reports/overview/fluids' />
 					{/* <Route path="charts" component={LmcCharts} /> */}
 					{/* <Route path="charts/:chart_type/:resident_id" component={LmcCharts} /> */}
 					<Route path="overview/fluids" component={LmcFluidsOverview} />
