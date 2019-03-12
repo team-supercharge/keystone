@@ -26,10 +26,10 @@ describe('LmcHandoverNoteCard', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    it('renders the carer\'s first name', () => {
+    it('renders the carer\'s full name', () => {
         const name = note.carer.name
         expect(wrapper.text().includes(name.first)).toBe(true)
-        expect(wrapper.text().includes(name.last)).toBe(false)
+        expect(wrapper.text().includes(name.last)).toBe(true)
     })
 
     it('renders the note content', () => {

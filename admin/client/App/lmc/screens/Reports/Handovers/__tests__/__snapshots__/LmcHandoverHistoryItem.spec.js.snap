@@ -81,7 +81,9 @@ ShallowWrapper {
         <div
           style={
             Object {
+              "display": "flex",
               "flex": "1",
+              "flexDirection": "column",
               "width": "40%",
             }
           }
@@ -94,6 +96,15 @@ ShallowWrapper {
                   "id": "TestId",
                   "note": "This is a note",
                 },
+              ]
+            }
+          />
+          <Connect(LmcSeenByList)
+            seenBy={
+              Array [
+                "TestId1",
+                "TestId2",
+                "TestId3",
               ]
             }
           />
@@ -175,7 +186,9 @@ ShallowWrapper {
           <div
             style={
               Object {
+                "display": "flex",
                 "flex": "1",
+                "flexDirection": "column",
                 "width": "40%",
               }
             }
@@ -188,6 +201,15 @@ ShallowWrapper {
                     "id": "TestId",
                     "note": "This is a note",
                   },
+                ]
+              }
+            />
+            <Connect(LmcSeenByList)
+              seenBy={
+                Array [
+                  "TestId1",
+                  "TestId2",
+                  "TestId3",
                 ]
               }
             />
@@ -376,7 +398,9 @@ ShallowWrapper {
               <div
                 style={
                   Object {
+                    "display": "flex",
                     "flex": "1",
+                    "flexDirection": "column",
                     "width": "40%",
                   }
                 }
@@ -389,6 +413,15 @@ ShallowWrapper {
                         "id": "TestId",
                         "note": "This is a note",
                       },
+                    ]
+                  }
+                />
+                <Connect(LmcSeenByList)
+                  seenBy={
+                    Array [
+                      "TestId1",
+                      "TestId2",
+                      "TestId3",
                     ]
                   }
                 />
@@ -470,7 +503,9 @@ ShallowWrapper {
               <div
                 style={
                   Object {
+                    "display": "flex",
                     "flex": "1",
+                    "flexDirection": "column",
                     "width": "40%",
                   }
                 }
@@ -483,6 +518,15 @@ ShallowWrapper {
                         "id": "TestId",
                         "note": "This is a note",
                       },
+                    ]
+                  }
+                />
+                <Connect(LmcSeenByList)
+                  seenBy={
+                    Array [
+                      "TestId1",
+                      "TestId2",
+                      "TestId3",
                     ]
                   }
                 />

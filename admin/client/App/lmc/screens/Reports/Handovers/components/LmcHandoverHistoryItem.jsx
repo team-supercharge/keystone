@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import AnimateHeight from 'react-animate-height'
 import LmcHandoverResidentItem from './LmcHandoverResidentItem.jsx'
 import LmcHandoverNotes from './LmcHandoverNotes.jsx'
-import LmcHandoverTitleBar from './LmcHandoverTitleBar.jsx';
+import LmcHandoverTitleBar from './LmcHandoverTitleBar.jsx'
+import LmcSeenByList from './LmcSeenByList.jsx'
 
 export default class LmcHandoverHistoryItem extends Component {
     state = {
@@ -54,6 +55,9 @@ export default class LmcHandoverHistoryItem extends Component {
                             <LmcHandoverNotes
                                 notes={notes}
                             />
+                            <LmcSeenByList
+                                seenBy={seenBy}
+                            />
                         </div>
                     </div>
                 </AnimateHeight>
@@ -76,6 +80,8 @@ const styles = {
         paddingRight: 20
     },
     rightContainer: {
+        display: 'flex',
+        flexDirection: 'column',
         width: '40%',
         flex: '1'
     },

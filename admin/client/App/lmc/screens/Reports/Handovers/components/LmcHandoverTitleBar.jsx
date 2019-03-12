@@ -41,7 +41,7 @@ export default class LmcHandoverTitleBar extends Component {
                     <div style={styles.carersContainer}>
                         <div style={styles.carer}>
                             <span style={styles.name}>
-                                By {createdBy.name.first}
+                                By {createdBy.name.first} {createdBy.name.last}
                             </span>
                             <div 
                                 className='lmc-profile-picture__handover__small'
@@ -53,7 +53,7 @@ export default class LmcHandoverTitleBar extends Component {
                         </div>
                         <div style={styles.carer}>
                             <span style={styles.name}>
-                                To {witnessedBy.name.first}
+                                To {witnessedBy.name.first} {witnessedBy.name.last}
                             </span>
                             <div 
                                 className='lmc-profile-picture__handover__small'

@@ -17,7 +17,7 @@ const LmcHandoverNoteCard = ({ note }) => {
                         }} 
                     />
                     <span style={styles.carerName}>
-                        {carer.name.first}
+                        {carer.name.first} {carer.name.last}
                     </span>
                 </div>
                 <div style={styles.timeContainer}>

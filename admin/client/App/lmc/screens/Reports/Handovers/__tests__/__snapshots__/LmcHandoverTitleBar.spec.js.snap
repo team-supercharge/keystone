@@ -70,6 +70,8 @@ ShallowWrapper {
           >
             By 
             Test
+             
+            Carer
           </span>
           <div
             className="lmc-profile-picture__handover__small"
@@ -101,6 +103,8 @@ ShallowWrapper {
           >
             To 
             Test2
+             
+            Carer2
           </span>
           <div
             className="lmc-profile-picture__handover__small"
@@ -185,6 +189,8 @@ ShallowWrapper {
             >
               By 
               Test
+               
+              Carer
             </span>
             <div
               className="lmc-profile-picture__handover__small"
@@ -216,6 +222,8 @@ ShallowWrapper {
             >
               To 
               Test2
+               
+              Carer2
             </span>
             <div
               className="lmc-profile-picture__handover__small"
@@ -376,6 +384,8 @@ ShallowWrapper {
                 >
                   By 
                   Test
+                   
+                  Carer
                 </span>
                 <div
                   className="lmc-profile-picture__handover__small"
@@ -407,6 +417,8 @@ ShallowWrapper {
                 >
                   To 
                   Test2
+                   
+                  Carer2
                 </span>
                 <div
                   className="lmc-profile-picture__handover__small"
@@ -491,6 +503,8 @@ ShallowWrapper {
                 >
                   By 
                   Test
+                   
+                  Carer
                 </span>
                 <div
                   className="lmc-profile-picture__handover__small"
@@ -522,6 +536,8 @@ ShallowWrapper {
                 >
                   To 
                   Test2
+                   
+                  Carer2
                 </span>
                 <div
                   className="lmc-profile-picture__handover__small"
