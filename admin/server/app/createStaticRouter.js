@@ -95,7 +95,11 @@ module.exports = function createStaticRouter (keystone) {
 	router.use('/styles/fonts', express.static(path.resolve(__dirname + '/../../public/js/lib/tinymce/skins/keystone/fonts')));
 	router.get(`/js/fields-v${pkg.version}.js`, bundles.fields.serve);
 	router.get(`/js/signin.js`, bundles.signin.serve);
+	router.get(`/js/signin-v${pkg.version}.js`, bundles.signin.serve);
 	router.get(`/js/admin-v${pkg.version}.js`, bundles.admin.serve);
+	router.get(`/js/packages-v${pkg.version}.js`, function(req, res) {
+		res.sendFile(path.resolve(__dirname + '/../../public/js/packages.js'));
+	});
 	router.use(express.static(path.resolve(__dirname + '/../../public')));
 
 	return router;
