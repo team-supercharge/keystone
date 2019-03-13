@@ -180,7 +180,7 @@ module.exports = Field.create({
 		const { label, note, path } = this.props;
 		// CO-86 hack: ensure only PDFs are uploaded.
 		// Ideally we'd specify filetype in the model!
-		let fileType = (path === 'pdf') ? '.pdf' : null;
+		let fileType = (path === 's3File') ? '.pdf,.png,.jpg,.docx' : null;
 		const buttons = (
 			<Button onClick={this.triggerFileBrowser}>
 				{this.hasFile() ? 'Change' : 'Upload'} File

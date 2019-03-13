@@ -41,7 +41,7 @@ export default class LmcDocumentItem extends Component {
                     </div>
                     <div style={desktopStyles.textContainer}>
                         <a 
-                            href={data.pdf}
+                            href={data.s3File}
                             style={desktopStyles.documentName}
                             target='_blank'
                         >
@@ -57,7 +57,7 @@ export default class LmcDocumentItem extends Component {
                     <Button
                         style={chosenStyles.button} 
                         color='default'
-                        href={data.pdf}
+                        href={data.s3File}
                         target='_blank'
                     >
                         View
