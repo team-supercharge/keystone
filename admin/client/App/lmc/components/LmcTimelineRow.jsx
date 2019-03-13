@@ -28,7 +28,7 @@ class LmcTimelineRow extends Component {
         };
 
         return (
-            <li key={log.id}>
+            <li style={styles.mainContainer} key={log.id}>
                 <LmcLink disabled={mock} to={`${ Keystone.adminPath }/logs/${ log.id }`} className="lmc-timeline-link">
                     <div style={styles.container}>
                         <div style={timelineStyle}>
@@ -71,10 +71,14 @@ LmcTimelineRow.propTypes = {
 const styles = {
     container: {
         paddingLeft: 18,
+        paddingRight: 50,
     },
     logContent: {
         position: 'relative',
         top: -25,
+    },
+    mainContainer: {
+        maxWidth: '85%',
     },
     smallText: {
         color: '#7b7b7b',

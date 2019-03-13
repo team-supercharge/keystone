@@ -1,8 +1,9 @@
 import React from 'react';
-import LmcSecondaryNav from './components/LmcSecondaryNav.jsx';
+// import LmcSecondaryNav from './components/LmcSecondaryNav.jsx';
+import LmcTabBar from '../../components/LmcTabBar.jsx';
 import { connect } from 'react-redux';
 import theme from '../../../../theme';
-
+import Swal from 'sweetalert2';
 
 class LmcReportView extends React.Component {
 
@@ -10,20 +11,20 @@ class LmcReportView extends React.Component {
 		// When we directly navigate to a list without coming from another client
 		// side routed page before, we need to initialize the list and parse
 		// possibly specified query parameters
-        this.props.dispatch(function selectList () {
-            return (dispatch, getState) => {
-                dispatch({
-                    type: 'SELECT_LIST',
-                    id: 'reports',
-                });
-            };
-        });
+        // this.props.dispatch(function selectList () {
+        //     return (dispatch, getState) => {
+        //         dispatch({
+        //             type: 'SELECT_LIST',
+        //             id: 'reports',
+        //         });
+        //     };
+        // });
     }
 
     render () {
         return (
             <div>
-                <LmcSecondaryNav {...this.props} />
+                <LmcTabBar location={this.props.location} items={tabs} resourceUrl='reports' />
                 <div style={styles.container}>
                     {this.props.children}
                 </div>
@@ -31,6 +32,13 @@ class LmcReportView extends React.Component {
         );
     }
 };
+
+const tabs = [
+    // { url: 'charts', label: 'Resident Charts', mobileLabel: 'Charts' },
+    { url: 'overview/fluids', label: 'Fluids Overview', mobileLabel: 'Fluids' },
+    { url: 'overview/meals', label: 'Food Overview', mobileLabel: 'Food' },
+    { url: 'overview/handovers', label: 'Handovers', mobileLabel: 'Handovers' }
+]
 
 const styles = {
     container: {

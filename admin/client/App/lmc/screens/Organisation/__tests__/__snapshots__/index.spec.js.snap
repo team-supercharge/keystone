@@ -37,6 +37,11 @@ ShallowWrapper {
               "octicon": "key",
               "url": "shift-passwords",
             },
+            Object {
+              "label": "Documents",
+              "octicon": "file",
+              "url": "documents",
+            },
           ]
         }
         resourceUrl="organisation"
@@ -79,6 +84,11 @@ ShallowWrapper {
                 "label": "Shift Passwords",
                 "octicon": "key",
                 "url": "shift-passwords",
+              },
+              Object {
+                "label": "Documents",
+                "octicon": "file",
+                "url": "documents",
               },
             ]
           }
@@ -169,6 +179,11 @@ ShallowWrapper {
                     "octicon": "key",
                     "url": "shift-passwords",
                   },
+                  Object {
+                    "label": "Documents",
+                    "octicon": "file",
+                    "url": "documents",
+                  },
                 ]
               }
               resourceUrl="organisation"
@@ -211,6 +226,11 @@ ShallowWrapper {
                     "label": "Shift Passwords",
                     "octicon": "key",
                     "url": "shift-passwords",
+                  },
+                  Object {
+                    "label": "Documents",
+                    "octicon": "file",
+                    "url": "documents",
                   },
                 ]
               }

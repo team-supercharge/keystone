@@ -15,7 +15,12 @@ export class LmcTabBar extends Component {
 
     renderLabel = (item) => {
         const desktopLabel = item.label
-        const mobileLabel = <Octicon icon={getIconByName(item.octicon)} />
+        let mobileLabel
+        if (item.octicon) {
+            mobileLabel = <Octicon icon={getIconByName(item.octicon)} />
+        } else if (item.mobileLabel) {
+            mobileLabel = item.mobileLabel
+        }
         return (isBrowser || isTablet) ? desktopLabel : mobileLabel
     }
 

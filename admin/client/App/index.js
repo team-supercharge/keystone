@@ -48,6 +48,7 @@ import LmcTodosView from './lmc/screens/Todos/index.jsx';
 import LmcReportView from './lmc/screens/Reports/index.jsx';
 import LmcFluidsOverview from './lmc/screens/Reports/Charts/charts/LmcFluidsOverview.jsx';
 import LmcMealsOverview from './lmc/screens/Reports/Charts/charts/LmcMealsOverview.jsx';
+import LmcHandoversDashboard from './lmc/screens/Reports/Handovers/index.jsx';
 import LmcAdminReportView from './lmc/screens/AdminReports/index.jsx';
 import LmcAdminDashboard from './lmc/screens/AdminReports/LmcAdminDashboard.jsx';
 import LmcAdminHomeDashboard from './lmc/screens/AdminReports/LmcAdminHomeDashboard.jsx';
@@ -110,10 +111,12 @@ ReactDOM.render(
 				</Route>
 				<Route path="todos/dashboard" component={LmcTodosView} onChange={onListChange} />
 				<Route path="reports" component={LmcReportView} onChange={onListChange}>
-					<Route path="charts" component={LmcCharts} />
-					<Route path="charts/:chart_type/:resident_id" component={LmcCharts} />
+					<IndexRedirect to='/admin/reports/overview/fluids' />
+					{/* <Route path="charts" component={LmcCharts} /> */}
+					{/* <Route path="charts/:chart_type/:resident_id" component={LmcCharts} /> */}
 					<Route path="overview/fluids" component={LmcFluidsOverview} />
 					<Route path="overview/meals" component={LmcMealsOverview} />
+					<Route path="overview/handovers" component={LmcHandoversDashboard} />
 				</Route>
 				<Route path=":listId" component={List} onChange={onListChange} />
 				<Route path=":listId/:itemId" component={Item} />
